@@ -44,7 +44,7 @@
         [HarmonyPatch(typeof(global::Player), nameof(global::Player.Update))]
         private static void Update()
         {
-            if (Network.IsMultiplayerActive && Input.GetKeyDown(KeyCode.F5))
+            if (Network.IsMultiplayerActive && GameInput.GetKeyDown(KeyCode.F5))
             {
                 if (NetworkDebuggerBehaviour.Instance.IsActive)
                 {

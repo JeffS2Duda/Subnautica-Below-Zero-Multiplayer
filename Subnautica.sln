@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subnautica.Core", "Subnautica.Core\Subnautica.Core.csproj", "{5D8478B2-8946-4E95-9858-DD576EB62EC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subnautica.Loader", "Subnautica.Loader\Subnautica.Loader.csproj", "{4065A620-2424-42BC-935E-8B575F99582D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subnautica.NetworkDebugger", "Subnautica.NetworkDebugger\Subnautica.NetworkDebugger.csproj", "{F6A99362-FDF0-41A3-928B-1AAC5337787E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D8478B2-8946-4E95-9858-DD576EB62EC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D8478B2-8946-4E95-9858-DD576EB62EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D8478B2-8946-4E95-9858-DD576EB62EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D8478B2-8946-4E95-9858-DD576EB62EC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4065A620-2424-42BC-935E-8B575F99582D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4065A620-2424-42BC-935E-8B575F99582D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4065A620-2424-42BC-935E-8B575F99582D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4065A620-2424-42BC-935E-8B575F99582D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A99362-FDF0-41A3-928B-1AAC5337787E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A99362-FDF0-41A3-928B-1AAC5337787E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A99362-FDF0-41A3-928B-1AAC5337787E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A99362-FDF0-41A3-928B-1AAC5337787E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

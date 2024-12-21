@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net472</TargetFramework>
+	  <PlatformTarget>x64</PlatformTarget>
+	  <OutputType>Library</OutputType>
+
+	  <AssemblyName>Subnautica.Core</AssemblyName>
+	  <RootNamespace>Subnautica.Core</RootNamespace>
+	  <Platforms>AnyCPU</Platforms>
+	  <IsPackable>false</IsPackable>
+	  <DebugType>none</DebugType>
+	  <LangVersion>12</LangVersion>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Lib.Harmony" Version="2.2.2" />
+		<PackageReference Include="LiteNetLib" Version="1.3.1" />
+		<PackageReference Include="MessagePack" Version="3.1.0" />
+		<PackageReference Include="MessagePack.Annotations" Version="3.1.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+	</ItemGroup>
+	
+    <ItemGroup>
+		<Reference Include="Assembly-CSharp_public">
+			<Private>false</Private>
+		</Reference>
+        <Reference Include="Assembly-CSharp-firstpass-publicized">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Sentry-publicized">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="PlatformIODefault">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="CustomMarshalers" />
+		<Reference Include="DiscordRPC">
+			<Private>false</Private>
+			<HintPath>..\app\dependencies\DiscordRPC.dll</HintPath>
+		</Reference>
+		<Reference Include="FMODUnity">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Unity.Addressables">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Unity.ResourceManager">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Unity.Timeline">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.AnimationModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.DirectorModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.ParticleSystemModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.Physics2DModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.IMGUIModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="System.Memory">
+			<Private>false</Private>
+			<HintPath>..\app\dependencies\System.Memory.dll</HintPath>
+		</Reference>
+    </ItemGroup>
+
+	<Import Project="ReferencePaths.props.user" />
+	<PropertyGroup>
+		<AssemblySearchPaths>$(AssemblySearchPaths);$(ManagedPath);</AssemblySearchPaths>
+	</PropertyGroup>
+</Project>

@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net472</TargetFramework>
+	  <PlatformTarget>x64</PlatformTarget>
+	  <OutputType>Library</OutputType>
+
+	  <AssemblyName>Subnautica.Loader</AssemblyName>
+	  <RootNamespace>Subnautica.Loader</RootNamespace>
+	  <Platforms>AnyCPU</Platforms>
+	  <IsPackable>false</IsPackable>
+	  <DebugType>none</DebugType>
+	  <LangVersion>12</LangVersion>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Subnautica.Core\Subnautica.Core.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp-firstpass-publicized">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+	
+	<Import Project="ReferencePaths.props.user" />
+	<PropertyGroup>
+		<AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath);$(ManagedPath);</AssemblySearchPaths>
+	</PropertyGroup>
+</Project>
