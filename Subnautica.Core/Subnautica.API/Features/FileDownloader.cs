@@ -7,55 +7,20 @@
 
     public class FileDownloader
     {
-        /**
-         *
-         * İnme durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool isDownloading = false;
 
-        /**
-         *
-         * Tamamlanma durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */        
         private static bool isSuccess = false;
 
-        /**
-         *
-         * İnme durumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsDownloading()
         {
             return isDownloading;
         }
 
-        /**
-         *
-         * Tamamlanma durumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsSuccess()
         {
             return isSuccess;
         }
 
-        /**
-         *
-         * Dosya normal indirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool DownloadFile(string remoteUrl, string localPath)
         {
             remoteUrl = string.Format("{0}?t={1}", remoteUrl, Tools.GetRandomInt(1000000000, 2000000000));
@@ -80,13 +45,6 @@
             return true;
         }
 
-        /**
-         *
-         * Dosyayı asenkron indirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void DownloadFileAsync(string remoteUrl, string localPath, Action<object, DownloadProgressChangedEventArgs, object> progressCallbackAction = null, Action<object, AsyncCompletedEventArgs, object> completedCallbackAction = null, object customData = null)
         {
             FileDownloader.isDownloading = true;
@@ -113,13 +71,6 @@
             }
         }
 
-        /**
-         *
-         * Dosya inene kadar bekleme işlemi yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Wait()
         {
             while (IsDownloading())
@@ -128,13 +79,6 @@
             }
         }
 
-        /**
-         *
-         * Dosya indirilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e, Action<object, DownloadProgressChangedEventArgs, object> callBackAction, object customData = null)
         {
             try
@@ -147,13 +91,6 @@
             }
         }
 
-        /**
-         *
-         * Dosya indirme tamamlanmdığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */        
         public static void OnDownloadFileCompleted(object sender, AsyncCompletedEventArgs e, Action<object, AsyncCompletedEventArgs, object> callBackAction, object customData = null)
         {
             FileDownloader.isDownloading = false;

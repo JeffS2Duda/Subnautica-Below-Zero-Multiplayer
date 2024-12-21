@@ -15,34 +15,13 @@
 
     public class ZeroGame
     {
-        /**
-         *
-         * En son hata mesajı nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject ErrorMessageObject { get; set; }
 
-        /**
-         *
-         * Ana menüye döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void QuitToMainMenu()
         {
             UWE.CoroutineHost.StartCoroutine(ZeroGame.QuitToMainMenuAsync());
         }
 
-        /**
-         *
-         * Ana menüye döner (ASYNC)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator QuitToMainMenuAsync()
         {
             UWE.Utils.lockCursor = true;
@@ -62,13 +41,6 @@
             yield return IngameMenu.QuitToMainMenuAsync();
         }
 
-        /**
-         *
-         * Arka planda çalışma ayarını değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void RunInBackgroundChange(bool isActive)
         {
             MiscSettings.runInBackground = isActive;
@@ -76,74 +48,32 @@
             ApplicationFocus.OnRunInBackgroundChanged();
         }
 
-        /**
-         *
-         *  Yükleme ekranını açar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ShowLoadingScreen()
         {
             uGUI.main.loading.ShowLoadingScreen();
         }
 
-        /**
-         *
-         *  Yükleme ekranını durdurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void StopLoadingScreen()
         {
             uGUI.main.loading.loadingBackground.StopAllCoroutines();
             uGUI.main.loading.End(false);
         }
 
-        /**
-         *
-         *  Oyunu durdurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void FreezeGame()
         {
             FreezeTime.Set(FreezeTime.Id.IngameMenu, 1f);
         }
 
-        /**
-         *
-         *  Oyunu devam ettirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void UnFreezeGame()
         {
             FreezeTime.Set(FreezeTime.Id.IngameMenu, 0.0f);
         }
 
-        /**
-         *
-         * Eşya konumu arar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Vector3 FindDropPosition(Vector3 dropPosition)
         {
             return Pickupable.FindDropPosition(global::MainCamera.camera.transform.position, dropPosition);
         }
 
-        /**
-         *
-         * Oyuncunun araç kullanıp/Kullanmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsPlayerPiloting()
         {
             if (ZeroPlayer.CurrentPlayer == null || ZeroPlayer.CurrentPlayer.FreecamController.GetActive())
@@ -151,13 +81,11 @@
                 return false;
             }
 
-            // SeaTruck / Exosuit / Hoverbike
             if (global::Player.main.isPiloting)
             {
                 return true;
             }
 
-            // SeaTruck Modules / SpyPenguin / MapRoomCamera / BaseControlRoom
             if (global::Player.main.mode == global::Player.Mode.LockedPiloting)
             {
                 return true;
@@ -166,13 +94,6 @@
             return false;
         }
 
-        /**
-         *
-         * SeaTruck içindeki colored label id değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetSeaTruckColoredLabelUniqueId(string uniqueId, bool returnToDefaultKey = false)
         {
             if (returnToDefaultKey)
@@ -183,13 +104,6 @@
             return string.Format("{0}_ZeroLabel", uniqueId);
         }
 
-        /**
-         *
-         * Araç batarya içindeki label değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetVehicleBatteryLabelUniqueId(string uniqueId, bool returnToDefaultKey = false)
         {
             if (returnToDefaultKey)
@@ -200,13 +114,6 @@
             return string.Format("{0}_ZeroBattery", uniqueId);
         }
 
-        /**
-         *
-         * ToggleClickSwitchOn
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool ToggleClickSwitchOn(ToggleOnClick toggle, bool isSilence = false)
         {
             if (toggle.activeState)
@@ -249,13 +156,6 @@
             return true;
         }
 
-        /**
-         *
-         * ToggleClickSwitchOff
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator DelayedToggleClickSwitchOff(ToggleOnClick toggle, float delayTime)
         {
             yield return new WaitForSecondsRealtime(delayTime);
@@ -266,13 +166,6 @@
             }
         }
 
-        /**
-         *
-         * ToggleClickSwitchOff
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool ToggleClickSwitchOff(ToggleOnClick toggle, bool isSilence = false)
         {
             if (!toggle.activeState)
@@ -332,13 +225,6 @@
             return thumbnail;
         }
 
-        /**
-         *
-         * Fabrikator yapısında eşya üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool Craft(global::GhostCrafter ghostCrafter, TechType techType, float startingTime, float duration, bool isMine)
         {
             if (ghostCrafter == null)
@@ -364,13 +250,6 @@
             return true;
         }
 
-        /**
-         *
-         * Craft süresini ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void LogicCraft(global::GhostCrafter ghostCrafter, TechType techType, float startingTime, float duration)
         {
             ghostCrafter.logic.timeCraftingBegin = startingTime;
@@ -382,13 +261,6 @@
             ghostCrafter.logic.NotifyProgress(0f);
         }
 
-        /**
-         *
-         * Nesnenin ışıklarını açar/kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SetLightsActive(ToggleLights toggleLights, bool isActive, bool infinityEnergy = false)
         {
             if (toggleLights.lightsActive != isActive)
@@ -407,25 +279,11 @@
             }
         }
 
-        /**
-         *
-         * Nesnenin ışıklarını açar/kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SetLightsActive(SeaTruckLights seaTruckLights, bool isActive)
         {
             seaTruckLights.lightsActive = isActive;
         }
 
-        /**
-         *
-         * Kalıcı hata mesajı yazar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AddScreenErrorMessage(string message)
         {
             ClearScreenErrorMessage();
@@ -445,13 +303,6 @@
             component.text = string.Format("<color=red>{0}</color>", message);
         }
 
-        /**
-         *
-         * Kalıcı hata mesajını siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ClearScreenErrorMessage()
         {
             if (ErrorMessageObject != null)

@@ -17,49 +17,14 @@
 
     public class Storage
     {
-        /**
-         *
-         * İşlem Kuyruğunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private readonly List<StorageProcessItem> Queue = new List<StorageProcessItem>();
         
-        /**
-         *
-         * Bekleme zamanı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private readonly WaitForSecondsRealtime WaitTime = new WaitForSecondsRealtime(0.25f);
 
-        /**
-         *
-         * Kuyruğun tüketilip/tüketilmediği
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsRunning { get; set; } = false;
 
-        /**
-         *
-         * Gecikme süresi (second)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public double MaxDelay = 2.5;
 
-        /**
-         *
-         * Envantere nesne ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void InitializeStorage(string containerId, Metadata.StorageContainer storageContainer, Action<ItemQueueProcess, Pickupable, GameObject> onEntitySpawned = null, object customProperty = null)
         {
             if (storageContainer != null)
@@ -79,13 +44,6 @@
             }
         }
 
-        /**
-         *
-         * Depoyaya nesne ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void AddItemToStorage(string containerId, byte playerId, WorldPickupItem worldPickupItem, Action<ItemQueueProcess, Pickupable, GameObject> onEntitySpawned = null, object customProperty = null)
         {
             this.Queue.Add(new StorageProcessItem()
@@ -100,13 +58,6 @@
             this.ConsumeQueue();
         }
 
-        /**
-         *
-         * Envantere nesne ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void AddItemToInventory(byte playerId, WorldPickupItem pickupItem, Action<ItemQueueProcess, Pickupable, GameObject> onEntitySpawned = null, object customProperty = null, bool showNotify = false)
         {
             World.DestroyPickupItem(pickupItem);
@@ -133,13 +84,6 @@
             }
         }
 
-        /**
-         *
-         * Kuyruktaki nesneleri tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ConsumeQueue()
         {
             if (this.IsRunning)
@@ -151,13 +95,6 @@
             return true;
         }
 
-        /**
-         *
-         * Kuyruktaki nesneleri tüketir. (Async)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator ConsumeQueueAsync()
         {
             this.IsRunning = true;
@@ -200,13 +137,6 @@
             this.IsRunning = false;
         }
 
-        /**
-         *
-         * Depoya eşya ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool AddItemToStorage(StorageProcessItem item, bool destroyItem)
         {
             if (destroyItem && ZeroPlayer.IsPlayerMine(item.OwnerId))
@@ -228,13 +158,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne kapsayıcısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ItemsContainer GetItemContainer(string containerId)
         {
             var gameObject = Network.Identifier.GetGameObject(containerId, true);
@@ -270,13 +193,6 @@
             return null;
         }
 
-        /**
-         *
-         * Verileri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Dispose()
         {
             this.IsRunning = false;
@@ -286,79 +202,23 @@
 
     public class StorageProcessItem
     {
-        /**
-         *
-         * OwnerId nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte OwnerId { get; set; }
 
-        /**
-         *
-         * ContainerId nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string ContainerId { get; set; }
 
-        /**
-         *
-         * FirstCheckTime nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public double FirstCheckTime { get; set; } = 0f;
 
-        /**
-         *
-         * WorldPickupItem nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldPickupItem WorldPickupItem { get; set; }
 
-        /**
-         *
-         * ProcessCompleted nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Action<ItemQueueProcess, Pickupable, GameObject> OnEntitySpawned { get; set; }
 
-        /**
-         *
-         * CustomProperty nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public object CustomProperty { get; set; }
 
-        /**
-         *
-         * İlk sefer mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsFirstTime()
         {
             return this.FirstCheckTime == 0f;
         }
 
-        /**
-         *
-         * Gecikti mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsDelayed()
         {
             return Network.Session.GetWorldTime() > this.FirstCheckTime + Network.Storage.MaxDelay;

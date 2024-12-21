@@ -6,49 +6,21 @@
 
     public static class TechExtensions
     {
-        /**
-         *
-         * Çok oyunculu oyuncu mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsMultiplayerPlayer(this string name)
         {
             return name.Contains(ZeroPlayer.PlayerSignalName);
         }
 
-        /**
-         *
-         * Teknoloji türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static TechType GetTechType(this GameObject gameObject)
         {
             return CraftData.GetTechType(gameObject);
         }
 
-        /**
-         *
-         * Teknoloji türünü değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SetTechType(this GameObject gameObject, TechType techType)
         {
             gameObject.EnsureComponent<global::TechTag>().type = techType;
         }
 
-        /**
-         *
-         * ClassId değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetClassId(this TechType techType)
         {
             if (Network.EntityDatabase.TryGetInfoByTechType(techType, out var info))
@@ -59,37 +31,16 @@
             return null;
         }
 
-        /**
-         *
-         * Nesne alınma bildirimi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ShowPickupNotify(this TechType techType)
         {
             uGUI_IconNotifier.main.Play(techType, uGUI_IconNotifier.AnimationType.From);
         }
 
-        /**
-         *
-         * Nesne alınma bildirimi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ShowPickupNotify(this global::Pickupable pickupable)
         {
             pickupable.GetTechType().ShowPickupNotify();
         }
 
-        /**
-         *
-         * Teknoloji türünün tarandıktan sonra yok olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsDestroyAfterScan(this TechType techType)
         {
             var entry = global::PDAScanner.GetEntryData(techType);
@@ -101,37 +52,16 @@
             return entry.destroyAfterScan;
         }
         
-        /**
-         *
-         * Teknoloji türünün parça olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsFragment(this TechType techType)
         {
             return techType == TechType.Fragment || global::PDAScanner.IsFragment(techType);
         }
 
-        /**
-         *
-         * Oyuncu olup olmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsPlayer(this TechType techType)
         {
             return techType == TechType.Player;
         }
 
-        /**
-         *
-         * Araç olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsVehicle(this TechType techType, bool isCheckVehicle = true, bool isModule = true)
         {
             if (isCheckVehicle)
@@ -155,13 +85,6 @@
             return false;
         }
 
-        /**
-         *
-         * Teknoloji türünün seatruck modülü olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsSeaTruckModule(this TechType techType, bool checkSeaTruck = false)
         {
             if (checkSeaTruck && techType == TechType.SeaTruck)
@@ -183,25 +106,11 @@
             return false;
         }
                 
-        /**
-         *
-         * Teknoloji türün adını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetTechName(this TechType techType)
         {
             return techType.AsString();
         }
 
-        /**
-         *
-         * Teknoloji türünün poster olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsPoster(this TechType techType)
         {
             switch (techType)
@@ -235,13 +144,6 @@
             return false;
         }
 
-        /**
-         *
-         * Teknoloji türünün poster olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsPictureFrame(this TechType techType)
         {
             switch (techType)
@@ -259,13 +161,6 @@
             return false;
         }
 
-        /**
-         *
-         * Yatak olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsBed(this TechType techType)
         {
             switch (techType)
@@ -286,13 +181,6 @@
             return false;
         }
 
-        /**
-         *
-         * Saksı olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsPlanterPot(this TechType techType)
         {
             switch (techType)
@@ -308,13 +196,6 @@
             return false;
         }
 
-        /**
-         *
-         * Üs parçası olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsBasePiece(this TechType techType)
         {
             switch (techType)
@@ -345,13 +226,6 @@
             return false;
         }
 
-        /**
-         *
-         * Mobilya olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsFurniture(this TechType techType)
         {
             if (techType.IsPlanterPot() || techType.IsBed())
@@ -418,13 +292,6 @@
             return false;
         }
 
-        /**
-         *
-         * Kırılabilen nesne olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsBreakable(this TechType techType)
         {
             switch (techType)
@@ -438,13 +305,6 @@
             return false;
         }
 
-        /**
-         *
-         * Kazılabilen nesne olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsDrillable(this TechType techType)
         {
             switch (techType)
@@ -472,13 +332,6 @@
             return false;
         }
 
-        /**
-         *
-         * Yaratık yumurtası olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsCreatureEgg(this TechType techType)
         {
             switch (techType)
@@ -526,13 +379,6 @@
             return false;
         }
 
-        /**
-         *
-         * Yaratık yumurtasına dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static TechType ToCreatureEgg(this TechType techType)
         {
             switch (techType)
@@ -578,13 +424,6 @@
             return TechType.None;
         }
 
-        /**
-         *
-         * Balık/Yaratık olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsCreature(this TechType techType, bool ignoreSchool = false)
         {
             switch (techType)
@@ -642,13 +481,6 @@
             return false;
         }
 
-        /**
-         *
-         * Nesne respawn süresini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static int GetRespawnDuration(this TechType techType)
         {
             if (techType.IsDrillable())

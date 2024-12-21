@@ -22,13 +22,6 @@
 
     public class Vehicle
     {
-        /**
-         *
-         * Fabrikator yapısında Araç üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CraftVehicle(WorldDynamicEntity entity, global::ConstructorInput constructorInput = null, Action<WorldDynamicEntity, ItemQueueAction, GameObject> onCompleted = null, float finishTime = 0f, bool notify = false, bool isMine = false, object customProperty = null)
         {
             if (isMine)
@@ -54,13 +47,6 @@
             Entity.ProcessToQueue(action);
         }
 
-        /**
-         *
-         * Async araç üretimini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator VehicleCraftCompletedAsync(ItemQueueProcess item)
         {
             var entity      = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -121,13 +107,6 @@
             }
         }
 
-        /**
-         *
-         * Hoverbike üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CraftHoverbike(global::HoverpadConstructor hoverpad, string uniqueId, float finishedTime, bool isMine, Action<GameObject> callBackAction = null)
         {
             var leftTime = finishedTime - DayNightCycle.main.timePassedAsFloat;
@@ -139,25 +118,11 @@
             CoroutineHost.StartCoroutine(SpawnHoverbikeAsync(hoverpad, uniqueId, finishedTime, leftTime, callBackAction));
         }
 
-        /**
-         *
-         * Hoverbike'yi park eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void DockHoverbike(global::Hoverpad hoverpad, global::Hoverbike hoverbike, bool isMine, Func<bool> callback = null)
         {
             CoroutineHost.StartCoroutine(DockHoverbikeAsync(hoverpad, hoverbike, isMine, callback));
         }
 
-        /**
-         *
-         * Async hoverbike üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator SpawnHoverbikeAsync(global::HoverpadConstructor hoverpadConstructor, string uniqueId, float finishedTime, float leftTime, Action<GameObject> callBackAction = null)
         {
             if (leftTime > 2f)
@@ -211,13 +176,6 @@
             }
         }
 
-        /**
-         *
-         * Async Hoverbike'yi park eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator DockHoverbikeAsync(Hoverpad hoverpad, global::Hoverbike hoverbike, bool isMine, Func<bool> callback = null)
         {
             hoverpad.dockedBike = hoverbike;
@@ -262,13 +220,6 @@
             }
         }
 
-        /**
-         *
-         * Hoverbike özellikleri uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyHoverbikeComponent(GameObject gameObject, WorldEntityModel.Hoverbike component)
         {
             if (gameObject.TryGetComponent<global::Hoverbike>(out var hoverBike))
@@ -284,13 +235,6 @@
             }
         }
 
-        /**
-         *
-         * Renkleri uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyColorCustomizer(ZeroColorCustomizer colorCustomizer, ColorNameControl colorNameControl)
         {
             if (colorCustomizer?.BaseColor != null && colorNameControl != null)
@@ -309,13 +253,6 @@
             }
         }
 
-        /**
-         *
-         * Modülleri uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyModules(List<UpgradeConsoleItem> modules, Equipment equipment, TechType techType)
         {
             for (int i = 0; i < modules.Count; i++)
@@ -332,37 +269,16 @@
             }
         }
 
-        /**
-         *
-         * Işıkları açar/kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyLights(global::ToggleLights toggleLights, bool isActive)
         {
             ZeroGame.SetLightsActive(toggleLights, isActive);
         }
 
-        /**
-         *
-         * Işıkları açar/kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyLights(global::SeaTruckLights seaTruckLights, bool isActive)
         {
             ZeroGame.SetLightsActive(seaTruckLights, isActive);
         }
 
-        /**
-         *
-         * Güç hücrelerini ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyPowerCells(string uniqueId, List<PowerCell> powerCells)
         {
             foreach (var powerCell in powerCells)
@@ -379,13 +295,6 @@
             }
         }
 
-        /**
-         *
-         * Güç hücrelerini ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyStorageContainer(string uniqueId, Metadata.StorageContainer storageContainer)
         {
             if (storageContainer != null)
@@ -408,25 +317,11 @@
             }
         }
 
-        /**
-         *
-         * Araç sağlığını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyLiveMixin(global::LiveMixin liveMixin, float health)
         {
             liveMixin.health = health;
         }
 
-        /**
-         *
-         * Batarya slotlarını ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyBatterySlotIds(GameObject gameObject, TechType techType, string firstPowerCellId, string secondPowerCellId)
         {
             foreach (var batterySlot in gameObject.GetComponentsInChildren<ChildObjectIdentifier>())
@@ -454,13 +349,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void OnPowerCellSpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var powerCell = item.Action.GetProperty<PowerCell>("PowerCell");
@@ -513,13 +401,6 @@
             }
         }
 
-        /**
-         *
-         * Module Slot numarasını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetModuleSlotId(int slotId, TechType techType)
         {
             if (techType == TechType.Exosuit)
@@ -548,25 +429,11 @@
             return null;
         }
 
-        /**
-         *
-         * EnergyMixin özellikleri uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ApplyEnergyMixin(global::EnergyMixin energyMixin, float charge, Action callback = null)
         {
             CoroutineHost.StartCoroutine(ApplyEnergyMixinAsync(energyMixin, charge, callback));
         }
 
-        /**
-         *
-         * EnergyMixin özellikleri ASYNC uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator ApplyEnergyMixinAsync(global::EnergyMixin energyMixin, float charge, Action callback)
         {
             if (energyMixin)

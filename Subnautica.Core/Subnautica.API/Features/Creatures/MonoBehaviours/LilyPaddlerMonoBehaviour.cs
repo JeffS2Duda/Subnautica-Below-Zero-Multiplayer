@@ -4,34 +4,13 @@
 
     public class LilyPaddlerMonoBehaviour : BaseMultiplayerCreature
     {
-        /**
-         *
-         * Balina sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::LilyPaddlerHypnotize LilyPaddlerHypnotize { get; set; }
 
-        /**
-         *
-         * Sınıf uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.LilyPaddlerHypnotize = this.GetComponent<global::LilyPaddlerHypnotize>();
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (this.MultiplayerCreature.CreatureItem.IsMine())
@@ -73,13 +52,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık öldüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnMultiplayerKill()
         {
             if (this.LilyPaddlerHypnotize.isActive)
@@ -88,13 +60,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık öldüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnChangedOwnership()
         {
             if (this.LilyPaddlerHypnotize.isActive)
@@ -103,13 +68,6 @@
             }
         }
 
-        /**
-         *
-         * Hipnozu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartHypnotize(ZeroPlayer target, float hypnotizeTime)
         {
             target.SetLastHypnotizeTime(hypnotizeTime);

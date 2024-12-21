@@ -6,12 +6,6 @@
 
     public static class EventExtensions
     {
-        /**
-         *
-         * https://learn.microsoft.com/en-us/dotnet/api/system.delegate.getinvocationlist?view=net-7.0 
-         *
-         *
-         */
         public static void CustomInvoke<T>(this SubnauticaPluginEventHandler<T> ev, T arg)
         {
             if (ev != null)
@@ -30,12 +24,6 @@
             }
         }
 
-        /**
-         *
-         * https://learn.microsoft.com/en-us/dotnet/api/system.delegate.getinvocationlist?view=net-7.0 
-         *
-         *
-         */
         public static void CustomInvoke(this SubnauticaPluginEventHandler ev)
         {
             if (ev != null)
@@ -54,22 +42,8 @@
             }
         }
 
-        /**
-         *
-         * Event Yöneticisi Parametre ile
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public delegate void SubnauticaPluginEventHandler<TEventArgs>(TEventArgs ev);
 
-        /**
-         *
-         * Event Yöneticisi Parametre olmadan
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public delegate void SubnauticaPluginEventHandler();
     }
 }

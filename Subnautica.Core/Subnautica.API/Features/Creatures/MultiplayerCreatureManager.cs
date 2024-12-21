@@ -18,94 +18,24 @@
 
     public class MultiplayerCreatureManager
     {
-        /**
-         *
-         * Havuz önbellek verilerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<TechType, List<MultiplayerCreature>> CreaturePools { get; set; } = new Dictionary<TechType, List<MultiplayerCreature>>();
 
-        /**
-         *
-         * Yaratık veri önbellek verilerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<ushort, MultiplayerCreatureItem> Creatures { get; set; } = new Dictionary<ushort, MultiplayerCreatureItem>();
 
-        /**
-         *
-         * Kuyruğu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Queue<CreatureQueueItem> Queue { get; set; } = new Queue<CreatureQueueItem>();
 
-        /**
-         *
-         * Meşgul Kuyruğu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Queue<CreatureQueueItem> BusyQueue { get; set; } = new Queue<CreatureQueueItem>();
 
-        /**
-         *
-         * Aktif balıkları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<ushort, MultiplayerCreature> ActiveCreatureObjects { get; set; } = new Dictionary<ushort, MultiplayerCreature>();
 
-        /**
-         *
-         * Aktif balıkların id'sini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private HashSet<ushort> ActiveCreatureIds { get; set; } = new HashSet<ushort>();
 
-        /**
-         *
-         * Çerçeve Başına İşlem Sayısı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private byte ConsumptionPerFrame { get; set; } = 4;
 
-        /**
-         *
-         * Mevcut çerçevede yapılan işlem sayısı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private byte CurrentConsumptionCount { get; set; } = 0;
 
-        /**
-         *
-         * Kuyruğun tüketilip/tüketilmediği
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsRunning { get; set; } = false;
 
-        /**
-         *
-         * Yaratığı hedefe yüzdürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SwimTo(ushort creatureId, Vector3 position, Quaternion rotation)
         {
             if (this.TryGetActiveCreatureObject(creatureId, out var creature))
@@ -114,25 +44,11 @@
             }
         }
 
-        /**
-         *
-         * Yaratık kaydını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RegisterCreature(ServerModel.WorldCreatureOwnershipItem creature)
         {
             this.Creatures[creature.Id] = new MultiplayerCreatureItem(creature.OwnerId, creature.Id, creature.Position.ToZeroVector3(), creature.Rotation.ToZeroQuaternion(), creature.TechType);
         }
 
-        /**
-         *
-         * Yaratık kaydını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateCreature(ServerModel.WorldCreatureOwnershipItem creature)
         {
             if (this.TryGetCreature(creature.Id, out var data))
@@ -142,61 +58,26 @@
             }
         }
 
-        /**
-         *
-         * Aktif yaratık nesne kaydını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryGetActiveCreatureObject(ushort creatureId, out MultiplayerCreature creature)
         {
             return this.ActiveCreatureObjects.TryGetValue(creatureId, out creature);
         }
 
-        /**
-         *
-         * Aktif yaratık nesne kaydını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetActiveCreatureObject(ushort creatureId, MultiplayerCreature creature)
         {
             this.ActiveCreatureObjects[creatureId] = creature;
         }
 
-        /**
-         *
-         * Aktif yaratık nesne kaydını siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemoveActiveCreatureObject(ushort creatureId)
         {
             this.ActiveCreatureObjects.Remove(creatureId);
         }
 
-        /**
-         *
-         * Yaratık bana mı ait?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsMine(GameObject gameObject)
         {
             return IsMine(gameObject.GetIdentityId());
         }
 
-        /**
-         *
-         * Yaratık bana mı ait?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsMine(string uniqueId)
         {
             if (!uniqueId.IsMultiplayerCreature())
@@ -207,13 +88,6 @@
             return IsMine(uniqueId.ToCreatureId());
         }
 
-        /**
-         *
-         * Yaratık bana mı ait?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsMine(ushort creatureId)
         {
             if (this.TryGetCreature(creatureId, out var creature))
@@ -224,38 +98,17 @@
             return false;
         }
 
-        /**
-         *
-         * Yaratık kaydını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryGetCreature(ushort creatureId, out MultiplayerCreatureItem creature)
         {
             return this.Creatures.TryGetValue(creatureId, out creature);
         }
 
-        /**
-         *
-         * Yaratık kaydını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public MultiplayerCreatureItem GetCreature(ushort creatureId)
         {
             this.TryGetCreature(creatureId, out var creature);
             return creature;
         }
 
-        /**
-         *
-         * Aktif yaratıkları döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerable<MultiplayerCreatureItem> GetActiveCreatures()
         {
             foreach (var creatureId in this.ActiveCreatureIds)
@@ -267,49 +120,21 @@
             }
         }
 
-        /**
-         *
-         * Yaratık aktif mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsActiveCreature(ushort creatureId)
         {
             return this.ActiveCreatureIds.Contains(creatureId);
         }
 
-        /**
-         *
-         * Yaratık aktif mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void AddActiveCreature(ushort creatureId)
         {
             this.ActiveCreatureIds.Add(creatureId);
         }
 
-        /**
-         *
-         * Yaratık aktif mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void RemoveActiveCreature(ushort creatureId)
         {
             this.ActiveCreatureIds.Remove(creatureId);
         }
 
-        /**
-         *
-         * Yaratık yok etme kuyruğuna ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ProcessToQueue(ushort creatureId, CreatureQueueAction action = null)
         {
             this.Queue.Enqueue(new CreatureQueueItem()
@@ -323,13 +148,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yaratık doğma kuyruğuna ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SpawnToQueue(ushort creatureId)
         {
             if (this.IsActiveCreature(creatureId))
@@ -349,13 +167,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yaratık ölüm kuyruğuna ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool DeathToQueue(ushort creatureId)
         {
             if (!this.IsActiveCreature(creatureId))
@@ -375,13 +186,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yaratık yok etme kuyruğuna ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool RemoveToQueue(ushort creatureId)
         {
             if (!this.IsActiveCreature(creatureId))
@@ -401,13 +205,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yaratık yok etme kuyruğuna ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ChangeOwnershipToQueue(ushort creatureId)
         {
             this.Queue.Enqueue(new CreatureQueueItem()
@@ -420,37 +217,16 @@
             return true;
         }
 
-        /**
-         *
-         * Mevcut çerçevede yapılan işlem sayısını sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ResetConsumption()
         {
             this.CurrentConsumptionCount = 0;
         }
 
-        /**
-         *
-         * Mevcut çerçevede yapılan işlem sayısını arttırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void IncreaseConsumption()
         {
             this.CurrentConsumptionCount++;
         }
 
-        /**
-         *
-         * Kuyruktaki işlemleri tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ConsumeQueue()
         {
             if (this.IsRunning)
@@ -462,13 +238,6 @@
             return true;
         }
 
-        /**
-         *
-         * Kuyruktaki nesneleri tüketir. (Async)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator ConsumeQueueAsync()
         {
             this.IsRunning = true;
@@ -590,13 +359,6 @@
             }
         }
 
-        /**
-         *
-         * Havuzdan yaratık alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private MultiplayerCreature GetCreatureFromPool(TechType techType)
         {
             if (this.CreaturePools.TryGetValue(techType, out var creatures))
@@ -607,13 +369,6 @@
             return null;
         }
         
-        /**
-         *
-         * Havuz'a yaratık ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private MultiplayerCreature AddCreatureToPool(TechType techType, GameObject gameObject)
         {
             if (!this.CreaturePools.ContainsKey(techType))
@@ -632,13 +387,6 @@
             return null;
         }
 
-        /**
-         *
-         * Havuz'da yaratık yoksa ekler varsa döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator SpawnCreature(TechType techType, TaskResult<MultiplayerCreature> item, bool addPool = true)
         {
             var creatureData = techType.GetCreatureData();
@@ -713,13 +461,6 @@
             }
         }
 
-        /**
-         *
-         * Verileri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Dispose()
         {
             this.CreaturePools.Clear();

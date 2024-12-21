@@ -25,31 +25,10 @@
 
     public class Tools
     {
-        /**
-         *
-         * Random sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static System.Random Random { get; set; } = new System.Random();
 
-        /**
-         *
-         * Launcher versiyonunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string[] LauncherVersionData { get; set; }
 
-        /**
-         *
-         * Protobuf ile veriyi serilize eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static byte[] SerializeGameObject(UnityEngine.GameObject gameObject)
         {
             using (MemoryStream memoryStream = new MemoryStream())
@@ -62,13 +41,6 @@
             }
         }
 
-        /**
-         *
-         * Launcher'ın yeni versiyonunu kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static VersionType CheckCreditsPage()
         {
             string content = null;
@@ -100,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * Launcher'ın yeni versiyonunu kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static VersionType CheckLauncherVersion(bool save = false)
         {
             string content = null;
@@ -146,25 +111,11 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu adını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetLoggedInName()
         {
             return global::PlatformUtils.main.GetLoggedInUserName();
         }
 
-        /**
-         *
-         * Oyuncu idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetLoggedId()
         {
             var userId = global::PlatformUtils.main.GetCurrentUserId();
@@ -176,13 +127,6 @@
             return userId;
         }
 
-        /**
-         *
-         * Method izleme içinde var mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsInStackTrace(string text)
         {
             var stackTrace = new StackTrace();
@@ -198,25 +142,11 @@
             return false;
         }
 
-        /**
-         *
-         * Rastgele sayı üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static int GetRandomInt(int min, int max)
         {
             return Random.Next(min, max + 1);
         }
 
-        /**
-         *
-         * Launcher yazarın adını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetLauncherAuthor(bool addAuthorString = false)
         {
             if(!addAuthorString)
@@ -227,13 +157,6 @@
             return String.Format("{0}: {1}", ZeroLanguage.Get("APP_AUTHOR"), Settings.AuthorName);
         }
 
-        /**
-         *
-         * 2 versiyonu kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool CheckVersion(string localVersionNumber, string remoteVersionNumber)
         {
             var versions1 = localVersionNumber.Split('.');
@@ -264,13 +187,6 @@
             return false;
         }
 
-        /**
-         *
-         * Launcher versiyonunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetLauncherVersion(bool addVersionString = false, bool addImplodeDot = true)
         {
             if (LauncherVersionData == null)
@@ -299,13 +215,6 @@
             return String.Format("{0}{1}", launcherVersion, String.Join("", LauncherVersionData));
         }
 
-        /**
-         *
-         * Base64 şifrelemesi yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string Base64Encode(string plainText, int limit = 1)
         {
             if (plainText.IsNull())
@@ -321,13 +230,6 @@
             return plainText;
         }
 
-        /**
-         *
-         * Kamera ileri yönünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Vector3 GetCameraForward(bool yReset = false, bool isNormalize = false)
         {
             var forward = new Vector3()
@@ -349,74 +251,32 @@
             return forward;
         }
 
-        /**
-         *
-         * Base64 şifresi Çözer.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string Base64Decode(string base64EncodedData)
         {
             var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
 
-        /**
-         *
-         * İşlem yüzdesi hesaplar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static double CalculatePercent(long one, long two, int max = 100)
         {
             return ((double) one / (double) two) * max;
         }
 
-        /**
-         *
-         * İşlem bindesi hesaplar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static double CalculateThousandToPercent(int thousand)
         {
             return ((double) thousand / 10.0);
         }
 
-        /**
-         *
-         * Api ayarlarını döner. 
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static ApiDataFormat GetApiData()
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<ApiDataFormat>(File.ReadAllText(Paths.GetLauncherApiFilePath()));
         }
 
-        /**
-         *
-         * Credits Api ayarlarını döner. 
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static ApiCreditsDataFormat GetCreditsApiData()
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<ApiCreditsDataFormat>(File.ReadAllText(Paths.GetLauncherCreditsApiFilePath()));
         }
 
-        /**
-         *
-         * Klasör açar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OpenFolder(string folderPath)
         {
             try
@@ -430,13 +290,6 @@
             }
         }
 
-        /**
-         *
-         * Alt klasörleri kontrol eder ve oluşturur
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CreateSubFolders(string localFile)
         {
             var paths = localFile.Split('\\');
@@ -454,13 +307,6 @@
             }
         }
 
-        /**
-         *
-         * Veriyi MD5 ile şifreler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string CreateMD5(string input)
         {
             if (input.IsNull())
@@ -484,13 +330,6 @@
             }
         }
 
-        /**
-         *
-         * Kısa Benzersiz Id oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetShortUniqueId()
         {
             var historicalDate = new DateTime(1970, 1, 1, 0, 0, 0);
@@ -501,13 +340,6 @@
             return long.Parse(shortId).ToString("X");
         }
 
-        /**
-         *
-         * Boyutu metine çevirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetSizeByTextFormat(long size)
         {
             if(size < 1024)
@@ -528,13 +360,6 @@
             return string.Format("{0} {1}", System.Math.Round((double) size / 1024 / 1024 / 1024, 2), ZeroLanguage.Get("GAME_SIZE_GB"));
         }
 
-        /**
-         *
-         * Tarihi metine çevirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetDateByTextFormat(int unixTimeStamp)
         {
             DateTime dateTime = UnixTimeStampToDateTime(unixTimeStamp);
@@ -545,13 +370,6 @@
             return string.Format("{0} {1} {2} {3}:{4}", dateTime.Day, ZeroLanguage.Get("GAME_MONTH_" + dateTime.Month), dateTime.Year, hourText, minuteText);
         }
 
-        /**
-         *
-         * Sayıyı tarihe çevirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static DateTime UnixTimeStampToDateTime(int unixTimeStamp)
         {
             var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
@@ -559,26 +377,12 @@
             return dateTime;
         }
 
-        /**
-         *
-         * Klasör boyutunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static long GetFolderSize(string folderPath)
         {
             DirectoryInfo di = new DirectoryInfo(folderPath);
             return di.EnumerateFiles("*", SearchOption.AllDirectories).Sum(fi => fi.Length);
         }
 
-        /**
-         *
-         * Bepinex kontrolü yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsBepinexInstalled()
         {
             string gamePath = null;
@@ -618,32 +422,16 @@
             return false;
         }
 
-        /**
-         *
-         * Mevcut zamanı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static int GetUnixTime()
         {
             return (int) DateTimeOffset.Now.ToUnixTimeSeconds();
         }
 
-        /**
-         *
-         * Bilgisayar dilini uygulama diline çevirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetLanguage()
         {
             string language = CultureInfo.CurrentCulture.ToString();
             switch (language)
             {
-                //case "ar-SA":
-                //case "fa-IR":
                 case "az-AZ":
                 case "bg-BG":
                 case "cs-CZ":
@@ -674,13 +462,6 @@
             return "en-US";
         }
 
-        /**
-         *
-         * Bilgisayar dilini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetComputerLanguage()
         {
             return CultureInfo.CurrentCulture.ToString();

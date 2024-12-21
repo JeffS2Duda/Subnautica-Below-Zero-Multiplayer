@@ -16,61 +16,19 @@ namespace Subnautica.API.Features
 
     public class Entity
     {
-        /**
-         *
-         * Kuyruğu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Queue<ItemQueueProcess> Queue { get; set; } = new Queue<ItemQueueProcess>();
 
-        /**
-         *
-         * Çerçeve Başına İşlem Sayısı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static byte ConsumptionPerFrame { get; set; } = 8;
 
-        /**
-         *
-         * Mevcut çerçevede yapılan işlem sayısı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static byte CurrentConsumptionCount { get; set; } = 0;
 
-        /**
-         *
-         * Kuyruğun tüketilip/tüketilmediği
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsRunning { get; private set; } = false;
 
-        /**
-         *
-         * Kuyruktaki nesne sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static int QueueTotalCount()
         {
             return Queue.Count;
         }
 
-        /**
-         *
-         * (İşlem) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ProcessToQueue(ItemQueueAction action)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -82,13 +40,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Depolama) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnToQueue(TechType techType, ItemsContainer container, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -102,13 +53,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Depolama) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnToQueue(TechType techType, string itemId, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -122,13 +66,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Depolama) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnToQueue(TechType techType, string itemId, ItemsContainer container, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -143,13 +80,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Depolama) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnToQueue(byte[] item, string itemId, ZeroTransform transform, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -164,13 +94,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Depolama) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnToQueue(TechType techType, string itemId, ZeroTransform transform, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -185,13 +108,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Depolama) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnToQueue(byte[] item, string itemId, ItemsContainer container, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -206,13 +122,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Ekipman) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnToQueue(string slotId, TechType techType, Equipment equipment, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -227,13 +136,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Depolama) Kaldırma/Yoketme kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void RemoveToQueue(Pickupable pickupable, ItemsContainer container, ItemQueueAction action = null)
         {            
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -247,13 +149,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Ekipman) Yumurtlama kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnToQueue(string slotId, TechType techType, string itemId, Equipment equipment, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -269,13 +164,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Ekipman) Kaldırma/Yoketme kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void RemoveToQueue(string slotId, Equipment equipment, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -289,13 +177,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * (Nesne) Kaldırma/Yoketme kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void RemoveToQueue(string itemId, ItemQueueAction action = null)
         {
             Entity.Queue.Enqueue(new ItemQueueProcess()
@@ -308,13 +189,6 @@ namespace Subnautica.API.Features
             Entity.ConsumeQueue();
         }
 
-        /**
-         *
-         * Kuyruktaki nesneleri tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool ConsumeQueue()
         {
             if (Entity.IsRunning)
@@ -326,13 +200,6 @@ namespace Subnautica.API.Features
             return true;
         }
 
-        /**
-         *
-         * Kuyruktaki nesneleri tüketir. (Async)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator ConsumeQueueAsync()
         {
             Entity.IsRunning = true;
@@ -492,13 +359,6 @@ namespace Subnautica.API.Features
             Entity.IsRunning = false;
         }
         
-        /**
-         *
-         * Ekipman'a nesneyi ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void AddItemToEquipment(ItemQueueProcess item, GameObject itemGameObject, Pickupable pickupable)
         {
             if (item.Equipment != null)
@@ -526,13 +386,6 @@ namespace Subnautica.API.Features
             }
         }
 
-        /**
-         *
-         * Depolamaya nesneyi ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void AddItemToContainer(ItemQueueProcess item, GameObject itemGameObject, Pickupable pickupable)
         {
             if (item.Container != null)
@@ -575,13 +428,6 @@ namespace Subnautica.API.Features
             }
         }
 
-        /**
-         *
-         * Eşyayı yok eder ve ekipmanlardan kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool RemoveItemInEquipment(ItemQueueProcess item)
         {
             if (string.IsNullOrEmpty(item.SlotId) || item.Equipment == null)
@@ -609,13 +455,6 @@ namespace Subnautica.API.Features
             return true;
         }
 
-        /**
-         *
-         * Eşyayı yok eder ve kapsayıcı'dan kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool RemoveItemInContainer(ItemQueueProcess item)
         {
             if (item.Container != null)
@@ -663,13 +502,6 @@ namespace Subnautica.API.Features
             return true;
         }
 
-        /**
-         *
-         * Dünya'dan nesneyi kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void RemoveItemInWorld(ItemQueueProcess item)
         {
             var pickupable = Network.Identifier.GetComponentByGameObject<global::Pickupable>(item.ItemId, true);
@@ -720,25 +552,11 @@ namespace Subnautica.API.Features
             }
         }
 
-        /**
-         *
-         * Mevcut çerçevede yapılan işlem sayısını sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void ResetConsumption()
         {
             Entity.CurrentConsumptionCount = 0;
         }
 
-        /**
-         *
-         * Tüm verileri siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Dispose()
         {
             Queue.Clear();

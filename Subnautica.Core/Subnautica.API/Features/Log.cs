@@ -9,133 +9,49 @@
 
     public static class Log
     {
-        /**
-         *
-         * Log Mesajlarını Barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static List<string> Messages { get; set; } = new List<string>();
 
-        /**
-         *
-         * Zamanlayıcıyı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static System.Timers.Timer Timer { get; set; } = null;
 
-        /**
-         *
-         * Zamanlayıcı başlatılma durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsTimerInitialized { get; set;} = false;
 
-        /**
-         *
-         * Diske Yazma Durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsWritingToDisk { get; set; } = false;
 
-        /**
-         *
-         * Bilgi mesajı gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Info(object message)
         {
             Log.Send($"[{Assembly.GetCallingAssembly().GetName().Name}] {message}", LogLevel.Info);
         }
 
-        /**
-         *
-         * Uyarı mesajı gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Warn(object message)
         {
             Log.Send($"[{Assembly.GetCallingAssembly().GetName().Name}] {message}", LogLevel.Warn);
         }
 
-        /**
-         *
-         * Hata mesajı gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Error(object message)
         {
             Log.Send($"[{Assembly.GetCallingAssembly().GetName().Name}] {message}", LogLevel.Error);
         }
 
-        /**
-         *
-         * Bilgi mesajı gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Info(string message)
         {
             Log.Send($"[{Assembly.GetCallingAssembly().GetName().Name}] {message}", LogLevel.Info);
         }
         
-        /**
-         *
-         * Uyarı mesajı gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Warn(string message)
         {
             Log.Send($"[{Assembly.GetCallingAssembly().GetName().Name}] {message}", LogLevel.Warn);
         }
 
-        /**
-         *
-         * Hata mesajı gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Error(string message)
         {
             Log.Send($"[{Assembly.GetCallingAssembly().GetName().Name}] {message}", LogLevel.Error);
         }
 
-        /**
-         *
-         * Hata/Uyarı/Bilgi mesajı gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Send(string message, LogLevel level)
         {
             Log.SendRaw($"[{level.ToString().ToUpper()}] {message}");
         }
 
-        /**
-         *
-         * Mesajı dosyaya yazar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendRaw(string message)
         {
             lock (Log.Messages)
@@ -154,13 +70,6 @@
             }
         }
 
-        /**
-         *
-         * Zamanlayıcı tetiklenme olayı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void OnTimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (!Log.IsWritingToDisk && Log.Messages.Count > 0)
@@ -187,13 +96,6 @@
             }
         }
 
-        /**
-         *
-         * Hata dosya adını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetErrorFilePath()
         {
             if (Settings.IsAppLog)

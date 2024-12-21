@@ -25,13 +25,6 @@
 
     public static class PlayerAnimationTypeExtensions
     {   
-        /**
-         *
-         * Animasyonları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static List<string> Animations { get; set; }= new List<string>()
         {
             "none",
@@ -52,13 +45,6 @@
             "spikeytrap_attached",
         };
 
-        /**
-         *
-         * Animasyon türünü ada çevirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string ToEnumString(this PlayerAnimationType type)
         {
             var typeId = (byte) type;
@@ -66,13 +52,6 @@
             return Animations.ElementAt(typeId);
         }
 
-        /**
-         *
-         * Animasyon adını türe çevirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static PlayerAnimationType ToPlayerAnimationType(this string type)
         {
             var typeId = Animations.IndexOf(type);

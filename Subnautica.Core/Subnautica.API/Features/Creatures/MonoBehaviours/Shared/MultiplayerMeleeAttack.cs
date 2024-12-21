@@ -4,34 +4,13 @@
 
     public class MultiplayerMeleeAttack : BaseMultiplayerCreature
     {
-        /**
-         *
-         * MeleeAttack sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::MeleeAttack MeleeAttack { get; set; }
 
-        /**
-         *
-         * Sınıf uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.MeleeAttack = this.GetComponent<global::MeleeAttack>();
         }
 
-        /**
-         *
-         * Yakın dövüş saldırısını başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool StartMeleeAttack(GameObject target)
         {
             if (target == null)

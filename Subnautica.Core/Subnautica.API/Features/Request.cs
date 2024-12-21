@@ -6,13 +6,6 @@ namespace Subnautica.API.Features
 
     public class Request
     {
-        /**
-         *
-         * İçeriği döner veya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetContent(string remoteUrl, HttpMethod type = null, Dictionary<string, string> payload = null)
         {
             if (type == null)

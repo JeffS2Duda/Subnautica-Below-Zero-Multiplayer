@@ -6,34 +6,13 @@
 
     public class SkyrayMonoBehaviour : BaseMultiplayerCreature
     {
-        /**
-         *
-         * Balina sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Skyray Skyray { get; set; }
 
-        /**
-         *
-         * Sınıf uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.Skyray = this.GetComponent<global::Skyray>();
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (!this.MultiplayerCreature.CreatureItem.IsMine())
@@ -55,13 +34,6 @@
         }
 
 
-        /**
-         *
-         * Kuş tünemiş mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsRoosting()
         {
             return ZeroVector3.Distance(this.MultiplayerCreature.Creature.leashPosition, this.transform.position) <= 0.03f;

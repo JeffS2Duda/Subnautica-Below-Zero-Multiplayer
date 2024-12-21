@@ -6,22 +6,8 @@
 
     public class ZeroModal
     {
-        /**
-         *
-         * Varsayılan değerler önbelleğe alındı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool isCached = false;
 
-        /**
-         *
-         * Varsayılan değerler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector2 DefaultPanelSizeDelta       = new Vector2();
         private static Vector2 DefaultDescriptionAnchorMin = new Vector2();
         private static Vector2 DefaultDescriptionAnchorMax = new Vector2();
@@ -35,13 +21,6 @@
         private static Vector2 DefaultNoButtonOffsetMin    = new Vector2();
         private static Vector2 DefaultNoButtonOffsetMax    = new Vector2();
 
-        /**
-         *
-         * Modal gözükme işlemini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Show(string title, string content, ZeroModalSize size = ZeroModalSize.Default)
         {
             var errorMessage = string.Format("<size=25px>{0}</size><br>{1}", title, content);
@@ -50,25 +29,11 @@
             ZeroModal.ResizeModal(size);
         }
 
-        /**
-         *
-         * Modal gözükme işlemini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Show(string errorMessage)
         {
             uGUI.main.confirmation.Show(errorMessage);
         }
 
-        /**
-         *
-         * Modal gözükme işlemini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool ResizeModal(ZeroModalSize size)
         {
             var item = ZeroModalSizeItem.Create(size);
@@ -112,13 +77,6 @@
             return true;
         }
 
-        /**
-         *
-         * Varsayılan ayarları uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool ApplyDefaultSettings()
         {
             ZeroModal.InitializeCache();
@@ -160,13 +118,6 @@
             return false;
         }
 
-        /**
-         *
-         * Verileri önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool InitializeCache()
         {
             if (isCached)
@@ -214,31 +165,10 @@
 
     public class ZeroModalSizeItem
     {
-        /**
-         *
-         * Genişliği barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float Width { get; private set; }
 
-        /**
-         *
-         * Yüksekliği barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float Height { get; private set; }
 
-        /**
-         *
-         * Buton pozisyonunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float ButtonPosition
         {
             get
@@ -247,13 +177,6 @@
             }
         }
 
-        /**
-         *
-         * Metin Min yüksekliği barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float DescriptionMinHeight
         {
             get
@@ -262,13 +185,6 @@
             }
         }
 
-        /**
-         *
-         * Metin Max yüksekliği barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float DescriptionMaxHeight
         {
             get
@@ -277,26 +193,12 @@
             }
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroModalSizeItem(float width, float height)
         {
             this.Width  = width;
             this.Height = height;
         }
 
-        /**
-         *
-         * Boyut oluşturma işlemini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static ZeroModalSizeItem Create(ZeroModalSize size)
         {
             var str = size.ToString();

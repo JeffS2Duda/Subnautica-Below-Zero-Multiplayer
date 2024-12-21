@@ -14,142 +14,44 @@
 
     public class InviteCode
     {
-        /**
-         *
-         * Davet kodunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string Code { get; set; }
 
-        /**
-         *
-         * AccessToken değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string AccessToken { get; set; }
 
-        /**
-         *
-         * IsClientConnected değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsClientConnected { get; set; } = false;
 
-        /**
-         *
-         * IsHostConnected değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsHostConnected { get; set; } = false;
 
-        /**
-         *
-         * CurrentPeerId değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string CurrentPeerId { get; set; } = null;
 
-        /**
-         *
-         * Davet kodunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string ApiUrl { get; set; } = "https://repo.subnauticamultiplayer.com/api/";
 
-        /**
-         *
-         * JoinTiming nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private StopwatchItem ConnectionTiming { get; set; } = new StopwatchItem(20000f);
 
-        /**
-         *
-         * HostConnectionTiming nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private StopwatchItem HostConnectionTiming { get; set; } = new StopwatchItem(30000f);
 
-        /**
-         *
-         * Davet kodunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private LobbyJoinServerResponseFormat JoinResponse { get; set; } = null;
 
-        /**
-         *
-         * Davet kodunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetInviteCode(string inviteCode)
         {
             this.Code = inviteCode;
         }
 
-        /**
-         *
-         * AccessToken değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetAccessToken(string accessToken)
         {
             this.AccessToken = accessToken;
         }
 
-        /**
-         *
-         * Davet kodunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetInviteCode()
         {
             return this.Code;
         }
 
-        /**
-         *
-         * AccessToken kodunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetAccessToken()
         {
             return this.AccessToken;
         }
 
-        /**
-         *
-         * Bağlanma kontrolü yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator CheckAndConnect()
         {
             this.IsClientConnected = false;
@@ -219,13 +121,6 @@
             }
         }
 
-        /**
-         *
-         * Host'a bağlanmak için bekleme işlemini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator WaitForHostConnection(string hostIp)
         {
             this.IsHostConnected = false;
@@ -275,13 +170,6 @@
             }
         }
 
-        /**
-         *
-         * Async olarak sunucuya bağlanır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator JoinServerAsync(string joinCode, Action<LobbyJoinServerResponseFormat> onSuccess)
         {
             ZeroGame.ShowLoadingScreen();
@@ -338,13 +226,6 @@
             }
         }
 
-        /**
-         *
-         * Async olarak sunucu oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator CreateServerAsync(Action<LobbyCreateServerResponse> onSuccess, Action onFinished = null)
         {
             LoadingStage.durations["CreateServer"] = 15f;
@@ -398,13 +279,6 @@
             onFinished?.Invoke();
         }
 
-        /**
-         *
-         * Async olarak sunucudan ayrılma isteği gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator LeaveFromServerAsync(string peerIp, Action<bool> callback = null)
         {
             if (peerIp.IsNotNull())
@@ -457,13 +331,6 @@
             }
         }
 
-        /**
-         *
-         * Async olarak sunucuya canlı kalma isteği gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator PingToServerAsync(Action<bool> callback)
         {
             using (UnityWebRequest request = UnityWebRequest.Get($"{this.ApiUrl}pingserver?accessToken={Uri.EscapeDataString(this.GetAccessToken())}"))
@@ -513,13 +380,6 @@
             }
         }
 
-        /**
-         *
-         * Hata Mesajı gösterir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ShowErrorMessage(string errorKey = null, string triggerKey = null)
         {
             ZeroGame.StopLoadingScreen();
@@ -539,13 +399,6 @@
             }
         }
 
-        /**
-         *
-         * Bütün verileri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Dispose()
         {
             this.Code              = null;

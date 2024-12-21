@@ -9,65 +9,23 @@
 
     public class SpawnPointComponent : MonoBehaviour
     {
-        /**
-         *
-         * Coroutine nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Coroutine Coroutine;
 
-        /**
-         *
-         * Slot'u barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroSpawnPoint SpawnPoint { get; set; }
 
-        /**
-         *
-         * IsAutoRespawnRunning nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsAutoRespawnRunning { get; set; }
 
-        /**
-         *
-         * Aktif hale gelince tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetSpawnPoint(ZeroSpawnPoint spawnPoint)
         {
             this.SpawnPoint = spawnPoint;
             this.SpawnToggle();
         }
 
-        /**
-         *
-         * Nesne doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Start()
         {
 
         }
 
-        /**
-         *
-         * Aktif hale gelince tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEnable()
         {
             if (this.SpawnPoint != null)
@@ -84,13 +42,6 @@
             }
         }
 
-        /**
-         *
-         * Pasif hale gelince tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDisable()
         {
             this.DisableCoroutine();
@@ -102,25 +53,11 @@
             }
         }
 
-        /**
-         *
-         * Nesne yokedilince tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDestroy()
         {
             this.DisableCoroutine();
         }
 
-        /**
-         *
-         * Nesneyi yumurtlar veya pasif hale getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */ 
         public void SpawnToggle()
         {
             if (!this.IsRespawnActive())
@@ -141,13 +78,6 @@
             this.HealthSync();
         }
 
-        /**
-         *
-         * Otomatik respawnı başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartAutoRespawn()
         {
             this.DisableCoroutine();
@@ -159,13 +89,6 @@
             }
         }
 
-        /**
-         *
-         * Otomatik canlandırma işlemini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator AutoRespawnAsync()
         {
             while (this != null && this.IsRespawnActive() && !this.IsRespawnable())
@@ -191,13 +114,6 @@
             }
         }
 
-        /**
-         *
-         * Aktif coroutine nesnesini siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void DisableCoroutine(bool forceDisable = false)
         {
             if (this.IsAutoRespawnRunning && this.Coroutine != null)
@@ -208,13 +124,6 @@
             }
         }
 
-        /**
-         *
-         * Canlan durumunun aktif/pasif döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsRespawnActive()
         {
             if (this.gameObject == null || this.SpawnPoint == null || this.SpawnPoint.IsRespawnActive() == false)
@@ -240,37 +149,16 @@
             return true;
         }
 
-        /**
-         *
-         * Canlanıp canlanmayacağını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsRespawnable()
         {
             return this.SpawnPoint != null && this.SpawnPoint.IsRespawnable(DayNightCycle.main.timePassedAsFloat);
         }
 
-        /**
-         *
-         * Kalan yeniden doğma zamanını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float RespawnLeftTime()
         {
             return this.SpawnPoint.NextRespawnTime - DayNightCycle.main.timePassedAsFloat;
         }
 
-        /**
-         *
-         * Kaynak takibi için kaydeder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RegisterResourceTracker()
         {
             if (this.gameObject.TryGetComponent<ResourceTracker>(out var resourceTracker))
@@ -279,13 +167,6 @@
             }
         }
 
-        /**
-         *
-         * Kaynak takibi için kaydı siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UnRegisterResourceTracker()
         {
             if (this.gameObject.TryGetComponent<ResourceTracker>(out var resourceTracker))
@@ -294,13 +175,6 @@
             }
         }
 
-        /**
-         *
-         * Nesnenin mevcut sağlığını max olarak ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void HealthSync()
         {
             if (this.gameObject.TryGetComponent<global::LiveMixin>(out var liveMixin))
@@ -309,13 +183,6 @@
             }
         }
 
-        /**
-         *
-         * Delinebilen nesne sağlığını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void DrillableHealthSync(bool isSpawnFx = false)
         {
             if (this.gameObject.TryGetComponent<global::Drillable>(out var drillable))

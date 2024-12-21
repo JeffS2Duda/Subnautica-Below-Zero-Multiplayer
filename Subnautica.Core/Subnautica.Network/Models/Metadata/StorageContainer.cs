@@ -12,67 +12,25 @@
     public class StorageContainer : MetadataComponent
     {
 
-        /**
-         *
-         * Eşyaları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public List<StorageItem> Items { get; set; } = new List<StorageItem>();
 
-        /**
-         *
-         * Depo üzerindeki metni barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public Sign Sign { get; set; }
 
-        /**
-         *
-         * Depo Boyutunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public byte Size { get; set; }
 
-        /**
-         *
-         * Size X değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetSizeX()
         {
             return (byte)(this.Size % 10);
         }
 
-        /**
-         *
-         * Size Y değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetSizeY()
         {
             return (byte)(this.Size / 10);
         }
 
-        /**
-         *
-         * Depoyu yeniden boyutlandırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Resize(byte width, byte heigth)
         {
             this.Size = Convert.ToByte(width + (heigth * 10));
@@ -83,13 +41,6 @@
             }
         }
 
-        /**
-         *
-         * Eşyayı ekler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddItem(StorageItem item)
         {
             this.RemoveItem(item);
@@ -97,61 +48,26 @@
             return true;
         }
 
-        /**
-         *
-         * Eşyayı siler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool RemoveItem(StorageItem item)
         {
             return this.RemoveItem(item.ItemId);
         }
 
-        /**
-         *
-         * Eşyayı siler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool RemoveItem(string itemId)
         {
             return this.Items.RemoveAll(q => q.ItemId == itemId) > 0;
         }
 
-        /**
-         *
-         * Envanterde nesne mevcut mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsItemExists(string uniqueId)
         {
             return this.Items.Any(q => q.ItemId == uniqueId);
         }
 
-        /**
-         *
-         * Envanterde nesne türünden kaç adet olduğunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public int GetCount(TechType techType)
         {
             return this.Items.Count(q => q.TechType == techType);
         }
 
-        /**
-         *
-         * Sınıfı oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static StorageContainer Create(byte width, byte heigth)
         {
             var storageContainer = new StorageContainer();
@@ -159,13 +75,6 @@
             return storageContainer;
         }
 
-        /**
-         *
-         * Nesne eklenebilir mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool HasRoomFor(StorageItem storageItem)
         {
             if (this.Items.Any(q => q.ItemId == storageItem.ItemId))
@@ -211,13 +120,6 @@
             return response;
         }
 
-        /**
-         *
-         * Envanteri sıralar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool TrySort(List<ItemsContainer.ItemGroup> gr, InventoryItem[,] map)
         {
             var flag = true;
@@ -258,53 +160,18 @@
             return flag;
         }
 
-        /**
-         *
-         * ItemGroups nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private Dictionary<TechType, ItemsContainer.ItemGroup> AllItemGroups { get; set; } = new Dictionary<TechType, ItemsContainer.ItemGroup>();
 
-        /**
-         *
-         * GhostItem nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private InventoryItem GhostItem { get; set; } = new InventoryItem(1, 1);
 
-        /**
-         *
-         * GhostGroup nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private ItemsContainer.ItemGroup GhostGroup { get; set; } = new ItemsContainer.ItemGroup(0, 1, 1);
 
-        /**
-         *
-         * GhostGroup nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public List<ItemsContainer.ItemGroup> ItemGroups { get; set; } = new List<ItemsContainer.ItemGroup>();
 
-        /**
-         *
-         * Harita listesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private InventoryItem[,] ItemsMap { get; set; } = null;
     }

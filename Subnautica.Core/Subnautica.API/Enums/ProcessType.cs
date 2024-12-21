@@ -1,12 +1,5 @@
 ﻿namespace Subnautica.API.Enums
 {
-    /**
-     *
-     * Ağ Paket Türleri
-     *
-     * @author Ismail <ismaiil_0234@hotmail.com>
-     *
-     */
     public enum ProcessType : byte
     {
         None,
@@ -127,13 +120,6 @@
         CreatureMeleeAttack,
     }
 
-    /**
-     *
-     * Nesne Paket Türleri
-     *
-     * @author Ismail <ismaiil_0234@hotmail.com>
-     *
-     */
     public enum EntityProcessType : byte
     {
         None,

@@ -15,243 +15,75 @@
     [MessagePackObject]
     public class WorldDynamicEntity
     {
-        /**
-         *
-         * Yapı Kimliği değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public ushort Id { get; set; }
 
-        /**
-         *
-         * Item değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public string UniqueId { get; set; }
 
-        /**
-         *
-         * Üst Nesne Kimliği değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public string ParentId { get; set; }
 
-        /**
-         *
-         * Item değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(3)]
         public byte[] Item { get; set; }
 
-        /**
-         *
-         * TechType değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(4)]
         public TechType TechType { get; set; }
 
-        /**
-         *
-         * Position değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(5)]
         public ZeroVector3 Position { get; set; }
 
-        /**
-         *
-         * Rotation değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(6)]
         public ZeroQuaternion Rotation { get; set; }
 
-        /**
-         *
-         * AddedTime değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(7)]
         public float AddedTime { get; set; }
 
-        /**
-         *
-         * OwnershipId değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(8)]
         public string OwnershipId { get; set; }
 
-        /**
-         *
-         * IsDeployed değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(9)]
         public bool IsDeployed { get; set; }
 
-        /**
-         *
-         * IsGlobalEntity değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(10)]
         public bool IsGlobalEntity { get; set; }
 
-        /**
-         *
-         * Component değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(11)]
         public NetworkDynamicEntityComponent Component { get; set; }
 
-        /**
-         *
-         * IsUsingByPlayer değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public bool IsUsingByPlayer { get; set; }
 
-        /**
-         *
-         * Velocity değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public Vector3 Velocity;
 
-        /**
-         *
-         * RotationVelocity değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public Quaternion RotationVelocity;
 
-        /**
-         *
-         * GameObject değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public GameObject GameObject;
 
-        /**
-         *
-         * Rigidbody değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public Rigidbody Rigidbody;
 
-        /**
-         *
-         * IsKinematic değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public ZeroKinematicState KinematicState;
 
-        /**
-         *
-         * LastPosition değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private ZeroVector3 LastPosition;
 
-        /**
-         *
-         * LastRotation değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private ZeroQuaternion LastRotation;
 
-        /**
-         *
-         * CurrentPosition değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private Vector3 CurrentPosition;
 
-        /**
-         *
-         * CurrentRotation değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private Quaternion CurrentRotation;
 
-        /**
-         *
-         * TeleportDistance değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         private float TeleportDistance = 100f;
 
-        /**
-         *
-         * LiveMixin nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldEntityModel.Shared.LiveMixin GetLiveMixin()
         {
             if (this.Component is WorldEntityModel.SeaTruck)
@@ -302,98 +134,42 @@
             return null;
         }
 
-        /**
-         *
-         * Bana ait olup olmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsMine(string playerId)
         {
             return this.OwnershipId == playerId;
         }
 
-        /**
-         *
-         * Ebeveyni olup olmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsParentExist()
         {
             return !string.IsNullOrEmpty(this.ParentId);
         }
 
-        /**
-         *
-         * Üst nesne değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetParent(string parentId)
         {
             this.ParentId = parentId;
         }
 
-        /**
-         *
-         * IsDeployed değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetDeployed(bool isDeployed)
         {
             this.IsDeployed = isDeployed;
         }
 
-        /**
-         *
-         * Position değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetPosition(ZeroVector3 position)
         {
             this.Position = position;
         }
 
-        /**
-         *
-         * Position ve Rotation değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetPositionAndRotation(ZeroVector3 position, ZeroQuaternion rotation)
         {
             this.Position = position;
             this.Rotation = rotation;
         }
 
-        /**
-         *
-         * Sahibi Değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetOwnership(string ownershipId)
         {
             this.OwnershipId = ownershipId;
         }
 
-        /**
-         *
-         * Kinematic durumunu önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void CacheKinematicStatus()
         {
             if (this.Rigidbody)
@@ -402,50 +178,22 @@
             }
         }
 
-        /**
-         *
-         * Component değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldDynamicEntity SetComponent(NetworkDynamicEntityComponent component)
         {
             this.Component = component;
             return this;
         }
 
-        /**
-         *
-         * Nesne görünür mü?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsVisible(ZeroVector3 playerPosition)
         {
             return this.Position.Distance(playerPosition) < Network.DynamicEntity.VisibilityDistance;
         }
 
-        /**
-         *
-         * Fizik simülasyonu yapılabilir mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsPhysicSimulateable(ZeroVector3 playerPosition)
         {
             return this.Position.Distance(playerPosition) < Network.DynamicEntity.PhysicsDistance;
         }
 
-        /**
-         *
-         * GameObject'i günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateGameObject()
         {
             if (this.GameObject == null)
@@ -464,13 +212,6 @@
             }
         }
 
-        /**
-         *
-         * Nesneye enterpolasyon yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Interpolate()
         {
             this.UpdateGameObject();
@@ -506,33 +247,12 @@
     [MessagePackObject]
     public class WorldDynamicEntityPosition
     {
-        /**
-         *
-         * Yapı Kimliği değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public ushort Id { get; set; }
 
-        /**
-         *
-         * Position değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public long Position { get; set; }
 
-        /**
-         *
-         * Rotation değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public long Rotation { get; set; }
     }

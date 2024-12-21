@@ -7,22 +7,8 @@
 
     public class CreatureData
     {
-        /**
-         *
-         * Sınıfı barındır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static CreatureData instance;
 
-        /**
-         *
-         * Sınıf örneğini barındır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static CreatureData Instance
         {
             get
@@ -36,22 +22,8 @@
             }
         }
 
-        /**
-         *
-         * Verileri barındır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<TechType, BaseCreatureData> Datas { get; set; } = new Dictionary<TechType, BaseCreatureData>();
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public CreatureData()
         {
             this.Register(new SkyrayData());
@@ -71,38 +43,17 @@
             this.Register(new GlowWhaleEggData());
         }
 
-        /**
-         *
-         * Veri kaydı kontrolü yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsExists(TechType type)
         {
             return this.Datas.ContainsKey(type);
         }
 
-        /**
-         *
-         * Veri kaydını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public BaseCreatureData GetCreatureData(TechType type)
         {
             this.Datas.TryGetValue(type, out BaseCreatureData creatureData);
             return creatureData;
         }
 
-        /**
-         *
-         * Veri kaydını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Register(BaseCreatureData creatureData)
         {
             if (this.Datas.ContainsKey(creatureData.CreatureType))
@@ -115,13 +66,6 @@
             }
         }
 
-        /**
-         *
-         * Veri kaydını siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UnRegister(TechType techType)
         {
             this.Datas.Remove(techType);

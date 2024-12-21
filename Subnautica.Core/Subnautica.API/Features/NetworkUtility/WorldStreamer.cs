@@ -19,67 +19,18 @@
 
     public class WorldStreamer
     {
-        /**
-         *
-         * Hücre boyutu (Kullanımdan kaldırıldı)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public const int CellSize = 64;
 
-        /**
-         *
-         * Dünyadaki spawn noktalarının hepsini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ZeroSpawnPointContainer SpawnPointContainer { get; set; } = null;
 
-        /**
-         *
-         * Yumurtlama ihtimali olan nesneleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private LootDistributionData LootDistribution { get; set; }
 
-        /**
-         *
-         * Yumurtlama ihtimali olan nesneleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<CSVEntitySpawner.Data> SpawnerData = new List<CSVEntitySpawner.Data>();
 
-        /**
-         *
-         * Slotları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<int, ZeroSpawnPoint> SpawnPoints { get; set; } = new Dictionary<int, ZeroSpawnPoint>(100000);
 
-        /**
-         *
-         * Gezegen oluşturulurken Fragment detaylarını içerir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<TechType, int> GeneratorFragmentData = new Dictionary<TechType, int>();
 
-        /**
-         *
-         * Max ortaya çıkabilecek parçalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<TechType, int> FragmentsMax = new Dictionary<TechType, int>()
         {
             { TechType.LaserCutterFragment  , 15 },
@@ -94,13 +45,6 @@
         };
 
 
-        /**
-         *
-         * Sınıf ayarlarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool Initialize(HashSet<ZeroSpawnPointSimple> spawnPoints, bool isSpawnPointExists)
         {
             this.SpawnPoints.Clear();
@@ -145,13 +89,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yerel dosyadaki spawn point miktarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public int GetClientSpawnPointCount()
         {
             try
@@ -172,13 +109,6 @@
             return 0;
         }
 
-        /**
-         *
-         * Dünyayı oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void GenerateWorld()
         {
             var timing = new Stopwatch();
@@ -215,25 +145,11 @@
             Log.Info("World Creation Time: " + timing.ElapsedMilliseconds);
         }
 
-        /**
-         *
-         * Yumurtlama noktaları önbelleğe alındı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsSpawnPointContainerInitialized()
         {
             return this.SpawnPointContainer != null;
         }
 
-        /**
-         *
-         * Yumurtlama nokta kapsayıcısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void CreateSpawnPointContainer()
         {
             System.Threading.Tasks.Task.Run(() => {
@@ -245,13 +161,6 @@
             });
         }
 
-        /**
-         *
-         * Yumurtlama nokta kapsayıcısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ZeroSpawnPoint CopyDataFromContainer(ZeroSpawnPoint spawnPoint)
         {
             if (this.SpawnPointContainer.SpawnPoints.TryGetValue(spawnPoint.SlotId, out var temp))
@@ -264,13 +173,6 @@
             return spawnPoint;
         }
 
-        /**
-         *
-         * Slotu pasif hale getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool DisableSlot(int slotId, float nextRespawnTime = -1)
         {
             var slot = this.GetSlotById(slotId);
@@ -290,13 +192,6 @@
             return true;
         }
 
-        /**
-         *
-         * Slotu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroSpawnPoint GetSlotById(int slotId)
         {
             if (this.SpawnPoints.TryGetValue(slotId, out var spawnPoint))
@@ -307,25 +202,11 @@
             return null;
         }
 
-        /**
-         *
-         * Aktif spawn noktalarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<int, ZeroSpawnPoint> GetSpawnPoints()
         {
             return this.SpawnPoints;
         }
 
-        /**
-         *
-         * Slotun barındıracağı nesne bilgisini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Filler GetPrefabForSlot(ZeroSpawnPoint slot, bool filterKnown = true)
         {
             if (slot.Density == -1f)
@@ -480,25 +361,11 @@
             return filler;
         }
 
-        /**
-         *
-         * Hücrenin yüklenip yüklenmediğini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
-        public bool IsCellLoaded(Subnautica.Network.Structures.ZeroVector3 position)
+        public bool IsCellLoaded(ZeroVector3 position)
         {
-            return global::LargeWorldStreamer.main.IsRangeActiveAndBuilt(new UnityEngine.Bounds(position.ToVector3(), Vector3.zero));
+            return global::LargeWorldStreamer.main.IsRangeActiveAndBuilt(new Bounds(position.ToVector3(), Vector3.zero));
         }
 
-        /**
-         *
-         * Tüm verileri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Dispose()
         {
             this.SpawnPointContainer = null;

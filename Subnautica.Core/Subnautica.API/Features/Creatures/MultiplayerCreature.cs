@@ -12,98 +12,32 @@
 
     public class MultiplayerCreature
     {
-        /**
-         *
-         * IsActive değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsActive { get; set; }
 
-        /**
-         *
-         * MultiplayerCreatureItem değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public MultiplayerCreatureItem CreatureItem { get; set; }
 
-        /**
-         *
-         * MultiplayerCreatureMovement değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public MultiplayerCreatureMovement Movement { get; set; }
 
-        /**
-         *
-         * GameObject değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject GameObject { get; set; }
 
-        /**
-         *
-         * Creature değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::Creature Creature { get; set; }
 
-        /**
-         *
-         * Locomotion değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::Locomotion Locomotion { get; set; }
 
-        /**
-         *
-         * Rigidbody değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Rigidbody Rigidbody { get; set; }
 
-        /**
-         *
-         * IsWaitingForRegistration değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsWaitingForRegistration { get; set; } = true;
 
-        /**
-         *
-         * Yaratık bileşenşerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<Type> ComponentTypes = new List<Type>()
         {
-            // Movement
             typeof(global::Creature),
             typeof(global::Locomotion),
             typeof(global::WorldForces),
             typeof(global::SplineFollowing),
 
-            // Actions
             typeof(global::FlyAwayWhenScared),
             typeof(global::MoveTowardsTarget),
 
-            // MonoBehaviours
             typeof(global::Drowning),
             typeof(global::Scareable),
             typeof(global::ScareableOfIceWorms),
@@ -121,22 +55,8 @@
             typeof(global::CreatureAggressionManager),
         };
 
-        /**
-         *
-         * Bileşenleri önbellekte barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private HashSet<MonoBehaviour> Components = new HashSet<MonoBehaviour>();
 
-        /**
-         *
-         * Sınıf ayarlarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public MultiplayerCreature(GameObject gameObject)
         {
             this.GameObject = gameObject;
@@ -148,25 +68,11 @@
             this.ComponentsToCache();
         }
 
-        /**
-         *
-         * Yaratığı ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetCreatureItem(MultiplayerCreatureItem creature)
         {
             this.CreatureItem = creature;
         }
 
-        /**
-         *
-         * Yaratığı yumurtlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Spawn()
         {
             Log.Info("Spawn Creature ID: " + this.CreatureItem.Id);
@@ -199,13 +105,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık sahibini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ChangeOwnership()
         {
             Log.Info("Ownership Changed Creature ID: " + this.CreatureItem.Id);
@@ -218,13 +117,6 @@
             this.GameObject.SendMessage("OnChangedOwnership");
         }
 
-        /**
-         *
-         * Enterpolasyon açar/kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ToggleInterpolate(bool isMine)
         {
             if (this.Rigidbody)
@@ -242,13 +134,6 @@
             }
         }
 
-        /**
-         *
-         * İlk olayı başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void StartFirstAction(bool isMine)
         {
             if (this.Creature && isMine)
@@ -264,13 +149,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratığı pasif hale getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Disable()
         {
             Log.Info("Disable Creature ID: " + this.CreatureItem.Id);
@@ -286,13 +164,6 @@
             this.CreatureItem = null;
         }
 
-        /**
-         *
-         * Yaratık değerlerini sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ResetCreature()
         {
             this.Movement.ResetCreature();
@@ -351,13 +222,6 @@
             }
         }
 
-        /**
-         *
-         * Bileşenleri önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ComponentsToCache()
         {
             if (this.GameObject)
@@ -373,13 +237,6 @@
         }
 
 
-        /**
-         *
-         * Komponentleri açar/kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ToggleComponents(bool isEnable)
         {
             foreach (var item in this.Components)
@@ -391,13 +248,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık öldüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnKill(MultiplayerCreature creature)
         {
             if (creature != null && creature.GameObject.TryGetComponent<global::LiveMixin>(out var liveMixin))

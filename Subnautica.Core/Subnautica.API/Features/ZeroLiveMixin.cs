@@ -9,13 +9,6 @@
 
     public class ZeroLiveMixin
     {
-        /**
-         *
-         * Araç sağlığını değiştiri.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AddHealth(global::LiveMixin liveMixin, float newHealth)
         {
             if (newHealth != 0f)
@@ -38,13 +31,6 @@
             }
         }
 
-        /**
-         *
-         * Hasar bilgisi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendDamageInfoNotify(global::LiveMixin liveMixin, float damage, DamageType type = DamageType.Normal)
         {
             liveMixin.damageInfo.Clear();
@@ -56,13 +42,6 @@
             liveMixin.NotifyAllAttachedDamageReceivers(liveMixin.damageInfo);
         }
 
-        /**
-         *
-         * Hasar verir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool TakeDamage(global::LiveMixin liveMixin, float newHealth, DamageType type = DamageType.Normal, bool isSound = true, Action<string, GameObject> killAction = null)
         {
             var damage = liveMixin.health - newHealth;
@@ -123,7 +102,6 @@
                     {
                         if (crushDamage.soundOnDamage)
                         {
-                            // Bu zaten otomatik olarak sadece yakındaki kişilere sesi oynatıyor.
                             crushDamage.soundOnDamage.Play();
                         }
                     }
@@ -200,13 +178,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void OnKillProcessCompleted(ItemQueueProcess item)
         {
             var uniqueId = item.Action.GetProperty<string>("UniqueId");
@@ -234,13 +205,6 @@
             }
         }
 
-        /**
-         *
-         * Basınç sesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static int GetCrushSoundIndex(float totalStrength)
         {
             var index = 0;

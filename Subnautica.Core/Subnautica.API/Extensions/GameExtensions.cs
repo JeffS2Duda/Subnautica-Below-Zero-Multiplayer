@@ -13,37 +13,16 @@
 
     public static class GameExtensions
     {
-       /**
-         *
-         * Nesnenin id'sini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetIdentityId(this GameObject gameObject, bool autoAdd = false)
         {
             return Network.Identifier.GetIdentityId(gameObject, autoAdd);
         }
 
-       /**
-         *
-         * Nesnenin id'sini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SetIdentityId(this GameObject gameObject, string uniqueId)
         {
             Network.Identifier.SetIdentityId(gameObject, uniqueId);
         }
 
-       /**
-         *
-         * Oyun modunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */        
         public static GameModePresetId GetButtonGameModeId(this GameObject gameObject)
         {
             foreach (var item in gameObject.GetComponentsInChildren<TranslationLiveUpdate>())
@@ -80,13 +59,6 @@
             return GameModePresetId.Custom;
         }
 
-        /**
-         *
-         * ColorCustomizer özellikleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CopyFrom(this global::ICustomizeable customizeable, ZeroColorCustomizer customizer)
         {
             customizeable.SetName(customizer.Name);
@@ -96,13 +68,6 @@
             customizeable.SetColor(3, uGUI_ColorPicker.HSBFromColor(customizer.NameColor.ToColor()), customizer.NameColor.ToColor());
         }
 
-        /**
-         *
-         * ColorCustomizer özellikleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CopyFrom(this global::SubNameInput subNameInput, ZeroColorCustomizer customizer)
         {
             subNameInput.SetName(customizer.Name);
@@ -112,26 +77,12 @@
             subNameInput.SetColor(3, customizer.NameColor.ToColor());
         }
 
-        /**
-         *
-         * ColorCustomizer özellikleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CopyFrom(this global::ColorNameControl toColorNameControl, global::ColorNameControl fromColorNameControl)
         {
             toColorNameControl.savedColors = fromColorNameControl.savedColors;
             toColorNameControl.ApplyColors();
         }
 
-        /**
-         *
-         * Hoverbike özellikleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static WorldEntityModel.Hoverbike ToHoverbikeComponent(this global::Hoverbike hoverBike)
         {
             return new WorldEntityModel.Hoverbike()
@@ -144,13 +95,6 @@
             };
         }
 
-        /**
-         *
-         * Hoverbike özellikleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static WorldEntityModel.MapRoomCamera ToMapRoomCameraComponent(this global::Pickupable pickupable)
         {
             return new WorldEntityModel.MapRoomCamera()
@@ -161,13 +105,6 @@
             };
         }
 
-        /**
-         *
-         * ZeroColorCustomizer nesnesine dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static ZeroColorCustomizer ToZeroColorCustomer(this ColorNameControl colorNameControl)
         {
             return new ZeroColorCustomizer()
@@ -180,25 +117,11 @@
             };
         }
 
-        /**
-         *
-         * LiveMixin nesnesine dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static WorldEntityModel.Shared.LiveMixin ToZeroLiveMixin(this global::LiveMixin liveMixin)
         {
             return new WorldEntityModel.Shared.LiveMixin(liveMixin.health, liveMixin.maxHealth);
         }
 
-        /**
-         *
-         * Powercell nesnesine dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static WorldEntityModel.Shared.PowerCell ToPowerCell(this global::EnergyMixin energyMixin)
         {
             return new WorldEntityModel.Shared.PowerCell()
@@ -209,13 +132,6 @@
             };
         }
 
-        /**
-         *
-         * UpgradeConsole nesnelerine dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static List<UpgradeConsoleItem> ToUpgradeConsoleItems(this global::Equipment equipment, string[] slotIds)
         {
             var modules = new List<UpgradeConsoleItem>();
@@ -235,13 +151,6 @@
             return modules;
         }
 
-        /**
-         *
-         * Güç hücrelerine dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SetHealth(this global::Drillable drillable, float newHealth, bool isRespawnable = false, bool isSpawnFx = false)
         {
             if (drillable.renderers == null)
@@ -308,13 +217,6 @@
             }
         }
 
-        /**
-         *
-         * Çok Oyunculu resim çerçevesi seçer.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool MultiplayerSelectImage(this global::PictureFrame pictureFrame, string filename, byte[] imageData)
         {
             if (filename.IsNull())
@@ -352,13 +254,6 @@
             return true;
         }
 
-        /**
-         *
-         * Çok Oyunculu muzik değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool ChangeMusic(this global::JukeboxInstance jukebox, string currentPlayingTrack, bool isPaused, global::Jukebox.Repeat repeatMode, bool isShuffled, float volume, float position, uint length)
         {
             using (EventBlocker.Create(TechType.Jukebox))
@@ -381,13 +276,11 @@
                         jukebox.OnButtonPlayPause();
                     }
 
-                    // Paused
                     if (isPaused != global::Jukebox.paused)
                     {
                         global::Jukebox.paused = isPaused;
                     }
 
-                    // Repeat
                     if (repeatMode != jukebox.repeat)
                     {
                         jukebox.repeat = repeatMode;
@@ -395,7 +288,6 @@
                         global::Jukebox.repeat = repeatMode;
                     }
 
-                    // Shuffle
                     if (isShuffled != jukebox.shuffle)
                     {
                         jukebox.shuffle = isShuffled;
@@ -403,7 +295,6 @@
                         global::Jukebox.shuffle = isShuffled;
                     }
 
-                    // Volume
                     if (volume != jukebox.volume)
                     {
                         jukebox.volume = volume;
@@ -412,7 +303,6 @@
                         global::Jukebox.volume = volume;
                     }
 
-                    // Position
                     float difference = (position - jukebox._position) * (float) (global::Jukebox.length / 1000f);
                     if (difference == 0 || difference > 1.5f || difference < 1.5f)
                     {
@@ -426,13 +316,6 @@
             return true;
         }
 
-        /**
-         *
-         * WaterPark döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */  
         public static global::WaterPark GetBaseWaterPark(this global::BaseDeconstructable baseDeconstructable)
         {
             if (baseDeconstructable && baseDeconstructable.TryGetComponent<global::WaterParkGeometry>(out var waterParkGeometry))
@@ -443,13 +326,6 @@
             return null;
         }
 
-        /**
-         *
-         * WaterPark için BaseDeconstructable döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseDeconstructable GetBaseDeconstructable(this global::WaterPark waterPark)
         {
             if (waterPark.hostBase == null)
@@ -471,13 +347,6 @@
             return null;
         }
 
-        /**
-         *
-         * Maproom için BaseDeconstructable döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseDeconstructable GetBaseDeconstructable(this MapRoomFunctionality mapRoom)
         {
             var baseComp = mapRoom.GetComponentInParent<global::Base>();
@@ -502,25 +371,11 @@
             return null;
         }
 
-        /**
-         *
-         * BaseDeconstructable için MapRoomFunctionality döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */    
         public static MapRoomFunctionality GetMapRoomFunctionality(this BaseDeconstructable baseDeconstructable)
         {
             return baseDeconstructable.deconstructedBase.GetMapRoomFunctionalityForCell(baseDeconstructable.bounds.mins);
         }
 
-        /**
-         *
-         * Ghost crafter döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */    
         public static global::GhostCrafter GetGhostCrafter(this GameObject gameObject)
         {
             if (gameObject == null)
@@ -536,13 +391,6 @@
             return gameObject.GetComponentInChildren<global::GhostCrafter>();
         }
 
-        /**
-         *
-         * Sinematiği atlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */    
         public static void SkipCinematic(this global::PlayerCinematicController cinematic)
         {
             if (cinematic)
@@ -552,13 +400,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncunun pilotluk durumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */    
         public static bool IsPiloted(this global::SeaTruckSegment seaTruckSegment)
         {
             if (seaTruckSegment.motor.IsPiloted())
@@ -574,13 +415,6 @@
             return false;
         }
 
-        /**
-         *
-         * Ghost crafter döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */    
         public static global::MoonpoolExpansionManager GetDockedMoonpoolExpansion(this global::SeaTruckSegment seaTruckSegment, bool checkHead = false)
         {
             if (seaTruckSegment == null || seaTruckSegment.transform.parent == null)
@@ -604,13 +438,6 @@
             return null;
         }
 
-        /**
-         *
-         * Oyuncunun altındaki nesneyi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static T GetUnderGameObject<T>(this global::Player player)
         {
             if (Physics.Raycast(player.transform.position, MainCameraControl.main.viewModel.transform.TransformDirection(Vector3.down), out var hit, 3f))
@@ -621,25 +448,11 @@
             return default;
         }
 
-        /**
-         *
-         * Oyuncunun hareketini dondurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void DisableMovement(this global::Player player)
         {
             FPSInputModule.current.lockMovement = true;
         }
 
-        /**
-         *
-         * Oyuncunun hareketini açar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void EnableMovement(this global::Player player)
         {
             FPSInputModule.current.lockMovement = false;

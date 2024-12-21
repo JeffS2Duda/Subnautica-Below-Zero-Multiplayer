@@ -4,31 +4,10 @@
 
     public class QualitySetting
     {
-        /**
-         *
-         * Eski FPS Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static int OldFrameRate  = 0;
 
-        /**
-         *
-         * Eski VSYNC Durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool OldVsync = false;
 
-        /**
-         *
-         * FPS Miktarını değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void EnableFastMode()
         {
             if (OldFrameRate != 501)
@@ -41,25 +20,11 @@
             UnityEngine.QualitySettings.vSyncCount = 0;
         }
 
-        /**
-         *
-         * FPS Miktarını değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void DisableFastMode()
         {
             Reset();
         }
 
-        /**
-         *
-         * Ayarları varsayılan yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Reset()
         {
             if (OldFrameRate != 0)

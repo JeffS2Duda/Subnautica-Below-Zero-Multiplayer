@@ -8,13 +8,6 @@
 
     public static class BaseGhostExtensions
     {
-        /**
-         *
-         * Yapı hayalet bileşenini bulur ve döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetBaseGhostComponent(this GameObject gameObject)
         {
             if (gameObject.TryGetComponent<global::BaseAddFaceGhost>(out var faceGhost))
@@ -75,13 +68,6 @@
             return null;
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddFaceGhost baseGhost)
         {
             if (baseGhost.targetBase == null)
@@ -102,13 +88,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddLadderGhost baseGhost)
         {
             if (baseGhost.targetBase == null)
@@ -135,13 +114,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddBulkheadGhost baseGhost)
         {
             if (baseGhost.targetBase == null)
@@ -162,13 +134,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddPartitionGhost baseGhost)
         {
             if (baseGhost.targetBase == null)
@@ -190,13 +155,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddPartitionDoorGhost baseGhost)
         {
             if (baseGhost.targetBase == null)
@@ -218,13 +176,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddModuleGhost baseGhost)
         {
             if (baseGhost.targetBase == null)
@@ -245,13 +196,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddCellGhost baseGhost)
         {
             var targetOffset  = Network.Temporary.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
@@ -265,13 +209,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddCorridorGhost baseGhost)
         {
             var targetOffset = Network.Temporary.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
@@ -283,13 +220,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddMapRoomGhost baseGhost)
         {
             var targetOffset = Network.Temporary.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
@@ -301,13 +231,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddConnectorGhost baseGhost)
         {
             if (baseGhost.targetBase == null)
@@ -324,13 +247,6 @@
             };
         }
 
-        /**
-         *
-         * Yapı hayalet bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddWaterPark baseGhost)
         {
             if (baseGhost.targetBase == null)

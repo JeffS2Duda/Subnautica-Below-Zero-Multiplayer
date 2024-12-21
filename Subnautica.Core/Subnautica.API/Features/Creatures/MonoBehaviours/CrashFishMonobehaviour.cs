@@ -9,43 +9,15 @@
 
     public class CrashFishMonobehaviour : BaseMultiplayerCreature
     {
-        /**
-         *
-         * Crash sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Crash Crash { get; set; }
 
-        /**
-         *
-         * CrashHome sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::CrashHome CrashHome { get; set; }
 
-        /**
-         *
-         * Sınıf uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.Crash = this.GetComponent<global::Crash>();
         }
 
-        /**
-         *
-         * Sınıf uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEnable()
         {
             this.Crash.OnState(Crash.State.Resting, true);
@@ -61,25 +33,11 @@
         }
 
 
-        /**
-         *
-         * Sınıf uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDisable()
         {
             this.CrashHome = null;
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (this.Crash.IsResting())
@@ -106,13 +64,6 @@
             }
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (this.CrashHome == null && this.Crash.IsResting())
@@ -121,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * CrashHome kaydını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RegisterCrashHome()
         {
             var crashHome = this.FindCrashHome();
@@ -145,25 +89,11 @@
             }
         }
 
-        /**
-         *
-         * CrashHome için nesne yumurtlar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SpawnHomeItem()
         {
             this.StartCoroutine(this.SpawnItemAsync(this.GetRandomItem()));
         }
 
-        /**
-         *
-         * ASYNC Nesne yumurtlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator SpawnItemAsync(TechType techType)
         {
             yield return new WaitForSecondsRealtime(1.5f);
@@ -191,13 +121,6 @@
             }
         }
 
-        /**
-         *
-         * Rastgele nesne döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private TechType GetRandomItem()
         {
             if (Tools.GetRandomInt(0, 100) < 70)
@@ -208,13 +131,6 @@
             return TechType.CrashEgg;   
         }
 
-        /**
-         *
-         * Ev nesnesi mevcut mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsHomeItemExists()
         {
             int num = UWE.Utils.OverlapSphereIntoSharedBuffer(this.CrashHome.transform.position, 1.5f);
@@ -240,13 +156,6 @@
             return false;
         }
 
-        /**
-         *
-         * CrashHome bulur ve döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::CrashHome FindCrashHome()
         {
             int num = UWE.Utils.OverlapSphereIntoSharedBuffer(this.transform.position, 1.5f);

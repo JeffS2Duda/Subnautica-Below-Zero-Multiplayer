@@ -10,68 +10,26 @@
 
     public class MultiplayerLeviathanMeleeAttack : BaseMultiplayerCreature
     {
-        /**
-         *
-         * LeviathanMeleeAttack sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::LeviathanMeleeAttack LeviathanMeleeAttack { get; set; }
 
-        /**
-         *
-         * MultiplayerMeleeAttack sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private MultiplayerMeleeAttack MultiplayerMeleeAttack { get; set; }
 
-        /**
-         *
-         * Sınıf uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.LeviathanMeleeAttack   = this.GetComponent<global::LeviathanMeleeAttack>();
             this.MultiplayerMeleeAttack = this.GetComponent<MultiplayerMeleeAttack>();
         }
 
-        /**
-         *
-         * Sahiplik değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnChangedOwnership()
         {
             this.LeviathanMeleeAttack.ReleaseVehicle(true);
         }
 
-        /**
-         *
-         * Pasif olurken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDisable()
         {
             this.LeviathanMeleeAttack.ReleaseVehicle(true);
         }
 
-        /**
-         *
-         * Yakın dövüş saldırısını başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool StartMeleeAttack(ZeroLastTarget lastTarget)
         {
             if (this.MultiplayerCreature.CreatureItem.IsMine())
@@ -134,13 +92,6 @@
         }
 
 
-        /**
-         *
-         * Diğer oyuncular için saldırıyı simüle eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SimulateMeleeAttack(ZeroLastTarget lastTarget)
         {
             var target = lastTarget.GetGameObject();
@@ -212,13 +163,6 @@
             return true;
         }
 
-        /**
-         *
-         * Shadow Leviathan collider sorunnu düzeltir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator FixShadowLeviathanCollider(GameObject target)
         {
             var player = global::Player.main;

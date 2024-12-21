@@ -7,22 +7,8 @@
 
     public class CellManager
     {
-        /**
-         *
-         * Grupları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public readonly Dictionary<Int3, WorldStreamerBatchItem> Batches = new Dictionary<Int3, WorldStreamerBatchItem>(Int3.equalityComparer);
 
-        /**
-         *
-         * Hücrenin yüklenme durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetLoaded(Int3 batchId, Int3 cellId, bool isLoaded)
         {
             if (Batches.TryGetValue(batchId, out var batch))
@@ -36,13 +22,6 @@
             }
         }
 
-        /**
-         *
-         * Bölgenin yüklenip/yüklenmediğini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsLoaded(Int3 batchId, Int3 cellId)
         {
             if (Batches.TryGetValue(batchId, out var batch))
@@ -53,13 +32,6 @@
             return false;
         }
 
-        /**
-         *
-         * Bölgenin yüklenip/yüklenmediğini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsLoaded(ZeroVector3 position)
         {
             var block     = LargeWorldStreamer.main.GetBlock(position.ToVector3());
@@ -73,13 +45,6 @@
             return IsLoaded(batchId, cellId);
         }
 
-        /**
-         *
-         * Bütün verileri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Dispose()
         {
             this.Batches.Clear();
@@ -88,22 +53,8 @@
 
     public class WorldStreamerBatchItem
     {
-        /**
-         *
-         * Hücreleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public readonly Dictionary<Int3, bool> Cells = new Dictionary<Int3, bool>(Int3.equalityComparer);
 
-        /**
-         *
-         * Hücre yüklenmiş mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsLoaded(Int3 cellId)
         {
             return this.Cells.TryGetValue(cellId, out var isLoaded) && isLoaded;

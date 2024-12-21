@@ -11,49 +11,14 @@
 
     public class Serializer
     {
-        /**
-         *
-         * Benzersiz idleri önbellekte barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, string> UniqueIds = new Dictionary<string, string>();
 
-        /**
-         *
-         * Ebeveynleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<int, Transform> ParentGameObjects = new Dictionary<int, Transform>();
 
-        /**
-         *
-         * Benzersiz idleri önbellekte barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static float LastInteractTime = 0f;
 
-        /**
-         *
-         * Benzersiz idleri önbellekte barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static int ProcessId = 1;
 
-        /**
-         *
-         * Pickupable nesnesini serileştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static byte[] SerializeGameObject(Pickupable pickupable)
         {
             if (pickupable)
@@ -64,13 +29,6 @@
             return null;
         }
 
-        /**
-         *
-         * GameObject nesnesini serileştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static byte[] SerializeGameObject(GameObject gameObject)
         {
             if (gameObject)
@@ -100,13 +58,6 @@
             return null;
         }
 
-        /**
-         *
-         * Serileştirilmiş nesneyi oyun nesnesine dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static CoroutineTask<GameObject> DeserializeGameObject(byte[] datas)
         {
             using (PooledObject<ProtobufSerializer> proxy = ProtobufSerializerPool.GetProxy())
@@ -118,25 +69,11 @@
             }
         }
 
-        /**
-         *
-         * UniqueId karşılığı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetUniqueId(string uniqueId)
         {
             return UniqueIds[uniqueId];
         }
 
-        /**
-         *
-         * Nesne ebeveynliğini kaldırıp ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static int HandleParent(GameObject gameObject, bool isParent, int oldProcessId = 0)
         {
             if (isParent)
@@ -166,13 +103,6 @@
             return 0;
         }
 
-        /**
-         *
-         * Yeni işlem idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static int GetNewProcessId()
         {
             if (ProcessId >= int.MaxValue)
@@ -183,13 +113,6 @@
             return ProcessId++;
         }
 
-        /**
-         *
-         * Önbelleğe idleri ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void UniqueIdsToCache(GameObject gameObject)
         {
             if (DayNightCycle.main.timePassedAsFloat - Serializer.LastInteractTime > 5f)

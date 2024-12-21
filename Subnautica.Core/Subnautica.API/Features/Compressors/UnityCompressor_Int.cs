@@ -8,13 +8,6 @@
     
     public class UnityCompressor_Int
     {
-        /**
-         *
-         * X / Y / Z Meta verilerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public enum Metadata
         {
             None = 0x0000000,
@@ -23,22 +16,8 @@
             Z    = 0x0000004
         }
 
-        /**
-         *
-         * Büyük sayıyı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static int BigNumber = 1000000;
 
-        /**
-         *
-         * Vector3'ü 12 bayttan 8 bayta sıkıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static int Compress(float x, float y, float z)
         {
             var qData = Metadata.None;
@@ -65,13 +44,6 @@
             return (1000000 * (int) qData) + (xData + yData + zData);
         }
 
-        /**
-         *
-         * Sıkıştırılmış Vector3'ü normal haline getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Vector3 Decompress(int longNumber)
         {
             var flag = (byte)(longNumber / BigNumber);
@@ -101,13 +73,6 @@
             return new Vector3(longNumber / 10f, yData / 10f, zData / 10f);
         }
 
-        /**
-         *
-         * Sıkıştırılmış ZeroVector3'ü normal haline getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static ZeroVector3 ZeroDecompress(int longNumber)
         {
             var flag = (byte)(longNumber / BigNumber);

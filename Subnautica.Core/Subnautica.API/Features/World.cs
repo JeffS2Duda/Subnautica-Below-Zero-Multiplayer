@@ -11,13 +11,6 @@
 
     public class World
     {
-        /**
-         *
-         * BuilderTool.Start - > Yapı tamamlanma sesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static FMODAsset ConstructionCompleteSound { get; set; } = new FMODAsset()
         {
             name = "complete",
@@ -25,13 +18,6 @@
             id   = "{b05ad9e7-17b0-4d61-b541-4bbf941cd7a5}",
         };
 
-        /**
-         *
-         * BuilderTool.Start - > Yapı yıkılma sesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static FMODAsset DeconstructCompleteSound { get; set; } = new FMODAsset()
         {
             name = "deconstruct",
@@ -39,43 +25,15 @@
             id   = "{bf237309-159c-48f0-a628-9926aa2a4181}",
         };
 
-        /**
-         *
-         * Dünyanın yüklenip yüklenmediği.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsLoaded { get; set; } = false;
 
-        /**
-         *
-         * Dünyanın yüklenip yüklenmediği.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Func<string, bool> OnGameObjectDestroyingAction { get; set; }
 
-        /**
-         *
-         * Dünyanın yüklenip yüklenmediğini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SetLoaded(bool isLoaded)
         {
             IsLoaded = isLoaded;
         }
 
-        /**
-         *
-         * Nesne'yi yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool DestroyGameObject(GameObject gameObject)
         {
             if (gameObject == null)
@@ -100,13 +58,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne'yi yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void DestroyItem(string itemId)
         {
             if (Network.DynamicEntity.HasEntity(itemId))
@@ -130,13 +81,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne'yi yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void DestroyPickupItem(WorldPickupItem pickupItem)
         {
             if (pickupItem.Source == Enums.PickupSourceType.Dynamic)
@@ -179,13 +123,6 @@
             }
         }
 
-        /**
-         *
-         * Alınan bir eşyayı spawnlar ve yerine yerleştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnPickupItem(WorldPickupItem worldPickupItem, ItemsContainer container, ItemQueueAction item = null)
         {
             if (worldPickupItem.Item.Item == null)
@@ -198,13 +135,6 @@
             }
         }
 
-        /**
-         *
-         * Bir eşyayı spawnlar ve oyuncu envanterine yerleştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnPickupItemToInventory(WorldPickupItem worldPickupItem, ItemQueueAction item = null)
         {
             if (worldPickupItem.Item.Item == null)
@@ -217,13 +147,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne'yi yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void DestroyItemFromPlayer(TechType techType)
         {
             var pickupable = global::Inventory.main.container.RemoveItem(techType);
@@ -233,13 +156,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne'yi yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void DestroyItemFromPlayer(string uniqueId, bool resetArm = false)
         {
             var inventoryItem = Network.Identifier.GetGameObject(uniqueId);
@@ -264,13 +180,6 @@
             }
         }
 
-        /**
-         *
-         * Tüm verileri siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Dispose()
         {
             World.OnGameObjectDestroyingAction = null;

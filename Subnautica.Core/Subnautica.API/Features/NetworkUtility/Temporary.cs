@@ -7,22 +7,8 @@
 
     public class Temporary
     {
-        /**
-         *
-         * Properties barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
        private Dictionary<string, List<GenericProperty>> Properties = new Dictionary<string, List<GenericProperty>>();
 
-        /**
-         *
-         * Özellik kaydı yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetProperty(string mainId, string key, object value)
         {
             if (this.Properties.TryGetValue(mainId, out var properties))
@@ -46,13 +32,6 @@
             }
         }
 
-        /**
-         *
-         * Özellik kaydı yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetProperty<T>(string mainId, string key)
         {
             if (this.Properties.TryGetValue(mainId, out var properties))
@@ -69,13 +48,6 @@
             return default(T);
         }
 
-        /**
-         *
-         * Verileri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Dispose()
         {
             this.Properties.Clear();

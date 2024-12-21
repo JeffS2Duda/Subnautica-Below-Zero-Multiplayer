@@ -8,13 +8,6 @@
 
     public static class StringExtensions
     {
-        /**
-         *
-         * Metni enum'a dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static T ToEnum<T>(this string value)
         {
             try
@@ -27,61 +20,26 @@
             }
         }
 
-        /**
-         *
-         * Sayıyı Kültür kullanmadan metne dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string ToInvariantCultureString(this double value)
         {
             return value.ToString(CultureInfo.InvariantCulture);
         }
 
-        /**
-         *
-         * Sayıyı Kültür kullanmadan metne dönüştürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string ToInvariantCultureString(this float value)
         {
             return value.ToString(CultureInfo.InvariantCulture);
         }
 
-        /**
-         *
-         * Null olup/olmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsNotNull(this string value)
         {
             return !value.IsNull();
         }
 
-        /**
-         *
-         * Null olup/olmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsNull(this string value)
         {
             return string.IsNullOrEmpty(value);
         }
 
-        /**
-         *
-         * Listeyi parçalar ve döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<IEnumerable<T>> Split<T>(this T[] array, int size)
         {
             for (var i = 0; i < (float) array.Length / size; i++)
@@ -90,13 +48,6 @@
             }
         }
 
-        /**
-         *
-         * Listeyi parçalar ve döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<IEnumerable<T>> Split<T>(this List<T> list, int size)
         {
             for (var i = 0; i < (float)list.Count / size; i++)
@@ -105,13 +56,6 @@
             }
         }
 
-        /**
-         *
-         * Listeyi parçalar ve döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<Dictionary<int, long>> Split(this Dictionary<int, long> list, int size)
         {
             for (var i = 0; i < (float)list.Count / size; i++)
@@ -120,13 +64,6 @@
             }
         }
 
-        /**
-         *
-         * Listeyi parçalar ve döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<Dictionary<ushort, byte>> Split(this Dictionary<ushort, byte> list, int size)
         {
             for (var i = 0; i < (float)list.Count / size; i++)
@@ -135,25 +72,11 @@
             }
         }
 
-        /**
-         *
-         * Aşırı yüklenmiş method mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsOverride(this MethodInfo methodInfo)
         {
             return (methodInfo.GetBaseDefinition().DeclaringType != methodInfo.DeclaringType);
         }
 
-        /**
-         *
-         * World streamer içerip içermediğine bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsWorldStreamer(this string uniqueId)
         {
             return uniqueId.IsNotNull() && uniqueId.Contains("WorldStreamer_");

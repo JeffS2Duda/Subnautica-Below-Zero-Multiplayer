@@ -16,151 +16,39 @@ namespace Subnautica.API.Features.Netbird
 {
     public class Netbird
     {
-        /**
-         *
-         * Kurulum bekleme durumunu depolar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool isWaitingInstallation;
 
-        /**
-         *
-         * Giriş bekleme durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool isWaitingLogin;
 
-        /**
-         *
-         * JSON geçerlilik durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool isValidJson;
 
-        /**
-         *
-         * Hata Var mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool isHasError;
 
-        /**
-         *
-         * peerId değerini durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string peerId;
 
-        /**
-         *
-         * peerIp değerini durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string peerIp;
 
-        /**
-         *
-         * TextContent değerini durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string TextContent;
 
-        /**
-         *
-         * ErrorContent değerini durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string ErrorContent;
 
-        /**
-         *
-         * JSON Dynamic verisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private NetbirdResponseFormat OutputData;
 
-        /**
-         *
-         * Management Servisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public NetbirdContainerItem Management { get; set; } = new NetbirdContainerItem();
 
-        /**
-         *
-         * Signal Servisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public NetbirdContainerItem Signal { get; set; } = new NetbirdContainerItem();
 
-        /**
-         *
-         * Relay Servisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public NetbirdContainerItem Relay { get; set; } = new NetbirdContainerItem();
 
-        /**
-         *
-         * Stun Servisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public NetbirdContainerItem Stun { get; set; } = new NetbirdContainerItem();
 
-        /**
-         *
-         * Turn Servisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public NetbirdContainerItem Turn { get; set; } = new NetbirdContainerItem();
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Netbird()
         {
 
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Netbird(string textContent, string errorContent)
         {
             this.TextContent  = textContent.Trim();
@@ -176,13 +64,6 @@ namespace Subnautica.API.Features.Netbird
             }
         }
 
-        /**
-         *
-         * Ayarlamaları yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool Initialize()
         {
             this.isWaitingInstallation = this.ErrorContent.Contains("service install");
@@ -263,85 +144,36 @@ namespace Subnautica.API.Features.Netbird
             }
         }
 
-        /**
-         *
-         * Kurulum bekleniyor mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsWaitingInstallation()
         {
             return this.isWaitingInstallation;
         }
 
-        /**
-         *
-         * Giriş yapılmış mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsWaitingLogin()
         {
             return this.isWaitingLogin;
         }
 
-        /**
-         *
-         * JSON Geçerliliğini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsValidJson()
         {
             return this.isValidJson;
         }
 
-        /**
-         *
-         * Hata var mı durumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsAnyError()
         {
             return this.isHasError;
         }
 
-        /**
-         *
-         * PeerIP Adresini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetPeerIp()
         {
             return this.peerIp;
         }
 
-        /**
-         *
-         * PeerID değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetPeerId()
         {
             return this.peerId;
         }
 
-        /**
-         *
-         * PeerIP Değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SetPeerIp(string ipAddress)
         {
             this.peerIp = ipAddress.Replace("/16", "").Replace("/24", "").Replace("/32", "").Trim();
@@ -351,49 +183,21 @@ namespace Subnautica.API.Features.Netbird
             }
         }
 
-        /**
-         *
-         * PeerID Değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SetPeerId(string peerId)
         {
             this.peerId = peerId;
         }
 
-        /**
-         *
-         * OutputData Content'i döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetOutputDataContent()
         {
             return this.TextContent;
         }
 
-        /**
-         *
-         * Error Content'i döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetErrorContent()
         {
             return this.ErrorContent;
         }
 
-        /**
-         *
-         * JSON Geçerliliğini kopntrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool CheckValidJson(string content)
         {
             return content.IsNotNull() && content.StartsWith("{") && content.EndsWith("}");

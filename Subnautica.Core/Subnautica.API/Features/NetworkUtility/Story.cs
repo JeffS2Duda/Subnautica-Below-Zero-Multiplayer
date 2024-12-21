@@ -15,38 +15,16 @@ namespace Subnautica.API.Features.NetworkUtility
 
     public class Story
     {
-        /**
-         *
-         * Triggers nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<StoryTriggerItem> Triggers { get; set; } = new List<StoryTriggerItem>()
         {
-            /**
-             *
-             * Belirtilen hedefi tetiklemez ve yakınında tüm oyuncular toplandığında tetiklenir. (Örneğin bir kapı engeli var ise kapıyı kaldırmak için.)
-             *
-             */
             new StoryTriggerItem("OnEnterSanctuary"        , GoalType.Story, new ZeroVector3(-579.8f, -201.4f, -474.9f), 150f, true, true),
             new StoryTriggerItem("UnlockArcticSpiresCache" , GoalType.Story, new ZeroVector3(-1017.7f, 19.1f, 722.8f)  , 100f, true, true),
             new StoryTriggerItem("UnlockCrystalCastleCache", GoalType.Story, new ZeroVector3(499.8f, -832.8f, -701.5f) , 150f, true, true),
             new StoryTriggerItem("UnlockDeepPadsCache"     , GoalType.Story, new ZeroVector3(546.7f, -621.1f, -1095.0f), 100f, true, true),
             new StoryTriggerItem("ShieldBaseDoorUnlocked"  , GoalType.Story, new ZeroVector3(-53.5f, 29.2f, 561.1f)    ,  80f, true, true),
             
-            /**
-             *
-             * Bir hedef tetiklendiğinde ona bağlı alt hedefi tetikler.
-             *
-             */
             new StoryTriggerItem("StartApproachingCube", GoalType.Story, subTarget: new StoryTriggerItem("Log_Cine_MeetAl_P3_MainChamber", GoalType.PDA)),
 
-            /**
-             *
-             * Sadece yakında oyuncular yok iken uyarı vermek ve işlemleri engellemek için. 
-             *
-             */
             new StoryTriggerItem(StoryCinematicType.StoryPrecursorComputerTerminal.ToString(), new ZeroVector3(-666.3f, -191.4f, -339.3f),  100f, false),
             new StoryTriggerItem(StoryCinematicType.StoryMarg1.ToString()                    , new ZeroVector3(-212.4f, 39.3f, -767.6f)  ,  100f, false, isCustomDoor: true, isTrigger: true),
             new StoryTriggerItem(StoryCinematicType.StoryMarg2.ToString()                    , new ZeroVector3(82.5f, -376.2f, -910.4f)  ,  50f , false, precondition: "FirstEncounterStart", isInBase: true),
@@ -64,13 +42,6 @@ namespace Subnautica.API.Features.NetworkUtility
             new StoryTriggerItem(StoryCinematicType.StoryEndGameGoToHomeWorld.ToString()     , new ZeroVector3(1149.5f, 120.2f, 2451.3f) ,   15f, false, precondition: "EndGameEnterShip"),
         };
 
-        /**
-         *
-         * Sinematik listesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<string> StoryCinematics = new List<string>()
         {
             "IntroCinematics",
@@ -90,37 +61,16 @@ namespace Subnautica.API.Features.NetworkUtility
             "Takeoff",
         };
 
-        /**
-         *
-         * Hikaye nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StoryTriggerItem GetTriggerItem(StoryCinematicType cinematicType)
         {
             return this.GetTriggerItem(cinematicType.ToString());
         }
 
-        /**
-         *
-         * Hikaye nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StoryTriggerItem GetTriggerItem(string itemId)
         {
             return this.Triggers.FirstOrDefault(q => q.GoalKey == itemId);
         }
 
-        /**
-         *
-         * Beklenen oyuncu sayısını gösterir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ShowWaitingPlayerMessage(byte playerCount, byte maxPlayer)
         {
             var hint = uGUI_FeedbackCollector.main.hint;
@@ -135,13 +85,6 @@ namespace Subnautica.API.Features.NetworkUtility
         }
 
 
-        /**
-         *
-         * Beklenen oyuncu sayısını ekran ortasında gösterir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ShowWaitingForPlayersMessage(StoryCinematicType cinematicType)
         {
             var trigger = Network.Story.GetTriggerItem(cinematicType);
@@ -170,37 +113,16 @@ namespace Subnautica.API.Features.NetworkUtility
             return false;
         }
 
-        /**
-         *
-         * Beklenen oyuncu sayısını gizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void HideWaitingPlayerMessage()
         {
             uGUI_FeedbackCollector.main.hint.Hide();
         }
 
-        /**
-         *
-         * Hedef sessiz tamamlandı listesine ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void MuteFutureStoryGoal(string goalKey)
         {
             StoryGoalManager.main.mutedStoryGoals.Add(goalKey);
         }
 
-        /**
-         *
-         * Hedefi tamamlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void GoalExecute(string key, GoalType goalType, bool isStoryGoalMuted = false)
         {
             var isGoalComplete = StoryGoalManager.main.OnGoalComplete(key);
@@ -257,13 +179,6 @@ namespace Subnautica.API.Features.NetworkUtility
             }
         }
 
-        /**
-         *
-         * İlgili cinematiği başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool StartCinematicMode(string uniqueId)
         {
             var gameObject = Network.Identifier.GetGameObject(uniqueId);
@@ -323,13 +238,6 @@ namespace Subnautica.API.Features.NetworkUtility
             return true;
         }
 
-        /**
-         *
-         * Verileri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Dispose()
         {
 
@@ -338,132 +246,34 @@ namespace Subnautica.API.Features.NetworkUtility
 
     public class StoryTriggerItem
     {
-        /**
-         *
-         * Precondition değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string Precondition { get; set; }
 
-        /**
-         *
-         * GoalKey değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GoalKey { get; set; }
         
-        /**
-         *
-         * GoalType değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::Story.GoalType GoalType { get; set; }
 
-        /**
-         *
-         * Position değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroVector3 Position { get; set; }
 
-        /**
-         *
-         * IsDoorway değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsDoorway { get; set; }
 
-        /**
-         *
-         * TriggerRange değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float TriggerRange { get; set; }
 
-        /**
-         *
-         * IsTrigger değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsTrigger { get; set; }
 
-        /**
-         *
-         * IsTriggerActive değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsTriggerActive { get; set; }
 
-        /**
-         *
-         * IsInBase değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsInBase { get; set; }
 
-        /**
-         *
-         * IsActive değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsActive { get; set; }
 
-        /**
-         *
-         * IsCustomDoor değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsCustomDoor { get; set; }
 
-        /**
-         *
-         * SubTriggers değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<StoryTriggerItem> SubTriggers { get; set; } = new List<StoryTriggerItem>();
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StoryTriggerItem()
         {
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StoryTriggerItem(string goalKey, global::Story.GoalType goalType, ZeroVector3 position = null, float triggerRange = 0f, bool isDoorway = false, bool isTrigger = false, StoryTriggerItem subTarget = null)
         {
             this.GoalKey         = goalKey;
@@ -480,13 +290,6 @@ namespace Subnautica.API.Features.NetworkUtility
             }
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StoryTriggerItem(string goalKey, ZeroVector3 position = null, float triggerRange = 0f, bool isDoorway = false, bool isInBase = false, string precondition = null, bool isCustomDoor = false, bool isTrigger = false, bool isTriggerActive = true)
         {
             this.GoalKey         = goalKey;
@@ -501,13 +304,6 @@ namespace Subnautica.API.Features.NetworkUtility
             this.IsCustomDoor    = isCustomDoor;
         }
 
-        /**
-         *
-         * Sınıfı klonlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StoryTriggerItem Clone()
         {
             return new StoryTriggerItem()

@@ -8,87 +8,31 @@
 
     public class JellyFishMonobehaviour : BaseMultiplayerCreature
     {
-        /**
-         *
-         * Jellyfish sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::Jellyfish Jellyfish { get; set; }
 
-        /**
-         *
-         * MaxDistanceToTarget değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float MaxDistanceToTarget { get; set; }
 
-        /**
-         *
-         * En yakındaki oyuncuyu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject NearestPlayer;
 
-        /**
-         *
-         * Enson en yakındaki oyuncuyu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject LastNearestPlayer;
 
-        /**
-         *
-         * Sınıf uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.Jellyfish = this.GetComponent<global::Jellyfish>();
             this.MaxDistanceToTarget = this.Jellyfish.maxDistanceToTarget * this.Jellyfish.maxDistanceToTarget;
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             this.UpdateEyeState();
             this.UpdateEyeAnimation(Time.deltaTime);
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             this.NearestPlayer = this.GetNearestPlayer();
         }
 
-        /**
-         *
-         * Hareket ve göz durumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateEyeState()
         {   
             var eyeState = this.Jellyfish.eyeState;
@@ -135,13 +79,6 @@
             }
         }
 
-        /**
-         *
-         * Göz animasyonunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateEyeAnimation(float deltaTime)
         {
             if (this.Jellyfish.eyeState == EyeState.TransitionToIdle)
@@ -173,13 +110,6 @@
             }
         }
 
-        /**
-         *
-         * En yakındaki oyuncuyu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject GetNearestPlayer()
         {
             var currentDistance = 10000f;

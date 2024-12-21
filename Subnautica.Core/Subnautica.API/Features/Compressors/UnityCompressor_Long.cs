@@ -8,13 +8,6 @@
     
     public class UnityCompressor_Long
     {
-        /**
-         *
-         * X / Y / Z Meta verilerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public enum Metadata
         {
             None = 0x0000000,
@@ -23,31 +16,10 @@
             Z    = 0x0000004
         }
 
-        /**
-         *
-         * Büyük sayıyı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static long BigNumber = 1000000L * 1000000L * 1000000L;
 
-        /**
-         *
-         * Hassasiyeti barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private const float FLOAT_PRECISION_MULT = 10000f;
 
-        /**
-         *
-         * Vector3'ü 12 bayttan 8 bayta sıkıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static long Vector3Compress(float x, float y, float z)
         {
             var qData = Metadata.None;
@@ -73,13 +45,6 @@
             return (1000000000000000000 * (long)qData) + (xData + yData + zData);
         }
 
-        /**
-         *
-         * Sıkıştırılmış Vector3'ü normal haline getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Vector3 Vector3Decompress(long longNumber)
         {
             var flag = (byte)(longNumber / BigNumber);
@@ -109,13 +74,6 @@
             return new Vector3(longNumber / 100f, yData / 100f, zData / 100f);
         }
 
-        /**
-         *
-         * Sıkıştırılmış ZeroVector3'ü normal haline getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static ZeroVector3 ZeroVector3Decompress(long longNumber)
         {
             var flag = (byte)(longNumber / BigNumber);
@@ -145,14 +103,6 @@
             return new ZeroVector3(longNumber / 100f, yData / 100f, zData / 100f);
         }
 
-        /**
-         *
-         * Yeniden oluşturulmuş versiyon
-         * Quaternion'u sıkıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com> and forked https://gist.github.com/StagPoint/bb7edf61c2e97ce54e3e4561627f6582
-         *
-         */
         public static long QuaternionCompress(Quaternion rotation)
         {
             var maxIndex = (byte)0;
@@ -222,13 +172,6 @@
             return (1000000000000000000 * (long)qData) + (xData + yData + zData + mData);
         }
 
-        /**
-         *
-         * Sıkıştırılmış Quaternion'u normal haline getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Quaternion QuaternionDecompress(long longNumber)
         {
             var flag = (byte)(longNumber / BigNumber);
@@ -261,14 +204,6 @@
             return ReadCompressedRotation((byte)qData, (short)longNumber, (short)yData, (short)zData);
         }
 
-        /**
-         *
-         * Yeniden oluşturulmuş versiyon
-         * Sıkıştırılmış Quaternion'u normal haline getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com> and https://gist.github.com/StagPoint/bb7edf61c2e97ce54e3e4561627f6582
-         *
-         */
         private static Quaternion ReadCompressedRotation(byte maxIndex, short readerA, short readerB, short readerC)
         {
             if (maxIndex >= 4 && maxIndex <= 7)
@@ -281,7 +216,6 @@
                 return new Quaternion(x, y, z, w);
             }
 
-            // Read the other three fields and derive the value of the omitted field
             var a = (float)readerA / FLOAT_PRECISION_MULT;
             var b = (float)readerB / FLOAT_PRECISION_MULT;
             var c = (float)readerC / FLOAT_PRECISION_MULT;
@@ -299,21 +233,3 @@
     }
 }
 
-/*
-
-Performance Test
------------------------------------------------------
-One Million Compression: 10-15 ms
-One Million Decompression: 45-50 ms
-
-Old Size: 12 + 3 byte
-New Size: 8 + 1 byte
-
-Compression Rate: 40%
-
-Min/Max Values (X / Y / Z)
------------------------------------------------------
-Min Values: -9999.99f / -9999.99f / -9999.99f
-Max Values: 9999.99f / 9999.99f / 9999.99f
-
-*/
