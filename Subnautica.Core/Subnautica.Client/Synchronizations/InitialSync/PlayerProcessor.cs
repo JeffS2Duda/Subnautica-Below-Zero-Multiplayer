@@ -17,13 +17,6 @@
 
     public class PlayerProcessor
     {
-        /**
-         *
-         * Oyuncu verileri yüklendikten sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerInitialized()
         {
             if (Network.Session.Current.PlayerHealth < 2f)
@@ -52,13 +45,6 @@
             ZeroPlayer.CurrentPlayer.OnCurrentPlayerLoaded();
         }
 
-        /**
-         *
-         * İlk ekipmanları duruma göre başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerFirstEquipmentInitialized()
         {
             if (GameModeManager.GetOption<bool>(GameOption.InitialEquipmentPack) && !Network.Session.Current.IsInitialEquipmentAdded)
@@ -67,13 +53,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu başlangıç konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerPositionInitialized()
         {
             if (Network.Session.Current.PlayerPosition != null)
@@ -97,13 +76,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu başlangıç konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerSubRootInitialized()
         {
             if (Network.Session.Current.PlayerSubRootId.IsNotNull())
@@ -167,13 +139,6 @@
             PlayerProcessor.FixMoonpoolExpansionPlayerPosition(global::Player.main, Network.Session.Current.PlayerSubRootId);
         }
 
-        /**
-         *
-         * Oyuncu yeniden doğma konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerRespawnPointInitialized()
         {
             if (Network.Session.Current.SupplyDrops?.Count > 0)
@@ -190,13 +155,6 @@
             }
         }
 
-        /**
-         *
-         * Diğer oyuncuları oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnOtherPlayersInitialized(List<PlayerItem> players)
         {
             if (players?.Count > 0)
@@ -217,13 +175,6 @@
             }
         }
 
-        /**
-         *
-         * Ay havuzundaki oyuncunun konumunu düzeltir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool FixMoonpoolExpansionPlayerPosition(global::Player player, string subrootId)
         {
             var firstSegment = player.GetUnderGameObject<global::SeaTruckSegment>()?.GetFirstSegment();

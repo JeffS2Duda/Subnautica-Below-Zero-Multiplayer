@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using System.Collections;
     using System.Collections.Generic;
@@ -25,22 +25,8 @@
 
     public class PrecursorTeleporterProcessor : NormalProcessor
     {
-        /**
-         *
-         * Pasif Işınlayıcıları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<string, string> DisabledTeleporters = new Dictionary<string, string>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.PrecursorTeleporterArgs>();
@@ -87,13 +73,6 @@
             return true;
         }
 
-        /**
-         *
-         * Hedef geçidi aktif eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ActivateTargetTeleporter(string teleporterId, string uniqueId)
         {
             TeleporterManager.main.activeTeleporters.Add(teleporterId);
@@ -107,13 +86,6 @@
             }
         }
 
-        /**
-         *
-         * Hedef geçidi ASYNC aktif eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator ActivateTargetTeleporterAsync(string targetTeleporterId)
         {
             yield return new WaitForSecondsRealtime(4f);
@@ -125,13 +97,6 @@
             }
         }
 
-        /**
-         *
-         * Işınlayıcı başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTeleporterInitialized(TeleporterInitializedEventArgs ev)
         {
             if (ev.IsExit)
@@ -147,37 +112,16 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu ışınlanma başladıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPrecursorTeleporterUsed()
         {
             PrecursorTeleporterProcessor.SendPacketToServer(isTeleportStart: true);
         }
 
-        /**
-         *
-         * Oyuncu ışınlanma tamamlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPrecursorTeleportationCompleted()
         {
             PrecursorTeleporterProcessor.SendPacketToServer(isTeleportCompleted: true);
         }
 
-        /**
-         *
-         * Işınlayıcı terminali aktif edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTeleporterTerminalActivating(TeleporterTerminalActivatingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -188,13 +132,6 @@
             }
         }
 
-        /**
-         *
-         * Bir nesne yok edildiğinde içinden başka nesne çıkarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId = null, string teleporterId = null, bool isTerminal = false, bool isTeleportStart = false, bool isTeleportCompleted = false)
         {
             ServerModel.PrecursorTeleporterArgs request = new ServerModel.PrecursorTeleporterArgs()
@@ -209,13 +146,6 @@
             NetworkClient.SendPacket(request);
         }
 
-        /**
-         *
-         * Ana menüye dönünce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnDispose()
         {
             DisabledTeleporters.Clear();

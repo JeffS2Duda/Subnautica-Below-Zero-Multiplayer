@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Items
+namespace Subnautica.Network.Models.Items
 {
     using MessagePack;
 
@@ -7,23 +7,9 @@
     [MessagePackObject]
     public class Scanner : NetworkPlayerItemComponent
     {
-        /**
-         *
-         * TechType değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public override TechType TechType { get; set; } = TechType.Scanner;
 
-        /**
-         *
-         * TargetId değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(4)]
         public string TargetId { get; set; }
     }

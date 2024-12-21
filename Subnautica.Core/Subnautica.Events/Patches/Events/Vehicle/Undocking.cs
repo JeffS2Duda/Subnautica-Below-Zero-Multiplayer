@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -14,13 +14,6 @@
     [HarmonyPatch(typeof(global::DockedVehicleHandTarget), nameof(global::DockedVehicleHandTarget.OnHandClick))]
     public static class Undocking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
 
         private static bool Prefix(global::DockedVehicleHandTarget __instance)
         {
@@ -68,25 +61,11 @@
             return true;
         }
 
-        /**
-         *
-         * UniqueId değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(GameObject gameObject)
         {
             return Network.Identifier.GetIdentityId(gameObject.GetComponentInParent<BaseDeconstructable>().gameObject, false);
         }
 
-        /**
-         *
-         * VehicleId değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetVehicleId(global::DockedVehicleHandTarget dockedVehicleHandTarget)
         {
             if (dockedVehicleHandTarget.dockingBay.GetDockedObject() == null)
@@ -97,13 +76,6 @@
             return Network.Identifier.GetIdentityId(dockedVehicleHandTarget.dockingBay.GetDockedObject().gameObject, false);
         }
 
-        /**
-         *
-         * TechType değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetTechType(GameObject gameObject)
         {
             var baseDeconstructable = gameObject.GetComponentInParent<BaseDeconstructable>();

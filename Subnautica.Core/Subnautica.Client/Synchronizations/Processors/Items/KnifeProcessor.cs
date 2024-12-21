@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.Events.EventArgs;
     using Subnautica.Client.Core;
@@ -16,13 +16,6 @@
 
     public class KnifeProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var entity = packet.GetComponent<ItemModel.Knife>();
@@ -41,13 +34,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bıçak saldırı animasyonunu oynatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool PlayAttackAnimation(ZeroPlayer player, ItemModel.Knife entity)
         {
             global::Knife tool = null;
@@ -86,13 +72,6 @@
             return true;    
         }
 
-        /**
-         *
-         * Bıçak kullanıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnKnifeUsing(KnifeUsingEventArgs ev)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

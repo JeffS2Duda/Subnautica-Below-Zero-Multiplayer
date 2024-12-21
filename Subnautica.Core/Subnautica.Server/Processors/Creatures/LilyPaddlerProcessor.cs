@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Creatures
+namespace Subnautica.Server.Processors.Creatures
 {
     using Subnautica.Network.Models.Creatures;
     using Subnautica.Network.Models.Server;
@@ -10,13 +10,6 @@
 
     public class LilyPaddlerProcessor : WorldCreatureProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, CreatureProcessArgs packet, MultiplayerCreatureItem creature, string creatureId)
         {
             if (creature.IsBusy() || creature.LiveMixin.IsDead)

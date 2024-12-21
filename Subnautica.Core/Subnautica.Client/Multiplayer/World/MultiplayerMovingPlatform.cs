@@ -9,83 +9,27 @@
 
     public class MultiplayerMovingPlatform : MonoBehaviour
     {
-        /**
-         *
-         * Platform Nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Transform Platform { get; set; }
 
-        /**
-         *
-         * Oyuncu yüksekliğini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float PlayerHeight { get; set; } = 0f;
 
-        /**
-         *
-         * Aralıktaki oyuncuları döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, ZeroPlayer> PlayersInRange = new Dictionary<string, ZeroPlayer>();
 
-        /**
-         *
-         * Listeden kaldırılacak oyuncu kuyruğu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Queue<string> RemovePlayerQueue = new Queue<string>();
 
-        /**
-         *
-         * Benzersiz Id'yi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string UniqueId { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.PlayerHeight = 1.75f + 0.1f;
         }
 
-        /**
-         *
-         * Platform nesnesini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetPlatform(Transform platform)
         {
             this.Platform = platform;
             this.UniqueId = Network.Identifier.GetIdentityId(this.Platform.GetComponentInParent<MultiplayerMovingPlatform>().gameObject, false);
         }
 
-        /**
-         *
-         * Her geç güncellemede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void LateUpdate()
         {
             foreach (var player in this.PlayersInRange)
@@ -111,13 +55,6 @@
             }
         }
 
-        /**
-         *
-         * Her sabit güncellemede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (this.IsInitialized())
@@ -136,13 +73,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu platform üzerinde mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsPlayerOnPlatform(Vector3 position)
         {
             var raycasts = Physics.RaycastAll(position, Vector3.down, 3f);
@@ -173,13 +103,6 @@
             return false;
         }
 
-        /**
-         *
-         * Sınıf başlatıldı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsInitialized()
         {
             return this.Platform;

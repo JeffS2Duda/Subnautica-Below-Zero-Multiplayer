@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -12,13 +12,6 @@
     [HarmonyPatch(typeof(global::Beacon), nameof(global::Beacon.Throw))]
     public class BeaconDeploying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Beacon __instance)
         {
             if (Network.IsMultiplayerActive)
@@ -45,13 +38,6 @@
             return true;
         }
 
-        /**
-         *
-         * Koordinatı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector3 GetDropPosition(global::Beacon __instance)
         {
             if (__instance.deployedOnLand && __instance.IsValidGroundPlacement(out var groundPosition) && !__instance.HasObstacleInFront())

@@ -11,37 +11,16 @@
 
     public class VehicleController
     {
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void OnAwake(PlayerVehicleManagement management)
         {
             this.Management = management;
         }
 
-        /**
-         *
-         * Bileşen verisi alındığında yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void OnComponentDataReceived(VehicleUpdateComponent component)
         {
 
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void OnUpdate()
         {
             if (this.IsDefaultInterpolate)
@@ -50,25 +29,11 @@
             }
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void OnFixedUpdate()
         {
 
         }
 
-        /**
-         *
-         * Oyuncu araca bindiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void OnEnterVehicle()
         {
             if (this.Management.Player != null && this.Management.VehicleUniqueId.IsNotNull())
@@ -96,13 +61,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void OnExitVehicle()
         {
             if (this.Management.Vehicle)
@@ -126,13 +84,6 @@
             this.SetPlayerParent(null);
         }
 
-        /**
-         *
-         * Oyuncu araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SetPlayerParent(Transform transform)
         {
             if (this.Management.Player == null || this.Management.Player.PlayerModel == null)
@@ -161,13 +112,6 @@
             return true;
         }
 
-        /**
-         *
-         * Interpolasyon yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void InterpolateVehicle()
         {
             if (this.Management.Vehicle)
@@ -187,64 +131,22 @@
             }
         }
 
-        /**
-         *
-         * Uzaklığı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float GetDistance()
         {
             return ZeroVector3.Distance(this.Management.Vehicle.transform.position, this.Management.Player.VehiclePosition);
         }
 
-        /**
-         *
-         * Mevcut hızı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 GetVelocity()
         {
             return this.VehicleVelocity;
         }
 
-        /**
-         *
-         * Management Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public PlayerVehicleManagement Management { get; set; }
 
-        /**
-         *
-         * IsDefaultInterpolate Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsDefaultInterpolate { get; set; } = true;
 
-        /**
-         *
-         * En sonki hız değerleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 VehicleVelocity = Vector3.zero;
 
-        /**
-         *
-         * En sonki hız değerleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Quaternion VehicleRotationVelocity;
     }
 }

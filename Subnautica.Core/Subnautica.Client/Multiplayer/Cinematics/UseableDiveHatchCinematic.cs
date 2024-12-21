@@ -4,22 +4,8 @@
 
     public class UseableDiveHatchCinematic : CinematicController
     {
-        /**
-         *
-         * Kapıyı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::UseableDiveHatch UseableDiveHatch { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.UseableDiveHatch = this.Target.GetComponentInChildren<global::UseableDiveHatch>();
@@ -27,13 +13,6 @@
             this.UseableDiveHatch.exitCinematicController.animator.Rebind();
         }
 
-        /**
-         *
-         * Binme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void EnterStartCinematic()
         {
             if (this.UseableDiveHatch.enterCinematicController.name.Contains("Drop_Pod"))
@@ -49,13 +28,6 @@
             this.StartCinematicMode();
         }
 
-        /**
-         *
-         * İnme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ExitStartCinematic()
         {
             if (this.UseableDiveHatch.exitCinematicController.playerViewAnimationName.Contains("surfacebasedoor_"))

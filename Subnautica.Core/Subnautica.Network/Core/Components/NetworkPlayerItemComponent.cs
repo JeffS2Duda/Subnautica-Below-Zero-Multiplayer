@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Core.Components
+namespace Subnautica.Network.Core.Components
 {
     using System;
 
@@ -28,33 +28,12 @@
     [MessagePackObject]
     public abstract class NetworkPlayerItemComponent
     {
-        /**
-         *
-         * UniqueId değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public string UniqueId { get; set; }
 
-        /**
-         *
-         * TechType değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public virtual TechType TechType { get; set; } = TechType.None;
 
-        /**
-         *
-         * Komponenti döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetComponent<T>()
         {
             if (this is T)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using Subnautica.Network.Models.Core;
     using Subnautica.Client.Abstracts;
@@ -12,25 +12,11 @@
 
     public class ThermalLilyProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             return true;
         }
 
-        /**
-         *
-         * Termal zambak alanı kontrol edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnThermalLilyRangeChecking(ThermalLilyRangeCheckingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -55,13 +41,6 @@
             }
         }
 
-        /**
-         *
-         * Termal zambak açısı kontrol edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnThermalLilyAnimationAnglesChecking(ThermalLilyAnimationAnglesCheckingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -104,25 +83,11 @@
         }
 
 
-        /**
-         *
-         * Hesaplanacak aralığı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static double GetPlayerRange(float range)
         {
             return (double)range * (double)range;
         }
 
-        /**
-         *
-         * Oyuncu ile zambak arasındaki mesafeyi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static double GetPlayerDistanceFromLily(Vector3 playerPosition, Vector3 lilyPosition)
         {
             return (double)(playerPosition - lilyPosition).sqrMagnitude;

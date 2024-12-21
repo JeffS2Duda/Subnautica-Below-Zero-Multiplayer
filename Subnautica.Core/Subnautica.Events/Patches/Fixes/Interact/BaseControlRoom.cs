@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(global::BaseControlRoom), nameof(global::BaseControlRoom.OnHoverMinimapConsole))]
     public class BaseControlRoom
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::BaseControlRoom __instance)
         {
             if (!Network.IsMultiplayerActive)

@@ -19,22 +19,8 @@ namespace Subnautica.Server.Logic
 
     public class EnergyTransmission : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Her tick'de tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float fixedDeltaTime)
         {
             if (this.Timing.IsFinished() && API.Features.World.IsLoaded)
@@ -49,13 +35,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Enerji üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void GenerateEnergy()
         {
             var constructions = this.GetEnergyConstructions();
@@ -65,7 +44,6 @@ namespace Subnautica.Server.Logic
                 var construction = constructions.Where(q => q.Value.Id == powerSource.ConstructionId).FirstOrDefault();
                 if (construction.Value == null)
                 {
-                    // Core.Server.Instance.Storages.World.Storage.PowerSources.Remove(powerSource);
                     continue;
                 }
 
@@ -94,26 +72,12 @@ namespace Subnautica.Server.Logic
         }
 
 
-        /**
-         *
-         * Güneş paneli enerjilerini üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool GenerateSolarPanelEnergy(global::SolarPanel solarPanel, WorldChildrens.PowerSource powerSource, float elapsedTime = 1f)
         {
             powerSource.ModifyPower(solarPanel.GetRechargeScalar() * elapsedTime * 0.25f * 5.0f);
             return true;
         }
 
-        /**
-         *
-         * Thermal ısı enerjilerini üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool GenerateThermalPlantEnergy(global::ThermalPlant thermalPlant, WorldChildrens.PowerSource powerSource, float elapsedTime = 1f)
         {
             if (thermalPlant.temperature <= 25f)
@@ -125,13 +89,6 @@ namespace Subnautica.Server.Logic
             return true;
         }
 
-        /**
-         *
-         * Biyo Reaktör enerjilerini üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool GenerateBioReactorReactorEnergy(global::BaseBioReactor bioReactor, WorldChildrens.PowerSource powerSource, ConstructionItem construction, float elapsedTime = 1f)
         {
             if (!bioReactor.producingPower)
@@ -150,13 +107,6 @@ namespace Subnautica.Server.Logic
             return true;
         }
 
-        /**
-         *
-         * Nükleer Reaktör enerjilerini üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool GenerateNuclearReactorEnergy(global::BaseNuclearReactor nuclearReactor, WorldChildrens.PowerSource powerSource, ConstructionItem construction, float elapsedTime = 1f)
         {
             if (!nuclearReactor.producingPower)
@@ -175,13 +125,6 @@ namespace Subnautica.Server.Logic
             return true;
         }
 
-        /**
-         *
-         * Nükleer Reaktör üretilecek enerji miktarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float CalculateNuclearReactorProducePower(float requested, global::BaseNuclearReactor nuclearReactor, WorldChildrens.PowerSource powerSource, ConstructionItem construction)
         {
             var component = construction.Component?.GetComponent<Metadata.NuclearReactor>();
@@ -226,13 +169,6 @@ namespace Subnautica.Server.Logic
             return requested;
         }
 
-        /**
-         *
-         * Biyo Reaktör üretilecek enerji miktarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float CalculateBioReactorProducePower(float requested, global::BaseBioReactor bioReactor, WorldChildrens.PowerSource powerSource, ConstructionItem construction)
         {
             var component = construction.EnsureComponent<Metadata.BioReactor>();
@@ -277,13 +213,6 @@ namespace Subnautica.Server.Logic
             return requested;
         }
 
-        /**
-         *
-         * Biyo Reaktör eşyalarını kaldırmak için istek gönderirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendRemoveBioReactorItems(string uniqueId, List<WorldPickupItem> items)
         {
             foreach (var pickupItem in items)
@@ -303,13 +232,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Nükleer Reaktör eşyalarını kaldırmak için istek gönderirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendRemoveNuclearReactorItems(string uniqueId, List<TechType> items)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
@@ -326,13 +248,6 @@ namespace Subnautica.Server.Logic
             Server.Core.Server.SendPacketToAllClient(result);
         }
 
-        /**
-         *
-         * Yapı tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OnConstructionComplete(ConstructionItem construction)
         {
             if (!TechGroup.EnergyConstructions.Contains(construction.TechType))
@@ -355,26 +270,12 @@ namespace Subnautica.Server.Logic
             return true;
         }
 
-        /**
-         *
-         * Yapı yıkıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OnConstructionRemove(uint constructionId, string uniqueId)
         {
             Core.Server.Instance.Storages.World.Storage.PowerSources.RemoveWhere(q => q.ConstructionId == constructionId);
             return true;
         }
 
-        /**
-         *
-         * Max gücü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float GetMaxPower(TechType techType)
         {
             switch (techType)
@@ -388,13 +289,6 @@ namespace Subnautica.Server.Logic
             return 1f;
         }
 
-        /**
-         *
-         * Enerjileri tüm oyunculara gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SendEnergyToAllClients()
         {
             var constructions = this.GetEnergyConstructions();
@@ -422,25 +316,11 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Enerji yapılarının bilgilerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WorldChildrens.PowerSource[] GetPowerSources()
         {
             return Core.Server.Instance.Storages.World.Storage.PowerSources.ToArray();
         }
 
-        /**
-         *
-         * Enerji sağlayan yapıları döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<KeyValuePair<string, ConstructionItem>> GetEnergyConstructions()
         {
             return Core.Server.Instance.Storages.Construction.Storage.Constructions.Where(q => TechGroup.EnergyConstructions.Contains(q.Value.TechType) && q.Value.ConstructedAmount == 1f).ToList();

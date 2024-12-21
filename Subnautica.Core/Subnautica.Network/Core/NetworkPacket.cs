@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Core
+namespace Subnautica.Network.Models.Core
 {
     using System;
 
@@ -129,87 +129,31 @@
     [MessagePackObject]
     public abstract class NetworkPacket
     {
-        /**
-         *
-         * Packet Türü
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public abstract ProcessType Type { get; set; }
 
-        /**
-         *
-         * Packet Kanal Türü
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public virtual NetworkChannel ChannelType { get; set; } = NetworkChannel.Default;
 
-        /**
-         *
-         * Packet Teslim Türü
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public virtual DeliveryMethod DeliveryMethod { get; set; } = DeliveryMethod.ReliableOrdered;
 
-        /**
-         *
-         * Packet Kanal Id
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(3)]
         public virtual byte ChannelId { get; set; } = 0;
 
-        /**
-         *
-         * Paketin Sahibi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(4)]
         public byte PacketOwnerId { get; set; } = 0;
 
-        /**
-         *
-         * Ağdaki paketi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetPacketOwnerId(byte ownerId)
         {
             this.PacketOwnerId = ownerId;
         }
 
-        /**
-         *
-         * Ağdaki paketi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetPacketOwnerId()
         {
             return this.PacketOwnerId;
         }
 
-        /**
-         *
-         * Ağdaki paketi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetPacket<T>()
         {
             return (T) Convert.ChangeType(this, this.GetType());

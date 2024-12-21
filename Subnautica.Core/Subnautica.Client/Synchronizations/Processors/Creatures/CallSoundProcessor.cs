@@ -16,13 +16,6 @@
 
     public class CallSoundProcessor : NormalProcessor
     {
-        /**
-        *
-        * Gelen veriyi işler
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.CreatureCallArgs>();
@@ -40,13 +33,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
             var callId    = item.Action.GetProperty<byte>("CallId");
@@ -62,13 +48,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık çağrı sesini tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator TriggerCallAsync(global::CreatureCallSound component, byte callVariant)
         {
             component.sound.Play();
@@ -93,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık bazı sesler oynarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCallSoundTriggering(CreatureCallSoundTriggeringEventArgs ev)
         {
             if (ev.UniqueId.IsMultiplayerCreature())
@@ -110,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(ushort creatureId, byte callId, string animation)
         {
             ServerModel.CreatureCallArgs request = new ServerModel.CreatureCallArgs()

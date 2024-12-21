@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -9,13 +9,6 @@
     [HarmonyPatch(typeof(global::PlayerFrozenMixin), nameof(global::PlayerFrozenMixin.Unfreeze))]
     public class Unfreezed
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::PlayerFrozenMixin __instance)
         {
             if (Network.IsMultiplayerActive && __instance.frozen)

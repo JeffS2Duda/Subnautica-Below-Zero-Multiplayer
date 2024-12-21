@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
 {
     using Subnautica.API.Extensions;
 
@@ -8,13 +8,6 @@
 
     public class Exosuit
     {
-        /**
-         *
-         * Araç bileşenini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static ExosuitUpdateComponent GetComponent(ExosuitUpdateComponent component, global::Exosuit exosuit)
         {
             component.IsOnGround     = exosuit.mainAnimator.GetBool("onGround");
@@ -27,13 +20,6 @@
             return component;
         }
 
-        /**
-         *
-         * Araç kol bileşenini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static ExosuitArmComponent GetArmComponent(IExosuitArm exosuitArm, TechType armType, bool isLeftArm)
         {
             if (exosuitArm == null)

@@ -6,22 +6,8 @@
 
     public class SeaTruckPilotingCinematic : CinematicController
     {
-        /**
-         *
-         * Yatağı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::SeaTruckMotor SeaTruckMotor { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.SeaTruckMotor = this.Target.GetComponentInChildren<global::SeaTruckMotor>();
@@ -36,13 +22,6 @@
             }
         }
 
-        /**
-         *
-         * Binme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartPilotingCinematic()
         {
             if (this.SeaTruckMotor?.seatruckanimation)
@@ -52,13 +31,6 @@
             }
         }
 
-        /**
-         *
-         * İnme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StopPilotingCinematic()
         {
             if (this.SeaTruckMotor?.seatruckanimation)
@@ -69,13 +41,6 @@
             }
         }
 
-        /**
-         *
-         * Engage koşul simülasyonunu çalıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void PrepareStopPiloting()
         {
             var controller = this.SeaTruckMotor.seatruckanimation.GetController(SeaTruckAnimation.Animation.BeginPilot);
@@ -86,13 +51,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu bağlantısı kesildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnPlayerDisconnected()
         {
             if (this.ZeroPlayer.VehicleId <= 0)
@@ -115,13 +73,6 @@
             return true;
         }
 
-        /**
-         *
-         * Binme bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void StopPilotingEndMode()
         {
             if (this.SeaTruckMotor && this.ZeroPlayer.IsInSeaTruck && CraftData.GetTechType(this.SeaTruckMotor.gameObject) == TechType.SeaTruck)

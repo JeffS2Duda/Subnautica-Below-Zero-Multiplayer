@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.World
+namespace Subnautica.Events.Patches.Events.World
 {
     using HarmonyLib;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::SupplyCrate), nameof(global::SupplyCrate.OnHandClick))]
     public static class SupplyCrateOpened
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::SupplyCrate __instance)
         {
             if (!Network.IsMultiplayerActive || __instance.open)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Creatures
+namespace Subnautica.Server.Processors.Creatures
 {
     using System.Collections.Generic;
 
@@ -15,22 +15,8 @@
 
     public class LeviathanMeleeAttackProcessor : NormalProcessor
     {
-        /**
-         *
-         * Araçların saldırıya uğrama zamanını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, double> VehicleLastAttackTimes = new Dictionary<string, double>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.CreatureLeviathanMeleeAttackArgs>();
@@ -131,13 +117,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu animasyon süresini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float GetAttackAnimationTime(TechType attackerType, TechType targetType)
         {
             if (attackerType == TechType.Chelicerate)
@@ -179,13 +158,6 @@
             return 0f;
         }
 
-        /**
-         *
-         * Yaratık tarafından araç yakalanabilir mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool CanGrabVehicle(string vehicleId)
         {
             if (this.VehicleLastAttackTimes.TryGetValue(vehicleId, out var lastTime))
@@ -196,25 +168,11 @@
             return true;
         }
 
-        /**
-         *
-         * Araç saldırı altında zamanını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateVehicleAttackTime(string vehicleId, float animationTime)
         {
             this.VehicleLastAttackTimes[vehicleId] = Server.Instance.Logices.World.GetServerTimeAsDouble() + (animationTime * 2.5);
         }
 
-        /**
-         *
-         * Hasarı hesaplar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float CalculateDamage(float damage, ZeroLastTarget target)
         {
             var damageTakenModifier = GameModeManager.GetDamageTakenModifier(target.Type, false);

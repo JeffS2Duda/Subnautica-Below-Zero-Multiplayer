@@ -14,13 +14,6 @@
 
     public class LilyPaddlerProcessor : WorldCreatureProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkCreatureComponent networkPacket, byte requesterId, double processTime, TechType creatureType, ushort creatureId)
         {
             var component = networkPacket.GetComponent<CreatureModel.LilyPaddler>();
@@ -39,13 +32,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
             var target = ZeroPlayer.GetPlayerById(item.Action.GetProperty<byte>("TargetId"));
@@ -55,13 +41,6 @@
             }
         }
 
-        /**
-         *
-         * Hipnoz başlarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnLilyPaddlerHypnotizeStarting(LilyPaddlerHypnotizeStartingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -69,13 +48,6 @@
             LilyPaddlerProcessor.SendPacketToServer(ev.CreatureId.ToCreatureId(), ev.TargetId);
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(ushort creatureId, byte targetId)
         {
             ServerModel.CreatureProcessArgs request = new ServerModel.CreatureProcessArgs()

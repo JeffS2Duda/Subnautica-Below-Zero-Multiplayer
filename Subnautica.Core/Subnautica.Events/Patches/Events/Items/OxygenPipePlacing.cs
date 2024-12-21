@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::OxygenPipe), nameof(global::OxygenPipe.OnRightHandDown))]
     public class OxygenPipePlacing
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::OxygenPipe __instance)
         {
             if (Network.IsMultiplayerActive && !global::Player.main.IsSpikyTrapAttached())

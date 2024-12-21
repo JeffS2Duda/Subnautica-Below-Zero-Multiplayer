@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Core;
@@ -11,13 +11,6 @@
 
     public class ShowerProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             if (isSilence)
@@ -49,13 +42,6 @@
             return true;
         }
 
-        /**
-         *
-         * Banyo nesnesi aktif/pasif olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnShowerSwitchToggle(ShowerSwitchToggleEventArgs ev)
         {
             ev.IsAllowed = false;

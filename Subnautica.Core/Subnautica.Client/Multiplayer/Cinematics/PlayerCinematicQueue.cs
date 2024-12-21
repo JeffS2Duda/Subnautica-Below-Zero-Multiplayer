@@ -15,43 +15,15 @@
 
     public class PlayerCinematicQueue
     {
-        /**
-         *
-         * Kuyruk listesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, Queue<PlayerCinematicQueueItem>> Queues = new Dictionary<string, Queue<PlayerCinematicQueueItem>>();
 
-        /**
-         *
-         * Kuyruk Durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<string> QueueStatus = new List<string>();
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Initialize()
         {
             World.OnGameObjectDestroyingAction = PlayerCinematicQueue.GameObjectDestroyingAction;
         }
 
-        /**
-         *
-         * Animasyon kuyruğuna ekleme yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AddQueue(CinematicController cinematicController, Action cinematicAction, string playerId, string uniqueId, GenericProperty property = null)
         {
             if (!Queues.ContainsKey(playerId))
@@ -63,25 +35,11 @@
             ConsumeQueue(playerId);
         }
 
-        /**
-         *
-         * Kuyruğun çalışıp/çalışmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsQueueRunning(string playerId)
         {
             return QueueStatus.Contains(playerId);
         }
 
-        /**
-         *
-         * Animasyon kuyruğunu tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void ConsumeQueue(string playerId)
         {
             if (!IsQueueRunning(playerId))
@@ -90,13 +48,6 @@
             }
         }
 
-        /**
-         *
-         * Animasyon kuyruğunu tüketir. (Async)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator ConsumeQueueAsync(string playerId)
         {
             if (Queues.TryGetValue(playerId, out var queues))
@@ -160,13 +111,6 @@
             }
         }
 
-        /**
-         *
-         * Hedef kullanılıyor mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsUsingTarget(string uniqueId, string playerId)
         {
             if (Interact.IsBlocked(uniqueId, playerId, true))
@@ -185,13 +129,6 @@
             return false;
         }
 
-        /**
-         *
-         * Bir nesne yok edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool GameObjectDestroyingAction(string uniqueId)
         {
             try
@@ -206,13 +143,6 @@
             return true;
         }
 
-        /**
-         *
-         * Tüm veriyi temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Dispose()
         {
             PlayerCinematicQueue.Queues.Clear();
@@ -222,49 +152,14 @@
 
     public class PlayerCinematicQueueItem
     {   
-        /**
-         *
-         * Yapı Id Kimliği
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string UniqueId { get; private set; }
 
-        /**
-         *
-         * Çalışacak sinematik
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Action CinematicAction { get; private set; }
 
-        /**
-         *
-         * Sinematik sınıfı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public CinematicController CinematicController { get; private set; }
 
-        /**
-         *
-         * Özellikleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<GenericProperty> Properties = new List<GenericProperty>();
 
-        /**
-         *
-         * Sınıf ayarlarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public PlayerCinematicQueueItem(CinematicController cinematicController, Action cinematicAction, string uniqueId, GenericProperty property = null)
         {
             this.CinematicController = cinematicController;
@@ -277,25 +172,11 @@
             }
         }
 
-        /**
-         *
-         * Özellik kaydeder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RegisterProperty(string key, object value)
         {
             this.Properties.Add(new GenericProperty(key, value));
         }
 
-        /**
-         *
-         * Tüm özellikleri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ClearProperties()
         {
             this.Properties.Clear();

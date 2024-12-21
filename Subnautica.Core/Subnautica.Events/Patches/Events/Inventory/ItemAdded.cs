@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Inventory
+namespace Subnautica.Events.Patches.Events.Inventory
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.OnAddItem))]
     public class ItemAdded
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(InventoryItem item)
         {
             if (Network.IsMultiplayerActive)

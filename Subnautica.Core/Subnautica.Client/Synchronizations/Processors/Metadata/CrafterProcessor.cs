@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using System.Linq;
     using Subnautica.API.Features;
@@ -15,13 +15,6 @@
 
     public class CrafterProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.Crafter>();
@@ -78,13 +71,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne spawn olduktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntitySpawned(EntitySpawnedEventArgs ev)
         {
             if (ev.TechType == TechType.Fabricator)
@@ -97,13 +83,6 @@
             }
         }
 
-        /**
-         *
-         * Fabricator nesnesinden bir eşya alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCrafterItemPickup(CrafterItemPickupEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -125,13 +104,6 @@
             }
         }
 
-        /**
-         *
-         * Fabricator nesnesinde üretim başladığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCrafterBegin(CrafterBeginEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -139,13 +111,6 @@
             CrafterProcessor.SendDataToServer(ev.UniqueId, techType: ev.TechType, duration: ev.Duration);
         }
 
-        /**
-         *
-         * Fabricator nesnesi açıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCrafterOpening(CrafterOpeningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -156,13 +121,6 @@
             }
         }
 
-        /**
-         *
-         * Fabricator nesnesi kapandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCrafterClosed(CrafterClosedEventArgs ev)
         {
             if (ev.FabricatorType != TechType.Constructor)
@@ -171,13 +129,6 @@
             }
         }
 
-        /**
-         *
-         * Fabricator nesnesinde üretim sona erdiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCrafterEnded(CrafterEndedEventArgs ev)
         {
             if (World.IsLoaded)
@@ -197,13 +148,6 @@
             }
         }
 
-        /**
-         *
-         * Çok oyunculu crafter döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */  
         public static GameObject GetMultiplayerGameObject(global::GhostCrafter crafter)
         {
             if (crafter.name.Contains("SeaTruckFabricator"))
@@ -214,13 +158,6 @@
             return crafter.gameObject;
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendDataToServer(string uniqueId, bool isOpening = false, bool isPickup = false, TechType techType = TechType.None, float duration = 0.0f)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

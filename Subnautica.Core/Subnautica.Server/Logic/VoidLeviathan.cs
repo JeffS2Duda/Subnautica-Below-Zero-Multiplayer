@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,67 +14,18 @@
 
     public class VoidLeviathan : BaseLogic
     {
-        /**
-         *
-         * Zamanlayıcıyı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private StopwatchItem Timing { get; set; } = new StopwatchItem(2000f);
 
-        /**
-         *
-         * SpawnedCreatures değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private HashSet<ushort> SpawnedCreatures { get; set; } = new HashSet<ushort>();
 
-        /**
-         *
-         * Oyuncu zamanlarını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<byte, double> PlayerTimes { get; set; } = new Dictionary<byte, double>();
 
-        /**
-         *
-         * ScanRange değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private BaseCreatureData Data { get; set; }
 
-        /**
-         *
-         * MaxSpawn değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private int MaxSpawn { get; set; } = 3;
 
-        /**
-         *
-         * Yaratık spawnlandı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsCreatureSpawned { get; set; }
 
-        /**
-         *
-         * Spawner değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private VoidLeviathansSpawner Spawner
         {
             get
@@ -83,25 +34,11 @@
             }
         }
 
-        /**
-         *
-         * Sınıfı başlatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.Data = TechType.GhostLeviathan.GetCreatureData();
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float fixedDeltaTime)
         {
             if (this.Timing.IsFinished())
@@ -123,25 +60,11 @@
             }
         }
 
-        /**
-         *
-         * Oyuncuya çıktığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPlayerDisconnected(AuthorizationProfile player)
         {
             this.PlayerTimes[player.PlayerId] = 0;
         }
 
-        /**
-         *
-         * Sahibi olmayan yaratıkları kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void RemoveVoidLeviathans()
         {
             foreach (var creatureId in this.SpawnedCreatures.ToList())
@@ -160,13 +83,6 @@
             }
         }
 
-        /**
-         *
-         * Boşluktaki yaratıkları spawnlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SpawnVoidLeviathans()
         {
             foreach (var player in Server.Instance.GetPlayers())
@@ -203,13 +119,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratığı spawnlar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SpawnCreature(AuthorizationProfile player)
         {
             if (this.TryGetSpawnPosition(player.Position.ToVector3(), out var spawnPosition))
@@ -220,13 +129,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık en yakın spawn konumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool TryGetSpawnPosition(Vector3 playerPosition, out Vector3 spawnPosition)
         {
             spawnPosition = Vector3.zero;
@@ -244,26 +146,12 @@
             return false;
         }
 
-        /**
-         *
-         * Sonraki spawnlanma zamanını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private double CalculateTimeNextSpawn(bool first = false)
         {
             var currentTime = Server.Instance.Logices.World.GetServerTime();
             return first ? currentTime + this.Spawner.timeBeforeFirstSpawn : currentTime + this.Spawner.spawnInterval;
         }
 
-        /**
-         *
-         * Konum yakınındaki leviathan sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private int GetNearestCreatureCount(ZeroVector3 playerPosition)
         {
             int count = 0;
@@ -282,13 +170,6 @@
             return count;
         }
 
-        /**
-         *
-         * Yüklenme durumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsLoaded()
         {
             return this.Spawner;

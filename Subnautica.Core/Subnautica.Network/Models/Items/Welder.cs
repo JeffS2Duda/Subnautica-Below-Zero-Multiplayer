@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Items
+namespace Subnautica.Network.Models.Items
 {
     using MessagePack;
 
@@ -7,13 +7,6 @@
     [MessagePackObject]
     public class Welder : NetworkPlayerItemComponent
     {
-        /**
-         *
-         * IsActivated değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public bool IsActivated { get; set; }
     }

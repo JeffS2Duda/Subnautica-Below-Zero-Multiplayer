@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -18,13 +18,6 @@
 
     public class ConstructorProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var component = packet.GetComponent<ItemModel.Constructor>();
@@ -74,25 +67,11 @@
             return true;
         }
 
-        /**
-         *
-         * Araç üretildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCraftedVehicle(WorldDynamicEntity entity, ItemQueueAction item, GameObject gameObject)
         {
             WorldDynamicEntityProcessor.ExecuteItemSpawnProcessor(entity.TechType, entity.Component, entity.IsDeployed, null, gameObject);
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             pickupable.MultiplayerDrop();
@@ -113,13 +92,6 @@
             }
         }
 
-        /**
-         *
-         * Bir araç yapılmaya çalışıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructorCrafting(ConstructorCraftingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -127,13 +99,6 @@
             ConstructorProcessor.SendPacketToServer(ev.UniqueId, craftingTechType: ev.TechType, craftingPosition: ev.Position.ToZeroVector3(), craftingRotation: ev.Rotation.ToZeroQuaternion());    
         }
 
-        /**
-         *
-         * Constructor menüyü açtığında/kapattığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructorEngageToggle(ConstructorEngageToggleEventArgs ev)
         {
             if (ev.IsEngage)
@@ -151,13 +116,6 @@
             }
         }
 
-        /**
-         *
-         * Constructor bırakılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructorDeploying(ConstructorDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -165,13 +123,6 @@
             ConstructorProcessor.SendPacketToServer(ev.UniqueId, forward: ev.Forward.ToZeroVector3(), position: ev.DeployPosition.ToZeroVector3());
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string uniqueId, TechType craftingTechType = TechType.None, ZeroVector3 craftingPosition = null, ZeroQuaternion craftingRotation = null, byte engageToggle = 0, ZeroVector3 forward = null, ZeroVector3 position = null)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

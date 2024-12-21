@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::HoverpadConstructor), nameof(global::HoverpadConstructor.TryStartConstructBike))]
     public static class HoverpadHoverbikeSpawning
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::HoverpadConstructor __instance)
         {
             if (!Network.IsMultiplayerActive)

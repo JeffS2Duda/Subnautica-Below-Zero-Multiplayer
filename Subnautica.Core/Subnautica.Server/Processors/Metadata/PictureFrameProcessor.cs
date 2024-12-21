@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
@@ -10,13 +10,6 @@
 
     public class PictureFrameProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             var component = packet.Component.GetComponent<Metadata.PictureFrame>();
@@ -49,13 +42,6 @@
             return true;
         }
         
-        /**
-         *
-         * Resim dosyası adını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetNewImageName()
         {
             return string.Format("{0}.jpg", Tools.GetShortUniqueId());

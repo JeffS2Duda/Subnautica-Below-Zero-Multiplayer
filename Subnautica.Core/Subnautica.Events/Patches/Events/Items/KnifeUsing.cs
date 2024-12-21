@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using HarmonyLib;
 
@@ -12,13 +12,6 @@
     [HarmonyPatch(typeof(global::Knife), nameof(global::Knife.OnToolUseAnim))]
     public class KnifeUsing
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::Knife __instance, GUIHand hand)
         {
             if (!Network.IsMultiplayerActive)
@@ -60,13 +53,6 @@
             }
         }
 
-        /**
-         *
-         * Hedef Nesneyi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject GetTargetObject(float attackDist, ref Vector3 position, out Vector3 normal)
         {
             GameObject closestObj = null;

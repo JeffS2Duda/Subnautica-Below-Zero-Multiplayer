@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -10,22 +10,8 @@
     [HarmonyPatch(typeof(global::BaseControlRoom), nameof(global::BaseControlRoom.Update))]
     public static class BaseControlRoomMinimapMoving
     {
-        /**
-         *
-         * Geçen zamanı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static readonly StopwatchItem StopwatchItem = new StopwatchItem(BroadcastInterval.BaseControlRoomMinimapMoving);
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::BaseControlRoom __instance)
         {
             if (Network.IsMultiplayerActive)

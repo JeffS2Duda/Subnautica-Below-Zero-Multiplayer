@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using Subnautica.API.Features;
     using Subnautica.API.Extensions;
@@ -12,13 +12,6 @@
 
     public class EntityScannerProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.EntityScannerCompletedArgs>();
@@ -49,13 +42,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu nesne taraması tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntityScannerCompleted(EntityScannerCompletedEventArgs ev)
         {
             if (ev.TechType.IsFragment() && ev.TechType.IsDestroyAfterScan() && ev.UniqueId.IsNotNull())

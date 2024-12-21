@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::PingInstance), nameof(global::PingInstance.SetVisible))]
     public class PingVisibilityChanged
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::PingInstance __instance, bool value)
         {
             if (Network.IsMultiplayerActive && __instance.visible != value)

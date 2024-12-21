@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Diagnostics;
 
@@ -9,22 +9,8 @@
 
     public class AutoSave : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(5000f);
 
-        /**
-         *
-         * Belirli aralıklarla tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnAsyncUpdate()
         {
             if (API.Features.World.IsLoaded && this.Timing.IsFinished())
@@ -34,13 +20,6 @@
             }
         }
 
-        /**
-         *
-         * Tüm verileri diske yazar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SaveAll()
         {
             Server.Instance.Storages.Encyclopedia.SaveToDisk();

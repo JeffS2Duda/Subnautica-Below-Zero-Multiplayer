@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Core.Components
+namespace Subnautica.Network.Core.Components
 {
     using System;
 
@@ -42,17 +42,9 @@
     [Union(33, typeof(Metadata.BaseMoonpool))]
     [Union(34, typeof(Metadata.BaseMapRoom))]
     [Union(35, typeof(Metadata.BaseMoonpoolExpansionManager))]
-    //[Union(36, typeof(Metadata.BaseWaterPark))]
     [MessagePackObject]
     public abstract class MetadataComponent
     {
-        /**
-         *
-         * Komponenti döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetComponent<T>()
         {
             if (this is T)

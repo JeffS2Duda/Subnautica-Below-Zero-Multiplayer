@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -11,25 +11,11 @@
 
     public class ToolEnergyProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             return true;
         }
 
-        /**
-         *
-         * Oyuncu elindeki nesnenin enerjisi değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnToolBatteryEnergyChanged(ToolBatteryEnergyChangedEventArgs ev)
         {
             if (World.IsLoaded)

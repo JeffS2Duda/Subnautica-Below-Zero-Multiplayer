@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Creatures.Actions
+namespace Subnautica.Events.Patches.Fixes.Creatures.Actions
 {
     using HarmonyLib;
 
@@ -31,12 +31,6 @@
                 return false;
             }
 
-            /*
-            if (creature.IsFriendlyTo(target))
-            {
-                return false;
-            }
-            */
 
             if (target.GetTechType() != TechType.Player)
             {

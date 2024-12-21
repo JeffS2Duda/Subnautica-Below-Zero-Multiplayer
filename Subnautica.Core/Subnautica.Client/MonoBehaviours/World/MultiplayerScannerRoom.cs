@@ -10,58 +10,16 @@
 
     public class MultiplayerScannerRoom : MonoBehaviour
     {
-        /**
-         *
-         * Değişiklik yapıldı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsChanged { get; set; }
 
-        /**
-         *
-         * Harita odasını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private MapRoomFunctionality MapRoom { get; set; }
 
-        /**
-         *
-         * ResourceTracker barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private uGUI_ResourceTracker ResourceTracker { get; set; }
 
-        /**
-         *
-         * Nesneleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<BaseMapRoomTransmissionItem> Items { get; set; } = new List<BaseMapRoomTransmissionItem>();
 
-        /**
-         *
-         * Timing barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             if (this.TryGetComponent<MapRoomFunctionality>(out var mapRoom))
@@ -78,13 +36,6 @@
             this.ResourceTracker = GameObject.FindObjectOfType<uGUI_ResourceTracker>();
         }
 
-        /**
-         *
-         * Nesneleri günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetItems(List<BaseMapRoomTransmissionItem> items)
         {
             this.Items.Clear();
@@ -93,13 +44,6 @@
             this.IsChanged = true;
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (this.IsChanged)
@@ -118,13 +62,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne noktalarını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateBlips(Vector3 rootPosition)
         {
             for (int index = 0; index < this.Items.Count; index++)
@@ -150,13 +87,6 @@
             }
         }
 
-        /**
-         *
-         * Kamera noktalarını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateCameraAndPlayerBlips(Vector3 rootPosition)
         {
             var scanRange = this.MapRoom.scanRange * this.MapRoom.scanRange;
@@ -225,13 +155,6 @@
             }
         }
 
-        /**
-         *
-         * Kaynakları günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateResourceNodes()
         {
             this.ResourceTracker.nodes.Clear();

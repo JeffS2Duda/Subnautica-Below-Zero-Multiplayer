@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Furnitures
+namespace Subnautica.Events.Patches.Fixes.Furnitures
 {
     using HarmonyLib;
 
@@ -8,13 +8,6 @@
     [HarmonyPatch(typeof(global::GhostCrafter), nameof(global::GhostCrafter.PlayerIsInRange))]
     public static class CrafterAutoClose
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::GhostCrafter __instance, ref bool __result, float distance)
         {
             if (!Network.IsMultiplayerActive)

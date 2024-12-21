@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Blockers
+namespace Subnautica.Events.Patches.Fixes.Blockers
 {
     using System.Collections.Generic;
 
@@ -9,22 +9,8 @@
     [HarmonyPatch(typeof(global::Planter), nameof(global::Planter.ReplaceItem))]
     public static class Planter
     {
-        /**
-         *
-         * Bloklanmış olayı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<EventBlocker> Blockers = new List<EventBlocker>();
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix()
         {
             if (Network.IsMultiplayerActive)
@@ -36,13 +22,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix()
         {
             if (Blockers.Count > 0)

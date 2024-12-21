@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Building
+namespace Subnautica.Events.Patches.Events.Building
 {
     using System;
     using System.Collections;
@@ -12,22 +12,8 @@
 
     public static class ConstructingAmountChangedShared
     {
-        /**
-         *
-         * Tetiklenme durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsTriggered { get; set; } = false;
 
-        /**
-         *
-         * Olayı Tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void TriggerEvent(Constructable __instance, bool isConstruct)
         {
             if (Network.IsMultiplayerActive && !IsTriggered)
@@ -36,13 +22,6 @@
             }
         }
 
-        /**
-         *
-         * İç Olayı Tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator TriggerEventCallback(Constructable __instance, bool isConstruct)
         {
             IsTriggered = true;
@@ -81,13 +60,6 @@
     [HarmonyPatch(typeof(Constructable), nameof(Constructable.Construct))]
     public static class ConstructingAmountChangedConstruct
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(Constructable __instance)
         {
             ConstructingAmountChangedShared.TriggerEvent(__instance, true);
@@ -97,13 +69,6 @@
     [HarmonyPatch(typeof(Constructable), nameof(Constructable.DeconstructAsync))]
     public static class ConstructingAmountChangedDeconstruct
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(Constructable __instance)
         {
             if (__instance._constructed || __instance.deconstructCoroutineRunning)

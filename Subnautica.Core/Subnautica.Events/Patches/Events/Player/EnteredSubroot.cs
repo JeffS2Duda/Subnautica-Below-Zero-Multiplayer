@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::SubRoot), nameof(global::SubRoot.OnPlayerEntered))]
     public static class EnteredSubroot
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::SubRoot __instance)
         {
             if (Network.IsMultiplayerActive && __instance.isBase)

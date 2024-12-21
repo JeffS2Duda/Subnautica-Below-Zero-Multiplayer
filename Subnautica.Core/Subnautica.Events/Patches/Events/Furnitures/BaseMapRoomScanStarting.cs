@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -13,13 +13,6 @@
     [HarmonyPatch(typeof(global::uGUI_MapRoomScanner), nameof(global::uGUI_MapRoomScanner.OnStartScan))]
     public static class BaseMapRoomScanStarting
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::uGUI_MapRoomScanner __instance, int index)
         {
             if (!Network.IsMultiplayerActive)
@@ -44,13 +37,6 @@
             }
         }
 
-        /**
-         *
-         * UniqueId döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetUniqueId(global::uGUI_MapRoomScanner __instance)
         {
             return __instance.GetComponentInParent<MapRoomFunctionality>()?.GetBaseDeconstructable()?.gameObject?.GetIdentityId();

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::Charger), nameof(global::Charger.OnHandClick))]
     public static class ChargerOpening
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Charger __instance)
         {
             if (!Network.IsMultiplayerActive)

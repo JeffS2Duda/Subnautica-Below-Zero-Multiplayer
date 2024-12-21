@@ -15,13 +15,6 @@
 
     public class FreezeProcessor : NormalProcessor
     {
-        /**
-        *
-        * Gelen veriyi işler
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.CreatureFreezeArgs>();
@@ -40,13 +33,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
             var endTime    = item.Action.GetProperty<float>("EndTime");
@@ -79,13 +65,6 @@
             }
         }
 
-        /**
-         *
-         * Balık donarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnFreezing(CreatureFreezingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -96,13 +75,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(ushort creatureId, float lifeTime, string brinicleId)
         {
             ServerModel.CreatureFreezeArgs request = new ServerModel.CreatureFreezeArgs()

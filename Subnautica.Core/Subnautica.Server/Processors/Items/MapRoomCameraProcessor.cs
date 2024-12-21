@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Items
+namespace Subnautica.Server.Processors.Items
 {
     using Subnautica.Network.Models.Server;
     using Subnautica.Server.Abstracts.Processors;
@@ -8,13 +8,6 @@
 
     public class MapRoomCameraProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, PlayerItemActionArgs packet)
         {
             var component = packet.Item.GetComponent<ItemModel.DroneCamera>();

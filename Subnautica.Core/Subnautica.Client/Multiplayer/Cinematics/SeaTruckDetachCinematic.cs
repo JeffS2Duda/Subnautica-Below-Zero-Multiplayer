@@ -5,35 +5,14 @@
 
     public class SeaTruckDetachCinematic : CinematicController
     {
-        /**
-         *
-         * Yatağı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::SeaTruckMotor SeaTruckMotor { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.SeaTruckMotor = this.Target.GetComponentInChildren<global::SeaTruckMotor>();
             this.SeaTruckMotor.animator.Rebind();
         }
 
-        /**
-         *
-         * Çözme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void DetachSeaTruckCinematic()
         {
             if (this.SeaTruckMotor.seatruckanimation)
@@ -44,13 +23,6 @@
             }
         }
 
-        /**
-         *
-         * Binme bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void DetachSeaTruckEndMode()
         {
             if (this.ZeroPlayer.IsInSeaTruck)

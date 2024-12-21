@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch]
     public static class Exited
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Hoverbike), nameof(global::Hoverbike.ExitVehicle))]
         private static void Hoverbike_ExitVehicle(global::Hoverbike __instance)
@@ -37,13 +30,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Vehicle), nameof(global::Vehicle.OnPilotModeEnd))]
         private static void Vehicle_OnPilotModeEnd(global::Hoverbike __instance)
@@ -63,13 +49,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckMotor), nameof(global::SeaTruckMotor.StopPiloting))]
         private static void SeaTruckMotor_StopPiloting(global::SeaTruckMotor __instance)
@@ -89,13 +68,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckAnimation), nameof(global::SeaTruckAnimation.TriggerAnimation))]
         private static void SeaTruckAnimation_TriggerAnimation(global::SeaTruckAnimation __instance, SeaTruckAnimation.Animation anim)
@@ -119,13 +91,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SpyPenguin), nameof(global::SpyPenguin.DisablePenguinCam))]
         private static void SpyPenguin_DisablePenguinCam(global::SpyPenguin __instance)
@@ -145,13 +110,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::MapRoomCamera), nameof(global::MapRoomCamera.FreeCamera))]
         private static void MapRoomCamera_FreeCamera(global::MapRoomCamera __instance)

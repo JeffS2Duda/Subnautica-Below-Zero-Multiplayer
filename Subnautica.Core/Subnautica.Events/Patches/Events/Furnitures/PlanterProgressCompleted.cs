@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
     using System.Collections;
@@ -18,13 +18,6 @@
     [HarmonyPatch(typeof(global::GrowingPlant), nameof(global::GrowingPlant.SpawnGrownModelAsync))]
     public static class PlanterProgressCompleted
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator Postfix(IEnumerator values, global::GrowingPlant __instance)
         {
             if (Network.IsMultiplayerActive)

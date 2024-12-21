@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -13,13 +13,6 @@
     [HarmonyPatch]
     public static class SeaTruckDocking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckDockingBay), nameof(global::SeaTruckDockingBay.OnTriggerEnter))]
         private static bool Prefix(global::SeaTruckDockingBay __instance, Collider other)

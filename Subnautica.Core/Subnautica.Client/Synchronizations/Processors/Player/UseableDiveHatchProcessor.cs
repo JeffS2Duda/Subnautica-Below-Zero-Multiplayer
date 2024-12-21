@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
 
     public class UseableDiveHatchProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.UseableDiveHatchArgs>();
@@ -50,13 +43,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu bir araca binmeye yada inmeye çalıştığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnUseableDiveHatchClicking(UseableDiveHatchClickingEventArgs ev)
         {
             if (ev.IsBulkHead || ev.IsLifePod)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Abstracts
+namespace Subnautica.Server.Abstracts
 {
     using System.Collections.Generic;
 
@@ -25,22 +25,8 @@
     public class ProcessorShared
     {
 
-        /**
-         *
-         * İşlemleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<ProcessType, NormalProcessor> Processors { get; set; } = new Dictionary<ProcessType, NormalProcessor>()
         {            
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { ProcessType.None                          , new NoneProcessor() },
             { ProcessType.JoiningServer                 , new Player.JoiningProcessor() },
             { ProcessType.PlayerUpdated                 , new Player.UpdatedProcessor() },
@@ -137,22 +123,8 @@
             { ProcessType.StoryShieldBase               , new Story.ShieldBaseProcessor()},
         };
 
-        /**
-         *
-         * Metadata İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<TechType, MetadataProcessor> MetadataProcessors { get; set; } = new Dictionary<TechType, MetadataProcessor>()
         {
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { TechType.AromatherapyLamp      , new Metadata.AromatherapyLampProcessor() },
             { TechType.EmmanuelPendulum      , new Metadata.EmmanuelPendulumProcessor() },
             { TechType.Shower                , new Metadata.ShowerProcessor() },
@@ -208,43 +180,15 @@
             { TechType.BaseWaterPark         , new Metadata.BaseWaterParkProcessor() },
         };
 
-        /**
-         *
-         * Yaratık Senkronizasyon İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<TechType, WorldCreatureProcessor> WorldCreatureProcessors { get; set; } = new Dictionary<TechType, WorldCreatureProcessor>()
         {
-            /**
-             *
-             * Yaratık Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { TechType.GlowWhale  , new Creatures.GlowWhaleProcessor() },
             { TechType.Crash      , new Creatures.CrashFishProcessor() },
             { TechType.LilyPaddler, new Creatures.LilyPaddlerProcessor() },
         };
 
-        /**
-         *
-         * World Entity İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<EntityProcessType, WorldEntityProcessor> WorldEntityProcessors { get; set; } = new Dictionary<EntityProcessType, WorldEntityProcessor>()
         {
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { EntityProcessType.OxygenPlant         , new WorldEntities.OxygenPlantProcessor() },
             { EntityProcessType.SupplyCrate         , new WorldEntities.SupplyCrateProcessor() },
             { EntityProcessType.Databox             , new WorldEntities.DataboxProcessor() },
@@ -256,22 +200,8 @@
             { EntityProcessType.Elevator            , new WorldEntities.ElevatorProcessor() },
         };
 
-        /**
-         *
-         * Oyuncu Eşya İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<TechType, PlayerItemProcessor> PlayerItemProcessors { get; set; } = new Dictionary<TechType, PlayerItemProcessor>()
         {
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { TechType.Scanner            , new Items.ScannerProcessor() },
             { TechType.Knife              , new Items.KnifeProcessor() },
             { TechType.Constructor        , new Items.ConstructorProcessor() },

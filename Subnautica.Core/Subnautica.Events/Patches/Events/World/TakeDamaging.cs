@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.World
+namespace Subnautica.Events.Patches.Events.World
 {
     using HarmonyLib;
 
@@ -12,13 +12,6 @@
     [HarmonyPatch(typeof(global::LiveMixin), nameof(global::LiveMixin.TakeDamage))]
     public static class TakeDamaging
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::LiveMixin __instance, float originalDamage, Vector3 position, DamageType type, GameObject dealer)
         {
             if (Network.IsMultiplayerActive && !__instance.invincible && __instance.health > 0.0f)
@@ -55,13 +48,6 @@
             return true;
         }
 
-        /**
-         *
-         * TechType döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetTechType(GameObject gameObject)
         {
             var techType = CraftData.GetTechType(gameObject);

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using System.Collections.Generic;
 
@@ -12,13 +12,6 @@
 
     public class WorldDynamicEntityOwnershipChangedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.WorldDynamicEntityOwnershipChangedArgs>();
@@ -35,13 +28,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne işlemi tamamlanınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntityProcessCompleted(ItemQueueProcess item)
         {
             var entities = item.Action.GetProperty<Dictionary<string, List<ushort>>>("Entities");

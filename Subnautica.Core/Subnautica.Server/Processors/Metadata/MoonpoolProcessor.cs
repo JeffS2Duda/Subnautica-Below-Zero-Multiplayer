@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -16,13 +16,6 @@
 
     public class MoonpoolProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             var moonpool  = construction.EnsureComponent<Metadata.BaseMoonpool>();
@@ -139,13 +132,6 @@
             return true;
         }
 
-        /**
-         *
-         * SeaTruck arka modül bağlantısını keser.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string RemoveSeaTruckBackModule(string vehicleId, string playerUniqueId, ZeroVector3 position)
         {
             var backModuleId = Server.Instance.Storages.World.RemoveSeaTruckConnection(vehicleId);
@@ -166,13 +152,6 @@
             return backModule.UniqueId;
         }
 
-        /**
-         *
-         * Color Customizer döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ZeroColorCustomizer GetColorCustomizer(NetworkDynamicEntityComponent component) 
         {
             if (component is WorldEntityModel.SeaTruck)
@@ -188,13 +167,6 @@
             return null;
         }
 
-        /**
-         *
-         * Demirlemeyi çözer.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void MoonpoolUndock(WorldDynamicEntity vehicle, AuthorizationProfile profile, string moonpoolId)
         {
             var customPlayerId = Interact.GetCustomId(profile.UniqueId);
@@ -220,13 +192,6 @@
             profile.SetVehicle(vehicle.UniqueId);
         }
 
-        /**
-         *
-         * Kuyruk Demirlemesini çözer.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool MoonpoolUndockTail(ConstructionItem construction, Metadata.BaseMoonpool moonpool)
         {
             if (construction.TechType != TechType.BaseMoonpoolExpansion || moonpool.ExpansionManager.IsTailDocked() == false)

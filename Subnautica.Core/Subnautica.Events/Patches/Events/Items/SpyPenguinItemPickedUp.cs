@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::SpyPenguin), nameof(global::SpyPenguin.TryPickup))]
     public class SpyPenguinItemPickedUp
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::SpyPenguin __instance, Pickupable pickup)
         {
             if (!Network.IsMultiplayerActive)

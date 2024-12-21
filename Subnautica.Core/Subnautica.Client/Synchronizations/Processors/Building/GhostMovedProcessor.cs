@@ -15,13 +15,6 @@
 
     public class GhostMovedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ConstructionGhostMovingArgs>();
@@ -61,13 +54,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bir eşya veya bina eşya taslağı oluşturulduğunda saniyede ortalama 10 kez tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructingGhostMoved(ConstructionGhostMovedEventArgs ev)
         {
             ServerModel.ConstructionGhostMovingArgs request = new ServerModel.ConstructionGhostMovingArgs()

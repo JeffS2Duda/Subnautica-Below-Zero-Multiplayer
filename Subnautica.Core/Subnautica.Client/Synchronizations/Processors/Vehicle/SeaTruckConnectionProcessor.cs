@@ -16,13 +16,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 
     public class SeaTruckConnectionProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SeaTruckConnectionArgs>();
@@ -51,13 +44,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnMoonpoolProcessCompleted(ItemQueueProcess item)
         {
             var frontModuleId = item.Action.GetProperty<string>("FrontModuleId");
@@ -106,13 +92,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             }
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnProcessCompleted(ItemQueueProcess item)
         {
             var frontModuleId = item.Action.GetProperty<string>("FrontModuleId");
@@ -228,13 +207,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             }
         }
 
-        /**
-         *
-         * Seatruck modülü bağlanırken/ayrılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSeaTruckConnecting(SeaTruckConnectingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -282,13 +254,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             }
         }
 
-        /**
-         *
-         * SeaTruck modül bağlantı kesme animasyonunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSeaTruckDetaching(SeaTruckDetachingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -296,13 +261,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             SeaTruckConnectionProcessor.SendPacketToServer(false, true, ev.UniqueId);
         }
 
-        /**
-         *
-         * Sunucuya Paket Gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(bool isConnect, bool isEject = false, string frontModuleId = null, string backModuleId = null, string firstModuleId = null, bool isMoonpoolExpansion = false)
         {
             ServerModel.SeaTruckConnectionArgs request = new ServerModel.SeaTruckConnectionArgs()

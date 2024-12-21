@@ -8,13 +8,6 @@
 
     public class JukeboxDiskProcessor
     {
-        /**
-         *
-         * Şarkı Disk verileri yüklendikten sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnJukeboxInitialized()
         {
             if (Network.Session.Current.JukeboxDisks != null)

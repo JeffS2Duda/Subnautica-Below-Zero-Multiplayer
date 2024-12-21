@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -12,22 +12,8 @@
     [HarmonyPatch(typeof(global::uGUI_CraftingMenu), nameof(global::uGUI_CraftingMenu.OnDeselect))]
     public static class CrafterClosed
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Type ConstructorInputType = typeof(ConstructorInput);
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::uGUI_CraftingMenu __instance)
         {   
             if (!Network.IsMultiplayerActive)

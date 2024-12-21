@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::Thumper), nameof(global::Thumper.Deploy))]
     public class ThumperDeploying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Thumper __instance, bool state)
         {
             if (Network.IsMultiplayerActive && state && !EventBlocker.IsEventBlocked(TechType.Thumper))

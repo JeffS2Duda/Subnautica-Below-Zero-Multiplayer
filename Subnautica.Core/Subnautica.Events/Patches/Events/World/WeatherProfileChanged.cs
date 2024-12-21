@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.World
+namespace Subnautica.Events.Patches.Events.World
 {
     using System;
 
@@ -10,31 +10,10 @@
     [HarmonyPatch]
     public static class WeatherProfileChanged
     {
-        /**
-         *
-         * Zamanlayıcıyı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static StopwatchItem Timing = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Son profil id'sini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string LastProfileId { get; set; }
 
-        /**
-         *
-         * Fonkisyonu yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::WeatherManager), nameof(global::WeatherManager.Update))]
         private static void WeatherManager_Update()
@@ -64,13 +43,6 @@
             }
         }
 
-        /**
-         *
-         * Fonkisyonu yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::WeatherManager), nameof(global::WeatherManager.ActivateScriptedWeatherEvent), new Type[] { typeof(WeatherEventData), typeof(bool) })]
         private static bool WeatherManager_ActivateScriptedWeatherEvent(WeatherEventData eventData)
@@ -94,13 +66,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonkisyonu yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::WeatherManager), nameof(global::WeatherManager.Start))]
         private static void WeatherManager_OnDestroy()

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::Bed), nameof(global::Bed.ExitInUseMode))]
     public static class BedExitInUseMode
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::Bed __instance)
         {
             if (!Network.IsMultiplayerActive || __instance.inUseMode == Bed.InUseMode.None)

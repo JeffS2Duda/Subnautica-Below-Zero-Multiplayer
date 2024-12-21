@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.PDA
+namespace Subnautica.Client.Synchronizations.Processors.PDA
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -11,13 +11,6 @@
 
     public class TechAnalyzeAddedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.TechAnalyzeAddedArgs>();
@@ -31,13 +24,6 @@
             return true;
         }
 
-        /**
-         *
-         * Teknoloji analiz edildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTechAnalyzeAdded(TechAnalyzeAddedEventArgs ev)
         {
             ServerModel.TechAnalyzeAddedArgs result = new ServerModel.TechAnalyzeAddedArgs()

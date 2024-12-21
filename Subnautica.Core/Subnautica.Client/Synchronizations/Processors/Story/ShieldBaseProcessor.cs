@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using System.Collections;
 
@@ -13,13 +13,6 @@
 
     public class ShieldBaseProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryShieldBaseArgs>();
@@ -31,13 +24,6 @@
             return true;
         }
 
-        /**
-         *
-         * Kalkan üssüne ilk giriş animasyon ve seslendirmeleri başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator PlayFirstEnterDirector(float leftTime)
         {
             if (leftTime > 0f)
@@ -56,13 +42,6 @@
             }
         }
 
-        /**
-         *
-         * Kalkan üssüne girildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnShieldBaseEnterTriggering(ShieldBaseEnterTriggeringEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -70,13 +49,6 @@
             ShieldBaseProcessor.SendPacketToServer(true);
         }
 
-        /**
-         *
-         * Hikaye çağrısı kabul/red edildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(bool isEntering)
         {
             ServerModel.StoryShieldBaseArgs result = new ServerModel.StoryShieldBaseArgs()

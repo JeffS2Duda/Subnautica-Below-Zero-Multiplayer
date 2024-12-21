@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
@@ -11,13 +11,6 @@
 
     public class BeaconProcessor : WorldDynamicEntityProcessor
     {
-        /**
-         *
-         * Dünya yüklenip nesne doğduğunda çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnWorldLoadItemSpawn(NetworkDynamicEntityComponent packet, bool isDeployed, Pickupable pickupable, GameObject gameObject)
         {
             if (!isDeployed)
@@ -57,13 +50,6 @@
             return true;
         }
 
-        /**
-         *
-         * Beacon'u ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void InitializeBeaconSignal(global::Pickupable pickupable, Vector3 position, Quaternion rotation, string text, bool isDeployedOnLand)
         {
             pickupable.Activate(false);

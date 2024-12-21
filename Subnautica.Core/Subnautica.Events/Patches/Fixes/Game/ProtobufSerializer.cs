@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Game
+namespace Subnautica.Events.Patches.Fixes.Game
 {
     using System;
     using System.Collections.Generic;
@@ -20,13 +20,6 @@
             return ProtobufSerializer.TranspileSerializeGameObject(instructions);
         }
 
-        /**
-         *
-         * Transpiler uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<CodeInstruction> TranspileSerializeGameObject(IEnumerable<CodeInstruction> instructions)
         {
             var codes = instructions.ToList();
@@ -56,13 +49,6 @@
             return codes.AsEnumerable();
         }
 
-        /**
-         *
-         * UniqueId Değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetSerializeGameObjectId(global::ProtobufSerializer serializer, string id)
         {
             if (Network.IsMultiplayerActive && serializer.IsIdIgnoreModeActive())
@@ -80,13 +66,6 @@
             return id;
         }
 
-        /**
-         *
-         * ParentId Değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetSerializeGameObjectParentId(global::ProtobufSerializer serializer, global::UniqueIdentifier uid, bool useParent)
         {
             if (!Network.IsMultiplayerActive || !useParent || !serializer.IsIdIgnoreModeActive())

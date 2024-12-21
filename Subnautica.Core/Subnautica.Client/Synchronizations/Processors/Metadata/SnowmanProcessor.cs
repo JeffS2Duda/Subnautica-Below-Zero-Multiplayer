@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Core;
@@ -11,13 +11,6 @@
 
     public class SnowmanProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.Snowman>();
@@ -40,13 +33,6 @@
             return true;
         }
 
-        /**
-         *
-         * Kardan adam yok edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSnowmanDestroying(SnowmanDestroyingEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity)

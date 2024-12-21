@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
     using Subnautica.API.Extensions;
@@ -9,13 +9,6 @@
     [HarmonyPatch(typeof(global::UseableDiveHatch), nameof(global::UseableDiveHatch.OnHandHover))]
     public class UseableDiveHatch
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::UseableDiveHatch __instance)
         {
             if (!Network.IsMultiplayerActive)

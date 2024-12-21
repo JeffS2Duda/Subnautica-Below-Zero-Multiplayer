@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic.Furnitures
+namespace Subnautica.Server.Logic.Furnitures
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -18,76 +18,20 @@
 
     public class BaseMapRoom : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * ScannerCache nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, Dictionary<int, float>> ScannerCache { get; set; } = new Dictionary<string, Dictionary<int, float>>();
 
-        /**
-         *
-         * Varsayılan Max Distance nesnesini barındırır. (300 metre)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float DefaultMaxDistance { get; set; } = 300f;
 
-        /**
-         *
-         * MaxRequestDistance nesnesini barındırır. (ort 11 metre)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float MaxRequestDistance { get; set; } = 125f;
 
-        /**
-         *
-         * Max Resource Limit nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private int MaxResourceLimit { get; set; } = 20;
 
-        /**
-         *
-         * IsSendAllPlayers nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsSendAllPlayers { get; set; } = false;
 
-        /**
-         *
-         * FistRequests nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, HashSet<string>> FirstRequests { get; set; } = new Dictionary<string, HashSet<string>>();
 
-        /**
-         *
-         * Zamanlayıcının geri dönüş methodu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float fixedDeltaTime)
         {
             if (this.Timing.IsFinished() && World.IsLoaded)
@@ -180,13 +124,6 @@
             }
         }
 
-        /**
-         *
-         * Aracı şarj eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ChargeVehicle(global::MapRoomFunctionality mapRoom, WorldDynamicEntity entity)
         {
             if (entity == null)
@@ -214,25 +151,11 @@
             return false;
         }
 
-        /**
-         *
-         * İstek türünü değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SetRequestType(bool isAll)
         {
             this.IsSendAllPlayers = isAll;
         }
 
-        /**
-         *
-         * Harita odasını önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool InitializeMapRoom(ConstructionItem construction, MetadataModel.StorageContainer storageContainer, TechType techType, bool isChanged = false)
         {
             if (isChanged)
@@ -270,25 +193,11 @@
             return true;
         }
 
-        /**
-         *
-         * Oda tarama genişliğini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateScanRange(ConstructionItem construction, MetadataModel.BaseMapRoom baseMapRoom)
         {
             this.InitializeMapRoom(construction, baseMapRoom.StorageContainer, baseMapRoom.ScanTechType, true);
         }
 
-        /**
-         *
-         * SpawnPoints değerlerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerable<KeyValuePair<int, ZeroSpawnPointSimple>> GetSpawnPoints(TechType techType)
         {
             if (techType.IsFragment())
@@ -304,13 +213,6 @@
             return Server.Core.Server.Instance.Logices.WorldStreamer.GetSpawnPoints().Where(q => q.Value.TechType == techType);
         }
 
-        /**
-         *
-         * Oyunculara paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SendPacketToPlayers(ConstructionItem construction, MetadataModel.BaseMapRoom mapRoom, bool isAll)
         {
             if (this.IsPacketSendable(construction, isAll))
@@ -333,13 +235,6 @@
             }
         }
 
-        /**
-         *
-         * İstek paketini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private BaseMapRoomTransmissionArgs GetRequestPacket(string uniqueId, HashSet<string> resourceNodes)
         {
             BaseMapRoomTransmissionArgs packet = new BaseMapRoomTransmissionArgs()
@@ -385,13 +280,6 @@
             return packet;
         }
 
-        /**
-         *
-         * Paket gönderim durumu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsPacketSendable(ConstructionItem construction, bool isAll)
         {
             if (isAll)
@@ -410,13 +298,6 @@
             return false;
         }
 
-        /**
-         *
-         * Kaynakları senkronize eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool SyncResourceNodes(MetadataModel.BaseMapRoom mapRoom)
         {
             if (mapRoom.ResourceNodes.Count <= 0)
@@ -454,13 +335,6 @@
             return isRemoved;
         }
 
-        /**
-         *
-         * Nesne arar ve id döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string FindItem(ConstructionItem construction, TechType techType, HashSet<string> ignoreIds)
         {
             if (this.ScannerCache.TryGetValue(construction.UniqueId, out var items))
@@ -494,13 +368,6 @@
             return null;
         }
 
-        /**
-         *
-         * Oyuncuya çıktığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPlayerDisconnected(string uniqueId)
         {
             foreach (var item in this.FirstRequests.Values)
@@ -509,13 +376,6 @@
             }
         }
 
-        /**
-         *
-         * Enerji tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ConsumeEnergy(MapRoomFunctionality mapRoom, bool isScanning)
         {
             var energyAmount = isScanning ? 0.5f : 0.15f;
@@ -528,13 +388,6 @@
             return false;
         }
 
-        /**
-         *
-         * Tarama süresini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float GetScanInterval(MetadataModel.StorageContainer storageContainer)
         {
             if (storageContainer == null)
@@ -545,13 +398,6 @@
             return Mathf.Max(1f, (float)(14.0 - (double)storageContainer.GetCount(TechType.MapRoomUpgradeScanSpeed) * 3.0));
         }
 
-        /**
-         *
-         * Max uzaklığı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float GetMaxDistance(MetadataModel.StorageContainer construction)
         {
             if (construction == null)
@@ -563,13 +409,6 @@
             return maxDistance * maxDistance;
         }
 
-        /**
-         *
-         * Hoverpad'leri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<KeyValuePair<string, ConstructionItem>> GetBaseMapRooms()
         {
             return Core.Server.Instance.Storages.Construction.Storage.Constructions.Where(q => q.Value.ConstructedAmount == 1f && q.Value.TechType == TechType.BaseMapRoom).ToList();

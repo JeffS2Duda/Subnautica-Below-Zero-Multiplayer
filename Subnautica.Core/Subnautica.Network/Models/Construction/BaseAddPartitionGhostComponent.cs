@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Construction
+namespace Subnautica.Network.Models.Construction
 {
     using MessagePack;
 
@@ -7,13 +7,6 @@
     [MessagePackObject]
     public class BaseAddPartitionGhostComponent : BaseGhostComponent
     {
-        /**
-         *
-         * FaceStart değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public BaseFaceComponent FaceStart { get; set; }
     }

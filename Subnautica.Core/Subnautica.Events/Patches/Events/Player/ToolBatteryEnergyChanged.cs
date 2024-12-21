@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
     using System.Collections.Generic;
@@ -14,31 +14,10 @@
     [HarmonyPatch]
     public static class ToolBatteryEnergyChanged
     {
-        /**
-         *
-         * Timing verisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static StopwatchItem Timing = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Items verisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, BatteryEnergyItem> Items = new Dictionary<string, BatteryEnergyItem>();
 
-        /**
-         *
-         * Sınıfı yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPostfix]
         [HarmonyPatch(typeof(global::QuickSlots), nameof(global::QuickSlots.Update))]
         private static void QuickSlots_Update(global::QuickSlots __instance)
@@ -76,13 +55,6 @@
             }
         }
 
-        /**
-         *
-         * Batarya değerleri değişti mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsBatteryValueChanged(BatteryEnergyItem batteryItem, global::EnergyMixin energyMixin)
         {
             if (Mathf.Abs(batteryItem.Charge - energyMixin.charge) >= 1f)
@@ -100,31 +72,10 @@
     }
     public class BatteryEnergyItem
     {
-        /**
-         *
-         * Enerjiyi barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float Charge { get; set; } = -1f;
 
-        /**
-         *
-         * Kapasiteyi barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float Capacity { get; set; } = -1f;
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetBattery(float charge, float capacity)
         {
             this.Charge = charge;

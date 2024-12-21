@@ -9,13 +9,6 @@
 
     public static class ItemExtensions
     {
-        /**
-         *
-         * Nesneyi yerden alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool LocalPickup(this global::Pickupable pickupable)
         {            
             using (EventBlocker.Create(ProcessType.ItemPickup))
@@ -24,25 +17,11 @@
             }
         }
 
-        /**
-         *
-         * Nesneyi yere düşürürür
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void MultiplayerDrop(this global::Pickupable pickupable, bool callSound = false, bool ignoreTracker = false, string waterParkId = null, double waterParkAddTime = 0)
         {
             pickupable.MultiplayerDrop(pickupable.transform.position, callSound, ignoreTracker, waterParkId, waterParkAddTime);
         }
 
-        /**
-         *
-         * Nesneyi yere düşürürür
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool MultiplayerDrop(this global::Pickupable pickupable, Vector3 position, bool callSound = false, bool ignoreTracker = false, string waterParkId = null, double waterParkAddTime = 0)
         {
             if (pickupable == null)
@@ -99,13 +78,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesneyi yere yerleştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool MultiplayerPlace(this global::Pickupable pickupable, string baseId)
         {
             pickupable.MultiplayerDrop(pickupable.transform.position, ignoreTracker: true);

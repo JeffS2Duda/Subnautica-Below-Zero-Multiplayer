@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -11,13 +11,6 @@
 
     public class ClimbProcessor : NormalProcessor
     {
-        /**
-        *
-        * Gelen veriyi işler
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.PlayerClimbArgs>();
@@ -39,13 +32,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu merdivene tırmanmaya çalışılınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerClimbing(PlayerClimbingEventArgs ev)
         {
             ev.IsAllowed = false;

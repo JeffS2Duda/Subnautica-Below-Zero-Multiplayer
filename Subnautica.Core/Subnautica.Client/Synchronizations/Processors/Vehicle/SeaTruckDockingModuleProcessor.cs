@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -15,13 +15,6 @@
 
     public class SeaTruckDockingModuleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SeaTruckDockingModuleArgs>();
@@ -44,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnDockProcessCompleted(ItemQueueProcess item)
         {
             var uniqueId  = item.Action.GetProperty<string>("UniqueId");
@@ -70,13 +56,6 @@
             }
         }
 
-        /**
-         *
-         * Demirlemeyi başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void StartDocking(string uniqueId, string vehicleId)
         {
             Network.DynamicEntity.RemoveEntity(vehicleId);
@@ -88,13 +67,6 @@
             }
         }
 
-        /**
-         *
-         * Demirlemeyi çözer.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void StartUndocking(string uniqueId, WorldDynamicEntity entity, byte playerId, bool isEnterUndock, ZeroVector3 undockPosition)
         {
             Network.DynamicEntity.AddEntity(entity);
@@ -106,13 +78,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck/Exosuit rıhtıma yanaşırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleDocking(VehicleDockingEventArgs ev)
         {
             if (ev.MoonpoolType == TechType.SeaTruckDockingModule)
@@ -123,13 +88,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck/Exosuit rıhtımdan ayrılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleUndocking(VehicleUndockingEventArgs ev)
         {
             if (ev.MoonpoolType == TechType.SeaTruckDockingModule)
@@ -143,13 +101,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck modülü başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSeaTruckModuleInitialized(SeaTruckModuleInitializedEventArgs ev)
         {
             if (ev.TechType == TechType.SeaTruckDockingModule)
@@ -158,13 +109,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string vehicleId, ZeroVector3 undockPosition = null, ZeroQuaternion undockRotation = null, bool isDocking = false, bool isEnterUndock = false)
         {
             ServerModel.SeaTruckDockingModuleArgs request = new ServerModel.SeaTruckDockingModuleArgs()

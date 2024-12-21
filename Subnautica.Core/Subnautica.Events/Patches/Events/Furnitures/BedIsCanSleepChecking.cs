@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::Bed), nameof(global::Bed.GetCanSleep))]
     public static class BedIsCanSleepChecking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Bed __instance, ref bool __result, global::Player player, bool notify)
         {
             if(!Network.IsMultiplayerActive)

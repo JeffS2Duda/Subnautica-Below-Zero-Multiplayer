@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Storage
+namespace Subnautica.Events.Patches.Events.Storage
 {
     using HarmonyLib;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::StorageContainer), nameof(global::StorageContainer.OnHandClick))]
     public static class Opening
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::StorageContainer __instance)
         {
             if(!Network.IsMultiplayerActive)

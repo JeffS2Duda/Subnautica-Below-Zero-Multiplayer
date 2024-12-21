@@ -12,13 +12,6 @@
 
     public class AmountChangedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ConstructionAmountChangedArgs>();
@@ -38,13 +31,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yapı inşaa değeri değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructingAmountChanged(ConstructionAmountChangedEventArgs ev)
         {
             ServerModel.ConstructionAmountChangedArgs request = new ServerModel.ConstructionAmountChangedArgs()

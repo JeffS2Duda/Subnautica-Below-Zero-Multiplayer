@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -13,13 +13,6 @@
 
     public class EnterProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleEnterArgs>();
@@ -175,13 +168,6 @@
             return true;
         }
 
-        /**
-         *
-         * Araca binerken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleEntering(VehicleEnteringEventArgs ev)
         {
             ev.IsAllowed = false;

@@ -16,13 +16,6 @@
 
     public class MeleeAttackProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         { 
             var packet = networkPacket.GetPacket<ServerModel.CreatureMeleeAttackArgs>();
@@ -40,13 +33,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
             var target      = item.Action.GetProperty<ZeroLastTarget>("Target");
@@ -58,13 +44,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık bir nesne ile temasa geçtiğinde (saldırdığında) tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMeleeAttacking(CreatureMeleeAttackingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -86,13 +65,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(ushort creatureId, string targetId, TechType techType, float biteDamage)
         {
             ServerModel.CreatureMeleeAttackArgs request = new ServerModel.CreatureMeleeAttackArgs()

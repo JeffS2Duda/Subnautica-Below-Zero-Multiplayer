@@ -5,22 +5,8 @@
 
     public class SeaTruck : VehicleController
     {
-        /**
-         *
-         * SeaTruck aracını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::SeaTruckMotor Vehicle { get; set; }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate()
         {
             base.OnUpdate();
@@ -31,13 +17,6 @@
             }
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
@@ -48,25 +27,10 @@
             }
         }
 
-        /**
-         *
-         * Araç seslerini ayarlar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateSounds()
         {
-            // 32 December 2099
         }
 
-        /**
-         *
-         * Oyuncu araca bindiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnEnterVehicle()
         {
             base.OnEnterVehicle();
@@ -85,13 +49,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnExitVehicle()
         {
             if (this.Management.Vehicle)

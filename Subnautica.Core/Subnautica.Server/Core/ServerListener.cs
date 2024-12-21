@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Core
+namespace Subnautica.Server.Core
 {
     using System;
     using System.Net;
@@ -14,25 +14,11 @@
 
     public class ServerListener : INetEventListener
     {
-        /**
-         *
-         * Oyuncu bağlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPeerConnected(NetPeer peer)
         {
             Log.Info($"[{peer}] client connected...");
         }
 
-        /**
-         *
-         * Bağlantı isteği gönderildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnConnectionRequest(ConnectionRequest request)
         {
             if (Core.Server.Instance.GetConnectedPeerCount() < Core.Server.Instance.MaxPlayer)
@@ -54,13 +40,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu bağlantısı kesildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPeerDisconnected(NetPeer peer, DisconnectInfo disconnectInfo)
         {
             Log.Info($"[{peer}] client disconnected: {disconnectInfo.Reason}");
@@ -73,13 +52,6 @@
             }
         }
 
-        /**
-         *
-         * Veri alındığında tetiklenir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnNetworkReceive(NetPeer peer, NetPacketReader reader, byte channelNumber, DeliveryMethod deliveryMethod)
         {
             var packetSize = reader.AvailableBytes;
@@ -124,7 +96,6 @@
                 }
                 else
                 {
-                    // Server.DisconnectToClient(e.IpPort);
                     Log.Error($"[{packet.Type}] Processor Not Found: " + packet.GetType());
                 }
             }
@@ -134,48 +105,20 @@
             }
         }
 
-        /**
-         *
-         * Ağ hatası olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnNetworkError(IPEndPoint endPoint, SocketError socketError)
         {
             
         }
 
-        /**
-         *
-         * Bağlanmamış kullanıcıdan veri geldiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnNetworkReceiveUnconnected(IPEndPoint remoteEndPoint, NetPacketReader reader, UnconnectedMessageType messageType)
         {
 
         }
 
-        /**
-         *
-         * Ağ gecikmesi güncelleme durumunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnNetworkLatencyUpdate(NetPeer peer, int latency)
         {
         }
 
-        /**
-         *
-         * Reddetme paketini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private byte[] GetRejectPacket(ConnectionSignal rejectType)
         {
             var request = new ConnectionRejectArgs()

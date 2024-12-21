@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.General
+namespace Subnautica.Server.Processors.General
 {
     using System.Linq;
 
@@ -12,13 +12,6 @@
 
     public class LifepodProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.LifepodArgs>();
@@ -56,13 +49,6 @@
             return true;
         }
 
-        /**
-         *
-         * Depolamayı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private StorageContainer GetStorageContainer(string uniqueId)
         {
             var lifepod = Server.Instance.Storages.World.Storage.SupplyDrops.Where(q => q.UniqueId == uniqueId).FirstOrDefault();

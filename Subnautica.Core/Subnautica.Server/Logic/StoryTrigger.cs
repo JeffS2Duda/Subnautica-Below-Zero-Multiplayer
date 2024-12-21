@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -15,31 +15,10 @@
 
     public class StoryTrigger : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Triggers nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<StoryTriggerItem> Triggers { get; set; } = new List<StoryTriggerItem>();
 
-        /**
-         *
-         * Oyun Sonu hedefleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<string> EndGameGoals { get; set; } = new List<string>()
         {
             "OnEndGameBegin",
@@ -54,13 +33,6 @@
             "ShowGameCredits",
         };
 
-        /**
-         *
-         * Oyun Sonu Cinematicleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<StoryCinematicType> EndGameCinematics { get; set; } = new List<StoryCinematicType>()
         {
             StoryCinematicType.StoryShieldBaseEndGate,
@@ -72,13 +44,6 @@
             StoryCinematicType.StoryEndGameGoToHomeWorld,
         };
 
-        /**
-         *
-         * Sınıfı başlatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.ResetEndGame();
@@ -98,25 +63,11 @@
             this.AddCustomDoorway(StoryCinematicType.StoryShieldBaseEndGate  , new ZeroQuaternion(0.0f, 0.0f, 0.0f, 1.0f) , new ZeroVector3(1.1f, 1.6f, 1.0f));
         }
 
-        /**
-         *
-         * Tetikleyicinin varlığını kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsTriggerExists(string goalKey)
         {
             return this.Triggers.Any(q => q.GoalKey == goalKey && q.IsTrigger);
         }
 
-        /**
-         *
-         * Her sabit tick'de tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float fixedDeltaTime)
         {
             if (API.Features.World.IsLoaded && this.Timing.IsFinished())
@@ -159,13 +110,6 @@
             }
         }
 
-        /**
-         *
-         * Hikayeyi tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Trigger(StoryTriggerItem trigger)
         {
             this.CompleteTrigger(trigger.GoalKey);
@@ -187,13 +131,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu sayılarını iletir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SendClosestPlayerCount(AuthorizationProfile player, byte playerCount, byte maxPlayer)
         {
             StoryTriggerArgs packet = new StoryTriggerArgs()
@@ -206,13 +143,6 @@
             player.SendPacket(packet);
         }
 
-        /**
-         *
-         * Hikayeyi tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddCheckTrigger(string storyKey)
         {
             var trigger = this.Triggers.FirstOrDefault(q => q.GoalKey == storyKey);
@@ -230,13 +160,6 @@
             return true;
         }
 
-        /**
-         *
-         * Tetikleyici pasif yapar. tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool CompleteTrigger(string storyKey)
         {
             var trigger = this.Triggers.FirstOrDefault(q => q.GoalKey == storyKey);
@@ -261,13 +184,6 @@
             return true;
         }
 
-        /**
-         *
-         * Ön koşul tamamlandı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsPreconditionComplete(string goalKey)
         {
             var trigger = this.Triggers.FirstOrDefault(q => q.GoalKey == goalKey);
@@ -279,13 +195,6 @@
             return trigger.Precondition.IsNull() || Server.Instance.Storages.Story.IsGoalComplete(trigger.Precondition);
         }
 
-        /**
-         *
-         * Tetiklemenin aktif olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsTriggerActive(string goalKey)
         {
             var trigger = this.Triggers.FirstOrDefault(q => q.GoalKey == goalKey);
@@ -297,25 +206,11 @@
             return trigger.IsActive;
         }
 
-        /**
-         *
-         * Cinematic tamamlanmış mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsCinematicFinished(string goalKey)
         {
             return Server.Instance.Storages.Story.Storage.CompletedTriggers.Contains(goalKey);
         }
 
-        /**
-         *
-         * Hedefin yakınındaki oyuncuları kontrol eder ve tamamlanabilirliği döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsCompleteableCinematic(string goalKey)
         {
             if (goalKey == "None")
@@ -337,13 +232,6 @@
             return closestPlayerCount > 0 && closestPlayerCount >= Server.Instance.GetPlayerCount();
         }
 
-        /**
-         *
-         * Hedefin yakınındaki oyuncu sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetClosestPlayerCount(string goalKey)
         {
             var trigger = this.Triggers.FirstOrDefault(q => q.GoalKey == goalKey);
@@ -355,13 +243,6 @@
             return this.GetClosestPlayerCount(trigger.Position, trigger.TriggerRange, trigger.IsInBase);
         }
 
-        /**
-         *
-         * Hedefin yakınındaki oyuncu sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetClosestPlayerCount(ZeroVector3 position, float range, bool isInBaseCheck)
         {
             if (range == -1f)
@@ -382,13 +263,6 @@
             return closestPlayerCount;
         }
 
-        /**
-         *
-         * Oyuncu üs içerisinde mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsPlayerInBase(AuthorizationProfile player, bool isInBaseCheck = false)
         {
             if (!isInBaseCheck)
@@ -399,13 +273,6 @@
             return !string.IsNullOrEmpty(player.SubrootId) || !string.IsNullOrEmpty(player.InteriorId);
         }
 
-        /**
-         *
-         * Özel kapıları ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool AddCustomDoorway(StoryCinematicType cinematicType, ZeroQuaternion rotation, ZeroVector3 scale)
         {
             if (Server.Instance.Storages.Story.Storage.CustomDoorways.Any(q => q.UniqueId == cinematicType.ToString()))
@@ -423,13 +290,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyun sonu ayarlarını sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ResetEndGame()
         {
             foreach (var goalKey in this.EndGameGoals)

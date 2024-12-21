@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::BaseControlRoom), nameof(global::BaseControlRoom.OhClickMinimapConsole))]
     public static class BaseControlRoomMinimapUsing
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::BaseControlRoom __instance)
         {
             if (!Network.IsMultiplayerActive || EventBlocker.IsEventBlocked(TechType.BaseControlRoom))

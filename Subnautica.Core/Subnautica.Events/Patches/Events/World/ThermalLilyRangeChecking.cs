@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Storage
+namespace Subnautica.Events.Patches.Events.Storage
 {
     using HarmonyLib;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::ThermalLily), nameof(global::ThermalLily.IsPlayerClose))]
     public static class ThermalLilyRangeChecking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::ThermalLily __instance, ref bool __result)
         {
             if (!Network.IsMultiplayerActive)
@@ -47,13 +40,6 @@
     [HarmonyPatch(typeof(global::ThermalLily), nameof(global::ThermalLily.UpdateAnimationAngles))]
     public static class ThermalLilyAnimationAnglesChecking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::ThermalLily __instance, float deltaTime)
         {
             if (!Network.IsMultiplayerActive)

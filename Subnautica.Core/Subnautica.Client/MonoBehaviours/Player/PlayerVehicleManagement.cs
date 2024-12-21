@@ -15,58 +15,16 @@
 
     public class PlayerVehicleManagement : MonoBehaviour
     {
-        /**
-         *
-         * Oyuncu sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroPlayer Player { get; set; }
 
-        /**
-         *
-         * Vehicle sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject Vehicle { get; private set; }
 
-        /**
-         *
-         * Binilen araç türü.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private TechType VehicleType { get; set; } = TechType.None;
 
-        /**
-         *
-         * Mevcut araç id değeri.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ushort VehicleId { get; set; } = 0;
 
-        /**
-         *
-         * Mevcut araç Unique Id değeri.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string VehicleUniqueId { get; set; }
 
-        /**
-         *
-         * Araçları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<TechType, VehicleModel.VehicleController> Vehicles { get; private set; } = new Dictionary<TechType, VehicleModel.VehicleController>()
         {
             { TechType.Hoverbike                    , new VehicleModel.Hoverbike() },
@@ -82,13 +40,6 @@
             { TechType.SeaTruckTeleportationModule  , new VehicleModel.SeaTruckModule() },
         };
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Start()
         {
             foreach (var vehicle in this.Vehicles)
@@ -97,13 +48,6 @@
             }
         }
 
-        /**
-         *
-         * Mevcut aracı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public VehicleModel.VehicleController GetCurrentVehicle()
         {
             if (this.VehicleType != TechType.None && this.Vehicles.TryGetValue(this.VehicleType, out var vehicle))
@@ -114,13 +58,6 @@
             return null;
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (this.Player != null && this.Player.IsCreatedModel && !this.Player.IsVehicleDocking && World.IsLoaded)
@@ -136,13 +73,6 @@
             }
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (this.Player != null && this.Player.IsCreatedModel && !this.Player.IsVehicleDocking && World.IsLoaded)
@@ -156,13 +86,6 @@
             }
         }
 
-        /**
-         *
-         * Aracı yeniler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool RefreshVehicle(ushort vehicleId, TechType vehicleType, bool isEnter = true)
         {
             if (this.VehicleId == vehicleId)
@@ -202,13 +125,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yeni bileşen verisini kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void RefreshComponent(VehicleController vehicle, VehicleUpdateComponent component)
         {
             if (component != null && component.IsNew)
@@ -219,13 +135,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araca bindiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEnterVehicle()
         {
             if (this.Vehicles.TryGetValue(this.VehicleType, out var vehicle))
@@ -238,13 +147,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnExitVehicle()
         {
             Network.DynamicEntity.SetEntityUsingByPlayer(this.VehicleId, false);
@@ -266,13 +168,6 @@
             this.VehicleType     = TechType.None;
         }
 
-        /**
-         *
-         * Sınıf yokedilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDestroy()
         {
             this.OnExitVehicle();

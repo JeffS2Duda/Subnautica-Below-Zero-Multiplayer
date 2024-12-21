@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -20,13 +20,6 @@
 
     public class ItemDropProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ItemDropArgs>();
@@ -44,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -66,13 +52,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu bir nesneyi bırakırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerItemDroping(PlayerItemDropingEventArgs ev)
         {
             if (ev.Item.GetTechType() != TechType.SnowBall && !ev.Item.GetTechType().IsCreature())
@@ -91,13 +70,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, WorldPickupItem pickupItem, ZeroVector3 position, ZeroQuaternion rotation, ZeroVector3 forward = null)
         {
             ServerModel.ItemDropArgs request = new ServerModel.ItemDropArgs()
@@ -115,13 +87,6 @@
             NetworkClient.SendPacket(request);
         }
 
-        /**
-         *
-         * Yere bırakma pasif mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsSpecialItemDrop(PlayerItemDropingEventArgs ev, TechType techType)
         {
             if (techType == TechType.Beacon)

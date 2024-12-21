@@ -11,13 +11,6 @@
 
     public class InteractProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ClientModel.InteractArgs>();
@@ -38,13 +31,6 @@
             return true;
         }
 
-        /**
-         *
-         * PDA kapatıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnClosing(PDAClosingEventArgs ev)
         {
             if (Interact.IsBlockedByMe() && !ZeroGame.IsPlayerPiloting())
@@ -53,25 +39,11 @@
             }
         }
 
-        /**
-         *
-         * Tabela seçimi kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSignDeselect(SignDeselectEventArgs ev)
         {
             InteractProcessor.SendDataToServer(false);
         }
 
-        /**
-         *
-         * Pil yerleştirilme kapatıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEnergyMixinClosed(EnergyMixinClosedEventArgs ev)
         {
             if (Interact.IsBlockedByMe(ev.BatterySlotId))
@@ -80,13 +52,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya Veri Gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool SendDataToServer(bool isOpening = false)
         {
             ServerModel.InteractArgs result = new ServerModel.InteractArgs()

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -20,13 +20,6 @@
 
     public class ChargerProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.Charger>();
@@ -117,13 +110,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne yok edildikten sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntityRemoved(ItemQueueProcess item)
         {
             var battery = item.Action.GetProperty<BatteryItem>("BatteryItem");
@@ -139,13 +125,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawnlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OnEntitySpawning(ItemQueueProcess item)
         {
             if (item.Equipment == null)
@@ -168,13 +147,6 @@
             return false;
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var battery = item.Action.GetProperty<BatteryItem>("BatteryItem");
@@ -190,37 +162,16 @@
             }
         }
 
-        /**
-         *
-         * Şarj cihazına pil eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnChargerItemAdded(ChargerItemAddedEventArgs ev)
         {
             ChargerProcessor.SendDataToServer(ev.ConstructionId, ev.Item.GetTechType(), ev.SlotId, ev.Item.GetComponent<Battery>().charge, false, false, false);
         }
 
-        /**
-         *
-         * Şarj cihazın'dan pil kaldırılınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnChargerItemRemoved(ChargerItemRemovedEventArgs ev)
         {
             ChargerProcessor.SendDataToServer(ev.ConstructionId, ev.Item.GetTechType(), ev.SlotId, 0.0f, false, true, false);
         }
 
-        /**
-         *
-         * Şarj cihazına tıklanınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnChargerOpening(ChargerOpeningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -231,13 +182,6 @@
             }
         }
 
-        /**
-         *
-         * PDA kapatıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnClosing(PDAClosingEventArgs ev)
         {
             if (ev.TechType == TechType.BatteryCharger || ev.TechType == TechType.PowerCellCharger)
@@ -253,13 +197,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendDataToServer(string uniqueId, TechType techType, string slotId, float currentCharge, bool isOpening, bool isRemoving, bool isClosing)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -10,13 +10,6 @@
 
     public class SubrootToggleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SubrootToggleArgs>();
@@ -42,37 +35,16 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu üse girdiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerBaseEntered(PlayerBaseEnteredEventArgs ev)
         {
             SendDataToServer(ev.UniqueId, true);
         }
 
-        /**
-         *
-         * Oyuncu üs'den ayrıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerBaseExited(PlayerBaseExitedEventArgs ev)
         {
             SendDataToServer(ev.UniqueId, false);
         }
 
-        /**
-         *
-         * Oyuncu öldüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendDataToServer(string subrootId, bool isEntered = false)
         {
             ServerModel.SubrootToggleArgs request = new ServerModel.SubrootToggleArgs()

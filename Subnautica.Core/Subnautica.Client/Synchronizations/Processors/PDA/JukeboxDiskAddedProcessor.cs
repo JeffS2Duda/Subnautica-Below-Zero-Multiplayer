@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.PDA
+namespace Subnautica.Client.Synchronizations.Processors.PDA
 {
     using System.Linq;
 
@@ -13,13 +13,6 @@
 
     public class JukeboxDiskAddedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.JukeboxDiskAddedArgs>();
@@ -36,13 +29,6 @@
             return true;
         }
 
-        /**
-         *
-         * Şarkı diski açıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnJukeboxDiskAdded(JukeboxDiskAddedEventArgs ev)
         {
             ServerModel.JukeboxDiskAddedArgs result = new ServerModel.JukeboxDiskAddedArgs()

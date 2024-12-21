@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
@@ -10,13 +10,6 @@
 
     public class StorageProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             if (packet.SecretTechType == TechType.Sign)
@@ -54,13 +47,6 @@
             return true;
         }
 
-        /**
-         *
-         * Deponun tabela verisini işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ProcessSign(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             var component = packet.Component.GetComponent<Metadata.Sign>();
@@ -99,13 +85,6 @@
             return true;
         }
 
-        /**
-         *
-         * Depolamayı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Metadata.StorageContainer GetStorageContainer(ConstructionItem construction)
         {
             if (construction.Component == null)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using Subnautica.API.Features;
     using Subnautica.Server.Abstracts;
@@ -9,22 +9,8 @@
 
     public class Timing : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<string, StopwatchItem> Queue { get; set; } = new Dictionary<string, StopwatchItem>();
 
-        /**
-         *
-         * Her tick'de tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float fixedTime)
         {
             if (API.Features.World.IsLoaded && this.Queue.Count > 0)
@@ -50,13 +36,6 @@
             }
         }
 
-        /**
-         *
-         * Kuyruğa işlem ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string AddQueue(string processId, Action action, float time)
         {
             if (time < 0f)
@@ -73,25 +52,11 @@
             return processId;
         }
 
-        /**
-         *
-         * Kuyruğa işlem ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string AddQueue(Action action, float time)
         {
             return AddQueue(Network.Identifier.GenerateUniqueId(), action, time);
         }
 
-        /**
-         *
-         * Kuyruktan işlem kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemoveFromQueue(string processId)
         {
             this.Queue.Remove(processId);

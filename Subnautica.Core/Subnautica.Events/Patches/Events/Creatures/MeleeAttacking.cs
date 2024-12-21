@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Creatures
+namespace Subnautica.Events.Patches.Events.Creatures
 {
     using HarmonyLib;
 
@@ -41,8 +41,6 @@
                 var player = ZeroPlayer.GetPlayerByGameObject(target);
                 if (player != null && player.CanBeAttacked())
                 {
-                    // ErrorMessage.AddMessage("CANBEFED NOT SYNCED!");
-                    // return false;
                 }
             }
 

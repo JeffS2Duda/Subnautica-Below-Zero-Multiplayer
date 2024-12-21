@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::BulkheadDoor), nameof(global::BulkheadDoor.OnHandClick))]
     public static class BulkheadOpening
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::BulkheadDoor __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -62,13 +55,6 @@
             }
         }
 
-        /**
-         *
-         * UniqueId döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(global::BulkheadDoor __instance)
         {
             var constructable = __instance.GetComponentInParent<BaseDeconstructable>();
@@ -86,13 +72,6 @@
             return null;
         }
 
-        /**
-         *
-         * UniqueId döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static StoryCinematicType GetStoryCinematicType(global::BulkheadDoor __instance)
         {            
             var fixedBase = __instance.GetComponentInParent<FixedBase>();

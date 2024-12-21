@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World.EnergyTransmission
+namespace Subnautica.Client.Synchronizations.Processors.World.EnergyTransmission
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -10,13 +10,6 @@
 
     public class VehicleEnergyTransmission : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleEnergyTransmissionArgs>();
@@ -35,13 +28,6 @@
             return true;
         }
         
-        /**
-         *
-         * Araç enerjini senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ChargeVehicle(GameObject vehicle, TechType vehicleType, float powerCell1, float powerCell2)
         {
             if (vehicleType == TechType.Hoverbike)

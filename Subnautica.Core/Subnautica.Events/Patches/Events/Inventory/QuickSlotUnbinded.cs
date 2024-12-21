@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Inventory
+namespace Subnautica.Events.Patches.Events.Inventory
 {
     using HarmonyLib;
     using Subnautica.API.Features;
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(global::QuickSlots), nameof(global::QuickSlots.Unbind))]
     public class QuickSlotUnbinded
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(global::QuickSlots __instance, int slotID)
         {
             if(Network.IsMultiplayerActive)

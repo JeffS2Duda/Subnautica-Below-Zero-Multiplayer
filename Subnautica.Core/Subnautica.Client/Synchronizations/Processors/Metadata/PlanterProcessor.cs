@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -18,13 +18,6 @@
 
     public class PlanterProcessor :  MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.Planter>();
@@ -96,13 +89,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne Olayını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ItemQueueAction GetItemAction(global::Planter planter, Metadata.PlanterItem item, int processType, bool isMine = false)
         {
             var action = new ItemQueueAction();
@@ -129,13 +115,6 @@
             return action;
         }
 
-        /**
-         *
-         * PDA Açılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageOpening(StorageOpeningEventArgs ev)
         {
             if (TechGroup.Planters.Contains(ev.TechType) || ev.TechType == TechType.BaseWaterPark)
@@ -149,13 +128,6 @@
             }
         }
 
-        /**
-         *
-         * Bir nesne hasar aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTakeDamaging(TakeDamagingEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity && ev.IsDestroyable && ev.Damage > 0)
@@ -172,13 +144,6 @@
             }
         }
 
-        /**
-         *
-         * Bitki hasat değildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnFruitHarvesting(FruitHarvestingEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity)
@@ -197,13 +162,6 @@
             }
         }
 
-        /**
-         *
-         * Bitki hasat değildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnGrownPlantHarvesting(GrownPlantHarvestingEventArgs ev)
         {
             var planter = ev.GrownPlant.GetComponentInParent<global::Planter>();
@@ -215,13 +173,6 @@
             }
         }
 
-        /**
-         *
-         * Saksıya bitki eklenince tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlanterItemAdded(PlanterItemAddedEventArgs ev)
         {
             if (ev.Plantable.TryGetComponent<LiveMixin>(out var liveMixin))
@@ -234,13 +185,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne işlemi tamamlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnItemProcessCompleted(ItemQueueProcess item)
         {
             var planterItem = item.Action.GetProperty<Metadata.PlanterItem>("Item");
@@ -264,13 +208,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var planterItem = item.Action.GetProperty<Metadata.PlanterItem>("Item");
@@ -312,13 +249,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne işlemi tamamlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnHealthProcessCompleted(ItemQueueProcess item)
         {
             var planterItem = item.Action.GetProperty<Metadata.PlanterItem>("Item");
@@ -332,13 +262,6 @@
             }
         }
 
-        /**
-         *
-         * Saksı nesnesi büyüdüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlanterProgressCompleted(PlanterProgressCompletedEventArgs ev)
         {
             if (ev.Plantable.TryGetComponent<PlanterItemComponent>(out var planterItem))
@@ -350,13 +273,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne işlemi tamamlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnHarvestingProcessCompleted(ItemQueueProcess item)
         {
             var planterItem = item.Action.GetProperty<Metadata.PlanterItem>("Item");
@@ -424,13 +340,6 @@
             }
         }
 
-        /**
-         *
-         * Saksı'daki toplanabilir bitki büyüdüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlanterGrowned(PlanterGrownedEventArgs ev)
         {
             if (ev.FruitPlant.TryGetComponent<GrownPlant>(out var grownPlant))
@@ -447,13 +356,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string uniqueId, string itemId = null, byte maxSpawnableFruit = 0, float fruitSpawnInterval = -1, Plantable item = null, int slotId = -1, float health = -1f, bool isHarvesting = false, bool isAdding = false, bool isOpening = false)
         {
             var planterItem = new PlanterItem();

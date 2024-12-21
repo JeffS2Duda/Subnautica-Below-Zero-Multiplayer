@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Story
+namespace Subnautica.Server.Processors.Story
 {
     using Server.Core;
 
@@ -11,13 +11,6 @@
 
     public class TriggerProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryTriggerArgs>();
@@ -67,13 +60,6 @@
             return true;
         }
 
-        /**
-         *
-         * Özel hedef olup olmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsSpecialGoal(string goalKey)
         {
             return goalKey.Contains("EnteringVoid") || goalKey.Contains("Log_ExplorationHint");

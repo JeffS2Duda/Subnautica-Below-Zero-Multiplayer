@@ -18,25 +18,11 @@
 
     public class ItemProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             return true;
         }
 
-        /**
-         *
-         * Oyuncu'nun envanterine bir eşya geldiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnInventoryItemAdded(InventoryItemAddedEventArgs ev)
         {
             if (!EventBlocker.IsEventBlocked(ProcessType.InventoryItem))
@@ -45,13 +31,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu'nun envanterinden bir eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnInventoryItemRemoved(InventoryItemRemovedEventArgs ev)
         {
             if (!EventBlocker.IsEventBlocked(ProcessType.InventoryItem))
@@ -60,13 +39,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator SendPacketToServer(string uniqueId, Pickupable item = null, bool isAdded = false)
         {
             if (isAdded)

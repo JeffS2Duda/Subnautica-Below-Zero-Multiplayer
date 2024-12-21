@@ -10,13 +10,6 @@
 
     public static class PlayerExtensions
     {
-        /**
-         *
-         * Oyuncuya gerekli Behaviour'ları ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void InitBehaviours(this ZeroPlayer player)
         {
             if (player?.PlayerModel != null)
@@ -33,13 +26,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu elindeki aleti döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static T GetHandTool<T>(this ZeroPlayer player, TechType techType)
         {
             var itemManager = player.GetComponent<PlayerHandItemManager>();
@@ -63,13 +49,6 @@
             return tool;
         }
 
-        /**
-         *
-         * Oyuncuya gerekli Behaviour'ları ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SetHandItem(this ZeroPlayer player, TechType techType)
         {
             var itemManager = player.GetComponent<PlayerHandItemManager>();
@@ -86,13 +65,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncunun aracını yeniler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool RefreshVehicle(this ZeroPlayer player, ushort vehicleId)
         {
             var entity = Network.DynamicEntity.GetEntity(vehicleId);
@@ -115,13 +87,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncunun araç durumunu günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool SetVehicle(this ZeroPlayer player, ushort vehicleId, ZeroVector3 position, ZeroQuaternion rotation, VehicleUpdateComponent component)
         {
             var entity = Network.DynamicEntity.GetEntity(vehicleId);
@@ -152,13 +117,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu araçtan iner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ExitVehicle(this ZeroPlayer player)
         {
             if (player.VehicleId > 0)
@@ -169,38 +127,17 @@
             player.ClearVehicle();
         }
 
-        /**
-         *
-         * Oyuncu araç verisini temizler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ClearVehicle(this ZeroPlayer player)
         {
             player.VehicleId   = 0;
             player.VehicleType = TechType.None;
         }
 
-        /**
-         *
-         * Oyuncuya componenti ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static T EnsureComponent<T>(this ZeroPlayer player) where T : MonoBehaviour
         {
             return player.PlayerModel.EnsureComponent<T>();
         }
 
-        /**
-         *
-         * İstenen sinematik nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static T GetCinematic<T>(this ZeroPlayer player) where T : CinematicController
         {
             if (player.PlayerModel == null)
@@ -218,13 +155,6 @@
             return cinematic;
         }     
 
-        /**
-         *
-         * Tüm sinematikleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static CinematicController[] GetCinematics(this ZeroPlayer player)
         {
             if (player.PlayerModel == null)

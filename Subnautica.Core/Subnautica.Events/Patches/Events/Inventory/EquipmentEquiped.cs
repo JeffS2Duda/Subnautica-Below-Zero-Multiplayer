@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Inventory
+namespace Subnautica.Events.Patches.Events.Inventory
 {
     using HarmonyLib;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::Equipment), nameof(global::Equipment.NotifyEquip))]
     public class EquipmentEquiped
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(global::Equipment __instance, string slot, InventoryItem item)
         {
             if (Network.IsMultiplayerActive)

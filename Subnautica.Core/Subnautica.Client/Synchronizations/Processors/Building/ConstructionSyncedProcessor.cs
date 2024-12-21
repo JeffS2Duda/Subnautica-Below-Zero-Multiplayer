@@ -18,70 +18,28 @@
 
     public class ConstructionSyncedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Zamanlanmış veri gönderim durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsSending { get; set; } = false;
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             return true;
         }
 
-        /**
-         *
-         * Hayalet yapı kurulmaya çalışıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructingGhostTryPlacing(ConstructionGhostTryPlacingEventArgs ev)
         {
             UpdateConstructionSync();
         }
 
-        /**
-         *
-         * Yapı inşaası tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructingCompleted(ConstructionCompletedEventArgs ev)
         {
             UpdateConstructionSync();
         }
 
-        /**
-         *
-         * Yapı yıkıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructingRemoved(ConstructionRemovedEventArgs ev)
         {
             UpdateConstructionSync();
         }
 
-        /**
-         *
-         * Yapı inşaa değeri değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void UpdateConstructionSync()
         {
             if (Network.IsHost && !IsSending && !EventBlocker.IsEventBlocked(ProcessType.ConstructionSynced))
@@ -90,13 +48,6 @@
             }
         }
 
-        /**
-         *
-         * Zamanlanmış veriyi işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator SendDataToServer()
         {
             IsSending = true;

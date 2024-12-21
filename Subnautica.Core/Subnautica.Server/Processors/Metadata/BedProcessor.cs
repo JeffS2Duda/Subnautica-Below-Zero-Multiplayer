@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using System.Linq;
 
@@ -12,13 +12,6 @@
 
     public class BedProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             var component = packet.Component.GetComponent<Metadata.Bed>();
@@ -100,13 +93,6 @@
             return true;
         }
 
-        /**
-         *
-         * Max oyuncu sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetMaxPlayerCount(TechType techType)
         {   
             return 1;

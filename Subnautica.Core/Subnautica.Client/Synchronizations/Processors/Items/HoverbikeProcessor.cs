@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -18,13 +18,6 @@
 
     public class HoverbikeProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var component = packet.GetComponent<ItemModel.Hoverbike>();
@@ -42,13 +35,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var entity  = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -79,13 +65,6 @@
             }
         }
 
-        /**
-         *
-         * Hoverbike bırakıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnHoverbikeDeploying(HoverbikeDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -93,13 +72,6 @@
             HoverbikeProcessor.SendPacketToServer(ev.UniqueId, ev.DeployPosition.ToZeroVector3(), ev.Forward.ToZeroVector3(), ev.Hoverbike.ToHoverbikeComponent());
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, ZeroVector3 deployPosition, ZeroVector3 forward, WorldEntityModel.Hoverbike component)
         {
             ServerModel.PlayerItemActionArgs request = new ServerModel.PlayerItemActionArgs()

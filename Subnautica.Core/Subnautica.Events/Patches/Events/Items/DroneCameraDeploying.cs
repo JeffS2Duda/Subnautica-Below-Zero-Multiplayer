@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::DropTool), nameof(global::DropTool.OnToolUseAnim))]
     public class DroneCameraDeploying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::DropTool __instance, GUIHand guiHand)
         {
             if (Network.IsMultiplayerActive)

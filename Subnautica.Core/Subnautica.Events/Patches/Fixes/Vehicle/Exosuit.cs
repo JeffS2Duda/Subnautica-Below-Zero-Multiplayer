@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Vehicle
+namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
     using HarmonyLib;
 
@@ -83,13 +83,6 @@
             return false;
         }
 
-        /**
-         *
-         * Aracı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsUsingByPlayer(global::Exosuit __instance)
         {
             if (__instance.pilotId.IsNull())

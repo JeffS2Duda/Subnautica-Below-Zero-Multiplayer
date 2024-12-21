@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.SerializeOptimizers
+namespace Subnautica.Events.Patches.SerializeOptimizers
 {
     using System.Collections;
     using System.Collections.Generic;
@@ -15,13 +15,6 @@
     [HarmonyPatch(typeof(global::ProtobufSerializer), nameof(global::ProtobufSerializer.SerializeObjectsAsync))]
     public static class ProtobufOptimizer
     {
-        /**
-         *
-         * Whitelist isim listesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<string> WhitelistNames { get; set; } = new List<string>()
         {
             "NuclearReactor",
@@ -34,13 +27,6 @@
             "BaseUpgradeConsoleModule",
         };
 
-        /**
-         *
-         * Serilize edilme durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsSerializable(UniqueIdentifier uniqueIdentifier)
         {
             if (ProtobufOptimizer.WhitelistNames.Where(q => uniqueIdentifier.name.Contains(q)).Any())
@@ -66,13 +52,6 @@
             return false;
         }
 
-        /**
-         *
-         * Sınıfı yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator Postfix(IEnumerator values, global::ProtobufSerializer __instance, Stream stream, IList<UniqueIdentifier> uids, bool storeParent)
         {
             if (Network.IsMultiplayerActive && __instance.IsConstructionModeActive())

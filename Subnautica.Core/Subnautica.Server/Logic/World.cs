@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -17,13 +17,6 @@
 
     public class World : BaseLogic
     {
-        /**
-         *
-         * StaticFabricators Listesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<string> StaticFabricators = new List<string>()
         {
             "-1510194677",
@@ -31,13 +24,6 @@
             "-1510146471",
         };
 
-        /**
-         *
-         * Sınıfı başlatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             foreach (var entity in Core.Server.Instance.Storages.World.Storage.PersistentEntities.Where(q => q.Value.ProcessType == EntityProcessType.Plant).ToList())
@@ -63,13 +49,6 @@
             }
         }
 
-        /**
-         *
-         * Her sabit tick'den sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate(float deltaTime)
         {
             if (!Server.Instance.Storages.World.Storage.IsFirstLogin)
@@ -78,37 +57,16 @@
             }
         }
 
-        /**
-         *
-         * Sunucu zamanını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float GetServerTime()
         {
             return (float) Server.Instance.Storages.World.Storage.ServerTime;
         }
 
-        /**
-         *
-         * Sunucu zamanını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public double GetServerTimeAsDouble()
         {
             return Server.Instance.Storages.World.Storage.ServerTime;
         }
 
-        /**
-         *
-         * Zamanı günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateServerTime(double deltaTime)
         {
             Server.Instance.Storages.World.Storage.ServerTime += deltaTime * Server.Instance.Storages.World.Storage.WorldSpeed;
@@ -120,13 +78,6 @@
             }
         }
 
-        /**
-         *
-         * Sonraki yapı id'sini döner.
-         *
-         * @author Ismail  <ismaiil_0234@hotmail.com>
-         *
-         */
         public uint GetNextConstructionId()
         {
             if (Server.Instance.Storages.World.Storage.LastConstructionId >= uint.MaxValue)
@@ -150,13 +101,6 @@
             return constructionId;
         }
 
-        /**
-         *
-         * Sonraki eşya id'sini döner.
-         *
-         * @author Ismail  <ismaiil_0234@hotmail.com>
-         *
-         */
         public ushort GetNextItemId()
         {
             if (Server.Instance.Storages.World.Storage.LastItemId >= ushort.MaxValue)
@@ -180,37 +124,16 @@
             return itemId;
         }
 
-        /**
-         *
-         * Static fabricator olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsStaticFabricator(string uniqueId)
         {
             return this.StaticFabricators.Contains(uniqueId);
         }
 
-        /**
-         *
-         * WorldDynamicEntity oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldDynamicEntity CreateDynamicEntity(string uniqueId, TechType techType, ZeroVector3 position, ZeroQuaternion rotation, string ownershipId = null, bool isDeployed = true)
         {
             return CreateDynamicEntity(uniqueId, null, techType, position, rotation, ownershipId, isDeployed);
         }
 
-        /**
-         *
-         * WorldDynamicEntity oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldDynamicEntity CreateDynamicEntity(string uniqueId, byte[] item, TechType techType, ZeroVector3 position, ZeroQuaternion rotation, string ownershipId = null, bool isDeployed = true)
         {
             if (Server.Instance.Storages.World.GetDynamicEntity(uniqueId) != null)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Storage
+namespace Subnautica.Server.Storage
 {
     using System;
     using System.IO;
@@ -23,22 +23,8 @@
 
     public class World : BaseStorage
     {
-        /**
-         *
-         * Dünya sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldStorage.World Storage { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Start(string serverId)
         {
             this.ServerId = serverId;
@@ -47,13 +33,6 @@
             this.Load();
         }
 
-        /**
-         *
-         * Sunucu dünya verilerini belleğe yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Load()
         {
             if (File.Exists(this.FilePath))
@@ -85,13 +64,6 @@
             }
         }
 
-        /**
-         *
-         * Verileri diske yazar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void SaveToDisk()
         {
             lock (this.ProcessLock)
@@ -100,26 +72,12 @@
             }
         }
 
-        /**
-         *
-         * Supply drop nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryGetSupplyDrop(out WorldChildrens.SupplyDrop supplyDrop)
         {
             supplyDrop = this.Storage.SupplyDrops.Where(q => q.Key == API.Constants.SupplyDrop.Lifepod).FirstOrDefault();
             return supplyDrop != null;
         }
 
-        /**
-         *
-         * SeaTruck bağlantısı ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddSeaTruckConnection(string frontModuleId, string backModuleId, bool checkBackModule = true)
         {
             var frontModule = Core.Server.Instance.Storages.World.GetDynamicEntity(frontModuleId);
@@ -149,8 +107,6 @@
                     return false;
                 }
 
-                // FrontModule Id -> Ön tarafı bağlanır. (Arkadaki Modülün önü bağlanır)
-                // BackModule  Id -> Arka tarafı bağlanır. (Öndeki Modülün arkasına bağlanır)
 
                 frontModule.SetParent(backModuleId);
 
@@ -161,13 +117,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck bağlantısı koprarır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string RemoveSeaTruckConnection(string frontModuleId, bool checkModule = true)
         {
             if (checkModule)
@@ -197,13 +146,6 @@
             return connection.Key;
         }
 
-        /**
-         *
-         * Üs verisini döner yoksa ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryGetBase(string baseId, out Base baseComponent)
         {
             lock (this.ProcessLock)
@@ -227,13 +169,6 @@
             }
         }
 
-        /**
-         *
-         * Üs verisini siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemoveBase(string baseId)
         {
             lock (this.ProcessLock)
@@ -242,13 +177,6 @@
             }
         }
 
-        /**
-         *
-         * Üs verisini siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemoveBase(Base baseComp)
         {
             lock (this.ProcessLock)
@@ -257,13 +185,6 @@
             }
         }
 
-        /**
-         *
-         * Öncül ışınlanma portalını aktif eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ActivateTeleportPortal(string uniqueId)
         {
             lock (this.ProcessLock)
@@ -278,13 +199,6 @@
             }
         }
 
-        /**
-         *
-         * Yapıları günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UpdateConstructions(byte[] constructions)
         {
             lock (this.ProcessLock)
@@ -294,13 +208,6 @@
             }
         }
 
-        /**
-         *
-         * Dünyada nesne ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddWorldDynamicEntity(WorldDynamicEntity entity)
         {
             lock (this.ProcessLock)
@@ -315,13 +222,6 @@
             }
         }
 
-        /**
-         *
-         * Dünyadaki nesneyi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldDynamicEntity GetDynamicEntity(string uniqueId)
         {
             if (uniqueId.IsNull())
@@ -335,13 +235,6 @@
             }
         }
 
-        /**
-         *
-         * Araç döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldDynamicEntity GetVehicle(string uniqueId, bool ignoreMoonpool = false)
         {
             lock (this.ProcessLock)
@@ -395,13 +288,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya üzerinde kalıcı kozmetik kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool RemoveCosmeticItem(string uniqueId)
         {
             lock (this.ProcessLock)
@@ -410,13 +296,6 @@
             }
         }
 
-        /**
-         *
-         * Cosmetic Item nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public CosmeticItem GetCosmeticItem(string uniqueId)
         {
             lock (this.ProcessLock)
@@ -425,13 +304,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya üzerinde kalıcı kozmetik eşyası ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddCosmeticItem(string uniqueId, string baseId, TechType techType, ZeroVector3 position, ZeroQuaternion rotation)
         {
             lock (this.ProcessLock)
@@ -445,13 +317,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya kalıcı nesnesini bileşen olarak döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetDynamicEntityComponent<T>(string uniqueId)
         {
             var entity = this.GetDynamicEntity(uniqueId);
@@ -463,13 +328,6 @@
             return entity.Component.GetComponent<T>();
         }
 
-        /**
-         *
-         * Dünyadaki nesneyi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldDynamicEntity GetDynamicEntity(ushort id)
         {
             lock (this.ProcessLock)
@@ -478,13 +336,6 @@
             }
         }
 
-        /**
-         *
-         * Dünyadaki nesneyi kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool RemoveDynamicEntity(string uniqueId)
         {
             lock (this.ProcessLock)
@@ -493,13 +344,6 @@
             }
         }
 
-        /**
-         *
-         * Music diskini ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddDiscoveredResource(TechType techType)
         {
             lock (this.ProcessLock)
@@ -508,13 +352,6 @@
             }
         }
 
-        /**
-         *
-         * Music diskini ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddJukeboxDisk(string trackFile)
         {
             lock (this.ProcessLock)
@@ -531,13 +368,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya kalıcı nesnesini düzenler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SetPersistentEntity(NetworkWorldEntityComponent entity)
         {
             lock (this.ProcessLock)
@@ -552,13 +382,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya kalıcı nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public NetworkWorldEntityComponent GetPersistentEntity(string uniqueId)
         {
             lock (this.ProcessLock)
@@ -572,13 +395,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya kalıcı nesnesini bileşen olarak döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetPersistentEntity<T>(string uniqueId)
         {
             var entity = this.GetPersistentEntity(uniqueId);
@@ -590,13 +406,6 @@
             return entity.GetComponent<T>();
         }
 
-        /**
-         *
-         * Dünya kalıcı nesne varlığını kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsPersistentEntityExists(string uniqueId)
         {
             lock (this.ProcessLock)
@@ -605,13 +414,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya kalıcı pasif nesne ekler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddDisablePersistentEntity(string uniqueId)
         {
             lock (this.ProcessLock)
@@ -639,13 +441,6 @@
             }
         }
 
-        /**
-         *
-         * Slotu pasif hale getirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool DisableSlot(string uniqueId)
         {
             lock (this.ProcessLock)
@@ -667,13 +462,6 @@
             }
         }
 
-        /**
-         *
-         * Sonraki doğma zamanını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float GetSlotNextRespawnTime(string uniqueId)
         {
             lock (this.ProcessLock)

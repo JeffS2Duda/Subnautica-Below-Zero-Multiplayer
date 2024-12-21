@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Vehicle
+namespace Subnautica.Server.Processors.Vehicle
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -17,13 +17,6 @@
 
     public class EnterProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleEnterArgs>();
@@ -91,13 +84,6 @@
             return true;
         }
 
-        /**
-         *
-         * Aracı döner. harita odası kamerasını bulur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WorldDynamicEntity GetVehicle(string vehicleId)
         {
             var entity = Server.Instance.Storages.World.GetDynamicEntity(vehicleId);
@@ -146,13 +132,6 @@
             return null;
         }
 
-        /**
-         *
-         * Yakındaki casus penguen aracını bulur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool TryActivateSpyPenguinFromDistance(ServerModel.VehicleEnterArgs packet, ZeroVector3 playerPosition)
         {
             var spyPenguins = new Dictionary<string, float>();
@@ -171,13 +150,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yakındaki harita odası kamerasını bulur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool TryActivateMapRoomCamera(ServerModel.VehicleEnterArgs packet, ZeroVector3 playerPosition)
         {
             if (packet.CustomId.IsNotNull())

@@ -8,13 +8,6 @@
 
     public class LifepodProcessor
     {
-        /**
-         *
-         * Lifepod ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator OnLifePodInitialized()
         {
             if (Network.Session.Current.SupplyDrops?.Count > 0)

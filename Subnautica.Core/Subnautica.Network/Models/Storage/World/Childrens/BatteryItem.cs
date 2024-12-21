@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Storage.World.Childrens
+namespace Subnautica.Network.Models.Storage.World.Childrens
 {
     using System;
 
@@ -7,75 +7,26 @@
     [MessagePackObject]
     public class BatteryItem
     {
-        /**
-         *
-         * Mevcut slotu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public bool IsActive { get; set; } = false;
 
-        /**
-         *
-         * Mevcut slotu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public string SlotId { get; set; }
 
-        /**
-         *
-         * Mevcut teknolojiyi barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public TechType TechType { get; set; }
 
-        /**
-         *
-         * Mevcut şarj durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(3)]
         public float Charge { get; set; }
 
-        /**
-         *
-         * Max şarj durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(4)]
         public float Capacity { get; set; } = 100f;
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public BatteryItem()
         {
 
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public BatteryItem(string slotId = null, TechType techType = TechType.None, float charge = 0f, float capacity = 100f)
         {
             this.SlotId   = slotId;
@@ -84,13 +35,6 @@
             this.Capacity = capacity;
         }
 
-        /**
-         *
-         * Batarya bilgilerini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetSlotId()
         {
             switch (this.TechType)
@@ -107,13 +51,6 @@
             return 0;
         }
 
-        /**
-         *
-         * Batarya bilgilerini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetBattery(TechType techType, float charge)
         {
             this.Clear();
@@ -127,13 +64,6 @@
             }
         }
 
-        /**
-         *
-         * Sınıfı temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float GetCapacity()
         {
             switch (this.TechType)
@@ -151,13 +81,6 @@
             return 100f;
         }
 
-        /**
-         *
-         * Sınıfı temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Clear()
         {
             this.IsActive = false;

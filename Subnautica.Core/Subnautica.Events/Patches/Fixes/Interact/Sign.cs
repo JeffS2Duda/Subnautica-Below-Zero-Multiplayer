@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(global::Sign), nameof(global::Sign.OnHandHover))]
     public class Sign
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Sign __instance)
         {
             if(!Network.IsMultiplayerActive)
@@ -45,13 +38,6 @@
     [HarmonyPatch(typeof(global::ColoredLabel), nameof(global::ColoredLabel.OnHandHover))]
     public class ColoredLabel
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::ColoredLabel __instance)
         {
             if(!Network.IsMultiplayerActive)

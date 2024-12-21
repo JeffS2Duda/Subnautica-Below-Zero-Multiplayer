@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -15,31 +15,10 @@
 
     public class PlayerVisibilityProcessor : NormalProcessor
     {
-        /**
-         *
-         * Aktif sinematik
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string CurrentCinematic { get; set; } = null;
 
-        /**
-         *
-         * Görünürlük kuyruğu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Queue<string> VisibilityQueue { get; set; } = new Queue<string>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ClientModel.StoryPlayerVisibilityArgs>();
@@ -58,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (ZeroPlayer.CurrentPlayer.IsStoryCinematicModeActive)
@@ -94,13 +66,6 @@
             }
         }
 
-        /**
-         *
-         * Cinematic başladığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStoryCinematicStarted(StoryCinematicStartedEventArgs ev)
         {
             if (Network.Story.StoryCinematics.Any(q => ev.CinematicName.Contains(q)))
@@ -111,13 +76,6 @@
             }
         }
 
-        /**
-         *
-         * Cinematic bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStoryCinematicCompleted(StoryCinematicCompletedEventArgs ev)
         {
             if (CurrentCinematic.IsNotNull() && ev.CinematicName == CurrentCinematic)
@@ -128,13 +86,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(bool isCinematicActive)
         {
             ServerModel.StoryPlayerVisibilityArgs result = new ServerModel.StoryPlayerVisibilityArgs()
@@ -145,13 +96,6 @@
             NetworkClient.SendPacket(result);
         }
 
-        /**
-         *
-         * Ana menüye dönünce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnDispose()
         {
             CurrentCinematic = null;

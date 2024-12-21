@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -13,13 +13,6 @@
     [HarmonyPatch(typeof(global::Welder), nameof(global::Welder.Weld))]
     public class Welding
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Welder __instance)
         {
             if (Network.IsMultiplayerActive)
@@ -56,13 +49,6 @@
             return true;
         }
 
-        /**
-         *
-         * UniqueId değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(GameObject gameObject)
         {
             if (GetTechType(gameObject).IsVehicle())
@@ -79,13 +65,6 @@
             return Network.Identifier.GetIdentityId(gameObject);
         }
 
-        /**
-         *
-         * TechType değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetTechType(GameObject gameObject)
         {
             var techType = CraftData.GetTechType(gameObject);

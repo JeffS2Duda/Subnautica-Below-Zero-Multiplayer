@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared
+namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared
 {
     using MessagePack;
 
@@ -7,53 +7,18 @@
     [MessagePackObject]
     public class PowerCell
     {
-        /**
-         *
-         * UniqueId Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public string UniqueId { get; set; }
 
-        /**
-         *
-         * Charge Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public float Charge { get; set; } = 200f;
 
-        /**
-         *
-         * Capacity Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public float Capacity { get; set; } = 200f;
 
-        /**
-         *
-         * TechType Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(3)]
         public TechType TechType { get; set; } = TechType.PowerCell;
 
-        /**
-         *
-         * Full mü?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public bool IsFull
         {
@@ -63,13 +28,6 @@
             }
         }
 
-        /**
-         *
-         * Mevcut mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [IgnoreMember]
         public bool IsExists
         {
@@ -79,13 +37,6 @@
             }
         }
 
-        /**
-         *
-         * Enerji ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddEnergy(float energyAmount, out float usedEnergyAmount)
         {
             if (this.IsFull || !this.IsExists)
@@ -100,13 +51,6 @@
             return true;
         }
 
-        /**
-         *
-         * Enerji tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ConsumeEnergy(float energyAmount, out float usedEnergyAmount)
         {
             usedEnergyAmount = 0f;
@@ -124,13 +68,6 @@
             return false;
         }
 
-        /**
-         *
-         * Batarya türünü değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetBatteryType(TechType techType)
         {
             this.TechType = techType;

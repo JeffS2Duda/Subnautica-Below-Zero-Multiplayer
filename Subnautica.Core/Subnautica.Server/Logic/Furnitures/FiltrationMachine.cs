@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic.Furnitures
+namespace Subnautica.Server.Logic.Furnitures
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -17,58 +17,16 @@
 
     public class FiltrationMachine : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * MaxWater değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private byte MaxWater { get; set; } = 2;
 
-        /**
-         *
-         * MaxSalt değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private byte MaxSalt { get; set; } = 2;
 
-        /**
-         *
-         * Saniyede tüketilen enerji miktaını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float EnergyRequiredPerSecond { get; set; } = 0.85f;
 
-        /**
-         *
-         * ElapsedTime
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float ElapsedTime { get; set; } = 1f;
 
-        /**
-         *
-         * Zamanlayıcının geri dönüş methodu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float deltaTime)
         {
             if (this.Timing.IsFinished() && World.IsLoaded)
@@ -173,13 +131,6 @@
             }
         }
 
-        /**
-         *
-         * Su üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryFilterWater(Metadata.FiltrationMachine component)
         {
             if (component.TimeRemainingWater > 0.0f || component.Items.Where(q => !string.IsNullOrEmpty(q.ItemId) && q.TechType == TechType.BigFilteredWater).Count() >= this.MaxWater)
@@ -191,13 +142,6 @@
             return true;
         }
 
-        /**
-         *
-         * Tuz üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryFilterSalt(Metadata.FiltrationMachine component)
         {
             if (component.TimeRemainingSalt > 0.0f || component.Items.Where(q => !string.IsNullOrEmpty(q.ItemId) && q.TechType == TechType.Salt).Count() >= this.MaxSalt)
@@ -209,13 +153,6 @@
             return true;
         }
 
-        /**
-         *
-         * Tüm kullanıcılara paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool Spawn(string uniqueId, Metadata.FiltrationMachine component, TechType techType)
         {
             var item = component.Items.Where(q => string.IsNullOrEmpty(q.ItemId) && q.TechType == techType).FirstOrDefault();
@@ -247,13 +184,6 @@
             return true;
         }
 
-        /**
-         *
-         * Üretim zamanını kullanıcılara iletir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendTimeRemaining(List<FiltrationMachineTimeItem> timeItems)
         {
             foreach (var profile in Core.Server.Instance.GetPlayers())
@@ -283,13 +213,6 @@
             }
         }
 
-        /**
-         *
-         * Kahve makinelerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<KeyValuePair<string, ConstructionItem>> GetFiltrationMachines()
         {
             return Core.Server.Instance.Storages.Construction.Storage.Constructions.Where(q => q.Value.TechType == TechType.BaseFiltrationMachine && q.Value.ConstructedAmount == 1f).ToList();

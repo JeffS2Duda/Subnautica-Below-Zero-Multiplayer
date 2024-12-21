@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using System.Collections;
 
@@ -14,13 +14,6 @@
 
     public class SleepTimeSkipProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SleepTimeSkipArgs>();
@@ -44,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncuyu yataktan uyandırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator BedExitInUseMode(ServerModel.SleepTimeSkipArgs packet)
         {
             global::Player.main.timeLastSleep = packet.TimeLastSleep;

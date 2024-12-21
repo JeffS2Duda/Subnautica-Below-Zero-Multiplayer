@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -14,13 +14,6 @@
     [HarmonyPatch]
     public static class MapRoomCameraDocking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::MapRoomCameraDocking), nameof(global::MapRoomCameraDocking.OnTriggerEnter))]
         private static bool Prefix(global::MapRoomCameraDocking __instance, Collider other)
@@ -58,13 +51,6 @@
             return true;
         }
 
-        /**
-         *
-         * Benzersiz ID'yi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetUniqueId(global::MapRoomCameraDocking __instance)
         {
             return __instance.GetComponentInParent<MapRoomFunctionality>()?.GetBaseDeconstructable()?.gameObject.GetIdentityId();

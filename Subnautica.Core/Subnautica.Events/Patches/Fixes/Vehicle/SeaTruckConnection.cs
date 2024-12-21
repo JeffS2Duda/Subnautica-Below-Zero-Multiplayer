@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Vehicle
+namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
     using System.Collections;
     using System.Collections.Generic;
@@ -12,22 +12,8 @@
     [HarmonyPatch]
     public static class SeaTruckConnection
     {
-        /**
-         *
-         * Zamanlayıcıları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, StopwatchItem> Timings { get; set; } = new Dictionary<string, StopwatchItem>();
 
-        /**
-         *
-         * Zamanlayıcı başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckConnection), nameof(global::SeaTruckConnection.Start))]
         private static void SeaTruckConnection_Start(global::SeaTruckConnection __instance)
@@ -38,13 +24,6 @@
             }
         }
 
-        /**
-         *
-         * Bağlanma kontrolü yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckConnection), nameof(global::SeaTruckConnection.FixedUpdate))]
         private static bool SeaTruckConnection_FixedUpdate(global::SeaTruckConnection __instance)
@@ -75,13 +54,6 @@
             return false;
         }
 
-        /**
-         *
-         * Zamanlayıcı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static StopwatchItem GetTimingItem(global::SeaTruckConnection __instance)
         {
             var uniqueId = Network.Identifier.GetIdentityId(__instance.gameObject, false);
@@ -129,13 +101,6 @@
             return false;
         }
 
-        /**
-         *
-         * Bağlantıyı düzeltir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator FixSeaTruckConnection(global::SeaTruckSegment __instance)
         {
             for (int i = 0; i < 10; i++)
@@ -148,25 +113,11 @@
             }
         }
 
-        /**
-         *
-         * Hedef konumu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector3 GetTargetPosition(global::SeaTruckSegment __instance)
         {
             return __instance.frontConnection.GetConnection().connectionPoint.position - __instance.frontConnection.connectionPoint.position + __instance.transform.position;
         }
 
-        /**
-         *
-         * Hedef açıyı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Quaternion GetTargetRotation(global::SeaTruckSegment __instance)
         {
             return __instance.frontConnection.GetConnection().transform.rotation;

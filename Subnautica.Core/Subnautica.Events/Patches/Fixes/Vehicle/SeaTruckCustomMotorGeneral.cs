@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Vehicle
+namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
     using System;
     using System.Collections;
@@ -73,7 +73,6 @@
             __result = true;
             return false;
         }
-//as
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::ArmsController), nameof(global::ArmsController.SetPlayerSpeedParameters))]
         private static bool ArmsController_SetPlayerSpeedParameters(global::SeaTruckSegment __instance)
@@ -214,13 +213,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck modunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ChangeSeaTruckMode(global::SeaTruckSegment seaTruck, bool isInSeaTruck, bool isKeepParent = false)
         {
             Network.Session.IsInSeaTruck = isInSeaTruck;
@@ -238,13 +230,6 @@
             }
         }
 
-        /**
-         *
-         * Işınlanma tamamlanma durumunu kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator TeleportationEndCheck(global::SeaTruckSegment seaTruckSegment)
         {
             var timing = new StopwatchItem(6000f);
@@ -274,103 +259,26 @@
 
     public class SeaTruckCustomMotor : MonoBehaviour
     {
-        /**
-         *
-         * Oyuncu sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::Player Player { get; set; }
 
-        /**
-         *
-         * Ana Kamerayı sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::MainCameraControl MainCamera { get; set; }
 
-        /**
-         *
-         * Mevcut SeaTruckSegment sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::SeaTruckSegment SeaTruckSegment { get; set; }
 
-        /**
-         *
-         * Mevcut yön.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 Direction = Vector3.zero;
 
-        /**
-         *
-         * Yumuşatılmış yön.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 SmoothedDirection = Vector3.zero;
 
-        /**
-         *
-         * Yeniden doğma zamanlayıcısını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem RespawnTiming { get; set; } = new StopwatchItem(2000f);
 
-        /**
-         *
-         * En son üzerinde bulunan ilk modül id
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string LastFirstSegmentModuleId { get; set; }
 
-        /**
-         *
-         * Hızı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float Speed { get; set; } = 4f;
 
-        /**
-         *
-         * Hızı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float SprintSpeed { get; set; } = 6f;
 
-        /**
-         *
-         * IsActive durumu.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsActive { get; set; } = false;
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.enabled = false;
@@ -380,13 +288,6 @@
             this.Player.playerRespawnEvent.AddHandler(this.gameObject, new UWE.Event<global::Player>.HandleFunction(this.OnRespawn));
         }
 
-        /**
-         *
-         * Araç patlayınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCustomKill(string vehicleId)
         {
             if (this.IsActive && this.SeaTruckSegment)
@@ -406,25 +307,11 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnRespawn(global::Player p)
         {
             UWE.CoroutineHost.StartCoroutine(this.OnRespawnAsync());
         }
 
-        /**
-         *
-         * Cinematik bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPlayerCinematicModeEnd(PlayerCinematicController sender)
         {
             if (this.IsActive && Network.Session.IsInSeaTruck && sender.name.Contains("seatruck_module_sleeper_anim"))
@@ -433,26 +320,12 @@
             }
         }
 
-        /**
-         *
-         * SeaTruckSegment değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public SeaTruckCustomMotor SetSeaTruckSegment(global::SeaTruckSegment seaTruckSegment)
         {
             this.SeaTruckSegment = seaTruckSegment;
             return this;
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (!this.Player.inSeatruckPilotingChair)
@@ -476,13 +349,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncuyu hareket ettirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void MovePlayer(Vector3 direction)
         {
             this.Player.groundMotor.controller.enabled = true;
@@ -490,25 +356,11 @@
             this.Player.groundMotor.controller.enabled = false;
         }
 
-        /**
-         *
-         * Oyuncu Hızını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float GetSpeed()
         {
             return GameInput.GetIsRunning() ? this.SprintSpeed : this.Speed;
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (this.Player.transform.parent && !this.Player.inSeatruckPilotingChair)
@@ -522,13 +374,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncunun mevcut modülünü değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool UpdateSeaTruckModule()
         {
             if (!Physics.Raycast(this.Player.transform.position, this.MainCamera.viewModel.transform.TransformDirection(Vector3.down), out var hit, 3f))
@@ -567,13 +412,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bağlanan araç içerisindeki oyuncu konumunu senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator CheckPlayerSegmentPosition()
         {
             while (this.IsUpdateDocking(this.SeaTruckSegment))
@@ -587,13 +425,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu kinematic durumunu senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator CheckPlayerKinematic()
         {
             var timing = new StopwatchItem(150f);
@@ -609,13 +440,6 @@
             }
         }
 
-        /**
-         *
-         * Modülün bağlanma durumunu kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsUpdateDocking(global::SeaTruckSegment currentSegment)
         {
             if (currentSegment.updateDockedPosition)
@@ -642,13 +466,6 @@
             return false;
         }
 
-        /**
-         *
-         * YÜrüme/Hız/Açı ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SetPlayerSpeedParameters()
         {
             var relativeVelocity = this.MainCamera.viewModel.transform.InverseTransformDirection(this.Player.groundMotor.controller.velocity);
@@ -677,13 +494,6 @@
             this.Player.armsController.previousYAngle = angleY;
         }
 
-        /**
-         *
-         * Araç İç mekan id'sini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateVehicleInterior(global::SeaTruckSegment firstSegment, bool callEvent = false)
         {
             this.LastFirstSegmentModuleId = firstSegment.gameObject.GetIdentityId();
@@ -705,13 +515,6 @@
             }
         }
 
-        /**
-         *
-         * Async Oyuncu doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator OnRespawnAsync()
         {
             this.RespawnTiming.Restart();
@@ -733,13 +536,6 @@
             }
         }
         
-        /**
-         *
-         * Aktiflik durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SetActive(bool isActive, bool isForce = false, bool isKeepParent = false, bool isKeepPosition = false)
         {
             if (!isForce && this.IsActive == isActive)

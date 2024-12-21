@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Construction.Shared
+namespace Subnautica.Network.Models.Construction.Shared
 {
     using MessagePack;
 
@@ -12,163 +12,51 @@
     [MessagePackObject]
     public class BaseComponent
     {
-        /**
-         *
-         * Faces değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public Dictionary<int, global::Base.FaceType> Faces { get; set; } = new Dictionary<int, global::Base.FaceType>();
 
-        /**
-         *
-         * Cells değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public Dictionary<int, global::Base.CellType> Cells { get; set; } = new Dictionary<int, global::Base.CellType>();
 
-        /**
-         *
-         * Links değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public Dictionary<int, byte> Links { get; set; } = new Dictionary<int, byte>();
 
-        /**
-         *
-         * Masks değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(3)]
         public Dictionary<int, byte> Masks { get; set; } = new Dictionary<int, byte>();
 
-        /**
-         *
-         * IsGlass değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(4)]
         public Dictionary<int, bool> IsGlass { get; set; } = new Dictionary<int, bool>();
 
-        /**
-         *
-         * Unpowered değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(5)]
         public Dictionary<int, bool> Unpowered { get; set; } = new Dictionary<int, bool>();
 
-        /**
-         *
-         * GridShape değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(6)]
         public ZeroInt3 GridShape { get; set; }
 
-        /**
-         *
-         * CellOffset değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(7)]
         public ZeroInt3 CellOffset { get; set; }
 
-        /**
-         *
-         * Anchor değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(8)]
         public ZeroInt3 Anchor { get; set; }
 
-        /**
-         *
-         * FaceLength değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(9)]
         public int FaceLength { get; set; } = -1;
 
-        /**
-         *
-         * CellLength değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(10)]
         public int CellLength { get; set; } = -1;
 
-        /**
-         *
-         * LinkLength değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(11)]
         public int LinkLength { get; set; } = -1;
 
-        /**
-         *
-         * MaskLength değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(12)]
         public int MaskLength { get; set; } = -1;
 
-        /**
-         *
-         * GlassLength değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(13)]
         public int GlassLength { get; set; } = -1;
 
-        /**
-         *
-         * PowerLength değerini saklar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(14)]
         public int PowerLength { get; set; } = -1;
 
-        /**
-         *
-         * Bileşenleri ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetComponent(global::Base baseComponent)
         {
             this.FaceLength  = this.GetArrayLength(baseComponent.faces);
@@ -237,13 +125,6 @@
             this.CellOffset = baseComponent.cellOffset.ToZeroInt3();
         }
 
-        /**
-         *
-         * Verileri içe aktarır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ImportToBase(global::Base baseComponent)
         {
             baseComponent.baseShape  = new Grid3Shape(this.GridShape.ToInt3());
@@ -311,13 +192,6 @@
             }
         }
 
-        /**
-         *
-         * Veriyi sıkıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static byte[] Serialize(global::Base baseComponent)
         {
             var component = new BaseComponent();
@@ -326,25 +200,11 @@
             return NetworkTools.Serialize(component);
         }
 
-        /**
-         *
-         * Bilgileri gösterir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ShowDetails()
         {
             Log.Info($"[Base Details] FaceLength: {this.FaceLength}, CellLength: {this.CellLength}, LinkLength: {this.LinkLength}, MaskLength: {this.MaskLength}, GlassLength: {this.GlassLength}, PowerLength: {this.PowerLength}");
         }
 
-        /**
-         *
-         * Dizi uzunluğunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private int GetArrayLength<T>(T[] arrayList)
         {
             return arrayList == null ? -1 : arrayList.Length;

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using System;
 
@@ -16,13 +16,6 @@
 
     public class BridgeProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryBridgeArgs>();
@@ -61,13 +54,6 @@
             return true;
         }
 
-        /**
-         *
-         * Koprüyü açar/kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool BridgeToggle(string uniqueId, float endTime, bool isExtend, bool isFirstExtension)
         {
             var bridge = Network.Identifier.GetComponentByGameObject<GlacialBasinBridgeController>(uniqueId, true);
@@ -140,25 +126,11 @@
             return true;
         }
 
-        /**
-         *
-         * Koprü spawn olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBridgeInitialized(BridgeInitializedEventArgs ev)
         {
             BridgeToggle(ev.UniqueId, Network.Session.Current.Story.Bridge.Time, Network.Session.Current.Story.Bridge.IsExtended, Network.Session.Current.Story.Bridge.IsFirstExtension);
         }
 
-        /**
-         *
-         * Koprü terminaline tıklanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBridgeTerminalClicking(BridgeTerminalClickingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -173,13 +145,6 @@
             }
         }
 
-        /**
-         *
-         * Köprü sol konsola tıklanınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBridgeFluidClicking(BridgeFluidClickingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -187,13 +152,6 @@
             BridgeProcessor.SendPacketToServer(ev.UniqueId, storyKey: ev.StoryKey, isClickedFluid: true);
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqued, string storyKey = null, float time = 0, bool isClickedFluid = false, bool isClickedExtend = false, bool isClickedRetract = false)
         {
             ServerModel.StoryBridgeArgs result = new ServerModel.StoryBridgeArgs()

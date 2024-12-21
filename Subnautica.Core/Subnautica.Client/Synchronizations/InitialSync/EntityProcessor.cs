@@ -15,13 +15,6 @@
 
     public class EntityProcessor
     {
-        /**
-         *
-         * Yumurtlamayacak nesneleri ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntityRestrictedInitialized()
         {
             if (Network.Session.Current.PersistentEntities != null)
@@ -30,13 +23,6 @@
             }
         }
 
-        /**
-         *
-         * Dünyadaki nesneleri yumurtlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnWorldItemsSpawn()
         {
             if (QuantumLockerStorage.main == null)
@@ -72,13 +58,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -93,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCosmeticItemSpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             pickupable.MultiplayerPlace(item.Action.GetProperty<string>("BaseId"));

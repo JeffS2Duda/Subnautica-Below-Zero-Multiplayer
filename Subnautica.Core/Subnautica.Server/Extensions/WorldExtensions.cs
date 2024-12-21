@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Extensions
+namespace Subnautica.Server.Extensions
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -8,25 +8,11 @@
 
     public static class WorldExtensions
     {
-        /**
-         *
-         * Id Yeniler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void RenewId(this WorldDynamicEntity entity)
         {
             entity.Id = Server.Core.Server.Instance.Logices.World.GetNextItemId();
         }
 
-        /**
-         *
-         * İlk modülü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static WorldDynamicEntity GetSeaTruckHeadModule(this WorldDynamicEntity entity)
         {
             var uniqueId = entity.UniqueId;
@@ -52,13 +38,6 @@
             return seaTruck;
         }
 
-        /**
-         *
-         * Ön modülü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<WorldDynamicEntity> GetSeaTruckFrontModule(this WorldDynamicEntity entity)
         {
             var uniqueId = entity.UniqueId;
@@ -78,13 +57,6 @@
             }
         }
 
-        /**
-         *
-         * Arka Modülü Döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static WorldDynamicEntity GetSeaTruckRearModule(this WorldDynamicEntity entity)
         {
             var connection = Server.Core.Server.Instance.Storages.World.Storage.SeaTruckConnections.FirstOrDefault(q => q.Value == entity.UniqueId);

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Storage
+namespace Subnautica.Server.Storage
 {
     using System;
     using System.IO;
@@ -16,22 +16,8 @@
 
     public class Construction : BaseStorage
     {
-        /**
-         *
-         * Dünya sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ConstructionStorage.Construction Storage { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Start(string serverId)
         {
             this.ServerId = serverId;
@@ -40,13 +26,6 @@
             this.Load();
         }
 
-        /**
-         *
-         * Sunucu dünya verilerini belleğe yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Load()
         {
             if (File.Exists(this.FilePath))
@@ -81,13 +60,6 @@
             }
         }        
 
-        /**
-         *
-         * Verileri diske yazar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void SaveToDisk()
         {
             lock (this.ProcessLock)
@@ -96,13 +68,6 @@
             }
         }
 
-        /**
-         *
-         * Bir yapının kaldırılabilirlik durumuna bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsDeconstructable(string uniqueId)
         {
             var construction = this.GetConstruction(uniqueId);
@@ -142,13 +107,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yapı detaylarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ConstructionStorage.ConstructionItem GetConstruction(string uniqueId)
         {
             if (uniqueId != null && this.Storage.Constructions.TryGetValue(uniqueId, out var construction))
@@ -159,13 +117,6 @@
             return null;
         }
 
-        /**
-         *
-         * Yapı detaylarını ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddConstructionItem(ConstructionStorage.ConstructionItem construction)
         {
             lock (this.ProcessLock)
@@ -175,13 +126,6 @@
             }
         }
 
-        /**
-         *
-         * Yapı tamamlanma oranını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UpdateConstructionAmount(string uniqueId, float constructedAmount)
         {
             lock (this.ProcessLock)
@@ -196,13 +140,6 @@
             }
         }
 
-        /**
-         *
-         * Metadata verisini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UpdateMetadata(string uniqueId, MetadataComponent component)
         {
             lock (this.ProcessLock)
@@ -217,13 +154,6 @@
             }
         }
 
-        /**
-         *
-         * Yapı'yı sözlükten kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ConstructionRemove(string uniqueId, ZeroInt3 cell = null)
         {
             lock (this.ProcessLock)
@@ -264,13 +194,6 @@
             }
         }
 
-        /**
-         *
-         * Yapı'yı tamamlar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ConstructionComplete(string uniqueId, string baseId, ZeroVector3 cellPosition, bool isFaceHasValue, ZeroVector3 localPosition, ZeroQuaternion localRotation, Base.Direction faceDirection = Base.Direction.North, Base.FaceType faceType = Base.FaceType.None)
         {
             lock (this.ProcessLock)

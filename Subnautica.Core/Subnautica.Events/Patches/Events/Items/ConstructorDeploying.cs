@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -12,13 +12,6 @@
     [HarmonyPatch(typeof(global::Constructor), nameof(global::Constructor.OnRightHandDown))]
     public class ConstructorDeploying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Constructor __instance)
         {
             if (Network.IsMultiplayerActive && !EventBlocker.IsEventBlocked(TechType.Constructor))

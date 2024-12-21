@@ -6,13 +6,6 @@
 
     public static class BaseAddBulkheadGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddBulkheadGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddBulkheadGhostComponent component)
         {
             positionFound   = false;

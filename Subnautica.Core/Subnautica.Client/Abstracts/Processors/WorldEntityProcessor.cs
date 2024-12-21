@@ -5,22 +5,8 @@
 
     public abstract class WorldEntityProcessor : BaseProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public abstract bool OnDataReceived(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning);
 
-        /**
-         *
-         * İşlemi yönlendirip çalıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool ExecuteProcessor(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning)
         {
             if (ProcessorShared.WorldEntityProcessors.TryGetValue(packet.ProcessType, out var processor))

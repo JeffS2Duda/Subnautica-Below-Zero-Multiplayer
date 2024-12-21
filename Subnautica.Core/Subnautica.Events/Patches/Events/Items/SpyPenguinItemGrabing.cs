@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -35,13 +35,6 @@
 
         }
 
-        /**
-         *
-         * Animasyon adını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetAnimationName(SpyPenguin penguin)
         {
             if (penguin.activeTarget == null && !SpyPenguin.IsViewingPlayer(penguin.cameraTransform.position, MainCamera.camera.transform.forward, 10f))

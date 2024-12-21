@@ -6,13 +6,6 @@
 
     public static class BaseAddConnectorGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddConnectorGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddConnectorGhostComponent component)
         {
             positionFound = false;

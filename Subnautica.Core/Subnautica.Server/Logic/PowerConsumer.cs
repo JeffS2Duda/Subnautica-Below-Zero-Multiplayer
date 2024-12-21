@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -13,22 +13,8 @@
 
     public class PowerConsumer : BaseLogic
     {
-        /**
-         *
-         * Güç kaynaklarını önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, HashSet<string>> PowerRelays { get; set; } = new Dictionary<string, HashSet<string>>();
 
-        /**
-         *
-         * Relay içerisine güç kaynağı eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPowerSourceAdding(PowerSourceAddingEventArgs ev)
         {
             if (!this.PowerRelays.TryGetValue(ev.UniqueId, out var powerSources))
@@ -42,13 +28,6 @@
             }
         }
 
-        /**
-         *
-         * Relay içerisinden güç kaynağı kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPowerSourceRemoving(PowerSourceRemovingEventArgs ev)
         {
             if (API.Features.World.IsLoaded)
@@ -64,13 +43,6 @@
             }
         }
 
-        /**
-         *
-         * Oyun başladığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnGameStart()
         {
             foreach (var powerRelay in this.PowerRelays)
@@ -91,13 +63,6 @@
             }
         }
 
-        /**
-         *
-         * Güç kaynaığını önbelleğe ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void AddPowerSourceToCache(string relayId, IPowerInterface powerSource)
         {
             var powerSourceId = this.GetPowerSourceId(powerSource.GetGameObject());
@@ -110,37 +75,16 @@
             }
         }
 
-        /**
-         *
-         * Enerji gerekli mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsTechnologyRequiresPower()
         {
             return GameModeManager.GetOption<bool>(GameOption.TechnologyRequiresPower);
         }
 
-        /**
-         *
-         * Yeterli güç olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool HasPower(global::PowerConsumer powerConsumer, float power)
         {
             return this.HasPower(powerConsumer.powerRelay, power);
         }
 
-        /**
-         *
-         * Yeterli güç olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool HasPower(global::PowerRelay powerRelay, float power)
         {
             if (this.IsTechnologyRequiresPower())
@@ -151,13 +95,6 @@
             return true;
         }
 
-        /**
-         *
-         * Güç tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ConsumePower(global::PowerConsumer powerConsumer, float amount, out float amountConsumed)
         {
             var isConsumed = this.ModifyPower(powerConsumer.powerRelay, -amount, out float modified);
@@ -165,13 +102,6 @@
             return isConsumed;
         }
 
-        /**
-         *
-         * Güç tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ConsumePower(global::PowerRelay powerRelay, float amount, out float amountConsumed)
         {
             var isConsumed = this.ModifyPower(powerRelay, -amount, out float modified);
@@ -179,25 +109,11 @@
             return isConsumed;
         }
 
-        /**
-         *
-         * Güç değerlerini düzenler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ModifyPower(global::PowerConsumer powerConsumer, float amount, out float modified)
         {
             return this.ModifyPower(powerConsumer.powerRelay, amount, out modified);
         }
 
-        /**
-         *
-         * Güç değerlerini düzenler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ModifyPower(global::PowerRelay powerRelay, float amount, out float modified)
         {
             if (this.IsTechnologyRequiresPower())
@@ -225,13 +141,6 @@
             return true;
         }
 
-        /**
-         *
-         * Güç Relay değerlerini düzenler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ModifyPowerFromInbound(string powerRelayId, float amount, out float modified)
         {
             modified = 0.0f;
@@ -272,13 +181,6 @@
             return isConsumed;
         }
 
-        /**
-         *
-         * Güç değerlerini düzenler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool InnerModifyPower(string powerSourceId, float amount, out float modified)
         {
             modified = 0.0f;
@@ -303,13 +205,6 @@
             return isConsumed;
         }
 
-        /**
-         *
-         * Güç kaynağının id'sini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string GetPowerSourceId(GameObject powerSource)
         {
             var constructable = powerSource.GetComponent<Constructable>();

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
 
     public class PictureFrameProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.PictureFrame>();
@@ -48,13 +41,6 @@
             return true;
         }
 
-        /**
-         *
-         * Resim çerçevesi tıklanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPictureFrameOpening(PictureFrameOpeningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -65,13 +51,6 @@
             }
         }
 
-        /**
-         *
-         * Resim çervesine resim eklenirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPictureFrameImageSelecting(PictureFrameImageSelectingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -79,13 +58,6 @@
             SendPacketToServer(ev.UniqueId, ev.ImageName, ev.ImageData, false);
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string imageName, byte[] imageData, bool isOpening)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

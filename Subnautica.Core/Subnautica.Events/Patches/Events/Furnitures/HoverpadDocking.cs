@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
     using System.Collections.Generic;
@@ -14,22 +14,8 @@
     [HarmonyPatch]
     public static class HoverpadDocking
     {
-        /**
-         *
-         * StopwatchItem nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static readonly Dictionary<string, StopwatchItem> StopwatchItems = new Dictionary<string, StopwatchItem>();
 
-        /**
-         *
-         * Yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Hoverpad), nameof(global::Hoverpad.OnEnable))]
         private static void Hoverpad_OnEnable(global::Hoverpad __instance)
@@ -44,13 +30,6 @@
             }
         }
 
-        /**
-         *
-         * Yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Hoverpad), nameof(global::Hoverpad.OnDisable))]
         private static void Hoverpad_OnDisable(global::Hoverpad __instance)
@@ -65,13 +44,6 @@
             }
         }
 
-        /**
-         *
-         * Yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Hoverpad), nameof(global::Hoverpad.TryDockBike))]
         private static bool Hoverpad_TryDockBike(global::Hoverpad __instance, Hoverbike hc)
@@ -119,13 +91,6 @@
             }
         }
 
-        /**
-         *
-         * UniqueId değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(GameObject gameObject)
         {
             return Network.Identifier.GetIdentityId(gameObject);

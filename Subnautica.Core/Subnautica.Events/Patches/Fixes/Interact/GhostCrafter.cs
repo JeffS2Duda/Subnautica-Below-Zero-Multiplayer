@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::GhostCrafter), nameof(global::GhostCrafter.OnHandHover))]
     public class GhostCrafter
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::GhostCrafter __instance, GUIHand hand)
         {
             if (!Network.IsMultiplayerActive)
@@ -44,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yapı idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetUniqueId(GameObject gameObject)
         {
             var constructable = gameObject.GetComponentInParent<Constructable>();
@@ -85,13 +71,6 @@
             return null;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static TechType GetTechType(GameObject gameObject)
         {
             var constructable = gameObject.GetComponentInParent<Constructable>();
@@ -119,13 +98,6 @@
             return TechType.None;
         }
 
-        /**
-         *
-         * Maproom için
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */    
         private static BaseDeconstructable GetBaseMapRoomDeconstructable(MapRoomFunctionality mapRoom)
         {
             var baseComp = mapRoom.GetComponentInParent<global::Base>();

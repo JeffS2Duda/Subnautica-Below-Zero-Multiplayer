@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Items
+namespace Subnautica.Events.Patches.Fixes.Items
 {
     using System.Collections.Generic;
 
@@ -54,13 +54,6 @@
             PrefixPostfixBlock(__instance, false);
         }
 
-        /**
-         *
-         * Bloklama işlemini ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool PrefixPostfixBlock(global::Beacon __instance, bool isPrefix = true)
         {
             if (!Network.IsMultiplayerActive)
@@ -91,13 +84,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bloklayıcıları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, EventBlocker> Blockers = new Dictionary<string, EventBlocker>();
     }
 }

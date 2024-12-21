@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -8,13 +8,6 @@
     [HarmonyPatch(typeof(global::StorageContainer), nameof(global::StorageContainer.OnHandHover))]
     public class StorageContainer
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::StorageContainer __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -42,13 +35,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yapı idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(global::StorageContainer __instance)
         {
             var constructable = __instance.gameObject.GetComponent<Constructable>();

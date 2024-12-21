@@ -26,13 +26,6 @@
     
     public class Builder
     {
-        /**
-         *
-         * İnşaa sınıfı oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Builder CreateBuilder(string uniqueId, TechType techType)
         {
             Builder builder = GetBuilder(uniqueId);
@@ -44,13 +37,6 @@
             return builder;
         }
 
-        /**
-         *
-         * İnşaa edilecek yapı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Builder GetBuilder(string uniqueId)
         {
             if (uniqueId == null)
@@ -66,13 +52,6 @@
             return null;
         }
 
-        /**
-         *
-         * İnşaa edilecek yapı ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AddBuilder(string uniqueId, Builder builder)
         {
             if (!Constructing.ContainsKey(uniqueId))
@@ -81,13 +60,6 @@
             }
         }
 
-        /**
-         *
-         * İnşaa edilecek yapı kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BuildingProgressType GetBuildingProgressType(string uniqueId)
         {
             var builder = GetBuilder(uniqueId);
@@ -99,13 +71,6 @@
             return builder.CurrentProgress;
         }
 
-        /**
-         *
-         * Yapıyı kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool Destroy(string uniqueId, bool isRemove = true, bool callSound = false)
         {
             Builder builder = GetBuilder(uniqueId);
@@ -200,13 +165,6 @@
             return true;
         }
      
-        /**
-         *
-         * Yapı kurucusunu serilize eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static byte[] SerializeGlobalRoot(bool isOptimize = true)
         {
             try
@@ -230,13 +188,6 @@
             }
         }
 
-        /**
-         *
-         * Yapıları yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator LoadConstructions(byte[] constructionData)
         {
             if (constructionData == null || constructionData.Length <= 0)
@@ -271,37 +222,16 @@
             }
         }
 
-        /**
-         *
-         * Belirtilen konumda hata sesini çalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CallErrorSound(Vector3 position)
         {
             RuntimeManager.PlayOneShot("event:/bz/ui/item_error", position);
         }
 
-        /**
-         *
-         * Belirtilen konumda başarılı sesini çalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */        
         public static void CallSuccessSound(Vector3 position)
         {
             RuntimeManager.PlayOneShot("event:/tools/builder/place", position);
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Builder(TechType techType, string uniqueId)
         {
             this.CurrentProgress = BuildingProgressType.Initializing;
@@ -316,61 +246,26 @@
             AddBuilder(uniqueId, this);
         }
 
-        /**
-         *
-         * SubrootId değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetSubRootId(string subrootId)
         {
             this.SubRootId = subrootId;
         }
 
-        /**
-         *
-         * Yapı koordinatını değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetPosition(Vector3 position)
         {
             this.PlacePosition = position;
         }
 
-        /**
-         *
-         * Yapı açısını değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetRotation(Quaternion rotation)
         {
             this.PlaceRotation = rotation;
         }
 
-        /**
-         *
-         * Son güncelleme zamanını değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetUpdatedTime(float time)
         {
             this.UpdatedTime = time;
         }
 
-        /**
-         *
-         * Son açıyı değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetLastRotation(int lastRotation)
         {
             this.LastRotation = lastRotation;
@@ -381,85 +276,36 @@
             }
         }
 
-        /**
-         *
-         * BaseGhostComponent değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetBaseGhostComponent(BaseGhostComponent ghostComponent)
         {
             this.BaseGhostComponent = ghostComponent;
         }
 
-        /**
-         *
-         * Yapı inşaa edilebilirlik durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetIsCanPlace(bool isCanPlace)
         {
             this.IsCanPlace = isCanPlace;
         }
 
-        /**
-         *
-         * Yapı inşaa edilebilirlik durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetUpdatePlacement(bool updatePlacement)
         {
             this.UpdatePlacement = updatePlacement;
         }
 
-        /**
-         *
-         * Animasyon çalışma durumunu değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetIsGhostModelAnimation(bool isAnimation)
         {
             this.IsGhostModelAnimation = isAnimation;
         }
 
-        /**
-         *
-         * Animasyon çalışma durumunu değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetIsAmountChangedAnimation(bool isAnimation)
         {
             this.IsAmountChangedAnimation = isAnimation;
         }
 
-        /**
-         *
-         * Varsayılan kurulum durumunu değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetIsTryDefaultPlace(bool isTryDefaultPlace)
         {
             this.IsTryDefaultPlace = isTryDefaultPlace;
         }
 
-        /**
-         *
-         * Varsayılan kurulum durumunu değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetAimTransform(ZeroTransform aimTransform)
         {
             this.AimTransformGameObject.transform.forward  = aimTransform.Forward.ToVector3();
@@ -467,13 +313,6 @@
             this.AimTransformGameObject.transform.rotation = aimTransform.Rotation.ToQuaternion();
         }
 
-        /**
-         *
-         * Tamamlanma oranını değiştirir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetConstructedAmount(float amount, bool isFastUpdate = false)
         {
             if (isFastUpdate)
@@ -490,25 +329,11 @@
             }
         }
 
-        /**
-         *
-         * Yapının hayalet model inşaasını başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartBuild(Action onCallback)
         {
             CoroutineHost.StartCoroutine(this.CreateSubBuild(onCallback));
         }
 
-        /**
-         *
-         * Yapıyı tamamlar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Complete(string baseId, uint constructionId, bool callSound = false)
         {
             this.CurrentProgress = BuildingProgressType.Completed;
@@ -555,25 +380,11 @@
             this.Destroy(false);
         }
 
-        /**
-         *
-         * Yapı verilerini temizler ve kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Destroy(bool isRemoved = true)
         {
             Destroy(this.UniqueId, isRemoved);
         }
 
-        /**
-         *
-         * Yapı yıkma işlemini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool Deconstruct(string uniqueId, uint constructionId, bool isFurniture = false)
         {
             Builder.RemoveBuilding(constructionId);
@@ -586,13 +397,6 @@
             return DeconstructBasePiece(uniqueId);
         }
 
-        /**
-         *
-         * İç Mobilya yıkma işlemini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool DeconstructFurniture(string uniqueId)
         {
             if (!UniqueIdentifier.TryGetIdentifier(uniqueId, out var uid))
@@ -614,13 +418,6 @@
             return true;
         }
 
-        /**
-         *
-         * İç Yapı yıkma işlemini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool DeconstructBasePiece(string uniqueId)
         {
             if (!UniqueIdentifier.TryGetIdentifier(uniqueId, out var uid))
@@ -704,13 +501,6 @@
             return false;
         }
 
-        /**
-         *
-         * Güncelleme işlemi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool Update()
         {
             if (this.Prefab == null || !this.IsActive)
@@ -741,13 +531,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yapının hayalet model inşaasını başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator CreateSubBuild(Action onCallback)
         {
             CoroutineTask<GameObject> request = CraftData.GetPrefabForTechTypeAsync(this.TechType);
@@ -762,13 +545,6 @@
             }
         }
 
-        /**
-         *
-         * Başlatma tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void InitializeFinished()
         {
             this.CurrentProgress = BuildingProgressType.GhostModelMoving;
@@ -781,13 +557,6 @@
             }
         }
 
-        /**
-         *
-         * Hayalet modeli oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool CreateGhost()
         {
             if (this.GhostModel != null)
@@ -860,13 +629,6 @@
             return true;
         }
 
-        /**
-         *
-         * Geomerty işlemlerini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UpdateAllowed()
         {
             this.OldLastRotation = this.LastRotation;
@@ -887,13 +649,6 @@
             return false;
         }
 
-        /**
-         *
-         * Hayalet yapı modelini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UpdateGhostModel(ConstructableBase constructableBase)
         {
             if (this.GhostModel == null)
@@ -957,13 +712,6 @@
             return geometryChanged;
         }
 
-        /**
-         *
-         * Hayalet modelin yapım aşamasını başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryPlace(bool isCallSound = false)
         {
             if (this.Prefab == null || !this.IsActive)
@@ -1075,13 +823,6 @@
             return this.TryPlaceEnd();
         }
 
-        /**
-         *
-         * İnşaa modu animasyonlarını ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void InitializeConstructionMode(ConstructableBase constructableBase, Constructable constructable)
         {
             this.ConstructableBase = constructableBase;
@@ -1103,13 +844,6 @@
             }
         }
 
-        /**
-         *
-         * Kemikleri ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void InitBounds(GameObject gameObject)
         {
             this.CacheBounds(gameObject.transform, gameObject, this.Bounds);
@@ -1136,13 +870,6 @@
             this.AaBounds.center = min + this.AaBounds.extents;
         }
 
-        /**
-         *
-         * Kemik önbelleğini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void CacheBounds(Transform transform, GameObject target, List<OrientedBounds> results, bool append = false)
         {
             if (!append)
@@ -1175,13 +902,6 @@
             }
         }
 
-        /**
-         *
-         * Hedef oyun nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject GetPlacementTarget()
         {
             if (!Physics.Raycast(this.AimTransformGameObject.transform.position, this.AimTransformGameObject.transform.forward, out var hitInfo, this.PlaceMaxDistance, global::Builder.placeLayerMask.value, QueryTriggerInteraction.Ignore))
@@ -1197,13 +917,6 @@
             return hitInfo.collider.gameObject;
         }
 
-        /**
-         *
-         * Hayalet model verilerini temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool TryPlaceEnd()
         {
             this.GhostModel = null;
@@ -1212,37 +925,16 @@
             return true;
         }
 
-        /**
-         *
-         * Yapıyı sözlüğe ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AddBuilding(uint constructionId, string uniqueId)
         {
             Buildings[constructionId] = uniqueId;
         }
 
-        /**
-         *
-         * Yapıyı sözlükten kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void RemoveBuilding(uint constructionId)
         {
             Buildings.Remove(constructionId);
         }
 
-        /**
-         *
-         * Yapıyı sözlükten kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool TryGetBuildingValue(uint constructionId, out string result)
         {
             if (Buildings.TryGetValue(constructionId, out result))
@@ -1253,13 +945,6 @@
             return false;
         }
 
-        /**
-         *
-         * Tamamlanıp tamamlanmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsCompleted(string uniqueId)
         {
             if (uniqueId == null)
@@ -1270,115 +955,31 @@
             return Buildings.Where(q => q.Value == uniqueId).Any();
         }
 
-        /**
-         *
-         * Tamamlanıp tamamlanmadığını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsCompleted()
         {
             return IsCompleted(this.UniqueId);
         }
 
-        /**
-         *
-         * İnşaa edilecek yapıları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<string, Builder> Constructing { get; private set; } = new Dictionary<string, Builder>();
 
-        /**
-         *
-         * İnşaa edilecek yapıları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<uint, string> Buildings { get; private set; } = new Dictionary<uint, string>();
 
-        /**
-         *
-         * Yapı Kimliği
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string UniqueId { get; private set; }
 
-        /**
-         *
-         * SubrootId Kimliği
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string SubRootId { get; private set; }
 
-        /**
-         *
-         * İnşaa Açısını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public int LastRotation { get; private set; } = 0;
 
-        /**
-         *
-         * OldLastRotation Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public int OldLastRotation { get; private set; } = 0;
 
-        /**
-         *
-         * BaseGhostComponent Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public BaseGhostComponent BaseGhostComponent { get; private set; }
 
-        /**
-         *
-         * Hayalet Model hareket Animasyon çalışma durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsGhostModelAnimation { get; private set; } = true;
 
-        /**
-         *
-         * Animasyon çalışma durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsAmountChangedAnimation { get; private set; } = true;
 
-        /**
-         *
-         * Varsayılan kurulum durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsTryDefaultPlace { get; private set; } = false;
 
-        /**
-         *
-         * Construction Bool değişkenleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsActive { get; set; }                    = false;
         public bool IsCanPlace { get; private set; }          = false;
         public bool UpdatePlacement { get; private set; }     = false;
@@ -1390,158 +991,39 @@
         public bool IsAlignWithSurface { get; private set; }  = false;
         public bool IsRotationEnabled { get; private set; }   = false;
 
-        /**
-         *
-         * Construction Float değişkenleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float PlaceMaxDistance { get; private set; } = 0.0f;
 
-        /**
-         *
-         * Son güncelleme zamanı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float UpdatedTime { get; private set; }
 
-        /**
-         *
-         * İnşaa ilerleme durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public BuildingProgressType CurrentProgress { get; private set; } = BuildingProgressType.None;  
 
-        /**
-         *
-         * Yapı türü
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public TechType TechType { get; private set; }
 
-        /**
-         *
-         * Yapı pozisyon barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 PlacePosition;
 
-        /**
-         *
-         * Yapı açısını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Quaternion PlaceRotation;
 
-        /**
-         *
-         * Prefabrik değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject Prefab { get; set; }
 
-        /**
-         *
-         * Hayalet Modeli barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject GhostModel { get; private set; }
 
-        /**
-         *
-         * AimTransformGameObject barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject AimTransformGameObject { get; private set; }
 
-        /**
-         *
-         * Yapı hayalet renkleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Color PlaceColorAllow { get; private set; } = new Color(0.0f, 1f, 0.0f, 1f);
         public Color PlaceColorDeny  { get; private set; } = new Color(1f, 0.0f, 0.0f, 1f);
 
-        /**
-         *
-         * Yapı materyalleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Material GhostStructureMaterial { get; private set; }
 
-        /**
-         *
-         * Model kemiklerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Bounds AaBounds = new Bounds();
 
-        /**
-         *
-         * Yapı liste değerleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<OrientedBounds> Bounds { get; private set; } = new List<OrientedBounds>();        
 
-        /**
-         *
-         * ConstructableBase sınıfını barınrdırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ConstructableBase ConstructableBase { get; private set; }
 
-        /**
-         *
-         * Constructable sınıfını barınrdırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Constructable Constructable { get; private set; }
 
-        /**
-         *
-         * Constructable sınıfını barınrdırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public BuilderNormalAnimation BuilderNormalAnimation { get; private set; }
 
-        /**
-         *
-         * Bir yapıya bağlanıp modeli değişen teknolojiler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<TechType> UpdateAllowedTechnologies = new List<TechType>()
         {
             TechType.BaseHatch,

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -16,13 +16,6 @@
 
     public class HealthProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleHealthArgs>();
@@ -41,13 +34,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnProcessCompleted(ItemQueueProcess item)
         {
             var uniqueId   = item.Action.GetProperty<string>("UniqueId");
@@ -60,13 +46,6 @@
             }
         }
 
-        /**
-         *
-         * Araç patlamadan önce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnVehicleDestroyed(string uniqueId, GameObject gameObject)
         {
             var entity = Network.DynamicEntity.GetEntity(uniqueId);
@@ -88,13 +67,6 @@
             }
         }
 
-        /**
-         *
-         * Bir nesne hasar aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTakeDamaging(TakeDamagingEventArgs ev)
         {
             if (ev.TechType.IsVehicle())
@@ -108,13 +80,6 @@
             }
         }
 
-        /**
-         *
-         * Basınç hasarı alınınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCrushDamaging(CrushDamagingEventArgs ev)
         {
             if (ev.TechType.IsVehicle())
@@ -128,13 +93,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, float damage, DamageType damageType)
         {
             ServerModel.VehicleHealthArgs request = new ServerModel.VehicleHealthArgs()

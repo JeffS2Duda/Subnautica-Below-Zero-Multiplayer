@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
+namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,23 +12,9 @@
     [MessagePackObject]
     public class PipeSurfaceFloater : NetworkDynamicEntityComponent
     {
-        /**
-         *
-         * Childrens Değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public HashSet<OxygenPipeItem> Childrens { get; set; } = new HashSet<OxygenPipeItem>();
 
-        /**
-         *
-         * Oksijen borusu ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddOxygenPipe(string pipeId, string parentId, ZeroVector3 position)
         {
             if (this.Childrens.Any(q => q.UniqueId == pipeId))

@@ -16,22 +16,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
     public class UpdatedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Default Hand Rotation
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Quaternion DefaultHandRotation { get; set; } = new Quaternion(0f, 0.2f, 0f, 1f);
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.PlayerUpdatedArgs>();
@@ -72,13 +58,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             return true;
         }
 
-        /**
-         *
-         * Oyuncu verileri tetiklendikten sonra çalışır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
 
         public static void OnPlayerUpdated(PlayerUpdatedEventArgs ev)
         {
@@ -96,7 +75,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                     ItemInHand  = ev.TechTypeInHand,
                     SurfaceType = ev.SurfaceType,
 
-                    // NOT OPTIMIZED
                     Equipments        = ev.Equipments,
                     EmoteIndex        = (byte) ev.EmoteIndex,
                     IsPrecursorArm    = ev.IsPrecursorArm,
@@ -107,13 +85,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             }
         }
 
-        /**
-         *
-         * Eşya açısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static long GetHandItemRotation(TechType techType, bool isLeft)
         {
             if (techType == TechType.None || techType == TechType.QuantumLocker || techType == TechType.Seaglide || techType == TechType.TeleportationTool)
@@ -130,13 +101,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             return localRotation.Compress();
         }
 
-        /**
-         *
-         * Eşya bileşenini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static NetworkPlayerItemComponent GetItemComponent(TechType techType)
         {
             if (techType == TechType.Flashlight)

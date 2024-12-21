@@ -20,13 +20,6 @@
 
     public class WorldProcessor : NormalProcessor
     {
-        /**
-        *
-        * Gelen veriyi işler
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ClientModel.WorldLoadedArgs>();
@@ -42,38 +35,17 @@
             return true;
         }
 
-        /**
-         *
-         * Dünya yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnWorldLoaded(WorldLoadedEventArgs ev)
         {
             ev.WaitingMethods.Add(WaitingScreen.AddWaitScreen(ProcessType.WorldLoaded, LoadedWorldAction, Main.ReturnToMainMenu));
         }
 
-        /**
-         *
-         * Dünya yüklenirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnWorldLoading(WorldLoadingEventArgs ev)
         {
             ev.WaitingMethods.Add(WaitingScreen.AddWaitScreen(ProcessType.WorldLoaded, LoadingWorldGlobalRootAction, Main.ReturnToMainMenu));
             ev.WaitingMethods.Add(WaitingScreen.AddWaitScreen(ProcessType.WorldLoaded, LoadingWorldSpawnPointAction, Main.ReturnToMainMenu));
         }
 
-        /**
-         *
-         * Kuyruktaki işlemi başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void LoadedWorldAction()
         {
             ServerModel.WorldLoadedArgs request = new ServerModel.WorldLoadedArgs()
@@ -84,25 +56,11 @@
             NetworkClient.SendPacket(request);
         }
 
-        /**
-         *
-         * Kuyruktaki işlemi başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void LoadingWorldGlobalRootAction()
         {
             CoroutineHost.StartCoroutine(LoadingWorldAsync());
         }
 
-        /**
-         *
-         * Kuyruktaki işlemi başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void LoadingWorldSpawnPointAction()
         {
             ServerModel.WorldLoadedArgs request = new ServerModel.WorldLoadedArgs()
@@ -115,13 +73,6 @@
         }
         
 
-        /**
-         *
-         * Dünya yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator LoadedWorldSpawnPointAsync(ClientModel.WorldLoadedArgs packet)
         {
             if (SpawnPointProcessor.OnSpawnPointsInitialized(packet.SpawnPoints, packet.IsSpawnPointExists))
@@ -136,13 +87,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator LoadedWorldAsync(ClientModel.WorldLoadedArgs packet)
         {
             try
@@ -174,13 +118,6 @@
             WaitingScreen.RemoveScreen(ProcessType.WorldLoaded);
         }
 
-        /**
-         *
-         * Dünyayı yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator LoadingWorldAsync()
         {
             QualitySetting.EnableFastMode();
@@ -264,13 +201,6 @@
             WaitingScreen.RemoveScreen(ProcessType.WorldLoaded);
         }
 
-        /**
-         *
-         * Dünya zamanını ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool SetDayNightCycle(double serverTime)
         {
             var elapsedTime = serverTime - Network.Session.GetWorldTime();

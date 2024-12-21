@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Core.Components
+namespace Subnautica.Network.Core.Components
 {
     using System;
 
@@ -29,13 +29,6 @@
     [MessagePackObject]
     public abstract class NetworkDynamicEntityComponent
     {
-        /**
-         *
-         * Komponenti döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetComponent<T>()
         {
             if (this is T)

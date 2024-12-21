@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Building
+namespace Subnautica.Events.Patches.Events.Building
 {
     using HarmonyLib;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::BaseDeconstructable), nameof(global::BaseDeconstructable.Deconstruct))]
     public static class DeconstructionBegin
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::BaseDeconstructable __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -51,13 +44,6 @@
             }
         }
 
-        /**
-         *
-         * Benzersiz ID numrasını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(global::BaseDeconstructable baseDeconstructable)
         {
             var uniqueId = baseDeconstructable.gameObject.GetIdentityId();

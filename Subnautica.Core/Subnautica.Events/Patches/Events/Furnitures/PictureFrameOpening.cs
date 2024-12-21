@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -12,13 +12,6 @@
     [HarmonyPatch(typeof(global::PictureFrame), nameof(global::PictureFrame.OnHandClick))]
     public static class PictureFrameOpening
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::PictureFrame __instance)
         {
             if (!Network.IsMultiplayerActive)

@@ -4,22 +4,8 @@
 
     public class MapRoomCamera : VehicleController
     {
-        /**
-         *
-         * SpyPenguin aracını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::MapRoomCamera Camera { get; set; }
 
-        /**
-         *
-         * Oyuncu araca bindiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnEnterVehicle()
         {
             base.OnEnterVehicle();
@@ -31,13 +17,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnExitVehicle()
         {
             this.Management.Player.ResetAnimations();

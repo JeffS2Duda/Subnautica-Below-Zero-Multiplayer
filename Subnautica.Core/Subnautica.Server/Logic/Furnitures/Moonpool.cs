@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic.Furnitures
+namespace Subnautica.Server.Logic.Furnitures
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,40 +14,12 @@
 
     public class Moonpool : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Tamir edilecek sağlık (saniye başına)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float RepairHealth { get; set; } = 12.5f;
 
-        /**
-         *
-         * Requests nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<ServerModel.VehicleRepairItem> Requests { get; set; } = new List<ServerModel.VehicleRepairItem>();
 
-        /**
-         *
-         * Zamanlayıcının geri dönüş methodu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate(float deltaTime)
         {
             if (this.Timing.IsFinished() && World.IsLoaded)
@@ -93,13 +65,6 @@
             }
         }
 
-        /**
-         *
-         * Tamir paketini oyunculara gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendPacketToAllClient()
         {
             if (this.Requests.Count > 0)
@@ -115,13 +80,6 @@
             }
         }
 
-        /**
-         *
-         * Aracı tamir eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool RepairVehicle(string vehicleId, WorldEntityModel.SeaTruck seatruck)
         {
             if (seatruck.LiveMixin.AddHealth(this.RepairHealth))
@@ -133,13 +91,6 @@
             return false;
         }
 
-        /**
-         *
-         * Aracı şarj eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ChargeVehicle(global::VehicleDockingBay dockingBay, List<PowerCell> powerCells)
         {
             var energyAmount = this.GetEnergyValue(powerCells);
@@ -171,13 +122,6 @@
             return isCharged;
         }
 
-        /**
-         *
-         * Üretilen enerji miktarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float GetEnergyValue(List<PowerCell> powerCells)
         {
             var capacity = 0f;
@@ -197,13 +141,6 @@
             return capacity * (1f / 400f);
         }
 
-        /**
-         *
-         * Hoverpad'leri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<KeyValuePair<string, ConstructionItem>> GetMoonpools()
         {
             return Core.Server.Instance.Storages.Construction.Storage.Constructions.Where(q => q.Value.ConstructedAmount == 1f && (q.Value.TechType == TechType.BaseMoonpool || q.Value.TechType == TechType.BaseMoonpoolExpansion)).ToList();

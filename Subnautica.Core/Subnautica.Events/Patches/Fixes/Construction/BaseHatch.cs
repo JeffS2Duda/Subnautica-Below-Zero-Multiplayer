@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Construction
+namespace Subnautica.Events.Patches.Fixes.Construction
 {
     using HarmonyLib;
 
@@ -20,44 +20,16 @@
 
     public class FixBaseHatch : MonoBehaviour
     {
-        /**
-         *
-         * Kapağı yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::UseableDiveHatch Hatch { get; set; }
 
-        /**
-         *
-         * Oyuncuyu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Player Player { get; set; }
 
-        /**
-         *
-         * Uyanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */        
         public void Awake()
         {
             this.Hatch  = this.gameObject.GetComponent<global::UseableDiveHatch>();
             this.Player = global::Player.main;
         }
 
-        /**
-         *
-         * Pasif hale gelirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */  
         public void OnDisable()
         {
             if (global::PlayerCinematicController.cinematicModeCount > 0)
@@ -74,13 +46,6 @@
             }
         }
 
-        /**
-         *
-         * Hızlı giriş işlemini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */  
         private void FastEnter()
         {
             if (this.Hatch)
@@ -91,13 +56,6 @@
             }
         }
 
-        /**
-         *
-         * Hızlı çıkış işlemini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */  
         private void FastExit()
         {
             if (this.Hatch && this.Hatch.GetExitPosition(out var exitPosition))

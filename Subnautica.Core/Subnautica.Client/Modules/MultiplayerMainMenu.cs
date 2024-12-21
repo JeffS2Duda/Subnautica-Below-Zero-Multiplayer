@@ -20,13 +20,6 @@ namespace Subnautica.Client.Modules
 
     public class MultiplayerMainMenu
     {
-        /**
-         *
-         * Sahne yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSceneLoaded(SceneLoadedEventArgs ev)
         {
             IsClicked = false;
@@ -44,13 +37,6 @@ namespace Subnautica.Client.Modules
             }
         }
 
-        /**
-         *
-         * Bepinex uyarı mesajını gösterir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator SendAutoBepinexWarn()
         {
             yield return new WaitForSecondsRealtime(2f);
@@ -58,13 +44,6 @@ namespace Subnautica.Client.Modules
             uGUI.main.confirmation.Show(ZeroLanguage.Get("GAME_BEPINEX_DETECTED"), null, null);
         }
 
-        /**
-         *
-         * Çok oyunculu menü ayarlarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void InitializeMultiplayerMenu()
         {
             CacheSinglePlayerSaveGames();
@@ -85,13 +64,6 @@ namespace Subnautica.Client.Modules
             MainMenuRightSide.main.groups.Add(createServerGroup.GetComponent<MainMenuGroup>());
         }
 
-        /**
-         *
-         * Singleplayer butonuna basıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSinglePlayerButtonClick()
         {
             SaveLoadManager.main.gameInfoCache.Clear();
@@ -104,25 +76,11 @@ namespace Subnautica.Client.Modules
             MainMenuRightSide.main.OpenGroup("SavedGames");
         }
 
-        /**
-         *
-         * Sidebar çok oyunculu butonuna basınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSidebarMultiplayerButtonClick()
         {
             MainMenuRightSide.main.OpenGroup(MULTIPLAYER_BASE_GROUP_NAME);
         }
 
-        /**
-         *
-         * Host Game Butonuna basınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnHostGameButtonClick()
         {
             SaveLoadManager.main.gameInfoCache.Clear();
@@ -138,13 +96,6 @@ namespace Subnautica.Client.Modules
             MainMenuRightSide.main.OpenGroup(MULTIPLAYER_HOST_GROUP_NAME);
         }
 
-        /**
-         *
-         * Add server Butonuna basınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnAddServerButtonClick()
         {
             var serverInviteCode = UserInterfaceElements.GetInputText("GAME_INVITE_CODE").Trim();
@@ -169,25 +120,11 @@ namespace Subnautica.Client.Modules
             }
         }
 
-        /**
-         *
-         * Create server Butonuna basınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnHostCreateServerButtonClick()
         {
             MainMenuRightSide.main.OpenGroup(MULTIPLAYER_HOST_CREATE_SERVER_GROUP_NAME);
         }
 
-        /**
-         *
-         * Join Game Butonuna basınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnJoinGameButtonClick()
         {
             SaveLoadManager.main.gameInfoCache.Clear();
@@ -203,25 +140,11 @@ namespace Subnautica.Client.Modules
             MainMenuRightSide.main.OpenGroup(MULTIPLAYER_JOIN_GROUP_NAME);
         }
 
-        /**
-         *
-         * Singleplayer verilerini önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CacheSinglePlayerSaveGames()
         {
             SinglePlayerGameSaves = new Dictionary<string, SaveLoadManager.GameInfo>(SaveLoadManager.main.gameInfoCache);
         }
 
-        /**
-         *
-         * Ana menü kayıtlı oyunları sil iptal onay butonu tetiklenmesi.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMenuSaveCancelDeleteButtonClicking(MenuSaveCancelDeleteButtonClickingEventArgs ev)
         {
             ev.IsAllowed = CancelDeleteSave();
@@ -232,13 +155,6 @@ namespace Subnautica.Client.Modules
             }
         }
 
-        /**
-         *
-         * Ana menü kayıtlı oyunları sil butonu tetiklenmesi.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMenuSaveDeleteButtonClicking(MenuSaveDeleteButtonClickingEventArgs ev)
         {
             ev.IsAllowed = DeleteSave(ev.SessionId);
@@ -249,37 +165,16 @@ namespace Subnautica.Client.Modules
             }
         }
 
-        /**
-         *
-         * Ana menü kayıtlı oyun buton bilgileri tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMenuSaveUpdateLoadedButtonState(MenuSaveUpdateLoadedButtonStateEventArgs ev)
         {
             UpdateLoadSaveButtonState(ev.Button);
         }
 
-        /**
-         *
-         * Ana menü kayıtlı oyunu başlat tetiklemesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMenuSaveLoadButtonClicking(MenuSaveLoadButtonClickingEventArgs ev)
         {
             ev.IsAllowed = LoadSave(ev.SessionId);
         }
 
-        /**
-         *
-         * Kayıt dosyası tıklandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool LoadSave(string sessionId)
         {
             if (UserInterfaceElements.IsSinglePlayerMenuActive)
@@ -327,13 +222,6 @@ namespace Subnautica.Client.Modules
             return false;
         }
 
-        /**
-         *
-         * Kayıt dosyası onay kabul reddedildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool CancelDeleteSave()
         {
             if (UserInterfaceElements.IsSinglePlayerMenuActive)
@@ -344,13 +232,6 @@ namespace Subnautica.Client.Modules
             return false;
         }
 
-        /**
-         *
-         * Kayıt dosyası onay kabul edildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool DeleteSave(string sessionId)
         {
             if (UserInterfaceElements.IsSinglePlayerMenuActive)
@@ -389,13 +270,6 @@ namespace Subnautica.Client.Modules
             return false;
         }
 
-        /**
-         *
-         * Kayıt kutularının detaylarını doldurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void UpdateLoadSaveButtonState(MainMenuLoadButton lb)
         {
             if (UserInterfaceElements.IsHostGroupActive)
@@ -419,13 +293,6 @@ namespace Subnautica.Client.Modules
             }
         }
 
-        /**
-         *
-         * Add server save Butonuna basınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnAddServerSaveButtonClick()
         {
             var serverName = UserInterfaceElements.GetInputText("GAME_SERVER_NAME").Trim();
@@ -472,13 +339,6 @@ namespace Subnautica.Client.Modules
             OnJoinGameButtonClick();
         }
 
-        /**
-         *
-         * Survival/Hardcore game v.s server oluştur Butonuna basınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCreateServerHostClick(GameModePresetId gameModeId)
         {
             if (IsClicked == false)
@@ -503,35 +363,14 @@ namespace Subnautica.Client.Modules
             }
         }
 
-        /**
-         *
-         * Grup Anahtarları
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public const string MULTIPLAYER_BASE_GROUP_NAME = "MultiplayerBase";
         public const string MULTIPLAYER_HOST_GROUP_NAME = "MultiplayerHostBase";
         public const string MULTIPLAYER_JOIN_GROUP_NAME = "MultiplayerJoinBase";
         public const string MULTIPLAYER_JOIN_ADD_SERVER_GROUP_NAME    = "MultiplayerJoinAddServerBase";
         public const string MULTIPLAYER_HOST_CREATE_SERVER_GROUP_NAME = "MultiplayerHostCreateServerBase";
 
-        /**
-         *
-         * SinglePlayer verilerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<string, SaveLoadManager.GameInfo> SinglePlayerGameSaves { get; set; }
 
-        /**
-         *
-         *  IsClicked Değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsClicked { get; set; } = false;
     }
 }

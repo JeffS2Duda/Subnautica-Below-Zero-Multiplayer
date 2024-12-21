@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.World
+namespace Subnautica.Events.Patches.Events.World
 {
     using System;
     using System.Collections;
@@ -18,13 +18,6 @@
     [HarmonyPatch(typeof(global::ProtobufSerializer), nameof(global::ProtobufSerializer.DeserializeObjectsAsync), new Type[] { typeof(Stream), typeof(UniqueIdentifier), typeof(bool), typeof(bool), typeof(Transform), typeof(bool), typeof(int), typeof(IOut<GameObject>) })]
     public static class EntitySpawningProtobuf
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator Postfix(IEnumerator values, global::ProtobufSerializer __instance, Stream stream, UniqueIdentifier rootUid, bool forceInactiveRoot, bool forceParent, Transform parent, bool allowSpawnRestrictions, int verbose, IOut<GameObject> result)
         {
             if (!Network.IsMultiplayerActive || !__instance.IsCellModeActive())

@@ -20,13 +20,6 @@
 
     public class LifepodProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.LifepodArgs>();
@@ -47,13 +40,6 @@
             return true;
         }
 
-        /**
-         *
-         * Lifepod bölgesi seçilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnLifepodZoneSelecting(LifepodZoneSelectingEventArgs ev)
         {
             var lifePod = Network.Session.Current.SupplyDrops.Where(q => q.Key == ev.Key).FirstOrDefault();
@@ -68,13 +54,6 @@
             }
         }
 
-        /**
-         *
-         * Lifepod spawnlanma için kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnLifepodZoneCheck(LifepodZoneCheckEventArgs ev)
         {
             if (Network.Session.Current.SupplyDrops.Where(q => q.Key == ev.Key).Any())
@@ -83,13 +62,6 @@
             }
         }
 
-        /**
-         *
-         * Lifepod enterpolasyon işleminde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnLifepodInterpolation(LifepodInterpolationEventArgs ev)
         {
             try
@@ -121,13 +93,6 @@
             }
         }
 
-        /**
-         *
-         * Depo'daki malzemeleri ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void InitializeStorage(Subnautica.Network.Models.Storage.World.Childrens.SupplyDrop supplyDrop)
         {
             var storageContainer = Network.Identifier.GetComponentByGameObject<global::StorageContainer>(supplyDrop.StorageUniqueId);
@@ -140,13 +105,6 @@
             }
         }
 
-        /**
-         *
-         * Yaşam kozasını yumurtlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ForceSupplyDrop(string key)
         {
             foreach (var dropData in SupplyDropManager.allDropData)
@@ -158,13 +116,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawn olurken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntitySpawning(EntitySpawningEventArgs ev)
         {
             if (ev.ClassId == API.Constants.SupplyDrop.LifepodFabricatorClassId)
@@ -173,13 +124,6 @@
             }
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (ev.TechType == TechType.EscapePod)
@@ -190,13 +134,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (ev.TechType == TechType.EscapePod)
@@ -207,13 +144,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya Veri Gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, WorldPickupItem pickupItem = null, bool isAdded = false)
         {
             ServerModel.LifepodArgs request = new ServerModel.LifepodArgs()

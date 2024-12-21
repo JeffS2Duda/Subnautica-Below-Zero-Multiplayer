@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using System.Diagnostics;
 
@@ -14,25 +14,11 @@
 
     public class StatsProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             return true;
         }
 
-        /**
-         *
-         * Oyuncu istatistikleri alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerStatsUpdated(PlayerStatsUpdatedEventArgs ev)
         {
             if (World.IsLoaded)

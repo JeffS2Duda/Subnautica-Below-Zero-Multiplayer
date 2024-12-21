@@ -7,13 +7,6 @@
 
     public static class BaseAddWaterParkGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddWaterPark baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddWaterParkGhostComponent component)
         {
             positionFound   = false;

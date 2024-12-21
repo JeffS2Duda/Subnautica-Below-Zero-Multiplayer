@@ -13,13 +13,6 @@
 
     public class CrashFishProcessor : WorldCreatureProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkCreatureComponent networkPacket, byte requesterId, double processTime, TechType creatureType, ushort creatureId)
         {
             var component = networkPacket.GetComponent<CreatureModel.CrashFish>();
@@ -36,13 +29,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
             if (creature.GameObject.TryGetComponent<global::Crash>(out var crash))
@@ -63,13 +49,6 @@
             }
         }
 
-        /**
-         *
-         * CrashFish patlarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCrashFishInflating(CrashFishInflatingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -77,13 +56,6 @@
             CrashFishProcessor.SendPacketToServer(ev.UniqueId.ToCreatureId());
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(ushort creatureId)
         {
             ServerModel.CreatureProcessArgs request = new ServerModel.CreatureProcessArgs()

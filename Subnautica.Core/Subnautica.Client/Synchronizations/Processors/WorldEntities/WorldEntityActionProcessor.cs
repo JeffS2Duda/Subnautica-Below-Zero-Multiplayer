@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using Subnautica.Network.Models.Core;
     using Subnautica.Client.Abstracts;
@@ -8,13 +8,6 @@
 
     public class WorldEntityActionProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.WorldEntityActionArgs>();

@@ -6,22 +6,8 @@
 
     public class HoverpadCinematic : CinematicController
     {
-        /**
-        *
-        * Hoverpadi barındırır.
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         private global::Hoverpad Hoverpad { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.Hoverpad = this.Target.GetComponent<global::Hoverpad>();
@@ -32,13 +18,6 @@
             }
         }
 
-        /**
-         *
-         * İnme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void DockStartCinematic()
         {
             if (this.Hoverpad && this.Hoverpad.dockedBike)
@@ -54,13 +33,6 @@
             }
         }
 
-        /**
-         *
-         * Binme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UndockStartCinematic()
         {
             var trigger = this.Hoverpad.GetComponentInChildren<HoverpadUndockTrigger>();
@@ -75,13 +47,6 @@
             }
         }
 
-        /**
-         *
-         * Binme bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UndockCinematicEndMode()
         {
             if (this.Hoverpad)
@@ -103,13 +68,6 @@
             }
         }
 
-        /**
-         *
-         * İnme bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void DockCinematicEndMode()
         {
             this.ZeroPlayer.IsVehicleDocking = false;

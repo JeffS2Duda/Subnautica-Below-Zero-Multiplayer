@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Building
+namespace Subnautica.Events.Patches.Events.Building
 {
     using System;
 
@@ -10,22 +10,8 @@
     [HarmonyPatch(typeof(Builder), nameof(Builder.Update))]
     public class ConstructionGhostMoved
     {
-        /**
-         *
-         * StopwatchItem nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static StopwatchItem StopwatchItem = new StopwatchItem(BroadcastInterval.ConstructingGhostMoved);
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix()
         {
             if (Network.IsMultiplayerActive)

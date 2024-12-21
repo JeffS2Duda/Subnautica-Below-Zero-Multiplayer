@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -10,13 +10,6 @@
 
     public class InteriorToggleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.InteriorToggleArgs>();
@@ -41,37 +34,16 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu bir araca bindiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEnteredInterior(PlayerEnteredInteriorEventArgs ev)
         {
             InteriorToggleProcessor.SendPacketToServer(ev.UniqueId, true);
         }
 
-        /**
-         *
-         * Oyuncu bir araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnExitedInterior(PlayerExitedInteriorEventArgs ev)
         {
             InteriorToggleProcessor.SendPacketToServer(null, false);
         }
 
-        /**
-         *
-         * Oyuncu öldüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string interiorId, bool isEntered = false)
         {
             ServerModel.InteriorToggleArgs request = new ServerModel.InteriorToggleArgs()

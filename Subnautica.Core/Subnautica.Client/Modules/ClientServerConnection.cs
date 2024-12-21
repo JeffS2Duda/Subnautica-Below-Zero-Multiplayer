@@ -15,13 +15,6 @@
 
     public static class ClientServerConnection
     {
-        /**
-         *
-         * Oyun içi menü açılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnInGameMenuOpened(InGameMenuOpenedEventArgs ev)
         {
             if (Network.IsMultiplayerActive)
@@ -43,28 +36,10 @@
             }
         }
 
-        /**
-         *
-         * Oyun içi menü kapandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnInGameMenuClosed(InGameMenuClosedEventArgs ev)
-        {/*
-            if (ZeroGame.IsCurrentMultiplayerGame && !ZeroGame.IsMultiplayerConnectionActive)
-            {
-                ZeroGame.FreezeGame();
-            }*/
+        {
         }
 
-        /**
-         *
-         * Arka planda çalışma ayarı değişirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSettingsRunInBackgroundChanging(SettingsRunInBackgroundChangingEventArgs ev)
         {
             if (Network.IsMultiplayerActive)
@@ -73,13 +48,6 @@
             }
         }
 
-        /**
-         *
-         * Ayarlardaki pda oyun duraklatma seçeneği değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSettingsPdaGamePauseChanging(SettingsPdaGamePauseChangingEventArgs ev)
         {
             if (Network.IsMultiplayerActive)

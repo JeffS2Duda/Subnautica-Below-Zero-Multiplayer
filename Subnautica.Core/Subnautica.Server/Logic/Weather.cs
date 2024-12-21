@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,49 +14,14 @@
 
     public class Weather : BaseLogic
     {
-        /**
-         *
-         * Hava durumlarını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public HashSet<WeatherItem> WeatherTimeLines { get; set; } = new HashSet<WeatherItem>();
 
-        /**
-         *
-         * Hava durumlarını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<string> ActivatedScripts { get; set; } = new List<string>();
 
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * IsLoaded değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsLoaded { get; set; }
 
-        /**
-         *
-         * Her sabit tick'den sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUnscaledFixedUpdate(float fixedDeltaTime)
         {
             if (this.IsLoaded)
@@ -80,13 +45,6 @@
             }
         }
 
-        /**
-         *
-         * Profilleri yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool LoadAllProfileAndScripts()
         {
             if (WeatherManager.main == null || WeatherManager.main.allWeatherProfiles == null || WeatherManager.main.allWeatherProfiles.Length <= 0)
@@ -113,13 +71,6 @@
             return true;
         }
 
-        /**
-         *
-         * Profil için gelişmiş simülasyon yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AdvanceProfileSimulation(WeatherItem weather)
         {
             weather.Timeline.CullExpiredNodes();
@@ -141,25 +92,11 @@
             return true;
         }
 
-        /**
-         *
-         * Hava durumu değişince tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnWeatherChanged(string profileId)
         {
             this.SendWeatherToClients(profileId);
         }
 
-        /**
-         *
-         * Oyunculara hava durumu bilgilerini gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SendWeatherToClients(string profileId)
         {
             foreach (var player in Server.Instance.GetPlayers())
@@ -173,13 +110,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyunculara hava durumu bilgilerini gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SendWeatherToClient(AuthorizationProfile profile)
         {
             var weather = this.GetWeatherItem(profile.WeatherProfileId);
@@ -192,13 +122,6 @@
             return true;
         }
 
-        /**
-         *
-         * Hava durumu paketini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ServerModel.WeatherChangedArgs GetWeatherPacket(WeatherItem item)
         {
             return new ServerModel.WeatherChangedArgs()
@@ -223,13 +146,6 @@
             };
         }
 
-        /**
-         *
-         * Tüm hava durumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ExtendWeatherTimeline(string profileId)
         {
             var weather = this.GetWeatherItem(profileId);
@@ -247,13 +163,6 @@
             return true;
         }
 
-        /**
-         *
-         * Hava durumu nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WeatherItem GetWeatherItem(string profileId)
         {
             return this.WeatherTimeLines.FirstOrDefault(q => q.ProfileId == profileId);
@@ -262,58 +171,16 @@
 
     public class WeatherItem 
     {
-        /**
-         *
-         * ProfileId değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string ProfileId { get; set; }
 
-        /**
-         *
-         * IsProfile değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsProfile { get; set; }
 
-        /**
-         *
-         * Profile değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WeatherProfile Profile { get; set; }
 
-        /**
-         *
-         * Timeline değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WeatherTimeline Timeline { get; set; }
 
-        /**
-         *
-         * CurrentEvent değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WeatherEvent CurrentEvent { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WeatherItem(WeatherProfile profile)
         {
             this.ProfileId = profile.name;
@@ -322,13 +189,6 @@
             this.IsProfile = true;
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WeatherItem(WeatherEventData eventData)
         {
             this.ProfileId    = eventData.weatherId;

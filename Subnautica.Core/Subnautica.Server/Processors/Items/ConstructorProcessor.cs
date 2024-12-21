@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Items
+namespace Subnautica.Server.Processors.Items
 {
     using Subnautica.API.Enums;
     using Subnautica.Network.Core.Components;
@@ -15,13 +15,6 @@
 
     public class ConstructorProcessor : PlayerItemProcessor
     {        
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, PlayerItemActionArgs packet)
         {
             var component = packet.Item.GetComponent<ItemModel.Constructor>();
@@ -95,13 +88,6 @@
             return true;
         }
 
-        /**
-         *
-         * Komponenti döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private NetworkDynamicEntityComponent GetEntityComponent(TechType techType)
         {
             switch (techType)
@@ -119,13 +105,6 @@
             return null;
         }
 
-        /**
-         *
-         * Komponent sınıfı oluşturulduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntityComponentInitialized(NetworkDynamicEntityComponent entityComponent)
         {
             if (entityComponent is WorldEntityModel.SeaTruckFabricatorModule)
@@ -144,13 +123,6 @@
             }
         }
 
-        /**
-         *
-         * Araç yapım süresini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float GetDuration(TechType techType)
         {
             var duration = 3f;

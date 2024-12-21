@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using System.Linq;
 
@@ -18,13 +18,6 @@
 
     public class CoffeeVendingMachineProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.CoffeeVendingMachine>();
@@ -58,13 +51,6 @@
             return true;
         }
 
-        /**
-         *
-         * Termosları işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ProcessThermos(string itemId, ItemsContainer container, bool isFull, bool isAdding, bool isMine = false)
         {
             if (isAdding)
@@ -96,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawnlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OnFullEntitySpawning(ItemQueueProcess item)
         {
             var thermos = Network.Identifier.GetComponentByGameObject<global::Thermos>(item.ItemId, true);
@@ -115,25 +94,11 @@
             return false;
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnFullEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             pickupable.GetComponent<global::Eatable>().Refill();
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (ev.TechType == TechType.CoffeeVendingMachine)
@@ -144,13 +109,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (ev.TechType == TechType.CoffeeVendingMachine)
@@ -161,13 +119,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string itemId, WorldPickupItem pickupItem = null, bool isAdding = false)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

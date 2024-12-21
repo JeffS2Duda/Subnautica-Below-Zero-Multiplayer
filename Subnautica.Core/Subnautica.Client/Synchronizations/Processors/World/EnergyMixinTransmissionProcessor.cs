@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -8,13 +8,6 @@
 
     public class EnergyMixinTransmissionProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.EnergyMixinTransmissionArgs>();

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.World
+namespace Subnautica.Events.Patches.Events.World
 {
     using System;
 
@@ -156,13 +156,6 @@
             return false;
         }
 
-        /**
-         *
-         * Slot hata ayıklamasını açar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ShowDebugSlot(Vector3 localPosition, Quaternion localRotation, Transform parentTransform, bool isCreatureSlot, string classId, bool isFound = true)
         {
             var primitive      = GameObject.CreatePrimitive(isCreatureSlot ? PrimitiveType.Sphere : PrimitiveType.Cube);

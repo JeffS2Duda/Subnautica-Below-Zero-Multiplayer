@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::Player), nameof(global::Player.EnterInterior))]
     public static class EnteredInterior
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::Player __instance, IInteriorSpace interior)
         {
             if (Network.IsMultiplayerActive)

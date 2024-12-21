@@ -15,31 +15,10 @@
 
     public class FurnitureDeconstructionBeginProcessor : NormalProcessor
     {
-        /**
-         *
-         * Event Blocker nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsBlocked;
 
-        /**
-         *
-         * Event Blocker nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Coroutine CurrentCoroutine;
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.FurnitureDeconstructionBeginArgs>();
@@ -61,25 +40,11 @@
             return true;
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.SetWaitingForNextFrame(true);
         }
 
-        /**
-         *
-         * Mobilya inşaası ilk kaldırma işlemi olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnFurnitureDeconstructionBegin(FurnitureDeconstructionBeginEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -108,13 +73,6 @@
             NetworkClient.SendPacket(request);
         }
 
-        /**
-         *
-         * Yıkılıp/Yıkılamayacağı kontrolü
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsAllowedDeconstruction(TechType techType, string constructionId)
         {
             if (techType != TechType.Fabricator && techType != TechType.Workbench)
@@ -137,13 +95,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bloklanma durumunu serbest bırakır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator ReleaseBlock()
         {
             yield return new WaitForSecondsRealtime(0.5f);
@@ -151,13 +102,6 @@
             IsBlocked = false;
         }
 
-        /**
-         *
-         * Akitf coroutine'yi öldürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void KillCoroutine(Coroutine coroutine)
         {
             if (coroutine != null)

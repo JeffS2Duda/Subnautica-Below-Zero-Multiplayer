@@ -16,40 +16,12 @@
 
     public class CreatureWatcher : MonoBehaviour
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(BroadcastInterval.CreaturePosition);
 
-        /**
-         *
-         * IsNormalTrigger nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsNormalTrigger { get; set; } = false;
 
-        /**
-         *
-         * Mesafeyi barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<WorldCreaturePosition> Positions { get; set; } = new List<WorldCreaturePosition>();
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (World.IsLoaded)
@@ -90,13 +62,6 @@
             }
         }
 
-        /**
-         *
-         * Güncellenmiş nesne konumunu kuyruğa alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void AddPositionToQueue(ushort creatureId, MultiplayerCreature creature)
         {
             if (creature != null && creature.IsActive)
@@ -117,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Konum verilerini sunucuya gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SendPositionPacketToServer()
         {
             if (this.Positions.Count > 0)

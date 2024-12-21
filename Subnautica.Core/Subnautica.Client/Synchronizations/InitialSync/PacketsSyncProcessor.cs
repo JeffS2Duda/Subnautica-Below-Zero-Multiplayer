@@ -10,13 +10,6 @@
 
     public class PacketsSyncProcessor
     {
-        /**
-         *
-         * Dünya yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator InitialStartupWorldLoadedPackets()
         {
             yield return CoroutineUtils.waitForNextFrame;
@@ -33,13 +26,6 @@
                 processor.SetEnabled(false);
             }
         }
-        /**
-         *
-         * Dünya yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator InitialSyncPackets()
         {
             yield return CoroutineUtils.waitForNextFrame;

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
 
     public class SupplyCrateProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning)
         {
             var entity = packet.GetComponent<EntityModel.SupplyCrate>();
@@ -38,13 +31,6 @@
             return true;
         }
 
-        /**
-         *
-         * Tedarik sandığı açıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSupplyCrateOpened(SupplyCrateOpenedEventArgs ev)
         {
             ServerModel.WorldEntityActionArgs result = new ServerModel.WorldEntityActionArgs()

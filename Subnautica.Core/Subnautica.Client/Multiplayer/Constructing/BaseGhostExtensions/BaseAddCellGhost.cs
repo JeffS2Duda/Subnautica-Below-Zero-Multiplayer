@@ -7,13 +7,6 @@
 
     public static class BaseAddCellGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddCellGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddCellGhostComponent component)
         {
             positionFound   = false;
@@ -80,13 +73,6 @@
             return true;
         }
 
-        /**
-         *
-         * Çok oyunculu döndürme işlemini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void UpdateMultiplayerRotation(this global::BaseAddCellGhost baseGhost, ref bool geometryChanged)
         {
             if (baseGhost.TryGetComponent<BaseGhostRotationComponent>(out var component))
@@ -112,13 +98,6 @@
             }
         }
 
-        /**
-         *
-         * Çok oyunculu hücre türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Base.CellType GetMultiplayerCellType(this global::BaseAddCellGhost baseGhost)
         {
             if (baseGhost.TryGetComponent<BaseGhostRotationComponent>(out var component))

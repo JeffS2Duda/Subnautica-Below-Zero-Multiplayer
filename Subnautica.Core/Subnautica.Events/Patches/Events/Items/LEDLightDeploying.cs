@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::PlaceTool), nameof(global::PlaceTool.Place))]
     public class LEDLightDeploying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::PlaceTool __instance)
         {
             if (Network.IsMultiplayerActive && __instance.validPosition && __instance.ghostModel && __instance.TryGetComponent<Pickupable>(out var pickupable) && pickupable.GetTechType() == TechType.LEDLight)

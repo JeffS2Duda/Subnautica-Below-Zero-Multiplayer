@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -12,13 +12,6 @@
     [HarmonyPatch(typeof(global::HoverbikePlayerTool), nameof(global::HoverbikePlayerTool.OnToolUseAnim))]
     public class HoverbikeDeploying
     {
-        /**
-            *
-            * Fonksiyonu yamalar.
-            *
-            * @author Ismail <ismaiil_0234@hotmail.com>
-            *
-            */
         private static bool Prefix(global::HoverbikePlayerTool __instance)
         {
             if (Network.IsMultiplayerActive && !EventBlocker.IsEventBlocked(TechType.Hoverbike))

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using HarmonyLib;
 
@@ -13,13 +13,6 @@
     [HarmonyPatch]
     public class ItemDroping
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.InternalDropItem))]
         private static bool Inventory_InternalDropItem(global::Inventory __instance, ref bool __result, Pickupable pickupable, bool notify = true, bool dropFromPlayerCenter = false)
@@ -52,13 +45,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::QuickSlots), nameof(global::QuickSlots.Drop))]
         private static bool QuickSlots_Drop(global::QuickSlots __instance)
@@ -89,13 +75,6 @@
             return false;
         }
 
-        /**
-         *
-         * Nesnenin bırakılacak pozisyonunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector3 GetDropPosition(bool dropFromPlayerCenter)
         {
             Vector3 dropPosition;
@@ -113,13 +92,6 @@
             return ZeroGame.FindDropPosition(dropPosition);
         }
 
-        /**
-         *
-         * Nesnenin bırakılacak açılarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Quaternion GetDropRotation(Pickupable pickupable)
         {
             if (pickupable.randomizeRotationWhenDropped)

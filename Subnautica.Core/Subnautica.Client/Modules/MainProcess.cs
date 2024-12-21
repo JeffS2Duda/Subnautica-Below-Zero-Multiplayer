@@ -9,37 +9,16 @@
 
     public class MainProcess
     {
-        /**
-         *
-         * Eklenti aktifleştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPluginEnabled()
         {
             ZeroLanguage.LoadLanguage(Tools.GetLanguage());
         }
 
-        /**
-         *
-         * Oyuncu ana menüye gittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnQuittingToMainMenu(QuittingToMainMenuEventArgs ev)
         {
             ClearAllCache();
         }
 
-        /**
-         *
-         * Sahne yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSceneLoaded(SceneLoadedEventArgs ev)
         {
             if (ev.Scene.name == "XMenu")
@@ -48,13 +27,6 @@
             }
         }
 
-        /**
-         *
-         * Tüm önbelleği temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ClearAllCache()
         {
             try

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
 
     public class ExitProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleExitArgs>();
@@ -46,13 +39,6 @@
             return true;
         }
 
-        /**
-         *
-         * Araçtan inerken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleExited(VehicleExitedEventArgs ev)
         {
             if (Interact.IsBlockedByMe(ev.UniqueId))

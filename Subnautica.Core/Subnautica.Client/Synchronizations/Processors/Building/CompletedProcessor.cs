@@ -13,13 +13,6 @@
 
     public class CompletedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ConstructionCompletedArgs>();
@@ -41,25 +34,11 @@
             return true;
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.SetWaitingForNextFrame(true);
         }
 
-        /**
-         *
-         * Yapı inşaası tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructingCompleted(ConstructionCompletedEventArgs ev)
         {
             ServerModel.ConstructionCompletedArgs request = new ServerModel.ConstructionCompletedArgs()

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
@@ -12,13 +12,6 @@
 
     public class BulkheadProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.BulkheadDoor>();
@@ -63,13 +56,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bölme kapısı açılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBulkheadOpening(BulkheadOpeningEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity)
@@ -83,13 +69,6 @@
             }
         }
 
-        /**
-         *
-         * Bölme kapısı kapanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBulkheadClosing(BulkheadClosingEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity)
@@ -103,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, bool side, bool isOpened)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

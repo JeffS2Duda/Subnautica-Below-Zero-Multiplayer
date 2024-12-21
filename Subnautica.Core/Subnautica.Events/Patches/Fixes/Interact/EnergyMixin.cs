@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(global::EnergyMixin), nameof(global::EnergyMixin.HandHover))]
     public class EnergyMixin
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::EnergyMixin __instance)
         {
             if (!Network.IsMultiplayerActive)

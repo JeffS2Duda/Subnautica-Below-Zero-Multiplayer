@@ -26,22 +26,8 @@
     public class ProcessorShared
     {
 
-        /**
-         *
-         * İşlemleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<ProcessType, NormalProcessor> Processors { get; set; } = new Dictionary<ProcessType, NormalProcessor>()
         {
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { ProcessType.None                               , new NoneProcessor() },
             { ProcessType.JoiningServer                      , new Player.JoiningProcessor() },
             { ProcessType.PlayerUpdated                      , new Player.UpdatedProcessor() },
@@ -148,22 +134,8 @@
             { ProcessType.StoryEndGame                       , new Story.EndGameProcessor()},
         };
 
-        /**
-         *
-         * Metadata İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<TechType, MetadataProcessor> MetadataProcessors { get; set; } = new Dictionary<TechType, MetadataProcessor>()
         {
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { TechType.AromatherapyLamp      , new Metadata.AromatherapyProcessor() },
             { TechType.EmmanuelPendulum      , new Metadata.EmmanuelPendulumProcessor() },
             { TechType.Shower                , new Metadata.ShowerProcessor() },
@@ -221,44 +193,16 @@
             { TechType.BaseWaterPark         , new Metadata.BaseWaterParkProcessor() },            
         };
 
-        /**
-         *
-         * Yaratık Senkronizasyon İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<TechType, WorldCreatureProcessor> WorldCreatureProcessors { get; set; } = new Dictionary<TechType, WorldCreatureProcessor>()
         {
-            /**
-             *
-             * Yaratık Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { TechType.GlowWhale      , new Creatures.GlowWhaleProcessor() },
             { TechType.Crash          , new Creatures.CrashFishProcessor() },
             { TechType.LilyPaddler    , new Creatures.LilyPaddlerProcessor() },
             { TechType.GhostLeviathan , new Creatures.VoidLeviathanProcessor() },
         };
 
-        /**
-         *
-         * World Entity İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<EntityProcessType, WorldEntityProcessor> WorldEntityProcessors { get; set; } = new Dictionary<EntityProcessType, WorldEntityProcessor>()
         {
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { EntityProcessType.OxygenPlant         , new WorldEntities.OxygenPlantProcessor() },
             { EntityProcessType.SupplyCrate         , new WorldEntities.SupplyCrateProcessor() },
             { EntityProcessType.Databox             , new WorldEntities.DataboxProcessor() },
@@ -271,22 +215,8 @@
             { EntityProcessType.Drillable           , new WorldEntities.DrillableProcessor() },
         };
 
-        /**
-         *
-         * World Dynamic Entity İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<TechType, WorldDynamicEntityProcessor> WorldDynamicEntityProcessors { get; set; } = new Dictionary<TechType, WorldDynamicEntityProcessor>()
         {
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { TechType.Constructor                  , new DynamicEntities.ConstructorProcessor() },
             { TechType.SeaTruck                     , new DynamicEntities.SeaTruckProcessor() },
             { TechType.Exosuit                      , new DynamicEntities.ExosuitProcessor() },
@@ -307,32 +237,11 @@
             { TechType.SeaTruckSleeperModule        , new DynamicEntities.SeaTruckSleeperModuleProcessor() },
             { TechType.SeaTruckDockingModule        , new DynamicEntities.SeaTruckDockingModuleProcessor() },
 
-            /**
-             *
-             * Yumurta Senkronizasyonları
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { TechType.GlowWhaleEgg, new DynamicEntities.BaseWaterParkProcessor() },
         };
 
-        /**
-         *
-         * Oyuncu Eşya İşlemlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<TechType, PlayerItemProcessor> PlayerItemProcessors { get; set; } = new Dictionary<TechType, PlayerItemProcessor>()
         {
-            /**
-             *
-             * Normal Senkronizasyonlar
-             *
-             * @author Ismail <ismaiil_0234@hotmail.com>
-             *
-             */
             { TechType.Scanner            , new Items.ScannerProcessor() },
             { TechType.Knife              , new Items.KnifeProcessor() },
             { TechType.Constructor        , new Items.ConstructorProcessor() },
@@ -356,13 +265,6 @@
             { TechType.PipeSurfaceFloater , new Items.PipeSurfaceFloaterProcessor() },
         };
 
-        /**
-         *
-         * Normal işlemci döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static NormalProcessor GetNormalProcessor(ProcessType type)
         {
             ProcessorShared.Processors.TryGetValue(type, out var processor);

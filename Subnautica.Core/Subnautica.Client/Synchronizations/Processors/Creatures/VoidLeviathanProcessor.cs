@@ -15,56 +15,21 @@
 
     public class VoidLeviathanProcessor : WorldCreatureProcessor
     {
-        /**
-         *
-         * VoidData değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static BaseCreatureData VoidData { get; set; }
 
-        /**
-         *
-         * Targets değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, string> Targets = new Dictionary<string, string>();
 
-        /**
-        *
-        * Gelen veriyi işler
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         public override bool OnDataReceived(NetworkCreatureComponent networkPacket, byte requesterId, double processTime, TechType creatureType, ushort creatureId)
         {
             return true;
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             Targets.Clear();
             VoidData = TechType.GhostLeviathan.GetCreatureData();
         }
 
-        /**
-         *
-         * VoidLeviathan Update döngüsü
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator VoidBehaviourUpdate(global::VoidLeviathan voidLeviathan, string creatureId)
         {
             Targets[creatureId] = null;
@@ -113,13 +78,6 @@
             }
         }
 
-        /**
-         *
-         * Hedef alınmayan boşta bir oyuncu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static ZeroPlayer GetRandomFreePlayer(string creatureId, Vector3 creaturePosition, float maxDistance)
         {
             if (Targets.TryGetValue(creatureId, out var playerId) && playerId.IsNotNull())
@@ -158,13 +116,6 @@
             return null;
         }
 
-        /**
-         *
-         * Yaratık etkinleştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCreatureEnabled(CreatureEnabledEventArgs ev)
         {
             if (Network.IsMultiplayerActive && ev.TechType == TechType.GhostLeviathan)
@@ -182,13 +133,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık pasifleştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCreatureDisabled(CreatureDisabledEventArgs ev)
         {
             if (Network.IsMultiplayerActive && ev.TechType == TechType.GhostLeviathan)

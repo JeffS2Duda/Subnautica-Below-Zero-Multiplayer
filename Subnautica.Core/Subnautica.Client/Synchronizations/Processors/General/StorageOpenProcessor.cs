@@ -15,22 +15,8 @@
     public class StorageOpenProcessor : NormalProcessor
     {
 
-        /**
-         *
-         * Açılmış depoları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private HashSet<string> OpenedStorages = new HashSet<string>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StorageOpenArgs>();
@@ -43,13 +29,6 @@
             return true;
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (World.IsLoaded && this.OpenedStorages.Count > 0)
@@ -68,13 +47,6 @@
             }
         }
 
-        /**
-         *
-         * Depoyu açar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OpenStorage(string uniqueId, TechType techType, bool isMine = false)
         {
             using (EventBlocker.Create(TechType.BaseBioReactor))
@@ -141,13 +113,6 @@
             return true;
         }
 
-        /**
-         *
-         * Depoyu kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void CloseStorage(string uniqueId)
         {
             var gameObject = Network.Identifier.GetComponentByGameObject<global::StorageContainer>(uniqueId, true);
@@ -157,13 +122,6 @@
             }
         }
 
-        /**
-         *
-         * PDA Açılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageOpening(StorageOpeningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -174,13 +132,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya Veri Gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, TechType techType)
         {
             ServerModel.StorageOpenArgs request = new ServerModel.StorageOpenArgs()

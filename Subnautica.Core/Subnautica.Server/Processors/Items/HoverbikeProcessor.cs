@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Items
+namespace Subnautica.Server.Processors.Items
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -14,13 +14,6 @@
 
     internal class HoverbikeProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, PlayerItemActionArgs packet)
         {
             var component = packet.Item.GetComponent<ItemModel.Hoverbike>();

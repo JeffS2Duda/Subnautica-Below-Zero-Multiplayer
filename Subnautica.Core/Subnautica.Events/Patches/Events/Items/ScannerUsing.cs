@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using HarmonyLib;
 
@@ -12,22 +12,8 @@
     [HarmonyPatch(typeof(global::PDAScanner), nameof(global::PDAScanner.Scan))]
     public class ScannerUsing
     {
-        /**
-         *
-         * Geçen zamanı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static float currentTime = BroadcastInterval.ScannerUsing;
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(global::PDAScanner.Result __result)
         {
             if (Network.IsMultiplayerActive)

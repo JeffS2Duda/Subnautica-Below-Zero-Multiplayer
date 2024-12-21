@@ -18,13 +18,6 @@
 
     public class IntroProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.IntroStartArgs>();
@@ -49,13 +42,6 @@
             return true;
         }
 
-        /**
-         *
-         * Intro kontrolü yapılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnIntroChecking(IntroCheckingEventArgs ev)
         {
             if (Network.Session.Current.IsFirstLogin && GameModeManager.GetOption<bool>(GameOption.Story))
@@ -74,13 +60,6 @@
             }
         }
 
-        /**
-         *
-         * Intro kontrolü yapılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator IntroCheckingAsync()
         {
             while (!LightmappedPrefabs.main || LightmappedPrefabs.main.IsWaitingOnLoads() || uGUI.main.loading.IsLoading || PAXTerrainController.main.isWorking)
@@ -98,13 +77,6 @@
             }
         }
 
-        /**
-         *
-         * Introyu hazırlıklarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator InitalizeIntroAsync(ExpansionIntroManager introManager, uGUI_ExpansionIntro gui)
         {
             IntroVignette.isIntroActive = true;
@@ -183,13 +155,6 @@
             IntroProcessor.SendPacketToServer(true);
         }
 
-        /**
-         *
-         * Sunucuya Veri Gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(bool isFinished = false)
         {
             ServerModel.IntroStartArgs request = new ServerModel.IntroStartArgs()

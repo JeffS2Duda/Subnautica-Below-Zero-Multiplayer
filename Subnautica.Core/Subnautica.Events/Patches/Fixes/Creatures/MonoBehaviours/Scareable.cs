@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
+namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
 {
     using HarmonyLib;
 
@@ -32,12 +32,6 @@
                 return false;
             }
 
-            /*
-                if (creature.IsFriendlyTo(gameObject))
-                {
-                    return false;
-                }
-            */
 
             if (ZeroVector3.Distance(ecoTarget.GetPosition(), __instance.transform.position) > __instance.maxRangeScalar * __instance.maxRangeScalar)
             {

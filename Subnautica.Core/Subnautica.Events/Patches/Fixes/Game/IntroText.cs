@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Game
+namespace Subnautica.Events.Patches.Fixes.Game
 {
     using System;
 
@@ -10,22 +10,8 @@
     [HarmonyPatch]
     public static class IntroText
     {
-        /**
-         *
-         * Orijinal metni barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string OriginalText { get; set; }
 
-        /**
-         *
-         * Metni ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void TogglePresentText()
         {
             if (OriginalText.IsNotNull())
@@ -48,13 +34,6 @@
             }
         }
 
-        /**
-         *
-         * Orijinal Metni önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPostfix]
         [HarmonyPatch(typeof(global::MainMenuMusic), nameof(global::MainMenuMusic.Start))]
         private static void Language_SetCurrentLanguage(global::MainMenuMusic __instance)

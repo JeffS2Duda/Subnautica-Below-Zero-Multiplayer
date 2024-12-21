@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
 
     public class SeaTruckStorageModuleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SeaTruckStorageModuleArgs>();
@@ -57,13 +50,6 @@
             return true;
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (ev.TechType == TechType.SeaTruckStorageModule)
@@ -74,13 +60,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (ev.TechType == TechType.SeaTruckStorageModule)
@@ -91,13 +70,6 @@
             }
         }
 
-        /**
-         *
-         * Tabela seçildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSignSelect(SignSelectEventArgs ev)
         {
             if (ev.TechType == TechType.SeaTruckStorageModule)
@@ -113,13 +85,6 @@
             }
         }
 
-        /**
-         *
-         * Tabela da veri değişimi olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSignDataChanged(SignDataChangedEventArgs ev)
         {
             if (ev.TechType == TechType.SeaTruckStorageModule)
@@ -128,13 +93,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, bool isSignProcess = false, bool isSignSelect = false, string signText = null, int signColorIndex = -1, WorldPickupItem pickupItem = null, bool isAdded = false)
         {
             ServerModel.SeaTruckStorageModuleArgs request = new ServerModel.SeaTruckStorageModuleArgs()

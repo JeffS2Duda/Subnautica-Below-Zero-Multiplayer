@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Vehicle
+namespace Subnautica.Server.Processors.Vehicle
 {
     using System;
     using System.Collections.Generic;
@@ -15,13 +15,6 @@
 
     public class UpgradeConsoleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleUpgradeConsoleArgs>();
@@ -108,13 +101,6 @@
             return true;
         }
         
-        /**
-         *
-         * Modülü ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool AddModule(List<UpgradeConsoleItem> modules, int slotId, TechType moduleType, string itemId)
         {
             if (modules[slotId].ModuleType == TechType.None)
@@ -128,13 +114,6 @@
             return false;
         }
         
-        /**
-         *
-         * Modülü kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool RemoveModule(List<UpgradeConsoleItem> modules, int slotId)
         {
             if (modules[slotId].ModuleType != TechType.None)
@@ -148,13 +127,6 @@
             return false;
         }
 
-        /**
-         *
-         * Slot numarasını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private int GetSlotNumber(string slotId)
         {
             if (slotId == "ExosuitArmLeft")

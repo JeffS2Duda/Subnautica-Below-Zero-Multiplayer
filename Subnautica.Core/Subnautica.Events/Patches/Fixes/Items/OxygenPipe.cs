@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Items
+namespace Subnautica.Events.Patches.Fixes.Items
 {
     using HarmonyLib;
 
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(global::OxygenPipe), nameof(global::OxygenPipe.OnDestroy))]
     public class OxygenPipe
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::OxygenPipe __instance)
         {
             if (Network.IsMultiplayerActive)

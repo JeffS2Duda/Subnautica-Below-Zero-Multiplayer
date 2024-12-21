@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
     using System.Diagnostics;
@@ -16,13 +16,6 @@
     [HarmonyPatch(typeof(global::PictureFrame), nameof(global::PictureFrame.SelectImage))]
     public static class PictureFrameImageSelecting
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::PictureFrame __instance, string image)
         {
             if (!Network.IsMultiplayerActive)
@@ -93,13 +86,6 @@
             }
         }
 
-        /**
-         *
-         * Resim verisini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static byte[] GetImageData(string filePath)
         {
             var imageData = File.ReadAllBytes(filePath);
@@ -127,11 +113,6 @@
 
     public class TextureScale
     {
-        /**
-         *
-         * Değerleri barındırır.
-         *
-         */
         private static Color[] texColors;
         private static Color[] newColors;
         private static int w;
@@ -139,11 +120,6 @@
         private static float ratioY;
         private static int w2;
 
-        /**
-         *
-         * Ölçeklendirir.
-         *
-         */
         public static void Scale(Texture2D tex, int newWidth, int newHeight)
         {
             texColors = tex.GetPixels();
@@ -160,11 +136,6 @@
             tex.Apply();
         }
 
-        /**
-         *
-         * Ölçeklendirir.
-         *
-         */
         private static void BilinearScale(int start, int end)
         {
             for (var y = start; y < end; y++)
@@ -183,11 +154,6 @@
             }
         }
 
-        /**
-         *
-         * Renk döner.
-         *
-         */
         private static Color ColorLerpUnclamped(Color c1, Color c2, float value)
         {
             return new Color(c1.r + (c2.r - c1.r) * value, c1.g + (c2.g - c1.g) * value, c1.b + (c2.b - c1.b) * value, c1.a + (c2.a - c1.a) * value);

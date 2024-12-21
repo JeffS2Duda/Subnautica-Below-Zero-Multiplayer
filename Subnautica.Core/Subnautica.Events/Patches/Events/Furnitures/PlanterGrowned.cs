@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
     using System.Collections;
@@ -18,13 +18,6 @@
     [HarmonyPatch(typeof(global::FruitPlant), nameof(global::FruitPlant.OnGrown))]
     public static class PlanterGrowned
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(global::FruitPlant __instance)
         {
             if (Network.IsMultiplayerActive)

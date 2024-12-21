@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Identity.World
+namespace Subnautica.Events.Patches.Identity.World
 {
     using HarmonyLib;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::CinematicModeTriggerBase), nameof(global::CinematicModeTriggerBase.OnEnable))]
     public class Ladder
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::CinematicModeTriggerBase __instance)
         {
             if (Network.IsMultiplayerActive && __instance.TryGetComponent<global::CinematicModeTrigger>(out var cinematic) && Climbing.ClimbTexts.Contains(cinematic.handText))
@@ -25,13 +18,6 @@
             }
         }
 
-        /**
-         *
-         * Merdiveni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetLadderUniqueId(global::CinematicModeTrigger cinematic)
         {
             GameObject ladder = null;

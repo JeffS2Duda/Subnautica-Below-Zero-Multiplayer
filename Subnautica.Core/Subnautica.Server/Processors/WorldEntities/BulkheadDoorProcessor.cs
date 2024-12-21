@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.WorldEntities
+namespace Subnautica.Server.Processors.WorldEntities
 {
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Server;
@@ -10,13 +10,6 @@
 
     public class BulkheadDoorProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, WorldEntityActionArgs packet)
         {
             if (Server.Instance.Logices.Interact.IsBlocked(packet.Entity.UniqueId))

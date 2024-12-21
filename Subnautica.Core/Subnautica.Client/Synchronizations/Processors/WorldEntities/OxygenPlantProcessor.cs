@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
 
     public class OxygenPlantProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning)
         {
             var entity = packet.GetComponent<EntityModel.OxygenPlant>();
@@ -39,13 +32,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oksijen bitkisine tıklandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnOxygenPlantClicking(OxygenPlantClickingEventArgs ev)
         {
             ServerModel.WorldEntityActionArgs result = new ServerModel.WorldEntityActionArgs()

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using System.Linq;
 
@@ -13,13 +13,6 @@
 
     public class AnimationChangedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.PlayerAnimationChangedArgs>();
@@ -37,13 +30,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu Animasyonu değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerAnimationChanged(PlayerAnimationChangedEventArgs ev)
         {
             if (World.IsLoaded)

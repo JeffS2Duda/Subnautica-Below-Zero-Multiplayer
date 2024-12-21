@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Construction.Shared
+namespace Subnautica.Network.Models.Construction.Shared
 {
     using System;
 
@@ -18,23 +18,9 @@
     [MessagePackObject]
     public abstract class BaseGhostComponent
     {
-        /**
-         *
-         * TargetBaseId değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public string TargetBaseId { get; set; }
 
-        /**
-         *
-         * Komponenti döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetComponent<T>()
         {
             if (this is T)

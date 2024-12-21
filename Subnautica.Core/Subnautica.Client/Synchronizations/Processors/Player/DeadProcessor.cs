@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -10,13 +10,6 @@
 
     public class DeadProcessor : NormalProcessor
     {
-        /**
-        *
-        * Gelen veriyi işler
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var player = ZeroPlayer.GetPlayerById(networkPacket.GetPacketOwnerId());
@@ -29,13 +22,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu öldüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerDead(PlayerDeadEventArgs ev)
         {
             ServerModel.PlayerDeadArgs request = new ServerModel.PlayerDeadArgs()

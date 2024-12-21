@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -13,13 +13,6 @@
 
     public class InteractProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryInteractArgs>();
@@ -31,13 +24,6 @@
             return true;
         }
 
-        /**
-         *
-         * AL-AN Beden inşa cinematiğini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void BuildAlanStartCinematic(string uniqueId, string goalKey)
         {
             var gameObject = Network.Identifier.GetComponentByGameObject<StoryHandTarget>(uniqueId);
@@ -57,13 +43,6 @@
             Network.Story.GoalExecute(goalKey, global::Story.GoalType.Story, false);
         }
 
-        /**
-         *
-         * Terminal tıklanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStoryHandClicking(StoryHandClickingEventArgs ev)
         {
             ev.IsAllowed = false;

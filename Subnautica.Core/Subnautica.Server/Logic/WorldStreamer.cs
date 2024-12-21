@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,40 +12,12 @@
 
     public class WorldStreamer : BaseLogic
     {
-        /**
-         *
-         * Dünya oluşturma başladı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsWorldGenerateStarting { get; set; } = false;
 
-        /**
-         *
-         * Dünya oluşturuldu mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool _IsGeneratedWorld = false;
 
-        /**
-         *
-         * Dünya oluşturma başladı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<int, ZeroSpawnPointSimple> SpawnPoints { get; set; } = new Dictionary<int, ZeroSpawnPointSimple>();
 
-        /**
-         *
-         * Varlık dağıtımı yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntityDistributionLoaded()
         {
             if (!Core.Server.Instance.Storages.World.Storage.IsWorldGenerated)
@@ -55,13 +27,6 @@
             }
         }
 
-        /**
-         *
-         * Belirli aralıklarla tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUnscaledFixedUpdate(float fixedDeltaTime)
         {
             if (this.IsWorldGenerateStarting && Network.WorldStreamer.IsSpawnPointContainerInitialized())
@@ -76,13 +41,6 @@
             }
         }
 
-        /**
-         *
-         * Dünyayı oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void GenerateWorld()
         {
             Network.WorldStreamer.GenerateWorld();
@@ -97,13 +55,6 @@
             Core.Server.Instance.Storages.World.Storage.IsWorldGenerated = true;
         }
 
-        /**
-         *
-         * Dünya oluşturulunca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnWorldGenerated()
         {
             this._IsGeneratedWorld = true;
@@ -136,37 +87,16 @@
             }
         }
 
-        /**
-         *
-         * Dünya oluşturuldu mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsGeneratedWorld()
         {
             return this._IsGeneratedWorld && Core.Server.Instance.Storages.World.Storage.IsWorldGenerated;
         }
 
-        /**
-         *
-         * Spawn point miktarı oluşturuldu mu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public int GetSpawnPointCount()
         {
             return this.SpawnPoints.Count;
         }
 
-        /**
-         *
-         * Slotu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroSpawnPointSimple GetSpawnPointById(int slotId)
         {
             if (this.SpawnPoints.TryGetValue(slotId, out var spawnPoint))
@@ -177,13 +107,6 @@
             return null;
         }
 
-        /**
-         *
-         * Aktif spawn noktalarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<int, ZeroSpawnPointSimple> GetSpawnPoints()
         {
             return this.SpawnPoints;

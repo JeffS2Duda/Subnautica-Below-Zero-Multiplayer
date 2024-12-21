@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -14,13 +14,6 @@
 
     public class BenchProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.Bench>();
@@ -71,13 +64,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oturma animasyonu başladığında tetiklenir.
-         *
-         * @author Ismail  <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBenchSitdown(BenchSitdownEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -88,25 +74,11 @@
             }
         }
 
-        /**
-         *
-         * Kalkma animasyonu başladığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBenchStandup(BenchStandupEventArgs ev)
         {
            BenchProcessor.SendPacketToServer(ev.UniqueId, ev.Side, false);
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, global::Bench.BenchSide side, bool isSitdown)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

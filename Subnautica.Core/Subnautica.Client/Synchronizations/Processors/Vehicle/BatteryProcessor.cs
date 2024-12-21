@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using System.Collections.Generic;
 
@@ -14,13 +14,6 @@
 
     public class BatteryProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleBatteryArgs>();
@@ -66,13 +59,6 @@
             return true;
         }
 
-        /**
-         *
-         * işlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnProcessCompleted(ItemQueueProcess item)
         {
             InventoryItem storedItem = null;
@@ -120,13 +106,6 @@
             }
         }
 
-        /**
-         *
-         * Pil yerleştirilme alanına tıklanınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEnergyMixinClicking(EnergyMixinClickingEventArgs ev)
         {
             if (ev.TechType == TechType.Exosuit || ev.TechType == TechType.SeaTruck)
@@ -140,13 +119,6 @@
             }
         }
 
-        /**
-         *
-         * Pil yerleştirildiğinde/çıkarıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEnergyMixinSelecting(EnergyMixinSelectingEventArgs ev)
         {
             if (ev.TechType == TechType.Exosuit || ev.TechType == TechType.SeaTruck)
@@ -158,13 +130,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string batterySlotId, TechType batteryType = TechType.None, bool isOpening = false, bool isAdding = false, float charge = -1f)
         {
             ServerModel.VehicleBatteryArgs request = new ServerModel.VehicleBatteryArgs()

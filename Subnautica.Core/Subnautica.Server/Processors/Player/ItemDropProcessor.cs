@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Player
+namespace Subnautica.Server.Processors.Player
 {
     using Server.Core;
 
@@ -13,13 +13,6 @@
 
     public class ItemDropProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ItemDropArgs>();
@@ -46,13 +39,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static NetworkDynamicEntityComponent GetEntityComponent(TechType techType)
         {
             switch (techType)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Storage
+namespace Subnautica.Events.Patches.Events.Storage
 {
     using System;
 
@@ -69,7 +69,6 @@
 
             if (itemB != null)
             {
-                // Storage içinde diğer tarafa sürükle bırak ile nesne üzerine bırakılınca tetiklenir.
                 Log.Info("BLOCK...");
                 return false;
             }
@@ -85,9 +84,6 @@
                 return false;
             }
 
-            // Equipment
-            // ItemsContainer
-            // StorageSlot
             if (containerB is global::ItemsContainer && itemA.container is global::ItemsContainer)
             {
                 return !AddItemToItemsContainer(containerB as global::ItemsContainer, itemA);
@@ -96,13 +92,6 @@
             return true;
         }
 
-        /**
-         *
-         * Kapsayıcıya nesneyi eklemeye çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool AddItemToItemsContainer(global::ItemsContainer targetContainer, InventoryItem item)
         {
             if (item == null || item.item == null)
@@ -161,55 +150,20 @@
 
     public class ItemContainer
     {
-        /**
-         *
-         * UniqueId değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string UniqueId { get; set; }
 
-        /**
-         *
-         * TechType değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public TechType TechType { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ItemContainer()
         {
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ItemContainer(string uniqueId, TechType techType)
         {
             this.UniqueId = uniqueId;
             this.TechType = techType;
         }
 
-        /**
-         *
-         * TechType değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static ItemContainer GetInformation(global::ItemsContainer targetContainer, global::ItemsContainer itemContainer)
         {
             var gameObject = GetContainer(targetContainer, itemContainer);
@@ -288,13 +242,6 @@
             return new ItemContainer();
         }
 
-        /**
-         *
-         * Kaldırma işlemi olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsRemoving(ItemsContainer targetContainer)
         {
             var techType = CraftData.GetTechType(targetContainer.tr.parent.gameObject);
@@ -306,13 +253,6 @@
             return false;
         }
 
-        /**
-         *
-         * Container sınıfını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject GetContainer(global::ItemsContainer targetContainer, global::ItemsContainer itemContainer)
         {
             if (IsRemoving(targetContainer))

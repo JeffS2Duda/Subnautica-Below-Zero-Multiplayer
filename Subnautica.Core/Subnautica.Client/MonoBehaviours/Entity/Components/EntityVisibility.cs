@@ -18,40 +18,12 @@
 
     public class EntityVisibility
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private StopwatchItem Timing { get; set; } = new StopwatchItem(250f);
 
-        /**
-         *
-         * PlayerPosition nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroVector3 PlayerPosition { get; set; }
 
-        /**
-         *
-         * PlayerUniqueId nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string PlayerUniqueId { get; set; }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (this.Timing.IsFinished())
@@ -70,13 +42,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne işlemlerini yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ToggleChangeEntity(string uniqueId)
         {
             var entity = Network.DynamicEntity.GetEntity(uniqueId);
@@ -93,13 +58,6 @@
             return false;
         }
 
-        /**
-         *
-         * Nesne görünürlüğünü ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ToggleChangeEntityVisibility(WorldDynamicEntity entity)
         {
             if (this.IsGlobalEntity(entity.TechType))
@@ -129,13 +87,6 @@
             }
         }
 
-        /**
-         *
-         * Fizik simülasyonu açar/kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ToggleChangeEntityPhysicsState(WorldDynamicEntity entity)
         {
             var kinematicState = Network.DynamicEntity.CalculateKinematic(entity, this.PlayerPosition, this.PlayerUniqueId);
@@ -147,13 +98,6 @@
             return Network.DynamicEntity.ToggleKinematic(entity, kinematicState);
         }
 
-        /**
-         *
-         * Nesne görünürlüğünü değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ChangeEntityVisibility(WorldDynamicEntity entity, bool isActivated)
         {
             entity.UpdateGameObject();
@@ -175,25 +119,11 @@
             }
         }
 
-        /**
-         *
-         * Nesne görünürlüğünü değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsGlobalEntity(TechType techType)
         {
             return TechGroup.GlobalEntityTypes.Contains(techType);
         }
 
-        /**
-         *
-         * Oyuncu verilerini önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void LoadPlayerData()
         {
             this.PlayerPosition = global::Player.main.transform.position.ToZeroVector3();

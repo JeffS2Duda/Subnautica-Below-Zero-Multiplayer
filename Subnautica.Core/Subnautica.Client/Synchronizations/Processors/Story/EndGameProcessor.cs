@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using System.Collections.Generic;
 
@@ -13,30 +13,9 @@
 
     public class EndGameProcessor : NormalProcessor
     {
-        /**
-         *
-         * Oyunculara bağlanan kollar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<string> AttachedArms { get; set; } = new List<string>();
-        /**
-         *
-         * Oyun sonu sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private BelowZeroEndGame BelowZeroEndGame { get; set; }
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             Log.Info("--------- Subnautica Below Zero Multiplayer (by BOT Benson) ---------");
@@ -53,13 +32,6 @@
             return true;
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate()
         {
             if (BelowZeroEndGame.isActive)
@@ -68,13 +40,6 @@
             }
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (BelowZeroEndGame.isActive)
@@ -115,13 +80,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu öncü kolunu spawnlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool SpawnPrecursorArm(ZeroPlayer player)
         {
             var precursorArm = UnityEngine.GameObject.FindObjectOfType<PrecursorArms>();
@@ -144,13 +102,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu öncü kolunu yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */ 
         private bool DestroyPrecursorArm(ZeroPlayer player)
         {
             this.AttachedArms.Remove(player.UniqueId);
@@ -171,13 +122,6 @@
             return true;
         }
 
-        /**
-         *
-         * Ana menüye dönünce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnDispose()
         {
             this.BelowZeroEndGame = null;

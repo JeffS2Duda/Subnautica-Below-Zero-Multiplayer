@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
     using System.Linq;
 
@@ -13,13 +13,6 @@
     public class SeaTruckAquariumModuleProcessor : WorldDynamicEntityProcessor
     {
 
-        /**
-         *
-         * Dünya yüklenip nesne doğduğunda çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnWorldLoadItemSpawn(NetworkDynamicEntityComponent packet, bool isDeployed, Pickupable pickupable, GameObject gameObject)
         {
             if (!isDeployed)

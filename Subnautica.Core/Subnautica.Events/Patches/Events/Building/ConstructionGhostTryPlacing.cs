@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Building
+namespace Subnautica.Events.Patches.Events.Building
 {
     using HarmonyLib;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(Builder), nameof(Builder.TryPlace))]
     public class ConstructionGhostTryPlacing
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix()
         {
             if (!Network.IsMultiplayerActive)

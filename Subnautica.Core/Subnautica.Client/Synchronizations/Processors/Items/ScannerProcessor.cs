@@ -17,40 +17,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     public class ScannerProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Oyuncuların tarama hedeflerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<byte, string> PlayerTargetIds { get; set; } = new Dictionary<byte, string>();
 
-        /**
-         *
-         * Oyuncuların tarama hedef zamanlarını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<byte, float> PlayerTargetTimes { get; set; } = new Dictionary<byte, float>();
 
-        /**
-         *
-         * Oyuncuların tarama hedef zamanlarını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<byte> PlayerRemovingIds { get; set; } = new List<byte>();
 
-        /**
-        *
-        * Gelen veriyi işler
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var entity = packet.GetComponent<ItemModel.Scanner>();
@@ -63,13 +35,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             return true;
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.PlayerTargetIds.Clear();
@@ -77,13 +42,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             this.PlayerRemovingIds.Clear();
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (World.IsLoaded)
@@ -112,13 +70,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             }
         }
 
-        /**
-         *
-         * Taramayı Başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool PlayScanFX(byte playerId, string targetId)
         {
             if (this.PlayerTargetIds.TryGetValue(playerId, out string tempTargetId))
@@ -169,13 +120,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             return true;
         }
 
-        /**
-         *
-         * Taramayı Durdurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool StopScanFX(byte playerId)
         {
             if (!this.PlayerTargetIds.TryGetValue(playerId, out string targetId))
@@ -208,13 +152,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             return true;
         }
 
-        /**
-         *
-         * Oyuncu bir nesneyi tararken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnScannerUsing(ScannerUsingEventArgs ev)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

@@ -9,64 +9,22 @@
 
     public class NetworkServer
     {
-        /**
-         *
-         * Varsayılan Local Sunucu Ip Adresi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public const string DefaultLocalIpAddress = "127.0.0.1";
 
-        /**
-         *
-         * Varsayılan Sunucu Portu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public const int DefaultPort = 666;
 
-        /**
-         *
-         * Varsayılan Max Oyuncu Sayısı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public const int DefaultMaxPlayer = 8;
 
-        /**
-         *
-         * Sunucuya bağlanılıyor mu durumu?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsConnecting()
         {
             return Server.Core.Server.Instance != null && Server.Core.Server.Instance.IsConnecting;
         }
 
-        /**
-         *
-         * Sunucuya bağlanıldı mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsConnected()
         {
             return Server.Core.Server.Instance != null && Server.Core.Server.Instance.IsConnected;
         }
 
-        /**
-         *
-         * Sunucu Id'si oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string CreateServerId()
         {
             List<HostServerItem> servers = GetHostServerList();
@@ -82,13 +40,6 @@
             }
         }
 
-        /**
-         *
-         * Yeni Sunucu Oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string CreateNewServer(GameModePresetId gameModeId)
         {
             var serverId   = CreateServerId();
@@ -107,13 +58,6 @@
             return serverId;
         }
 
-        /**
-         *
-         * Sunucuyu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool StartServer(string serverId, string ownerId)
         {
             var data = GetHostServerList().FirstOrDefault(q => q.Id == serverId);
@@ -137,13 +81,6 @@
             return true;
         }
 
-        /**
-         *
-         * Sunucu kapatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AbortServer(bool isEndGame = false)
         {
             Network.Session.Dispose();
@@ -155,13 +92,6 @@
             }
         }
 
-        /**
-         *
-         * Hızlı şekilde yapıları senkronlar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void UpdateConstructionSync(byte[] constructionData)
         {
             if (NetworkServer.IsConnected())
@@ -170,13 +100,6 @@
             }
         }
 
-        /**
-         *
-         * Local Sunucu Listesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static List<LocalServerItem> GetLocalServerList()
         {
             var serverListPath = Paths.GetGameServersPath();
@@ -195,13 +118,6 @@
             return GetLocalServerList();
         }
 
-        /**
-         *
-         * Local Sunucu Listesini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SaveLocalServerList(List<LocalServerItem> serverList)
         {
             try
@@ -214,13 +130,6 @@
             }
         }
 
-        /**
-         *
-         * Barındırılan Sunucu Listesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static List<HostServerItem> GetHostServerList()
         {
             string serverPath = Paths.GetMultiplayerServerSavePath();

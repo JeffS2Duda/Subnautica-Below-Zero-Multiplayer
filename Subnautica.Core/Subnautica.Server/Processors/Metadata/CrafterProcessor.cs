@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
@@ -10,13 +10,6 @@
 
     public class CrafterProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             if (Server.Instance.Logices.Interact.IsBlocked(construction.UniqueId, profile.UniqueId))
@@ -74,13 +67,6 @@
             return true;
         }
 
-        /**
-         *
-         * Crafter nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Metadata.Crafter GetCrafterComponent(ConstructionItem construction)
         {
             if (construction.TechType == TechType.BaseMapRoom)

@@ -13,31 +13,10 @@
 
     public class ConnectionSignals : MonoBehaviour
     {
-        /**
-         *
-         * Sahneler arası silinmemesi için
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static ConnectionSignals Instance = null;
 
-        /**
-         *
-         * UnscaledFixedRealTime değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WaitForSecondsRealtime UnscaledFixedRealTime { get; set; } = new WaitForSecondsRealtime(0.2f);
 
-        /**
-         *
-         * Komponent eklendiğinde çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             if (Instance == null)
@@ -53,13 +32,6 @@
             this.StartCoroutine(this.UnscaledFixedUpdate());
         }
 
-        /**
-         *
-         * Her oyundan bağımsız sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator UnscaledFixedUpdate()
         {
             while (true)
@@ -70,13 +42,6 @@
             }
         }
 
-        /**
-         *
-         * Verileri tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ConsumeQueue()
         {
             try

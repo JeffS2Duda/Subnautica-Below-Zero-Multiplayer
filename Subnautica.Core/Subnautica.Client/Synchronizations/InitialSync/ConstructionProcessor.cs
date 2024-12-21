@@ -16,13 +16,6 @@
 
     public class ConstructionProcessor
     {
-        /**
-         *
-         * Dünya yapılarını ayarlar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator InitialConstructions()
         {
             if (Network.Session.Current.Constructions != null)
@@ -44,13 +37,6 @@
             }
         }
 
-        /**
-         *
-         * Tamamlanmış yapı parçalarının id'lerini tanımlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator InitialBasePieceIds()
         {
             yield return CoroutineUtils.waitForNextFrame;
@@ -99,13 +85,6 @@
             }
         }
 
-        /**
-         *
-         * Tamamlanmamış yapıların tamamlanma yüzdesini ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator InitialInCompleteConstructions()
         {
             yield return CoroutineUtils.waitForNextFrame;
@@ -154,13 +133,6 @@
             }
         }
 
-        /**
-         *
-         * Metadata verilerini ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator InitialMetadatas()
         {
             yield return CoroutineUtils.waitForNextFrame;
@@ -189,13 +161,6 @@
             }
         }
 
-        /**
-         *
-         * Yapı sağlıklarını senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator InitialHealths()
         {
             yield return CoroutineUtils.waitForNextFrame;
@@ -225,13 +190,6 @@
             }
         }
 
-        /**
-         *
-         * İnşaa edilmiş base listesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, Base> GetConstructionBases()
         {
             var results = new Dictionary<string, Base>();

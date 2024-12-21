@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using System.Linq;
 
@@ -14,13 +14,6 @@
 
     public class FruitHarvestProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning)
         {
             var plant = packet.GetComponent<EntityModel.PlantEntity>();
@@ -51,13 +44,6 @@
             return true;
         }
 
-        /**
-         *
-         * Biti/Ağacı hasatlar ve senkronize eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool FruitHarvestSync(string uniqueId, bool isHarvest = false)
         {
             var entity = Network.StaticEntity.GetEntity(uniqueId);
@@ -136,13 +122,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bir meyve hasat edildğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnFruitHarvesting(FruitHarvestingEventArgs ev)
         {
             if (ev.IsStaticWorldEntity)

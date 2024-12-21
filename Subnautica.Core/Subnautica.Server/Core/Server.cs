@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Core
+namespace Subnautica.Server.Core
 {
     using System;
     using System.Collections.Generic;
@@ -21,175 +21,42 @@
 
     public class Server
     {
-        /**
-         *
-         * Debug
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool DEBUG { get; set; } = true;
                  
-        /**
-         *
-         * Singleton nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Server Instance { get; set; }
 
-        /**
-         *
-         * Sunucu Port
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public int Port { get; set; }
 
-        /**
-         *
-         * Max Oyuncu Sayısı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte MaxPlayer { get; set; }
 
-        /**
-         *
-         * Oyunun şuanki oluşturulma durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsConnecting { get; set; }
 
-        /**
-         *
-         * Oyunun oluşturulup oluşturulmadığı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsConnected { get; set; }
 
-        /**
-         *
-         * Sunucunun benzersiz numarası
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string ServerId { get; set; }
 
-        /**
-         *
-         * Sunucunun sahibi id'si.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string OwnerId { get; set; }
 
-        /**
-         *
-         * Sunucu kayıt dosya yolu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string SavePath { get; set; }
 
-        /**
-         *
-         * Mevcut playerId değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte CurrentPlayerId { get; set; } = 0;
 
-        /**
-         *
-         * Version değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string Version { get; set; }
 
-        /**
-         *
-         * GameMode değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameModePresetId GameMode { get; set; }
 
-        /**
-         *
-         * Bağlı Oyuncular
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<string, AuthorizationProfile> Players { get; set; }
 
-        /**
-         *
-         * Depolama işlemleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Storages Storages { get; set; }
 
-        /**
-         *
-         * TCP Server
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private NetManager NetworkServer { get; set; }
 
-        /**
-         *
-         * Sunucu Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private GameObject ServerGameObject { get; set; }
 
-        /**
-         *
-         * IsRegisteredEvents Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsRegisteredEvents { get; set; } = false;
 
-        /**
-         *
-         * Mantıksal işlemleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Logices Logices { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Server(string serverId, GameModePresetId gameModeId, int port, byte maxPlayer, string ownerId, string version)
         {
             Instance = this;
@@ -215,13 +82,6 @@
             this.RegisterEvents();
         }
 
-        /**
-         *
-         * Sunucuyu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Start()
         {
             try
@@ -258,37 +118,16 @@
             }
         }
 
-        /**
-         *
-         * Network server nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public NetManager GetNetworkServer()
         {
             return this.NetworkServer;
         }
 
-        /**
-         *
-         * Bağlı peer sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public int GetConnectedPeerCount()
         {
             return this.NetworkServer.ConnectedPeersCount;
         }
 
-        /**
-         *
-         * Sonraki oyuncu id'sini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetNextPlayerId()
         {
             if (this.Players.Count > 250)
@@ -314,13 +153,6 @@
             }
         }
 
-        /**
-         *
-         * Paketi tüm kullanıcılara gönderir fakat 1 ip'yi görmezden gelir
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToOtherClients(AuthorizationProfile profile, NetworkPacket packet, bool checkConnected = false)
         {
             if (Server.Instance.IsLogablePacket(packet.Type))
@@ -339,13 +171,6 @@
             }
         }
 
-        /**
-         *
-         * Paketi tüm kullanıcılara gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToAllClient(NetworkPacket packet, bool checkConnected = false)
         {
             if (Server.Instance.IsLogablePacket(packet.Type))
@@ -364,25 +189,11 @@
             }
         }
 
-        /**
-         *
-         * Paketi 1 kullanıcıya gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacket(AuthorizationProfile profile, NetworkPacket packet)
         {
             SendPacket(profile.IpPortAddress, packet);
         }
 
-        /**
-         *
-         * Paketi 1 kullanıcıya byte halinde gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool SendPacket(string ipPort, NetworkPacket packet)
         {
             if (Server.Instance.Players.TryGetValue(ipPort, out var profile))
@@ -399,25 +210,11 @@
             return false;
         }
 
-        /**
-         *
-         * Bir kullanıcının bağlantısını keser.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool DisconnectToClient(AuthorizationProfile authorization)
         {
             return DisconnectToClient(authorization.IpPortAddress);
         }
 
-        /**
-         *
-         * Bir kullanıcının bağlantısını keser.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool DisconnectToClient(string ipPort)
         {
             if (Server.Instance.NetworkServer != null)
@@ -435,97 +232,41 @@
             return false;
         }
 
-        /**
-         *
-         * Oyuncuları döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<AuthorizationProfile> GetPlayers()
         {
             return this.Players.Values.ToList();
         }
 
-        /**
-         *
-         * Oyuncu sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetPlayerCount()
         {
             return (byte) this.Players.Count;
         }
 
-        /**
-         *
-         * Sunucu sahibini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public AuthorizationProfile GetServerOwner()
         {
             return this.GetPlayer(this.OwnerId);
         }
 
-        /**
-         *
-         * Oyuncuyu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public AuthorizationProfile GetPlayer(byte playerId)
         {
             return this.Players.FirstOrDefault(q => q.Value.PlayerId == playerId).Value;
         }
 
-        /**
-         *
-         * Oyuncuyu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public AuthorizationProfile GetPlayer(string uniqueId)
         {
             return this.Players.FirstOrDefault(q => q.Value.UniqueId == uniqueId).Value;
         }
 
-        /**
-         *
-         * Oyuncunun mevcut olup/olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool HasPlayer(string uniqueId)
         {
             return this.Players.ContainsKey(uniqueId);
         }
 
-        /**
-         *
-         * Oyuncunun mevcut olup/olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool HasPlayer(byte playerId)
         {
             return this.Players.Any(q => q.Value.PlayerId == playerId);
         }
 
-        /**
-         *
-         * Sunucu olaylarını kaydeder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void RegisterEvents()
         {
             if (!this.IsRegisteredEvents)
@@ -545,13 +286,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucu olaylarını kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UnRegisterEvents()
         {
             if (this.IsRegisteredEvents)
@@ -571,13 +305,6 @@
             }
         }
 
-        /**
-         *
-         * Hariç tutulacak paket türleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsLogablePacket(ProcessType type)
         {
             if (!Core.Server.DEBUG)
@@ -603,13 +330,6 @@
             return true;
         }
 
-        /**
-         *
-         * Sınıfı temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Dispose(bool isEndGame = false)
         {
             this.UnRegisterEvents();

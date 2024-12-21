@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
 {
     using System.Collections.Generic;
 
@@ -6,13 +6,6 @@
 
     public class SpyPenguin
     {
-        /**
-         *
-         * Araç bileşenini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static SpyPenguinUpdateComponent GetComponent(SpyPenguinUpdateComponent component, global::SpyPenguin spyPenguin, List<string> animations)
         {
             component.IsSelfieMode = spyPenguin.selfieMode;

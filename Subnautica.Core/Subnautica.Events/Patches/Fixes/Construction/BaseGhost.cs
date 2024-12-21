@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Construction
+namespace Subnautica.Events.Patches.Fixes.Construction
 {
     using System;
     using System.Collections.Generic;
@@ -133,13 +133,6 @@
 
     public class BaseGhostTranspiler
     {
-        /**
-         *
-         * LastRotation değerini yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<CodeInstruction> TranspileLastRotation(IEnumerable<CodeInstruction> instructions)
         {
             var codes = instructions.ToList();
@@ -157,13 +150,6 @@
             return codes.AsEnumerable();
         }
 
-        /**
-         *
-         * ClampRotation değerini yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<CodeInstruction> TranspileClampRotation(IEnumerable<CodeInstruction> instructions)
         {
             var codes = instructions.ToList();
@@ -186,13 +172,6 @@
             return codes.AsEnumerable();
         }
 
-        /**
-         *
-         * UpdateRotation değerini yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerable<CodeInstruction> TranspileUpdateRotation(IEnumerable<CodeInstruction> instructions, bool isPlacement = false)
         {
             var codes = instructions.ToList();

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using System.Collections;
     using System.Collections.Generic;
@@ -17,22 +17,8 @@
 
     public class TriggerProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<ServerModel.StoryTriggerArgs> GoalsQueue = new List<ServerModel.StoryTriggerArgs>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryTriggerArgs>();
@@ -70,13 +56,6 @@
             return true;
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (this.GoalsQueue.Count > 0)
@@ -111,13 +90,6 @@
             }
         }
 
-        /**
-         *
-         * Kapıyı açar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator OpenCustomDoorAsync(string uniqueId)
         {
             var doorway = Network.Identifier.GetComponentByGameObject<PrecursorDoorway>(uniqueId);
@@ -134,13 +106,6 @@
             }
         }
 
-        /**
-         *
-         * Hedef tetiklenirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStoryGoalTriggering(StoryGoalTriggeringEventArgs ev)
         {
             if (!IsEndGameTrigger(ev.StoryKey))
@@ -163,13 +128,6 @@
             }
         }
 
-        /**
-         *
-         * Tetiklenebilir mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsTriggerable(string goalKey)
         {
             if (goalKey.Contains("PlayerDiving"))
@@ -185,13 +143,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyun sonu tetikleyicileri mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsEndGameTrigger(string goalKey)
         {
             if (goalKey.Contains("EnteringVoid") && Network.Session.GetWorldTime() >= 500)

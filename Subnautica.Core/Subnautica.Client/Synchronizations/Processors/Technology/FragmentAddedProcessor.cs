@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Technology
+namespace Subnautica.Client.Synchronizations.Processors.Technology
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -14,13 +14,6 @@
 
     public class FragmentAddedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.TechnologyFragmentAddedArgs>();
@@ -45,13 +38,6 @@
             return true;
         }
 
-        /**
-         *
-         * Teknoloji taraması yapıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTechnologyFragmentAdded(TechnologyFragmentAddedEventArgs ev)
         {
             ServerModel.TechnologyFragmentAddedArgs result = new ServerModel.TechnologyFragmentAddedArgs()

@@ -10,13 +10,6 @@
 
     public static class PlayerCinematicCreatureExtensions
     {
-        /**
-         *
-         * GlowWhale ile beraber yüzme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool OnHandClickGlowWhaleRideStart(this ZeroPlayer player, string creatureId)
         {
             player.ResetCinematicsByUniqueId(creatureId);
@@ -58,13 +51,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu merdivene tırmanma sinematiğini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool OnHandClickGlowWhaleEyeCinematicStart(this ZeroPlayer player, string uniqueId)
         {
             player.ResetCinematicsByUniqueId(uniqueId);
@@ -81,13 +67,6 @@
             return true;
         }
 
-        /**
-         *
-         * GlowWhale ile beraber yüzme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void StartGlowWhaleRideCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<GlowWhaleCinematic>();
@@ -97,13 +76,6 @@
             }
         }
 
-        /**
-         *
-         * GlowWhale ile beraber yüzme animasyonunu durdurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void StopGlowWhaleRideCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<GlowWhaleCinematic>();
@@ -113,13 +85,6 @@
             }
         }
 
-        /**
-         *
-         * GlowWhale ile beraber yüzme animasyonunu durdurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void StartGlowWhaleEyeCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<GlowWhaleCinematic>();
@@ -129,13 +94,6 @@
             }
         }
 
-        /**
-         *
-         * Leviathan sınıfı yaratık saldırma sinematiğini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void StartLeviathanMeleeAttackCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<LeviathanMeleeAttackCinematic>();

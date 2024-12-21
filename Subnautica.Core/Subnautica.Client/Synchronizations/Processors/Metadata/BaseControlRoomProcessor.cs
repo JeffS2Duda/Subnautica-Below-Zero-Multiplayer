@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using System.Collections.Generic;
 
@@ -17,31 +17,10 @@
 
     public class BaseControlRoomProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Kontrol odalarını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, BaseControlRoomMap> ControlRooms { get; set; } = new Dictionary<string, BaseControlRoomMap>();
 
-        /**
-         *
-         * Kaldırılacak haritaları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<string> RemovingMaps { get; set; } = new List<string>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.BaseControlRoom>();
@@ -106,13 +85,6 @@
             return true;
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate()
         {
             if (this.ControlRooms.Count <= 0)
@@ -143,13 +115,6 @@
             }
         }
 
-        /**
-         *
-         * Renk değiştirme paleti seçildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSubNameInputSelecting(SubNameInputSelectingEventArgs ev)
         {
             if (ev.TechType == TechType.BaseControlRoom)
@@ -165,13 +130,6 @@
             }
         }
 
-        /**
-         *
-         * Renk değiştirme paleti seçimden çıktığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSubNameInputDeselected(SubNameInputDeselectedEventArgs ev)
         {
             if (ev.TechType == TechType.BaseControlRoom)
@@ -180,13 +138,6 @@
             }
         }
 
-        /**
-         *
-         * Kontrol odasındaki mini haritaya tıklanınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseControlRoomMinimapUsing(BaseControlRoomMinimapUsingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -197,25 +148,11 @@
             }
         }
 
-        /**
-         *
-         * Kontrol odasındaki mini haritadan ayrılınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseControlRoomMinimapExiting(BaseControlRoomMinimapExitingEventArgs ev)
         {
             BaseControlRoomProcessor.SendPacketToServer(ev.UniqueId, minimap: new BaseControlRoomMinimap(ev.MapPosition.ToZeroVector3(), null), isNavigationExiting: true);
         }
 
-        /**
-         *
-         * Kontrol odasındaki mini harita hücresine basıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseControlRoomCellPowerChanging(BaseControlRoomCellPowerChangingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -223,25 +160,11 @@
             BaseControlRoomProcessor.SendPacketToServer(ev.UniqueId, minimap: new BaseControlRoomMinimap(null, ev.Cell.ToZeroInt3()));
         }
 
-        /**
-         *
-         * Kontrol odasındaki mini harita hareket ettiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseControlRoomMinimapMoving(BaseControlRoomMinimapMovingEventArgs ev)
         {
             BaseControlRoomProcessor.SendPacketToServer(ev.UniqueId, minimap: new BaseControlRoomMinimap(ev.Position.ToZeroVector3(), null));
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string name = null, Color baseColor = default(Color), Color stripeColor1 = default(Color), Color stripeColor2 = default(Color), Color nameColor = default(Color), BaseControlRoomMinimap minimap = null, bool isColorCustomizerOpening = false, bool isColorCustomizerSave = false, bool isNavigateOpening = false, bool isNavigationExiting = false)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
@@ -265,13 +188,6 @@
             NetworkClient.SendPacket(result);
         }
 
-        /**
-         *
-         * Ana menüye dönünce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnDispose()
         {
             this.ControlRooms.Clear();
@@ -281,31 +197,10 @@
 
     public class BaseControlRoomMap
     {
-        /**
-         *
-         * Haritayı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject Minimap { get; set; }
 
-        /**
-         *
-         * Son konumu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 Position { get; set; }
 
-        /**
-         *
-         * Zamanı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float Time { get; set; }
     }
 }

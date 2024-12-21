@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -14,22 +14,8 @@
     [HarmonyPatch]
     public static class Docking
     {
-        /**
-         *
-         * StopwatchItem nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static readonly Dictionary<string, StopwatchItem> StopwatchItems = new Dictionary<string, StopwatchItem>();
 
-        /**
-         *
-         * Yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::VehicleDockingBay), nameof(global::VehicleDockingBay.Start))]
         private static void VehicleDockingBay_Start(global::VehicleDockingBay __instance)
@@ -40,13 +26,6 @@
             }
         }
 
-        /**
-         *
-         * Yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::VehicleDockingBay), nameof(global::VehicleDockingBay.OnDestroy))]
         private static void VehicleDockingBay_OnDestroy(global::VehicleDockingBay __instance)
@@ -61,13 +40,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::VehicleDockingBay), nameof(global::VehicleDockingBay.OnTriggerEnter))]
         private static bool Prefix(global::VehicleDockingBay __instance, Collider other)
@@ -139,25 +111,11 @@
             return true;
         }
 
-        /**
-         *
-         * Id kontrolü yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool CheckAction(GameObject gameObject, int currentTick)
         {
             return GetUniqueId(gameObject).IsNotNull();
         }
 
-        /**
-         *
-         * Id tanımlanınca çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SuccessAction(GameObject gameObject)
         {
             var uniqueId = GetUniqueId(gameObject);
@@ -167,13 +125,6 @@
             }
         }
 
-        /**
-         *
-         * UniqueId değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(GameObject gameObject)
         {
             if (gameObject == null)
@@ -190,13 +141,6 @@
             return null;
         }
 
-        /**
-         *
-         * TechType değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetTechType(GameObject gameObject)
         {
             var baseDeconstructable = gameObject.GetComponentInParent<BaseDeconstructable>();
@@ -208,13 +152,6 @@
             return TechType.None;
         }
 
-        /**
-         *
-         * End Position değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector3 GetBackModulePosition(global::VehicleDockingBay dockingBay, Dockable dockable)
         {
             if (dockingBay.MoonpoolExpansionEnabled())
@@ -235,13 +172,6 @@
             return Vector3.zero;
         }
 
-        /**
-         *
-         * End Position değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector3 GetEndPosition(global::VehicleDockingBay dockingBay, Dockable dockable)
         {
             if (dockingBay.MoonpoolExpansionEnabled())
@@ -252,13 +182,6 @@
             return CraftData.GetTechType(dockable.gameObject) == TechType.Exosuit ? dockingBay.dockingEndPosExo.position : dockingBay.dockingEndPos.position;
         }
 
-        /**
-         *
-         * End Rotation değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Quaternion GetEndRotation(global::VehicleDockingBay dockingBay, Dockable dockable)
         {
             if (dockingBay.MoonpoolExpansionEnabled())

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.World
+namespace Subnautica.Server.Processors.World
 {
     using System.Linq;
 
@@ -12,13 +12,6 @@
 
     public class BrinicleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.BrinicleArgs>();
@@ -69,13 +62,6 @@
             return true;
         }
 
-        /**
-         *
-         * Dünyaya brinicle kaydeder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool RegisterBrinicle(Brinicle brinicle, out Brinicle newBrinicle)
         {
             if (Server.Instance.Storages.World.Storage.Brinicles.Any(q => q.UniqueId == brinicle.UniqueId))

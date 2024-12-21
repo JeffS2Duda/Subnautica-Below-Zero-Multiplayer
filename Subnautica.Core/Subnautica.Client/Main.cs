@@ -13,31 +13,10 @@
     public class Main : SubnauticaPlugin
     {
 
-        /**
-         *
-         * Eklenti Adı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override string Name { get; } = "BOT Benson Client";
 
-        /**
-         *
-         * Router
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Router Router { get; set; }
 
-        /**
-         *
-         * Eklenti Aktifleştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnEnabled()
         {
             base.OnEnabled();
@@ -298,25 +277,11 @@
             }
         }
 
-        /**
-         *
-         * Bepinex kontrolü yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void CheckBepinex()
         {
             Settings.IsBepinexInstalled = Tools.IsBepinexInstalled();
         }
 
-        /**
-         *
-         * Ana Menüye Döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ReturnToMainMenu()
         {
             ZeroGame.QuitToMainMenu();

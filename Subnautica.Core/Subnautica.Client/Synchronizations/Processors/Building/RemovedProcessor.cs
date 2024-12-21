@@ -13,13 +13,6 @@
 
     public class RemovedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ConstructionRemovedArgs>();
@@ -41,25 +34,11 @@
             return true;
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.SetWaitingForNextFrame(true);
         }
 
-        /**
-         *
-         * Yapı yıkıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructingRemoved(ConstructionRemovedEventArgs ev)
         {
             ServerModel.ConstructionRemovedArgs request = new ServerModel.ConstructionRemovedArgs()

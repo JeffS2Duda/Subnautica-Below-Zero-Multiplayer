@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Vehicle
+namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
     using System;
     using System.Collections;
@@ -18,22 +18,8 @@
     [HarmonyPatch]
     public class VehicleKill
     {
-        /**
-         *
-         * Yok edilen araçları barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static HashSet<string> DestroyedVehicles { get; set; } = new HashSet<string>();
 
-        /**
-         *
-         * Araç yok edilme vfx'ini çalıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool SpawnDeathVFX(string uniqueId, GameObject deathVFX, Vector3 position, Quaternion rotation)
         {
             if (!Network.IsMultiplayerActive)
@@ -70,13 +56,6 @@
             return true;
         }
 
-        /**
-         *
-         * VFX'i belirli bir süre sonra yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator VFXAutoRemove(GameObject gameObject, float lifeTime)
         {
             var worldForces = gameObject.GetComponentsInChildren<Rigidbody>();
@@ -104,13 +83,6 @@
             }
         }
 
-        /**
-         *
-         * Ana Menüye dönünce veriler temizlenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPostfix]
         [HarmonyPatch(typeof(uGUI_MainMenu), nameof(uGUI_MainMenu.Awake))]
         private static void uGUI_MainMenu_Awake()
@@ -119,13 +91,6 @@
         }
 
 
-        /**
-         *
-         * Hoverbike Patlama işlemini yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPostfix]
         [HarmonyPatch(typeof(global::Hoverbike), nameof(global::Hoverbike.KillAsync))]
         private static IEnumerator Hoverbike_KillAsync(IEnumerator values, global::Hoverbike __instance)
@@ -150,13 +115,6 @@
             }
         }
 
-        /**
-         *
-         * Penguin Patlama işlemini yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SpyPenguin), nameof(global::SpyPenguin.OnKill))]
         private static bool SpyPenguin_OnKill(global::SpyPenguin __instance)
@@ -181,13 +139,6 @@
             return true;
         }
 
-        /**
-         *
-         * Exosuit Patlama işlemini yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Vehicle), nameof(global::Vehicle.OnKill))]
         private static bool Exosuit_OnKill(global::Vehicle __instance)
@@ -214,13 +165,6 @@
             return true;
         }
 
-        /**
-         *
-         * SeaTruck/Module Patlama işlemini yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SeaTruckSegment_OnKill_Destruction(global::SeaTruckSegment seaTruckSegment)
         {
             if (seaTruckSegment.destructionEffect)
@@ -229,13 +173,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruckSegment işlemini yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyTranspiler]
         [HarmonyPatch(typeof(global::SeaTruckSegment), nameof(global::SeaTruckSegment.OnKill))]
         private static IEnumerable<CodeInstruction> SeaTruckSegment_OnKill(IEnumerable<CodeInstruction> instructions)
@@ -275,13 +212,6 @@
             return codes.AsEnumerable();
         }
 
-        /**
-         *
-         * SeaTruckSegment yok etme işlemini yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SeaTruckSegment_OnKill_Destroy(GameObject gameObject)
         {
             if (!Network.IsMultiplayerActive)
@@ -290,13 +220,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruckSegment/ExitInterior işlemini yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SeaTruckSegment_OnKill_ExitInterior()
         {
             global::Player.main.ExitCurrentInterior();

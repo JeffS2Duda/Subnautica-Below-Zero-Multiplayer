@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Game
+namespace Subnautica.Events.Patches.Fixes.Game
 {
     using HarmonyLib;
 
@@ -18,13 +18,6 @@
     [HarmonyPatch(typeof(global::MainGameController), nameof(global::MainGameController.StartGame))]
     public static class StartMainGame
     {
-        /**
-         *
-         * Fonksiyon ön ekini yamalar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator Postfix(IEnumerator values, global::MainGameController __instance)
         {
             if (Network.IsMultiplayerActive)
@@ -105,8 +98,6 @@
                 DevConsole.RegisterConsoleCommand(__instance, "collect");
                 DevConsole.RegisterConsoleCommand(__instance, "endsession");
 
-                // VR AKTİF İSE TETİKLENİR.
-                // VRUtil.OnRecenter += __instance.ResetOrientation;
 
                 MainGameController.OnGameStarted?.Invoke();
 
@@ -118,13 +109,6 @@
             }
         }
 
-        /**
-         *
-         * Dünya yüklendikten sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator WorldLoadedEvent()
         {
             WorldLoadedEventArgs args = new WorldLoadedEventArgs();

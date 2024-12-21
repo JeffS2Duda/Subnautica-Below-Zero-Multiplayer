@@ -6,13 +6,6 @@
 
     public static class BaseAddPartitionDoorGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddPartitionDoorGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddPartitionDoorGhostComponent component)
         {
             positionFound = false;

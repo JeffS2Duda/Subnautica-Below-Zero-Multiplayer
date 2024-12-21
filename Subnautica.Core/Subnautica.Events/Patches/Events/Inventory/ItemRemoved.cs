@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Inventory
+namespace Subnautica.Events.Patches.Events.Inventory
 {
     using HarmonyLib;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.OnRemoveItem))]
     public class ItemRemoved
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::Inventory __instance, InventoryItem item)
         {
             if (Network.IsMultiplayerActive && !__instance.isTerminating)

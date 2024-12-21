@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
     using System.Collections.Generic;
@@ -14,22 +14,8 @@
     [HarmonyPatch(typeof(global::ArmsController), nameof(global::ArmsController.Update))]
     public static class Updated
     {
-        /**
-         *
-         * StopwatchItem nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static readonly StopwatchItem StopwatchItem = new StopwatchItem(BroadcastInterval.PlayerUpdated);
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Postfix(global::ArmsController __instance)
         {
             if (Network.IsMultiplayerActive)
@@ -63,13 +49,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu elindeki eşyayı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetTechTypeInHand(global::ArmsController __instance)
         {
             var hand = TechType.None;
@@ -107,13 +86,6 @@
             return hand;
         }
 
-        /**
-         *
-         * Oyuncu ekipmanlarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<TechType> GetPlayerEquipments()
         {
             List<TechType> equipments = new List<TechType>()
@@ -122,19 +94,11 @@
                 GetEquipmentType("Body"),
                 GetEquipmentType("Gloves"),
                 GetEquipmentType("Foots"),
-                // GetEquipmentType("Tank"),
             };  
 
             return equipments;
         }
 
-        /**
-         *
-         * Oyuncu ekipman türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetEquipmentType(string slot)
         {
             if (global::Inventory.main.equipment.equipment.TryGetValue(slot, out var inventoryItem) && inventoryItem != null)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -8,13 +8,6 @@
     [HarmonyPatch(typeof(global::ExosuitGrapplingArm), nameof(global::ExosuitGrapplingArm.OnHit))]
     public static class ExosuitGrapplingArm
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::ExosuitGrapplingArm __instance)
         {
             if (!Network.IsMultiplayerActive)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(global::BulkheadDoor), nameof(global::BulkheadDoor.OnHandHover))]
     public class BulkheadDoor
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::BulkheadDoor __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -30,13 +23,6 @@
             return true;
         }
 
-        /**
-         *
-         * UniqueId döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(global::BulkheadDoor __instance)
         {
             var constructable = __instance.GetComponentInParent<BaseDeconstructable>();

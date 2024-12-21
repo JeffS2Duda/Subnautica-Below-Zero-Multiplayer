@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Items
+namespace Subnautica.Server.Processors.Items
 {
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Metadata;
@@ -13,13 +13,6 @@
 
     public class ThumperProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, PlayerItemActionArgs packet)
         {
             var component = packet.Item.GetComponent<ItemModel.Thumper>();
@@ -45,13 +38,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bileşeni döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldEntityModel.Thumper GetComponent(float charge, ZeroVector3 position)
         {
             return new WorldEntityModel.Thumper()

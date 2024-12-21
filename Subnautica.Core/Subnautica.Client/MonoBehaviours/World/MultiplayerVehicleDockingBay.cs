@@ -10,103 +10,26 @@
 
     public class MultiplayerVehicleDockingBay : MonoBehaviour
     {
-        /**
-         *
-         * BackSeaTruckSegment nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::SeaTruckSegment BackSeaTruckSegment { get; set; }
 
-        /**
-         *
-         * VehicleDockingBay nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public VehicleDockingBay VehicleDockingBay { get; set; }
 
-        /**
-         *
-         * ExpansionManager nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public MultiplayerExpansionManager ExpansionManager { get; set; }
 
-        /**
-         *
-         * ManuelCinematicPlayerId nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private byte ManuelCinematicPlayerId { get; set; } = 0;
 
-        /**
-         *
-         * TimeDockingStarted nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private double TimeDockingStarted { get; set; }
 
-        /**
-         *
-         * DockPlayer nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool DockPlayer { get; set; }
 
-        /**
-         *
-         * BackModulePosition nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ZeroVector3 BackModulePosition { get; set; }
 
-        /**
-         *
-         * IsDocking nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsDocking { get; set; }
 
-        /**
-         *
-         * TailId nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string TailId { get; set; }
 
-        /**
-         *
-         * InterpolationTime nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public double InterpolationTime { get; set; } = 1;
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             if (this.TryGetComponent<VehicleDockingBay>(out var vehicleDockingBay))
@@ -118,25 +41,11 @@
             this.ExpansionManager.OnAwake();
         }
 
-        /**
-         *
-         * Manuel Dock Oyuncu id'sini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetManuelDockingPlayerId(byte playerId)
         {
             this.ManuelCinematicPlayerId = playerId;
         }
 
-        /**
-         *
-         * Kuyruğu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetDockingTail(string tailId)
         {
             if (tailId.IsNotNull() && Network.Session.Current.SeaTruckConnections != null)
@@ -147,49 +56,21 @@
             this.TailId = tailId;
         }
 
-        /**
-         *
-         * Kenetlenme başlangıç zamanını değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetDockingStartTime(double time)
         {
             this.TimeDockingStarted = time;
         }
 
-        /**
-         *
-         * Oyuncu kenetlenme durumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetDockPlayer(bool isDockPlayer)
         {
             this.DockPlayer = isDockPlayer;
         }
 
-        /**
-         *
-         * Oyuncu kenetlenme durumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetBackModulePosition(ZeroVector3 backModulePosition)
         {
             this.BackModulePosition = backModulePosition;
         }
 
-        /**
-         *
-         * Rıhtıma yanaşma işlemini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartDocking(string vehicleId)
         {
             var vehicle = Network.Identifier.GetGameObject(vehicleId);
@@ -259,13 +140,6 @@
             }
         }
 
-        /**
-          *
-          * Rıhtımdan ayrılma cinematiğini başlatır.
-          *
-          * @author Ismail <ismaiil_0234@hotmail.com>
-          *
-          */
         public void StartUndocking(byte playerId, bool isLeft)
         {
             if (this.ExpansionManager.IsActive())
@@ -299,13 +173,6 @@
             }
         }
 
-        /**
-          *
-          * Rıhtımdan ayrılma işlemini anında tamamlar.
-          *
-          * @author Ismail <ismaiil_0234@hotmail.com>
-          *
-          */
         public bool Undock(bool isMine = false)
         {
             if (this.VehicleDockingBay.dockedObject == null)
@@ -353,13 +220,6 @@
             return true;
         }
 
-        /**
-          *
-          * Geç güncelleme işlemi
-          *
-          * @author Ismail <ismaiil_0234@hotmail.com>
-          *
-          */
         public void LateUpdate()
         {
             if (this.VehicleDockingBay)
@@ -368,13 +228,6 @@
             }
         }
 
-        /**
-         *
-         * Kenetleme ve animasyonları ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateDocking()
         {
             var dockable = this.GetDockableObject();
@@ -426,13 +279,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck arka modülünü ayırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool UndockSeaTruckModule(global::SeaTruckSegment seaTruckSegment, ZeroVector3 position)
         {
             var backModuleId = seaTruckSegment.gameObject.GetIdentityId();
@@ -455,13 +301,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu otomatik tırmanmayı başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool PlayerAutoClimb(global::Player player, global::VehicleDockingBay vehicleDockingBay, string vehicleId)
         {
             if (player.currentInterior != null && player.currentInterior is global::SeaTruckSegment seaTruckSegment)
@@ -506,13 +345,6 @@
             return false;
         }
 
-        /**
-         *
-         * Otomatik cinematic modunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void StartAutoCinematicMode(TechType techType, global::Player player)
         {
             if (techType == TechType.Exosuit)
@@ -525,13 +357,6 @@
             }
         }
 
-        /**
-         *
-         * Manuel cinematic modunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool StartManuelCinematicMode(TechType techType)
         {
             var player = ZeroPlayer.GetPlayerById(this.ManuelCinematicPlayerId);
@@ -545,25 +370,11 @@
             return player != null;
         }
 
-        /**
-         *
-         * Moonpool Id döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string GetMoonpoolId()
         {
             return this.gameObject.GetComponentInParent<BaseDeconstructable>().gameObject.GetIdentityId();
         }
 
-        /**
-         *
-         * Araç türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private TechType GetVehicleType(Dockable dockable)
         {
             if (dockable?.gameObject == null)
@@ -574,13 +385,6 @@
             return CraftData.GetTechType(dockable.gameObject);
         }
 
-        /**
-         *
-         * Oyuncuyu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Player GetPlayer()
         {
             if (this.VehicleDockingBay.dockPlayer)
@@ -595,13 +399,6 @@
             return null;
         }
 
-        /**
-         *
-         * Kırınım oranını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float GetInterpfraction()
         {
             if (this.TimeDockingStarted != 0)
@@ -612,13 +409,6 @@
             return 1f;
         }
 
-        /**
-         *
-         * Kenetlenen aracı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dockable GetDockableObject()
         {
             if (this.VehicleDockingBay.dockedObject)
@@ -629,25 +419,11 @@
             return this.VehicleDockingBay.interpolatingDockable;
         }
 
-        /**
-         *
-         * Arka seatruck segmenti barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SetBackSeaTruckSegment(global::SeaTruckSegment seaTruckSegment)
         {
             this.BackSeaTruckSegment = seaTruckSegment;
         }
 
-        /**
-         *
-         * Verileri sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void Reset()
         {
             this.TailId     = null;

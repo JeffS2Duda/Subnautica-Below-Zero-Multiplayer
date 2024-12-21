@@ -13,13 +13,6 @@
 
     public class InventoryProcessor
     {
-        /**
-         *
-         * Envanter verilerini yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnInventoryInitialized()
         {
             if (Network.Session.Current.PlayerInventoryItems?.Items?.Count > 0)
@@ -38,13 +31,6 @@
             }
         }
 
-        /**
-         *
-         * Ekipman verilerini yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator OnEquipmentInitialized()
         {
             if (Network.Session.Current.PlayerEquipments != null && Network.Session.Current.PlayerEquipments.Length > 0)
@@ -59,13 +45,6 @@
             }
         }
 
-        /**
-         *
-         * Envanter Hızlı slotları ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnInventoryQuickSlotsInitialized()
         {
             if (Network.Session.Current.PlayerQuickSlots != null)
@@ -86,13 +65,6 @@
             }
         }
 
-        /**
-         *
-         * Ekipman verilerini yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator RestoreEquipmentAsync(ProtobufSerializer serializer, byte[] serialItems, Dictionary<string, string> serialSlots, Equipment equipment)
         {
             using (MemoryStream stream = new MemoryStream(serialItems))

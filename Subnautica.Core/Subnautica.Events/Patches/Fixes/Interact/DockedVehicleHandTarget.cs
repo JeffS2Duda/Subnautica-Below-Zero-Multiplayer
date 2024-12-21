@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(global::DockedVehicleHandTarget), nameof(global::DockedVehicleHandTarget.OnHandHover))]
     public class DockedVehicleHandTarget
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::DockedVehicleHandTarget __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -30,13 +23,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bloklanma durumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsBlocked(global::DockedVehicleHandTarget __instance)
         {
             if (__instance.dockingBay.GetDockedObject() != null)

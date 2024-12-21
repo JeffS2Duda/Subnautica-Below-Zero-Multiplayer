@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::SeaTruckSegment), nameof(global::SeaTruckSegment.OnClickDetachLever))]
     public static class SeaTruckDetaching
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::SeaTruckSegment __instance)
         {
             if (!Network.IsMultiplayerActive)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -18,13 +18,6 @@
 
     public class PipeSurfaceFloaterProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var component = packet.GetComponent<ItemModel.PipeSurfaceFloater>();
@@ -59,13 +52,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -75,13 +61,6 @@
             }
         }
 
-        /**
-         *
-         * Boru yüzey yüzdürücü bırakılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPipeSurfaceFloaterDeploying(PipeSurfaceFloaterDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -89,13 +68,6 @@
             PipeSurfaceFloaterProcessor.SendPacketToServer(ev.UniqueId, null, null, ev.DeployPosition.ToZeroVector3(), ev.DeployRotation.ToZeroQuaternion(), processType: 1);
         }
 
-        /**
-         *
-         * Boru bırakılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnOxygenPipePlacing(OxygenPipePlacingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -103,13 +75,6 @@
             PipeSurfaceFloaterProcessor.SendPacketToServer(ev.UniqueId, ev.ParentId, ev.PipeId, ev.DeployPosition.ToZeroVector3(), ev.DeployRotation.ToZeroQuaternion(), processType: 3);
         }
 
-        /**
-         *
-         * Oyuncu yerden eşya aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerItemPickedUp(PlayerItemPickedUpEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity && ev.TechType == TechType.Pipe && !Network.DynamicEntity.HasEntity(ev.UniqueId))
@@ -123,13 +88,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paket gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string uniqueId, string parentId = null, string pipeId = null, ZeroVector3 position = null, ZeroQuaternion rotation = null, byte processType = 0)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

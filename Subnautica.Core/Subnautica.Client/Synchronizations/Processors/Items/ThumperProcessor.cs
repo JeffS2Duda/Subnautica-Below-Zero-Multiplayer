@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -17,13 +17,6 @@
 
     public class ThumperProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var component = packet.GetComponent<ItemModel.Thumper>();
@@ -41,13 +34,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -57,13 +43,6 @@
             }
         }
 
-        /**
-         *
-         * Thumper yere konulurken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnThumperDeploying(ThumperDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -71,13 +50,6 @@
             ThumperProcessor.SendPacketToServer(ev.UniqueId, ev.DeployPosition.ToZeroVector3(), Quaternion.identity.ToZeroQuaternion(), ev.Charge);
         }
 
-        /**
-         *
-         * Thumper yere konulduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, ZeroVector3 position, ZeroQuaternion rotation, float charge)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

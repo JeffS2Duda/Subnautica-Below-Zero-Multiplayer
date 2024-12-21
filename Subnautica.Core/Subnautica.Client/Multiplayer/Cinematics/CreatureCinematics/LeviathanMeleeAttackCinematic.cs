@@ -10,22 +10,8 @@
 
     public class LeviathanMeleeAttackCinematic : CinematicController
     {
-        /**
-         *
-         * Yatağı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::LeviathanMeleeAttack MeleeAttack { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.MeleeAttack = this.Target.GetComponentInChildren<global::LeviathanMeleeAttack>();
@@ -36,13 +22,6 @@
             }
         }
 
-        /**
-         *
-         * Yakın dövüş saldırısını başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartMeleeAttack()
         {
             if (this.MeleeAttack)
@@ -59,13 +38,6 @@
             }
         }
 
-        /**
-         *
-         * Ses geçerlilik durumunu kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsValidSound(StudioEventEmitter eventEmitter, Transform attachedTransform)
         {
             return this.IsCinematicModeActive && this.Player && attachedTransform;

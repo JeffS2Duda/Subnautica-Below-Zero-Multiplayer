@@ -9,58 +9,16 @@
 
     public class PlayerLighting : MonoBehaviour
     {
-        /**
-         *
-         * Oyuncuyu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroPlayer Player { get; set; }
 
-        /**
-         *
-         * Mevcut SubRoot Id numarasını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string CurrentSubRootId { get; set; }
 
-        /**
-         *
-         * LastSky sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Sky LastSky { get; set; }
 
-        /**
-         *
-         * LastPower değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float LastPower { get; set; } = 0f;
 
-        /**
-         *
-         * Block değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private MaterialPropertyBlock Block = new MaterialPropertyBlock();
 
-        /**
-         *
-         * Sınıf başlatıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Start()
         {
             var skyApplier = this.Player.AddComponent<SkyApplier>();
@@ -70,13 +28,6 @@
             skyApplier.renderers         = this.Player.GetComponentsInChildren<SkinnedMeshRenderer>(true);
         }
 
-        /**
-         *
-         * Belirli aralıklarla tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (this.IsChangedSubRoot())
@@ -87,13 +38,6 @@
             this.UpdateBaseLighting();
         }
 
-        /**
-         *
-         * Oyuncu üs değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsChangedSubRoot()
         {
             if (this.Player == null || !World.IsLoaded)
@@ -110,13 +54,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yeni skybox'u uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ApplySkybox()
         {
             if (string.IsNullOrEmpty(this.CurrentSubRootId))
@@ -137,13 +74,6 @@
             return true;
         }
 
-        /**
-         *
-         * Üs -> oyuncu ışıklandırmasını ayarlar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateBaseLighting()
         {
             float power = 0.0f;

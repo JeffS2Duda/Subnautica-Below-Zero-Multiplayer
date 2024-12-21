@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -18,31 +18,10 @@
 
     public class BrinicleProcessor : NormalProcessor
     {
-        /**
-         *
-         * WaitingForSending nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static readonly HashSet<Brinicle> WaitingForSending = new HashSet<Brinicle>();
 
-        /**
-         *
-         * Timing nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private readonly StopwatchItem Timing = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.BrinicleArgs>();
@@ -58,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (World.IsLoaded && this.Timing.IsFinished())
@@ -80,13 +52,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawn olduktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntitySpawned(EntitySpawnedEventArgs ev)
         {
             if (ev.TechType == TechType.Brinicle)
@@ -100,13 +65,6 @@
             }
         }
 
-        /**
-         *
-         * Bir nesne hasar aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTakeDamaging(TakeDamagingEventArgs ev)
         {
             if (ev.TechType == TechType.Brinicle)
@@ -117,13 +75,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId = null, List<Brinicle> waitingForRegistry = null, float damage = 0f)
         {
             ServerModel.BrinicleArgs request = new ServerModel.BrinicleArgs()
@@ -136,13 +87,6 @@
             NetworkClient.SendPacket(request);
         }
 
-        /**
-         *
-         * Brinicle nesnesi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Brinicle GetBrinicleItem(GameObject gameObject, string uniqueId)
         {
             if (gameObject.TryGetComponent<global::Brinicle>(out var brinicle))
@@ -158,13 +102,6 @@
             return null;
         }
 
-        /**
-         *
-         * Ana menüye dönünce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnDispose()
         {
             WaitingForSending.Clear();

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.General
+namespace Subnautica.Server.Processors.General
 {
     using System.Linq;
 
@@ -13,13 +13,6 @@
 
     public class IntroProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.IntroStartArgs>();
@@ -46,13 +39,6 @@
             return true;
         }
 
-        /**
-         *
-         * Supply drop oluşturur veya döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WorldChildrens.SupplyDrop CreateOrGetSupplyDrop()
         {
             if (Server.Instance.Storages.World.Storage.SupplyDrops.Count > 0)

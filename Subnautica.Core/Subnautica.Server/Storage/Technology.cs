@@ -12,22 +12,8 @@ namespace Subnautica.Server.Storage
 
     public class Technology : BaseStorage
     {
-        /**
-         *
-         * Technology sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public TechnologyStorage.Technology Storage { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Start(string serverId)
         {
             this.ServerId = serverId;
@@ -36,13 +22,6 @@ namespace Subnautica.Server.Storage
             this.Load();
         }
 
-        /**
-         *
-         * Sunucu ansiklopedi verilerini belleğe yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Load()
         {
             if (File.Exists(this.FilePath))
@@ -77,13 +56,6 @@ namespace Subnautica.Server.Storage
             }
         }
 
-        /**
-         *
-         * Verileri diske yazar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void SaveToDisk()
         {
             lock (this.ProcessLock)
@@ -92,13 +64,6 @@ namespace Subnautica.Server.Storage
             }
         }
 
-        /**
-         *
-         * Açılmış teknolojileri ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddTechnology(TechnologyItem technology)
         {
             lock (this.ProcessLock)
@@ -119,13 +84,6 @@ namespace Subnautica.Server.Storage
             }
         }
 
-        /**
-         *
-         * Açılmış teknolojileri ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public TechnologyItem GetTechnology(TechType techType, int totalFragment)
         {
             lock (this.ProcessLock)
@@ -144,13 +102,6 @@ namespace Subnautica.Server.Storage
             }
         }
 
-        /**
-         *
-         * Analiz edilmiş teknolojileri ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddAnalyzedTechnology(TechType techType)
         {
             lock (this.ProcessLock)

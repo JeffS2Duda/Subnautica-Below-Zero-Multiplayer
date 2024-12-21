@@ -19,130 +19,32 @@ namespace Subnautica.Server.Logic
 
     public class CreatureWatcher : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(2000f);
 
-        /**
-         *
-         * PlayerActiveCreatures nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<byte, HashSet<ushort>> PlayerActiveCreatures { get; set; } = new Dictionary<byte, HashSet<ushort>>();
 
-        /**
-         *
-         * PlayerLoadedCreatures nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<byte, HashSet<ushort>> PlayerLoadedCreatures { get; set; } = new Dictionary<byte, HashSet<ushort>>();
 
-        /**
-         *
-         * PlayerOwnershipRequests nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<byte, List<WorldCreatureOwnershipItem>> PlayerOwnershipRequests { get; set; } = new Dictionary<byte, List<WorldCreatureOwnershipItem>>();
 
-        /**
-         *
-         * Konum isteklerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<byte, WorldCreaturePositionArgs> PlayerPositionRequests { get; set; } = new Dictionary<byte, WorldCreaturePositionArgs>();
 
-        /**
-         *
-         * Creatures barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<ushort, MultiplayerCreatureItem> Creatures { get; set; } = null;
 
-        /**
-         *
-         * CreaturesByWorldStreamerIds barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, ushort> CreaturesByWorldStreamerIds { get; set; } = new Dictionary<string, ushort>();
 
-        /**
-         *
-         * ActiveCreatures barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */   
         private HashSet<MultiplayerCreatureItem> ActiveCreatures { get; set; } = new HashSet<MultiplayerCreatureItem>();
 
-        /**
-         *
-         * Yeniden doğma kuyruğu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<ushort, StopwatchItem> RespawnQueue { get; set; } = new Dictionary<ushort, StopwatchItem>();
 
-        /**
-         *
-         * Merkeze dönme kuyruğu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<ushort, StopwatchItem> StayAtLeashQueue { get; set; } = new Dictionary<ushort, StopwatchItem>();
 
-        /**
-         *
-         * LastCreatureId barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ushort LastCreatureId { get; set; } = 1;
 
-        /**
-         *
-         * IsLoading barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsLoading { get; set; } = false;
 
-        /**
-         *
-         * IsLoading barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsForceTrigger { get; set; } = false;
 
-        /**
-         *
-         * Anında tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool ImmediatelyTrigger()
         {
             this.IsForceTrigger = true;
@@ -150,13 +52,6 @@ namespace Subnautica.Server.Logic
             return true;
         }
 
-        /**
-         *
-         * Olayı tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void TriggerAction(NetworkPacket actionPacket)
         {
             foreach (var player in Server.Instance.GetPlayers())
@@ -168,13 +63,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Olayı temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ClearAction(MultiplayerCreatureItem creature, float delay = 0f)
         {
             if (delay <= 0f)
@@ -187,13 +75,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate(float deltaTime)
         {
             if (API.Features.World.IsLoaded && this.LoadCreatures() && (this.IsForceTrigger || this.Timing.IsFinished()))
@@ -210,25 +91,11 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Her şey hazır mı?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsLoaded()
         {
             return this.IsLoading == false && this.Creatures != null;
         }
 
-        /**
-         *
-         * Yaratıkları önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool LoadCreatures()
         {
             if (this.IsLoading)
@@ -276,13 +143,6 @@ namespace Subnautica.Server.Logic
             return true;
         }
 
-        /**
-         *
-         * Yaratık kaydını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ushort RegisterCreature(TechType techType, ZeroVector3 leashPosition, ZeroQuaternion leashRotation, string worldStreamerId = null)
         {
             if (this.Creatures.Count >= ushort.MaxValue)
@@ -319,13 +179,6 @@ namespace Subnautica.Server.Logic
             return creature.Id;
         }
 
-        /**
-         *
-         * Yaratık kaydını siler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UnRegisterCreature(ushort creatureId)
         {
             if (this.TryGetCreature(creatureId, out var creature))
@@ -364,13 +217,6 @@ namespace Subnautica.Server.Logic
             return false;
         }
 
-        /**
-         *
-         * Yakınlardaki balıkları önbelleğe yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateClosestCreatures()
         {
             foreach (var creature in this.Creatures)
@@ -387,13 +233,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Ölü balıkları yeniden canlandırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RespawnDeadCreatures()
         {
             if (this.RespawnQueue.Count > 0)
@@ -413,13 +252,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Balıkların konumlarını başlangıça döndürür.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StayAtLeashCreatures()
         {
             if (this.StayAtLeashQueue.Count > 0)
@@ -439,13 +271,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Başlatılmamış oyuncu yapılandırmalarını ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void InitializePlayers()
         {
             foreach (var player in Server.Instance.GetPlayers())
@@ -472,25 +297,11 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Yaratığı aktifleştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsActiveCreature(ushort creatureId)
         {
             return this.ActiveCreatures.Any(q => q.Id == creatureId);
         }
 
-        /**
-         *
-         * Yaratığı aktifleştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ActivateCreature(MultiplayerCreatureItem creature)
         {
             if (!this.IsActiveCreature(creature.Id))
@@ -501,13 +312,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Yaratığı pasifleştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void DisableCreature(MultiplayerCreatureItem creature)
         {
             this.ActiveCreatures.Remove(creature);
@@ -518,13 +322,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Yaratık konumlarını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateCreaturePosition(ushort creatureId, ZeroVector3 position, ZeroQuaternion rotation, bool updateCell = false)
         {
             if (this.TryGetCreature(creatureId, out var creature))
@@ -533,13 +330,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Yaratıkların hepsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerable<KeyValuePair<ushort, MultiplayerCreatureItem>> GetCreatures(TechType techType = TechType.None)
         {
             if (techType == TechType.None)
@@ -550,25 +340,11 @@ namespace Subnautica.Server.Logic
             return this.Creatures.Where(q => q.Value.TechType == techType);
         }
 
-        /**
-         *
-         * Yaratığı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryGetCreature(ushort creatureId, out MultiplayerCreatureItem creature)
         {
             return this.Creatures.TryGetValue(creatureId, out creature);
         }
 
-        /**
-         *
-         * Yaratığı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryGetCreature(string worldStreamerId, out MultiplayerCreatureItem creature)
         {
             if (this.CreaturesByWorldStreamerIds.TryGetValue(worldStreamerId, out var creatureId))
@@ -580,13 +356,6 @@ namespace Subnautica.Server.Logic
             return false;
         }
 
-        /**
-         *
-         * Yaratığı aktif edilebilirlik durumunu döner. döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsCreatureActivable(MultiplayerCreatureItem creature)
         {
             if (creature.IsBusy())
@@ -610,13 +379,6 @@ namespace Subnautica.Server.Logic
             return false;
         }
 
-        /**
-         *
-         * Yaratık sahipliğini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ChangeCreatureOwnership(byte playerId, ushort creatureId, byte newOwnerId, bool isCreatureDead = false)
         {
             if (this.TryGetCreature(creatureId, out var creature))
@@ -664,13 +426,6 @@ namespace Subnautica.Server.Logic
             return true;
         }
 
-        /**
-         *
-         * Oyunculara yaratık sahip değişim paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendOwnershipPacketToAllClient()
         {
             foreach (var item in this.PlayerOwnershipRequests)
@@ -699,13 +454,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Yakınlarda aktif olan balıkları oyunculara atar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateCreatureOwnerships()
         {
             foreach (var creature in this.ActiveCreatures.ToList())
@@ -793,25 +541,11 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Yaratık konumunu sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ResetCreaturePosition(MultiplayerCreatureItem creature)
         {
             this.UpdateCreaturePosition(creature.Id, creature.LeashPosition, creature.LeashRotation, true);
         }
 
-        /**
-         *
-         * Yaratık konum verisi alınınca tetiklenir ve işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCreaturePositionDataReceived(byte requesterId, List<WorldCreaturePosition> positions)
         {
             foreach (var item in positions)
@@ -846,13 +580,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Yaratık animasyon verisi alınınca tetiklenir ve işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnAnimationDataReceived(ushort requesterId, HashSet<CreatureAnimationItem> animations)
         {
             foreach (var player in Server.Instance.GetPlayers())
@@ -882,13 +609,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Oyuncu tamamen bağlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPlayerFullConnected(PlayerFullConnectedEventArgs ev)
         {
             this.ImmediatelyTrigger();
@@ -902,13 +622,6 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        /**
-         *
-         * Oyuncu ayrıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnPlayerDisconnected(byte playerId)
         {
             foreach (var item in this.PlayerActiveCreatures)
@@ -932,13 +645,6 @@ namespace Subnautica.Server.Logic
             this.ImmediatelyTrigger();
         }
 
-        /**
-         *
-         * Yaratık öldüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCreatureDead(MultiplayerCreatureItem creature)
         {
             creature.ClearAction(true);
@@ -946,13 +652,6 @@ namespace Subnautica.Server.Logic
             Server.Instance.Logices.Timing.RemoveFromQueue(creature.Id.ToCreatureStringId());
         }
 
-        /**
-         *
-         * Yaratık öldüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCallSoundTriggered(MultiplayerCreatureItem creature, ServerModel.CreatureCallArgs packet)
         {
             foreach (var player in Server.Instance.GetPlayers())
@@ -994,13 +693,6 @@ namespace Subnautica.Server.Logic
 
 
 
-        /**
-         *
-         * Nesne için yeni sahip arar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte FindCreatureOwnership(MultiplayerCreatureItem creature)
         {
             if (creature.IsBusy())
@@ -1018,7 +710,6 @@ namespace Subnautica.Server.Logic
             {
                 if (player.IsFullConnected)
                 {
-                    // CanSeeTheCreature
                     var distance = player.Position.Distance(creature.Position);
                     if (distance < visibility)
                     {

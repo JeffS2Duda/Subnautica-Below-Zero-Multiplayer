@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -18,13 +18,6 @@
 
     public class SpawnOnKillProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SpawnOnKillArgs>();
@@ -39,25 +32,11 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             pickupable.MultiplayerDrop();
         }
 
-        /**
-         *
-         * Bir nesne yok edildiğinde içinden başka nesne çıkarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSpawnOnKilling(SpawnOnKillingEventArgs ev)
         {
             ev.IsAllowed = false;

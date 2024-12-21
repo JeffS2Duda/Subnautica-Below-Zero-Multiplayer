@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::ExosuitClawArm), nameof(global::ExosuitClawArm.OnPickup))]
     public class ExosuitItemPickedUp
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::ExosuitClawArm __instance)
         {
             if (!Network.IsMultiplayerActive)

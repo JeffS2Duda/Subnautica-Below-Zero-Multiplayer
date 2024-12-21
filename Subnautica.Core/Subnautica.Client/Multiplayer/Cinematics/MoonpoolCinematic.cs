@@ -8,22 +8,8 @@
 
     public class MoonpoolCinematic : CinematicController
     {
-        /**
-        *
-        * Hoverpadi barındırır.
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         private global::VehicleDockingBay DockingBay { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.DockingBay = this.Target.GetComponentInChildren<global::VehicleDockingBay>();
@@ -37,13 +23,6 @@
             }
         }
 
-        /**
-         *
-         * Demirleme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartDockingCinematic()
         {
             if (this.GetProperty<TechType>("TechType") == TechType.Exosuit)
@@ -67,13 +46,6 @@
             this.StartCinematicMode();
         }
 
-        /**
-         *
-         * Ayrılma animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartUnDockingCinematic()
         {
             foreach (var item in this.DockingBay.transform.parent.GetComponentsInChildren<DockedVehicleHandTarget>())
@@ -101,25 +73,11 @@
             }
         }
 
-        /**
-         *
-         * Docking başlarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnDockingComplete()
         {
             this.DockingBay?.dockedObject?.OnDockingComplete();
         }
 
-        /**
-         *
-         * Undocking başlarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnUndockingStart()
         {
             if (this.DockingBay)
@@ -136,13 +94,6 @@
             }
         }
 
-        /**
-         *
-         * Undocking tamamlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnUndockingComplete()
         {
             this.SetAnimState(false);

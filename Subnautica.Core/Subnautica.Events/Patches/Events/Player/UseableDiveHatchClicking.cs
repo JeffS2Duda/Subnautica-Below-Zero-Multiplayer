@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::UseableDiveHatch), nameof(global::UseableDiveHatch.StartCinematicMode))]
     public static class UseableDiveHatchClicking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::UseableDiveHatch __instance, global::PlayerCinematicController cinematicController, global::Player player)
         {
             if (!Network.IsMultiplayerActive)
@@ -50,13 +43,6 @@
             }
         }
 
-        /**
-         *
-         * Yapı id'sini döner. yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetUniqueId(global::UseableDiveHatch __instance)
         {
             var lifepod = __instance.GetComponentInParent<LifepodDrop>();

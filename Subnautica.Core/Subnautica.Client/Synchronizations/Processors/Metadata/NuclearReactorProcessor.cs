@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -15,13 +15,6 @@
 
     public class NuclearReactorProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.NuclearReactor>();
@@ -63,13 +56,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne spawnlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OnEntitySpawning(ItemQueueProcess item)
         {
             if (item.Equipment == null)
@@ -86,37 +72,16 @@
             return false;
         }
 
-        /**
-         *
-         * Nükleer Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnNuclearReactorItemAdded(NuclearReactorItemAddedEventArgs ev)
         {
             NuclearReactorProcessor.SendDataToServer(ev.ConstructionId, TechType.ReactorRod, ev.SlotId, false);
         }
 
-        /**
-         *
-         * Nükleer Depolamadan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnNuclearReactorItemRemoved(NuclearReactorItemRemovedEventArgs ev)
         {
             NuclearReactorProcessor.SendDataToServer(ev.ConstructionId, TechType.DepletedReactorRod, ev.SlotId, true);
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendDataToServer(string uniqueId, TechType techType, string slotId, bool isRemoving)
         {
             var items = new List<TechType>();

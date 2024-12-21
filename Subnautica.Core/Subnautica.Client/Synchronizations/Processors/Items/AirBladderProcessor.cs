@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
@@ -9,25 +9,11 @@
 
     public class AirBladderProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             return true;
         }
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             foreach (var player in ZeroPlayer.GetPlayers())
@@ -39,13 +25,6 @@
             }
         }
 
-        /**
-         *
-         * hava yastığını işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ProcessAirBladder(ZeroPlayer player)
         {
             if (player.HandItemComponent == null)

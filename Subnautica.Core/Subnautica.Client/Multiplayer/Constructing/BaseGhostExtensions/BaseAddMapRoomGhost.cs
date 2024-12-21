@@ -7,13 +7,6 @@
 
     public static class BaseAddMapRoomGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddMapRoomGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddMapRoomGhostComponent component)
         {
             positionFound = false;
@@ -60,13 +53,6 @@
             return true;
         }
 
-        /**
-         *
-         * Çok oyunculu döndürme işlemini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void UpdateMultiplayerRotation(this global::BaseAddMapRoomGhost baseGhost, ref bool geometryChanged)
         {
             baseGhost.ghostBase.SetCell(Int3.zero, baseGhost.GetMultiplayerCellType());
@@ -75,13 +61,6 @@
             geometryChanged = true;
         }        
 
-        /**
-         *
-         * Çok oyunculu döndürme işlemini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Base.CellType GetMultiplayerCellType(this global::BaseAddMapRoomGhost baseGhost)
         {
             if (baseGhost.TryGetComponent<BaseGhostRotationComponent>(out var component))

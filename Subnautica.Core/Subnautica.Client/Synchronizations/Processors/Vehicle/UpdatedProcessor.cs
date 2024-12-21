@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -18,49 +18,14 @@
 
     public class UpdatedProcessor : NormalProcessor
     {
-        /**
-         *
-         * ExosuitUpdateComponent nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static ExosuitUpdateComponent ExosuitUpdateComponent { get; set; } = new ExosuitUpdateComponent();
 
-        /**
-         *
-         * SpyPenguinUpdateComponent nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static SpyPenguinUpdateComponent SpyPenguinUpdateComponent { get; set; } = new SpyPenguinUpdateComponent();
 
-        /**
-         *
-         * HoverbikeUpdateComponent nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static HoverbikeUpdateComponent HoverbikeUpdateComponent { get; set; } = new HoverbikeUpdateComponent();
 
-        /**
-         *
-         * SpyPenguinAnimations nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<string> SpyPenguinAnimations { get; set; } = new List<string>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleUpdatedArgs>();
@@ -79,13 +44,6 @@
             return true;
         }
 
-        /**
-         *
-         * Araç konumu güncellendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleUpdated(VehicleUpdatedEventArgs ev)
         {
             var entity = Network.DynamicEntity.GetEntity(ev.UniqueId);
@@ -103,25 +61,11 @@
             }
         }
 
-        /**
-         *
-         * Spy Penguin bir animasyon halinde iken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSpyPenguinItemGrabing(SpyPenguinItemGrabingEventArgs ev)
         {
             SpyPenguinAnimations.Add(ev.AnimationName);
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static VehicleUpdateComponent GetVehicleComponent(TechType techType, GameObject gameObject)
         {
             if (gameObject == null)

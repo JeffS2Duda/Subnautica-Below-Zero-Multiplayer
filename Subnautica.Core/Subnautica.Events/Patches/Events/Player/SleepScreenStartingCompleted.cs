@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -11,22 +11,8 @@
     [HarmonyPatch(typeof(global::uGUI_PlayerSleep), nameof(global::uGUI_PlayerSleep.Update))]
     public static class SleepScreenStartingCompleted
     {   
-        /**
-         *
-         * Siyah Renk
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Color BlackColor { get; set; } = new Color(0.0f, 0.0f, 0.0f, 1f);
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::uGUI_PlayerSleep __instance)
         {
             if (Network.IsMultiplayerActive && __instance.state == uGUI_PlayerSleep.State.FadeIn)

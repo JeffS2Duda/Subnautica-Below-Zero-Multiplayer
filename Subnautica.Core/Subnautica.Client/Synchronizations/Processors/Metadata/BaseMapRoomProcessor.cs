@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -18,13 +18,6 @@
 
     public class BaseMapRoomProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.BaseMapRoom>();
@@ -81,13 +74,6 @@
             return true;
         }
 
-        /**
-         *
-         * BaseMapRoom Başlangıç ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void InitializeBaseMapRoom(string uniqueId, Metadata.BaseMapRoom component)
         {
             Network.Storage.InitializeStorage(uniqueId, component.StorageContainer);
@@ -120,13 +106,6 @@
             }
         }
 
-        /**
-         *
-         * Araç demirlendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnVehicleDocked(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -138,25 +117,11 @@
             this.DockVehicle(item.Action.GetProperty<string>("CustomProperty"), entity.UniqueId, item.Action.GetProperty<bool>("CustomProperty2"));
         }
 
-        /**
-         *
-         * Araç demirleme veya ayrılma işlemi yapıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnProcessVehicleDocked(ItemQueueProcess item)
         {
             this.DockVehicle(item.Action.GetProperty<string>("UniqueId"), item.Action.GetProperty<string>("VehicleId"), item.Action.GetProperty<bool>("IsLeft"), item.Action.GetProperty<bool>("IsMine"));
         }
 
-        /**
-         *
-         * Aracı demirler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool DockVehicle(string uniqueId, string vehicleId, bool isLeft, bool isMine = false)
         {
             var mapRoom = Network.Identifier.GetComponentByGameObject<global::BaseDeconstructable>(uniqueId)?.GetMapRoomFunctionality();
@@ -188,13 +153,6 @@
             return true;
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (ev.TechType == TechType.BaseMapRoom)
@@ -205,13 +163,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (ev.TechType == TechType.BaseMapRoom)
@@ -222,13 +173,6 @@
             }
         }
 
-        /**
-         *
-         * Map Room tarama başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMapRoomScanStarting(BaseMapRoomScanStartingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -236,13 +180,6 @@
             BaseMapRoomProcessor.SendPacketToServer(ev.UniqueId, processType: 3, scanType: ev.ScanType);
         }
 
-        /**
-         *
-         * Map Room tarama iptal edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMapRoomScanStopping(BaseMapRoomScanStoppingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -250,13 +187,6 @@
             BaseMapRoomProcessor.SendPacketToServer(ev.UniqueId, processType: 4);
         }
 
-        /**
-         *
-         * MapRoomCamera yanaşırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMapRoomCameraDocking(MapRoomCameraDockingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -264,13 +194,6 @@
             BaseMapRoomProcessor.SendPacketToServer(ev.UniqueId, processType: 5, dockingBay: new Metadata.VehicleDockingBayItem(ev.IsLeft, 0, ev.VehicleId, ev.EndPosition.ToZeroVector3(), ev.EndRotation.ToZeroQuaternion(), null));
         }
 
-        /**
-         *
-         * Kamera değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMapRoomCameraChanging(MapRoomCameraChangingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -278,13 +201,6 @@
             BaseMapRoomProcessor.SendPacketToServer(ev.UniqueId, processType: 7, isNextCamera: ev.IsNext);
         }
 
-        /**
-         *
-         * Oyuncu yerden eşya aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerItemPickedUp(PlayerItemPickedUpEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity && ev.TechType == TechType.MapRoomCamera && !Network.DynamicEntity.HasEntity(ev.UniqueId))
@@ -302,13 +218,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, WorldPickupItem pickupItem = null, TechType scanType = TechType.None, Metadata.VehicleDockingBayItem dockingBay = null, bool isNextCamera = false, byte processType = 0)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

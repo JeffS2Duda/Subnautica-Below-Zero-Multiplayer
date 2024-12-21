@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Items
+namespace Subnautica.Network.Models.Items
 {
     using MessagePack;
 
@@ -7,13 +7,6 @@
     [MessagePackObject]
     public class AirBladder : NetworkPlayerItemComponent
     {
-        /**
-         *
-         * Value değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public float Value { get; set; }
     }

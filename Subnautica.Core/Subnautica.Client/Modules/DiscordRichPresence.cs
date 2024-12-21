@@ -8,13 +8,6 @@
 
     public class DiscordRichPresence
     {
-        /**
-         *
-         * Sahne yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSceneLoaded(SceneLoadedEventArgs ev)
         {
             if (ev.Scene.name == "XMenu")
@@ -23,13 +16,6 @@
             }
         }
         
-        /**
-         *
-         * Eklenti aktifleştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPluginEnabled()
         {
             var discordRpcFilePath = Paths.GetGameDependenciesPath("DiscordRPCNativeNamedPipe.dll");

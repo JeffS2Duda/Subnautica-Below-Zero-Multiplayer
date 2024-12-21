@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -13,40 +13,12 @@
 
     public class BaseHullStrength : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Su seviyelerinin önbelleğini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<int, float> WaterLeveLCache { get; set; } = new Dictionary<int, float>();
 
-        /**
-         *
-         * İstekleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, Dictionary<ushort, byte>> Requests = new Dictionary<string, Dictionary<ushort, byte>>();
 
-        /**
-         *
-         * Her tick'de tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float deltaTime)
         {
             if (this.Timing.IsFinished() && API.Features.World.IsLoaded)
@@ -69,13 +41,6 @@
             }
         }
 
-        /**
-         *
-         * Üs dayanıklılığı düştüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCrushing(BaseHullStrengthCrushingEventArgs ev)
         {
             var random = ev.Instance.victims.GetRandom<global::LiveMixin>();
@@ -85,13 +50,6 @@
             }
         }
 
-        /**
-         *
-         * Su seviyelerini kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool CheckWaterLevels(string baseId, global::BaseFloodSim baseFloodSim)
         {
             var maxSize = baseFloodSim.shape.Size;
@@ -125,13 +83,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyunculara veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendPacketToAllClient()
         {
             foreach (var requests in this.Requests)
@@ -157,13 +108,6 @@
             this.Requests.Clear();
         }
 
-        /**
-         *
-         * Su seviyesi değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnCellWaterLevelChanged(string uniqueId, ushort index, float waterLevel)
         {
             if (this.Requests.TryGetValue(uniqueId, out var requests))
@@ -184,13 +128,6 @@
             }
         }
 
-        /**
-         *
-         * Üsleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<Base> GetBases()
         {
             return Core.Server.Instance.Storages.World.Storage.Bases.ToList();

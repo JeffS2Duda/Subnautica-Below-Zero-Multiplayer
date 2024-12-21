@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -20,22 +20,8 @@
 
     public class HoverpadProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Showroom değerlerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, byte> HoverpadShowrooms { get; set; } = new Dictionary<string, byte>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.Hoverpad>();
@@ -124,13 +110,6 @@
             return true;
         }
 
-        /**
-         *
-         * Harita yüklenmesinde hoverbike doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void WorldLoadHoverbikeSpawning(GameObject gameObject, WorldEntityModel.Hoverbike component)
         {
             WorldDynamicEntityProcessor.ExecuteItemSpawnProcessor(TechType.Hoverbike, component, true, null, gameObject);
@@ -143,13 +122,6 @@
             }
         }
         
-        /**
-         *
-         * Hoverbike inşaa edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnHoverpadHoverbikeSpawning(HoverpadHoverbikeSpawningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -160,13 +132,6 @@
             }
         }
 
-        /**
-         *
-         * Renk değiştirme paleti seçildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSubNameInputSelecting(SubNameInputSelectingEventArgs ev)
         {
             if (ev.TechType == TechType.Hoverpad)
@@ -182,13 +147,6 @@
             }
         }
 
-        /**
-         *
-         * Renk değiştirme paleti seçimden çıktığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSubNameInputDeselected(SubNameInputDeselectedEventArgs ev)
         {
             if (ev.TechType == TechType.Hoverpad)
@@ -197,13 +155,6 @@
             }
         }
 
-        /**
-         *
-         * Hoverbike, pad üzerine takılınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnHoverpadDocking(HoverpadDockingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -218,13 +169,6 @@
             }
         }
 
-        /**
-         *
-         * Hoverbike, pad üzerinden ayrılınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnHoverpadUnDocking(HoverpadUnDockingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -235,13 +179,6 @@
             }
         }
 
-        /**
-         *
-         * Hoverbike yakınına gelince veya ayrılınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnHoverpadShowroomTriggering(HoverpadShowroomTriggeringEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -249,13 +186,6 @@
             HoverpadProcessor.SendPacketToServer(ev.UniqueId, showroomTriggerType: ev.IsEnter ? (byte)1 : (byte)2);
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (this.HoverpadShowrooms.Count > 0)
@@ -286,25 +216,11 @@
             }
         }
 
-        /**
-         *
-         * Verileri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnDispose()
         {
             this.HoverpadShowrooms.Clear();
         }
 
-        /**
-         *
-         * Sunucuya Veri Gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string uniqueId, string itemId = null, bool isCustomizerOpening = false, byte showroomTriggerType = 0, ZeroColorCustomizer colorCustomizer = null, ZeroVector3 hoverbikePosition = null, ZeroQuaternion hoverbikeRotation = null,  bool isSpawning = false, bool isDocking = false, bool isUnDocking = false)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

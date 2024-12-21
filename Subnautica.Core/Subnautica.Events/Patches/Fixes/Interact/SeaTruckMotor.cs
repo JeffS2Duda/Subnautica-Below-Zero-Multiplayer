@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -8,13 +8,6 @@
     [HarmonyPatch(typeof(global::SeaTruckMotor), nameof(global::SeaTruckMotor.OnHoverSteeringWheel))]
     public class SeaTruckMotor
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::SeaTruckMotor __instance)
         {
             if (!Network.IsMultiplayerActive)

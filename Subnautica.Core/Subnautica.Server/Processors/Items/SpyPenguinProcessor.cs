@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Items
+namespace Subnautica.Server.Processors.Items
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -15,13 +15,6 @@
 
     public class SpyPenguinProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, PlayerItemActionArgs packet)
         {
             var component = packet.Item.GetComponent<ItemModel.SpyPenguin>();
@@ -104,13 +97,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bileşen oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WorldEntityModel.SpyPenguin CreateComponent(ItemModel.SpyPenguin component)
         {
             return new WorldEntityModel.SpyPenguin()

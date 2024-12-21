@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -13,13 +13,6 @@
     [HarmonyPatch(typeof(global::EnergyMixin), nameof(global::EnergyMixin.Select))]
     public class EnergyMixinSelecting
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::EnergyMixin __instance, InventoryItem item)
         {
             if (!Network.IsMultiplayerActive )
@@ -100,25 +93,11 @@
             return true;
         }
 
-        /**
-         *
-         * Slot idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetBatterySlotId(global::EnergyMixin energyMixin)
         {
             return energyMixin.storageRoot.gameObject.GetIdentityId();
         }
 
-        /**
-         *
-         * Batarya türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static TechType GetBatteryTechType(global::InventoryItem item)
         {
             if (item == null || item.item == null)
@@ -129,13 +108,6 @@
             return CraftData.GetTechType(item.item.gameObject);
         }
 
-        /**
-         *
-         * Araç idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetVehicleUniqueId(global::EnergyMixin gameObject)
         {
             var vehicleGameObject = GetVehicleGameObject(gameObject);
@@ -147,13 +119,6 @@
             return vehicleGameObject.GetIdentityId();
         }
 
-        /**
-         *
-         * Araç türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static TechType GetVehicleType(global::EnergyMixin gameObject)
         {
             var vehicleGameObject = GetVehicleGameObject(gameObject);
@@ -165,13 +130,6 @@
             return CraftData.GetTechType(vehicleGameObject);
         }
 
-        /**
-         *
-         * Araç nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject GetVehicleGameObject(global::EnergyMixin energyMixin)
         {
             if (energyMixin.storageRoot.transform.parent == null)

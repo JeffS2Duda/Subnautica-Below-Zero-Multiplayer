@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -10,25 +10,11 @@
 
     public class Storage : BaseLogic
     {
-        /**
-         *
-         * Sınıfı başlatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.PictureFramesSync();
         }
         
-        /**
-         *
-         * PictureFrameSync dosyasını senkron yapar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void PictureFramesSync()
         {
             string[] pictureFrames = new string[Core.Server.Instance.Storages.PictureFrame.Storage.Images.Count];
@@ -46,13 +32,6 @@
             }
         }
 
-        /**
-         *
-         * Nesneyi bir yer'den başka bir yere de taşır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryPickupItem(WorldPickupItem pickupItem, Metadata.StorageContainer targetContainer, Metadata.StorageContainer sourceContainer = null, bool checkTargetContainer = true)
         {
             if (checkTargetContainer)
@@ -145,25 +124,11 @@
             return false;
         }
 
-        /**
-         *
-         * Verilen kaynak türüne göre nesneyi dünya üzerinden alır ve yerine başka nesne koyar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryPickupToWorld(WorldPickupItem pickupItem, out WorldDynamicEntity entity)
         {
             return TryPickupToWorld(pickupItem, null, out entity);
         }
 
-        /**
-         *
-         * Verilen kaynak türüne göre nesneyi dünya üzerinden alır ve yerine başka nesne koyar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool TryPickupToWorld(WorldPickupItem pickupItem, Metadata.StorageContainer sourceContainer, out WorldDynamicEntity entity)
         {
             if (Core.Server.Instance.Storages.World.GetDynamicEntity(pickupItem.GetItemId()) != null)

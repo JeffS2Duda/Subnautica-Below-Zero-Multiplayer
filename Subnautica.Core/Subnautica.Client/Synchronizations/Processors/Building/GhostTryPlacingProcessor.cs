@@ -13,13 +13,6 @@
 
     public class GhostTryPlacingProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ConstructionGhostTryPlacingArgs>();
@@ -77,39 +70,15 @@
             return true;
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.SetWaitingForNextFrame(true);
         }
 
-        /**
-         *
-         * Hayalet yapı kurulmaya çalışıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConstructingGhostTryPlacing(ConstructionGhostTryPlacingEventArgs ev)
         {
             ev.IsAllowed = false;
             
-            /*
-            switch (ev.TechType)
-            {
-                // Step 3 -> very very last
-                case TechType.BaseWaterPark:
-                    ErrorMessage.AddMessage("Not synchronised yet. Wait for the next update.");
-                    return;
-            }
-            */
-
             ServerModel.ConstructionGhostTryPlacingArgs request = new ServerModel.ConstructionGhostTryPlacingArgs()
             {
                 UniqueId     = ev.UniqueId,

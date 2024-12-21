@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -12,13 +12,6 @@
     [HarmonyPatch]
     public static class SeaTruckConnecting
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckConnection), nameof(global::SeaTruckConnection.SetConnectedTo))]
         private static bool SeaTruckConnecting_SetConnectedTo(global::SeaTruckConnection __instance, SeaTruckConnection otherConnection)
@@ -75,13 +68,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::MoonpoolExpansionModuleConnection), nameof(global::MoonpoolExpansionModuleConnection.SetConnectedTo))]
         private static bool MoonpoolExpansionModuleConnection_SetConnectedTo(global::MoonpoolExpansionModuleConnection __instance, SeaTruckConnection otherConnection)
@@ -139,13 +125,6 @@
             return false;
         }
 
-        /**
-         *
-         * Ön modülü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetFrontModuleId(global::SeaTruckConnection __instance, SeaTruckConnection otherConnection)
         {
             if (__instance.connectionType == SeaTruckConnection.ConnectionType.Front)
@@ -156,13 +135,6 @@
             return Network.Identifier.GetIdentityId(otherConnection.truckSegment.gameObject, false);
         }
 
-        /**
-         *
-         * Arka modülü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetBackModuleId(global::SeaTruckConnection __instance, SeaTruckConnection otherConnection)
         {
             if (__instance.connectionType == SeaTruckConnection.ConnectionType.Front)

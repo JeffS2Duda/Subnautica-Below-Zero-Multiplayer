@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.World
+namespace Subnautica.Events.Patches.Events.World
 {
     using System;
 
@@ -12,13 +12,6 @@
     [HarmonyPatch(typeof(global::LiveMixin), nameof(global::LiveMixin.Kill))]
     public class SpawnOnKilling
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::LiveMixin __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -47,13 +40,6 @@
             return true;
         }
 
-        /**
-         *
-         * Hızı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector3 GetVelocity(global::SpawnOnKill __instance)
         {
             if (__instance.randomPush)

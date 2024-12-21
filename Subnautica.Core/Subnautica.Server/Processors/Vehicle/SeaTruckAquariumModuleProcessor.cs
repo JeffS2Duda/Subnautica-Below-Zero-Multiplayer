@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Vehicle
+namespace Subnautica.Server.Processors.Vehicle
 {
     using System.Linq;
 
@@ -13,13 +13,6 @@
 
     public class SeaTruckAquariumModuleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SeaTruckAquariumModuleArgs>();
@@ -57,13 +50,6 @@
             return true;
         }
 
-        /**
-         *
-         * Saklama kabını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Metadata.StorageContainer GetStorageContainer(string lockerId)
         {
             foreach (var item in Server.Instance.Storages.World.Storage.DynamicEntities.Where(q => q.TechType == TechType.SeaTruckAquariumModule))

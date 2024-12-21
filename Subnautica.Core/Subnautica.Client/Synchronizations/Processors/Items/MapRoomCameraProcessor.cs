@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -20,13 +20,6 @@
 
     public class MapRoomCameraProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var component = packet.GetComponent<ItemModel.DroneCamera>();
@@ -44,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             var forward = item.Action.GetProperty<ZeroVector3>("CustomProperty");
@@ -66,13 +52,6 @@
             }
         }
 
-        /**
-         *
-         * Drone camera denize bırakılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnDroneCameraDeploying(DroneCameraDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -80,13 +59,6 @@
             MapRoomCameraProcessor.SendPacketToServer(ev.UniqueId, WorldPickupItem.Create(ev.Pickupable, PickupSourceType.PlayerInventoryDrop), ev.DeployPosition.ToZeroVector3(), ev.Forward.ToZeroVector3(), Quaternion.identity.ToZeroQuaternion(), ev.Pickupable.ToMapRoomCameraComponent());
         }
 
-        /**
-         *
-         * Sunucuya paket gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string uniqueId, WorldPickupItem pickupItem, ZeroVector3 position, ZeroVector3 forward, ZeroQuaternion rotation, WorldEntityModel.MapRoomCamera component)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

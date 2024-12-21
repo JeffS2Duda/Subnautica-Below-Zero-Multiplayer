@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
 
     public class DestroyableDynamicEntityProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning)
         {
             var entity = packet.GetComponent<EntityModel.DestroyableDynamicEntity>();
@@ -39,13 +32,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bir nesne hasar aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTakeDamaging(TakeDamagingEventArgs ev)
         {
             if (ev.IsDead && ev.IsDestroyable && !ev.IsStaticWorldEntity)
@@ -71,13 +57,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string uniqueId, bool isWorldStreamer)
         {
             ServerModel.WorldEntityActionArgs request = new ServerModel.WorldEntityActionArgs()

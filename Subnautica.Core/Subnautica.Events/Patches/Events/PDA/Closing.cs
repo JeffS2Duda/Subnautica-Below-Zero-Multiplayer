@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.PDA
+namespace Subnautica.Events.Patches.Events.PDA
 {
     using HarmonyLib;
 
@@ -36,13 +36,6 @@
             }
         }
 
-        /**
-         *
-         * Teknoloji türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetTechType(Transform transform)
         {
             if(transform == null)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -19,13 +19,6 @@
 
     public class MoonpoolProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.BaseMoonpool>();
@@ -99,13 +92,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnDockProcessCompleted(ItemQueueProcess item)
         {
             var isDocking = item.Action.GetProperty<bool>("IsDocking");
@@ -126,13 +112,6 @@
             }
         }
 
-        /**
-         *
-         * Araç üretildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnSpawnedVehicle(WorldDynamicEntity entity, ItemQueueAction item, GameObject gameObject)
         {
             WorldDynamicEntityProcessor.ExecuteItemSpawnProcessor(entity.TechType, entity.Component, entity.IsDeployed, null, gameObject);
@@ -144,13 +123,6 @@
             }
         }
 
-        /**
-         *
-         * Demirlemeyi başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartDocking(string moonpoolId, string vehicleId, double startDockingTime, ZeroVector3 backModulePosition = null, byte playerId = 0)
         {
             Network.DynamicEntity.RemoveEntity(vehicleId);
@@ -187,13 +159,6 @@
             }
         }
 
-        /**
-         *
-         * Demirleme durumundan çıkar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool StartUndocking(string moonpoolId, WorldDynamicEntity entity, bool isLeft, byte playerId)
         {
             entity.IsUsingByPlayer = true;
@@ -219,13 +184,6 @@
             return true;
         }
 
-        /**
-         *
-         * Renk değiştirme paleti seçildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSubNameInputSelecting(SubNameInputSelectingEventArgs ev)
         {
             if (ev.TechType == TechType.BaseMoonpool || ev.TechType == TechType.BaseMoonpoolExpansion)
@@ -241,13 +199,6 @@
             }
         }
 
-        /**
-         *
-         * Renk değiştirme paleti seçimden çıktığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSubNameInputDeselected(SubNameInputDeselectedEventArgs ev)
         {
             if (ev.TechType == TechType.BaseMoonpool || ev.TechType == TechType.BaseMoonpoolExpansion)
@@ -256,13 +207,6 @@
             }
         }
 
-        /**
-         *
-         * Expansion -> Seatruck ayrılma tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMoonpoolExpansionUndockingTimelineCompleting(BaseMoonpoolExpansionUndockingTimelineCompletingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -274,13 +218,6 @@
             }
         }
 
-        /**
-         *
-         * Expansion -> Seatruck yanaşma tamamlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMoonpoolExpansionDockingTimelineCompleting(BaseMoonpoolExpansionDockingTimelineCompletingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -292,13 +229,6 @@
             }
         }
 
-        /**
-         *
-         * Expansion -> Seatruck kuyruk kenetlenme işlemi tamamlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMoonpoolExpansionDockTail(BaseMoonpoolExpansionDockTailEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -310,13 +240,6 @@
             }
         }
 
-        /**
-         *
-         * Expansion -> Seatruck kuyruk ayrılma işlemi tamamlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMoonpoolExpansionUndockTail(BaseMoonpoolExpansionUndockTailEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -328,13 +251,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck/Exosuit rıhtıma yanaşırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleDocking(VehicleDockingEventArgs ev)
         {
             if (ev.MoonpoolType == TechType.BaseMoonpool || ev.MoonpoolType == TechType.BaseMoonpoolExpansion)
@@ -348,13 +264,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck/Exosuit rıhtımdan ayrılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleUndocking(VehicleUndockingEventArgs ev)
         {
             if (ev.MoonpoolType == TechType.BaseMoonpool || ev.MoonpoolType == TechType.BaseMoonpoolExpansion)
@@ -368,13 +277,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string vehicleId = null, bool isDocking = false, bool isUndocking = false, bool isUndockingLeft = false, bool isCustomizerOpening = false, ZeroVector3 backModulePosition = null, ZeroVector3 endPosition = null, ZeroQuaternion endRotation = null, ZeroColorCustomizer colorCustomizer = null)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

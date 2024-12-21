@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using HarmonyLib;
 
@@ -8,13 +8,6 @@
 
     public static class ToggleOnClickShared
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool TriggerEvent(global::ToggleOnClick __instance, bool isSwitchOn)
         {
             if(!Network.IsMultiplayerActive)
@@ -79,13 +72,6 @@
     [HarmonyPatch(typeof(global::ToggleOnClick), nameof(global::ToggleOnClick.SwitchOn))]
     public static class ToggleOnClickSwitchOn
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::ToggleOnClick __instance)
         {
             return ToggleOnClickShared.TriggerEvent(__instance, true);
@@ -96,13 +82,6 @@
     [HarmonyPatch(typeof(global::ToggleOnClick), nameof(global::ToggleOnClick.SwitchOff))]
     public static class ToggleOnClickSwitchOff
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::ToggleOnClick __instance)
         {
             return ToggleOnClickShared.TriggerEvent(__instance, false);

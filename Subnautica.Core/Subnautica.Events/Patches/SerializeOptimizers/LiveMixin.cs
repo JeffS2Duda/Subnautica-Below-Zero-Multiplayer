@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.SerializeOptimizers
+namespace Subnautica.Events.Patches.SerializeOptimizers
 {
     using HarmonyLib;
 
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(ProtobufSerializerPrecompiled), nameof(ProtobufSerializerPrecompiled.Serialize729882159))]
     public class LiveMixin
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix()
         {
             return !Network.IsMultiplayerActive;

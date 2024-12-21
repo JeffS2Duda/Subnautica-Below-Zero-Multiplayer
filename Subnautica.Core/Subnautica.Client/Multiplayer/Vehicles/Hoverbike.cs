@@ -5,34 +5,13 @@
 
     public class Hoverbike : VehicleController
     {
-        /**
-         *
-         * Exosuit aracını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Hoverbike HoverBike { get; set; }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate()
         {
             base.OnUpdate();
         }
 
-        /**
-         *
-         * Bileşen verisi alındığında yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnComponentDataReceived(VehicleUpdateComponent component)
         {
             var vehicleComponent = component.GetComponent<HoverbikeUpdateComponent>();
@@ -55,13 +34,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araca bindiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnEnterVehicle()
         {
             base.OnEnterVehicle();
@@ -79,13 +51,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnExitVehicle()
         {
             if (this.HoverBike)

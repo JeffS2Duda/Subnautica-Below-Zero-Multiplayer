@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Creatures.Actions
+namespace Subnautica.Events.Patches.Fixes.Creatures.Actions
 {
     using System;
 
@@ -27,12 +27,6 @@
                 return false;
             }
 
-            /*
-                if (creature.IsFriendlyTo(target))
-                {
-                    return false;
-                }
-            */
 
             var player = ZeroPlayer.GetPlayerByGameObject(target);
             if (player != null && !player.CanBeAttacked())

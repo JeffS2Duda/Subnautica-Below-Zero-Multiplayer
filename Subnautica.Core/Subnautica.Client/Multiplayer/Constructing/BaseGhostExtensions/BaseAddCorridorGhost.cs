@@ -7,13 +7,6 @@
 
     public static class BaseAddCorridorGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddCorridorGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddCorridorGhostComponent component)
         {
             positionFound   = false;
@@ -62,13 +55,6 @@
         }
 
 
-        /**
-         *
-         * Çok oyunculu döndürme işlemini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void UpdateMultiplayerRotation(this global::BaseAddCorridorGhost baseGhost, ref bool geometryChanged)
         {
             baseGhost.corridorType = baseGhost.CalculateMultiplayerCorridorType();
@@ -78,13 +64,6 @@
             geometryChanged = true;
         }
 
-        /**
-         *
-         * Çok oyunculu koridor türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static int CalculateMultiplayerCorridorType(this global::BaseAddCorridorGhost baseGhost)
         {
             int num = 0;

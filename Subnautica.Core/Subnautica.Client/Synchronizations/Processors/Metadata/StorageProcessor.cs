@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -14,13 +14,6 @@
 
     public class StorageProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var storageContainer = Network.Identifier.GetComponentByGameObject<global::StorageContainer>(packet.UniqueId);
@@ -53,13 +46,6 @@
             return true;
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (TechGroup.Lockers.Contains(ev.TechType))
@@ -70,13 +56,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (TechGroup.Lockers.Contains(ev.TechType))
@@ -87,13 +66,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string uniqueId, WorldPickupItem pickupItem = null, bool isAdded = false)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
@@ -109,13 +81,6 @@
             NetworkClient.SendPacket(result);
         }
 
-        /**
-         *
-         * Başlangıç depo eşyalarını ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool InitializeStorage(TechType techType, string uniqueId, MetadataComponent packet, global::ItemsContainer itemsContainer)
         {
             var component = packet.GetComponent<Metadata.StorageContainer>();

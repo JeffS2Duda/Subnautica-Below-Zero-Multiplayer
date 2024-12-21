@@ -14,13 +14,6 @@
 
     public static class InviteCodeModule
     {
-        /**
-         *
-         * Eklenti aktifleştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPluginEnabled()
         {
             Application.wantsToQuit += InviteCodeModule.OnWantsToQuit;
@@ -28,13 +21,6 @@
             ConnectToNetwork();
         }
 
-        /**
-         *
-         * Sahne yüklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSceneLoaded(SceneLoadedEventArgs ev)
         {
             if (ev.Scene.name == "XMenu")
@@ -43,13 +29,6 @@
             }
         }
 
-        /**
-         *
-         * Ağa bağlanır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ConnectToNetwork()
         {
             Network.InviteCode.SetInviteCode(null);
@@ -77,13 +56,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu oyundan çıkarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool OnWantsToQuit()
         {
             try
@@ -98,13 +70,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu ana menüye gittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnQuittingToMainMenu(QuittingToMainMenuEventArgs ev)
         {
             if (Network.IsHost)
@@ -113,13 +78,6 @@
             }
         }
 
-        /**
-         *
-         * Oyun içi menü açılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnInGameMenuOpened(InGameMenuOpenedEventArgs ev)
         {
             if (Network.IsMultiplayerActive && Network.IsHost)
@@ -143,13 +101,6 @@
             }
         }
 
-        /**
-         *
-         * Invite code butonunu oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void CreateInviteCodeButtons()
         {
             var inviceCodeButtonShow = GameObject.Instantiate(IngameMenu.main.helpButton.gameObject, IngameMenu.main.helpButton.transform.parent);

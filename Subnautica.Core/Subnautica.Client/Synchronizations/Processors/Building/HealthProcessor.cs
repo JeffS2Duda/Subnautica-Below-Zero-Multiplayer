@@ -12,13 +12,6 @@
 
     public class HealthProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ConstructionHealthArgs>();
@@ -47,13 +40,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bir nesne hasar aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTakeDamaging(TakeDamagingEventArgs ev)
         {
             if (ev.TechType == TechType.Spotlight || ev.TechType == TechType.SolarPanel)
@@ -67,13 +53,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, float damage, float maxHealth)
         {
             ServerModel.ConstructionHealthArgs request = new ServerModel.ConstructionHealthArgs()

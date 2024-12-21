@@ -6,13 +6,6 @@
 
     public static class BaseAddLadderGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddLadderGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddLadderGhostComponent component)
         {
             positionFound = false;

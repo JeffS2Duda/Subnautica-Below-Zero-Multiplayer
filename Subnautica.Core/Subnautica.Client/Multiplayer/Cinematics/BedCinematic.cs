@@ -7,31 +7,10 @@
 
     public class BedCinematic : CinematicController
     {
-        /**
-         *
-         * Yatağı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Bed Bed { get; set; }
 
-        /**
-         *
-         * Uyku modülü mü?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsSleeperModule { get; set; }
 
-        /**
-         *
-         * Animasyon başlamadan önce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart(PlayerCinematicQueueItem item)
         {
             base.OnStart(item);
@@ -46,13 +25,6 @@
             }
         }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.IsSleeperModule = this.Target.name.Contains("SeaTruckSleeperModule");
@@ -68,13 +40,6 @@
             this.Bed.animator.Rebind();
         }
 
-        /**
-         *
-         * Yatma animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void LieDownStartCinematic()
         {
             var bedSide = this.GetProperty<global::Bed.BedSide>("Side");
@@ -95,13 +60,6 @@
             this.StartCinematicMode();
         }
 
-        /**
-         *
-         * Kalkma animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StandupStartCinematic()
         {
             var bedSide = this.GetProperty<global::Bed.BedSide>("Side");
@@ -126,26 +84,12 @@
             this.StartCinematicMode();
         }
 
-        /**
-         *
-         * Cinematik bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void LieDownEndCinematicMode()
         {
             this.Animator.SetBool(this.AnimParam, false);
             this.AnimState = false;
         }
 
-        /**
-         *
-         * Cinematik bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void StandupEndCinematicMode()
         {
             if (this.ZeroPlayer != null && this.ZeroPlayer.IsInSeaTruck)
@@ -154,13 +98,6 @@
             }
         }
 
-        /**
-         *
-         * Uyuma sinematik hazırlığını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void PrepareLieDownCinematic(global::Bed.BedSide side)
         {
             var cinematic = this.GetLieDownCinematicController(side);
@@ -171,37 +108,16 @@
             }
         }
 
-        /**
-         *
-         * Yatma animasyon yönünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::PlayerCinematicController GetLieDownCinematicController(global::Bed.BedSide side)
         {
             return side == Bed.BedSide.Right ? this.Bed.rightLieDownCinematicController : this.Bed.leftLieDownCinematicController;
         }
 
-        /**
-         *
-         * Kalkma animasyon yönünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::PlayerCinematicController GetStandupCinematicController(global::Bed.BedSide side)
         {
             return side == Bed.BedSide.Right ? this.Bed.rightStandUpCinematicController : this.Bed.leftStandUpCinematicController;
         }
 
-        /**
-         *
-         * Animasyon pozisyonunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Vector3 GetAnimationPosition(global::Bed.BedSide side)
         {
             return side == Bed.BedSide.Right ? this.Bed.rightAnimPosition : this.Bed.leftAnimPosition;

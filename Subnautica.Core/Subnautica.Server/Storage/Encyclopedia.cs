@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Storage
+namespace Subnautica.Server.Storage
 {
     using System;
     using System.Collections.Generic;
@@ -12,22 +12,8 @@
 
     public class Encyclopedia : BaseStorage
     {
-        /**
-         *
-         * Encyclopedia sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public EncyclopediaStorage.Encyclopedia Storage { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Start(string serverId)
         {
             this.ServerId = serverId;
@@ -36,13 +22,6 @@
             this.Load();
         }
 
-        /**
-         *
-         * Sunucu ansiklopedi verilerini belleğe yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Load()
         {
             if (File.Exists(this.FilePath))
@@ -74,13 +53,6 @@
             }
         }
         
-        /**
-         *
-         * Verileri diske yazar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void SaveToDisk()
         {
             lock (this.ProcessLock)
@@ -89,13 +61,6 @@
             }
         }
 
-        /**
-         *
-         * Açılmış Ansiklopedi ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddEncyclopedia(string encyclopedia)
         {
             lock (this.ProcessLock)
@@ -110,13 +75,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncuların okumuş olduğu ansiklopedileri ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddPlayerViewedEncyclopedia(string playerName, string encyclopedia)
         {
             lock (this.ProcessLock)

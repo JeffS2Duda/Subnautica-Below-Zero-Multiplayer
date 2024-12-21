@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::FiltrationMachine), nameof(global::FiltrationMachine.OnUse))]
     public static class FiltrationMachineOpening
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::FiltrationMachine __instance, BaseFiltrationMachineGeometry model)
         {
             if (!Network.IsMultiplayerActive || __instance.constructed < 1f)

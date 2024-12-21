@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Creatures
+namespace Subnautica.Events.Patches.Fixes.Creatures
 {
     using HarmonyLib;
 
@@ -28,13 +28,6 @@
             }
         }
 
-        /**
-         *
-         * Kinematic durumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool ToggleKinematic(global::FrozenMixin __instance)
         {
             if (!__instance.gameObject.GetTechType().IsSynchronizedCreature())

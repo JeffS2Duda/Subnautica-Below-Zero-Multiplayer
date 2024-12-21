@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
 
     public class LightProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleLightArgs>();
@@ -37,13 +30,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne işlemi tamamlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnProcessCompleted(ItemQueueProcess item)
         {
             var techType = item.Action.GetProperty<TechType>("TechType");
@@ -73,13 +59,6 @@
             }
         }
 
-        /**
-         *
-         * Araç ışıkları yanıp/söndüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleLightChanged(LightChangedEventArgs ev)
         {
             if (ev.TechType.IsVehicle(true, false))

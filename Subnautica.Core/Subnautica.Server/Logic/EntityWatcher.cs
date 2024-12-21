@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,31 +14,10 @@
 
     public class EntityWatcher : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * ChangedEntities nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Dictionary<string, List<ushort>> ChangedEntities { get; set; } = new Dictionary<string, List<ushort>>();
 
-        /**
-         *
-         * Sınıfı başlatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             foreach (var entity in Server.Instance.Storages.World.Storage.DynamicEntities)
@@ -48,13 +27,6 @@
             }
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float fixedDeltaTime)
         {
             if (this.Timing.IsFinished() && API.Features.World.IsLoaded)
@@ -95,13 +67,6 @@
             }
         }
 
-        /**
-         *
-         * Oyunculara paketleri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SendPacketToAllClient()
         {
             if (this.ChangedEntities.Count > 0)
@@ -117,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne için yeni sahip arar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string FindEntityOwnership(WorldDynamicEntity entity)
         {
             var ownershipId  = string.Empty;
@@ -154,13 +112,6 @@
             return ownershipId;
         }
 
-        /**
-         *
-         * Nesne konumunu günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateEntityPosition(WorldDynamicEntity entity)
         {
             var gameObject = Network.Identifier.GetGameObject(entity.UniqueId);
@@ -171,13 +122,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne sahipliğini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddChangedEntity(string ownershipId, ushort entityId, bool isIgnoreEmpty = false)
         {
             if (string.IsNullOrEmpty(ownershipId) && !isIgnoreEmpty)
@@ -194,13 +138,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne sahipliğini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ChangeEntityOwnership(WorldDynamicEntity entity, string newOwnershipId, bool autoSend = true)
         {
             entity.OwnershipId = newOwnershipId;
@@ -213,13 +150,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu'ya ait tüm nesneleri ondan kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemoveOwnershipByPlayer(string playerId)
         {
             foreach (var entity in Server.Instance.Storages.World.Storage.DynamicEntities.Where(q => q.OwnershipId == playerId))
@@ -240,13 +170,6 @@
             this.SendPacketToAllClient();
         }
 
-        /**
-         *
-         * Bir nesneyi oyuncudan kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemoveWatcherByEntity(WorldDynamicEntity entity)
         {
             entity.OwnershipId = null;

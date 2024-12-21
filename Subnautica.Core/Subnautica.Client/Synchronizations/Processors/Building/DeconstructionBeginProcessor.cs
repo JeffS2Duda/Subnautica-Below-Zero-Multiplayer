@@ -12,13 +12,6 @@
 
     public class DeconstructionBeginProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.DeconstructionBeginArgs>();
@@ -44,25 +37,11 @@
             return true;
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.SetWaitingForNextFrame(true);
         }
 
-        /**
-         *
-         * Yapı inşaası ilk kaldırma işlemi olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnDeconstructionBegin(DeconstructionBeginEventArgs ev)
         {
             ev.IsAllowed = false;

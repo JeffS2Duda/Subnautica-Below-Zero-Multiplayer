@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.WorldEntities
+namespace Subnautica.Server.Processors.WorldEntities
 {
     using System.Linq;
 
@@ -13,13 +13,6 @@
 
     public class DestroyableDynamicEntityProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, WorldEntityActionArgs packet)
         {
             var component = packet.Entity.GetComponent<EntityModel.DestroyableDynamicEntity>();
@@ -51,13 +44,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yaratık yuvasını pasif yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool DisableCreatureHome(int slotId)
         {
             var slot = Subnautica.API.Features.Network.WorldStreamer.GetSlotById(slotId);

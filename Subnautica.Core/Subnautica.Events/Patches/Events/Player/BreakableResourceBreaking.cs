@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::BreakableResource), nameof(global::BreakableResource.BreakIntoResources))]
     public class BreakableResourceBreaking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::BreakableResource __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -53,13 +46,6 @@
             return true;
         }
 
-        /**
-         *
-         * Rastgele teknoloji döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType ChooseRandomResource(global::BreakableResource __instance)
         {
             for (int index = 0; index < __instance.prefabList.Count; ++index)

@@ -21,76 +21,20 @@
 
     public class NetworkClient
     {
-        /**
-         *
-         * En son bağlanılan Ip Adresi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string IpAddress { get; set; }
 
-        /**
-         *
-         * En son bağlanılan Port
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static int PortNumber { get; set; }
 
-        /**
-         *
-         * Bağlanma durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsConnectingToServer { get; set; } = false;
 
-        /**
-         *
-         * Bağlantı durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsConnectedToServer { get; set; } = false;
 
-        /**
-         *
-         * Güvenli bağlantı kesme durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsSafeDisconnecting { get; set; } = false;
 
-        /**
-         *
-         * Client Bağlantısı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static NetManager Client { get; set; }
 
-        /**
-         *
-         * Bağlantı Sinyalleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Queue<ConnectionSignal> ConnectionSignalDataQueues { get; set; } = new Queue<ConnectionSignal>();
 
-        /**
-         *
-         * Sunucuya Bağlanır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Connect(string ipAddress, int port, bool officialServerConnect = true, bool retryConnect = true)
         {
             if (IsConnectedToServer || IsConnectingToServer)
@@ -146,25 +90,11 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya bağlantı durumunu kontrol eder ve katılma isteği gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void CheckConnectionAndJoinServer(bool officialServerConnect)
         {
             UWE.CoroutineHost.StartCoroutine(SubCheckConnectionAndJoinServer(officialServerConnect));
         }
 
-        /**
-         *
-         * Sunucuya bağlantı durumunu kontrol eder ve katılma isteği gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator SubCheckConnectionAndJoinServer(bool officialServerConnect)
         {
             yield return new WaitForSecondsRealtime(0.1f);
@@ -222,13 +152,6 @@
             }
         }
         
-        /**
-         *
-         * Bağlanılıp/Bağlanılmadığını kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsConnected()
         {
             if (NetworkClient.Client == null || NetworkClient.IsConnectingToServer)
@@ -239,25 +162,11 @@
             return NetworkClient.IsConnectedToServer;
         }
 
-        /**
-         *
-         * Bağlantı tamamen kesildi mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsDisconnected()
         {
             return NetworkClient.Client == null;
         }
 
-        /**
-         *
-         * Sunucuya Bağlantısını keser.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool Disconnect(bool isEndGame = false)
         {
             NetworkServer.AbortServer(isEndGame);
@@ -276,13 +185,6 @@
             return true;
         }
 
-        /**
-         *
-         * Sunucu'ya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool SendPacket(NetworkPacket packet)
         {
             if (IsConnected() && !EventBlocker.IsEventBlocked(packet.Type))
@@ -294,13 +196,6 @@
             return false;
         }
 
-        /**
-         *
-         * Sunucuya Katılır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void JoinServer(string username, string userId)
         {
             try
@@ -321,13 +216,6 @@
             }
         }
 
-        /**
-         *
-         * Sinyalleri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void ClearSignals()
         {
             ConnectionSignalDataQueues.Clear();

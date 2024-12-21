@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Creatures
+namespace Subnautica.Events.Patches.Events.Creatures
 {
     using System;
 
@@ -14,13 +14,6 @@
     [HarmonyPatch]
     public class Freezing
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::CreatureFrozenMixin), nameof(global::CreatureFrozenMixin.Freeze))]
         private static bool CreatureFrozenMixin_Freeze(global::CreatureFrozenMixin __instance, float endTime)
@@ -51,13 +44,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Brinicle), nameof(global::Brinicle.FreezeInternal))]
         private static bool CreatureFrozenMixin_Freeze(global::Brinicle __instance, GameObject go)

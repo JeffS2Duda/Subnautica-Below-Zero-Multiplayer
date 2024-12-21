@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Abstracts.Processors
+namespace Subnautica.Server.Abstracts.Processors
 {
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
@@ -7,22 +7,8 @@
 
     public abstract class WorldEntityProcessor : BaseProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public abstract bool OnDataReceived(AuthorizationProfile profile, WorldEntityActionArgs packet);
 
-        /**
-         *
-         * veriyi serilize eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool ExecuteProcessor(AuthorizationProfile profile, WorldEntityActionArgs packet)
         {
             if (ProcessorShared.WorldEntityProcessors.TryGetValue(packet.Entity.ProcessType, out var processor))

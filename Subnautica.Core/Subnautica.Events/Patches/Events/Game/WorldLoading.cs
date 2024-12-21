@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Game
+namespace Subnautica.Events.Patches.Events.Game
 {
     using System;
     using System.Collections;
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::LargeWorldStreamer), nameof(global::LargeWorldStreamer.LoadGlobalRootAsync))]
     public static class WorldLoading
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator Postfix(IEnumerator values)
         {
             if (Network.IsMultiplayerActive)

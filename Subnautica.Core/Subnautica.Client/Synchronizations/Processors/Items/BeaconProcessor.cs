@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -18,13 +18,6 @@
 
     public class BeaconProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var component = packet.GetComponent<ItemModel.Beacon>();
@@ -55,13 +48,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -71,13 +57,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne işlemi tamamlanınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntityProcessCompleted(ItemQueueProcess item)
         {
             var uniqueId = item.Action.GetProperty<string>("UniqueId");
@@ -93,25 +72,11 @@
             }
         }
 
-        /**
-         *
-         * Beacon adı değişince tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBeaconLabelChanged(BeaconLabelChangedEventArgs ev)
         {
             BeaconProcessor.SendPacketToServer(ev.UniqueId, text: ev.Text, isTextChanged: true);
         }
 
-        /**
-         *
-         * Beacon yere konulduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBeaconDeploying(BeaconDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -119,13 +84,6 @@
             BeaconProcessor.SendPacketToServer(ev.UniqueId, ev.DeployPosition.ToZeroVector3(), ev.DeployRotation.ToZeroQuaternion(), ev.IsDeployedOnLand, ev.Text);
         }
 
-        /**
-         *
-         * Sunucuya paket gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, ZeroVector3 position = null, ZeroQuaternion rotation = null, bool isDeployedOnLand = false, string text = null, bool isTextChanged = false)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

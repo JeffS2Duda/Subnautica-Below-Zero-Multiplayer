@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Vehicle
+namespace Subnautica.Server.Processors.Vehicle
 {
     using System;
     using System.Collections.Generic;
@@ -21,13 +21,6 @@
 
     public class ExosuitDrillProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ExosuitDrillArgs>();
@@ -155,25 +148,11 @@
             return true;
         }
 
-        /**
-         *
-         * Rastgele düşecek miktarı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroVector3 GetDropPosition(List<ZeroVector3> positions, int i)
         {
             return i < positions.Count ? positions.ElementAt(i) : positions.ElementAt(0);
         }
 
-        /**
-         *
-         * Rastgele düşecek miktarı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetDropAmount()
         {
             return Convert.ToByte(Tools.GetRandomInt(1, 3));

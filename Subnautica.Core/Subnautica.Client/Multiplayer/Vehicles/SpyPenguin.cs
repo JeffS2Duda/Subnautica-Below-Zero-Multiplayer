@@ -7,40 +7,12 @@
 
     public class SpyPenguin : VehicleController
     {
-        /**
-         *
-         * SpyPenguin aracını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::SpyPenguin Penguin { get; set; }
 
-        /**
-         *
-         * Araç bileşenini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private SpyPenguinUpdateComponent VehicleComponent { get; set; }
 
-        /**
-         *
-         * Animasyon kuyruğunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<string> AnimationQueue { get; set; } = new List<string>();
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate()
         {
             base.OnUpdate();
@@ -48,13 +20,6 @@
             this.PlayAnimations();
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
@@ -74,13 +39,6 @@
             }
         }
 
-        /**
-         *
-         * Bileşen verisi alındığında yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnComponentDataReceived(VehicleUpdateComponent component)
         {
             this.VehicleComponent = component.GetComponent<SpyPenguinUpdateComponent>();
@@ -91,13 +49,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araca bindiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnEnterVehicle()
         {
             base.OnEnterVehicle();
@@ -109,13 +60,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnExitVehicle()
         {
             this.Management.Player.ResetAnimations();
@@ -130,13 +74,6 @@
             base.OnExitVehicle();
         }
 
-        /**
-         *
-         * Animasyonları oynatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void PlayAnimations()
         {
             if (this.AnimationQueue.Count > 0)

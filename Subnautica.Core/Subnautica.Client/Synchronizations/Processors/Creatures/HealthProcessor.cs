@@ -13,13 +13,6 @@
 
     public class HealthProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         { 
             var packet = networkPacket.GetPacket<ServerModel.CreatureHealthArgs>();
@@ -37,13 +30,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bir nesne hasar aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTakeDamaging(TakeDamagingEventArgs ev)
         {
             if (ev.TechType.IsCreature() && ev.TechType.IsSynchronizedCreature())

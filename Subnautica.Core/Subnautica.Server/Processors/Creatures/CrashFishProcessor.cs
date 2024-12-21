@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Creatures
+namespace Subnautica.Server.Processors.Creatures
 {
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Creatures;
@@ -10,13 +10,6 @@
 
     public class CrashFishProcessor : WorldCreatureProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, CreatureProcessArgs packet, MultiplayerCreatureItem creature, string creatureId)
         {
             var component = packet.Component.GetComponent<CreatureModel.CrashFish>();

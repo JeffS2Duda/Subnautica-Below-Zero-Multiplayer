@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Metadata
+namespace Subnautica.Network.Models.Metadata
 {
     using MessagePack;
 
@@ -8,23 +8,9 @@
     [MessagePackObject]
     public class StorageLocker : MetadataComponent
     {
-        /**
-         *
-         * IsAdded Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public bool IsAdded { get; set; }
 
-        /**
-         *
-         * WorldPickupItem Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public WorldPickupItem WorldPickupItem { get; set; }
     }

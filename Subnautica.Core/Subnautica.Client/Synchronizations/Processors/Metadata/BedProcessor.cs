@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using System;
     using System.Linq;
@@ -18,13 +18,6 @@
 
     public class BedProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.Bed>();
@@ -79,38 +72,17 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncu ekranı tamamen karardığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSleepScreenStartingCompleted()
         {
             SleepScreen.Instance.Initialize();
             SleepScreen.Instance.Enable();
         }
 
-        /**
-         *
-         * Oyuncu ekranı aydınlanma başlatıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSleepScreenStopingStarted()
         {
             SleepScreen.Instance.Disable();
         }
 
-        /**
-         *
-         * Yatağı kullanabilirlik durumunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBedIsCanSleepChecking(BedIsCanSleepCheckingEventArgs ev)
         {
             if (Network.HandTarget.IsBlocked(ev.UniqueId))
@@ -121,13 +93,6 @@
             }
         }
 
-        /**
-         *
-         * Kullanıcı yatağa tıkladığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBedEnterInUseMode(BedEnterInUseModeEventArgs ev)
         {
             if (!ev.IsSeaTruckModule)
@@ -141,13 +106,6 @@
             }
         }
 
-        /**
-         *
-         * Kullanıcı yatak'dan kalktığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBedExitInUseMode(BedExitInUseModeEventArgs ev)
         {
             if (!ev.IsSeaTruckModule)
@@ -156,13 +114,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, global::Bed.BedSide side = global::Bed.BedSide.None, bool isSleeping = false)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

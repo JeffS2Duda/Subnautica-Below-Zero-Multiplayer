@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -14,13 +14,6 @@
 
     public class SeaTruckDockingModuleProcessor : WorldDynamicEntityProcessor
     {
-        /**
-         *
-         * Dünya yüklenip nesne doğduğunda çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnWorldLoadItemSpawn(NetworkDynamicEntityComponent packet, bool isDeployed, Pickupable pickupable, GameObject gameObject)
         {
             if (!isDeployed)
@@ -44,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * Araç üretildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnSpawnedVehicle(WorldDynamicEntity entity, ItemQueueAction item, GameObject gameObject)
         {
             WorldDynamicEntityProcessor.ExecuteItemSpawnProcessor(entity.TechType, entity.Component, entity.IsDeployed, null, gameObject);

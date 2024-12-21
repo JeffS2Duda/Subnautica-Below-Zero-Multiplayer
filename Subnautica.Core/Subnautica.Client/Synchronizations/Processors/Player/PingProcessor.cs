@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -14,31 +14,10 @@
 
     public class PingProcessor : NormalProcessor
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Zamanlama sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Stopwatch Ping = new Stopwatch();
 
-        /**
-        *
-        * Gelen veriyi işler
-        *
-        * @author Ismail <ismaiil_0234@hotmail.com>
-        *
-        */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.PingArgs>();
@@ -62,25 +41,11 @@
             return true;
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             this.Ping.Reset();
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (World.IsLoaded && this.Timing.IsFinished())
@@ -98,13 +63,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu istatistikleri alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SendPacketToServer()
         {
             if (!this.Ping.IsRunning)
@@ -115,13 +73,6 @@
             NetworkClient.SendPacket(new ServerModel.PingArgs());
         }
 
-        /**
-         *
-         * Ortalama sunucu zamanını hesaplar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private double GetServerTime(double serverTime)
         {
             return serverTime + 0.04 + (NetworkClient.Client.FirstPeer.Ping / 1000.0);

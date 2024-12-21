@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.EventArgs
+namespace Subnautica.Events.EventArgs
 {
     using System;
 
@@ -6,13 +6,6 @@
 
     public class CreatureEnabledEventArgs : EventArgs
     {
-        /**
-         *
-         * Sınıf ayarlamalarını yapar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public CreatureEnabledEventArgs(global::Creature creature)
         {
             this.Instance = creature;
@@ -20,31 +13,10 @@
             this.TechType = creature.gameObject.GetTechType();
         }
 
-        /**
-         *
-         * Instance değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::Creature Instance { get; set; }
 
-        /**
-         *
-         * UniqueId değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string UniqueId { get; set; }
 
-        /**
-         *
-         * TechType değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public TechType TechType { get; set; }
     }
 }

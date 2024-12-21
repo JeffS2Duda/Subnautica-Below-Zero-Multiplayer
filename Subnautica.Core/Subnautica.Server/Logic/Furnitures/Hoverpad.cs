@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic.Furnitures
+namespace Subnautica.Server.Logic.Furnitures
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,49 +14,14 @@
 
     public class Hoverpad : BaseLogic
     {
-        /**
-         *
-         * Platform'da duran oyuncular
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, List<string>> PlayersOnPlatform { get; set; } = new Dictionary<string, List<string>>();
 
-        /**
-         *
-         * Hoverbike enerji kapasitesi.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float HoverbikeEnergyCapacity { get; set; } = 100f;
 
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
 
-        /**
-         *
-         * Requests nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<ConstructionItem> Requests { get; set; } = new List<ConstructionItem>();
 
-        /**
-         *
-         * Sınıfı başlatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             foreach (var construction in this.GetHoverpads())
@@ -65,13 +30,6 @@
             }
         }
 
-        /**
-         *
-         * Zamanlayıcının geri dönüş methodu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate(float deltaTime)
         {
             if (this.Timing.IsFinished() && World.IsLoaded)
@@ -96,13 +54,6 @@
             }
         }
 
-        /**
-         *
-         * Yakındaki oyunculara verileri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendPacketToAllClient()
         {
             if (this.Requests.Count > 0)
@@ -138,13 +89,6 @@
             }
         }
 
-        /**
-         *
-         * Platform'daki oyuncu sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public byte GetPlayerCountFromPlatform(string constructionId)
         {
             if (this.PlayersOnPlatform.TryGetValue(constructionId, out var players))
@@ -155,13 +99,6 @@
             return 0;
         }
 
-        /**
-         *
-         * Platform'a oyuncu ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void AddPlayerToPlatform(string constructionId, string playerId)
         {
             if (!this.PlayersOnPlatform.ContainsKey(constructionId))
@@ -175,13 +112,6 @@
             }
         }
 
-        /**
-         *
-         * Platform'dan oyuncu kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemovePlayerFromPlatform(string constructionId, string playerId)
         {
             if (this.PlayersOnPlatform.TryGetValue(constructionId, out var players))
@@ -190,13 +120,6 @@
             }
         }
 
-        /**
-         *
-         * Platform'dan oyuncu kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemovePlayerFromPlatform(string playerId, bool autoSend)
         {
             foreach (var platform in this.PlayersOnPlatform)
@@ -224,13 +147,6 @@
             }
         }
 
-        /**
-         *
-         * Hoverpad'leri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<KeyValuePair<string, ConstructionItem>> GetHoverpads()
         {
             return Core.Server.Instance.Storages.Construction.Storage.Constructions.Where(q => q.Value.ConstructedAmount == 1f && q.Value.TechType == TechType.Hoverpad).ToList();

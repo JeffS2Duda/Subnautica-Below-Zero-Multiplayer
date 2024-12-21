@@ -15,13 +15,6 @@
 
     public class BaseProcessor
     {
-        /**
-         *
-         * Üs verilerini ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static IEnumerator InitialBases()
         {
             yield return CoroutineUtils.waitForNextFrame;
@@ -54,13 +47,6 @@
             }
         }
 
-        /**
-         *
-         * Üs rengini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SetBaseColor(string baseId, string name, ZeroColor baseColor, ZeroColor stripeColor1, ZeroColor stripeColor2, ZeroColor nameColor)
         {
             var customizeable = Network.Identifier.GetComponentByGameObject<ICustomizeable>(baseId);
@@ -74,13 +60,6 @@
             }
         }
 
-        /**
-         *
-         * Üs harita konumlarını değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SetMinimapPositions(global::Base baseComponent, Dictionary<string, ZeroVector3> minimapPositions)
         {
             foreach (var controlRoom in baseComponent.GetComponentsInChildren<global::BaseControlRoom>())
@@ -104,13 +83,6 @@
             }
         }
 
-        /**
-         *
-         * Üs kapalı ışıkları ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SetDisablePowers(global::Base baseComponent, HashSet<ZeroInt3> disablePowers)
         {
             for (int cellIndex = 0; cellIndex < baseComponent.cellLighting.Length; cellIndex++)
@@ -131,13 +103,6 @@
             }
         }
 
-        /**
-         *
-         * Üs'deki sızıntıları senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SetLeakers(global::Base baseComponent, HashSet<Leaker> leakers)
         {
             if (leakers.Count > 0)
@@ -171,13 +136,6 @@
             }
         }
 
-        /**
-         *
-         * Üs'deki su seviyelerini senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SetCellWaterLevel(global::Base baseComponent, Dictionary<ushort, float> cellWaterLevels)
         {
             if (cellWaterLevels.Count > 0)

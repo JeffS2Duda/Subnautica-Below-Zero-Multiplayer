@@ -8,13 +8,6 @@
 
     public class TechnologyProcessor
     {
-        /**
-         *
-         * Teknoloji verileri yüklendikten sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnKnownTechInitialized()
         {
             if (Network.Session.Current.Technologies != null)
@@ -38,13 +31,6 @@
             }
         }
 
-        /**
-         *
-         * PDA ile taranan verileri yüklendikten sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPDAScannerInitialized()
         {
             if (Network.Session.Current.Technologies != null)

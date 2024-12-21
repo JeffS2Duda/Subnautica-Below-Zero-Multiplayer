@@ -5,13 +5,6 @@
 
     public class NotificationProcessor
     {
-        /**
-         *
-         * Bildirim verileri yüklendikten sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnNotificationInitialized()
         {
             if (Network.Session.Current.PlayerNotifications != null)
@@ -89,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Ping işaretini ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void HandlePingInstance(string uniqueId, bool isVisible, sbyte colorIndex)
         {
             var pingInstance = Network.Identifier.GetComponentByGameObject<global::PingInstance>(uniqueId, true);

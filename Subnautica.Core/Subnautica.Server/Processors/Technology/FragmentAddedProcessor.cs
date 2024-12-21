@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Technology
+namespace Subnautica.Server.Processors.Technology
 {
     using Server.Core;
 
@@ -10,13 +10,6 @@
 
     public class FragmentAddedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.TechnologyFragmentAddedArgs>();

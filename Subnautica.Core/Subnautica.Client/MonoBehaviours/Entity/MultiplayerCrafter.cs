@@ -9,43 +9,15 @@
 
     public class MultiplayerCrafter : MonoBehaviour
     {
-        /**
-         *
-         * Crafter Sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::GhostCrafter Crafter { get; set; }
 
-        /**
-         *
-         * İşlem sahibi miyim?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsMine { get; private set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.Initialize();
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Initialize()
         {
             if (this.Crafter == null)
@@ -58,25 +30,11 @@
             }
         }
 
-        /**
-         *
-         * İşlemi sahibini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetIsMine(bool isMine)
         {
             this.IsMine = isMine;
         }
 
-        /**
-         *
-         * Zanaatkarı açar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Open()
         {
             using (EventBlocker.Create(TechType.Fabricator))
@@ -92,13 +50,6 @@
             }
         }
 
-        /**
-         *
-         * Zanaatkarı kapatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Close()
         {
             using (EventBlocker.Create(TechType.Fabricator))
@@ -112,13 +63,6 @@
             }
         }
 
-        /**
-         *
-         * Zanaatkar'dan üretilen nesneyi alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void TryPickup()
         {
             using (EventBlocker.Create(TechType.Fabricator))
@@ -140,13 +84,6 @@
             }
         }
 
-        /**
-         *
-         * Zanaatkar'da nesne üretir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Craft(TechType techType, float startTime, float duration)
         {
             using (EventBlocker.Create(TechType.Fabricator))
@@ -159,13 +96,6 @@
             }
         }
 
-        /**
-         *
-         * Craft tamamlandığında bildirim gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnCrafterEnded()
         {
             if (this.PlayerIsInRange(10f))
@@ -174,13 +104,6 @@
             }
         }
 
-        /**
-         *
-         * Tamamlanmış eşyayı alıp/alamayacağını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsAllowedPickup(TechType techType, int amount)
         {
             List<Vector2int> sizes = new List<Vector2int>();
@@ -193,13 +116,6 @@
             return global::Inventory.main._container.HasRoomFor(sizes);
         }
 
-        /**
-         *
-         * Otomatik alma işlemi aktif mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsActiveAutoPickup()
         {
             if (this.IsMine && this.Crafter.logic && this.Crafter.logic.craftingTechType != TechType.None && this.PlayerIsInRange(this.Crafter.closeDistance))

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using System.Collections;
     
@@ -16,13 +16,6 @@
 
     public class DataboxProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning)
         {
             var entity = packet.GetComponent<EntityModel.Databox>();
@@ -51,13 +44,6 @@
             return true;
         }
 
-        /**
-         *
-         * Asenkron olarak veri nesnesini işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator PickupBlueprintAsync(global::BlueprintHandTarget databox)
         {
             yield return new WaitForSecondsRealtime(0.25f);
@@ -68,13 +54,6 @@
             }
         }
 
-        /**
-         *
-         * Normal olarak veri nesnesini işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void PickupBlueprint(global::BlueprintHandTarget databox)
         {
             if (databox.animParam.IsNotNull())
@@ -86,13 +65,6 @@
             databox.OnTargetUsed();
         }
 
-        /**
-         *
-         * Veri kutusundan tasarım alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnDataboxItemPickedUp(DataboxItemPickedUpEventArgs ev)
         {
             ServerModel.WorldEntityActionArgs result = new ServerModel.WorldEntityActionArgs()

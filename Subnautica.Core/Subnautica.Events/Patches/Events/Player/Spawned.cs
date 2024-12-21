@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
     using System.Collections;
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::Player), nameof(global::Player.ResetPlayerOnDeath))]
     public class Spawned
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator Postfix(IEnumerator values, global::Player __instance)
         {
             yield return values;

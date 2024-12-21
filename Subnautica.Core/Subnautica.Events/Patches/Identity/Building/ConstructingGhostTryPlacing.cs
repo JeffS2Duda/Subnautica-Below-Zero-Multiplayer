@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Identity.Building
+namespace Subnautica.Events.Patches.Identity.Building
 {
     using HarmonyLib;
     using Subnautica.API.Features;
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(Builder), nameof(Builder.TryPlace))]
     public class ConstructingGhostTryPlacing
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix()
         {
             if(Network.IsMultiplayerActive)

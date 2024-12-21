@@ -16,40 +16,12 @@
 
     public class MultiplayerExpansionManager
     {
-        /**
-         *
-         * DockingBay nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public MultiplayerVehicleDockingBay DockingBay { get; set; }
 
-        /**
-         *
-         * ExpansionManager nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public MoonpoolExpansionManager ExpansionManager { get; set; }
 
-        /**
-         *
-         * ExpansionManager nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::Player Player { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public MultiplayerExpansionManager(MultiplayerVehicleDockingBay dockingBay)
         {
             if (dockingBay)
@@ -60,25 +32,11 @@
             }
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnAwake()
         {
 
         }
 
-        /**
-         *
-         * Dünya yüklendikten sonra aracı hemen demirler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnHandleLoading(bool isLoadingWorld = false)
         {
             if (isLoadingWorld)
@@ -103,49 +61,21 @@
             }
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnUpdate(bool nearby)
         {
             this.ExpansionManager.UpdateArmsAnim(nearby);
         }
 
-        /**
-         *
-         * Expansion -> Seatruck kuyruk kenetlenme işlemi tamamlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDockTail(global::SeaTruckSegment newTail)
         {
             this.DockTail(newTail);
         }
 
-        /**
-         *
-         * Expansion -> Seatruck kuyruk ayrılma işlemi tamamlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnUndockTail(bool withEjection)
         {
             this.UndockTail(withEjection, false);
         }
 
-        /**
-         *
-         * Modülü kenetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool DockTail(global::SeaTruckSegment newTail, bool isConnection = false, bool teleport = false)
         {
             if (newTail == null)
@@ -211,13 +141,6 @@
             return true;
         }
 
-        /**
-         *
-         * Modül demirlemesini çözer.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UndockTail(bool withEjection = false, bool supressEvent = true)
         {
             this.PlayerDisableMovementPlatform();
@@ -265,13 +188,6 @@
             return true;
         }
 
-        /**
-         *
-         * Docking hazırlığını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool PrepDocking(Dockable dockable)
         {
             this.ExpansionManager.dockedHead = dockable.truckSegment;
@@ -307,13 +223,6 @@
             return true;
         }
 
-        /**
-         *
-         * Kuyruk renklerini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateTailColors()
         {
             if (this.ExpansionManager.dockedHead && this.ExpansionManager.tail)
@@ -329,13 +238,6 @@
             }
         }
 
-        /**
-         *
-         * Rıhtımdan ayrılmayı başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartUndocking(bool isMine)
         {
             this.PlayerDisableMovementPlatform();
@@ -374,13 +276,6 @@
             }
         }
 
-        /**
-         *
-         * Expansion -> Seatruck yanaşma tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OnDockingTimelineCompleted()
         {
             this.ExpansionManager.inCriticalAnimation = false;
@@ -419,13 +314,6 @@
             return true;
         }
 
-        /**
-         *
-         * Expansion -> Seatruck ayrılma tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OnUndockingTimelineCompleted()
         {
             var seaTruckMotor = this.ExpansionManager.dockedHead.motor;
@@ -479,13 +367,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncuyu otomatik olarak moonpool dışına ışınlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void DockPlayerAutoTeleport(bool ignoreCheck = false)
         {
             if (ignoreCheck || (this.Player.IsUnderwater() && this.IsPlayerInMoonpoolExpansion()))
@@ -494,13 +375,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncunun hareket platformunu devre dışı bırakır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void PlayerDisableMovementPlatform()
         {
             if (this.Player.groundMotor.movingPlatform.activePlatform && this.ExpansionManager.tail)
@@ -513,13 +387,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu güvenli bir yere ışınlar ya da araca bindirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UndockPlayerAutoTeleport(global::SeaTruckSegment undockTail = null)
         {
             if (this.Player.IsUnderwater())
@@ -578,13 +445,6 @@
             return false;
         }
 
-        /**
-         *
-         * Oyuncu hareket kısıtlamasını kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private IEnumerator UnlockMovement()
         {
             yield return new WaitForSecondsRealtime(7.5f);
@@ -599,37 +459,16 @@
             this.Player.EnableMovement();
         }
 
-        /**
-         *
-         * ExpansionManager aktifliğini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsActive()
         {
             return this.ExpansionManager != null;
         }
 
-        /**
-         *
-         * Kuyruk aktifliğini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsTailOccupied()
         {
             return this.ExpansionManager.tail;
         }
         
-        /**
-         *
-         * Oyuncu moonpool expansion bölgesi içerisinde mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsPlayerInMoonpoolExpansion()
         {
             if (!this.IsActive())
@@ -684,25 +523,11 @@
             return false;
         }
 
-        /**
-         *
-         * Terminal doğma konumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 GetTerminalSpawnPosition()
         {
             return this.ExpansionManager.Terminal.transform.position + (this.ExpansionManager.Terminal.transform.right * 1.5f);
         }
 
-        /**
-         *
-         * Dışarıdaki doğma konumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 GetOutsideSpawnPosition()
         {
             var position = new Vector3(this.ExpansionManager.tailDockingPosition.transform.position.x, this.ExpansionManager.tailDockingPosition.transform.position.y, this.ExpansionManager.tailDockingPosition.transform.position.z);

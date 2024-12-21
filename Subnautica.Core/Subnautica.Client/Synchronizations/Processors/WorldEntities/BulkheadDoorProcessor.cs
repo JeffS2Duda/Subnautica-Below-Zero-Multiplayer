@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -13,13 +13,6 @@
 
     public class BulkheadDoorProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning)
         {
             var entity = packet.GetComponent<EntityModel.BulkheadDoor>();
@@ -66,13 +59,6 @@
             return true;
         }
 
-        /**
-         *
-         * Bölme kapısı açılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBulkheadOpening(BulkheadOpeningEventArgs ev)
         {
             if (ev.IsStaticWorldEntity)
@@ -86,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * Bölme kapısı kapanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBulkheadClosing(BulkheadClosingEventArgs ev)
         {
             if (ev.IsStaticWorldEntity)
@@ -106,13 +85,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, bool side, bool isOpened, StoryCinematicType storyCinematicType = StoryCinematicType.None)
         {
             ServerModel.WorldEntityActionArgs request = new ServerModel.WorldEntityActionArgs()

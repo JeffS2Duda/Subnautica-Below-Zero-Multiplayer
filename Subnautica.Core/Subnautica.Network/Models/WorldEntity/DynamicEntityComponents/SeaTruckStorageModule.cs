@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
+namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
 {
     using System;
     using System.Collections.Generic;
@@ -13,13 +13,6 @@
     [MessagePackObject]
     public class SeaTruckStorageModule : NetworkDynamicEntityComponent
     {
-        /**
-         *
-         * Lockers Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public List<SeaTruckLockerItem> Lockers { get; set; } = new List<SeaTruckLockerItem>()
         {
@@ -30,23 +23,9 @@
             new SeaTruckLockerItem()
         };
 
-        /**
-         *
-         * LiveMixin Değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public LiveMixin LiveMixin { get; set; } = new LiveMixin(500f, 500f);
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public SeaTruckStorageModule Initialize(Action<NetworkDynamicEntityComponent> onEntityComponentInitialized)
         {
             foreach (var locker in this.Lockers)

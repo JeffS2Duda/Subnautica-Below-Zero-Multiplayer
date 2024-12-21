@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Building
+namespace Subnautica.Events.Patches.Events.Building
 {
     using HarmonyLib;
     using Subnautica.API.Features;
@@ -12,13 +12,6 @@
     [HarmonyPatch(typeof(Constructable), nameof(Constructable.Construct))]
     public static class FurnitureConstructingCompleted
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(Constructable __instance)
         {
             if (Network.IsMultiplayerActive)
@@ -49,13 +42,6 @@
     [HarmonyPatch(typeof(BaseGhost), nameof(BaseGhost.Finish))]
     public static class BaseConstructingCompleted
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(BaseGhost __instance)
         {
             if (Network.IsMultiplayerActive)
@@ -129,13 +115,6 @@
             }
         }
 
-        /**
-         *
-         * Parçayı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject FindPartitionPiece(string uniqueId, Transform cellTransform)
         {
             foreach (var child in cellTransform.GetComponentsInChildren<BaseDeconstructable>())
@@ -149,13 +128,6 @@
             return null;
         }
 
-        /**
-         *
-         * Base parçasını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject FindBasePiece(string uniqueId, Transform cellTransform)
         {
             int cellCount = cellTransform.childCount - 1;

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic.Furnitures
+namespace Subnautica.Server.Logic.Furnitures
 {
     using System;
     using System.Collections.Generic;
@@ -17,22 +17,8 @@
 
     public class Jukebox : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public API.Features.StopwatchItem Timing { get; set; } = new API.Features.StopwatchItem(2000f);
 
-        /**
-         *
-         * Müzik Metinleri
-         *
-         * @author Ismail  <ismaiil_0234@hotmail.com>
-         *
-         */
         private readonly Dictionary<string, string> MusicLabels = new Dictionary<string, string>()
         {
           { "event:/jukebox/jukebox_one"                  , "Subnautica - Jukebox One" },
@@ -47,13 +33,6 @@
           { "event:/jukebox/jukebox_riteofthedeep"        , "Steve Pardo - Rite of the Deep" }
         };
 
-        /**
-         *
-         * Müzik Uzunlukları
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private readonly Dictionary<string, uint> MusicLengths = new Dictionary<string, uint>()
         {
             { "event:/jukebox/jukebox_one"                  , 237714 },
@@ -68,48 +47,13 @@
             { "event:/jukebox/jukebox_riteofthedeep"        , 187071 }, 
         };
 
-        /**
-         *
-         * StopwatchMusicTime barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Stopwatch StopwatchMusicTime { get; set; } = new Stopwatch();
-        /**
-         *
-         * MusicData verisini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Network.Models.Metadata.Jukebox CurrentMusic { get; set; }
 
-        /**
-         *
-         * Kullanıcılara veri gönderme durumnu aktif eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsSendTrigger { get; set; }
 
-        /**
-         *
-         * CurrentJukeboxId değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string CurrentJukeboxId { get; set; }
 
-        /**
-         *
-         * Sınıfı başlatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             if (!Core.Server.Instance.Storages.World.Storage.JukeboxDisks.Contains("event:/jukebox/jukebox_one"))
@@ -121,13 +65,6 @@
             this.SortPlaylist();
         }
 
-        /**
-         *
-         * Zamanlayıcının geri dönüş methodu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float fixedDeltaTime)
         {
             if (this.CurrentMusic == null)
@@ -212,13 +149,6 @@
             }
         }
 
-        /**
-         *
-         * Gücü tüketir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ConsumePower(global::JukeboxInstance jukebox, float requiredPower)
         {
             if (jukebox.gameObject.GetComponentInParent<global::SeaTruckSegment>())
@@ -256,13 +186,6 @@
         }
 
 
-        /**
-         *
-         * Jukebox kutu idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetConstructionUniqueId()
         {
             var construction = Core.Server.Instance.Storages.Construction.GetConstruction(this.CurrentJukeboxId);
@@ -280,13 +203,6 @@
             return null;
         }
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDataReceived(AuthorizationProfile profile, string uniqueId, API.Features.CustomProperty music)
         {
             this.CheckJukeboxChanged(uniqueId);
@@ -332,13 +248,6 @@
             this.OnUpdate(0f);
         }
 
-        /**
-         *
-         * Şarkıyı değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ChangeMusic(bool forward = true, bool isIgnoreRepeat = false)
         {
             this.CurrentMusic.CurrentPlayingTrack = this.GetNextMusic(this.CurrentMusic.RepeatMode, this.CurrentMusic.CurrentPlayingTrack, forward, isIgnoreRepeat, this.CurrentMusic.IsShuffled);
@@ -356,13 +265,6 @@
             this.IsSendTrigger = true;
         }
 
-        /**
-         *
-         * Şarkıyı duraklatır/devam ettirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetPaused(bool isPaused)
         {
             this.CurrentMusic.IsPaused = isPaused;
@@ -373,13 +275,6 @@
             }
         }
 
-        /**
-         *
-         * Şarkıyı durdurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetStoped(bool isStoped)
         {
             this.CurrentMusic.IsStoped = isStoped;
@@ -391,38 +286,17 @@
             }
         }
 
-        /**
-         *
-         * Şarkıyı ilerletir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetPosition(float position, bool restart = false)
         {
             this.CurrentMusic.Position = position;
             this.StopwatchMusicTime.Reset();
         }
 
-        /**
-         *
-         * Şarkıyı Çalıyor mu?.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsPlaying()
         {
             return !string.IsNullOrEmpty(this.CurrentMusic.CurrentPlayingTrack) && !this.CurrentMusic.IsStoped && !this.CurrentMusic.IsPaused;
         }
 
-        /**
-         *
-         * Oyunculara şarkı verilerini gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SendMusicToClients(AuthorizationProfile profile = null)
         {
             this.IsSendTrigger = false;
@@ -444,13 +318,6 @@
             }
         }
 
-        /**
-         *
-         * Mevcut metadata verisini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Network.Models.Metadata.Jukebox GetCurrentMetadata()
         {
             return new Network.Models.Metadata.Jukebox()
@@ -468,13 +335,6 @@
             };
         }
 
-        /**
-         *
-         * Müzik kutusu değiştiğinde her şeyi sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void CheckJukeboxChanged(string uniqueId)
         {
             if (uniqueId != this.CurrentJukeboxId)
@@ -484,13 +344,6 @@
             }
         }
 
-        /**
-         *
-         * Her şeyi sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void Reset()
         {
             this.CurrentJukeboxId      = null;
@@ -499,13 +352,6 @@
             this.CurrentMusic.IsStoped = true;
             this.StopwatchMusicTime.Reset();
         }
-        /**
-         *
-         * Sonraki veya önceki şarkıyı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string GetNextMusic(global::Jukebox.Repeat repeatMode, string currentTrack, bool forward, bool isIgnoreRepeat = false, bool shuffle = false)
         {
             if (string.IsNullOrEmpty(currentTrack))
@@ -529,13 +375,6 @@
             return this.GetInternalNextMusic(currentTrack, forward, shuffle);
         }
 
-        /**
-         *
-         * İç Fonksiyon - Sonraki veya önceki şarkıyı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string GetInternalNextMusic(string currentTrack, bool forward, bool shuffle = false)
         {
             int diskCount = Core.Server.Instance.Storages.World.Storage.JukeboxDisks.Count;
@@ -583,25 +422,11 @@
             return Core.Server.Instance.Storages.World.Storage.JukeboxDisks.ElementAt(foundedIndex);
         }
 
-        /**
-         *
-         * Şarkının mevcut süresini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float GetCurrentPosition()
         {
             return (this.CurrentMusic.Position * this.GetMusicLength()) + (this.StopwatchMusicTime.ElapsedMilliseconds / 1000f);
         }
 
-        /**
-         *
-         * Şarkı uzunluğunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float GetMusicLength()
         {
             if (this.CurrentMusic.CurrentPlayingTrack != null && this.MusicLengths.TryGetValue(this.CurrentMusic.CurrentPlayingTrack, out uint length))
@@ -612,13 +437,6 @@
             return 0f;
         }
 
-        /**
-         *
-         * Şarkı uzunluğunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private uint GetOriginalMusicLength()
         {
             if (this.CurrentMusic.CurrentPlayingTrack != null && this.MusicLengths.TryGetValue(this.CurrentMusic.CurrentPlayingTrack, out uint length))
@@ -629,25 +447,11 @@
             return 0;
         }
 
-        /**
-         *
-         * Şarkı listesini sıralar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SortPlaylist()
         {
             Core.Server.Instance.Storages.World.Storage.JukeboxDisks.Sort(new Comparison<string>(this.PlaylistComparer));
         }
 
-        /**
-         *
-         * Zamanlayıcının geri dönüş methodu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private int PlaylistComparer(string strA, string strB)
         {
             this.MusicLabels.TryGetValue(strA, out strA);

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
     using System.Collections.Generic;
@@ -13,13 +13,6 @@
     [HarmonyPatch(typeof(global::SpyPenguinPlayerTool), nameof(global::SpyPenguinPlayerTool.OnToolUseAnim))]
     public class SpyPenguinDeploying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::SpyPenguinPlayerTool __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -53,37 +46,16 @@
             return true;
         }
 
-        /**
-         *
-         * Konumu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetName(global::SpyPenguinPlayerTool __instance)
         {
             return __instance.spyPenguin.GetPenguinName();
         }
 
-        /**
-         *
-         * Konumu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector3 GetDropPosition(global::SpyPenguinPlayerTool __instance)
         {
             return ZeroGame.FindDropPosition(__instance.deployPosition + Tools.GetCameraForward(true, true) * 0.75f + Vector3.down * 0.35f);
         }
 
-        /**
-         *
-         * Açıyı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Quaternion GetDropRotation()
         {
             return Quaternion.LookRotation(Tools.GetCameraForward(true, true), Vector3.up);

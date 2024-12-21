@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Player
+namespace Subnautica.Client.Synchronizations.Processors.Player
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -14,13 +14,6 @@
 
     public class ItemPickupProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ItemPickupArgs>();
@@ -45,13 +38,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne işlemi tamamlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnProcessCompleted(ItemQueueProcess item)
         {
             var itemId = item.Action.GetProperty<string>("ItemId");
@@ -67,13 +53,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu yerden eşya aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerItemPickedUp(PlayerItemPickedUpEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity && Network.DynamicEntity.HasEntity(ev.UniqueId))

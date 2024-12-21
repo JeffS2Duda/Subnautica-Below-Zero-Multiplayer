@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Interact
+namespace Subnautica.Events.Patches.Fixes.Interact
 {
     using HarmonyLib;
 
@@ -8,13 +8,6 @@
     [HarmonyPatch(typeof(global::PictureFrame), nameof(global::PictureFrame.OnHandHover))]
     public class PictureFrame
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::PictureFrame __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -42,13 +35,6 @@
             return true;
         }
 
-        /**
-         *
-         * Benzersiz ID numarasını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetUniqueId(global::PictureFrame __instance)
         {
             var constructable = __instance.gameObject.GetComponentInParent<global::Constructable>();

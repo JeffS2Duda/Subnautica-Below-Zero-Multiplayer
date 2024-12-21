@@ -11,40 +11,12 @@
 
     public class Exosuit : VehicleController
     {
-        /**
-         *
-         * Exosuit aracını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Exosuit ExoSuit { get; set; }
 
-        /**
-         *
-         * Araç bileşenini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ExosuitUpdateComponent VehicleComponent { get; set; } = new ExosuitUpdateComponent();
 
-        /**
-         *
-         * Exosuit aracını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Vector3 SmoothedVelocity { get; set; } = Vector3.zero;
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate()
         {
             if (this.ExoSuit.docked == false)
@@ -60,25 +32,11 @@
             }
         }
 
-        /**
-         *
-         * Bileşen verisi alındığında yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnComponentDataReceived(VehicleUpdateComponent component)
         {
             this.VehicleComponent = component.GetComponent<ExosuitUpdateComponent>();
         }
 
-        /**
-         *
-         * Oyuncu araca bindiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnEnterVehicle()
         {
             base.OnEnterVehicle();
@@ -99,13 +57,6 @@
            }
         }
 
-        /**
-         *
-         * Oyuncu araçtan indiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnExitVehicle()
         {
             if (this.ExoSuit)
@@ -120,13 +71,6 @@
             base.OnExitVehicle();
         }
 
-        /**
-         *
-         * Yürüme animasyonu uygular
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateMovementAnimation()
         {
             var relativeVelocity = this.ExoSuit.useRigidbody.transform.InverseTransformDirection(this.VehicleVelocity - this.ExoSuit.useRigidbody.GetPointVelocity(this.ExoSuit.useRigidbody.position));
@@ -141,13 +85,6 @@
             this.ExoSuit.mainAnimator.SetFloat("move_speed_z", this.SmoothedVelocity.z);
         }
 
-        /**
-         *
-         * Motor su kabarcık animasyonunu çalıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateMotorAnimation()
         {
             if (!this.ExoSuit.fxcontrol.IsPlaying(0))
@@ -156,13 +93,6 @@
             }
         }
 
-        /**
-         *
-         * Yürüme animasyonu uygular
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateExosuitArms()
         {
             var armLerpFormula = this.GetArmLerpFormula(this.VehicleComponent.AngleX, this.VehicleComponent.CameraPosition.ToVector3());
@@ -181,13 +111,6 @@
         }
 
 
-        /**
-         *
-         * Kolların işlemlerini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ArmProcess(IExosuitArm exosuitArm, TechType techType, ExosuitArmComponent armComponent, bool isReset = false)
         {
             if (techType == TechType.ExosuitDrillArmModule)
@@ -208,13 +131,6 @@
             }
         }
 
-        /**
-         *
-         * Drill Arm işlemlerini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ProcessDrillArmModule(ExosuitDrillArmComponent component, global::ExosuitDrillArm drillArm, bool isReset)
         {
             if (isReset)
@@ -260,13 +176,6 @@
             return true;
         }
 
-        /**
-         *
-         * Claw Arm işlemlerini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ProcessClawArmModule(ExosuitClawArmComponent component, global::ExosuitClawArm clawArm, bool isReset)
         {
             if (isReset)
@@ -301,13 +210,6 @@
             return true;
         }
 
-        /**
-         *
-         * Grappling Arm işlemlerini uygular.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ProcessGrapplingArmModule(ExosuitGrapplingArmComponent component, global::ExosuitGrapplingArm grapplingArm, bool isReset)
         {
             if (isReset)
@@ -355,13 +257,6 @@
             return true;
         }
 
-        /**
-         *
-         * Animasyonları sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ResetAnimations()
         {
             this.SmoothedVelocity = Vector3.zero;
@@ -382,13 +277,6 @@
             this.ArmProcess(this.ExoSuit.rightArm, this.ExoSuit.rightArmType, this.VehicleComponent.RightArm, true);
       }
 
-        /**
-         *
-         * Kol lerp formülünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Vector3 GetArmLerpFormula(float angleX, Vector3 cameraPosition)
         {
             var aimDirection = Quaternion.Euler(angleX, this.ExoSuit.transform.eulerAngles.y, this.ExoSuit.transform.eulerAngles.z);

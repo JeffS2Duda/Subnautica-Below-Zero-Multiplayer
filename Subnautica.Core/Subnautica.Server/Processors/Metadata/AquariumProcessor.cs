@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
@@ -9,13 +9,6 @@
 
     public class AquariumProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             if (Server.Instance.Logices.Interact.IsBlocked(construction.UniqueId, profile.UniqueId))
@@ -53,13 +46,6 @@
             return true;
         }
 
-        /**
-         *
-         * Depolamayı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Metadata.StorageContainer GetStorageContainer(ConstructionItem construction)
         {
             var aquarium = construction.EnsureComponent<Metadata.Aquarium>();

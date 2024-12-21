@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using System.Linq;
 
@@ -13,13 +13,6 @@
 
     public class FiltrationMachineProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.FiltrationMachine>();
@@ -64,26 +57,12 @@
             return true;
         }
 
-        /**
-         *
-         * Makine zamanını senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void MachineTimeSync(global::FiltrationMachine machine, Metadata.FiltrationMachine component)
         {
             machine.timeRemainingWater = component.TimeRemainingWater;
             machine.timeRemainingSalt  = component.TimeRemainingSalt;
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (ev.TechType == TechType.BaseFiltrationMachine)
@@ -92,13 +71,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (ev.TechType == TechType.BaseFiltrationMachine)
@@ -107,13 +79,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string removingItemId = null)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

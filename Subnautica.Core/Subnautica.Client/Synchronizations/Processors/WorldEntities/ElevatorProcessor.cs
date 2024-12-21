@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -14,13 +14,6 @@
 
     public class ElevatorProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkWorldEntityComponent packet, byte requesterId, bool isSpawning)
         {
             var entity = packet.GetComponent<EntityModel.Elevator>();
@@ -38,13 +31,6 @@
             return true;
         }
 
-        /**
-         *
-         * Asansörü hareket ettirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ElevatorMove(string uniqueId, bool isUp, float startTime)
         {
             var elevator = Network.Identifier.GetComponentByGameObject<global::Rocket>(uniqueId, true);
@@ -94,13 +80,6 @@
             return true;
         }
 
-        /**
-         *
-         * Asansöre tıklandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnElevatorCalling(ElevatorCallingEventArgs ev)
         {
             ev.IsAllowed = false;

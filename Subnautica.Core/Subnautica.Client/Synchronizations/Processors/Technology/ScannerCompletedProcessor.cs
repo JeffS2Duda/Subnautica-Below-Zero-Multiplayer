@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Technology
+namespace Subnautica.Client.Synchronizations.Processors.Technology
 {
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
@@ -9,13 +9,6 @@
 
     public class ScannerCompletedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ScannerCompletedArgs>();
@@ -28,13 +21,6 @@
             return true;
         }
 
-        /**
-         *
-         * Tarama tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnScannerCompleted(ScannerCompletedEventArgs ev)
         {
             ServerModel.ScannerCompletedArgs result = new ServerModel.ScannerCompletedArgs()

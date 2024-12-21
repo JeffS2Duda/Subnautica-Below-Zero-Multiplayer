@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
     using System;
 
@@ -17,13 +17,6 @@
 
     public class SeaTruckSleeperModuleProcessor : WorldDynamicEntityProcessor
     {
-        /**
-         *
-         * Dünya yüklenip nesne doğduğunda çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnWorldLoadItemSpawn(NetworkDynamicEntityComponent packet, bool isDeployed, Pickupable pickupable, GameObject gameObject)
         {
             if (!isDeployed)
@@ -47,13 +40,6 @@
             return true;
         }
 
-        /**
-         *
-         * Uyku paketini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ServerModel.MetadataComponentArgs GetBedPacket(byte playerId, string uniqueId, BedSideItem bedSide)
         {
             return new ServerModel.MetadataComponentArgs()

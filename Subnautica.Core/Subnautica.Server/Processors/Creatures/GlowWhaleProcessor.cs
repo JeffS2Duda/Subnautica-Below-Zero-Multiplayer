@@ -12,13 +12,6 @@ namespace Subnautica.Server.Processors.Creatures
 
     public class GlowWhaleProcessor : WorldCreatureProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, CreatureProcessArgs packet, MultiplayerCreatureItem creature, string creatureId)
         {
             var component = packet.Component.GetComponent<CreatureModel.GlowWhale>();

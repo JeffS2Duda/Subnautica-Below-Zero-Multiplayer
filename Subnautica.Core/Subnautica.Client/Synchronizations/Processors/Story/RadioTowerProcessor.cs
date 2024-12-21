@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -11,13 +11,6 @@
 
     public class RadioTowerProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryRadioTowerArgs>();
@@ -37,13 +30,6 @@
             return true;
         }
 
-        /**
-         *
-         * Radyo kulesi test modülü takılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnRadioTowerTOMUsing(RadioTowerTOMUsingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -54,13 +40,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqued, bool isTOMUsing = false)
         {
             ServerModel.StoryRadioTowerArgs result = new ServerModel.StoryRadioTowerArgs()

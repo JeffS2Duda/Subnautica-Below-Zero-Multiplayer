@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -13,13 +13,6 @@
     [HarmonyPatch(typeof(global::GenericHandTarget), nameof(global::GenericHandTarget.OnHandClick))]
     public class EnergyMixinClicking
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::GenericHandTarget __instance)
         {
             if (!Network.IsMultiplayerActive || EventBlocker.IsEventBlocked(TechType.PictureSamHand))
@@ -51,25 +44,11 @@
             return true;
         }
         
-        /**
-         *
-         * Slot idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetBatterySlotId(GameObject gameObject)
         {
             return Network.Identifier.GetIdentityId(gameObject, false);
         }
 
-        /**
-         *
-         * Araç idsini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetVehicleUniqueId(GameObject gameObject)
         {
             var vehicleGameObject = GetVehicleGameObject(gameObject);
@@ -81,13 +60,6 @@
             return Network.Identifier.GetIdentityId(vehicleGameObject, false);
         }
 
-        /**
-         *
-         * Araç türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetVehicleType(GameObject gameObject)
         {
             var vehicleGameObject = GetVehicleGameObject(gameObject);
@@ -99,13 +71,6 @@
             return CraftData.GetTechType(vehicleGameObject);
         }
 
-        /**
-         *
-         * Araç nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject GetVehicleGameObject(GameObject gameObject)
         {
             var exosuit = gameObject.GetComponentInParent<global::Exosuit>();

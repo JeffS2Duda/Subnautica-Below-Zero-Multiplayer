@@ -9,35 +9,14 @@
 
     public class PrecursorTeleporterTerminalCinematic : CinematicController
     {
-        /**
-         *
-         * Terminali barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::PrecursorTeleporterActivationTerminal Terminal { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.Terminal = this.Target.GetComponent<global::PrecursorTeleporterActivationTerminal>();
             this.Terminal.animator.SetBool("Open", true);
         }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override IEnumerator OnResetAnimationsAsync(PlayerCinematicQueueItem item)
         {
             var result = new TaskResult<GameObject>();
@@ -49,13 +28,6 @@
 
         }
 
-        /**
-         *
-         * Terminal animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ActivatePrecursorTerminalCinematic()
         {
             this.Terminal.unlocked = true;
@@ -67,13 +39,6 @@
             this.StartCinematicMode();
         }
 
-        /**
-         *
-         * İyon küpünü hazırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void InitializeIonCube(GameObject gameObject)
         {
             if (gameObject.TryGetComponent<global::Pickupable>(out var pickupable))
@@ -97,13 +62,6 @@
             }
         }
 
-        /**
-         *
-         * Cinematik bittiğinde tetiklenecek kancayı değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void ActivateTeleportEndMode()
         {
             if (this.Terminal)

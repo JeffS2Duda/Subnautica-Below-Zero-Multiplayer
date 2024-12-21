@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using System;
 
@@ -13,22 +13,8 @@
     [HarmonyPatch(typeof(global::ArmsController), nameof(global::ArmsController.Update))]
     public static class Updated
     {
-        /**
-         *
-         * StopwatchItem nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static readonly StopwatchItem StopwatchItem = new StopwatchItem(BroadcastInterval.VehicleUpdated);
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void Postfix(global::ArmsController __instance)
         {
             if (Network.IsMultiplayerActive && ZeroGame.IsPlayerPiloting())
@@ -58,13 +44,6 @@
             }
         }
 
-        /**
-         *
-         * Ebeveyn transform döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Transform GetParentTransform()
         {
             if (SpyPenguinRemoteManager.main.GetActivePenguin())
@@ -80,13 +59,6 @@
             return global::Player.main.transform.parent;
         }
 
-        /**
-         *
-         * LWE Nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject GetLargeWorldEntity(Transform parentTransform)
         {
             if (SpyPenguinRemoteManager.main.GetActivePenguin())
@@ -102,13 +74,6 @@
             return parentTransform.GetComponentInParent<LargeWorldEntity>().gameObject;
         }
 
-        /**
-         *
-         * Teknoloji türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static TechType GetVehicleType()
         {
             if (SpyPenguinRemoteManager.main.currentPenguin)

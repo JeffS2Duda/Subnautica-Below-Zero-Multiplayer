@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Identity.World
+namespace Subnautica.Events.Patches.Identity.World
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,13 +12,6 @@
     [HarmonyPatch]
     public static class TechTypeClassIds
     {
-        /**
-         *
-         * Üzerine yazılacak Teknolojiler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, TechType> Overrides { get; set; } = new Dictionary<string, TechType>()
         {
             { "Misc/JukeboxDisk"              , TechType.JukeboxDisksAll },
@@ -35,25 +28,11 @@
             { "Drillable"                     , TechType.OreVein },
         };
 
-        /**
-         *
-         * Extra prefabs
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, KeyValuePair<string, TechType>> ExtraPrefabs { get; set; } = new Dictionary<string, KeyValuePair<string, TechType>>()
         {
             { "a8168151-52eb-4cd0-989d-f91bb601eb4f", new KeyValuePair<string, TechType>("WorldEntities/EnvironmentResources/CrashPowder.prefab", TechType.CrashPowder) },
         };
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPostfix]
         [HarmonyPatch(typeof(global::UWE.WorldEntityDatabase), MethodType.Constructor)]
         private static void Postfix(global::UWE.WorldEntityDatabase __instance)
@@ -82,13 +61,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPostfix]
         [HarmonyPatch(typeof(global::UWE.PrefabDatabase), nameof(global::UWE.PrefabDatabase.LoadPrefabDatabase))]
         private static void Postfix()

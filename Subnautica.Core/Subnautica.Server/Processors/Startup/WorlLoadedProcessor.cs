@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Startup
+namespace Subnautica.Server.Processors.Startup
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -15,13 +15,6 @@
 
     public class WorlLoadedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.WorldLoadedArgs>();
@@ -58,13 +51,6 @@
             return true;
         }
 
-        /**
-         *
-         * Resimleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<string, Metadata.PictureFrame> GetImages(List<string> existImages)
         {
             var pictureFrames = new Dictionary<string, Metadata.PictureFrame>();
@@ -86,13 +72,6 @@
             return pictureFrames;
         }
 
-        /**
-         *
-         * Resim isimlerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<string> GetImageNames()
         {
             var images = new List<string>();
@@ -107,13 +86,6 @@
             return images;
         }
 
-        /**
-         *
-         * Bağlı oyuncu listesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<PlayerItem> GetPlayers(AuthorizationProfile myProfile)
         {
             List<PlayerItem> result = new List<PlayerItem>();

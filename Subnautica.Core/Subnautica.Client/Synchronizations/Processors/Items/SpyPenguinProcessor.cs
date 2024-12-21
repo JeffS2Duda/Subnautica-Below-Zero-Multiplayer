@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -19,13 +19,6 @@
 
     public class SpyPenguinProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var component = packet.GetComponent<ItemModel.SpyPenguin>();
@@ -70,13 +63,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnProcessCompleted(ItemQueueProcess item)
         {
             var component = item.Action.GetProperty<ItemModel.SpyPenguin>("Component");
@@ -90,13 +76,6 @@
             }
         }
 
-        /**
-         *
-         * Bir nesne alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntityPickupSpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             if (item.Action.GetProperty<bool>("IsMine"))
@@ -118,13 +97,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -134,13 +106,6 @@
             }
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (ev.TechType == TechType.SpyPenguin)
@@ -151,13 +116,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (ev.TechType == TechType.SpyPenguin)
@@ -168,13 +126,6 @@
             }
         }
         
-        /**
-         *
-         * Spy Penguin kar avcısından kar kürkü alırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSpyPenguinSnowStalkerInteracting(SpyPenguinSnowStalkerInteractingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -182,13 +133,6 @@
             SpyPenguinProcessor.SendPacketToServer(ev.UniqueId, isStalkerFur: true, spawnChance: ev.SpawnChance);
         }
 
-        /**
-         *
-         * Spy Penguin bir nesne aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSpyPenguinItemPickedUp(SpyPenguinItemPickedUpEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -196,13 +140,6 @@
             SpyPenguinProcessor.SendPacketToServer(ev.UniqueId, isPickup: true, pickupItem: WorldPickupItem.Create(ev.Item));
         }
 
-        /**
-         *
-         * Spy Penguin bırakıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSpyPenguinDeploying(SpyPenguinDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -210,13 +147,6 @@
             SpyPenguinProcessor.SendPacketToServer(ev.UniqueId, isDeploy: true, position: ev.Position.ToZeroVector3(), rotation: ev.Rotation.ToZeroQuaternion(), name: ev.Name, health: ev.Health);
         }
 
-        /**
-         *
-         * Spy Penguin bırakıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, ZeroVector3 position = null, ZeroQuaternion rotation = null, string name = null, float health = 0f, WorldPickupItem pickupItem = null, float spawnChance = -1, bool isPickup = false, bool isStalkerFur = false, bool isDeploy = false, bool isAdded = false)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

@@ -11,22 +11,8 @@
 
     public class SeaTruckProcessor
     {
-        /**
-         *
-         * SeaTruck Bağlantı kontrol sayısı.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static int ConnectionCheckCount { get; set; } = 2 + 1;
 
-        /**
-         *
-         * SeaTruck bağlantılarını ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnConnectionIntialized()
         {
             if (Network.Session.Current.SeaTruckConnections != null)
@@ -73,13 +59,6 @@
             }
         }
 
-        /**
-         *
-         * Moonpool Expansion Kuyruk bağlantılarını ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMoonpoolExpansionTailsInitialized()
         {
             if (Network.Session.Current.Constructions != null)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.WorldEntity
+namespace Subnautica.Network.Models.WorldEntity
 {
     using MessagePack;
 
@@ -8,85 +8,29 @@
     [MessagePackObject]
     public class PlantEntity : NetworkWorldEntityComponent
     {
-        /**
-         *
-         * ProcessType değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public override EntityProcessType ProcessType { get; set; } = EntityProcessType.Plant;
 
-        /**
-         *
-         * TechType değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(4)]
         public TechType TechType { get; set; }
 
-        /**
-         *
-         * ActiveFruitCount değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(5)]
         public byte ActiveFruitCount { get; set; } = 0;
 
-        /**
-         *
-         * MaxFruit değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(6)]
         public byte MaxFruit { get; set; } = 0;
 
-        /**
-         *
-         * TimeNextFruit değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(7)]
         public float TimeNextFruit { get; set; } = 0;
 
-        /**
-         *
-         * SpawnInterval Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(8)]
         public float SpawnInterval { get; set; } = 0f;
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public PlantEntity()
         {
 
         }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public PlantEntity(TechType techType, byte activeFruitCount, byte maxFruit, float timeNextFruit, float spawnInterval)
         {
             this.TechType         = techType;
@@ -96,13 +40,6 @@
             this.SpawnInterval    = spawnInterval;
         }
 
-        /**
-         *
-         * Meyve bilgilerini senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SyncFruits(float currentTime, bool harvest = false)
         {
             if (this.SpawnInterval == -1f)

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic.Furnitures
+namespace Subnautica.Server.Logic.Furnitures
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,13 +12,6 @@
 
     public class Bench : BaseLogic
     {
-        /**
-         *
-         * Sınıfı başlatır
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             foreach (var construction in this.GetChairs())
@@ -31,13 +24,6 @@
             }
         }
 
-        /**
-         *
-         * Sandalyeleri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<KeyValuePair<string, ConstructionItem>> GetChairs()
         {
             return Server.Instance.Storages.Construction.Storage.Constructions.Where(q => q.Value.ConstructedAmount == 1f && API.Features.TechGroup.Chairs.Contains(q.Value.TechType)).ToList();

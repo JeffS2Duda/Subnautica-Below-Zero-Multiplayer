@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -13,13 +13,6 @@
 
     public class InteriorProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleInteriorArgs>();
@@ -46,13 +39,6 @@
             return true;
         }
 
-        /**
-         *
-         * Araca binerken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnVehicleInteriorToggle(VehicleInteriorToggleEventArgs ev)
         {
             ServerModel.VehicleInteriorArgs request = new ServerModel.VehicleInteriorArgs()

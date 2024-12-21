@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -14,13 +14,6 @@
 
     public class SeaTruckSleeperModuleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SeaTruckSleeperModuleArgs>();
@@ -67,13 +60,6 @@
             return true;
         }
 
-        /**
-         *
-         * işlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnBedSleepProcessCompleted(ItemQueueProcess item)
         {
             var uniqueId     = item.Action.GetProperty<string>("UniqueId");
@@ -107,13 +93,6 @@
             }
         }
 
-        /**
-         *
-         * işlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnPictureFrameSelected(ItemQueueProcess item)
         {
             var pictureFrame = Network.Identifier.GetComponentByGameObject<global::PictureFrame>(item.Action.GetProperty<string>("UniqueId"));
@@ -123,13 +102,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck Resim çerçevesi açılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSeaTruckPictureFrameOpening(SeaTruckPictureFrameOpeningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -137,13 +109,6 @@
             SeaTruckSleeperModuleProcessor.SendPacketToServer(ev.UniqueId, isOpeningPictureFrame: true);
         }
 
-        /**
-         *
-         * SeaTruck Resim çerçevesi resim seçilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSeaTruckPictureFrameImageSelecting(SeaTruckPictureFrameImageSelectingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -151,13 +116,6 @@
             SeaTruckSleeperModuleProcessor.SendPacketToServer(ev.UniqueId, isSelectingPictureFrame: true, pictureFrameData: ev.ImageData);
         }
 
-        /**
-         *
-         * Şarkı kutusunda veri değişimi olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnJukeboxUsed(JukeboxUsedEventArgs ev)
         {
             if (ev.IsSeaTruckModule)
@@ -166,13 +124,6 @@
             }
         }
 
-        /**
-         *
-         * Kullanıcı yatağa tıkladığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBedEnterInUseMode(BedEnterInUseModeEventArgs ev)
         {
             if (ev.IsSeaTruckModule)
@@ -186,13 +137,6 @@
             }
         }
 
-        /**
-         *
-         * Kullanıcı yatak'dan kalktığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBedExitInUseMode(BedExitInUseModeEventArgs ev)
         {
             if (ev.IsSeaTruckModule)
@@ -201,13 +145,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck modülü başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSeaTruckModuleInitialized(SeaTruckModuleInitializedEventArgs ev)
         {
             if (ev.TechType == TechType.SeaTruckSleeperModule)
@@ -216,13 +153,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, bool isOpeningPictureFrame = false, bool isSelectingPictureFrame = false, byte[] pictureFrameData = null, CustomProperty jukeboxData = null, global::Bed.BedSide sleepingSide = global::Bed.BedSide.None, bool isSleeping = false)
         {
             ServerModel.SeaTruckSleeperModuleArgs request = new ServerModel.SeaTruckSleeperModuleArgs()

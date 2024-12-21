@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Creatures
+namespace Subnautica.Events.Patches.Events.Creatures
 {
     using HarmonyLib;
 
@@ -38,67 +38,18 @@
 
     public class AnimationTrackerBehaviour : MonoBehaviour
     {
-        /**
-         *
-         * Creature sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Creature Creature { get; set; }
 
-        /**
-         *
-         * CreatureId değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ushort CreatureId { get; set; }
 
-        /**
-         *
-         * CreatureData sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private BaseCreatureData Data { get; set; }
 
-        /**
-         *
-         * OldValues değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<byte, byte> OldValues = new Dictionary<byte, byte>();
 
-        /**
-         *
-         * Result değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private byte Result;
 
-        /**
-         *
-         * IsChanged değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsChanged;
 
-        /**
-         *
-         * Aktif olurken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEnable()
         {
             this.Creature  = this.GetComponent<global::Creature>();
@@ -127,13 +78,6 @@
             }
         }
 
-        /**
-         *
-         * Her kare tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             foreach (var item in this.Data.GetAnimationTrackers())

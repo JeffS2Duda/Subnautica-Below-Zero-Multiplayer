@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -17,13 +17,6 @@
 
     public class DeployableStorageProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {
             var component = packet.GetComponent<ItemModel.DeployableStorage>();
@@ -69,13 +62,6 @@
             return true;
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (ev.TechType == TechType.SmallStorage || ev.TechType == TechType.QuantumLocker)
@@ -86,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (ev.TechType == TechType.SmallStorage || ev.TechType == TechType.QuantumLocker)
@@ -103,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Su geçirmez depoyu bıraktığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnDeployableStorageDeploying(DeployableStorageDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -117,13 +89,6 @@
             ItemDropProcessor.SendPacketToServer(ev.UniqueId, WorldPickupItem.Create(ev.Pickupable, PickupSourceType.PlayerInventoryDrop, true), ev.DeployPosition.ToZeroVector3(), Quaternion.identity.ToZeroQuaternion(), ev.Forward.ToZeroVector3());
         }
 
-        /**
-         *
-         * Tabela seçildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSignSelect(SignSelectEventArgs ev)
         {
             if (ev.TechType == TechType.SmallStorage)
@@ -139,13 +104,6 @@
             }
         }
 
-        /**
-         *
-         * Tabela da veri değişimi olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSignDataChanged(SignDataChangedEventArgs ev)
         {
             if (ev.TechType == TechType.SmallStorage)
@@ -154,13 +112,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, TechType techType = TechType.None, bool isSignProcess = false, bool isSignSelect = false, string signText = null, int signColorIndex = -1, WorldPickupItem pickupItem = null, bool isAdded = false)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using System.Collections.Generic;
 
@@ -10,22 +10,8 @@
 
     public class EnergyProductionProcessor : NormalProcessor
     {
-        /**
-         *
-         * Güç kaynaklarını önbelleğe alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<uint, global::PowerSource> PowerSources { get; set; } = new Dictionary<uint, global::PowerSource>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.EnergyTransmissionArgs>();
@@ -82,13 +68,6 @@
             return true;
         }
 
-        /**
-         *
-         * Güç kaynağındaki enerjiyi değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void AddEnergyToPowerSource(global::PowerSource powerSource, float energy)
         {
             powerSource.power = energy;

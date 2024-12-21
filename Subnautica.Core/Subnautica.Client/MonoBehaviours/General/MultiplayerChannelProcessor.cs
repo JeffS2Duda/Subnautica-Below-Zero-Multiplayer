@@ -18,67 +18,18 @@
 
     public class MultiplayerChannelProcessor : MonoBehaviour
     {
-        /**
-         *
-         * Player.Update Kilidi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Queue<NetworkPacket> Packets { get; set; } = new Queue<NetworkPacket>();
 
-        /**
-         *
-         * Verilerin alınacağı network kanalı.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public NetworkChannel ChannelId { get; set; }
 
-        /**
-         *
-         * Veri işleme aktiflik durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsActive { get; set; } = false;
 
-        /**
-         *
-         * Asenkron bir işlem mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsAsyncProcessor { get; set; } = false;
 
-        /**
-         *
-         * Asenkron durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsAsyncConsuming { get; set; } = false;
 
-        /**
-         *
-         * Sahneler arası silinmemesi için
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static Dictionary<NetworkChannel, MultiplayerChannelProcessor> Processors { get; set; } = new Dictionary<NetworkChannel, MultiplayerChannelProcessor>();
 
-        /**
-         *
-         * Komponent eklendiğinde çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Start()
         {
             if (!Processors.TryGetValue(this.ChannelId, out var instance))
@@ -92,13 +43,6 @@
             }
         }
 
-        /**
-         *
-         * Update tetiklendikten sonra çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (!this.IsActive)
@@ -145,13 +89,6 @@
             }
         }
 
-        /**
-         *
-         * Asenkron tüketimini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public IEnumerator AsyncConsumeQueue()
         {
             this.IsAsyncConsuming = true;
@@ -198,85 +135,36 @@
             this.IsAsyncConsuming = false;
         }
 
-        /**
-         *
-         * Veri tüketmeyi aktif/pasif yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetEnabled(bool isActive)
         {
             this.IsActive = isActive;
         }
 
-        /**
-         *
-         * Veri kanalını değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetChannel(NetworkChannel channelId)
         {
             this.ChannelId = channelId;
         }
 
-        /**
-         *
-         * Asenkron durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetAsyncEnabled(bool isAsyncProcessor)
         {
             this.IsAsyncProcessor = isAsyncProcessor;
         }
 
-        /**
-         *
-         * Packet ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void AddPacket(NetworkPacket packet)
         {
             this.Packets.Enqueue(packet);
         }
 
-        /**
-         *
-         * Tüm paketleri temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void ClearPackets()
         {
             this.Packets.Clear();
         }
 
-        /**
-         *
-         * Sınıf yok edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDestroy()
         {
             Processors.Remove(this.ChannelId);
         }
 
-        /**
-         *
-         * Packet'i işlemciye ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AddPacketToProcessor(NetworkChannel channelId, NetworkPacket packet)
         {
             if (Processors.TryGetValue(channelId, out var processor))
@@ -289,13 +177,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncuya işlemcileri ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool AddToPlayerMultiplayerProcessors()
         {
             MultiplayerChannelProcessor.Processors.Clear();
@@ -330,13 +211,6 @@
             return true;
         }
 
-        /**
-         *
-         * Oyuncuya işlemcileri ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AddProcessorToBehaviour(ProcessorBehaviour behaviour, IEnumerable<BaseProcessor> processors)
         {
             foreach (var processor in processors)

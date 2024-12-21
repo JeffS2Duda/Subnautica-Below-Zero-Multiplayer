@@ -9,40 +9,12 @@
 
     public class BuilderGhostAnimation : MonoBehaviour
     {
-        /**
-         *
-         * Builder sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Constructing.Builder Builder;
 
-        /**
-         *
-         * En sonki hız değerleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Quaternion SmoothedRotationVelocity;
 
-        /**
-         *
-         * StopwatchItem nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private StopwatchItem Timing = new StopwatchItem(BroadcastInterval.ConstructingGhostMoved);
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {   
             if (this.Builder != null && this.Builder.IsActive && this.Builder.IsGhostModelAnimation)
@@ -65,13 +37,6 @@
             }
         }
 
-        /**
-         *
-         * Pozisyonu günceller
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdatePosition()
         {            
             Vector3 positionVelocity = Vector3.zero;

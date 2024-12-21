@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.PDA
+namespace Subnautica.Events.Patches.Events.PDA
 {
     using HarmonyLib;
 
@@ -29,13 +29,6 @@
             }
         }
 
-        /**
-         *
-         * UniqueId değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId()
         {
             var result = PDAScanner.CanScan(PDAScanner.scanTarget);

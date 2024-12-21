@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using System.Collections.Generic;
 
@@ -18,13 +18,6 @@
 
     public class ExosuitDrillProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ExosuitDrillArgs>();
@@ -93,25 +86,11 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             pickupable.MultiplayerDrop();
         }
 
-        /**
-         *
-         * Exosuit ile maden kazarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnExosuitDrilling(ExosuitDrillingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -119,13 +98,6 @@
             ExosuitDrillProcessor.SendPacketToServer(ev.UniqueId, ev.SlotId, ev.MaxHealth, ev.DropTechType, ev.DropPositions, ev.IsMultipleDrill, ev.IsStaticWorldEntity);
         }
 
-        /**
-         *
-         * Spy Penguin bırakıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string slotId, float maxHealth, TechType dropTechType, List<ZeroVector3> dropPositions, bool isMultipleDrill, bool isStaticWorldEntity)
         {
             ServerModel.ExosuitDrillArgs request = new ServerModel.ExosuitDrillArgs()

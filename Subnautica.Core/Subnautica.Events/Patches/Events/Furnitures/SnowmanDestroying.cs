@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::Snowman), nameof(global::Snowman.OnHandClick))]
     public static class SnowmanDestroying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Snowman __instance)
         {
             if (!Network.IsMultiplayerActive)
@@ -56,13 +49,6 @@
             }
         }
 
-        /**
-         *
-         * Benzersiz Id döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(global::Snowman __instance)
         {
             var constructable = __instance.GetComponentInParent<Constructable>();

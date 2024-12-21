@@ -8,44 +8,16 @@ namespace Subnautica.Client.Multiplayer.Cinematics.CreatureCinematics
 
     public class GlowWhaleCinematic : CinematicController
     {
-        /**
-         *
-         * Balina yüzme sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::GlowWhaleRide GlowWhaleRide { get; set; }
 
-        /**
-         *
-         * Cinematic sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::PlayerCinematicController Cinematic { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.GlowWhaleRide = this.Target.GetComponentInChildren<global::GlowWhaleRide>();
             this.Cinematic     = this.Target.GetComponentInChildren<PlayerCinematicController>();
         }
 
-        /**
-         *
-         * Sürme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartRideCinematic()
         {
             this.PlayerAnimator.SetBool(this.GlowWhaleRide.playerRideAnimation, true);
@@ -62,13 +34,6 @@ namespace Subnautica.Client.Multiplayer.Cinematics.CreatureCinematics
             this.ZeroPlayer.EnableCinematicMode();
         }
 
-        /**
-         *
-         * Sürme animasyonunu durdurur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StopRideCinematic()
         {
             if (this.UniqueId.IsNotNull() && Network.Creatures.TryGetCreature(this.UniqueId.ToCreatureId(), out var creature))
@@ -86,13 +51,6 @@ namespace Subnautica.Client.Multiplayer.Cinematics.CreatureCinematics
             this.ZeroPlayer.DisableCinematicMode();
         }
 
-        /**
-         *
-         * Oyuncu bağlantısı kesildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnPlayerDisconnected()
         {
             if (this.UniqueId.IsNotNull())
@@ -111,13 +69,6 @@ namespace Subnautica.Client.Multiplayer.Cinematics.CreatureCinematics
             return true;
         }
 
-        /**
-         *
-         * Göz Etkileşim animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartEyeInteractCinematic()
         {
             this.SetCinematic(this.Cinematic);
@@ -125,13 +76,6 @@ namespace Subnautica.Client.Multiplayer.Cinematics.CreatureCinematics
             this.StartCinematicMode();
         }
 
-        /**
-         *
-         * Sinematik sona erdiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void EyeInteractCinematicEndMode()
         {
             if (this.UniqueId.IsNotNull() && Network.Creatures.TryGetCreature(this.UniqueId.ToCreatureId(), out var creature))

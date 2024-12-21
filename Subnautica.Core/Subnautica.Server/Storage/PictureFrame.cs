@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Storage
+namespace Subnautica.Server.Storage
 {
     using System;
     using System.IO;
@@ -11,22 +11,8 @@
 
     public class PictureFrame : BaseStorage
     {
-        /**
-         *
-         * Encyclopedia sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public PictureFrameStorage.PictureFrame Storage { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Start(string serverId)
         {
             this.ServerId = serverId;
@@ -35,13 +21,6 @@
             this.Load();
         }
 
-        /**
-         *
-         * Sunucu ansiklopedi verilerini belleğe yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Load()
         {
             if (File.Exists(this.FilePath))
@@ -73,13 +52,6 @@
             }
         }
 
-        /**
-         *
-         * Verileri diske yazar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void SaveToDisk()
         {
             lock (this.ProcessLock)
@@ -88,13 +60,6 @@
             }
         }        
         
-        /**
-         *
-         * Resim döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Subnautica.Network.Models.Metadata.PictureFrame GetImage(string constructionUniqueId)
         {
             lock (this.ProcessLock)
@@ -108,13 +73,6 @@
             }
         }
 
-        /**
-         *
-         * Resim ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AddImage(string constructionUniqueId, string imageName, byte[] imageData)
         {
             lock (this.ProcessLock)
@@ -124,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Resim kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool RemoveImage(string constructionUniqueId)
         {
             lock (this.ProcessLock)

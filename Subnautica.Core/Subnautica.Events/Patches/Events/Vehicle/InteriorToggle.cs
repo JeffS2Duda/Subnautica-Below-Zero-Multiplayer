@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch]
     public class InteriorToggle
     {
-        /*
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234 @hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(SeaTruckSegment), nameof(SeaTruckSegment.EnterHatch))]
         private static void SeaTruckSegment_EnterHatch(global::SeaTruckSegment __instance)
@@ -41,13 +34,6 @@
             }
         }
 
-        /*
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234 @hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckSegment), nameof(global::SeaTruckSegment.Exit))]
         private static void SeaTruckSegment_Exit(global::SeaTruckSegment __instance)

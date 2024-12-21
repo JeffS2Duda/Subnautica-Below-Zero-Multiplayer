@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -15,13 +15,6 @@
     [HarmonyPatch(typeof(global::Drillable), nameof(global::Drillable.OnDrill))]
     public static class ExosuitDrilling
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Drillable __instance, Vector3 position, Exosuit exo, out GameObject hitObject)
         {
             if (!Network.IsMultiplayerActive)
@@ -59,13 +52,6 @@
             return false;
         }
 
-        /**
-         *
-         * Kazım yapan kol sayısını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsMultipleDrill(global::Exosuit exo)
         {
             var drillCount = 0;
@@ -75,13 +61,6 @@
             return drillCount >= 2;
         }
 
-        /**
-         *
-         * Kalan sağlığı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static float GetLeftHealth(global::Drillable __instance)
         {
             float health = 0.0f;
@@ -93,13 +72,6 @@
             return health;
         }
 
-        /**
-         *
-         * Rastgele teknoloji döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType GetRandomTechType(global::Drillable __instance)
         {
             for (int index = 0; index < __instance.resources.Length; ++index)
@@ -119,13 +91,6 @@
             return TechType.Titanium;
         }
 
-        /**
-         *
-         * Rastgele konumlar döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<ZeroVector3> GetDropPositions(global::Drillable __instance, Vector3 centerPosition)
         {
             var positions = new List<ZeroVector3>();

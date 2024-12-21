@@ -15,13 +15,6 @@
 
     public class BaseHullStrengthProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.BaseHullStrengthTakeDamagingArgs>();
@@ -59,13 +52,6 @@
             return true;
         }
 
-        /**
-         *
-         * Sızıntıları senkronize eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SyncLeaks(global::Leakable leakable, List<ZeroVector3> points)
         {
             foreach (var item in leakable.leakingLeakPoints.ToList())
@@ -91,13 +77,6 @@
             }
         }
 
-        /**
-         *
-         * Bir nesne hasar aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTakeDamaging(TakeDamagingEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity && !ev.IsDestroyable && ev.OldHealth > 0f)
@@ -114,25 +93,11 @@
             }
         }
 
-        /**
-         *
-         * Üs dayanıklılığı düştüğünde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseHullStrengthCrushing(BaseHullStrengthCrushingEventArgs ev)
         {
             ev.IsAllowed = false;
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail Satilmis <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(string uniqueId, float damage = -1, DamageType damageType = DamageType.Normal, float maxHealth = -1, List<ZeroVector3> leakPoints = default)
         {
             ServerModel.BaseHullStrengthTakeDamagingArgs request = new ServerModel.BaseHullStrengthTakeDamagingArgs()
@@ -147,13 +112,6 @@
             NetworkClient.SendPacket(request);
         }
 
-        /**
-         *
-         * Sızıntı noktalarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static List<ZeroVector3> GetLeakPoints(global::Leakable component)
         {
             var leakPoints = new List<ZeroVector3>();

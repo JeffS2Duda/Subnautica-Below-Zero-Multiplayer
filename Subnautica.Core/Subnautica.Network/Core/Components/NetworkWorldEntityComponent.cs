@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Core.Components
+namespace Subnautica.Network.Core.Components
 {
     using System;
 
@@ -23,55 +23,20 @@
     [MessagePackObject]
     public abstract class NetworkWorldEntityComponent
     {
-        /**
-         *
-         * UniqueId değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public string UniqueId { get; set; }
 
-        /**
-         *
-         * IsSpawnable değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(1)]
         public bool IsSpawnable { get; set; } = true;
 
-        /**
-         *
-         * TechType değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public virtual EntityProcessType ProcessType { get; set; } = EntityProcessType.None;
 
-        /**
-         *
-         * Spawn durumunu pasif yapar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void DisableSpawn()
         {
             this.IsSpawnable = false;
         }
 
-        /**
-         *
-         * Komponenti döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetComponent<T>()
         {
             if (this is T)

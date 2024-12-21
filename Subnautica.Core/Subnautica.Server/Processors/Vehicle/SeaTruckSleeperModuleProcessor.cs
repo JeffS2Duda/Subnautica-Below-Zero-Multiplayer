@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Vehicle
+namespace Subnautica.Server.Processors.Vehicle
 {
     using Server.Core;
 
@@ -11,13 +11,6 @@
 
     public class SeaTruckSleeperModuleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SeaTruckSleeperModuleArgs>();
@@ -106,13 +99,6 @@
             return true;
         }
 
-        /**
-         *
-         * Resim dosyası adını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetNewImageName()
         {
             return string.Format("{0}.jpg", Tools.GetShortUniqueId());

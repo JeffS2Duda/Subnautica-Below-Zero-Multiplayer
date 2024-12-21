@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Player
+namespace Subnautica.Server.Processors.Player
 {
     using Server.Core;
 
@@ -11,13 +11,6 @@
 
     public class ClimbProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.PlayerClimbArgs>();

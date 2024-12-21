@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Metadata
+namespace Subnautica.Network.Models.Metadata
 {
     using MessagePack;
 
@@ -8,13 +8,6 @@
     [MessagePackObject]
     public class JukeboxUsed : MetadataComponent
     {
-        /**
-         *
-         * Data Değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public CustomProperty Data { get; set; }
     }

@@ -6,22 +6,8 @@
 
     public class ConstructorCinematic : CinematicController
     {
-        /**
-         *
-         * Yatağı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::ConstructorCinematicController Constructor { get; set; }
 
-        /**
-         *
-         * Animasyonu resetler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.Constructor = this.Target.GetComponentInChildren<global::ConstructorCinematicController>();
@@ -29,13 +15,6 @@
             this.Constructor.animator.SetBool(AnimatorHashID.deployed, true);
         }
 
-        /**
-         *
-         * Binme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void EngageStartCinematic()
         {
             this.Constructor.ResetAnimParams(this.PlayerAnimator);
@@ -44,13 +23,6 @@
             this.StartCinematicMode();
         }
 
-        /**
-         *
-         * İnme animasyonunu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void DisengageStartCinematic()
         {
             this.EngageConditionSimulate();
@@ -61,13 +33,6 @@
             this.StartCinematicMode();
         }
 
-        /**
-         *
-         * Engage koşul simülasyonunu çalıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void EngageConditionSimulate()
         {
             this.Constructor.animator.Play(this.Constructor.engageCinematicController.animParam, 0, 1f);

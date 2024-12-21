@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.WorldEntity
+namespace Subnautica.Network.Models.WorldEntity
 {
     using MessagePack;
 
@@ -9,23 +9,9 @@
     [MessagePackObject]
     public class Drillable : NetworkWorldEntityComponent
     {
-        /**
-         *
-         * ProcessType değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public override EntityProcessType ProcessType { get; set; } = EntityProcessType.Drillable;
 
-        /**
-         *
-         * LiveMixin değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(4)]
         public LiveMixin LiveMixin { get; set; }
     }

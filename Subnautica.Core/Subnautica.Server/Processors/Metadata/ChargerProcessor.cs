@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,13 +14,6 @@
 
     public class ChargerProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             if (Server.Instance.Logices.Interact.IsBlocked(construction.UniqueId, profile.UniqueId))
@@ -83,13 +76,6 @@
             return true;
         }
 
-        /**
-         *
-         * Slotları döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<string> GetSlots(TechType techType)
         {
             if (techType == TechType.BatteryCharger)

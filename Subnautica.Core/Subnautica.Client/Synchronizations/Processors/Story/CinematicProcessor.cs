@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -13,22 +13,8 @@
 
     public class CinematicProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<ServerModel.StoryCinematicTriggerArgs> CinematicQueue = new List<ServerModel.StoryCinematicTriggerArgs>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryCinematicTriggerArgs>();
@@ -39,13 +25,6 @@
             return true;
         }
 
-        /**
-         *
-         * Her Sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             if (this.CinematicQueue.Count > 0)
@@ -72,13 +51,6 @@
             }
         }
 
-        /**
-         *
-         * Hikaye cinematic tetiklenirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCinematicTriggering(CinematicTriggeringEventArgs ev)
         {
             ev.IsAllowed = false;

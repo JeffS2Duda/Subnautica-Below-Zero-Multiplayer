@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using System;
 
@@ -22,13 +22,6 @@
 
     public class EntitySlotSpawnProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.EntitySlotProcessArgs>();
@@ -54,13 +47,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne doğduğında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnPickupEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             if (!pickupable.LocalPickup())
@@ -69,13 +55,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne doğduğında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnBreakableEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             pickupable.MultiplayerDrop();
@@ -109,13 +88,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne Slotu doğarken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntitySlotSpawning(EntitySlotSpawningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -133,13 +105,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawn olurken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntitySpawning(EntitySpawningEventArgs ev)
         {
             if (ev.TechType.IsCreature() &&  ev.TechType.IsSynchronizedCreature())
@@ -148,13 +113,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawn olduktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEntitySpawned(EntitySpawnedEventArgs ev)
         {
             if (ev.SlotType == SlotType.None && ev.TechType.IsCreature() && !ev.UniqueId.IsWorldStreamer())
@@ -195,13 +153,6 @@
             }
         }
 
-        /**
-         *
-         * Kaynak kırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBreakableResourceBreaking(BreakableResourceBreakingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -212,13 +163,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu yerden eşya aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerItemPickedUp(PlayerItemPickedUpEventArgs ev)
         {
             if (!ev.IsStaticWorldEntity && ev.UniqueId.IsWorldStreamer())
@@ -229,13 +173,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(int slotId, bool isBreakable = false, WorldPickupItem worldPickupItem = null, ZeroVector3 position = null)
         {
             var slot = Network.WorldStreamer.GetSlotById(slotId);
@@ -252,13 +189,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık slot id değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static int GetCreatureSlotId(GameObject gameObject)
         {
             if (gameObject.TryGetComponent<global::Creature>(out var creature))

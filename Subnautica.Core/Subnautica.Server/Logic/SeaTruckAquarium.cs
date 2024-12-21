@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic
+namespace Subnautica.Server.Logic
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,30 +14,9 @@
 
     public class SeaTruckAquarium : BaseLogic
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StopwatchItem Timing { get; set; } = new StopwatchItem(5000f);
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<ServerModel.SeaTruckAquariumModuleArgs> Requests { get; set; } = new List<ServerModel.SeaTruckAquariumModuleArgs>();
 
-        /**
-         *
-         * Her tick'de tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate(float fixedTime)
         {
             if (this.Timing.IsFinished() && API.Features.World.IsLoaded)
@@ -93,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * Paketi tüm oyunculara gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendPacketToAllClients()
         {
             if (this.Requests.Count > 0)
@@ -113,25 +85,11 @@
             }
         }
 
-        /**
-         *
-         * Depolama sınıfını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WorldPickupItem GetNewPickupItem()
         {
             return WorldPickupItem.Create(Metadata.StorageItem.Create(Network.Identifier.GenerateUniqueId(), this.GetFishType()), API.Enums.PickupSourceType.None);
         }
 
-        /**
-         *
-         * Rastgele balık döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private TechType GetFishType()
         {
             var randomIndex = Tools.GetRandomInt(0, 100);
@@ -163,13 +121,6 @@
             return TechType.SpinnerFish;
         }
 
-        /**
-         *
-         * Enerji sağlayan yapıları döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<WorldDynamicEntity> GetSeaTruckAquariumModules()
         {
             return Core.Server.Instance.Storages.World.Storage.DynamicEntities.Where(q => q.TechType == TechType.SeaTruckAquariumModule).ToList();

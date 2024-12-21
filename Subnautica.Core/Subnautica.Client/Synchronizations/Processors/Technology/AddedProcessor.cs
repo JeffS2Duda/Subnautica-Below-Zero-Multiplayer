@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Technology
+namespace Subnautica.Client.Synchronizations.Processors.Technology
 {
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
@@ -11,13 +11,6 @@
 
     public class AddedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.TechnologyAddedArgs>();
@@ -40,13 +33,6 @@
             return true;
         }
 
-        /**
-         *
-         * Teknoloji taraması yapıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnTechnologyAdded(TechnologyAddedEventArgs ev)
         {
             ServerModel.TechnologyAddedArgs result = new ServerModel.TechnologyAddedArgs()

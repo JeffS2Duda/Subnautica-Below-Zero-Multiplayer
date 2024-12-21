@@ -20,13 +20,6 @@
 
     public class CinematicController : MonoBehaviour
     {
-        /**
-         *
-         * Sınıf değerlerini tanımlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Initialize(ZeroPlayer player)
         {
             this.ZeroPlayer     = player;
@@ -34,73 +27,31 @@
             this.PlayerAnimator = player.Animator;
         }
 
-        /**
-         *
-         * Cinematic Geçerli mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsValid()
         {
             return this.IsValidCinematic && this.ZeroPlayer != null && this.Target;
         }
 
-        /**
-         *
-         * Cinematic Geçerli durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetValid(bool isValid)
         {
             this.IsValidCinematic = isValid;
         }
 
-        /**
-         *
-         * UniqueId değerini değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetUniqueId(string uniqueId)
         {
             this.UniqueId = uniqueId;
         }
 
-        /**
-         *
-         * Özellik kaydı yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetProperties(List<GenericProperty> properties)
         {
             this.Properties = properties;
         }
 
-        /**
-         *
-         * Özellik kaydı yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RegisterProperty(string key, object value)
         {
             this.Properties.Add(new GenericProperty(key, value));
         }
 
-        /**
-         *
-         * Özellik kaydı yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetProperty<T>(string key)
         {
             var property = this.Properties.Where(q => q.Key == key).FirstOrDefault();
@@ -112,13 +63,6 @@
             return (T)property.Value;
         }
 
-        /**
-         *
-         * Aktiflik durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetCinematicModeActive(bool isActive)
         {
             this.IsCinematicModeActive = isActive;
@@ -133,39 +77,18 @@
             }
         }
 
-        /**
-         *
-         * Cinematik bittiğinde tetiklenecek kancayı değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetCinematicEndMode(Action cinematicEndModeAction, bool isCinematicEndPosition = true)
         {
             this.CinematicEndModeAction = cinematicEndModeAction;
             this.IsCinematicEndPosition = isCinematicEndPosition;
         }
 
-        /**
-         *
-         * Mevcut Durumu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetState(global::PlayerCinematicController.State state)
         {
             this.TimeStateChanged = Time.time;
             this.State            = state;
         }
 
-        /**
-         *
-         * Mevcut Animasyon Durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool SetAnimState(bool state)
         {
             if (this.AnimState == state)
@@ -240,13 +163,6 @@
             return true;
         }
 
-        /**
-         *
-         * Cinematic ayarlarını yapılandırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetCinematic(global::PlayerCinematicController cinematic, bool isHasExitTime = false, bool isFastInterpolation = true, bool isSkipEndAnimation = false, bool isSkipFirstAnimation = true)
         {
             this.CinematicEndModeAction         = null;
@@ -277,37 +193,16 @@
             this.DirectorInitialize();
         }
 
-        /**
-         *
-         * Animasyon başlamadan önce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void OnStart(PlayerCinematicQueueItem item)
         {
             this.Target = Network.Identifier.GetGameObject(item.UniqueId, true);
         }
 
-        /**
-         *
-         * Animasyonları sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual void OnResetAnimations(PlayerCinematicQueueItem item)
         {
 
         }
 
-        /**
-         *
-         * Animasyonları sıfırlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual IEnumerator OnResetAnimationsAsync(PlayerCinematicQueueItem item)
         {
             yield return CoroutineUtils.waitForNextFrame;
@@ -330,25 +225,11 @@
             this.EnableResetCinematic();
         }
 
-        /**
-         *
-         * Oyuncu bağlantısı kesildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public virtual bool OnPlayerDisconnected()
         {
             return false;
         }
 
-        /**
-         *
-         * Sinematik modu başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool StartCinematicMode()
         {
             if (this.ZeroPlayer == null || this.ZeroPlayer.PlayerModel == null)
@@ -388,23 +269,9 @@
                 this.SetAnimState(true);
             }
 
-            /*
-            for (int i = 0; i < this.Animator.layerCount; i++)
-            {
-                Log.Info("Cinematic Layer Name: " + this.Animator.GetLayerName(i));
-            }
-            */
-
             return true;
         }
 
-        /**
-         *
-         * Her kare sonunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void LateUpdate()
         {
             if (!this.IsCinematicModeActive)
@@ -514,13 +381,6 @@
             }
         }
         
-        /**
-         *
-         * Sinematik bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool OnPlayerCinematicModeEnd()
         {
             if (!this.IsCinematicModeActive)
@@ -552,13 +412,6 @@
             return true;
         }
 
-        /**
-         *
-         * Giriş sinematiğini atlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SkipFirstCinematic(float num)
         {
             float currentTime = 0f;
@@ -573,26 +426,12 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu konumunu günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdatePlayerPosition()
         {
             this.Player.transform.position = this.AnimatedTransform.position;
             this.Player.transform.rotation = this.AnimatedTransform.rotation;
         }
 
-        /**
-         *
-         * Son konumu günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateLastPosition()
         {
             if (this.ZeroPlayer != null)
@@ -605,13 +444,6 @@
             }
         }
 
-        /**
-         *
-         * Sinematik bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool EndCinematicMode(bool updatePosition = true)
         {
             if (!this.IsCinematicModeActive)
@@ -662,25 +494,11 @@
             return true;
         }
 
-        /**
-         *
-         * Sinematik bittiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnDirectorStopped(PlayableDirector director)
         {
             this.EndCinematicMode();
         }
 
-        /**
-         *
-         * Cinematic katman numarasını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private int GetLayerId()
         {
             if (this.Animator.layerCount <= 0 )
@@ -701,13 +519,6 @@
             return 0;
         }
 
-        /**
-         *
-         * Direktörü başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void DirectorInitialize()
         {
             if (this.Director)
@@ -732,316 +543,85 @@
             }
         }
 
-        /**
-         *
-         * Sınıf pasif olunca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnDisable()
         {
             this.EndCinematicMode();
         }
 
-        /**
-         *
-         * Sınıf pasif olunca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void EnableResetCinematic()
         {
             this.IsNotActiveResetCinematic = true;
         }
 
-        /**
-         *
-         * Sınıf pasif olunca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void DisableResetCinematic()
         {
             this.IsNotActiveResetCinematic = false;
         }
 
-        /**
-         *
-         * Yapı Id
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string UniqueId { get; set; }
 
-        /**
-         *
-         * Aktiflik Durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsCinematicModeActive { get; set; } = false;
         
-        /**
-         *
-         * Hedefi barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject Target { get; set; }
 
-        /**
-         *
-         * Katman id'sini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public int LayerId { get; set; }
 
-        /**
-         *
-         * IsHasExitTime nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsHasExitTime { get; set; }
 
-        /**
-         *
-         * Özellikleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<GenericProperty> Properties { get; set; } = new List<GenericProperty>();
 
-        /**
-         *
-         * Cinematik bittiğinde tetiklenecek kancayı değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Action CinematicEndModeAction { get; set; }
 
-        /**
-         *
-         * Cinematik bittiğinde konum güncellensin mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsCinematicEndPosition { get; set; }
 
-        /**
-         *
-         * Rebind Yapılıp yapılmayacağı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsRebindAllowed { get; set; }
 
-        /**
-         *
-         * ZeroPlayer Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroPlayer ZeroPlayer { get; set; }
 
-        /**
-         *
-         * Son değişme Zamanı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float TimeStateChanged { get; set; } = 0f;
 
-        /**
-         *
-         * Mevcut Durum
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public global::PlayerCinematicController.State State { get; set; }
 
-        /**
-         *
-         * Mevcut Animasyon Durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool AnimState { get; set; } = false;
 
-        /**
-         *
-         * Son Oyuncu Pozisyonu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Vector3 PlayerFromPosition { get; set; } = Vector3.zero;
 
-        /**
-         *
-         * Son Oyuncu Açısı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Quaternion PlayerFromRotation { get; set; } = Quaternion.identity;
 
-        /**
-         *
-         * Oyuncu Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject Player { get; set; }
 
-        /**
-         *
-         * Oyuncu Animator Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Animator PlayerAnimator { get; set; }
 
-        /**
-         *
-         * Animasyon Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Animator Animator { get; set; }
 
-        /**
-         *
-         * Animasyon Hareket Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Transform AnimatedTransform { get; set; }
 
-        /**
-         *
-         * Animasyon Bitiş Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Transform EndTransform { get; set; }
 
-        /**
-         *
-         * Director Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public PlayableDirector Director { get; set; }
 
-        /**
-         *
-         * DirectorLabelTrack Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string DirectorLabelTrack { get; set; }
 
-        /**
-         *
-         * DirectorLabel Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public PropertyName DirectorLabel { get; set; }
 
-        /**
-         *
-         * AnimParamReceivers Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public GameObject[] AnimParamReceivers { get; set; }
 
-        /**
-         *
-         * Stopwatch Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Stopwatch Stopwatch { get; set; } = new Stopwatch();
 
-        /**
-         *
-         * IsValidCinematic Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsNotActiveResetCinematic { get; private set; } = true;
 
-        /**
-         *
-         * IsValidCinematic Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsValidCinematic { get; set; }
 
-        /**
-         *
-         * Animasyon Ayarları (String)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string ReceiversAnimParam { get; set; }
         public string PlayerViewAnimationName { get; set; }
         public string PlayerViewInterpolateAnimParam { get; set; }
         public string InterpolateAnimParam { get; set; }
         public string AnimParam { get; set; }
 
-        /**
-         *
-         * Animasyon Ayarları (float)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public float InterpolationTime { get; set; }
         public float InterpolationTimeOut { get; set; }
         public float InterpolationDelayTime { get; set; }
 
-        /**
-         *
-         * Animasyon Ayarları (bool)
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsSkipFirstAnimation { get; set; }
         public bool IsSkipEndAnimation { get; set; }
         public bool InterpolateDuringAnimation { get; set; }

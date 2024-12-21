@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Logic.Furnitures
+namespace Subnautica.Server.Logic.Furnitures
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,31 +14,10 @@
 
     public class Crafter : BaseLogic
     {
-        /**
-         *
-         * Bekleyen İşlemler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Queue<MetadataComponentArgs> Queue { get; set; } = new Queue<MetadataComponentArgs>();
 
-        /**
-         *
-         * Tüketilecek enerji miktarı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float EnergyAmount { get; set; } = 5f;
 
-        /**
-         *
-         * Zamanlayıcının geri dönüş methodu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnUpdate(float deltaTime)
         {
             if (World.IsLoaded && this.Queue.Count > 0)
@@ -102,25 +81,11 @@
             }
         }
 
-        /**
-         *
-         * Craft işlemini kuyruğa alır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Craft(MetadataComponentArgs packet)
         {
             this.Queue.Enqueue(packet);
         }
 
-        /**
-         *
-         * SeaTruck Crafter Nesnesini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public WorldDynamicEntity GetSeaTruckEntity(string uniqueId) 
         {
             foreach (var module in Core.Server.Instance.Storages.World.Storage.DynamicEntities.Where(q => q.TechType == TechType.SeaTruckFabricatorModule))

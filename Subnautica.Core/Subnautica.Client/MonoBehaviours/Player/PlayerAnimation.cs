@@ -12,13 +12,6 @@
 
     public class PlayerAnimation : MonoBehaviour
     {
-        /**
-         *
-         * Komponent eklendiğinde çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake() 
         {
             this.Animator  = this.gameObject.GetComponent<Animator>();
@@ -41,13 +34,6 @@
             }
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (World.IsLoaded && this.Player != null && this.Player.IsCreatedModel)
@@ -88,13 +74,6 @@
             }
         }
 
-        /**
-         *
-         * Her geç güncellemede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void LateUpdate()
         {
             if (World.IsLoaded && this.Player != null && this.Player.IsCreatedModel)
@@ -117,13 +96,6 @@
             }
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (this.Player != null && this.Player.IsCreatedModel)
@@ -135,13 +107,6 @@
             }
         }
 
-        /**
-         *
-         * Yürüme animasyonu uygular
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdateMovementAnimation()
         {
             if (this.IsTeleported || this.Player.VehicleType != TechType.None)
@@ -161,13 +126,6 @@
             this.Animator.SetFloat(AnimatorHashID.move_speed_z, this.SmoothedVelocity.z);
         }
 
-        /**
-         *
-         * Oyuncu animasyonlarını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void UpdatePlayerAnimations()
         {
             if (this.Player.AnimationQueue.Count > 0)
@@ -191,13 +149,6 @@
             }
         }
 
-        /**
-         *
-         * SeaTruck içinde olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool UpdateIsInSeaTruck(bool force = false, bool isKeepPosition = false)
         {
             if (!force && (this.LastInteriorId == this.Player.CurrentInteriorId || !this.Player.IsMovementActive))
@@ -237,13 +188,6 @@
             return false;
         }
 
-        /**
-         *
-         * Su altında olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateIsUnderwater()
         {
             if (this.Player.CurrentSubRootId.IsNotNull())
@@ -268,13 +212,6 @@
             }
         }
 
-        /**
-         *
-         * Yüzeyde olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateIsOnSurface()
         {
             var y = this.transform.position.y;
@@ -288,13 +225,6 @@
             }
         }
 
-        /**
-         *
-         * Hareketi enterpolasyon yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void InterpolateMovement(bool isInSeaTruck)
         {
             if (isInSeaTruck)
@@ -327,37 +257,16 @@
             this.Player.SetVelocity(this.SmoothedPositionVelocity);
         }
 
-        /**
-         *
-         * Döndürmeyi enterpolasyon yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void InterpolateRotation()
         {
             this.transform.rotation = BroadcastInterval.QuaternionSmoothDamp(this.transform.rotation, this.Player.Rotation, ref this.SmoothedRotationVelocity, 0.1f);
         }
 
-        /**
-         *
-         * Kamera açısını günceller
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void InterpolateCameraViewPitch()
         {
             this.CurrentCameraPitch = Mathf.SmoothDamp(this.CurrentCameraPitch, this.Player.CameraPitch, ref this.CameraPitchVelocity, 0.1f);
         }
 
-        /**
-         *
-         * Oyuncu ifadelerini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool UpdatePlayerEmotes()
         {
             if (this.Player.EmoteIndex == this.CurrentEmoteIndex)
@@ -387,169 +296,43 @@
             return true;
         }
 
-        /**
-          *
-          * Oyuncu hızını döner.
-          *
-          * @author Ismail <ismaiil_0234@hotmail.com>
-          *
-          */
         public Vector3 GetVelocity()
         {
             return this.SmoothedPositionVelocity;
         }
 
-        /**
-         *
-         * Oyuncu sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroPlayer Player;
 
-        /**
-         *
-         * Sol kolu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Bone LeftArmBone;
 
-        /**
-         *
-         * Sağ kolu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public Bone RightArmBone;
 
-        /**
-         *
-         * Animasyon sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Animator Animator;
 
-        /**
-         *
-         * Katı vücudu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Rigidbody RigidBody;
 
-        /**
-         *
-         * En sonki hız değerleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Vector3 SmoothedVelocity = Vector3.zero;
 
-        /**
-         *
-         * En sonki hız değerleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Vector3 SmoothedPositionVelocity = Vector3.zero;
 
-        /**
-         *
-         * En sonki hız değerleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Quaternion SmoothedRotationVelocity;
 
-        /**
-         *
-         * RightHandItemVelocity Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Quaternion RightHandItemVelocity;
 
-        /**
-         *
-         * LeftHandItemVelocity Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Quaternion LeftHandItemVelocity;
 
-        /**
-         *
-         * CurrentRightArmRotation Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Quaternion CurrentRightArmRotation;
 
-        /**
-         *
-         * CurrentLeftArmRotation Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Quaternion CurrentLeftArmRotation;
 
-        /**
-         *
-         * CurrentCameraPitch Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float CurrentCameraPitch;
 
-        /**
-         *
-         * CameraPitchVelocity Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float CameraPitchVelocity;
 
-        /**
-         *
-         * LastInteriorId Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string LastInteriorId;
 
-        /**
-         *
-         * CurrentEmoteIndex Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float CurrentEmoteIndex;
 
-        /**
-         *
-         * IsTeleported Değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsTeleported;
     }
 }

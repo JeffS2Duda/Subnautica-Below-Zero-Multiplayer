@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Furnitures
+namespace Subnautica.Events.Patches.Fixes.Furnitures
 {
     using HarmonyLib;
 
@@ -9,13 +9,6 @@
     [HarmonyPatch]
     public class Hoverpad
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::HoverpadUndockTrigger), nameof(global::HoverpadUndockTrigger.OnHandHover))]
         private static bool HoverpadUndockTriggerOnHandHover(global::HoverpadUndockTrigger __instance)
@@ -39,13 +32,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::HoverbikeEnterTrigger), nameof(global::HoverbikeEnterTrigger.OnHandHover))]
         private static bool HoverbikeEnterTriggerOnHandHover(global::HoverbikeEnterTrigger __instance)
@@ -69,13 +55,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::HoverpadConstructor), nameof(global::HoverpadConstructor.OnConstructionDone))]
         private static bool ConstructorOnDone(global::HoverpadConstructor __instance)
@@ -99,13 +78,6 @@
             return false;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPostfix]
         [HarmonyPatch(typeof(global::GUI_HoverpadTerminal), nameof(global::GUI_HoverpadTerminal.StartBuild))]
         private static void TerminalStartBuild(global::GUI_HoverpadTerminal __instance, float buildDuration)
@@ -117,13 +89,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::GUI_HoverpadTerminal), nameof(global::GUI_HoverpadTerminal.Update))]
         private static bool TerminalUpdate(global::GUI_HoverpadTerminal __instance)

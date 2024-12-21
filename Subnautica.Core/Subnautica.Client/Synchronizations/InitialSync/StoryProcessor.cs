@@ -9,13 +9,6 @@
 
     public class StoryProcessor
     {
-        /**
-         *
-         * Hedefleri tamamlandı yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnGoalsCompleteInitialized()
         {
             using (EventBlocker.Create(ProcessType.NotificationAdded))
@@ -50,13 +43,6 @@
             uGUI_PopupNotification.main.IncomingCall(Network.Session.Current.Story.IncomingCallGoalKey);
         }        
         
-        /**
-         *
-         * Hikaye ve PDA loglarını işler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void ProcessCompletedGoal(ZeroStoryGoal goal)
         {
             if (goal.IsPlayMuted)

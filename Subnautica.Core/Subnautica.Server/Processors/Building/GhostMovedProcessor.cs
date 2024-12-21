@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Building
+namespace Subnautica.Server.Processors.Building
 {
     using Server.Core;
     
@@ -9,13 +9,6 @@
 
     public class GhostMovedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ConstructionGhostMovingArgs>();

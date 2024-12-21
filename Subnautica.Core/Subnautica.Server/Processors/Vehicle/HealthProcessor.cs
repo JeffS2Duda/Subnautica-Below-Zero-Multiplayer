@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Vehicle
+namespace Subnautica.Server.Processors.Vehicle
 {
     using Server.Core;
 
@@ -16,13 +16,6 @@
 
     public class HealthProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleHealthArgs>();
@@ -58,13 +51,6 @@
             return true;
         }
 
-        /**
-         *
-         * Aracı yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void KillVehicle(WorldDynamicEntity entity)
         {
             foreach (var connection in Server.Instance.Storages.World.Storage.SeaTruckConnections.ToSet())

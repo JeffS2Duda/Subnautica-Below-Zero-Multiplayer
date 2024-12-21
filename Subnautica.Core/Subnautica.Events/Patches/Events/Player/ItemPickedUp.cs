@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.Pickup))]
     public static class ItemPickedUp
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Inventory __instance, ref bool __result, global::Pickupable pickupable)
         {
             if (Network.IsMultiplayerActive && __instance._container.HasRoomFor(pickupable) && !EventBlocker.IsEventBlocked(ProcessType.ItemPickup))

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Identity.World
+namespace Subnautica.Events.Patches.Identity.World
 {
     using HarmonyLib;
 
@@ -16,25 +16,11 @@
             __instance.gameObject.WaitForInitialize(CheckAction, SuccessAction);
         }
 
-        /**
-         *
-         * Id kontrolü yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool CheckAction(GameObject gameObject, int currentTick)
         {
             return currentTick >= 5;
         }
 
-        /**
-         *
-         * Id tanımlanınca çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SuccessAction(GameObject gameObject)
         {
             if (gameObject.TryGetComponent<global::PingInstance>(out var pingInstance))

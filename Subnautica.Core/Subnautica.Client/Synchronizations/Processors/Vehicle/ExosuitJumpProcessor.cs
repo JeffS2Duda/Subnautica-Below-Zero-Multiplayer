@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
@@ -9,25 +9,11 @@
 
     public class ExosuitJumpProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             return true;
         }
 
-        /**
-         *
-         * Exosuit ile zıplandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnExosuitJumping(ExosuitJumpingEventArgs ev)
         {
             ServerModel.ExosuitJumpArgs request = new ServerModel.ExosuitJumpArgs()

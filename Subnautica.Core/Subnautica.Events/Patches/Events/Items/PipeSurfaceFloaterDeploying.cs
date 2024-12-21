@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -13,13 +13,6 @@
     [HarmonyPatch(typeof(global::PipeSurfaceFloater), nameof(global::PipeSurfaceFloater.OnToolUseAnim))]
     public class PipeSurfaceFloaterDeploying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::PipeSurfaceFloater __instance)
         {
             if (Network.IsMultiplayerActive)
@@ -41,13 +34,6 @@
             return true;
         }
 
-        /**
-         *
-         * Koordinatı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Vector3 GetDropPosition(global::PipeSurfaceFloater __instance)
         {
             return ZeroGame.FindDropPosition(__instance.GetDropPosition());

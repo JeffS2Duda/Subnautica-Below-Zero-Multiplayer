@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -16,13 +16,6 @@
 
     public class ExosuitStorageProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ExosuitStorageArgs>();
@@ -58,13 +51,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnProcessCompleted(ItemQueueProcess item)
         {
             var component = item.Action.GetProperty<ServerModel.ExosuitStorageArgs>("Component");
@@ -78,13 +64,6 @@
             }
         }
 
-        /**
-         *
-         * Bir nesne alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntityPickupSpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             if (item.Action.GetProperty<bool>("IsMine"))
@@ -93,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * Exosuit ile yerden nesne alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnExosuitItemPickedUp(ExosuitItemPickedUpEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -110,13 +82,6 @@
             }
         }
 
-        /**
-         *
-         * Depolamaya eşya eklendiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
         {
             if (ev.TechType == TechType.Exosuit)
@@ -127,13 +92,6 @@
             }
         }
 
-        /**
-         *
-         * Depolama'dan eşya kaldırıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorageItemRemoving(StorageItemRemovingEventArgs ev)
         {
             if (ev.TechType == TechType.Exosuit)
@@ -144,13 +102,6 @@
             }
         }
 
-        /**
-         *
-         * Spy Penguin bırakıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, WorldPickupItem pickupItem = null, bool isPickup = false, bool isAdded = false)
         {
             ServerModel.ExosuitStorageArgs request = new ServerModel.ExosuitStorageArgs()

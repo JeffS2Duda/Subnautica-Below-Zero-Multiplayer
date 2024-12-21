@@ -50,31 +50,10 @@ namespace Subnautica.Events.Patches.Events.Game
 
     public class SubnameInputDetail
     {
-        /**
-         *
-         * UniqueId değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string UniqueId { get; private set; }
 
-        /**
-         *
-         * TechType değerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public TechType TechType { get; private set; }
 
-        /**
-         *
-         * Detayları döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static SubnameInputDetail GetInformation(GameObject gameObject)
         {
             var response = new SubnameInputDetail();

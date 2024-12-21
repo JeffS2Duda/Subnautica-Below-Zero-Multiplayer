@@ -17,35 +17,13 @@
 
     public class EquipmentProcessor : NormalProcessor
     {
-        /**
-         *
-         * Zamanlanmış veri gönderim durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsSending { get; set; } = false;
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             return true;
         }
 
-        /**
-         *
-         * Oyuncu bir eşyayı kuşandığında tetiklenir.
-         * Oyuncu bir eşyayı üzerinden çıkardığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnProcessEquipment()
         {
             if (!IsSending && !EventBlocker.IsEventBlocked(ProcessType.InventoryEquipment))
@@ -54,13 +32,6 @@
             }
         }
 
-        /**
-         *
-         * Zamanlanmış veriyi sunucuya gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator SendServerData()
         {
             IsSending = true;
@@ -79,13 +50,6 @@
         }
 
 
-        /**
-         *
-         * Ekipman verilerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static byte[] GetEquipments()
         {
             using (PooledObject<ProtobufSerializer> serializer = ProtobufSerializerPool.GetProxy())

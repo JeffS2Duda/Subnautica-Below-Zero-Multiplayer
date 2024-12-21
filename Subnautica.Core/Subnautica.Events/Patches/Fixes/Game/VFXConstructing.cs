@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Game
+namespace Subnautica.Events.Patches.Fixes.Game
 {
     using System.Collections.Generic;
 
@@ -11,22 +11,8 @@
     [HarmonyPatch]
     public static class VFXConstructing
     {
-        /**
-         *
-         * Süreleri barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static Dictionary<string, float> CrafterTimes { get; set; } = new Dictionary<string, float>();
 
-        /**
-         *
-         * StartConstruction Yaması
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::VFXConstructing), nameof(global::VFXConstructing.StartConstruction))]
         private static void StartConstruction(global::VFXConstructing __instance)
@@ -43,13 +29,6 @@
             }
         }
 
-        /**
-         *
-         * UpdateConstruct Yaması
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::VFXConstructing), nameof(global::VFXConstructing.UpdateConstruct))]
         private static bool UpdateConstruct(global::VFXConstructing __instance)
@@ -88,13 +67,6 @@
             return false;
         }
 
-        /**
-         *
-         * Sınıf id'sini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(global::VFXConstructing __instance)
         {
             return Network.Identifier.GetIdentityId(__instance.gameObject);

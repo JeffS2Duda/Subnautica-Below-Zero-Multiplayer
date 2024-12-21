@@ -12,31 +12,10 @@ namespace Subnautica.Events
 
     public sealed class Main : SubnauticaPlugin
     {
-        /**
-         *
-         * Eklenti Adı
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override string Name { get; } = "Subnautica Events";
 
-        /**
-         *
-         * Eklenti önceliği
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override SubnauticaPluginPriority Priority { get; set; } = SubnauticaPluginPriority.First;
 
-        /**
-         *
-         * Eklenti Aktifleştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnEnabled()
         {
             base.OnEnabled();

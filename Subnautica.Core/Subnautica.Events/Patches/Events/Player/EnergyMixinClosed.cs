@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::uGUI_ItemSelector), nameof(global::uGUI_ItemSelector.ResetSelector))]
     public class EnergyMixinClosed
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::uGUI_ItemSelector __instance)
         {
             if (Network.IsMultiplayerActive && __instance.manager != null)

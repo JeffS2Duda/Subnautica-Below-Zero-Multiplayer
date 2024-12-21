@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::VehicleUpgradeConsoleInput), nameof(global::VehicleUpgradeConsoleInput.OnHandClick))]
     public static class UpgradeConsoleOpening
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::VehicleUpgradeConsoleInput __instance)
         {
             if (!Network.IsMultiplayerActive)

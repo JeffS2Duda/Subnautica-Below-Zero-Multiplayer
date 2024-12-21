@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::GhostCrafter), nameof(global::GhostCrafter.OnHandClick))]
     public static class FabricatorOpening
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::GhostCrafter __instance, global::GUIHand hand)
         {
             if (!Network.IsMultiplayerActive)

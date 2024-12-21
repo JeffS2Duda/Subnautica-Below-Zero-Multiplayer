@@ -15,22 +15,8 @@
 
     public class AnimationChangedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Animasyon isteklerini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static ServerModel.CreatureAnimationArgs AnimationRequest = new ServerModel.CreatureAnimationArgs();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.CreatureAnimationArgs>();
@@ -51,13 +37,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
             foreach (var animation in item.Action.GetProperty<Dictionary<byte, byte>>("Animations"))
@@ -73,25 +52,11 @@
             }
         }
 
-        /**
-         *
-         * Ana menüye dönünce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnDispose()
         {
             AnimationRequest.Animations.Clear();
         }
 
-        /**
-         *
-         * Her kare sonunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnLateUpdate()
         {
             if (AnimationRequest.Animations.Count > 0)
@@ -102,13 +67,6 @@
             }
         }
 
-        /**
-         *
-         * Balık animasyonu değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCreatureAnimationChanged(CreatureAnimationChangedEventArgs ev)
         {
             var item = AnimationRequest.Animations.Where(q => q.CreatureId == ev.CreatureId).FirstOrDefault();

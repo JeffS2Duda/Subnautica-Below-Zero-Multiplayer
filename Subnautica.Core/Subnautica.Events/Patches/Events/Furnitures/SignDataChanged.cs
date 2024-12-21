@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using System;
     using System.Collections;
@@ -13,22 +13,8 @@
 
     public static class SignDataChangedShared
     {
-        /**
-         *
-         * Tetiklenme durumunu barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsTriggered { get; set; } = false;
 
-        /**
-         *
-         * Olayı Tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void TriggerEvent(global::uGUI_SignInput __instance = null)
         {
             if (Network.IsMultiplayerActive && !IsTriggered && !EventBlocker.IsEventBlocked(TechType.Sign))
@@ -37,13 +23,6 @@
             }
         }
 
-        /**
-         *
-         * Olayı Tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void FastTriggerEvent(global::uGUI_SignInput __instance = null)
         {
             if (Network.IsMultiplayerActive && !EventBlocker.IsEventBlocked(TechType.Sign))
@@ -52,13 +31,6 @@
             }
         }
 
-        /**
-         *
-         * İç Olayı Tetikler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator TriggerEventCallback(global::uGUI_SignInput __instance, bool isFast = false)
         {
             if (!isFast)

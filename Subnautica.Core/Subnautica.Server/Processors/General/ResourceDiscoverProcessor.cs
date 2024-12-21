@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.General
+namespace Subnautica.Server.Processors.General
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,13 +12,6 @@
 
     public class ResourceDiscoverProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ResourceDiscoverArgs>();
@@ -37,13 +30,6 @@
             return true;
         }
 
-        /**
-         *
-         * Harita odalarını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private List<string> GetMapRooms()
         {
             var response = new List<string>();

@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -10,22 +10,8 @@
     [HarmonyPatch(typeof(global::Player), nameof(global::Player.FixedUpdate))]
     public static class StatsUpdated
     {
-        /**
-         *
-         * Timing nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static readonly StopwatchItem Timing = new StopwatchItem(BroadcastInterval.PlayerStatsUpdated);
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix()
         {
             if (Network.IsMultiplayerActive && Timing.IsFinished())

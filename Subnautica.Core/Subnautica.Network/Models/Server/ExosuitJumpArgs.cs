@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Server
+namespace Subnautica.Network.Models.Server
 {
     using MessagePack;
 
@@ -8,23 +8,9 @@
     [MessagePackObject]
     public class ExosuitJumpArgs : NetworkPacket
     {
-        /**
-         *
-         * Ağ Paket Türü
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(0)]
         public override ProcessType Type { get; set; } = ProcessType.ExosuitJump;
 
-        /**
-         *
-         * UniqueId değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(5)]
         public string UniqueId { get; set; }
     }

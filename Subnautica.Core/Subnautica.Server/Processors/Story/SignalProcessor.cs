@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Story
+namespace Subnautica.Server.Processors.Story
 {
     using Server.Core;
 
@@ -19,13 +19,6 @@
 
     public class SignalProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StorySignalArgs>();
@@ -50,13 +43,6 @@
             return true;
         }
 
-        /**
-         *
-         * Beacon yumurtlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WorldDynamicEntity SpawnBeacon(ZeroStorySignal signal, string ownershipId)
         {
             WorldDynamicEntity entity = new WorldDynamicEntity()
@@ -85,13 +71,6 @@
             return null;
         }
 
-        /**
-         *
-         * Beacon olup olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsBeacon(SignalType signalType)
         {
             return signalType == SignalType.LandBeacon || signalType == SignalType.WaterBeacon;

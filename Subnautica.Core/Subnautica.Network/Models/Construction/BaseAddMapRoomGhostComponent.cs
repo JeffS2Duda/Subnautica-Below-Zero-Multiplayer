@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Network.Models.Construction
+namespace Subnautica.Network.Models.Construction
 {
     using MessagePack;
 
@@ -8,13 +8,6 @@
     [MessagePackObject]
     public class BaseAddMapRoomGhostComponent : BaseGhostComponent
     {
-        /**
-         *
-         * TargetOffset değeri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [Key(2)]
         public ZeroInt3 TargetOffset { get; set; }
     }

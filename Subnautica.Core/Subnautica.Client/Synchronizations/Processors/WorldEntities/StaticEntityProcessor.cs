@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -14,13 +14,6 @@
 
     public class StaticEntityProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StaticEntityPickedUpArgs>();
@@ -63,37 +56,16 @@
             return true;
         }
 
-        /**
-         *
-         * Alterra pda nesnesi aldıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnAlterraPdaPickedUp(AlterraPdaPickedUpEventArgs ev)
         {
             StaticEntityProcessor.SendPacketToServer(ev.UniqueId);
         }
 
-        /**
-         *
-         * Müzik nesnesi alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnJukeboxDiskPickedUp(JukeboxDiskPickedUpEventArgs ev)
         {
             StaticEntityProcessor.SendPacketToServer(ev.UniqueId);
         }
 
-        /**
-         *
-         * Oyuncu yerden eşya aldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnPlayerItemPickedUp(PlayerItemPickedUpEventArgs ev)
         {
             if (ev.IsStaticWorldEntity)
@@ -104,13 +76,6 @@
             }
         }
 
-        /**
-         *
-         * Kardan adam yok edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSnowmanDestroying(SnowmanDestroyingEventArgs ev)
         {
             if (ev.IsStaticWorldEntity)
@@ -121,13 +86,6 @@
             }
         }
 
-        /**
-         *
-         * Müzik nesnesi alındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId = null, WorldPickupItem worldPickupItem = null)
         {
             ServerModel.StaticEntityPickedUpArgs request = new ServerModel.StaticEntityPickedUpArgs()

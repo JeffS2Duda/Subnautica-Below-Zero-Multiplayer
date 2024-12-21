@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Identity.World
+namespace Subnautica.Events.Patches.Identity.World
 {
     using HarmonyLib;
 
@@ -7,13 +7,6 @@
     [HarmonyPatch(typeof(global::UniqueIdentifier), nameof(global::UniqueIdentifier.EnsureGuid))]
     public static class UniqueIdentifier
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(ref string __result, string guid)
         {
             if (!Network.IsMultiplayerActive)

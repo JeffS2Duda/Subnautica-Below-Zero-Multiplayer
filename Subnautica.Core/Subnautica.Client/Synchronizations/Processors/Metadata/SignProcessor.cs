@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Metadata
+namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Features;
     using Subnautica.Client.Core;
@@ -11,13 +11,6 @@
 
     public class SignProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
             var component = packet.Component.GetComponent<Metadata.Sign>();
@@ -56,13 +49,6 @@
             return true;
         }
 
-        /**
-         *
-         * Tabela seçildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSignSelect(SignSelectEventArgs ev)
         {
             if (ev.TechType == TechType.SmallLocker || ev.TechType == TechType.Locker || ev.TechType == TechType.Sign)
@@ -78,13 +64,6 @@
             }
         }
 
-        /**
-         *
-         * Tabela da veri değişimi olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnSignDataChanged(SignDataChangedEventArgs ev)
         {
             if (ev.TechType == TechType.SmallLocker || ev.TechType == TechType.Locker || ev.TechType == TechType.Sign)
@@ -93,13 +72,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya Veri Gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendDataToServer(string uniqueId, bool isOpening = false, bool isSave = false, string text = null, bool[] elementsState = null, int scaleIndex = 0, int colorIndex = 0, bool isBackgroundEnabled = false)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()

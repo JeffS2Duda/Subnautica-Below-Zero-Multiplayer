@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
@@ -13,13 +13,6 @@
 
     public class WelderProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.WelderArgs>();
@@ -39,13 +32,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnProcessCompleted(ItemQueueProcess item)
         {
             var liveMixin = this.GetLiveMixin(item.Action.GetProperty<string>("UniqueId"));
@@ -71,13 +57,6 @@
             }
         }
 
-        /**
-         *
-         * LiveMixin sınıfını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::LiveMixin GetLiveMixin(string uniqueId)
         {
             var gameObject = Network.Identifier.GetGameObject(uniqueId);
@@ -95,13 +74,6 @@
             return gameObject.GetComponentInParent<global::LiveMixin>();
         }
 
-        /**
-         *
-         * Bir araç veya yapı tamir edilirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnWelding(WeldingEventArgs ev)
         {
             ev.IsAllowed = false;

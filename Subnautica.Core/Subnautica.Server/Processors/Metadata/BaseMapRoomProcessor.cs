@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -17,13 +17,6 @@
 
     public class BaseMapRoomProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             if (packet.SecretTechType == TechType.Fabricator)
@@ -182,13 +175,6 @@
             return true;
         }
 
-        /**
-         *
-         * Kenetlenmiş kamera arar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private VehicleDockingBayItem FindDockedVehicle(MetadataModel.BaseMapRoom baseMapRoom, string vehicleId)
         {
             if (baseMapRoom.LeftDock.IsDocked && baseMapRoom.LeftDock.Vehicle.UniqueId == vehicleId)
@@ -204,13 +190,6 @@
             return null;
         }
 
-        /**
-         *
-         * Sonraki kamera id'sini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string GetNextVehicleId(string currentVehicleId, bool isNext)
         {
             var vehicleId = string.Empty;

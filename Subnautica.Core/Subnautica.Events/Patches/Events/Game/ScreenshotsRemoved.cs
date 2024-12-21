@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Game
+namespace Subnautica.Events.Patches.Events.Game
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::ScreenshotManager), nameof(global::ScreenshotManager.RemoveScreenshot))]
     public static class ScreenshotsRemoved
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(string filename)
         {
             if(Network.IsMultiplayerActive)

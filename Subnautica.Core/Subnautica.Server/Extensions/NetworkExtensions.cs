@@ -1,17 +1,10 @@
-﻿namespace Subnautica.Server.Extensions
+namespace Subnautica.Server.Extensions
 {
     using Subnautica.Network.Structures;
     using Subnautica.Server.Core;
 
     public static class NetworkExtensions
     {        
-        /**
-         *
-         * Hedef sahip id numarasını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static byte GetTargetOwnerId(this ZeroLastTarget lastTarget, byte ownerPlayerId)
         {
             if (lastTarget.IsCreature())

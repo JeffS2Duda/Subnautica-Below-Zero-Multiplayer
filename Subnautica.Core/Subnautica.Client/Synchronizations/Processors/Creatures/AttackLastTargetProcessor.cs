@@ -14,13 +14,6 @@
 
     public class AttackLastTargetProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.CreatureAttackLastTargetArgs>();
@@ -38,13 +31,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşlem tamamlandığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
             if (creature.GameObject.TryGetComponent<MultiplayerAttackLastTarget>(out var attackLastTarget))
@@ -60,13 +46,6 @@
             }
         }
 
-        /**
-         *
-         * Yaratık en sonki hedefine saldırı başlatırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCreatureAttackLastTargetStarting(CreatureAttackLastTargetStartingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -74,13 +53,6 @@
             AttackLastTargetProcessor.SendPacketToServer(ev.UniqueId.ToCreatureId(), ev.Target.GetIdentityId(), ev.Target.GetTechType());
         }
 
-        /**
-         *
-         * Yaratık en sonki hedefine saldırı başlatma sona erdiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnCreatureAttackLastTargetStopped(CreatureAttackLastTargetStoppedEventArgs ev)
         {
             if (ev.IsAttackAnimationActive)
@@ -89,13 +61,6 @@
             }
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void SendPacketToServer(ushort creatureId, string targetId = null, TechType techType = TechType.None, bool isStopped = false)
         {
             ServerModel.CreatureAttackLastTargetArgs request = new ServerModel.CreatureAttackLastTargetArgs()

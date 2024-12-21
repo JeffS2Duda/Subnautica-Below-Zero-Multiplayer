@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Vehicle
+namespace Subnautica.Server.Processors.Vehicle
 {
     using Server.Core;
 
@@ -12,13 +12,6 @@
 
     public class SeaTruckDockingModuleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SeaTruckDockingModuleArgs>();
@@ -89,13 +82,6 @@
             return true;
         }
 
-        /**
-         *
-         * Demirlemeyi çözer.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UndockExosuit(WorldDynamicEntity vehicle, AuthorizationProfile profile, bool isEnterUndock)
         {
             vehicle.RenewId();

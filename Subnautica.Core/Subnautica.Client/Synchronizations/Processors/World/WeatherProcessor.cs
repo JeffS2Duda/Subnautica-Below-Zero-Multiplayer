@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.World
+namespace Subnautica.Client.Synchronizations.Processors.World
 {
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
@@ -10,26 +10,12 @@
 
     public class WeatherProcessor : NormalProcessor
     {
-        /**
-         *
-         * Hava durumu olayını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private WeatherEvent WeatherEvent { get; set; } = new WeatherEvent()
         {
             weatherSet = new WeatherEventDataSet(),
             parameters = new WeatherParameters(),
         };
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.WeatherChangedArgs>();
@@ -66,13 +52,6 @@
             return true;
         }
 
-        /**
-         *
-         * Hava durumu profili değiştiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnWeatherProfileChanged(WeatherProfileChangedEventArgs ev)
         {
             ev.IsAllowed = false;

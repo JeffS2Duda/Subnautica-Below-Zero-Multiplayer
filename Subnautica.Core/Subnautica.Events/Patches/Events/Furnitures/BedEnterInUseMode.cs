@@ -11,13 +11,6 @@ namespace Subnautica.Events.Patches.Events.Furnitures
     [HarmonyPatch(typeof(global::Bed), nameof(global::Bed.OnHandClick))]
     public static class BedEnterInUseMode
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::Bed __instance, global::GUIHand hand)
         {
             if (!Network.IsMultiplayerActive)
@@ -61,40 +54,12 @@ namespace Subnautica.Events.Patches.Events.Furnitures
     }
     public class BedInformationItem
     {
-        /**
-         *
-         * TechType barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public TechType TechType { get; set; }
 
-        /**
-         *
-         * UniqueId barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string UniqueId { get; set; }
 
-        /**
-         *
-         * IsSeaTruckModule barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsSeaTruckModule { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public BedInformationItem(string uniqueId, TechType techType, bool isSeaTruckModule)
         {
             this.UniqueId         = uniqueId;
@@ -102,13 +67,6 @@ namespace Subnautica.Events.Patches.Events.Furnitures
             this.IsSeaTruckModule = isSeaTruckModule;
         }
 
-        /**
-         *
-         * Bilgileri döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static BedInformationItem GetInformation(global::Bed __instance)
         {
             var constructable = __instance.GetComponentInParent<global::Constructable>();

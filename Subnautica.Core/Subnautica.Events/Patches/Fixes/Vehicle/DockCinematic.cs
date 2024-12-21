@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Vehicle
+namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
     using HarmonyLib;
 
@@ -35,13 +35,6 @@
             }
         }
 
-        /**
-         *
-         * Crosshair isteğini otomatikleştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void ToggleRequestCrosshair(bool isHide)
         {
             if (isHide)

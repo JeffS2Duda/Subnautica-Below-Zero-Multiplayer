@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::BeaconLabel), nameof(global::BeaconLabel.SetLabel))]
     public class BeaconLabelChanged
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::BeaconLabel __instance, string label)
         {
             if (Network.IsMultiplayerActive && !EventBlocker.IsEventBlocked(TechType.Beacon))

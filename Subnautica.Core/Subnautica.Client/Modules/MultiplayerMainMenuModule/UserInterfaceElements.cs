@@ -13,13 +13,6 @@
     public class UserInterfaceElements
     {
 
-        /**
-         *
-         * Tek oyunculu buton kancasını ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SinglePlayerButtonAddEvent(UnityAction btnListener)
         {
             var btn = StartButtonPrefab.GetComponent<Button>();
@@ -27,13 +20,6 @@
             btn.onClick.AddListener(btnListener);
         }
 
-        /**
-         *
-         * Sol menüye buton ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject CreateSidebarButton(string buttonText, UnityAction btnListener = null)
         {
             var btnGameObject = GameObject.Instantiate(StartButtonPrefab, StartButtonPrefab.transform.parent);
@@ -51,13 +37,6 @@
             return btnGameObject;
         }
 
-        /**
-         *
-         * Multiplayer Ana İçerik Grubunu Oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject CreateMultiplayerBaseContent(string groupname, string headerText, string hostGameText, string joinGameText, UnityAction hostGameBtnListener, UnityAction joinGameBtnListener)
         {
             GameObject groupContent = GameObject.Instantiate(SavedGamesPrefab, MainMenuRightSide.main.transform);
@@ -76,13 +55,6 @@
             return groupContent;
         }
 
-        /**
-         *
-         * Multiplayer Host Game İçerik Grubunu Oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject CreateHostBaseContent(string groupname, string headerText, UnityAction createServerBtnListener)
         {
             GameObject groupContent = GameObject.Instantiate(SavedGamesPrefab, MainMenuRightSide.main.transform);
@@ -98,13 +70,6 @@
             return groupContent;
         }
 
-        /**
-         *
-         * Multiplayer Join Game İçerik Grubunu Oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject CreateJoinBaseContent(string groupname, string headerText, string addServerHeaderText, UnityAction addServerBtnListener)
         {
             GameObject groupContent = GameObject.Instantiate(SavedGamesPrefab, MainMenuRightSide.main.transform);
@@ -121,18 +86,9 @@
 
             CreateInviteCodeGroup(groupContent, addServerBtnListener);
 
-            // Add Server Button - OLD (for Hamaci/Radmin/Port Forward)
-            // CreateButtonInGroup(groupContent, 11f, 46f, addServerHeaderText, addServerBtnListener);
             return groupContent;
         }
 
-        /**
-         *
-         * Çok oyunculu sunucu ekle sayfa içeriğini ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject CreateInviteCodeGroup(GameObject groupContent, UnityAction serverAddListener)
         {
             TextMeshProUGUI header = groupContent.transform.Find("Header").GetComponent<TextMeshProUGUI>();
@@ -146,7 +102,6 @@
             currentPosition.x -= 0.022f;
             currentPosition.y -= 0.05f;
 
-            // Sayfa içeriği
             Vector3 inviteCodePosition = currentPosition;
 
             AddInputField(groupContent, inviteCodePosition, ZeroLanguage.Get("GAME_INVITE_CODE_OR_IP"), ZeroLanguage.Get("GAME_INVITE_CODE_PLACEHOLDER"), "GAME_INVITE_CODE");
@@ -169,13 +124,6 @@
             return groupContent;
         }
 
-        /**
-         *
-         * Çok oyunculu sunucu ekle sayfa içeriğini ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject CreateAddServerGroup(string groupname, UnityAction serverAddListener)
         {
             GameObject groupContent = GameObject.Instantiate(SavedGamesPrefab, MainMenuRightSide.main.transform);
@@ -192,7 +140,6 @@
             currentPosition.x -= 0.022f;
             currentPosition.y -= 0.05f;
 
-            // Sayfa içeriği
             Vector3 serverNamePosition = currentPosition;
             Vector3 serverIpPosition   = currentPosition;
 
@@ -219,13 +166,6 @@
             return groupContent;
         }
 
-        /**
-         *
-         * Çok oyunculu sunucu ekle sayfa içeriğini ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject CreateServerHostGroup(string groupname, UnityAction<GameModePresetId> serverCreateListener)
         {
             GameObject groupContent = GameObject.Instantiate(NewGamePrefab, MainMenuRightSide.main.transform);
@@ -253,13 +193,6 @@
             return groupContent;
         }
 
-        /**
-         *
-         * Grup içinde buton yaratır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject CreateButtonInGroup(GameObject groupContainer, float positionX, float positionY, string buttonText, UnityAction btnListener)
         {
             GameObject container = GameObject.Instantiate(GroupButtonPrefab, groupContainer.transform);
@@ -276,13 +209,6 @@
             return container;
         }
 
-        /**
-         *
-         * Input Field Nesnesi Ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void AddInputField(GameObject parentLayer, Vector3 position, string headerText, string placeHolderName, string inputName)
         {
             GameObject container = GameObject.Instantiate(InputBoxPrefab, parentLayer.transform);
@@ -308,49 +234,21 @@
             subscription.transform.localPosition = new Vector3(subscription.transform.localPosition.x + 200f, subscription.transform.localPosition.y - 200f, subscription.transform.localPosition.z);
         }
 
-        /**
-         *
-         * Input metnini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string GetInputText(string inputName)
         {
             return GameObject.Find(inputName).transform.Find("InputField").GetComponent<TMP_InputField>().text.ToString();
         }
 
-        /**
-         *
-         * Input metnini temizler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static string ClearInputText(string inputName)
         {
             return GameObject.Find(inputName).transform.Find("InputField").GetComponent<TMP_InputField>().text = "";
         }
 
-        /**
-         *
-         * Oyun Nesnesini yok eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void DestroyGameObject(GameObject gameObject, string key)
         {
             UnityEngine.GameObject.Destroy(gameObject.transform.Find(key).gameObject);
         }
 
-        /**
-         *
-         * Input detayına hata mesajı yazar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SetInputErrorMessage(string inputName, string errorMessage)
         {
             GameObject gameObject = GameObject.Find(inputName);
@@ -361,13 +259,6 @@
             container.SetActive(true);
         }
 
-        /**
-         *
-         *  Buton Nesnesi
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject StartButtonPrefab
         {
             get
@@ -381,13 +272,6 @@
             }
         }
 
-        /**
-         *
-         * Kayıtlı oyunlar Şeması 
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject SavedGamesPrefab
         {
             get
@@ -401,13 +285,6 @@
             }
         }
 
-        /**
-         *
-         * Yeni Oyun Şeması 
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject NewGamePrefab
         {
             get
@@ -421,13 +298,6 @@
             }
         }
                 
-        /**
-         *
-         * Group İçindeki Buton Şeması 
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject GroupButtonPrefab
         {
             get
@@ -441,13 +311,6 @@
             }
         }
 
-        /**
-         *
-         * InputBox Şeması 
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject InputBoxPrefab
         {
             get
@@ -461,13 +324,6 @@
             }
         }
 
-        /**
-         *
-         * SmallButton Şeması 
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static GameObject SmallButtonPrefab
         {
             get
@@ -481,13 +337,6 @@
             }
         }
 
-        /**
-         *
-         * Tek oyunculu bölümü aktif mi?
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsSinglePlayerMenuActive
         {
             get
@@ -496,13 +345,6 @@
             }
         }
 
-        /**
-         *
-         * Host
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool IsHostGroupActive
         {
             get
@@ -517,13 +359,6 @@
             }
         }
 
-        /**
-         *
-         * İç Nesneler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static GameObject _StartButtonPrefab;
         private static GameObject _SavedGamesPrefab;
         private static GameObject _GroupButtonPrefab;

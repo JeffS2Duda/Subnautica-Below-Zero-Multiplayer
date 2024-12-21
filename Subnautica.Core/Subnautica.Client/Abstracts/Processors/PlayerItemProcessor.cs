@@ -7,22 +7,8 @@
 
     public abstract class PlayerItemProcessor : BaseProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public abstract bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId);
 
-        /**
-         *
-         * İşlemi yönlendirip çalıştırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool ExecuteProcessor(NetworkPlayerItemComponent packet, byte playerId)
         {
             if (ProcessorShared.PlayerItemProcessors.TryGetValue(packet.TechType, out var processor))
@@ -37,13 +23,6 @@
             }
         }
 
-        /**
-         *
-         * Oyuncu elindeki aleti döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public T GetPlayerTool<T>(ZeroPlayer player, TechType techType)
         {
             var itemManager = player.GetComponent<PlayerHandItemManager>();

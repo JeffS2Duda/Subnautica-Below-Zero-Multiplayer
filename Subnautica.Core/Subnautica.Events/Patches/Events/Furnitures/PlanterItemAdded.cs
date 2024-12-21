@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Furnitures
+namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using HarmonyLib;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::Planter), nameof(global::Planter.AddItem), new Type[] { typeof(Plantable), typeof(int) })]
     public static class PlanterItemAdded
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(global::Planter __instance, Plantable plantable, int slotID)
         {
             if (!Network.IsMultiplayerActive)

@@ -13,22 +13,8 @@
 
     public class ResourceDiscoverProcessor : NormalProcessor
     {
-        /**
-         *
-         * Görmezden gelinecek teknolojiler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static HashSet<TechType> IgnoreTechs = new HashSet<TechType>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.ResourceDiscoverArgs>();
@@ -55,13 +41,6 @@
             return true;
         }
 
-        /**
-         *
-         * Yeni kaynak keşfedildiğinde tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMapRoomResourceDiscovering(BaseMapRoomResourceDiscoveringEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -72,25 +51,11 @@
             }
         }
 
-        /**
-         *
-         * Harita odası başlatıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnBaseMapRoomInitialized(BaseMapRoomInitializedEventArgs ev)
         {
             UpdateMapRoomScanner(ev.MapRoom);
         }
 
-        /**
-         *
-         * Teknoloji listesini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void UpdateMapRoomScanner(uGUI_MapRoomScanner scanner)
         {
             IgnoreTechs.AddRange(Network.Session.Current.DiscoveredTechTypes);
@@ -100,13 +65,6 @@
             scanner.RebuildResourceList();
         }
 
-        /**
-         *
-         * Sunucuya Veri Gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(TechType techType)
         {
             IgnoreTechs.Add(techType);
@@ -119,13 +77,6 @@
             NetworkClient.SendPacket(result);
         }
 
-        /**
-         *
-         * Sınıf başlatılırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnStart()
         {
             IgnoreTechs.Add(TechType.HeatArea);
@@ -134,13 +85,6 @@
             IgnoreTechs.Add(TechType.KelpRootPustule);
         }
 
-        /**
-         *
-         * Ana menüye dönünce tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnDispose()
         {
             IgnoreTechs.Clear();

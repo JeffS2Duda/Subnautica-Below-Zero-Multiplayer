@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Metadata
+namespace Subnautica.Server.Processors.Metadata
 {
     using System.Linq;
 
@@ -11,13 +11,6 @@
 
     public class FridgeProcessor : MetadataProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             if (Server.Instance.Logices.Interact.IsBlocked(construction.UniqueId, profile.UniqueId))
@@ -67,13 +60,6 @@
             return true;
         }
 
-        /**
-         *
-         * Dolaptaki nesne bileşenini günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Metadata.FridgeItemComponent UpdateFridgeItemComponent(Metadata.Fridge fridge, string itemId, string constructionUniqueId = null, bool isDecomposes = false, float timeDecayStart = 0f, bool isAdded = true)
         {
             if (isAdded)
@@ -110,13 +96,6 @@
             }
         }
 
-        /**
-         *
-         * Depolamayı döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Metadata.StorageContainer GetStorageContainer(Metadata.Fridge fridge)
         {
             if (fridge.StorageContainer == null)

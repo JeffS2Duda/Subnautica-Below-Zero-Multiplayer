@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Game
+namespace Subnautica.Events.Patches.Fixes.Game
 {
     using System;
 
@@ -13,13 +13,6 @@
             return false;
         }
 
-        /**
-         *
-         * Oyuncu adını döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUserName()
         {
             foreach (var command in Environment.GetCommandLineArgs())

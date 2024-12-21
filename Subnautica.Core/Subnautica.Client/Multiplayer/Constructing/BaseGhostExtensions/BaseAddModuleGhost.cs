@@ -6,13 +6,6 @@
 
     public static class BaseAddModuleGhost
     {
-        /**
-         *
-         * Yapının konumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static bool UpdateMultiplayerPlacement(this global::BaseAddModuleGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddModuleGhostComponent component)
         {
             positionFound = false;

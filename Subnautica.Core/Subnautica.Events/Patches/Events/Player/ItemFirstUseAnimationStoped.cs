@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::PlayerTool), nameof(global::PlayerTool.OnFirstUseAnimationStop))]
     public static class ItemFirstUseAnimationStoped
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::PlayerTool __instance)
         {
             if (Network.IsMultiplayerActive)

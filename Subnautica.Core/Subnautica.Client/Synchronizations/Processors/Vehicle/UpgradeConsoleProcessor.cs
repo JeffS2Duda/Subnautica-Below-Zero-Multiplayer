@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Vehicle
+namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
@@ -10,13 +10,6 @@
 
     public class UpgradeConsoleProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.VehicleUpgradeConsoleArgs>();
@@ -56,13 +49,6 @@
         }
 
 
-        /**
-         *
-         * Yükseltme konsoluna tıklanınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnUpgradeConsoleOpening(UpgradeConsoleOpeningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -74,37 +60,16 @@
         }
 
 
-        /**
-         *
-         * Yükseltme konsoluna modül eklenince tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnUpgradeConsoleModuleAdded(UpgradeConsoleModuleAddedEventArgs ev)
         {
             UpgradeConsoleProcessor.SendPacketToServer(ev.UniqueId, itemId: ev.ItemId, slotId: ev.SlotId, moduleType: ev.ModuleType, isAdding: true); 
         }
 
-        /**
-         *
-         * Yükseltme konsolundan modül kaldırılınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnUpgradeConsoleModuleRemoved(UpgradeConsoleModuleRemovedEventArgs ev)
         {
             UpgradeConsoleProcessor.SendPacketToServer(ev.UniqueId, itemId: ev.ItemId, slotId: ev.SlotId);
         }
 
-        /**
-         *
-         * Sunucuya paketi gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, string itemId = null, string slotId = null, TechType moduleType = TechType.None, bool isOpening = false, bool isAdding = false)
         {
             ServerModel.VehicleUpgradeConsoleArgs request = new ServerModel.VehicleUpgradeConsoleArgs()

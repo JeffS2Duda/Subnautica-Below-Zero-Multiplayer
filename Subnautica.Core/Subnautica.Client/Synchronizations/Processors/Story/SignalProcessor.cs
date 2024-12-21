@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using global::Story;
 
@@ -20,13 +20,6 @@
 
     public class SignalProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StorySignalArgs>();
@@ -45,13 +38,6 @@
             return true;
         }
 
-        /**
-         *
-         * Hikaye sinyali oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SpawnSignal(ZeroStorySignal signal)
         {
             switch (signal.SignalType)
@@ -65,13 +51,6 @@
             }
         }
 
-        /**
-         *
-         * Nesne spawnlandıktan sonra tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -87,13 +66,6 @@
             }
         }
 
-        /**
-         *
-         * Sinyal oluşturur.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void AddSignal(ZeroStorySignal signal, GameObject prefab, int colorIndex)
         {
             var component  = Object.Instantiate<GameObject>(prefab).GetComponent<SignalPing>();
@@ -104,13 +76,6 @@
             component.pingInstance.AddNotification();
         }
 
-        /**
-         *
-         * Hikaye sinyali spawnlanırken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnStorySignalSpawning(StorySignalSpawningEventArgs ev)
         {
             ev.IsAllowed = false;

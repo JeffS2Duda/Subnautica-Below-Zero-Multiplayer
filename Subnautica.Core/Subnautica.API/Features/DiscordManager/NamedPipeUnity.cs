@@ -1,4 +1,4 @@
-﻿namespace Subnautica.API.Features.DiscordManager
+namespace Subnautica.API.Features.DiscordManager
 {
     using System;
     using System.IO;
@@ -28,34 +28,28 @@
 
             if (pipe < 0)
             {
-                //If we have -1,  then we need to iterate over every single pipe until we get it
-                //Iterate until we connect to a pipe
                 for (int i = 0; i < 10; i++)
                 {
                     if (AttemptConnection(i) || AttemptConnection(i, true))
                         return true;
                 }
 
-                //We failed everythign else
                 return false;
             }
             else
             {
-                //We have a set one so we should just straight up try to connect to it
                 return AttemptConnection(pipe) || AttemptConnection(pipe, true);
             }
         }
 
         private bool AttemptConnection(int pipe, bool doSandbox = false)
         {
-            //Make sure the stream is null
             if (_stream != null)
             {
                 Log.Error("Attempted to create a new stream while one already exists!");
                 return false;
             }
 
-            //Make sure we are disconnected
             if (IsConnected)
             {
                 Log.Error("Attempted to create a new connection while one already exists!");
@@ -64,18 +58,14 @@
 
             try
             {
-                //Prepare the sandbox
                 string sandbox = doSandbox ? GetPipeSandbox() : "";
                 if (doSandbox && sandbox == null)
                 {
-                    // Log.Error("Skipping sandbox because this platform does not support it.");
                     return false;
                 }
 
-                //Prepare the name
                 string pipename = GetPipeName(pipe);
 
-                //Attempt to connect
                 ConnectedPipe = pipe;
                 _stream = new NamedPipeClientStream(".", pipename);
                 _stream.Connect();
@@ -84,7 +74,6 @@
             }
             catch (Exception)
             {
-                // Log.Error("Failed: " + e.GetType().FullName + ", " + e.Message);
                 ConnectedPipe = -1;
                 Close();
                 return false;
@@ -95,7 +84,6 @@
         {
             if (_stream != null)
             {
-                // Log.Error("Closing stream");
                 _stream.Dispose();
                 _stream = null;
             }
@@ -114,14 +102,12 @@
             if (_isDisposed)
                 throw new ObjectDisposedException("_stream");
 
-            //We are not connected so we cannot read!
             if (!IsConnected)
             {
                 frame = default;
                 return false;
             }
 
-            //Try and read a frame
             int length = _stream.Read(_buffer, 0, _buffer.Length);
 
             if (length == 0)
@@ -130,7 +116,6 @@
                 return false;
             }
 
-            //Read the stream now
             using (MemoryStream memory = new MemoryStream(_buffer, 0, length))
             {
                 frame = new PipeFrame();
@@ -151,7 +136,6 @@
             if (_isDisposed)
                 throw new ObjectDisposedException("_stream");
 
-            //Write the frame. We are assuming proper duplex connection here
             if (!IsConnected)
             {
                 Log.Error("Failed to write frame because the stream is closed");
@@ -176,7 +160,6 @@
                 Log.Error("Failed to write frame because of a invalid operation");
             }
 
-            //We must have failed the try catch
             return false;
         }
 

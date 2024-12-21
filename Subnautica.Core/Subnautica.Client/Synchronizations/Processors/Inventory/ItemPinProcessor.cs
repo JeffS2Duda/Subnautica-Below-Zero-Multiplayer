@@ -14,36 +14,13 @@
 
     public class ItemPinProcessor : NormalProcessor
     {
-        /**
-         *
-         * Zamanlanmış veri gönderim durumu
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool IsSending { get; set; } = false;
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             return true;
         }
 
-        /**
-         *
-         * Yeni pin eklendiğinde tetiklenir.
-         * Pin kaldırıldığında tetiklenir.
-         * Pin taşındığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnProcessPin()
         {
             if (!IsSending && !EventBlocker.IsEventBlocked(ProcessType.ItemPin))
@@ -52,13 +29,6 @@
             }
         }
 
-        /**
-         *
-         * Zamanlanmış veriyi sunucuya gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static IEnumerator SendServerData()
         {
             IsSending = true;

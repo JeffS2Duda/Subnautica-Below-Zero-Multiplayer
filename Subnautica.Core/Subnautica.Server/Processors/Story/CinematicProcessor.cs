@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Story
+namespace Subnautica.Server.Processors.Story
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -15,22 +15,8 @@
 
     public class CinematicProcessor : NormalProcessor
     {
-        /**
-         *
-         * Sinematik bekleme süreleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Dictionary<StoryCinematicType, double> CinematicTimes = new Dictionary<StoryCinematicType, double>();
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryCinematicTriggerArgs>();
@@ -86,25 +72,11 @@
             return true;
         }
 
-        /**
-         *
-         * Sunucuya asenkron olarak kapatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void CloseServerAsync()
         {
             Server.SendPacketToAllClient(new ServerModel.StoryEndGameArgs());
         }
 
-        /**
-         *
-         * Sütunların aktifleştirilebilme durumunu kontrol eder.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsPillarActivateable(StoryCinematicType cinematicType)
         {
             if (!this.CinematicTimes.ContainsKey(StoryCinematicType.StoryEndGameRepairPillar1))

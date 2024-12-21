@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Player
+namespace Subnautica.Events.Patches.Events.Player
 {
     using HarmonyLib;
 
@@ -10,31 +10,10 @@
     [HarmonyPatch(typeof(PDAScanner), nameof(PDAScanner.Scan))]
     public static class EntityScannerCompleted
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string UniqueId { get; set; } = null;
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static TechType TechType { get; set; } = TechType.None;
 
-        /**
-         *
-         * Önek Yaması
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix()
         {
             if (Network.IsMultiplayerActive)
@@ -44,13 +23,6 @@
             }
         }
 
-        /**
-         *
-         * Sonek Yaması
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(ref PDAScanner.Result __result)
         {
             if (Network.IsMultiplayerActive)

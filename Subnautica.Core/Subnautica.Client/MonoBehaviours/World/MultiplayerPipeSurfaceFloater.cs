@@ -6,31 +6,10 @@
 
     public class MultiplayerPipeSurfaceFloater : MonoBehaviour
     {
-        /**
-         *
-         * Tamamlanma durumu.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsFinished { get; set; } = false;
 
-        /**
-         *
-         * Zamanlayıcıyı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private StopwatchItem Timing { get; set; } = new StopwatchItem(2000f);
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             if (!this.IsFinished && this.Timing.IsFinished())
@@ -39,13 +18,6 @@
             }
         }
 
-        /**
-         *
-         * Oksijen borularını günceller.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void UpdateOxygenPipes()
         {
             this.IsFinished = true;
@@ -64,13 +36,6 @@
             }
         }
 
-        /**
-         *
-         * Aktif olduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEnable()
         {
             this.IsFinished = false;

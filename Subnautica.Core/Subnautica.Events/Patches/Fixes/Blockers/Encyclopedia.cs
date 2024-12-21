@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Encyclopedia
+namespace Subnautica.Events.Patches.Fixes.Encyclopedia
 {
     using HarmonyLib;
 
@@ -8,22 +8,8 @@
     [HarmonyPatch(typeof(PDAEncyclopedia), nameof(PDAEncyclopedia.Initialize))]
     public static class Encyclopedia
     {
-        /**
-         *
-         * Bloklanmış olayı barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static EventBlocker Blocker = null;
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(PDAData pdaData)
         {
             if(Network.IsMultiplayerActive)
@@ -32,13 +18,6 @@
             }
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Postfix(PDAData pdaData)
         {
             if (Blocker != null)

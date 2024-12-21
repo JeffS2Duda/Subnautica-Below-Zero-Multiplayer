@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Player
+namespace Subnautica.Server.Processors.Player
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -17,13 +17,6 @@
 
     public class JoiningProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.JoiningServerArgs>();
@@ -99,18 +92,10 @@
             return true;
         }
 
-        /**
-         *
-         * İlk bağlantı paketini gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendFirstConnectionPacket(AuthorizationProfile profile)
         {
             ClientModel.JoiningServerArgs request = new ClientModel.JoiningServerArgs()
             {
-                // Oyuncu verileri
                 PlayerId                = profile.PlayerId,
                 PlayerUniqueId          = profile.UniqueId,
                 PlayerSubRootId         = profile.SubrootId,
@@ -133,13 +118,11 @@
                 PlayerTimeLastSleep     = Server.Instance.Storages.World.Storage.TimeLastSleep,
                 IsInitialEquipmentAdded = profile.IsInitialEquipmentAdded,
 
-                // Teknolojiler
                 Technologies         = Server.Instance.Storages.Technology.Storage.Technologies,
                 ScannedTechnologies  = Server.Instance.Storages.Scanner.Storage.Technologies,
                 AnalizedTechnologies = Server.Instance.Storages.Technology.Storage.AnalizedTechnologies,
                 Encyclopedias        = Server.Instance.Storages.Encyclopedia.Storage.Encyclopedias,
 
-                // Dünya verileri
                 ServerId             = Server.Instance.ServerId,
                 ServerTime           = Server.Instance.Logices.World.GetServerTime(),
                 Constructions        = new HashSet<ConstructionItem>(Server.Instance.Storages.Construction.Storage.Constructions.Values),
@@ -165,25 +148,11 @@
             profile.SendPacket(request);
         }
 
-        /**
-         *
-         * Yeniden bağlantı paketini gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SendReconnectPacket(AuthorizationProfile profile)
         {
 
         }
 
-        /**
-         *
-         * IsActive Değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsActive(string key)
         {
             var key1 = new byte[] { 85, 110, 105, 116, 121, 80, 108, 97, 121, 101, 114 };

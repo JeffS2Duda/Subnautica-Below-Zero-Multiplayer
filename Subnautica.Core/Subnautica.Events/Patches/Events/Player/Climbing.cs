@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
     using System.Collections.Generic;
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::CinematicModeTriggerBase), nameof(global::CinematicModeTriggerBase.OnHandClick))]
     public class Climbing
     {
-        /**
-         *
-         * Tırmanma metinleri
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */        
         public static List<string> ClimbTexts = new List<string>()
         {
             "Climb",
@@ -26,13 +19,6 @@
             "ClimbLadder"
         };
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::CinematicModeTriggerBase __instance)
         {
             if (Network.IsMultiplayerActive)
@@ -60,13 +46,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(global::CinematicModeTriggerBase __instance)
         {
             var constructor = __instance.GetComponentInParent<global::Constructor>();

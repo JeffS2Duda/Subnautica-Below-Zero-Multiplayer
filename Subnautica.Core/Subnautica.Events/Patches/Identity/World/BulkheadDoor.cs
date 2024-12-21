@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Identity.World
+namespace Subnautica.Events.Patches.Identity.World
 {
     using System;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch(typeof(global::BulkheadDoor), nameof(global::BulkheadDoor.OnEnable))]
     public static class BulkheadDoorx
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static void Prefix(global::BulkheadDoor __instance)
         {
             if (Network.IsMultiplayerActive && !__instance.GetComponentInParent<BaseDeconstructable>())

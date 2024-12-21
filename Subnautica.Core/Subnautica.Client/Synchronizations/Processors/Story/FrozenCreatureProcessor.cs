@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Story
+namespace Subnautica.Client.Synchronizations.Processors.Story
 {
     using FMODUnity;
 
@@ -16,13 +16,6 @@
 
     public class FrozenCreatureProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryFrozenCreatureArgs>();
@@ -44,25 +37,11 @@
             return true;
         }
 
-        /**
-         *
-         * MobileExtractorMachine başlatıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMobileExtractorMachineInitialized()
         {
             FrozenCreatureProcessor.FrozenCreatureSync(true);
         }
 
-        /**
-         *
-         * Donmuş yaratık hikaye olaylarını senkronlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool FrozenCreatureSync(bool isInitializing, bool isMine = false)
         {
             if (MobileExtractorMachine.main == null)
@@ -123,13 +102,6 @@
             return true;
         }
 
-        /**
-         *
-         * anti virüs örneği eklenirken tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMobileExtractorMachineSampleAdding(MobileExtractorMachineSampleAddingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -137,13 +109,6 @@
             FrozenCreatureProcessor.SendPacketToServer(StoryCinematicType.StoryFrozenCreatureSample);
         }
 
-        /**
-         *
-         * Konsola tıklanınca tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnMobileExtractorConsoleUsing(MobileExtractorConsoleUsingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -151,13 +116,6 @@
             FrozenCreatureProcessor.SendPacketToServer(StoryCinematicType.StoryFrozenCreatureInject);
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(StoryCinematicType cinematicType = StoryCinematicType.None)
         {
             ServerModel.StoryFrozenCreatureArgs result = new ServerModel.StoryFrozenCreatureArgs()

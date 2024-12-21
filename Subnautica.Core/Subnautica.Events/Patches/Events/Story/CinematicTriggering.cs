@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Story
+namespace Subnautica.Events.Patches.Events.Story
 {
     using global::Story;
 
@@ -137,13 +137,6 @@
             return true;
         }
 
-        /**
-         *
-         * Benzersiz id'yi döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static string GetUniqueId(global::CinematicModeTriggerBase __instance)
         {
             var lwe = __instance.GetComponentInParent<LargeWorldEntity>();
@@ -160,13 +153,6 @@
             return null;
         }
 
-        /**
-         *
-         * Cinematic türünü döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static StoryCinematicType GetCinematicType(GameObject gameObject)
         {
             if (gameObject.name.Contains("sanctuary_cube_trigger"))

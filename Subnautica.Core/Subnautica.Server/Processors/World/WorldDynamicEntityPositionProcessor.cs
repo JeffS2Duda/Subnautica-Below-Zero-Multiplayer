@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.World
+namespace Subnautica.Server.Processors.World
 {
     using System.Linq;
 
@@ -12,13 +12,6 @@
 
     public class WorldDynamicEntityPositionProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.WorldDynamicEntityPositionArgs>();

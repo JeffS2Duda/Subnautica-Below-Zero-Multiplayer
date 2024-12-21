@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.Creatures
+namespace Subnautica.Server.Processors.Creatures
 {
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
@@ -8,13 +8,6 @@
 
     public class CallSoundProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.CreatureCallArgs>();

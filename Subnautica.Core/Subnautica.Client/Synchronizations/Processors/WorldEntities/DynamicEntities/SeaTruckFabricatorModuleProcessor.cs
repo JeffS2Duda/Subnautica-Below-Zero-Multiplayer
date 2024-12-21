@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
+namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
     using System.Linq;
     using Steamworks;
@@ -18,13 +18,6 @@
 
     public class SeaTruckFabricatorModuleProcessor : WorldDynamicEntityProcessor
     {
-        /**
-         *
-         * Dünya yüklenip nesne doğduğunda çalışır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnWorldLoadItemSpawn(NetworkDynamicEntityComponent packet, bool isDeployed, Pickupable pickupable, GameObject gameObject)
         {
             if (!isDeployed)
@@ -87,13 +80,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fabricator paketini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private ServerModel.MetadataComponentArgs GetFabricatorPacket(string uniqueId, MetadataComponent component)
         {
             return new ServerModel.MetadataComponentArgs()

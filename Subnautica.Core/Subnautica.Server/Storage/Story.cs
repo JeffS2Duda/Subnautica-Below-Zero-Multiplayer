@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Storage
+namespace Subnautica.Server.Storage
 {
     using System;
     using System.IO;
@@ -18,22 +18,8 @@
 
     public class Story : BaseStorage
     {
-        /**
-         *
-         * Technology sınıfını barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public StoryStorage.Story Storage { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Start(string serverId)
         {
             this.ServerId = serverId;
@@ -42,13 +28,6 @@
             this.Load();
         }
 
-        /**
-         *
-         * Sunucu hikayeyi önbelleğe yükler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Load()
         {
             if (File.Exists(this.FilePath))
@@ -107,13 +86,6 @@
             }
         }
 
-        /**
-         *
-         * Verileri diske yazar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void SaveToDisk()
         {
             lock (this.ProcessLock)
@@ -122,13 +94,6 @@
             }
         }
 
-        /**
-         *
-         * Oynanabilir cinematik olup/olmadığına bakar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsPlayableCinematic(StoryCinematicType cinematicType)
         {
             lock (this.ProcessLock)
@@ -137,13 +102,6 @@
             }
         }
 
-        /**
-         *
-         * Yeni bir hedef ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool IsGoalComplete(string goalKey)
         {
             lock (this.ProcessLock)
@@ -152,13 +110,6 @@
             }
         }
 
-        /**
-         *
-         * Gelen çağrıyı ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetIncomingCall(string goalKey)
         {
             lock (this.ProcessLock)
@@ -167,13 +118,6 @@
             }
         }
 
-        /**
-         *
-         * Oynanabilir cinematiği tamamlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool CompleteCinematic(StoryCinematicType cinematicType)
         {
             lock (this.ProcessLock)
@@ -188,13 +132,6 @@
             }
         }
 
-        /**
-         *
-         * Oynanabilir cinematiği kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemoveCinematic(StoryCinematicType cinematicType)
         {
             lock (this.ProcessLock)
@@ -203,13 +140,6 @@
             }
         }
 
-        /**
-         *
-         * Yeni bir hedef ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool CompleteCall(string callGoalKey)
         {
             lock (this.ProcessLock)
@@ -226,13 +156,6 @@
             }
         }
 
-        /**
-         *
-         * Yeni bir hedef ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public bool CompleteGoal(string storyKey, global::Story.GoalType goalType = GoalType.Story, bool isPlayMuted = false)
         {
             lock (this.ProcessLock)
@@ -252,13 +175,6 @@
             }
         }
 
-        /**
-         *
-         * Hedefi kaldırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void RemoveGoal(string storyKey)
         {
             lock (this.ProcessLock)
@@ -267,13 +183,6 @@
             }
         }
 
-        /**
-         *
-         * Yeni bir sinyal ekler.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public ZeroStorySignal AddSignal(UnlockSignalData.SignalType signalType, ZeroVector3 targetPosition, string targetDescription, bool isRemoved = false)
         {
             lock (this.ProcessLock) 

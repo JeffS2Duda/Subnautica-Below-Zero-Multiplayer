@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Vehicle
+namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
 
@@ -11,13 +11,6 @@
     [HarmonyPatch]
     public static class Entering
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::HoverbikeEnterTrigger), nameof(global::HoverbikeEnterTrigger.OnHandClick))]
         private static bool HoverbikeOnHandClick(global::HoverbikeEnterTrigger __instance)
@@ -48,13 +41,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Vehicle), nameof(global::Vehicle.OnHandClick))]
         private static bool ExosuitOnHandClick(global::Vehicle __instance)
@@ -90,13 +76,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckMotor), nameof(global::SeaTruckMotor.OnClickSteeringWheel))]
         private static bool SeaTruckOnClickSteeringWheel(global::SeaTruckMotor __instance)
@@ -149,13 +128,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SpyPenguinRemoteManager), nameof(global::SpyPenguinRemoteManager.TryActivatePenginFromDistance))]
         private static bool TryActivatePenginFromDistance(global::SpyPenguinRemoteManager __instance)
@@ -186,13 +158,6 @@
             return true;
         }
 
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::MapRoomScreen), nameof(global::MapRoomScreen.OnHandClick))]
         private static bool MapRoomScreenOnHandClick(global::MapRoomScreen __instance)

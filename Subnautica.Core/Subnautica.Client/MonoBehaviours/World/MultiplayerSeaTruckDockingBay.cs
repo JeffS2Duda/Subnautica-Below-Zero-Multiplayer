@@ -8,44 +8,16 @@
 
     public class MultiplayerSeaTruckDockingBay : MonoBehaviour
     {
-        /**
-         *
-         * DockingBay nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private SeaTruckDockingBay DockingBay { get; set; }
 
-        /**
-         *
-         * DockedVehicle nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Vehicle DockedVehicle { get; set; }
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             this.DockingBay    = this.GetComponentInChildren<SeaTruckDockingBay>();
             this.DockedVehicle = null;
         }
 
-        /**
-         *
-         * Rıhtıma yanaşma işlemini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartDocking(string vehicleId, bool playSound = true, bool fastTeleport = false)
         {
             var vehicle = Network.Identifier.GetGameObject(vehicleId);
@@ -77,13 +49,6 @@
             }
         }
 
-        /**
-         *
-         * Rıhtım'dan ayrılma işlemini başlatır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void StartUndocking(byte playerId, string ownershipId, bool isEnterUndock, ZeroVector3 undockPosition)
         {
             this.EjectDocked(ZeroPlayer.IsPlayerMine(ownershipId));
@@ -104,13 +69,6 @@
             this.DockedVehicle = null;
         }
 
-        /**
-         *
-         * Araç bağlantısını keser.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void EjectDocked(bool isMine)
         {
             if (this.DockingBay)
@@ -135,13 +93,6 @@
             this.DockingBay.enterExosuitTrigger.SetActive(false);
         }
 
-        /**
-         *
-         * Dock durumunu ayarlar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void SetDocked(IDockingBay bay, global::Vehicle.DockType dockType, bool isMine)
         {
             this.DockingBay.dockedObject.bay = bay;

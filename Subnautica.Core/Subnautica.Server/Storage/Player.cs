@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Storage
+namespace Subnautica.Server.Storage
 {
     using System;
     using System.Collections.Generic;
@@ -12,50 +12,22 @@
 
     public class Player : BaseStorage
     {
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Start(string serverId)
         {
             this.ServerId = serverId;
             this.Load();
         }
 
-        /**
-         *
-         * Sunucu tarafı Players yolunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public string GetPlayerFilePath(string playerUniqueId)
         {
             return Paths.GetMultiplayerServerPlayerSavePath(this.ServerId, string.Format("{0}.bin", playerUniqueId));
         }
 
-        /**
-         *
-         * Sunucu oyuncu ayarlarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void Load()
         {
             Directory.CreateDirectory(Paths.GetMultiplayerServerPlayerSavePath(this.ServerId));
         }
 
-        /**
-         *
-         * Oyuncu verisini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public AuthorizationProfile GetPlayerData(string playerUniqueId, string playerName)
         {
             if (string.IsNullOrEmpty(playerUniqueId))
@@ -88,13 +60,6 @@
             return null;
         }
 
-        /**
-         *
-         * Bütün oyuncuları döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public List<AuthorizationProfile> GetAllPlayers()
         {
             var players = new List<AuthorizationProfile>();
@@ -123,13 +88,6 @@
             return players;
         }
 
-        /**
-         *
-         * Verileri diske yazar
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void SaveToDisk()
         {
             foreach (var player in Core.Server.Instance.Players)

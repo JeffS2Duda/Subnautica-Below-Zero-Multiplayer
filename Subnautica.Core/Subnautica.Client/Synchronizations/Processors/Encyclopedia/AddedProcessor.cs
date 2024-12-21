@@ -11,13 +11,6 @@
 
     public class AddedProcessor : NormalProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.EncyclopediaAddedArgs>();
@@ -32,13 +25,6 @@
             return true;
         }
 
-        /**
-         *
-         * Ansiklopedi taraması yapıldığında tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnEncyclopediaAdded(EncyclopediaAddedEventArgs ev)
         {
             ServerModel.EncyclopediaAddedArgs result = new ServerModel.EncyclopediaAddedArgs()

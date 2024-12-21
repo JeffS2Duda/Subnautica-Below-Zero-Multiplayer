@@ -8,49 +8,14 @@
 
     public class MultiplayerBrinicle : MonoBehaviour
     {
-        /**
-         *
-         * Brinicle nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private global::Brinicle Brinicle { get; set; }
 
-        /**
-         *
-         * UniqueId nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private string UniqueId { get; set; }
 
-        /**
-         *
-         * ScaleAmount nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private float ScaleAmount { get; set; }
 
-        /**
-         *
-         * IsActive nesnesini barındırır.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsActive { get; set; } = true;
 
-        /**
-         *
-         * Sınıf ayarlamalarını yapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Awake()
         {
             if (this.TryGetComponent<global::Brinicle>(out var brinicle))
@@ -62,13 +27,6 @@
             }
         }
 
-        /**
-         *
-         * Her karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void Update()
         {
             if (this.IsActive && !this.IsScaleComplete())
@@ -85,13 +43,6 @@
             }
         }
 
-        /**
-         *
-         * Her sabit karede tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void FixedUpdate()
         {
             this.CheckBrinicleState();
@@ -102,13 +53,6 @@
             }
         }
 
-        /**
-         *
-         * Brinicle durumunu kontrol eder ve değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void CheckBrinicleState(bool force = false)
         {
             var brinicle = this.GetBrinicle(this.UniqueId);
@@ -126,13 +70,6 @@
             }
         }
 
-        /**
-         *
-         * Brinicle durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SetState(bool isActive, Brinicle brinicle = null)
         {
             this.IsActive       = isActive;
@@ -162,13 +99,6 @@
             this.SetScaleAmount(0f);
         }
 
-        /**
-         *
-         * Scale durumunu değiştirir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private void SetScaleAmount(float amount)
         {
             this.ScaleAmount = amount;
@@ -181,25 +111,11 @@
             }
         }
 
-        /**
-         *
-         * Scale tamamlanma durumunu döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool IsScaleComplete()
         {
             return this.ScaleAmount >= 99f;
         }
 
-        /**
-         *
-         * Brinicle döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private Brinicle GetBrinicle(string uniqueId)
         {
             return Network.Session.GetBrinicle(uniqueId);

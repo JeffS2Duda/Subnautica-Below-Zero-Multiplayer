@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Fixes.Vehicle
+namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
     using HarmonyLib;
 
@@ -80,13 +80,6 @@
             return true;
         }
 
-        /**
-         *
-         * UniqueId değerini döner.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static WorldDynamicEntity GetEntity(global::SeaTruckMotor __instance)
         {
             var uniqueId = __instance.truckSegment.gameObject.GetIdentityId();

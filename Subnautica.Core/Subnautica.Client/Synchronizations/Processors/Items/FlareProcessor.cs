@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Client.Synchronizations.Processors.Items
+namespace Subnautica.Client.Synchronizations.Processors.Items
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -18,13 +18,6 @@
 
     public class FlareProcessor : PlayerItemProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {            
             var component = packet.GetComponent<ItemModel.Flare>();
@@ -42,13 +35,6 @@
             return true;
         }
 
-        /**
-         *
-         * Nesne doğduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public void OnEntitySpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
@@ -74,13 +60,6 @@
             }
         }
 
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override void OnFixedUpdate()
         {
             foreach (var player in ZeroPlayer.GetPlayers())
@@ -92,13 +71,6 @@
             }
         }
 
-        /**
-         *
-         * Fener ışığını açar/kapar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private bool ProcessFlare(ZeroPlayer player)
         {
             if (player.HandItemComponent == null)
@@ -144,13 +116,6 @@
             return true;
         }
 
-        /**
-         *
-         * İşaret fişeti yere konulduğunda tetiklenir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void OnFlareDeploying(FlareDeployingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -158,13 +123,6 @@
             FlareProcessor.SendPacketToServer(ev.UniqueId, ev.DeployPosition.ToZeroVector3(), ev.Forward.ToZeroVector3(), Quaternion.identity.ToZeroQuaternion(), ev.Energy);
         }
 
-        /**
-         *
-         * Sunucuya veri gönderir.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public static void SendPacketToServer(string uniqueId, ZeroVector3 position, ZeroVector3 forward, ZeroQuaternion rotation, float energy)
         {
             ServerModel.PlayerItemActionArgs result = new ServerModel.PlayerItemActionArgs()

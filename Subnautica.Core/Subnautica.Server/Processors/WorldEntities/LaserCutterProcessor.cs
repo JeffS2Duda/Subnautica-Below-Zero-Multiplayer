@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Server.Processors.WorldEntities
+namespace Subnautica.Server.Processors.WorldEntities
 {
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.WorldEntity;
@@ -12,13 +12,6 @@
 
     public class LaserCutterProcessor : WorldEntityProcessor
     {
-        /**
-         *
-         * Gelen veriyi işler
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         public override bool OnDataReceived(AuthorizationProfile profile, WorldEntityActionArgs packet)
         {
             var component = packet.Entity.GetComponent<EntityModel.SealedObject>();

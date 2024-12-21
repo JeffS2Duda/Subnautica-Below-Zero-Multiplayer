@@ -1,4 +1,4 @@
-﻿namespace Subnautica.Events.Patches.Events.Items
+namespace Subnautica.Events.Patches.Events.Items
 {
     using System;
 
@@ -10,13 +10,6 @@
     [HarmonyPatch(typeof(global::DeployableStorage), nameof(global::DeployableStorage.Throw))]
     public class DeployableStorageDeploying
     {
-        /**
-         *
-         * Fonksiyonu yamalar.
-         *
-         * @author Ismail <ismaiil_0234@hotmail.com>
-         *
-         */
         private static bool Prefix(global::DeployableStorage __instance)
         {
             if (!Network.IsMultiplayerActive)
