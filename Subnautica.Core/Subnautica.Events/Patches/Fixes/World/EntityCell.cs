@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.World
 {
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Extensions;
+    using System.Collections;
 
     [HarmonyPatch(typeof(global::EntityCell), nameof(global::EntityCell.AwakeAsync))]
     public class EntityCell

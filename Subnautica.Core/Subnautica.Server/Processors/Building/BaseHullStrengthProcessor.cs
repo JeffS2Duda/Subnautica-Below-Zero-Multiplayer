@@ -1,11 +1,9 @@
 namespace Subnautica.Server.Processors.Building
 {
     using Server.Core;
-
     using Subnautica.Network.Models.Core;
-    using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-
+    using Subnautica.Server.Abstracts.Processors;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BaseHullStrengthProcessor : NormalProcessor

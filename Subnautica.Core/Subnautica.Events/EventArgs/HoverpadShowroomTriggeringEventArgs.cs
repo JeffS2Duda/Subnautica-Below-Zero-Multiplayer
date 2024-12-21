@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public HoverpadShowroomTriggeringEventArgs(string uniqueId, bool isEnter, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.IsEnter   = isEnter;
+            this.UniqueId = uniqueId;
+            this.IsEnter = isEnter;
             this.IsAllowed = isAllowed;
         }
 

@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public OxygenPlantClickingEventArgs(string uniqueId, float startedTime)
         {
-            this.UniqueId    = uniqueId;
+            this.UniqueId = uniqueId;
             this.StartedTime = startedTime;
         }
 

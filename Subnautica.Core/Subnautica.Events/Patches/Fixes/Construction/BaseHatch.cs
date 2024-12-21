@@ -1,10 +1,8 @@
 namespace Subnautica.Events.Patches.Fixes.Construction
 {
     using HarmonyLib;
-
-    using UnityEngine;
-
     using Subnautica.API.Features;
+    using UnityEngine;
 
     [HarmonyPatch(typeof(global::UseableDiveHatch), nameof(global::UseableDiveHatch.OnHandClick))]
     public class BaseHatch
@@ -26,7 +24,7 @@ namespace Subnautica.Events.Patches.Fixes.Construction
 
         public void Awake()
         {
-            this.Hatch  = this.gameObject.GetComponent<global::UseableDiveHatch>();
+            this.Hatch = this.gameObject.GetComponent<global::UseableDiveHatch>();
             this.Player = global::Player.main;
         }
 

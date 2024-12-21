@@ -1,19 +1,16 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
-    using Metadata    = Subnautica.Network.Models.Metadata;
 
     public class FiltrationMachine : BaseLogic
     {
@@ -48,7 +45,7 @@ namespace Subnautica.Server.Logic.Furnitures
                     {
                         continue;
                     }
-                    
+
                     var geometry = Network.Identifier.GetComponentByGameObject<global::BaseFiltrationMachineGeometry>(construction.Value.UniqueId);
                     if (geometry == null)
                     {
@@ -165,17 +162,17 @@ namespace Subnautica.Server.Logic.Furnitures
 
             ServerModel.MetadataComponentArgs request = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
-                TechType  = TechType.BaseFiltrationMachine,
+                UniqueId = uniqueId,
+                TechType = TechType.BaseFiltrationMachine,
                 Component = new Metadata.FiltrationMachine()
                 {
                     TimeRemainingWater = component.TimeRemainingWater,
-                    TimeRemainingSalt  = component.TimeRemainingSalt,
+                    TimeRemainingSalt = component.TimeRemainingSalt,
 
                     Item = new Metadata.FiltrationMachineItem()
                     {
                         TechType = techType,
-                        ItemId   = item.ItemId,
+                        ItemId = item.ItemId,
                     }
                 },
             };

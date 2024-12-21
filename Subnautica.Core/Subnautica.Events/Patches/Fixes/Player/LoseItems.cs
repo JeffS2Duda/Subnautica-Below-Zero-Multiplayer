@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Player
 {
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System.Collections.Generic;
 
     [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.LoseItems))]
     public class LoseItems
@@ -34,7 +32,7 @@
                 }
             }
 
-            if (inventoryItemList.Count > 0 )
+            if (inventoryItemList.Count > 0)
             {
                 foreach (InventoryItem inventoryItem in __instance.container)
                 {

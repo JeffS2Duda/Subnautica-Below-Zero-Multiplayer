@@ -1,15 +1,11 @@
 namespace Subnautica.Server.Processors.Vehicle
 {
-    using System.Linq;
-
     using Server.Core;
-
-    using Subnautica.API.Features;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Server.Abstracts.Processors;
-
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using System.Linq;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class BatteryProcessor : NormalProcessor
@@ -39,7 +35,7 @@ namespace Subnautica.Server.Processors.Vehicle
                 {
                     return false;
                 }
-                
+
                 var entity = Server.Instance.Storages.World.GetVehicle(packet.UniqueId);
                 if (entity == null)
                 {

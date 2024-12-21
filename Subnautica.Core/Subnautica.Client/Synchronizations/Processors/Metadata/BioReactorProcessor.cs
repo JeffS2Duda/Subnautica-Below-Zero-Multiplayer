@@ -8,7 +8,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
 
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BioReactorProcessor : MetadataProcessor
@@ -53,10 +53,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.BioReactor()
                 {
-                    IsAdded         = isAdded,
+                    IsAdded = isAdded,
                     WorldPickupItem = pickupItem,
                 },
             };

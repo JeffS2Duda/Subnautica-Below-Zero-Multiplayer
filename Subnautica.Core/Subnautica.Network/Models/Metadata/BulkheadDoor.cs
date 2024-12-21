@@ -21,7 +21,7 @@ namespace Subnautica.Network.Models.Metadata
         public BulkheadDoor(bool isOpened, bool side)
         {
             this.IsOpened = isOpened;
-            this.Side     = side;
+            this.Side = side;
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.API.Features
 {
-    using System;
-
     using Newtonsoft.Json;
+    using System;
 
     public class LocalServerItem
     {

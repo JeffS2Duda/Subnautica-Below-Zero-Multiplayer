@@ -1,15 +1,13 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.General
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class StorageOpenProcessor : NormalProcessor
@@ -60,14 +58,14 @@
                     }
                 }
                 else if (techType == TechType.BaseNuclearReactor)
-                {   
+                {
                     if (isMine)
                     {
                         Network.Identifier.GetComponentByGameObject<global::BaseNuclearReactorGeometry>(uniqueId, true)?.OnUse(null);
                     }
                 }
                 else if (techType == TechType.BaseMapRoom)
-                {   
+                {
                     if (isMine)
                     {
                         var baseDeconstructable = Network.Identifier.GetComponentByGameObject<global::BaseDeconstructable>(uniqueId);
@@ -109,7 +107,7 @@
                     }
                 }
             }
-            
+
             return true;
         }
 

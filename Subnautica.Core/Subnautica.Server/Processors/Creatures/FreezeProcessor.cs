@@ -1,6 +1,5 @@
 namespace Subnautica.Server.Processors.Creatures
 {
-    using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
@@ -22,7 +21,7 @@ namespace Subnautica.Server.Processors.Creatures
                 return false;
             }
 
-            if (creature.LiveMixin.IsDead) 
+            if (creature.LiveMixin.IsDead)
             {
                 return false;
             }

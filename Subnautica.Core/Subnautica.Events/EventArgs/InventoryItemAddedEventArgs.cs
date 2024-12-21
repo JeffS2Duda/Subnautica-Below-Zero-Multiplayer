@@ -7,7 +7,7 @@ namespace Subnautica.Events.EventArgs
         public InventoryItemAddedEventArgs(string uniqueId, Pickupable item)
         {
             this.UniqueId = uniqueId;
-            this.Item     = item;
+            this.Item = item;
         }
 
         public string UniqueId { get; set; }

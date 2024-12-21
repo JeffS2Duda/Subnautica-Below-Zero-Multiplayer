@@ -8,7 +8,7 @@
     {
         public static bool UpdateMultiplayerPlacement(this global::BaseAddBulkheadGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddBulkheadGhostComponent component)
         {
-            positionFound   = false;
+            positionFound = false;
             geometryChanged = false;
 
             if (updatePlacement == false || component == null || component.TargetBaseId.IsNull() || component.FaceStart.Cell == null)
@@ -34,7 +34,7 @@
             if (!baseGhost.face.HasValue || baseGhost.face.Value.cell != faceCell || baseGhost.face.Value.direction != component.FaceStart.Direction)
             {
                 var targetCell = baseGhost.targetBase.GetCell(normCell);
-                var cellSize   = Base.CellSize[(int)targetCell];
+                var cellSize = Base.CellSize[(int)targetCell];
 
                 if (baseGhost.ghostBase.Shape.ToInt3() != cellSize)
                 {

@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public CreatureAnimationChangedEventArgs(ushort creatureId, byte animationId, byte result)
         {
-            this.CreatureId  = creatureId;
+            this.CreatureId = creatureId;
             this.AnimationId = animationId;
-            this.Result      = result;
+            this.Result = result;
         }
 
         public ushort CreatureId { get; private set; }

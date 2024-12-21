@@ -3,10 +3,9 @@ namespace Subnautica.Server.Processors.Items
     using Subnautica.Network.Models.Server;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
-
+    using ItemModel = Subnautica.Network.Models.Items;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
-    using ItemModel        = Subnautica.Network.Models.Items;
-    using Metadata         = Subnautica.Network.Models.Metadata;
 
     public class DeployableStorageProcessor : PlayerItemProcessor
     {
@@ -45,7 +44,7 @@ namespace Subnautica.Server.Processors.Items
                             smallStorage.StorageContainer.Sign = new Metadata.Sign();
                         }
 
-                        smallStorage.StorageContainer.Sign.Text       = component.SignText;
+                        smallStorage.StorageContainer.Sign.Text = component.SignText;
                         smallStorage.StorageContainer.Sign.ColorIndex = component.SignColorIndex;
 
                         profile.SendPacketToOtherClients(packet);

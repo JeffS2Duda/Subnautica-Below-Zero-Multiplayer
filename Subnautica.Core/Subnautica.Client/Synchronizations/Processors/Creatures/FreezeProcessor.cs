@@ -25,9 +25,9 @@
 
             var action = new CreatureQueueAction();
             action.OnProcessCompleted = this.OnCreatureProcessCompleted;
-            action.RegisterProperty("EndTime"    , packet.EndTime);
-            action.RegisterProperty("IsInfinity" , packet.IsInfinityLifeTime());
-            action.RegisterProperty("BrinicleId" , packet.BrinicleId);
+            action.RegisterProperty("EndTime", packet.EndTime);
+            action.RegisterProperty("IsInfinity", packet.IsInfinityLifeTime());
+            action.RegisterProperty("BrinicleId", packet.BrinicleId);
 
             Network.Creatures.ProcessToQueue(packet.CreatureId, action);
             return true;
@@ -35,10 +35,10 @@
 
         public void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
-            var endTime    = item.Action.GetProperty<float>("EndTime");
+            var endTime = item.Action.GetProperty<float>("EndTime");
             var isInfinity = item.Action.GetProperty<bool>("IsInfinity");
             var brinicleId = item.Action.GetProperty<string>("BrinicleId");
-            var lifeTime   = endTime - Network.Session.GetWorldTime();
+            var lifeTime = endTime - Network.Session.GetWorldTime();
 
             if (creature.GameObject.TryGetComponent<global::CreatureFrozenMixin>(out var frozenMixin))
             {
@@ -52,7 +52,7 @@
                             brinicle.frozenTargets.Add(creature.GameObject);
                         }
                     }
-                        
+
                     if (isInfinity)
                     {
                         frozenMixin.Freeze(float.PositiveInfinity, true);
@@ -80,7 +80,7 @@
             ServerModel.CreatureFreezeArgs request = new ServerModel.CreatureFreezeArgs()
             {
                 CreatureId = creatureId,
-                LifeTime   = lifeTime,
+                LifeTime = lifeTime,
                 BrinicleId = brinicleId
             };
 

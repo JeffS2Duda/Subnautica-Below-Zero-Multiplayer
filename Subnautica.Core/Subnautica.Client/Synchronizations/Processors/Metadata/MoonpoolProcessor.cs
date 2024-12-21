@@ -14,7 +14,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
     using UnityEngine;
 
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class MoonpoolProcessor : MetadataProcessor
@@ -49,13 +49,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             if (component.IsDocking || component.IsUndocking)
             {
                 var action = new ItemQueueAction();
-                action.RegisterProperty("UniqueId" , uniqueId);
+                action.RegisterProperty("UniqueId", uniqueId);
                 action.RegisterProperty("IsDocking", component.IsDocking);
-                action.RegisterProperty("PlayerId" , packet.GetPacketOwnerId());
+                action.RegisterProperty("PlayerId", packet.GetPacketOwnerId());
                 action.RegisterProperty("VehicleId", component.VehicleId);
-                action.RegisterProperty("Vehicle"  , component.Vehicle);
-                action.RegisterProperty("IsLeft"   , component.IsUndockingLeft);
-                action.RegisterProperty("DockTime" , component.DockingStartTime);
+                action.RegisterProperty("Vehicle", component.Vehicle);
+                action.RegisterProperty("IsLeft", component.IsUndockingLeft);
+                action.RegisterProperty("DockTime", component.DockingStartTime);
                 action.RegisterProperty("BackModulePosition", component.BackModulePosition);
                 action.OnProcessCompleted = this.OnDockProcessCompleted;
 
@@ -95,12 +95,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         private void OnDockProcessCompleted(ItemQueueProcess item)
         {
             var isDocking = item.Action.GetProperty<bool>("IsDocking");
-            var isLeft    = item.Action.GetProperty<bool>("IsLeft");
-            var dockTime  = item.Action.GetProperty<double>("DockTime");
-            var uniqueId  = item.Action.GetProperty<string>("UniqueId");
+            var isLeft = item.Action.GetProperty<bool>("IsLeft");
+            var dockTime = item.Action.GetProperty<double>("DockTime");
+            var uniqueId = item.Action.GetProperty<string>("UniqueId");
             var vehicleId = item.Action.GetProperty<string>("VehicleId");
-            var playerId  = item.Action.GetProperty<byte>("PlayerId");
-            var vehicle   = item.Action.GetProperty<WorldDynamicEntity>("Vehicle");
+            var playerId = item.Action.GetProperty<byte>("PlayerId");
+            var vehicle = item.Action.GetProperty<WorldDynamicEntity>("Vehicle");
             var backModulePosition = item.Action.GetProperty<ZeroVector3>("BackModulePosition");
             if (isDocking)
             {
@@ -281,18 +281,18 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.BaseMoonpool()
                 {
                     IsCustomizerOpening = isCustomizerOpening,
-                    ColorCustomizer     = colorCustomizer,
-                    VehicleId           = vehicleId,
-                    IsDocking           = isDocking,
-                    IsUndocking         = isUndocking,
-                    IsUndockingLeft     = isUndockingLeft,
-                    BackModulePosition  = backModulePosition,
-                    EndPosition         = endPosition,
-                    EndRotation         = endRotation,
+                    ColorCustomizer = colorCustomizer,
+                    VehicleId = vehicleId,
+                    IsDocking = isDocking,
+                    IsUndocking = isUndocking,
+                    IsUndockingLeft = isUndockingLeft,
+                    BackModulePosition = backModulePosition,
+                    EndPosition = endPosition,
+                    EndRotation = endRotation,
                 },
             };
 

@@ -1,14 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Collections.Generic;
     using UnityEngine;
 
     [HarmonyPatch]

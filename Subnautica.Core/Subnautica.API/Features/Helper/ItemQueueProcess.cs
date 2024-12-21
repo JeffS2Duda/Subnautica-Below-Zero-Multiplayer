@@ -1,11 +1,10 @@
 ﻿namespace Subnautica.API.Features.Helper
 {
+    using Subnautica.Network.Structures;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Subnautica.Network.Structures;
-
     using UnityEngine;
 
     public class ItemQueueProcess
@@ -35,18 +34,18 @@
         public void Dipose()
         {
             this.IsSpawning = false;
-            this.IsProcess  = false;
-            this.TechType   = TechType.None;
-            this.Item       = null;
-            this.Container  = null;
-            this.Equipment  = null;
+            this.IsProcess = false;
+            this.TechType = TechType.None;
+            this.Item = null;
+            this.Container = null;
+            this.Equipment = null;
             this.Pickupable = null;
         }
     }
 
     public class ItemQueueAction
     {
-       private List<GenericProperty> Properties = new List<GenericProperty>();
+        private List<GenericProperty> Properties = new List<GenericProperty>();
 
         public Func<ItemQueueProcess, bool> OnEntitySpawning { get; set; }
 
@@ -71,7 +70,7 @@
         public ItemQueueAction(Func<ItemQueueProcess, bool> entitySpawning, Action<ItemQueueProcess, Pickupable, GameObject> entitySpawned)
         {
             this.OnEntitySpawning = entitySpawning;
-            this.OnEntitySpawned  = entitySpawned;
+            this.OnEntitySpawned = entitySpawned;
         }
 
         public void RegisterProperty(string key, object value)
@@ -87,7 +86,7 @@
                 return default(T);
             }
 
-            return (T) property.Value;
+            return (T)property.Value;
         }
     }
 }

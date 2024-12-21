@@ -1,16 +1,14 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
-    using Metadata         = Subnautica.Network.Models.Metadata;
-    using ServerModel      = Subnautica.Network.Models.Server;
 
     public class Moonpool : BaseLogic
     {

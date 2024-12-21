@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::DeployableStorage), nameof(global::DeployableStorage.Throw))]
     public class DeployableStorageDeploying

@@ -26,22 +26,22 @@ namespace Subnautica.Network.Models.Metadata
 
         public Bench(global::Bench.BenchSide side, bool isSitdown)
         {
-            this.Side      = side;
+            this.Side = side;
             this.IsSitdown = isSitdown;
         }
 
         public void Sitdown(byte playerId)
         {
-            this.IsSitdown   = true;
-            this.PlayerId    = null;
+            this.IsSitdown = true;
+            this.PlayerId = null;
             this.PlayerId_v2 = playerId;
         }
 
         public void Standup()
         {
-            this.IsSitdown   = false;
+            this.IsSitdown = false;
             this.PlayerId_v2 = 0;
-            this.PlayerId    = null;
+            this.PlayerId = null;
         }
     }
 }

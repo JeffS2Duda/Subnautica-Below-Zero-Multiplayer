@@ -4,7 +4,7 @@
 
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-    
+
     [HarmonyPatch]
     public class BaseDataCache
     {

@@ -16,7 +16,7 @@ namespace Subnautica.Server.Processors.WorldEntities
             {
                 return false;
             }
-            
+
             var component = packet.Entity.GetComponent<EntityModel.BulkheadDoor>();
             if (component == null)
             {

@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public BaseControlRoomMinimapUsingEventArgs(string uniqueId, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
+            this.UniqueId = uniqueId;
             this.IsAllowed = isAllowed;
         }
 

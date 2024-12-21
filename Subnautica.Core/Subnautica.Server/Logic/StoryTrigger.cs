@@ -1,8 +1,5 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -12,6 +9,8 @@ namespace Subnautica.Server.Logic
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class StoryTrigger : BaseLogic
     {
@@ -58,9 +57,9 @@ namespace Subnautica.Server.Logic
                 this.Triggers.Add(trigger.Clone());
             }
 
-            this.AddCustomDoorway(StoryCinematicType.StoryMarg1              , new ZeroQuaternion(0.0f, -0.2f, 0.0f, 1.0f), new ZeroVector3(1.1f, 1.2f, 1.0f));
-            this.AddCustomDoorway(StoryCinematicType.StoryShieldBaseInnerGate, new ZeroQuaternion(0.0f, 0.0f, 0.0f, 1.0f) , new ZeroVector3(1.1f, 1.2f, 1.0f));
-            this.AddCustomDoorway(StoryCinematicType.StoryShieldBaseEndGate  , new ZeroQuaternion(0.0f, 0.0f, 0.0f, 1.0f) , new ZeroVector3(1.1f, 1.6f, 1.0f));
+            this.AddCustomDoorway(StoryCinematicType.StoryMarg1, new ZeroQuaternion(0.0f, -0.2f, 0.0f, 1.0f), new ZeroVector3(1.1f, 1.2f, 1.0f));
+            this.AddCustomDoorway(StoryCinematicType.StoryShieldBaseInnerGate, new ZeroQuaternion(0.0f, 0.0f, 0.0f, 1.0f), new ZeroVector3(1.1f, 1.2f, 1.0f));
+            this.AddCustomDoorway(StoryCinematicType.StoryShieldBaseEndGate, new ZeroQuaternion(0.0f, 0.0f, 0.0f, 1.0f), new ZeroVector3(1.1f, 1.6f, 1.0f));
         }
 
         public bool IsTriggerExists(string goalKey)
@@ -85,7 +84,7 @@ namespace Subnautica.Server.Logic
                     {
                         continue;
                     }
-                    
+
                     var playerCount = this.GetClosestPlayerCount(trigger.Position, trigger.TriggerRange, trigger.IsInBase);
                     var maxPlayer = Server.Instance.GetPlayerCount();
 
@@ -118,9 +117,9 @@ namespace Subnautica.Server.Logic
             {
                 StoryTriggerArgs packet = new StoryTriggerArgs()
                 {
-                    GoalKey     = trigger.GoalKey,
-                    GoalType    = trigger.GoalType,
-                    IsTrigger   = true,
+                    GoalKey = trigger.GoalKey,
+                    GoalType = trigger.GoalType,
+                    IsTrigger = true,
                     TriggerTime = Server.Instance.Logices.World.GetServerTime() + 0.25f,
                 };
 
@@ -135,8 +134,8 @@ namespace Subnautica.Server.Logic
         {
             StoryTriggerArgs packet = new StoryTriggerArgs()
             {
-                IsTrigger      = true,
-                PlayerCount    = playerCount,
+                IsTrigger = true,
+                PlayerCount = playerCount,
                 MaxPlayerCount = maxPlayer
             };
 

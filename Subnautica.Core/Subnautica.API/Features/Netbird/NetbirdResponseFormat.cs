@@ -18,7 +18,7 @@ namespace Subnautica.API.Features.Netbird
     public class NetbirdResponseConnectionFormat
     {
         public string Url { get; set; }
-        
+
         public string Uri { get; set; }
 
         public bool Connected { get; set; }

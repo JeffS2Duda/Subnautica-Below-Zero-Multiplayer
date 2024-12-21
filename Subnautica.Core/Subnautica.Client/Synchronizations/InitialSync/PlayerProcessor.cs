@@ -1,8 +1,5 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -10,9 +7,9 @@
     using Subnautica.Client.Extensions;
     using Subnautica.Client.MonoBehaviours.World;
     using Subnautica.Network.Models.Storage.Player;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class PlayerProcessor
@@ -30,9 +27,9 @@
             }
 
             global::Player.main.oxygenMgr.Restore();
-            global::Player.main.timeLastSleep    = Network.Session.Current.PlayerTimeLastSleep;
+            global::Player.main.timeLastSleep = Network.Session.Current.PlayerTimeLastSleep;
             global::Player.main.liveMixin.health = Network.Session.Current.PlayerHealth;
-            global::Player.main.GetComponent<Survival>().food  = Network.Session.Current.PlayerFood;
+            global::Player.main.GetComponent<Survival>().food = Network.Session.Current.PlayerFood;
             global::Player.main.GetComponent<Survival>().water = Network.Session.Current.PlayerWater;
 
             if (Network.Session.Current.InteractList != null)
@@ -58,7 +55,7 @@
             if (Network.Session.Current.PlayerPosition != null)
             {
                 global::Player.main.transform.position = Network.Session.Current.PlayerPosition.ToVector3();
-                global::Player.main.lastPosition       = Network.Session.Current.PlayerPosition.ToVector3();
+                global::Player.main.lastPosition = Network.Session.Current.PlayerPosition.ToVector3();
                 global::Player.main.transform.rotation = Network.Session.Current.PlayerRotation.ToQuaternion();
             }
 

@@ -1,14 +1,11 @@
 namespace Subnautica.Server.Processors.General
 {
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
-
-    using ServerModel    = Subnautica.Network.Models.Server;
+    using System.Linq;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldChildrens = Subnautica.Network.Models.Storage.World.Childrens;
 
     public class IntroProcessor : NormalProcessor
@@ -25,14 +22,14 @@ namespace Subnautica.Server.Processors.General
 
             if (!packet.IsFinished)
             {
-                
+
                 profile.SendPacketToAllClient(packet);
             }
             else
             {
                 packet.ServerTime = Server.Instance.Logices.World.GetServerTime();
                 packet.SupplyDrop = this.CreateOrGetSupplyDrop();
-                
+
                 profile.SendPacket(packet);
             }
 

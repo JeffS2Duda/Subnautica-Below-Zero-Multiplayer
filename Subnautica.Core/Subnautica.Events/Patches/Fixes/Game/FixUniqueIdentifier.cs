@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Game
 {
     using HarmonyLib;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
 
     [HarmonyPatch]
     public class FixUniqueIdentifier

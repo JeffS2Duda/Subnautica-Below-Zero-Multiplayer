@@ -1,15 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
-    using UnityEngine;
+    using System;
+    using System.Collections.Generic;
 
     [HarmonyPatch(typeof(global::ArmsController), nameof(global::ArmsController.Update))]
     public static class Updated
@@ -27,13 +23,13 @@ namespace Subnautica.Events.Patches.Events.Player
                     try
                     {
                         PlayerUpdatedEventArgs args = new PlayerUpdatedEventArgs(
-                            __instance.transform.position, 
-                            global::Player.main.transform.localPosition, 
-                            MainCameraControl.main.viewModel.transform.rotation, 
-                            GetTechTypeInHand(__instance), 
-                            GetPlayerEquipments(), 
-                            MainCameraControl.main.GetCameraPitch(), 
-                            MainCameraControl.main.transform.forward, 
+                            __instance.transform.position,
+                            global::Player.main.transform.localPosition,
+                            MainCameraControl.main.viewModel.transform.rotation,
+                            GetTechTypeInHand(__instance),
+                            GetPlayerEquipments(),
+                            MainCameraControl.main.GetCameraPitch(),
+                            MainCameraControl.main.transform.forward,
                             __instance.animator.GetFloat("FP_Emotes"),
                             global::Player.main.precursorArmsAttached,
                             global::Player.main.footStepSounds.currentSurfaceType
@@ -94,7 +90,7 @@ namespace Subnautica.Events.Patches.Events.Player
                 GetEquipmentType("Body"),
                 GetEquipmentType("Gloves"),
                 GetEquipmentType("Foots"),
-            };  
+            };
 
             return equipments;
         }

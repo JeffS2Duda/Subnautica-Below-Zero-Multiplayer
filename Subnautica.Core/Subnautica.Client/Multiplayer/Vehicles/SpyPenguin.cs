@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.Client.Multiplayer.Vehicles
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Server;
+    using System.Collections.Generic;
 
     public class SpyPenguin : VehicleController
     {
@@ -23,9 +22,9 @@
         public override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
-            
+
             if (this.VehicleComponent != null)
-            { 
+            {
                 this.Penguin.animator.SetBool("cam_extended", this.VehicleComponent.IsSelfieMode);
 
                 if (this.VehicleComponent.SelfieNumber == -1)

@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::BaseControlRoom), nameof(global::BaseControlRoom.Update))]
     public static class BaseControlRoomMinimapMoving

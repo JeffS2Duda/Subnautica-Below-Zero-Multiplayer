@@ -77,7 +77,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
             if (ev.IsStaticWorldEntity)
             {
                 ev.IsAllowed = false;
-                
+
                 if (!Network.HandTarget.IsBlocked(ev.UniqueId))
                 {
                     BulkheadDoorProcessor.SendPacketToServer(ev.UniqueId, ev.Side, false);
@@ -91,9 +91,9 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
             {
                 Entity = new EntityModel.BulkheadDoor()
                 {
-                    UniqueId           = uniqueId,
-                    Side               = side,
-                    IsOpened           = isOpened,
+                    UniqueId = uniqueId,
+                    Side = side,
+                    IsOpened = isOpened,
                     StoryCinematicType = storyCinematicType,
                 },
             };

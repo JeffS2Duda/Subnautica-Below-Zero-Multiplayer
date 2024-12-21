@@ -1,9 +1,5 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Linq;
-    using Oculus.Platform;
-
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
     using Subnautica.Client.Abstracts.Processors;
@@ -29,7 +25,7 @@
             {
                 QuantumLockerStorage.GetStorageContainer(true);
             }
-                
+
             if (Network.Session.Current.QuantumLocker?.Items.Count > 0)
             {
                 foreach (var item in Network.Session.Current.QuantumLocker.Items)

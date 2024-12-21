@@ -1,24 +1,20 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features.Helper;
+    using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-
-    using Subnautica.API.Extensions;
-    using Subnautica.API.Features.Helper;
-    using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-
     using UnityEngine;
-
     using UWE;
-
     using Metadata = Subnautica.Network.Models.Metadata;
 
     public class Storage
     {
         private readonly List<StorageProcessItem> Queue = new List<StorageProcessItem>();
-        
+
         private readonly WaitForSecondsRealtime WaitTime = new WaitForSecondsRealtime(0.25f);
 
         private bool IsRunning { get; set; } = false;
@@ -48,11 +44,11 @@
         {
             this.Queue.Add(new StorageProcessItem()
             {
-                OwnerId         = playerId,
-                ContainerId     = containerId,
+                OwnerId = playerId,
+                ContainerId = containerId,
                 WorldPickupItem = worldPickupItem,
                 OnEntitySpawned = onEntitySpawned,
-                CustomProperty  = customProperty
+                CustomProperty = customProperty
             });
 
             this.ConsumeQueue();
@@ -119,7 +115,7 @@
                         Log.Error("ITEM VERY DELAYED. MAYBE DE-SYNC...");
                         this.Queue.Remove(item);
                     }
-                    else 
+                    else
                     {
                         if (this.AddItemToStorage(item, false))
                         {
@@ -181,12 +177,12 @@
             {
                 return baseDeconstructable.GetMapRoomFunctionality()?.storageContainer?.container;
             }
-            else 
+            else
             {
                 var storage = gameObject.GetComponentInChildren<global::StorageContainer>();
                 if (storage)
                 {
-                    return storage.container;    
+                    return storage.container;
                 }
             }
 

@@ -1,11 +1,6 @@
 namespace Subnautica.Server.Storage
 {
-    using System;
-    using System.IO;
-    using System.Linq;
-
     using global::Story;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
@@ -13,7 +8,9 @@ namespace Subnautica.Server.Storage
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
-
+    using System;
+    using System.IO;
+    using System.Linq;
     using StoryStorage = Network.Models.Storage.Story;
 
     public class Story : BaseStorage
@@ -167,9 +164,9 @@ namespace Subnautica.Server.Storage
 
                 return Server.Instance.Storages.Story.Storage.CompletedGoals.Add(new ZeroStoryGoal()
                 {
-                    Key          = storyKey,
-                    GoalType     = goalType,
-                    IsPlayMuted  = isPlayMuted,
+                    Key = storyKey,
+                    GoalType = goalType,
+                    IsPlayMuted = isPlayMuted,
                     FinishedTime = Server.Instance.Logices.World.GetServerTime(),
                 });
             }
@@ -185,7 +182,7 @@ namespace Subnautica.Server.Storage
 
         public ZeroStorySignal AddSignal(UnlockSignalData.SignalType signalType, ZeroVector3 targetPosition, string targetDescription, bool isRemoved = false)
         {
-            lock (this.ProcessLock) 
+            lock (this.ProcessLock)
             {
                 if (Server.Instance.Storages.Story.Storage.Signals.Any(q => q.SignalType == signalType && q.TargetPosition == targetPosition && q.TargetDescription == targetDescription))
                 {
@@ -194,11 +191,11 @@ namespace Subnautica.Server.Storage
 
                 var signal = new ZeroStorySignal()
                 {
-                    UniqueId          = Network.Identifier.GenerateUniqueId(),
-                    SignalType        = signalType,
-                    TargetPosition    = targetPosition,
+                    UniqueId = Network.Identifier.GenerateUniqueId(),
+                    SignalType = signalType,
+                    TargetPosition = targetPosition,
                     TargetDescription = targetDescription,
-                    IsRemoved         = isRemoved,
+                    IsRemoved = isRemoved,
                 };
 
                 if (Server.Instance.Storages.Story.Storage.Signals.Add(signal))

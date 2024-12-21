@@ -1,15 +1,8 @@
 namespace Subnautica.Server.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using LiteNetLib;
-
     using MessagePack;
-
     using Story;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
@@ -21,7 +14,9 @@ namespace Subnautica.Server.Core
     using Subnautica.Network.Structures;
     using Subnautica.Server.Events;
     using Subnautica.Server.Events.EventArgs;
-
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     [MessagePackObject]
@@ -40,8 +35,8 @@ namespace Subnautica.Server.Core
         public string IpAddress { get; set; }
 
         [IgnoreMember]
-        public string IpPortAddress 
-        { 
+        public string IpPortAddress
+        {
             get
             {
                 return this.ipPortAddress;
@@ -110,7 +105,7 @@ namespace Subnautica.Server.Core
         public float Food { get; set; } = 50.5f;
 
         [Key(6)]
-        public ZeroVector3 Position { get; set; } = new ZeroVector3();  
+        public ZeroVector3 Position { get; set; } = new ZeroVector3();
 
         [Key(7)]
         public ZeroQuaternion Rotation { get; set; } = new ZeroQuaternion();
@@ -122,7 +117,7 @@ namespace Subnautica.Server.Core
         public byte[] Equipments { get; set; }
 
         [Key(10)]
-        public Dictionary<string, string> EquipmentSlots { get; set; } = new Dictionary<string, string>(); 
+        public Dictionary<string, string> EquipmentSlots { get; set; } = new Dictionary<string, string>();
 
         [Key(11)]
         public string[] QuickSlots { get; set; }
@@ -131,7 +126,7 @@ namespace Subnautica.Server.Core
         public int ActiveSlot { get; set; }
 
         [Key(13)]
-        public List<TechType> ItemPins { get; set; } = new List<TechType>();    
+        public List<TechType> ItemPins { get; set; } = new List<TechType>();
 
         [Key(14)]
         public HashSet<NotificationItem> PdaNotifications { get; set; } = new HashSet<NotificationItem>();
@@ -158,8 +153,8 @@ namespace Subnautica.Server.Core
         public AuthorizationProfile(NetPeer netPeer)
         {
             this.IpPortAddress = netPeer.ToString();
-            this.NetPeer       = netPeer;
-            this.PlayerId      = Server.Instance.GetNextPlayerId();
+            this.NetPeer = netPeer;
+            this.PlayerId = Server.Instance.GetNextPlayerId();
         }
 
         public AuthorizationProfile Initialize(string playerName, string uniqueId)
@@ -176,19 +171,19 @@ namespace Subnautica.Server.Core
                 Log.Error("PLAYER DATA ERROR");
                 return null;
             }
-            
-            profile.IsAuthorized  = true;
+
+            profile.IsAuthorized = true;
             profile.IpPortAddress = this.IpPortAddress;
-            profile.NetPeer       = this.NetPeer;
-            profile.PlayerName    = playerName;
-            profile.UniqueId      = uniqueId;
-            profile.PlayerId      = this.PlayerId;
+            profile.NetPeer = this.NetPeer;
+            profile.PlayerName = playerName;
+            profile.UniqueId = uniqueId;
+            profile.PlayerId = this.PlayerId;
 
             if (profile.InventoryItems == null)
             {
                 profile.InventoryItems = StorageContainer.Create(6, 8);
             }
-            
+
             return profile;
         }
 
@@ -238,7 +233,7 @@ namespace Subnautica.Server.Core
 
             ServerModel.PlayerDisconnectedArgs packet = new ServerModel.PlayerDisconnectedArgs()
             {
-                UniqueId  = this.UniqueId
+                UniqueId = this.UniqueId
             };
 
             this.SendPacketToOtherClients(packet);
@@ -309,9 +304,9 @@ namespace Subnautica.Server.Core
         {
             return this.SpecialGoals.Add(new ZeroStoryGoal()
             {
-                Key          = storyKey,
-                GoalType     = goalType,
-                IsPlayMuted  = isPlayMuted,
+                Key = storyKey,
+                GoalType = goalType,
+                IsPlayMuted = isPlayMuted,
                 FinishedTime = Server.Instance.Logices.World.GetServerTime(),
             });
         }
@@ -344,7 +339,7 @@ namespace Subnautica.Server.Core
         public void SetStoryCinematicMode(bool isActive)
         {
             this.IsStoryCinematicModeActive = isActive;
-        }      
+        }
 
         public void SetEquipments(byte[] equipments, Dictionary<string, string> equipmentSlots)
         {
@@ -380,7 +375,7 @@ namespace Subnautica.Server.Core
         public void AddNotification(NotificationManager.Group group, string key, bool isAdded)
         {
             var notification = this.PdaNotifications.FirstOrDefault(q => q.Key == key);
-            if (notification == null) 
+            if (notification == null)
             {
                 this.PdaNotifications.Add(new NotificationItem(group, key, !isAdded, false, true, 0));
             }
@@ -400,9 +395,9 @@ namespace Subnautica.Server.Core
             {
                 this.PdaNotifications.Add(new NotificationItem(NotificationManager.Group.Undefined, uniqueId, true, true, isVisible, 0));
             }
-            else 
+            else
             {
-                notification.IsPing    = true;
+                notification.IsPing = true;
                 notification.IsVisible = isVisible;
             }
 
@@ -415,9 +410,9 @@ namespace Subnautica.Server.Core
             {
                 this.PdaNotifications.Add(new NotificationItem(NotificationManager.Group.Undefined, uniqueId, true, true, true, colorIndex));
             }
-            else 
+            else
             {
-                notification.IsPing     = true;
+                notification.IsPing = true;
                 notification.ColorIndex = colorIndex;
             }
 

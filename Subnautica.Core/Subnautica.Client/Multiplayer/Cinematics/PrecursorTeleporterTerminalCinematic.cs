@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Client.Multiplayer.Cinematics
 {
-    using System.Collections;
-
     using Subnautica.API.Extensions;
     using Subnautica.Client.MonoBehaviours.Player;
-
+    using System.Collections;
     using UnityEngine;
 
     public class PrecursorTeleporterTerminalCinematic : CinematicController
@@ -23,7 +21,7 @@
 
             yield return base.OnResetAnimationsAsync(item);
             yield return CraftData.InstantiateFromPrefabAsync(TechType.PrecursorIonCrystal, result);
-            
+
             this.InitializeIonCube(result.Get());
 
         }

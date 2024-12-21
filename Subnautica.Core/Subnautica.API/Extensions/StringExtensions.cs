@@ -12,7 +12,7 @@
         {
             try
             {
-                return (T) Enum.Parse(typeof(T), value, true);
+                return (T)Enum.Parse(typeof(T), value, true);
             }
             catch (Exception)
             {
@@ -42,7 +42,7 @@
 
         public static IEnumerable<IEnumerable<T>> Split<T>(this T[] array, int size)
         {
-            for (var i = 0; i < (float) array.Length / size; i++)
+            for (var i = 0; i < (float)array.Length / size; i++)
             {
                 yield return array.Skip(i * size).Take(size);
             }

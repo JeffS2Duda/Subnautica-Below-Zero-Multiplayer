@@ -7,7 +7,7 @@
 
     [HarmonyPatch(typeof(MainMenuLoadButton), nameof(MainMenuLoadButton.Delete))]
     public class MenuSaveDeleteButtonClicking
-    {        
+    {
         private static bool Prefix(MainMenuLoadButton __instance)
         {
             try

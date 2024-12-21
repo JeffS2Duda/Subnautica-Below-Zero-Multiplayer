@@ -22,7 +22,7 @@ namespace Subnautica.Events.Patches.Events.Items
                 {
                     currentTime += Time.deltaTime;
 
-                    if(currentTime >= BroadcastInterval.ScannerUsing)
+                    if (currentTime >= BroadcastInterval.ScannerUsing)
                     {
                         currentTime = 0f;
 

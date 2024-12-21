@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public WeldingEventArgs(string uniqueId, TechType techType, float health, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.TechType  = techType;
-            this.Health    = health;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
+            this.Health = health;
             this.IsAllowed = isAllowed;
         }
 

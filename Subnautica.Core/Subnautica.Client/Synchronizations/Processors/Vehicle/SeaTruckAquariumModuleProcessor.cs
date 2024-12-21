@@ -56,8 +56,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.SeaTruckAquariumModuleArgs request = new ServerModel.SeaTruckAquariumModuleArgs()
             {
-                UniqueId        = uniqueId,
-                IsAdded         = isAdded,
+                UniqueId = uniqueId,
+                IsAdded = isAdded,
                 WorldPickupItem = pickupItem,
             };
 

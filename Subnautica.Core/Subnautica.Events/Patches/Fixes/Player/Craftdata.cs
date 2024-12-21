@@ -1,11 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Player
 {
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
-
+    using System.Collections;
     using UnityEngine;
 
     [HarmonyPatch]
@@ -39,7 +36,7 @@
                             UnityEngine.Object.Destroy(target);
                         }
                     }
-                }                
+                }
             }
         }
 

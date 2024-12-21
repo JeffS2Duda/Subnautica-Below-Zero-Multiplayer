@@ -1,11 +1,6 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.General
 {
-    using System;
-    using System.Collections;
-    using System.Linq;
-
     using global::Story;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -14,8 +9,8 @@
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using System;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class LifepodProcessor : NormalProcessor
@@ -72,9 +67,9 @@
                     var lifePod = Network.Session.Current.SupplyDrops.Where(q => q.Key == key).FirstOrDefault();
                     if (lifePod != null)
                     {
-                        ev.IsAllowed   = false;
+                        ev.IsAllowed = false;
                         ev.IsCompleted = lifePod.IsCompleted(DayNightCycle.main.timePassedAsFloat);
-                        ev.Rotation    = lifePod.Rotation.ToQuaternion();
+                        ev.Rotation = lifePod.Rotation.ToQuaternion();
                         ev.StartedTime = lifePod.StartedTime;
 
                         Network.Identifier.SetIdentityId(ev.DropObject, lifePod.UniqueId);
@@ -148,8 +143,8 @@
         {
             ServerModel.LifepodArgs request = new ServerModel.LifepodArgs()
             {
-                UniqueId        = uniqueId,
-                IsAdded         = isAdded,
+                UniqueId = uniqueId,
+                IsAdded = isAdded,
                 WorldPickupItem = pickupItem,
             };
 

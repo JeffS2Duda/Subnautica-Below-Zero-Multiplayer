@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::PlaceTool), nameof(global::PlaceTool.Place))]
     public class LEDLightDeploying
@@ -22,7 +20,7 @@ namespace Subnautica.Events.Patches.Events.Items
                     Handlers.Items.OnLEDLightDeploying(args);
 
                     if (!args.IsAllowed)
-                    { 
+                    {
                         __instance.usedThisFrame = false;
                     }
 

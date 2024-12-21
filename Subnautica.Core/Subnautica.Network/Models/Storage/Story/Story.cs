@@ -1,13 +1,11 @@
 namespace Subnautica.Network.Models.Storage.Story
 {
-    using System;
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Storage.Story.Components;
     using Subnautica.Network.Models.Storage.Story.StoryGoals;
+    using System;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     [Serializable]

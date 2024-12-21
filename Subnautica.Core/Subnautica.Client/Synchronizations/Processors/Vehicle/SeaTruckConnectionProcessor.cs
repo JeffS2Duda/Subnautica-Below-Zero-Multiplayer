@@ -19,17 +19,17 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.SeaTruckConnectionArgs>();
-            
+
             var action = new ItemQueueAction();
             action.RegisterProperty("FrontModuleId", packet.FrontModuleId);
-            action.RegisterProperty("BackModuleId" , packet.BackModuleId);
+            action.RegisterProperty("BackModuleId", packet.BackModuleId);
             action.RegisterProperty("FirstModuleId", packet.FirstModuleId);
-            action.RegisterProperty("IsConnect"    , packet.IsConnect);
-            action.RegisterProperty("IsEject"      , packet.IsEject);
-            action.RegisterProperty("PlayerId"     , packet.GetPacketOwnerId());
-            action.RegisterProperty("ModuleId"     , packet.ModuleId);
-            action.RegisterProperty("Position"     , packet.Position);
-            action.RegisterProperty("Rotation"     , packet.Rotation);
+            action.RegisterProperty("IsConnect", packet.IsConnect);
+            action.RegisterProperty("IsEject", packet.IsEject);
+            action.RegisterProperty("PlayerId", packet.GetPacketOwnerId());
+            action.RegisterProperty("ModuleId", packet.ModuleId);
+            action.RegisterProperty("Position", packet.Position);
+            action.RegisterProperty("Rotation", packet.Rotation);
 
             if (packet.IsMoonpoolExpansion)
             {
@@ -47,10 +47,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         private void OnMoonpoolProcessCompleted(ItemQueueProcess item)
         {
             var frontModuleId = item.Action.GetProperty<string>("FrontModuleId");
-            var backModuleId  = item.Action.GetProperty<string>("BackModuleId");
+            var backModuleId = item.Action.GetProperty<string>("BackModuleId");
             var firstModuleId = item.Action.GetProperty<string>("FirstModuleId");
-            var playerId      = item.Action.GetProperty<byte>("PlayerId");
-            var isConnect     = item.Action.GetProperty<bool>("IsConnect");
+            var playerId = item.Action.GetProperty<byte>("PlayerId");
+            var isConnect = item.Action.GetProperty<bool>("IsConnect");
 
             var entity = Network.DynamicEntity.GetEntity(backModuleId);
             if (entity != null)
@@ -95,13 +95,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         private void OnProcessCompleted(ItemQueueProcess item)
         {
             var frontModuleId = item.Action.GetProperty<string>("FrontModuleId");
-            var backModuleId  = item.Action.GetProperty<string>("BackModuleId");
-            var playerId      = item.Action.GetProperty<byte>("PlayerId");
-            var isConnect     = item.Action.GetProperty<bool>("IsConnect");
-            var isReject      = item.Action.GetProperty<bool>("IsEject");
-            var moduleId      = item.Action.GetProperty<ushort>("ModuleId");
-            var position      = item.Action.GetProperty<ZeroVector3>("Position");
-            var rotation      = item.Action.GetProperty<ZeroQuaternion>("Rotation");
+            var backModuleId = item.Action.GetProperty<string>("BackModuleId");
+            var playerId = item.Action.GetProperty<byte>("PlayerId");
+            var isConnect = item.Action.GetProperty<bool>("IsConnect");
+            var isReject = item.Action.GetProperty<bool>("IsEject");
+            var moduleId = item.Action.GetProperty<ushort>("ModuleId");
+            var position = item.Action.GetProperty<ZeroVector3>("Position");
+            var rotation = item.Action.GetProperty<ZeroQuaternion>("Rotation");
 
             if (moduleId > 0)
             {
@@ -117,7 +117,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
                     entity.SetParent(backModuleId);
                 }
 
-                var backModule  = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(frontModuleId);
+                var backModule = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(frontModuleId);
                 var frontModule = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(backModuleId);
 
                 if (frontModule && frontModule)
@@ -149,7 +149,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
                 }
 
                 var frontModule = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(frontModuleId);
-                var backModule  = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(backModuleId);
+                var backModule = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(backModuleId);
                 if (frontModule)
                 {
                     using (EventBlocker.Create(ProcessType.SeaTruckConnection))
@@ -163,7 +163,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
                             if (rearConnection && ZeroPlayer.IsPlayerMine(playerId) == false)
                             {
                                 rearConnection.rb.SetKinematic();
-                            }                                
+                            }
                         }
                     }
 
@@ -234,7 +234,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
                 if (ev.IsConnect)
                 {
                     var frontModule = Network.DynamicEntity.GetEntity(ev.FrontModuleId);
-                    var backModule  = Network.DynamicEntity.GetEntity(ev.BackModuleId);
+                    var backModule = Network.DynamicEntity.GetEntity(ev.BackModuleId);
                     if (frontModule != null && backModule != null)
                     {
                         if ((frontModule.IsMine(ZeroPlayer.CurrentPlayer.UniqueId) && frontModule.IsUsingByPlayer) || (backModule.IsMine(ZeroPlayer.CurrentPlayer.UniqueId) && backModule.IsUsingByPlayer))
@@ -265,10 +265,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.SeaTruckConnectionArgs request = new ServerModel.SeaTruckConnectionArgs()
             {
-                IsConnect     = isConnect,
-                IsEject       = isEject,
+                IsConnect = isConnect,
+                IsEject = isEject,
                 FrontModuleId = frontModuleId,
-                BackModuleId  = backModuleId,
+                BackModuleId = backModuleId,
                 FirstModuleId = firstModuleId,
                 IsMoonpoolExpansion = isMoonpoolExpansion
             };

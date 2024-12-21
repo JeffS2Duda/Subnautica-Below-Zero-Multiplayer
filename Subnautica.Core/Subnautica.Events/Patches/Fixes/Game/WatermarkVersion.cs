@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Game
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
     using System;
     using System.Collections;
-
-    using HarmonyLib;
-    
-    using Subnautica.API.Features;
 
     [HarmonyPatch]
     public static class WatermarkVersion
@@ -24,7 +22,7 @@
 
             if (Network.IsMultiplayerActive)
             {
-                __instance.text.text = Settings.GetWatermarkText();    
+                __instance.text.text = Settings.GetWatermarkText();
             }
             else
             {

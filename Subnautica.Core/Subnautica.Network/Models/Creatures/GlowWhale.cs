@@ -27,10 +27,10 @@ namespace Subnautica.Network.Models.Creatures
 
         public GlowWhale(bool isRideStart, bool isRideEnd, bool isEyeInteract, GlowWhaleSFXType sfxType)
         {
-            this.IsRideStart   = isRideStart;
-            this.IsRideEnd     = isRideEnd;
+            this.IsRideStart = isRideStart;
+            this.IsRideEnd = isRideEnd;
             this.IsEyeInteract = isEyeInteract;
-            this.SFXType       = sfxType;
+            this.SFXType = sfxType;
         }
     }
 }

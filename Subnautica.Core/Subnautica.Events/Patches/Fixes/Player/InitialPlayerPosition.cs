@@ -9,7 +9,7 @@
     {
         private static bool Prefix()
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }

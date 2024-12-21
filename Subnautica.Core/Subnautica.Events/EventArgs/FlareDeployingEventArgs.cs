@@ -8,12 +8,12 @@ namespace Subnautica.Events.EventArgs
     {
         public FlareDeployingEventArgs(string uniqueId, Pickupable pickupable, Vector3 deployPosition, float energy, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
-            this.Pickupable     = pickupable;
+            this.UniqueId = uniqueId;
+            this.Pickupable = pickupable;
             this.DeployPosition = deployPosition;
-            this.Forward        = global::MainCamera.camera.transform.forward;
-            this.Energy         = energy;
-            this.IsAllowed      = isAllowed;
+            this.Forward = global::MainCamera.camera.transform.forward;
+            this.Energy = energy;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; private set; }

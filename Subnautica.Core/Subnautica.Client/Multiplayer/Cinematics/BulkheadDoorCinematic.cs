@@ -1,6 +1,5 @@
 ﻿namespace Subnautica.Client.Multiplayer.Cinematics
 {
-    using Subnautica.API.Features;
     using Subnautica.Client.MonoBehaviours.Player;
 
     public class BulkheadDoorCinematic : CinematicController

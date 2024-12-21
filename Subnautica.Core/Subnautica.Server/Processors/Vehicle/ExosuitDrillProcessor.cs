@@ -1,11 +1,6 @@
 namespace Subnautica.Server.Processors.Vehicle
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -14,9 +9,11 @@ namespace Subnautica.Server.Processors.Vehicle
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts.Processors;
-
-    using ServerModel      = Subnautica.Network.Models.Server;
-    using EntityModel      = Subnautica.Network.Models.WorldEntity;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using EntityModel = Subnautica.Network.Models.WorldEntity;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class ExosuitDrillProcessor : NormalProcessor
@@ -34,8 +31,8 @@ namespace Subnautica.Server.Processors.Vehicle
             {
                 return false;
             }
-            
-            if  (packet.IsStaticWorldEntity)
+
+            if (packet.IsStaticWorldEntity)
             {
                 if (!Server.Instance.Storages.World.IsPersistentEntityExists(packet.SlotId))
                 {
@@ -67,7 +64,7 @@ namespace Subnautica.Server.Processors.Vehicle
 
                 if (Server.Instance.Storages.World.SetPersistentEntity(drillable))
                 {
-                    packet.NewHealth    = drillable.LiveMixin.Health;
+                    packet.NewHealth = drillable.LiveMixin.Health;
                     packet.StaticEntity = drillable;
                 }
             }
@@ -89,7 +86,7 @@ namespace Subnautica.Server.Processors.Vehicle
                 {
                     return false;
                 }
-    
+
                 if (entity.IsDead)
                 {
                     if (entity.IsRespawnable(Server.Instance.Logices.World.GetServerTime()))
@@ -101,7 +98,7 @@ namespace Subnautica.Server.Processors.Vehicle
                         return false;
                     }
                 }
-        
+
                 entity.TakeDamage(packet.IsMultipleDrill ? 50f : 25f, packet.MaxHealth);
 
                 if (entity.IsDead)

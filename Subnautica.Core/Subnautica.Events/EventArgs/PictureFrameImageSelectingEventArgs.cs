@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public PictureFrameImageSelectingEventArgs(string uniqueId, string imagename, byte[] imageData, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
+            this.UniqueId = uniqueId;
             this.ImageName = imagename;
             this.ImageData = imageData;
             this.IsAllowed = isAllowed;

@@ -26,8 +26,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 
             var action = new ItemQueueAction();
             action.OnProcessCompleted = this.OnProcessCompleted;
-            action.RegisterProperty("NewHealth" , packet.NewHealth);
-            action.RegisterProperty("UniqueId"  , packet.UniqueId);
+            action.RegisterProperty("NewHealth", packet.NewHealth);
+            action.RegisterProperty("UniqueId", packet.UniqueId);
             action.RegisterProperty("DamageType", packet.DamageType);
 
             Entity.ProcessToQueue(action);
@@ -36,10 +36,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 
         public void OnProcessCompleted(ItemQueueProcess item)
         {
-            var uniqueId   = item.Action.GetProperty<string>("UniqueId");
-            var newHealth  = item.Action.GetProperty<float>("NewHealth");
+            var uniqueId = item.Action.GetProperty<string>("UniqueId");
+            var newHealth = item.Action.GetProperty<float>("NewHealth");
             var damageType = item.Action.GetProperty<DamageType>("DamageType");
-            var liveMixin  = Network.Identifier.GetComponentByGameObject<global::LiveMixin>(uniqueId);
+            var liveMixin = Network.Identifier.GetComponentByGameObject<global::LiveMixin>(uniqueId);
             if (liveMixin)
             {
                 ZeroLiveMixin.TakeDamage(liveMixin, newHealth, damageType, killAction: this.OnVehicleDestroyed);
@@ -57,7 +57,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
                     {
                         player.ExitVehicle();
                     }
-                    
+
                     if (player.CurrentInteriorId == entity.UniqueId)
                     {
                         player.SetInteriorId(null);
@@ -97,9 +97,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.VehicleHealthArgs request = new ServerModel.VehicleHealthArgs()
             {
-                UniqueId   = uniqueId,
+                UniqueId = uniqueId,
                 DamageType = damageType,
-                Damage     = damage,
+                Damage = damage,
             };
 
             NetworkClient.SendPacket(request);

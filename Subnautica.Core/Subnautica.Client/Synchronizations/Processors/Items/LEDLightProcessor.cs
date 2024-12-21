@@ -12,7 +12,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class LEDLightProcessor : PlayerItemProcessor

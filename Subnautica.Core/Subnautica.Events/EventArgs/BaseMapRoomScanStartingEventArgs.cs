@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public BaseMapRoomScanStartingEventArgs(string uniqueId, TechType scanType, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.ScanType  = scanType;
+            this.UniqueId = uniqueId;
+            this.ScanType = scanType;
             this.IsAllowed = isAllowed;
         }
 

@@ -30,7 +30,7 @@ namespace Subnautica.Server.Processors.Story
             {
                 if (Server.Instance.Storages.Story.Storage.Bridge.Extend(Server.Instance.Logices.World.GetServerTime(), packet.Time))
                 {
-                    packet.Time             = Server.Instance.Storages.Story.Storage.Bridge.Time;
+                    packet.Time = Server.Instance.Storages.Story.Storage.Bridge.Time;
                     packet.IsFirstExtension = Server.Instance.Storages.Story.Storage.Bridge.IsFirstExtension;
 
                     profile.SendPacketToAllClient(packet);
@@ -40,7 +40,7 @@ namespace Subnautica.Server.Processors.Story
             {
                 if (Server.Instance.Storages.Story.Storage.Bridge.Retract(Server.Instance.Logices.World.GetServerTime(), packet.Time))
                 {
-                    packet.Time             = Server.Instance.Storages.Story.Storage.Bridge.Time;
+                    packet.Time = Server.Instance.Storages.Story.Storage.Bridge.Time;
                     packet.IsFirstExtension = Server.Instance.Storages.Story.Storage.Bridge.IsFirstExtension;
 
                     profile.SendPacketToAllClient(packet);

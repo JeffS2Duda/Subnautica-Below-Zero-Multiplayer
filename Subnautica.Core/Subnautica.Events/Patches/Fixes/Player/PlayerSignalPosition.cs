@@ -11,7 +11,7 @@
     {
         private static bool Prefix(PingInstance __instance, ref Vector3 __result)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }

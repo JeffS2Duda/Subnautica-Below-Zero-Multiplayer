@@ -9,7 +9,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
     using Subnautica.Network.Models.Storage.World.Childrens;
 
     using UnityEngine;
-    
+
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SeaTruckDockingModuleProcessor : WorldDynamicEntityProcessor

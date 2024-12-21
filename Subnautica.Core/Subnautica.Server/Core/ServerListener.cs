@@ -1,16 +1,14 @@
 namespace Subnautica.Server.Core
 {
-    using System;
-    using System.Net;
-    using System.Net.Sockets;
-
     using LiteNetLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Network.Extensions;
     using Subnautica.Network.Models.Client;
     using Subnautica.Server.Abstracts;
+    using System;
+    using System.Net;
+    using System.Net.Sockets;
 
     public class ServerListener : INetEventListener
     {
@@ -107,7 +105,7 @@ namespace Subnautica.Server.Core
 
         public void OnNetworkError(IPEndPoint endPoint, SocketError socketError)
         {
-            
+
         }
 
         public void OnNetworkReceiveUnconnected(IPEndPoint remoteEndPoint, NetPacketReader reader, UnconnectedMessageType messageType)

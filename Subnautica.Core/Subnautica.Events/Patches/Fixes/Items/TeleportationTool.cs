@@ -1,12 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Items
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
     using System.Collections.Generic;
     using System.Linq;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
-
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::TeleportationTool), nameof(global::TeleportationTool.ChooseTeleporter))]

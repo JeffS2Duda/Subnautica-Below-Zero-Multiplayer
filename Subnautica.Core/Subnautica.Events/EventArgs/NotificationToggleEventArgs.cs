@@ -8,8 +8,8 @@ namespace Subnautica.Events.EventArgs
     {
         public NotificationToggleEventArgs(Group group, string key, bool isAdded)
         {
-            this.Group   = group;
-            this.Key     = key;
+            this.Group = group;
+            this.Key = key;
             this.IsAdded = isAdded;
         }
 

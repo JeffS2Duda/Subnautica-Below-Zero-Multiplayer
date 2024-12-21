@@ -1,7 +1,5 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Inventory
 {
-    using System.Collections;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -9,11 +7,9 @@
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Metadata;
-
+    using System.Collections;
     using UnityEngine;
-
     using UWE;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class ItemProcessor : NormalProcessor
@@ -48,8 +44,8 @@
 
             ServerModel.InventoryItemArgs request = new ServerModel.InventoryItemArgs()
             {
-                ItemId  = uniqueId,
-                Item    = item != null ? StorageItem.Create(item) : null,
+                ItemId = uniqueId,
+                Item = item != null ? StorageItem.Create(item) : null,
                 IsAdded = isAdded,
             };
 

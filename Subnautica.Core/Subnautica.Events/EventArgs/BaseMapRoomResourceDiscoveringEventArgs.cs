@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public BaseMapRoomResourceDiscoveringEventArgs(TechType techType, bool isAllowed = true)
         {
-            this.TechType  = techType;
+            this.TechType = techType;
             this.IsAllowed = isAllowed;
         }
 

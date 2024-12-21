@@ -17,7 +17,7 @@
             TechType.BedFred,
             TechType.BedParvan,
         };
-        
+
         public static List<TechType> Chairs { get; set; } = new List<TechType>()
         {
             TechType.Bench,
@@ -25,7 +25,7 @@
             TechType.StarshipChair2,
             TechType.StarshipChair3,
         };
-        
+
         public static List<TechType> Planters { get; set; } = new List<TechType>()
         {
             TechType.PlanterPot,
@@ -102,7 +102,7 @@
 
         public static byte GetBatterySlotAmount(TechType techType)
         {
-            return techType == TechType.BatteryCharger ? (byte) 4 : (byte) 2;
+            return techType == TechType.BatteryCharger ? (byte)4 : (byte)2;
         }
 
         public static string GetBatterySlotId(TechType techType, int index)

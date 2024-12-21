@@ -12,7 +12,7 @@ namespace Subnautica.Events.Patches.Fixes.Encyclopedia
 
         private static void Prefix(PDAData pdaData)
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 Blocker = EventBlocker.Create(ProcessType.EncyclopediaAdded);
             }

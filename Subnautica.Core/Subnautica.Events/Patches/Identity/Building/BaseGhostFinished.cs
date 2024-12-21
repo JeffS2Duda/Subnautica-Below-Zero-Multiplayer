@@ -1,14 +1,11 @@
 ﻿namespace Subnautica.Events.Patches.Identity.Building
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.MonoBehaviours;
     using Subnautica.API.MonoBehaviours.Components;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch]
@@ -128,12 +125,12 @@
 
             BasePieceData basePiece = new BasePieceData()
             {
-                Position      = __instance.transform.position,
+                Position = __instance.transform.position,
                 LocalPosition = __instance.transform.localPosition,
                 LocalRotation = __instance.transform.localRotation,
                 FaceDirection = face.direction,
-                FaceType      = faceType,
-                TechType      = recipe,
+                FaceType = faceType,
+                TechType = recipe,
             };
 
             string uniqueId = Network.BaseFacePiece.Get(basePiece);
@@ -154,12 +151,12 @@
             {
                 BasePieceData basePiece = new BasePieceData()
                 {
-                    Position      = __result.transform.position,
+                    Position = __result.transform.position,
                     LocalPosition = geometry.transform.localPosition,
                     LocalRotation = geometry.transform.localRotation,
-                    FaceDirection = (Base.Direction) 0,
-                    FaceType      = __result.faceType,
-                    TechType      = recipe,
+                    FaceDirection = (Base.Direction)0,
+                    FaceType = __result.faceType,
+                    TechType = recipe,
                 };
 
                 var uniqueId = Network.BaseFacePiece.Get(basePiece);

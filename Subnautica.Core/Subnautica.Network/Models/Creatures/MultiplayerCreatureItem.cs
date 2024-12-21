@@ -1,15 +1,14 @@
 namespace Subnautica.Network.Models.Creatures
 {
     using MessagePack;
-
-    using Subnautica.API.Features;
+    using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
     using Subnautica.API.Features.Creatures.Datas;
-    using Subnautica.Network.Structures;
+    using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-    using Subnautica.Network.Models.Core;
-    using Subnautica.API.Enums;
+    using Subnautica.Network.Structures;
 
     [MessagePackObject]
     public class MultiplayerCreatureItem
@@ -63,13 +62,13 @@ namespace Subnautica.Network.Models.Creatures
 
         public MultiplayerCreatureItem(byte ownerId, ushort id, ZeroVector3 position, ZeroQuaternion rotation, TechType techType)
         {
-            this.OwnerId       = ownerId;
-            this.Id            = id;
+            this.OwnerId = ownerId;
+            this.Id = id;
             this.LeashPosition = position;
             this.LeashRotation = rotation;
-            this.TechType      = techType;
-            this.Data          = this.TechType.GetCreatureData();
-            this.LiveMixin     = new LiveMixin(this.Data.Health, this.Data.Health);
+            this.TechType = techType;
+            this.Data = this.TechType.GetCreatureData();
+            this.LiveMixin = new LiveMixin(this.Data.Health, this.Data.Health);
         }
 
         public void SetOwnership(byte ownershipId)
@@ -137,12 +136,12 @@ namespace Subnautica.Network.Models.Creatures
         {
             this.CellId = cellId;
         }
-        
+
         public NetworkPacket GetAction()
         {
             return this.ActionPacket;
         }
-        
+
         public ProcessType GetActionType()
         {
             return this.ActionPacket != null ? this.ActionPacket.Type : ProcessType.None;

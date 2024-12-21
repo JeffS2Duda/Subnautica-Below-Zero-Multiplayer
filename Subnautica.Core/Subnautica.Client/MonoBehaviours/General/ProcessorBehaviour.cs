@@ -1,9 +1,7 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.General
 {
-    using System.Collections.Generic;
-
     using Subnautica.Client.Abstracts;
-
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class ProcessorBehaviour : MonoBehaviour

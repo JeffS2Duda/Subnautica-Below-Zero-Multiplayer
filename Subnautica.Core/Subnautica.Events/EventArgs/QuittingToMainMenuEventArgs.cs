@@ -7,7 +7,7 @@ namespace Subnautica.Events.EventArgs
         public QuittingToMainMenuEventArgs(bool isQuitToDesktop, bool isAllowed = true)
         {
             this.IsQuitToDesktop = isQuitToDesktop;
-            this.IsAllowed       = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public bool IsQuitToDesktop { get; private set; }

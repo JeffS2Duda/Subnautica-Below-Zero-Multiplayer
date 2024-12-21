@@ -12,7 +12,7 @@ namespace Subnautica.Network.Models.Server
 
         [Key(5)]
         public string[] Slots { get; set; }
-        
+
         [Key(6)]
         public int ActiveSlot { get; set; }
     }

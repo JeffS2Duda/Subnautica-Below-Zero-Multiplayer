@@ -1,7 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
@@ -10,10 +8,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-
+    using System.Linq;
     using UnityEngine;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class CoffeeVendingMachineProcessor : MetadataProcessor
@@ -34,7 +31,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
             if (isSilence)
             {
-                foreach(var thermos in component.Thermoses.Where(q => q.IsActive))
+                foreach (var thermos in component.Thermoses.Where(q => q.IsActive))
                 {
                     this.ProcessThermos(thermos.ItemId, gameObject.storageContainer.container, thermos.IsFull, true);
                 }
@@ -115,7 +112,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             {
                 ev.IsAllowed = false;
 
-                CoffeeVendingMachineProcessor.SendPacketToServer(ev.UniqueId, ev.ItemId, WorldPickupItem.Create(ev.Item, PickupSourceType.StorageContainer),  false);
+                CoffeeVendingMachineProcessor.SendPacketToServer(ev.UniqueId, ev.ItemId, WorldPickupItem.Create(ev.Item, PickupSourceType.StorageContainer), false);
             }
         }
 
@@ -123,11 +120,11 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.CoffeeVendingMachine()
                 {
-                    IsAdding   = isAdding,
-                    ItemId     = itemId,
+                    IsAdding = isAdding,
+                    ItemId = itemId,
                     PickupItem = pickupItem,
                 },
             };

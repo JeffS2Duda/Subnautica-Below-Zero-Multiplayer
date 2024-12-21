@@ -56,7 +56,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             {
                 Log.Error($"Docking.Prefix: {e}\n{e.StackTrace}");
             }
-            
+
             return true;
         }
     }

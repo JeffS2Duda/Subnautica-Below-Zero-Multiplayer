@@ -1,11 +1,9 @@
 namespace Subnautica.Network.Models.Metadata
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class Fridge : MetadataComponent
@@ -74,7 +72,7 @@ namespace Subnautica.Network.Models.Metadata
             {
                 this.IsPaused = false;
                 this.TimeDecayStart += serverTime - this.TimeDecayPause;
-           }
+            }
         }
     }
 }

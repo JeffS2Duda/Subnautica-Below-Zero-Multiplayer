@@ -1,13 +1,10 @@
 namespace Subnautica.Events.Patches.Fixes.Creatures.Actions
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Structures;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::AggressiveWhenSeeTarget), nameof(global::AggressiveWhenSeeTarget.IsTargetValid), new Type[] { typeof(GameObject) })]

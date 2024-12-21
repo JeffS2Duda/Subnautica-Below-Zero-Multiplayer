@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.World
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
-
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class MultiplayerScannerRoom : MonoBehaviour
@@ -66,7 +64,7 @@
         {
             for (int index = 0; index < this.Items.Count; index++)
             {
-                var item     = this.Items[index];
+                var item = this.Items[index];
                 var position = (item.Position.ToVector3() - rootPosition) * this.MapRoom.mapScale;
 
                 if (index >= this.MapRoom.mapBlips.Count)

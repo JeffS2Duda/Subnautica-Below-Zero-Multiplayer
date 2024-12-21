@@ -1,15 +1,11 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using System.Collections;
-
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Modules;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections;
     using UnityEngine;
-
     using UWE;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class SleepTimeSkipProcessor : NormalProcessor
@@ -43,9 +39,9 @@ namespace Subnautica.Client.Synchronizations.Processors.World
 
             float differenceTime = (DayNightCycle.main.timePassedAsFloat - packet.TimeLastSleep);
 
-            DayNightCycle.main.skipTimeMode    = true;
+            DayNightCycle.main.skipTimeMode = true;
             DayNightCycle.main.skipModeEndTime = (packet.TimeLastSleep + packet.TimeAmount) - differenceTime;
-            DayNightCycle.main._dayNightSpeed  = packet.TimeAmount / packet.SkipDuration;
+            DayNightCycle.main._dayNightSpeed = packet.TimeAmount / packet.SkipDuration;
 
             float waitTime = packet.SkipDuration - (packet.SkipDuration * (differenceTime / packet.TimeAmount));
 
@@ -53,7 +49,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
 
             if (SleepScreen.Instance.IsEnabled)
             {
-                SleepScreen.Instance.ExitInUseMode();   
+                SleepScreen.Instance.ExitInUseMode();
             }
         }
     }

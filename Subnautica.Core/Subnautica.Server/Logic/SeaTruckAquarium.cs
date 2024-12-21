@@ -1,15 +1,13 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Server.Abstracts;
-
-    using Metadata         = Subnautica.Network.Models.Metadata;
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SeaTruckAquarium : BaseLogic
@@ -41,8 +39,8 @@ namespace Subnautica.Server.Logic
 
                             this.Requests.Add(new ServerModel.SeaTruckAquariumModuleArgs()
                             {
-                                IsAdded         = true,
-                                UniqueId        = component.Lockers.ElementAt(0).UniqueId,
+                                IsAdded = true,
+                                UniqueId = component.Lockers.ElementAt(0).UniqueId,
                                 WorldPickupItem = pickupItem,
                             });
                         }
@@ -60,8 +58,8 @@ namespace Subnautica.Server.Logic
 
                             this.Requests.Add(new ServerModel.SeaTruckAquariumModuleArgs()
                             {
-                                IsAdded         = true, 
-                                UniqueId        = component.Lockers.ElementAt(1).UniqueId,
+                                IsAdded = true,
+                                UniqueId = component.Lockers.ElementAt(1).UniqueId,
                                 WorldPickupItem = pickupItem,
                             });
                         }

@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Bed), nameof(global::Bed.OnHandClick))]
     public static class BedEnterInUseMode
@@ -62,8 +60,8 @@ namespace Subnautica.Events.Patches.Events.Furnitures
 
         public BedInformationItem(string uniqueId, TechType techType, bool isSeaTruckModule)
         {
-            this.UniqueId         = uniqueId;
-            this.TechType         = techType;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
             this.IsSeaTruckModule = isSeaTruckModule;
         }
 

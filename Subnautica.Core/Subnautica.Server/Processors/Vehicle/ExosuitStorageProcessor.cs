@@ -5,7 +5,7 @@ namespace Subnautica.Server.Processors.Vehicle
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
 
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class ExosuitStorageProcessor : NormalProcessor

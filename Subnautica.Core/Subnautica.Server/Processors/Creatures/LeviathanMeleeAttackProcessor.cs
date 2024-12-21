@@ -1,7 +1,5 @@
 namespace Subnautica.Server.Processors.Creatures
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Core;
@@ -10,7 +8,7 @@ namespace Subnautica.Server.Processors.Creatures
     using Subnautica.Server.Core;
     using Subnautica.Server.Extensions;
     using Subnautica.Server.Logic;
-
+    using System.Collections.Generic;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class LeviathanMeleeAttackProcessor : NormalProcessor
@@ -111,7 +109,7 @@ namespace Subnautica.Server.Processors.Creatures
                         Server.Instance.Logices.CreatureWatcher.TriggerAction(packet);
                         Server.Instance.Logices.CreatureWatcher.ClearAction(creature, animationTime);
                     }
-                }              
+                }
             }
 
             return true;
@@ -136,7 +134,7 @@ namespace Subnautica.Server.Processors.Creatures
                     return 0.1f;
                 }
             }
-            
+
             if (attackerType == TechType.ShadowLeviathan)
             {
                 if (targetType.IsPlayer())
@@ -176,7 +174,7 @@ namespace Subnautica.Server.Processors.Creatures
         private float CalculateDamage(float damage, ZeroLastTarget target)
         {
             var damageTakenModifier = GameModeManager.GetDamageTakenModifier(target.Type, false);
-            if (damageTakenModifier <= 0f) 
+            if (damageTakenModifier <= 0f)
             {
                 return 0f;
             }

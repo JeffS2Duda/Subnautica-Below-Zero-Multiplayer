@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
     using System;
     using System.IO;
-
-    using HarmonyLib;
-    
-    using Subnautica.API.Features;
 
     [HarmonyPatch(typeof(ScreenshotManager.LoadingRequest), MethodType.Constructor, new Type[] { typeof(string), typeof(string) })]
     public static class ScreenshotsFilename

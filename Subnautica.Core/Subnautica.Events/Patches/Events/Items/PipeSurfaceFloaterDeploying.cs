@@ -1,13 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::PipeSurfaceFloater), nameof(global::PipeSurfaceFloater.OnToolUseAnim))]

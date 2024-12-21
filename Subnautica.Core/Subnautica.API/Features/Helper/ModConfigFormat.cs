@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.API.Features.Helper
 {
+    using Newtonsoft.Json;
     using System;
     using System.IO;
-
-    using Newtonsoft.Json;
 
     public class ModConfigFormat
     {
@@ -40,7 +39,7 @@
 
         public ModConfigFormatItem(object value, string description)
         {
-            this.Value       = value;
+            this.Value = value;
             this.Description = description;
         }
 

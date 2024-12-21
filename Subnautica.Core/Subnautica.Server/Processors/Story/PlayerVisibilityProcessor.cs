@@ -1,12 +1,9 @@
 namespace Subnautica.Server.Processors.Story
 {
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
-
+    using System.Linq;
     using ClientModel = Subnautica.Network.Models.Client;
     using ServerModel = Subnautica.Network.Models.Server;
 

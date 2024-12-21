@@ -1,13 +1,6 @@
 ﻿namespace Subnautica.Client.Multiplayer.Constructing
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-
     using FMODUnity;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -19,11 +12,14 @@
     using Subnautica.Network.Models.Construction;
     using Subnautica.Network.Models.Construction.Shared;
     using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
     using UnityEngine;
-
     using UWE;
-    
+
     public class Builder
     {
         public static Builder CreateBuilder(string uniqueId, TechType techType)
@@ -127,7 +123,7 @@
 
                 if (builder.ConstructableBase != null && builder.ConstructableBase.model != null)
                 {
-                    var component  = builder.ConstructableBase.model.GetComponent<global::BaseGhost>();
+                    var component = builder.ConstructableBase.model.GetComponent<global::BaseGhost>();
                     var targetBase = component != null ? component.TargetBase : null;
 
                     builder.ConstructableBase.SetModuleConstructAmount(targetBase, builder.ConstructableBase.amount);
@@ -151,11 +147,11 @@
 
             Resources.UnloadAsset(builder.GhostStructureMaterial);
 
-            builder.IsCanPlace             = false;
-            builder.TechType               = TechType.None;
-            builder.Prefab                 = null;
-            builder.GhostModel             = null;
-            builder.Constructable          = null;
+            builder.IsCanPlace = false;
+            builder.TechType = TechType.None;
+            builder.Prefab = null;
+            builder.GhostModel = null;
+            builder.Constructable = null;
             builder.AimTransformGameObject = null;
             builder.GhostStructureMaterial = null;
 
@@ -164,7 +160,7 @@
             Log.Error("Destroyed Construction: " + uniqueId);
             return true;
         }
-     
+
         public static byte[] SerializeGlobalRoot(bool isOptimize = true)
         {
             try
@@ -194,7 +190,7 @@
             {
                 GameObject globalRoot = new GameObject("Global Root");
                 globalRoot.AddComponent<StoreInformationIdentifier>();
- 
+
                 LargeWorldStreamer.main.OnGlobalRootLoaded(globalRoot);
             }
             else
@@ -208,7 +204,7 @@
                         CoroutineTask<GameObject> task = proxy.Value.DeserializeObjectTreeAsync(memoryStream, true, false, 0);
 
                         yield return task;
-          
+
                         try
                         {
                             LargeWorldStreamer.main.OnGlobalRootLoaded(task.GetResult());
@@ -235,14 +231,14 @@
         public Builder(TechType techType, string uniqueId)
         {
             this.CurrentProgress = BuildingProgressType.Initializing;
-            this.TechType        = techType;
-            this.UniqueId        = uniqueId;
-            this.LastRotation    = 0;
+            this.TechType = techType;
+            this.UniqueId = uniqueId;
+            this.LastRotation = 0;
             this.OldLastRotation = 0;
 
-            this.AimTransformGameObject = new GameObject(); 
+            this.AimTransformGameObject = new GameObject();
             this.GhostStructureMaterial = new Material(global::Builder.originalGhostStructureMaterial);
-            
+
             AddBuilder(uniqueId, this);
         }
 
@@ -308,7 +304,7 @@
 
         public void SetAimTransform(ZeroTransform aimTransform)
         {
-            this.AimTransformGameObject.transform.forward  = aimTransform.Forward.ToVector3();
+            this.AimTransformGameObject.transform.forward = aimTransform.Forward.ToVector3();
             this.AimTransformGameObject.transform.position = aimTransform.Position.ToVector3();
             this.AimTransformGameObject.transform.rotation = aimTransform.Rotation.ToQuaternion();
         }
@@ -439,11 +435,11 @@
 
             try
             {
-                var world             = componentInParent.GridToWorld(baseDeconstructable.bounds.mins);
-                var gameObject        = UnityEngine.Object.Instantiate<GameObject>(BaseDeconstructable.baseDeconstructablePrefab, world, componentInParent.transform.rotation);
+                var world = componentInParent.GridToWorld(baseDeconstructable.bounds.mins);
+                var gameObject = UnityEngine.Object.Instantiate<GameObject>(BaseDeconstructable.baseDeconstructablePrefab, world, componentInParent.transform.rotation);
                 var constructableBase = gameObject.GetComponent<ConstructableBase>();
-                var constructable     = gameObject.GetComponent<Constructable>();
-                var baseGhost         = constructableBase.model.GetComponent<global::BaseGhost>();
+                var constructable = gameObject.GetComponent<Constructable>();
+                var baseGhost = constructableBase.model.GetComponent<global::BaseGhost>();
 
                 var builder = CreateBuilder(uniqueId, baseDeconstructable.recipe);
                 builder.InitializeConstructionMode(constructableBase, constructable);
@@ -548,7 +544,7 @@
         public void InitializeFinished()
         {
             this.CurrentProgress = BuildingProgressType.GhostModelMoving;
-            this.IsActive        = true;
+            this.IsActive = true;
             this.Update();
 
             if (this.IsTryDefaultPlace)
@@ -565,16 +561,16 @@
             }
 
             var constructableBase = this.Prefab.GetComponent<ConstructableBase>();
-            var constructable     = this.Prefab.GetComponent<Constructable>();
+            var constructable = this.Prefab.GetComponent<Constructable>();
 
-            this.IsAllowedOutside    = constructable.allowedOutside;
-            this.IsAllowedInSub      = constructable.allowedInSub;
-            this.IsAllowedInBase     = constructable.allowedInBase;
+            this.IsAllowedOutside = constructable.allowedOutside;
+            this.IsAllowedInSub = constructable.allowedInSub;
+            this.IsAllowedInBase = constructable.allowedInBase;
             this.IsAllowedUnderwater = constructable.allowedUnderwater;
-            this.IsForceUpright      = constructable.forceUpright;
-            this.IsAlignWithSurface  = constructable.alignWithSurface;
-            this.IsRotationEnabled   = constructable.rotationEnabled;
-            this.PlaceMaxDistance    = constructable.placeMaxDistance;
+            this.IsForceUpright = constructable.forceUpright;
+            this.IsAlignWithSurface = constructable.alignWithSurface;
+            this.IsRotationEnabled = constructable.rotationEnabled;
+            this.PlaceMaxDistance = constructable.placeMaxDistance;
 
             if (constructableBase != null)
             {
@@ -656,7 +652,7 @@
                 return false;
             }
 
-            var positionFound   = false;
+            var positionFound = false;
             var geometryChanged = false;
 
             if (this.GhostModel.TryGetComponent<global::BaseAddFaceGhost>(out var faceGhost))
@@ -781,12 +777,12 @@
             {
                 currentSub = Network.Identifier.GetComponentByGameObject<SubRoot>(this.SubRootId);
             }
-            
+
             if (currentSub != null)
             {
                 flag1 = currentSub.isBase;
                 flag2 = currentSub.isCyclops;
-                target.transform.parent = currentSub.GetModulesRoot();  
+                target.transform.parent = currentSub.GetModulesRoot();
             }
             else if (this.IsAllowedOutside)
             {
@@ -819,15 +815,15 @@
 
             constructable.SetIsInside(flag1 | flag2);
             SkyEnvironmentChanged.Send(target, currentSub);
-            
+
             return this.TryPlaceEnd();
         }
 
         public void InitializeConstructionMode(ConstructableBase constructableBase, Constructable constructable)
         {
             this.ConstructableBase = constructableBase;
-            this.Constructable     = constructable;
-            this.CurrentProgress   = BuildingProgressType.Constructing;
+            this.Constructable = constructable;
+            this.CurrentProgress = BuildingProgressType.Constructing;
 
             if (this.IsAmountChangedAnimation)
             {
@@ -848,7 +844,7 @@
         {
             this.CacheBounds(gameObject.transform, gameObject, this.Bounds);
 
-            this.AaBounds.center  = Vector3.zero;
+            this.AaBounds.center = Vector3.zero;
             this.AaBounds.extents = Vector3.zero;
 
             int count = this.Bounds.Count;
@@ -890,7 +886,7 @@
                 for (int index = 0; index < list.Count; ++index)
                 {
                     ConstructableBounds constructableBounds = list[index];
-                    OrientedBounds bounds      = constructableBounds.bounds;
+                    OrientedBounds bounds = constructableBounds.bounds;
                     OrientedBounds worldBounds = OrientedBounds.ToWorldBounds(constructableBounds.transform, bounds);
                     if (transform != null)
                     {
@@ -920,7 +916,7 @@
         private bool TryPlaceEnd()
         {
             this.GhostModel = null;
-            this.Prefab     = null;
+            this.Prefab = null;
             this.IsCanPlace = false;
             return true;
         }
@@ -980,22 +976,22 @@
 
         public bool IsTryDefaultPlace { get; private set; } = false;
 
-        public bool IsActive { get; set; }                    = false;
-        public bool IsCanPlace { get; private set; }          = false;
-        public bool UpdatePlacement { get; private set; }     = false;
-        public bool IsAllowedOutside { get; private set; }    = false;
-        public bool IsAllowedInSub { get; private set; }      = false;
-        public bool IsAllowedInBase { get; private set; }     = false;
+        public bool IsActive { get; set; } = false;
+        public bool IsCanPlace { get; private set; } = false;
+        public bool UpdatePlacement { get; private set; } = false;
+        public bool IsAllowedOutside { get; private set; } = false;
+        public bool IsAllowedInSub { get; private set; } = false;
+        public bool IsAllowedInBase { get; private set; } = false;
         public bool IsAllowedUnderwater { get; private set; } = false;
-        public bool IsForceUpright { get; private set; }      = false;
-        public bool IsAlignWithSurface { get; private set; }  = false;
-        public bool IsRotationEnabled { get; private set; }   = false;
+        public bool IsForceUpright { get; private set; } = false;
+        public bool IsAlignWithSurface { get; private set; } = false;
+        public bool IsRotationEnabled { get; private set; } = false;
 
         public float PlaceMaxDistance { get; private set; } = 0.0f;
 
         public float UpdatedTime { get; private set; }
 
-        public BuildingProgressType CurrentProgress { get; private set; } = BuildingProgressType.None;  
+        public BuildingProgressType CurrentProgress { get; private set; } = BuildingProgressType.None;
 
         public TechType TechType { get; private set; }
 
@@ -1010,13 +1006,13 @@
         public GameObject AimTransformGameObject { get; private set; }
 
         public Color PlaceColorAllow { get; private set; } = new Color(0.0f, 1f, 0.0f, 1f);
-        public Color PlaceColorDeny  { get; private set; } = new Color(1f, 0.0f, 0.0f, 1f);
+        public Color PlaceColorDeny { get; private set; } = new Color(1f, 0.0f, 0.0f, 1f);
 
         public Material GhostStructureMaterial { get; private set; }
 
         private Bounds AaBounds = new Bounds();
 
-        public List<OrientedBounds> Bounds { get; private set; } = new List<OrientedBounds>();        
+        public List<OrientedBounds> Bounds { get; private set; } = new List<OrientedBounds>();
 
         public ConstructableBase ConstructableBase { get; private set; }
 

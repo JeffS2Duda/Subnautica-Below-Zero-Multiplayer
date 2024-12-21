@@ -1,15 +1,14 @@
 namespace Subnautica.Network.Core
 {
-    using System;
-
     using MessagePack;
+    using System;
 
     public class NetworkTools
     {
         private static MessagePackSerializerOptions mainCompression;
 
-        public static MessagePackSerializerOptions Lz4Compression 
-        { 
+        public static MessagePackSerializerOptions Lz4Compression
+        {
             get
             {
                 if (mainCompression == null)

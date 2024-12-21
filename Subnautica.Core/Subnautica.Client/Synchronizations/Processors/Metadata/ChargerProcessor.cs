@@ -1,22 +1,19 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Enums;
+    using Subnautica.API.Features;
+    using Subnautica.API.Features.Helper;
+    using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.World.Childrens;
-    using Subnautica.Client.Abstracts.Processors;
-    using Subnautica.API.Features.Helper;
-
-    using UnityEngine.EventSystems;
-
-    using ServerModel = Subnautica.Network.Models.Server;
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
+    using UnityEngine.EventSystems;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class ChargerProcessor : MetadataProcessor
     {
@@ -40,7 +37,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                 {
                     gameObject.equipment.ClearItems();
                 }
-                
+
                 gameObject.opened = component.Items != null && component.Items.Where(q => q.IsActive).Any();
                 gameObject.animator.SetBool(gameObject.animParamOpen, gameObject.opened);
                 gameObject.animator.Play(gameObject.opened ? gameObject.animatorOpenedStateName : gameObject.animatorClosedStateName);
@@ -71,7 +68,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                 {
                     using (EventBlocker.Create(techType))
                     {
-                        gameObject.OnHandClick(new HandTargetEventData(EventSystem.current) {
+                        gameObject.OnHandClick(new HandTargetEventData(EventSystem.current)
+                        {
                             guiHand = global::Player.main.guiHand
                         });
                     }
@@ -85,23 +83,23 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             }
             else
             {
-                foreach(BatteryItem battery in component.Items)
+                foreach (BatteryItem battery in component.Items)
                 {
                     ItemQueueAction action = new ItemQueueAction();
                     action.RegisterProperty("BatteryItem", battery);
-                    action.RegisterProperty("Charger"    , gameObject);
+                    action.RegisterProperty("Charger", gameObject);
 
                     if (battery.IsActive)
                     {
                         action.OnEntitySpawning = this.OnEntitySpawning;
-                        action.OnEntitySpawned  = this.OnEntitySpawned;
+                        action.OnEntitySpawned = this.OnEntitySpawned;
 
                         Entity.SpawnToQueue(battery.SlotId, battery.TechType, gameObject.equipment, action);
                     }
                     else
                     {
                         action.OnEntityRemoved = this.OnEntityRemoved;
-                        
+
                         Entity.RemoveToQueue(battery.SlotId, gameObject.equipment);
                     }
                 }
@@ -201,13 +199,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.Charger()
                 {
-                    IsOpening  = isOpening,
+                    IsOpening = isOpening,
                     IsRemoving = isRemoving,
-                    IsClosing  = isClosing,
-                    Items      = new List<BatteryItem>() 
+                    IsClosing = isClosing,
+                    Items = new List<BatteryItem>()
                     {
                         new BatteryItem(slotId, techType, currentCharge)
                     },

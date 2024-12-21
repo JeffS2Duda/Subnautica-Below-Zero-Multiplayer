@@ -1,15 +1,12 @@
 namespace Subnautica.Events.Patches.SerializeOptimizers
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
+    using Subnautica.Client.Extensions;
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
-    using Subnautica.Client.Extensions;
-
     using UWE;
 
     [HarmonyPatch(typeof(global::ProtobufSerializer), nameof(global::ProtobufSerializer.SerializeObjectsAsync))]

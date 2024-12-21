@@ -1,15 +1,15 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using Subnautica.Events.EventArgs;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
+    using Subnautica.Events.EventArgs;
 
     public class EntitySpawnProcessor
     {
         public static void OnEntitySpawning(EntitySpawningEventArgs ev)
         {
 
-            if (Network.StaticEntity.IsRestricted(ev.UniqueId)) 
+            if (Network.StaticEntity.IsRestricted(ev.UniqueId))
             {
                 ev.IsAllowed = false;
             }

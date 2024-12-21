@@ -7,7 +7,7 @@ namespace Subnautica.Events.EventArgs
         public BenchStandupEventArgs(string uniqueId, Bench.BenchSide side, TechType techType)
         {
             this.UniqueId = uniqueId;
-            this.Side     = side;
+            this.Side = side;
             this.TechType = techType;
         }
 

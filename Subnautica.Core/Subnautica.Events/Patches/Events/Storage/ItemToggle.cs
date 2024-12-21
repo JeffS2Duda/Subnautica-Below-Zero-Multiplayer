@@ -1,14 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Storage
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-    using Subnautica.Events.Patches.Fixes.Interact;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.AddOrSwap), new Type[] { typeof(InventoryItem), typeof(IItemsContainer), typeof(InventoryItem) })]

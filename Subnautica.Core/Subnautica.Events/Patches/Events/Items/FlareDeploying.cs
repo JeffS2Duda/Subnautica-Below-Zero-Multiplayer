@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Flare), nameof(global::Flare.Throw))]
     public class FlareDeploying
@@ -22,7 +20,7 @@ namespace Subnautica.Events.Patches.Events.Items
 
                     if (!args.IsAllowed)
                     {
-                        __instance._isInUse   = false;
+                        __instance._isInUse = false;
                         __instance.isThrowing = false;
                     }
 

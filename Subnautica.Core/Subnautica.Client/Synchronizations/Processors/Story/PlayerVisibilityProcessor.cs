@@ -1,15 +1,13 @@
 namespace Subnautica.Client.Synchronizations.Processors.Story
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ClientModel = Subnautica.Network.Models.Client;
     using ServerModel = Subnautica.Network.Models.Server;
 

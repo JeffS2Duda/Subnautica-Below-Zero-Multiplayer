@@ -1,8 +1,6 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Creatures
 {
     using FMOD.Studio;
-
-    using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Creatures;
@@ -10,9 +8,8 @@
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
-    using ServerModel = Subnautica.Network.Models.Server;
     using System.Collections;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class CallSoundProcessor : NormalProcessor
     {
@@ -26,7 +23,7 @@
 
             var action = new CreatureQueueAction();
             action.OnProcessCompleted = this.OnCreatureProcessCompleted;
-            action.RegisterProperty("CallId"   , packet.CallId);
+            action.RegisterProperty("CallId", packet.CallId);
             action.RegisterProperty("Animation", packet.Animation);
 
             Network.Creatures.ProcessToQueue(packet.CreatureId, action);
@@ -35,7 +32,7 @@
 
         public void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
-            var callId    = item.Action.GetProperty<byte>("CallId");
+            var callId = item.Action.GetProperty<byte>("CallId");
             var animation = item.Action.GetProperty<string>("Animation");
 
             foreach (var component in creature.GameObject.GetComponentsInChildren<global::CreatureCallSound>())
@@ -87,8 +84,8 @@
             ServerModel.CreatureCallArgs request = new ServerModel.CreatureCallArgs()
             {
                 CreatureId = creatureId,
-                CallId     = callId,
-                Animation  = animation
+                CallId = callId,
+                Animation = animation
             };
 
             NetworkClient.SendPacket(request);

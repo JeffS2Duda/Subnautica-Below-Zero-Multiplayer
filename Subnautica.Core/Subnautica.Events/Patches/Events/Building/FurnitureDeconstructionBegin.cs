@@ -1,14 +1,10 @@
 ﻿namespace Subnautica.Events.Patches.Events.Building
 {
-    using System;
-
     using FMODUnity;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::BuilderTool), nameof(global::BuilderTool.HandleInput))]
@@ -83,7 +79,7 @@
 
                                 constructable.SetState(false, false);
                             }
-                            catch(Exception e)
+                            catch (Exception e)
                             {
                                 Log.Error($"FurnitureDeconstructionBegin.Exception: {e}");
                                 return false;

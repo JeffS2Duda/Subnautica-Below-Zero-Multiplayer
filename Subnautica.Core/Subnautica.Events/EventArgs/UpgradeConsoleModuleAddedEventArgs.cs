@@ -6,10 +6,10 @@ namespace Subnautica.Events.EventArgs
     {
         public UpgradeConsoleModuleAddedEventArgs(string uniqueId, string slotId, string itemId, TechType moduleType)
         {
-            this.UniqueId    = uniqueId;
-            this.SlotId      = slotId;
-            this.ItemId      = itemId;
-            this.ModuleType  = moduleType;
+            this.UniqueId = uniqueId;
+            this.SlotId = slotId;
+            this.ItemId = itemId;
+            this.ModuleType = moduleType;
         }
 
         public string UniqueId { get; set; }

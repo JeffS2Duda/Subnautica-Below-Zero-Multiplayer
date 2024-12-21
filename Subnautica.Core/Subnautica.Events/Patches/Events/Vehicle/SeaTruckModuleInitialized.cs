@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Events.Vehicle
 {
-    using System;
-
     using HarmonyLib;
     using Subnautica.API.Features;
-
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::SeaTruckSegment), nameof(global::SeaTruckSegment.Start))]
     public class SeaTruckModuleInitialized
@@ -15,7 +13,7 @@
             try
             {
                 SeaTruckModuleInitializedEventArgs args = new SeaTruckModuleInitializedEventArgs(__instance, CraftData.GetTechType(__instance.gameObject));
-                
+
                 Handlers.Vehicle.OnSeaTruckModuleInitialized(args);
             }
             catch (Exception e)

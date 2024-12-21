@@ -1,18 +1,16 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-    
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Bed), nameof(global::Bed.GetCanSleep))]
     public static class BedIsCanSleepChecking
     {
         private static bool Prefix(global::Bed __instance, ref bool __result, global::Player player, bool notify)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }
@@ -40,7 +38,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                     __result = args.IsAllowed;
                     return false;
                 }
-                
+
                 if (notify)
                 {
                     ErrorMessage.AddMessage(global::Language.main.Get("BedSleepTimeOut"));

@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public BaseHullStrengthCrushingEventArgs(global::BaseHullStrength instance, bool isAllowed = true)
         {
-            this.Instance  = instance;
+            this.Instance = instance;
             this.IsAllowed = isAllowed;
         }
 

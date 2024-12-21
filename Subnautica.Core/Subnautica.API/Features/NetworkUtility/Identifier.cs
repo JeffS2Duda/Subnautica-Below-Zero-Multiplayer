@@ -1,10 +1,7 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
-    using System;
-
-    using Subnautica.API.Extensions;
     using Subnautica.API.MonoBehaviours;
-
+    using System;
     using UnityEngine;
 
     public class Identifier
@@ -25,7 +22,7 @@
             {
                 return Tools.CreateMD5(string.Format("{0}_{1}", uniqueId1, uniqueId2));
             }
-            
+
             return string.Format("{0}_{1}", uniqueId1, uniqueId2);
         }
 
@@ -78,12 +75,12 @@
             {
                 return uniqueIdentifier.gameObject;
             }
-                
+
             if (!supressMessage)
             {
                 Log.Error(string.Format("Network.Identifier.GetGameObject Not Found. Id: {0}", uniqueId));
             }
-            
+
             return null;
         }
 

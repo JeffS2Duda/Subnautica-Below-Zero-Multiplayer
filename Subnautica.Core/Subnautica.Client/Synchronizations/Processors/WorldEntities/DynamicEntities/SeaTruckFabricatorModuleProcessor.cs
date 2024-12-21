@@ -1,19 +1,13 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
-    using System.Linq;
-    using Steamworks;
-
     using Subnautica.API.Enums;
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.MonoBehaviours.General;
     using Subnautica.Network.Core.Components;
-    using Subnautica.Network.Models.Metadata;
-
+    using System.Linq;
     using UnityEngine;
-
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SeaTruckFabricatorModuleProcessor : WorldDynamicEntityProcessor
@@ -84,8 +78,8 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
         {
             return new ServerModel.MetadataComponentArgs()
             {
-                TechType  = TechType.Fabricator,
-                UniqueId  = uniqueId,
+                TechType = TechType.Fabricator,
+                UniqueId = uniqueId,
                 Component = component
             };
         }

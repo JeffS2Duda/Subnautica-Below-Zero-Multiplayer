@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
 {
     using HarmonyLib;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
 
     [HarmonyPatch]
     public class Crash

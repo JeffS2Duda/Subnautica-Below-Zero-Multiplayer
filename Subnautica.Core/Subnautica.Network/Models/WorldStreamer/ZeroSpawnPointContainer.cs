@@ -1,10 +1,7 @@
 namespace Subnautica.Network.Models.WorldStreamer
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
-    using Subnautica.Network.Models.WorldEntity;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class ZeroSpawnPointContainer

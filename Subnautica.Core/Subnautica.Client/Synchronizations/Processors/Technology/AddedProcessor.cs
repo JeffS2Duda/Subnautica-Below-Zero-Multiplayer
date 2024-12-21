@@ -1,13 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.Technology
 {
+    using Subnautica.API.Enums;
+    using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-    using Subnautica.API.Features;
-    using Subnautica.API.Enums;
-
-    using ServerModel  = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class AddedProcessor : NormalProcessor
     {
@@ -38,7 +37,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Technology
             ServerModel.TechnologyAddedArgs result = new ServerModel.TechnologyAddedArgs()
             {
                 TechType = ev.TechType,
-                Verbose  = ev.Verbose,
+                Verbose = ev.Verbose,
             };
 
             NetworkClient.SendPacket(result);

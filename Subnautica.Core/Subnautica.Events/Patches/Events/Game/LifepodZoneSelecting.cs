@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Events.Game
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::SupplyDropData), nameof(global::SupplyDropData.PickDropZone))]
     public static class LifepodZoneSelecting

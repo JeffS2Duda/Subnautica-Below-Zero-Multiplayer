@@ -7,8 +7,8 @@ namespace Subnautica.Events.EventArgs
         public StorageOpeningEventArgs(string constructionId, TechType techType, bool isAllowed = true)
         {
             this.ConstructionId = constructionId;
-            this.TechType       = techType;
-            this.IsAllowed      = isAllowed;
+            this.TechType = techType;
+            this.IsAllowed = isAllowed;
         }
 
         public string ConstructionId { get; set; }

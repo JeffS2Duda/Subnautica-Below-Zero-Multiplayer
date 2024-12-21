@@ -10,11 +10,11 @@ namespace Subnautica.Server.Processors.Items
     using Subnautica.Server.Core;
     using Subnautica.Server.Logic;
 
-    using ItemModel        = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class ConstructorProcessor : PlayerItemProcessor
-    {        
+    {
         public override bool OnDataReceived(AuthorizationProfile profile, PlayerItemActionArgs packet)
         {
             var component = packet.Item.GetComponent<ItemModel.Constructor>();
@@ -92,14 +92,14 @@ namespace Subnautica.Server.Processors.Items
         {
             switch (techType)
             {
-                case TechType.SeaTruck:                     return new WorldEntityModel.SeaTruck().Initialize(this.OnEntityComponentInitialized);
-                case TechType.Exosuit:                      return new WorldEntityModel.Exosuit().Initialize(this.OnEntityComponentInitialized);
-                case TechType.SeaTruckFabricatorModule:     return new WorldEntityModel.SeaTruckFabricatorModule().Initialize(this.OnEntityComponentInitialized);
-                case TechType.SeaTruckStorageModule:        return new WorldEntityModel.SeaTruckStorageModule().Initialize(this.OnEntityComponentInitialized);
-                case TechType.SeaTruckAquariumModule:       return new WorldEntityModel.SeaTruckAquariumModule().Initialize(this.OnEntityComponentInitialized);
-                case TechType.SeaTruckDockingModule:        return new WorldEntityModel.SeaTruckDockingModule().Initialize(this.OnEntityComponentInitialized);
-                case TechType.SeaTruckSleeperModule:        return new WorldEntityModel.SeaTruckSleeperModule().Initialize(this.OnEntityComponentInitialized);
-                case TechType.SeaTruckTeleportationModule:  return new WorldEntityModel.SeaTruckTeleportationModule().Initialize(this.OnEntityComponentInitialized);
+                case TechType.SeaTruck: return new WorldEntityModel.SeaTruck().Initialize(this.OnEntityComponentInitialized);
+                case TechType.Exosuit: return new WorldEntityModel.Exosuit().Initialize(this.OnEntityComponentInitialized);
+                case TechType.SeaTruckFabricatorModule: return new WorldEntityModel.SeaTruckFabricatorModule().Initialize(this.OnEntityComponentInitialized);
+                case TechType.SeaTruckStorageModule: return new WorldEntityModel.SeaTruckStorageModule().Initialize(this.OnEntityComponentInitialized);
+                case TechType.SeaTruckAquariumModule: return new WorldEntityModel.SeaTruckAquariumModule().Initialize(this.OnEntityComponentInitialized);
+                case TechType.SeaTruckDockingModule: return new WorldEntityModel.SeaTruckDockingModule().Initialize(this.OnEntityComponentInitialized);
+                case TechType.SeaTruckSleeperModule: return new WorldEntityModel.SeaTruckSleeperModule().Initialize(this.OnEntityComponentInitialized);
+                case TechType.SeaTruckTeleportationModule: return new WorldEntityModel.SeaTruckTeleportationModule().Initialize(this.OnEntityComponentInitialized);
             }
 
             return null;

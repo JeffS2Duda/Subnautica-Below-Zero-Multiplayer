@@ -77,8 +77,8 @@
             if (vehicle && vehicle.TryGetComponent<Dockable>(out var dockable))
             {
                 this.VehicleDockingBay.interpolatingDockable = dockable;
-                this.VehicleDockingBay.startPosition         = this.VehicleDockingBay.interpolatingDockable.transform.position;
-                this.VehicleDockingBay.startRotation         = this.VehicleDockingBay.interpolatingDockable.transform.rotation;
+                this.VehicleDockingBay.startPosition = this.VehicleDockingBay.interpolatingDockable.transform.position;
+                this.VehicleDockingBay.startRotation = this.VehicleDockingBay.interpolatingDockable.transform.rotation;
 
                 if (this.DockPlayer)
                 {
@@ -169,7 +169,7 @@
                 else
                 {
                     this.Undock();
-                } 
+                }
             }
         }
 
@@ -180,10 +180,10 @@
                 return false;
             }
 
-            this.VehicleDockingBay.interpolatingDockable            = null;
-            this.VehicleDockingBay.dockedObject.timeUndocked        = Time.time;
+            this.VehicleDockingBay.interpolatingDockable = null;
+            this.VehicleDockingBay.dockedObject.timeUndocked = Time.time;
             this.VehicleDockingBay.dockedObject.rb.detectCollisions = true;
-            this.VehicleDockingBay.dockedObject.isInTransition      = false;
+            this.VehicleDockingBay.dockedObject.isInTransition = false;
 
             if (this.VehicleDockingBay.dockedObject.TryGetComponent<SeaTruckSegment>(out var seaTruck))
             {
@@ -272,7 +272,7 @@
             SafeAnimator.SetBool(this.VehicleDockingBay.animator, "vehicle_nearby", nearby);
             SafeAnimator.SetBool(this.VehicleDockingBay.animator, "seamoth_docked", this.VehicleDockingBay.docked_param && techType == TechType.Seamoth || techType == TechType.SeaTruck);
             SafeAnimator.SetBool(this.VehicleDockingBay.animator, "exosuit_docked", this.VehicleDockingBay.docked_param && techType == TechType.Exosuit);
-            
+
             if (this.ExpansionManager.IsActive())
             {
                 this.ExpansionManager.OnUpdate(nearby);
@@ -403,7 +403,7 @@
         {
             if (this.TimeDockingStarted != 0)
             {
-                return Mathf.Clamp01((float) ((Network.Session.GetWorldTime() - this.TimeDockingStarted) / this.InterpolationTime));
+                return Mathf.Clamp01((float)((Network.Session.GetWorldTime() - this.TimeDockingStarted) / this.InterpolationTime));
             }
 
             return 1f;
@@ -426,11 +426,11 @@
 
         private void Reset()
         {
-            this.TailId     = null;
+            this.TailId = null;
             this.DockPlayer = false;
-            this.TimeDockingStarted  = 0f;
+            this.TimeDockingStarted = 0f;
             this.BackSeaTruckSegment = null;
-            this.BackModulePosition  = null;
+            this.BackModulePosition = null;
             this.ManuelCinematicPlayerId = 0;
         }
     }

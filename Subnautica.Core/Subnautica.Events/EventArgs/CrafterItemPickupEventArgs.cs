@@ -6,12 +6,12 @@ namespace Subnautica.Events.EventArgs
     {
         public CrafterItemPickupEventArgs(string uniqueId, global::GhostCrafter crafter, int amount, TechType fabricatorType, TechType techType, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
-            this.Crafter        = crafter;
-            this.Amount         = amount;
+            this.UniqueId = uniqueId;
+            this.Crafter = crafter;
+            this.Amount = amount;
             this.FabricatorType = fabricatorType;
-            this.TechType       = techType;
-            this.IsAllowed      = isAllowed;
+            this.TechType = techType;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; private set; }

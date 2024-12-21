@@ -33,7 +33,7 @@
                     {
                         baseGhost.targetOffset = targetOffset;
                         baseGhost.RebuildGhostGeometry();
-                        
+
                         geometryChanged = true;
                     }
 
@@ -46,7 +46,7 @@
             }
             else
             {
-                baseGhost.targetBase   = null;
+                baseGhost.targetBase = null;
                 baseGhost.targetOffset = targetOffset;
             }
 
@@ -59,7 +59,7 @@
             baseGhost.RebuildGhostGeometry();
 
             geometryChanged = true;
-        }        
+        }
 
         public static Base.CellType GetMultiplayerCellType(this global::BaseAddMapRoomGhost baseGhost)
         {
@@ -69,6 +69,6 @@
             }
 
             return Base.CellType.Empty;
-        }        
+        }
     }
 }

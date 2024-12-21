@@ -13,7 +13,7 @@
             {
                 if (__instance.movingPlatform.hitPlatform != __instance.movingPlatform.activePlatform)
                 {
-                    __instance.movingPlatform.hitPlatform    = null;
+                    __instance.movingPlatform.hitPlatform = null;
                     __instance.movingPlatform.activePlatform = null;
                 }
             }

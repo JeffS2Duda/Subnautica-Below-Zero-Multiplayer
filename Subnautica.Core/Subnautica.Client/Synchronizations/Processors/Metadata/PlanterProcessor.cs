@@ -13,10 +13,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
     using UnityEngine;
 
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
-    public class PlanterProcessor :  MetadataProcessor
+    public class PlanterProcessor : MetadataProcessor
     {
         public override bool OnDataReceived(string uniqueId, TechType techType, MetadataComponentArgs packet, bool isSilence)
         {
@@ -92,8 +92,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         private ItemQueueAction GetItemAction(global::Planter planter, Metadata.PlanterItem item, int processType, bool isMine = false)
         {
             var action = new ItemQueueAction();
-            action.RegisterProperty("Item"   , item);
-            action.RegisterProperty("IsMine" , isMine);
+            action.RegisterProperty("Item", item);
+            action.RegisterProperty("IsMine", isMine);
             action.RegisterProperty("Planter", planter);
 
             switch (processType)
@@ -102,7 +102,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                     action.OnProcessCompleted = this.OnItemProcessCompleted;
                     break;
                 case 1:
-                    action.OnEntitySpawned    = this.OnEntitySpawned;
+                    action.OnEntitySpawned = this.OnEntitySpawned;
                     break;
                 case 2:
                     action.OnProcessCompleted = this.OnHealthProcessCompleted;
@@ -188,7 +188,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         public void OnItemProcessCompleted(ItemQueueProcess item)
         {
             var planterItem = item.Action.GetProperty<Metadata.PlanterItem>("Item");
-            var planter     = item.Action.GetProperty<global::Planter>("Planter");
+            var planter = item.Action.GetProperty<global::Planter>("Planter");
             if (planterItem != null && planter != null)
             {
                 var slot = planter.GetSlotByID(planterItem.SlotId);
@@ -211,7 +211,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var planterItem = item.Action.GetProperty<Metadata.PlanterItem>("Item");
-            var planter     = item.Action.GetProperty<global::Planter>("Planter");
+            var planter = item.Action.GetProperty<global::Planter>("Planter");
             if (planterItem != null && planter != null)
             {
                 var plantable = pickupable.inventoryItem.item.GetComponent<Plantable>();
@@ -235,7 +235,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                     component.SetHealth(planterItem.Health);
                     component.SetTimeNextFruit(planterItem.TimeNextFruit);
                     component.SetActiveFruitCount(planterItem.ActiveFruitCount);
-                    component.SetStartingTime(planterItem.TimeStartGrowth);                    
+                    component.SetStartingTime(planterItem.TimeStartGrowth);
                 }
 
                 var slot = planter.GetSlotByID(planterItem.SlotId);
@@ -360,9 +360,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             var planterItem = new PlanterItem();
             planterItem.ItemId = itemId;
-            planterItem.SlotId = (byte) slotId;
+            planterItem.SlotId = (byte)slotId;
             planterItem.Health = health;
-            planterItem.MaxSpawnableFruit  = maxSpawnableFruit;
+            planterItem.MaxSpawnableFruit = maxSpawnableFruit;
             planterItem.FruitSpawnInterval = fruitSpawnInterval;
 
             if (item != null)
@@ -371,19 +371,19 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
                 if (item.growingPlant)
                 {
-                    planterItem.Duration = (short) item.growingPlant.growthDuration;
+                    planterItem.Duration = (short)item.growingPlant.growthDuration;
                 }
             }
 
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.Planter()
                 {
-                    IsOpening    = isOpening,
+                    IsOpening = isOpening,
                     IsHarvesting = isHarvesting,
-                    IsAdding     = isAdding,
-                    CurrentItem  = itemId == null ? null : planterItem,
+                    IsAdding = isAdding,
+                    CurrentItem = itemId == null ? null : planterItem,
                 }
             };
 

@@ -1,19 +1,17 @@
 ﻿namespace Subnautica.API.Features.Compressors
 {
-    using System;
-
     using Subnautica.Network.Structures;
-
+    using System;
     using UnityEngine;
-    
+
     public class UnityCompressor_Long
     {
         public enum Metadata
         {
             None = 0x0000000,
-            X    = 0x0000001,
-            Y    = 0x0000002,
-            Z    = 0x0000004
+            X = 0x0000001,
+            Y = 0x0000002,
+            Z = 0x0000004
         }
 
         private static long BigNumber = 1000000L * 1000000L * 1000000L;

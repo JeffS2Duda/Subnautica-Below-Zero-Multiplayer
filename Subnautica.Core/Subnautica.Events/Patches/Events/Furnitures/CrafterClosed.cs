@@ -1,21 +1,19 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using Subnautica.Events.Patches.Fixes.Interact;
-    
+    using System;
+
     [HarmonyPatch(typeof(global::uGUI_CraftingMenu), nameof(global::uGUI_CraftingMenu.OnDeselect))]
     public static class CrafterClosed
     {
         private static Type ConstructorInputType = typeof(ConstructorInput);
 
         private static bool Prefix(global::uGUI_CraftingMenu __instance)
-        {   
+        {
             if (!Network.IsMultiplayerActive)
             {
                 return true;
@@ -23,7 +21,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
 
             var uniqueId = "";
             var techType = TechType.None;
-            var type     = __instance._client.GetType();
+            var type = __instance._client.GetType();
             if (type == ConstructorInputType)
             {
                 var constructorInput = __instance._client as global::ConstructorInput;

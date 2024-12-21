@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Fixes.Game
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch]
     public static class IntroText

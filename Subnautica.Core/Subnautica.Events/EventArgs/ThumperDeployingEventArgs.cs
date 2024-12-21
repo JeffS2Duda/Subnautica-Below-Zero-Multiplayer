@@ -8,11 +8,11 @@ namespace Subnautica.Events.EventArgs
     {
         public ThumperDeployingEventArgs(string uniqueId, Pickupable pickupable, Vector3 deployPosition, float charge, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
-            this.Pickupable     = pickupable;
+            this.UniqueId = uniqueId;
+            this.Pickupable = pickupable;
             this.DeployPosition = deployPosition;
-            this.Charge         = charge;
-            this.IsAllowed      = isAllowed;
+            this.Charge = charge;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

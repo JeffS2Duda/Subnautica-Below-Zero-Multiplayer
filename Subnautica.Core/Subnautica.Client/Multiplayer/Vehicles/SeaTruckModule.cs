@@ -30,7 +30,7 @@
             {
                 this.Vehicle.truckSegment.animator.SetBool("piloting", false);
             }
-            
+
             this.Management.Player.Animator.SetBool("seatruck_pushing", false);
 
             base.OnExitVehicle();

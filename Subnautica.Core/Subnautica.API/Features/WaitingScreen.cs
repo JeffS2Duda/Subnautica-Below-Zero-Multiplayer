@@ -1,12 +1,10 @@
 ﻿namespace Subnautica.API.Features
 {
+    using Subnautica.API.Enums;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
-
-    using Subnautica.API.Enums;
-
     using UWE;
 
     public class WaitingScreen

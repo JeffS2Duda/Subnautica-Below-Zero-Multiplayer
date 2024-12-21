@@ -26,8 +26,8 @@
         {
             var packet = new MetadataComponentArgs()
             {
-                TechType  = techType,
-                UniqueId  = uniqueId,
+                TechType = techType,
+                UniqueId = uniqueId,
                 Component = component,
             };
 

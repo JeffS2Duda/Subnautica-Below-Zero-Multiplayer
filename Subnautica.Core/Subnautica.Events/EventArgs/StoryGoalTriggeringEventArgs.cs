@@ -1,19 +1,18 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Enums;
+    using System;
 
     public class StoryGoalTriggeringEventArgs : EventArgs
     {
         public StoryGoalTriggeringEventArgs(string storyKey, global::Story.GoalType goalType, bool isPlayMuted, bool isStoryGoalMuted = false, StoryCinematicType cinematicType = StoryCinematicType.None, bool isAllowed = true)
         {
-            this.StoryKey         = storyKey;
-            this.GoalType         = goalType;
-            this.IsPlayMuted      = isPlayMuted;
+            this.StoryKey = storyKey;
+            this.GoalType = goalType;
+            this.IsPlayMuted = isPlayMuted;
             this.IsStoryGoalMuted = isStoryGoalMuted;
-            this.CinematicType    = cinematicType;
-            this.IsAllowed        = isAllowed;
+            this.CinematicType = cinematicType;
+            this.IsAllowed = isAllowed;
         }
 
         public string StoryKey { get; set; }

@@ -15,7 +15,7 @@
                 {
                     result = 1;
                 }
-                else 
+                else
                 {
                     result = 0;
                 }

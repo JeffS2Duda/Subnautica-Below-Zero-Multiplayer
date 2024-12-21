@@ -1,14 +1,13 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
-    using Subnautica.Client.Core;
+    using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
+    using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
-    using ServerModel = Subnautica.Network.Models.Server;
     using EntityModel = Subnautica.Network.Models.WorldEntity;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class EntityScannerProcessor : NormalProcessor
     {

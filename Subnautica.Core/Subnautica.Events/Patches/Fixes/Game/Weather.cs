@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Game
 {
-    using System;
-
-    using Subnautica.API.Features;
-
     using HarmonyLib;
+    using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch]
     public static class Weather
@@ -41,7 +39,7 @@
             {
                 __instance.activeScriptedWeather = null;
                 __instance.currentWeatherTrigger = null;
-                __instance.savedWeatherEventId   = string.Empty;
+                __instance.savedWeatherEventId = string.Empty;
                 __instance.currentWeatherProfile = profile;
                 return false;
             }

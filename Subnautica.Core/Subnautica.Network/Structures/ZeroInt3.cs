@@ -1,9 +1,8 @@
 namespace Subnautica.Network.Structures
 {
+    using MessagePack;
     using System;
     using System.Collections.Generic;
-
-    using MessagePack;
 
     [MessagePackObject]
     public class ZeroInt3 : IEquatable<ZeroInt3>

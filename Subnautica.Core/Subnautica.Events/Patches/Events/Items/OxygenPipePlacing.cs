@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::OxygenPipe), nameof(global::OxygenPipe.OnRightHandDown))]
     public class OxygenPipePlacing

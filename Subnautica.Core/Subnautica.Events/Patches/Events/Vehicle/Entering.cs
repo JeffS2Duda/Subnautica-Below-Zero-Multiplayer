@@ -124,7 +124,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             {
                 Log.Error($"SeaTruckMotor.OnClickSteeringWheel: {e}\n{e.StackTrace}");
             }
-      
+
             return true;
         }
 
@@ -154,7 +154,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             {
                 Log.Error($"SpyPenguinRemoteManager.TryActivatePenginFromDistance: {e}\n{e.StackTrace}");
             }
-      
+
             return true;
         }
 
@@ -184,7 +184,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             {
                 Log.Error($"MapRoomScreen.OnHandClick: {e}\n{e.StackTrace}");
             }
-      
+
             return true;
         }
     }

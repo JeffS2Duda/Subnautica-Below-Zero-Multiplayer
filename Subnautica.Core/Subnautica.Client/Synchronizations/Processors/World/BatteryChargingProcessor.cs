@@ -1,9 +1,8 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using Subnautica.Network.Models.Core;
-    using Subnautica.Client.Abstracts;
     using Subnautica.API.Features;
-
+    using Subnautica.Client.Abstracts;
+    using Subnautica.Network.Models.Core;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BatteryChargingProcessor : NormalProcessor
@@ -16,14 +15,14 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             }
 
             var packet = networkPacket.GetPacket<ServerModel.BatteryChargerTransmissionArgs>();
-            if(packet == null)
+            if (packet == null)
             {
                 return false;
             }
 
             foreach (var charger in packet.Chargers)
             {
-                if (Multiplayer.Constructing.Builder.TryGetBuildingValue(charger.ConstructionId, out string uniqueId)) 
+                if (Multiplayer.Constructing.Builder.TryGetBuildingValue(charger.ConstructionId, out string uniqueId))
                 {
                     var gameObject = Network.Identifier.GetComponentByGameObject<global::Charger>(uniqueId);
                     if (gameObject == null)

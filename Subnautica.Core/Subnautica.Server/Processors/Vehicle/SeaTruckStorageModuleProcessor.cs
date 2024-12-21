@@ -1,14 +1,11 @@
 namespace Subnautica.Server.Processors.Vehicle
 {
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
-
-    using Metadata         = Subnautica.Network.Models.Metadata;
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SeaTruckStorageModuleProcessor : NormalProcessor
@@ -45,7 +42,7 @@ namespace Subnautica.Server.Processors.Vehicle
                         storageContainer.Sign = new Metadata.Sign();
                     }
 
-                    storageContainer.Sign.Text       = packet.SignText;
+                    storageContainer.Sign.Text = packet.SignText;
                     storageContainer.Sign.ColorIndex = packet.SignColorIndex;
 
                     profile.SendPacketToOtherClients(packet);

@@ -8,7 +8,7 @@ namespace Subnautica.Server.Processors.Items
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
 
-    using ItemModel        = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class ThumperProcessor : PlayerItemProcessor
@@ -42,7 +42,7 @@ namespace Subnautica.Server.Processors.Items
         {
             return new WorldEntityModel.Thumper()
             {
-                Charge   = charge,
+                Charge = charge,
                 Position = position,
             };
         }

@@ -1,19 +1,15 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Core;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Processors.Player;
-
-    using EntityModel    = Subnautica.Network.Models.WorldEntity;
-    using WorldChildrens = Subnautica.Network.Models.Storage.World.Childrens;
+    using System.Collections.Generic;
+    using System.Linq;
+    using EntityModel = Subnautica.Network.Models.WorldEntity;
 
     public class World : BaseLogic
     {
@@ -42,7 +38,7 @@ namespace Subnautica.Server.Logic
                     Server.Instance.Storages.Construction.AddConstructionItem(ConstructionItem.CreateStaticItem(uniqueId, TechType.Fabricator));
                 }
             }
-            
+
             if (Server.Instance.Storages.World.Storage.IsFirstLogin == false && !Server.Instance.Storages.World.TryGetSupplyDrop(out var supplyDrop))
             {
                 Server.Instance.Storages.World.Storage.IsFirstLogin = true;
@@ -53,13 +49,13 @@ namespace Subnautica.Server.Logic
         {
             if (!Server.Instance.Storages.World.Storage.IsFirstLogin)
             {
-                this.UpdateServerTime((double) deltaTime);
+                this.UpdateServerTime((double)deltaTime);
             }
         }
 
         public float GetServerTime()
         {
-            return (float) Server.Instance.Storages.World.Storage.ServerTime;
+            return (float)Server.Instance.Storages.World.Storage.ServerTime;
         }
 
         public double GetServerTimeAsDouble()
@@ -74,7 +70,7 @@ namespace Subnautica.Server.Logic
             if (Server.Instance.Storages.World.Storage.SkipTimeMode && this.GetServerTime() >= Server.Instance.Storages.World.Storage.SkipModeEndTime)
             {
                 Server.Instance.Storages.World.Storage.SkipTimeMode = false;
-                Server.Instance.Storages.World.Storage.WorldSpeed   = 1f;
+                Server.Instance.Storages.World.Storage.WorldSpeed = 1f;
             }
         }
 
@@ -108,7 +104,7 @@ namespace Subnautica.Server.Logic
                 Server.Instance.Storages.World.Storage.LastItemId = 0;
             }
 
-            ushort itemId = (ushort) (Server.Instance.Storages.World.Storage.LastItemId + 1);
+            ushort itemId = (ushort)(Server.Instance.Storages.World.Storage.LastItemId + 1);
 
             while (Server.Instance.Storages.World.Storage.DynamicEntities.Any(q => q.Id == itemId))
             {
@@ -143,17 +139,17 @@ namespace Subnautica.Server.Logic
 
             var entity = new WorldDynamicEntity()
             {
-                Id             = Server.Instance.Logices.World.GetNextItemId(),
-                UniqueId       = uniqueId,
-                Item           = item,
-                TechType       = techType,
-                Position       = position,
-                Rotation       = rotation,
-                IsDeployed     = isDeployed,
+                Id = Server.Instance.Logices.World.GetNextItemId(),
+                UniqueId = uniqueId,
+                Item = item,
+                TechType = techType,
+                Position = position,
+                Rotation = rotation,
+                IsDeployed = isDeployed,
                 IsGlobalEntity = API.Features.TechGroup.IsGlobalEntity(techType),
-                Component      = ItemDropProcessor.GetEntityComponent(techType),
-                OwnershipId    = ownershipId,
-                AddedTime      = Server.Instance.Logices.World.GetServerTime(),
+                Component = ItemDropProcessor.GetEntityComponent(techType),
+                OwnershipId = ownershipId,
+                AddedTime = Server.Instance.Logices.World.GetServerTime(),
             };
 
             if (Server.Instance.Storages.World.AddWorldDynamicEntity(entity))

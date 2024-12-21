@@ -1,5 +1,5 @@
 namespace Subnautica.Network.Models.Storage.Construction
-{    
+{
     using MessagePack;
 
     using System;

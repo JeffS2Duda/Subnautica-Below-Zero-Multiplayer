@@ -1,8 +1,7 @@
 namespace Subnautica.Events.Patches.Fixes.Game
 {
-    using System;
-
     using HarmonyLib;
+    using System;
 
     [HarmonyPatch(typeof(PlatformServicesEpic), nameof(PlatformServicesEpic.GetUserName))]
     public class Platform
@@ -20,7 +19,7 @@ namespace Subnautica.Events.Patches.Fixes.Game
                 if (command.Contains("username"))
                 {
                     var username = command.Split('=');
-                    if  (username.Length < 1)
+                    if (username.Length < 1)
                     {
                         return null;
                     }

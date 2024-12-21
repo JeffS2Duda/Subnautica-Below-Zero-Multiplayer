@@ -1,9 +1,7 @@
 namespace Subnautica.Network.Core.Components
 {
-    using System;
-
     using MessagePack;
-
+    using System;
     using ItemModel = Subnautica.Network.Models.Items;
 
     [Union(0, typeof(ItemModel.Scanner))]

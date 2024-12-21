@@ -1,17 +1,16 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Enums;
+    using System;
 
     public class StoryHandClickingEventArgs : EventArgs
     {
         public StoryHandClickingEventArgs(string uniqueId, string goalKey, StoryCinematicType cinematicType, bool isAllowed = true)
         {
-            this.UniqueId      = uniqueId;
-            this.GoalKey       = goalKey;
+            this.UniqueId = uniqueId;
+            this.GoalKey = goalKey;
             this.CinematicType = cinematicType;
-            this.IsAllowed     = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

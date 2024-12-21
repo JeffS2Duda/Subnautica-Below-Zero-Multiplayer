@@ -1,11 +1,6 @@
 namespace Subnautica.Server.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using LiteNetLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -13,16 +8,17 @@ namespace Subnautica.Server.Core
     using Subnautica.Network.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
-    using EventHandlers  = Subnautica.Events.Handlers;
+    using EventHandlers = Subnautica.Events.Handlers;
     using ServerHandlers = Subnautica.Server.Events.Handlers;
 
     public class Server
     {
         public static bool DEBUG { get; set; } = true;
-                 
+
         public static Server Instance { get; set; }
 
         public int Port { get; set; }
@@ -63,14 +59,14 @@ namespace Subnautica.Server.Core
 
             this.Dispose();
 
-            this.Port      = port;
+            this.Port = port;
             this.MaxPlayer = maxPlayer;
-            this.ServerId  = serverId;
-            this.OwnerId   = ownerId;
-            this.Version   = version;
-            this.GameMode  = gameModeId;
-            this.SavePath  = Paths.GetMultiplayerServerSavePath(this.ServerId);
-            this.Players   = new Dictionary<string, AuthorizationProfile>();
+            this.ServerId = serverId;
+            this.OwnerId = ownerId;
+            this.Version = version;
+            this.GameMode = gameModeId;
+            this.SavePath = Paths.GetMultiplayerServerSavePath(this.ServerId);
+            this.Players = new Dictionary<string, AuthorizationProfile>();
 
             this.ServerGameObject = new GameObject(serverId);
 
@@ -93,19 +89,19 @@ namespace Subnautica.Server.Core
 
                 this.NetworkServer = new NetManager(new ServerListener())
                 {
-                    UpdateTime            = 1,
-                    AutoRecycle           = true,
-                    UnsyncedReceiveEvent  = true,
+                    UpdateTime = 1,
+                    AutoRecycle = true,
+                    UnsyncedReceiveEvent = true,
                     UnsyncedDeliveryEvent = true,
-                    UnsyncedEvents        = true,
-                    ChannelsCount         = Network.GetChannelCount(),
-                    IPv6Enabled           = false,
+                    UnsyncedEvents = true,
+                    ChannelsCount = Network.GetChannelCount(),
+                    IPv6Enabled = false,
                 };
 
                 this.NetworkServer.Start(this.Port);
 
                 this.IsConnecting = false;
-                this.IsConnected  = true;
+                this.IsConnected = true;
 
                 Log.Info("Started Server.");
                 Log.Info("Waiting for players");
@@ -113,7 +109,7 @@ namespace Subnautica.Server.Core
             catch (Exception e)
             {
                 this.IsConnecting = false;
-                this.IsConnected  = false;
+                this.IsConnected = false;
                 Log.Error($"Server.Start Exception: {e}");
             }
         }
@@ -159,7 +155,7 @@ namespace Subnautica.Server.Core
             {
                 Log.Info($"PACKET SENDED: [Length: {NetworkTools.Serialize(packet).Length}] -> {packet.Type}");
             }
-            
+
             foreach (var player in Server.Instance.Players.Values.Where(q => q.IpPortAddress != profile.IpPortAddress))
             {
                 if (checkConnected && !player.IsFullConnected)
@@ -177,7 +173,7 @@ namespace Subnautica.Server.Core
             {
                 Log.Info($"PACKET SENDED: [Length: {NetworkTools.Serialize(packet).Length}] -> {packet.Type}");
             }
-            
+
             foreach (var player in Server.Instance.Players)
             {
                 if (checkConnected && !player.Value.IsFullConnected)
@@ -239,7 +235,7 @@ namespace Subnautica.Server.Core
 
         public byte GetPlayerCount()
         {
-            return (byte) this.Players.Count;
+            return (byte)this.Players.Count;
         }
 
         public AuthorizationProfile GetServerOwner()
@@ -273,14 +269,14 @@ namespace Subnautica.Server.Core
             {
                 this.IsRegisteredEvents = true;
 
-                EventHandlers.Game.PowerSourceAdding        += this.Logices.PowerConsumer.OnPowerSourceAdding;
-                EventHandlers.Game.PowerSourceRemoving      += this.Logices.PowerConsumer.OnPowerSourceRemoving;
+                EventHandlers.Game.PowerSourceAdding += this.Logices.PowerConsumer.OnPowerSourceAdding;
+                EventHandlers.Game.PowerSourceRemoving += this.Logices.PowerConsumer.OnPowerSourceRemoving;
                 EventHandlers.Game.EntityDistributionLoaded += this.Logices.WorldStreamer.OnEntityDistributionLoaded;
 
                 EventHandlers.Building.BaseHullStrengthCrushing += this.Logices.BaseHullStrength.OnCrushing;
 
                 ServerHandlers.PlayerFullConnected += this.Logices.CreatureWatcher.OnPlayerFullConnected;
-                ServerHandlers.PlayerDisconnected  += this.Logices.ServerApi.OnPlayerDisconnected;
+                ServerHandlers.PlayerDisconnected += this.Logices.ServerApi.OnPlayerDisconnected;
 
                 MainGameController.OnGameStarted.AddHandler(new Action(this.Logices.PowerConsumer.OnGameStart));
             }
@@ -292,13 +288,13 @@ namespace Subnautica.Server.Core
             {
                 this.IsRegisteredEvents = false;
 
-                EventHandlers.Game.PowerSourceAdding        -= this.Logices.PowerConsumer.OnPowerSourceAdding;
-                EventHandlers.Game.PowerSourceRemoving      -= this.Logices.PowerConsumer.OnPowerSourceRemoving;
+                EventHandlers.Game.PowerSourceAdding -= this.Logices.PowerConsumer.OnPowerSourceAdding;
+                EventHandlers.Game.PowerSourceRemoving -= this.Logices.PowerConsumer.OnPowerSourceRemoving;
                 EventHandlers.Game.EntityDistributionLoaded -= this.Logices.WorldStreamer.OnEntityDistributionLoaded;
 
                 EventHandlers.Building.BaseHullStrengthCrushing -= this.Logices.BaseHullStrength.OnCrushing;
-                
-                ServerHandlers.PlayerDisconnected  -= this.Logices.ServerApi.OnPlayerDisconnected;
+
+                ServerHandlers.PlayerDisconnected -= this.Logices.ServerApi.OnPlayerDisconnected;
                 ServerHandlers.PlayerFullConnected -= this.Logices.CreatureWatcher.OnPlayerFullConnected;
 
                 MainGameController.OnGameStarted.RemoveHandler(new Action(this.Logices.PowerConsumer.OnGameStart));
@@ -319,11 +315,11 @@ namespace Subnautica.Server.Core
                 case ProcessType.WorldDynamicEntityPosition:
                 case ProcessType.WorldCreaturePosition:
                 case ProcessType.VehicleUpdated:
-                case ProcessType.PlayerAnimationChanged: 
-                case ProcessType.EnergyTransmission: 
-                case ProcessType.VehicleEnergyTransmission: 
-                case ProcessType.Ping: 
-                case ProcessType.CreatureAnimation: 
+                case ProcessType.PlayerAnimationChanged:
+                case ProcessType.EnergyTransmission:
+                case ProcessType.VehicleEnergyTransmission:
+                case ProcessType.Ping:
+                case ProcessType.CreatureAnimation:
                     return false;
             }
 
@@ -350,7 +346,7 @@ namespace Subnautica.Server.Core
             {
                 this.Logices.StoryTrigger.ResetEndGame();
                 this.Logices.AutoSave.SaveAll();
-                
+
                 foreach (var player in this.Storages.Player.GetAllPlayers())
                 {
                     player.SetPosition(new ZeroVector3(-235.4f, 6.5f, 163.5f), new ZeroQuaternion(0.0f, -0.9f, 0.0f, 0.4f));
@@ -358,14 +354,14 @@ namespace Subnautica.Server.Core
                 }
             }
 
-            this.Port         = 0;
-            this.MaxPlayer    = 0;
+            this.Port = 0;
+            this.MaxPlayer = 0;
             this.IsConnecting = false;
-            this.IsConnected  = false;
-            this.ServerId     = null;
-            this.OwnerId      = null;
-            this.SavePath     = null;
-            this.Players      = null;
+            this.IsConnected = false;
+            this.ServerId = null;
+            this.OwnerId = null;
+            this.SavePath = null;
+            this.Players = null;
 
             if (this.Storages != null)
             {

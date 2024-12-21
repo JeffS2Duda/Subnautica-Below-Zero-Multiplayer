@@ -1,13 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
+    using System.Collections.Generic;
 
     [HarmonyPatch(typeof(ArmsController), nameof(ArmsController.Update))]
     public static class AnimationChanged

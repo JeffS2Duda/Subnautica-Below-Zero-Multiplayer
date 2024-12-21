@@ -15,7 +15,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
 
     using UnityEngine;
 
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SignalProcessor : NormalProcessor
@@ -57,7 +57,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
             if (entity != null)
             {
                 Network.DynamicEntity.SetEntity(entity);
-                
+
                 var component = entity.Component.GetComponent<WorldEntityModel.Beacon>();
                 if (component != null)
                 {
@@ -68,8 +68,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
 
         private static void AddSignal(ZeroStorySignal signal, GameObject prefab, int colorIndex)
         {
-            var component  = Object.Instantiate<GameObject>(prefab).GetComponent<SignalPing>();
-            component.pos  = signal.TargetPosition.ToVector3();
+            var component = Object.Instantiate<GameObject>(prefab).GetComponent<SignalPing>();
+            component.pos = signal.TargetPosition.ToVector3();
             component.descriptionKey = signal.TargetDescription;
             component.PlayVO();
             component.pingInstance.SetColor(colorIndex);
@@ -84,8 +84,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
             {
                 Signal = new ZeroStorySignal()
                 {
-                    SignalType        = ev.SignalType,
-                    TargetPosition    = ev.TargetPosition.ToZeroVector3(),
+                    SignalType = ev.SignalType,
+                    TargetPosition = ev.TargetPosition.ToZeroVector3(),
                     TargetDescription = ev.TargetDescription,
                 },
             };

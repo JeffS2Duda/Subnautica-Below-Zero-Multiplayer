@@ -1,15 +1,12 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class Hoverpad : BaseLogic
@@ -78,7 +75,7 @@ namespace Subnautica.Server.Logic.Furnitures
                             continue;
                         }
 
-                        request.Items.Add(item.Id, new ServerModel.HoverpadEnergyTransmissionItem((byte) hoverpad.Hoverbike.LiveMixin.Health, (byte)hoverpad.Hoverbike.Charge));
+                        request.Items.Add(item.Id, new ServerModel.HoverpadEnergyTransmissionItem((byte)hoverpad.Hoverbike.LiveMixin.Health, (byte)hoverpad.Hoverbike.Charge));
                     }
 
                     if (request.Items.Any())
@@ -93,7 +90,7 @@ namespace Subnautica.Server.Logic.Furnitures
         {
             if (this.PlayersOnPlatform.TryGetValue(constructionId, out var players))
             {
-                return (byte) players.Count;
+                return (byte)players.Count;
             }
 
             return 0;
@@ -132,12 +129,12 @@ namespace Subnautica.Server.Logic.Furnitures
                     {
                         ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
                         {
-                            UniqueId  = platform.Key,
-                            TechType  = TechType.Hoverpad,
+                            UniqueId = platform.Key,
+                            TechType = TechType.Hoverpad,
                             Component = new Metadata.Hoverpad()
                             {
                                 ShowroomTriggerType = 1,
-                                ShowroomPlayerCount = (byte) platform.Value.Count,
+                                ShowroomPlayerCount = (byte)platform.Value.Count,
                             },
                         };
 

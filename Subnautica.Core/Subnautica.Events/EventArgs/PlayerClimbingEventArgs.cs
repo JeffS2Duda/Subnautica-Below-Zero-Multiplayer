@@ -2,14 +2,12 @@ namespace Subnautica.Events.EventArgs
 {
     using System;
 
-    using UnityEngine;
-
     public class PlayerClimbingEventArgs : EventArgs
     {
         public PlayerClimbingEventArgs(string uniqueId, float duration, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.Duration  = duration;
+            this.UniqueId = uniqueId;
+            this.Duration = duration;
             this.IsAllowed = isAllowed;
         }
 

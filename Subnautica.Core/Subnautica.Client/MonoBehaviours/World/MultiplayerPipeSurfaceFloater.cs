@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.World
 {
-    using UnityEngine;
-
     using Subnautica.API.Features;
+    using UnityEngine;
 
     public class MultiplayerPipeSurfaceFloater : MonoBehaviour
     {

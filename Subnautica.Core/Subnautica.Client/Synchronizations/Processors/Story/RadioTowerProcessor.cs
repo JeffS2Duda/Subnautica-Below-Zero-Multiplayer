@@ -44,7 +44,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
         {
             ServerModel.StoryRadioTowerArgs result = new ServerModel.StoryRadioTowerArgs()
             {
-                UniqueId   = uniqued,
+                UniqueId = uniqued,
                 IsTOMUsing = isTOMUsing
             };
 

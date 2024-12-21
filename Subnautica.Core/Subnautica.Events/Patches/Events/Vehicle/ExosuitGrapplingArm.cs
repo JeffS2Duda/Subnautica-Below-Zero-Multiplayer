@@ -1,9 +1,8 @@
 namespace Subnautica.Events.Patches.Events.Vehicle
 {
     using HarmonyLib;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
 
     [HarmonyPatch(typeof(global::ExosuitGrapplingArm), nameof(global::ExosuitGrapplingArm.OnHit))]
     public static class ExosuitGrapplingArm

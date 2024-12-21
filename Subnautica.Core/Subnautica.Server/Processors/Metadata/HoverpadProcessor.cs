@@ -7,7 +7,7 @@ namespace Subnautica.Server.Processors.Metadata
     using Subnautica.Server.Core;
     using Subnautica.Server.Logic;
 
-    using Metadata         = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class HoverpadProcessor : MetadataProcessor
@@ -15,7 +15,7 @@ namespace Subnautica.Server.Processors.Metadata
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
             var constructionComponent = construction.EnsureComponent<Metadata.Hoverpad>();
-            var hoverpadComponent     = packet.Component.GetComponent<Metadata.Hoverpad>();
+            var hoverpadComponent = packet.Component.GetComponent<Metadata.Hoverpad>();
 
             if (Server.Instance.Logices.Interact.IsBlocked(construction.UniqueId, profile.UniqueId))
             {
@@ -30,15 +30,15 @@ namespace Subnautica.Server.Processors.Metadata
                 if (!constructionComponent.IsDocked)
                 {
                     constructionComponent.FinishedTime = Server.Instance.Logices.World.GetServerTime() + 15f;
-                    constructionComponent.IsDocked     = true;
-                    constructionComponent.ItemId       = API.Features.Network.Identifier.GenerateUniqueId();
-                    constructionComponent.Hoverbike    = new WorldEntityModel.Hoverbike();
+                    constructionComponent.IsDocked = true;
+                    constructionComponent.ItemId = API.Features.Network.Identifier.GenerateUniqueId();
+                    constructionComponent.Hoverbike = new WorldEntityModel.Hoverbike();
 
                     if (Server.Instance.Storages.Construction.UpdateMetadata(packet.UniqueId, constructionComponent))
                     {
                         hoverpadComponent.FinishedTime = constructionComponent.FinishedTime;
-                        hoverpadComponent.IsDocked     = constructionComponent.IsDocked;
-                        hoverpadComponent.ItemId       = constructionComponent.ItemId;
+                        hoverpadComponent.IsDocked = constructionComponent.IsDocked;
+                        hoverpadComponent.ItemId = constructionComponent.ItemId;
 
                         profile.SendPacketToAllClient(packet);
                     }
@@ -97,22 +97,22 @@ namespace Subnautica.Server.Processors.Metadata
 
                         WorldDynamicEntity dynamicEntity = new WorldDynamicEntity()
                         {
-                            Id               = Server.Instance.Logices.World.GetNextItemId(),
-                            UniqueId         = constructionComponent.ItemId,
-                            Item             = null,
-                            TechType         = TechType.Hoverbike,
-                            Position         = hoverpadComponent.HoverbikePosition,
-                            Rotation         = hoverpadComponent.HoverbikeRotation,
-                            OwnershipId      = profile.UniqueId,
-                            IsDeployed       = true,
-                            IsGlobalEntity   = API.Features.TechGroup.IsGlobalEntity(TechType.Hoverbike),
-                            Component        = constructionComponent.Hoverbike,
-                            IsUsingByPlayer  = true,
+                            Id = Server.Instance.Logices.World.GetNextItemId(),
+                            UniqueId = constructionComponent.ItemId,
+                            Item = null,
+                            TechType = TechType.Hoverbike,
+                            Position = hoverpadComponent.HoverbikePosition,
+                            Rotation = hoverpadComponent.HoverbikeRotation,
+                            OwnershipId = profile.UniqueId,
+                            IsDeployed = true,
+                            IsGlobalEntity = API.Features.TechGroup.IsGlobalEntity(TechType.Hoverbike),
+                            Component = constructionComponent.Hoverbike,
+                            IsUsingByPlayer = true,
                         };
 
                         constructionComponent.FinishedTime = 0f;
-                        constructionComponent.IsDocked     = false;
-                        constructionComponent.ItemId       = null;
+                        constructionComponent.IsDocked = false;
+                        constructionComponent.ItemId = null;
 
                         hoverpadComponent.Entity = dynamicEntity;
 
@@ -133,8 +133,8 @@ namespace Subnautica.Server.Processors.Metadata
                         Server.Instance.Logices.Interact.RemoveBlockByPlayerId(profile.UniqueId, Interact.HoverpadDocking);
                     }
 
-                    constructionComponent.IsDocked  = true;
-                    constructionComponent.ItemId    = hoverpadComponent.ItemId;
+                    constructionComponent.IsDocked = true;
+                    constructionComponent.ItemId = hoverpadComponent.ItemId;
                     constructionComponent.Hoverbike = entity.Component.GetComponent<WorldEntityModel.Hoverbike>();
 
                     Server.Instance.Storages.World.RemoveDynamicEntity(hoverpadComponent.ItemId);

@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures
 {
-    using Subnautica.API.Features;
-    using Subnautica.API.Extensions;
-
     using HarmonyLib;
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
 
     [HarmonyPatch(typeof(global::Creature), nameof(global::Creature.InitializeOnce))]
     public class Creature

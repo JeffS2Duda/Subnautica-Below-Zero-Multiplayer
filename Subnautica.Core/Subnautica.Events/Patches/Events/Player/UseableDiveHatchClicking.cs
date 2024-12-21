@@ -1,11 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::UseableDiveHatch), nameof(global::UseableDiveHatch.StartCinematicMode))]
     public static class UseableDiveHatchClicking
@@ -49,7 +48,7 @@ namespace Subnautica.Events.Patches.Events.Player
             if (lifepod)
             {
                 return lifepod.gameObject.GetIdentityId();
-            }            
+            }
 
             var deconstructable = __instance.GetComponentInParent<BaseDeconstructable>();
             if (deconstructable)

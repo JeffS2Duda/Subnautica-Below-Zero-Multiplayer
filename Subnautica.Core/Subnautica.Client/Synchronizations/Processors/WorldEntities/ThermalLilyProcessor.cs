@@ -1,13 +1,11 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
-    using Subnautica.Network.Models.Core;
-    using Subnautica.Client.Abstracts;
     using Subnautica.API.Features;
+    using Subnautica.Client.Abstracts;
     using Subnautica.Events.EventArgs;
-
+    using Subnautica.Network.Models.Core;
     using System.Collections.Generic;
     using System.Linq;
-
     using UnityEngine;
 
     public class ThermalLilyProcessor : NormalProcessor
@@ -21,7 +19,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
         {
             ev.IsAllowed = false;
 
-            double range    = ThermalLilyProcessor.GetPlayerRange(ev.PlayerRange);
+            double range = ThermalLilyProcessor.GetPlayerRange(ev.PlayerRange);
             double distance = ThermalLilyProcessor.GetPlayerDistanceFromLily(Utils.GetLocalPlayerPos(), ev.LilyPosition);
 
             if (distance < range)
@@ -46,8 +44,8 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
             ev.IsAllowed = false;
 
             var distances = new Dictionary<byte, double>();
-            var range     = ThermalLilyProcessor.GetPlayerRange(ev.PlayerRange);
-            var distance  = ThermalLilyProcessor.GetPlayerDistanceFromLily(Utils.GetLocalPlayerPos(), ev.LilyPosition);
+            var range = ThermalLilyProcessor.GetPlayerRange(ev.PlayerRange);
+            var distance = ThermalLilyProcessor.GetPlayerDistanceFromLily(Utils.GetLocalPlayerPos(), ev.LilyPosition);
 
             if (distance < range)
             {

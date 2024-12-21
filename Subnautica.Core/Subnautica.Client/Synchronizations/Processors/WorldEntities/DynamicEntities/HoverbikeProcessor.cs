@@ -26,7 +26,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
                 return false;
             }
 
-            var vehicle  = gameObject.GetComponentInChildren<global::Hoverbike>();
+            var vehicle = gameObject.GetComponentInChildren<global::Hoverbike>();
             if (vehicle == null)
             {
                 return false;

@@ -1,9 +1,8 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using Subnautica.Network.Models.Core;
-    using Subnautica.Client.Abstracts;
     using Subnautica.API.Features;
-
+    using Subnautica.Client.Abstracts;
+    using Subnautica.Network.Models.Core;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class FiltrationMachineTransmissionProcessor : NormalProcessor
@@ -33,7 +32,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
                     }
 
                     machine.timeRemainingWater = item.TimeRemainingWater;
-                    machine.timeRemainingSalt  = item.TimeRemainingSalt;
+                    machine.timeRemainingSalt = item.TimeRemainingSalt;
                 }
             }
 

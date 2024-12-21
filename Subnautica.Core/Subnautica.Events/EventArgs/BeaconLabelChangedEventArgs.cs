@@ -7,7 +7,7 @@ namespace Subnautica.Events.EventArgs
         public BeaconLabelChangedEventArgs(string uniqueId, string text)
         {
             this.UniqueId = uniqueId;
-            this.Text     = text;
+            this.Text = text;
         }
 
         public string UniqueId { get; set; }

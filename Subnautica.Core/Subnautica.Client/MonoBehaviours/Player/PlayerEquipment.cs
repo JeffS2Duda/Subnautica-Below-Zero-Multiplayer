@@ -1,9 +1,7 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Player
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Features;
-
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Rendering;
 
@@ -66,7 +64,7 @@
 
                 switch (i)
                 {
-                    case 0: 
+                    case 0:
                         this.ChangeHeadModel(this.OldEquipments[i]);
                         break;
                     case 1:

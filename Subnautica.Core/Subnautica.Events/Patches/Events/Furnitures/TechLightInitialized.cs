@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::TechLight), nameof(global::TechLight.Start))]
     public static class TechLightInitialized

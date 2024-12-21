@@ -9,12 +9,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
-
     using UnityEngine;
-
-    using ItemModel   = Subnautica.Network.Models.Items;
-    using ServerModel = Subnautica.Network.Models.Server;
     using EntityModel = Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities;
+    using ItemModel = Subnautica.Network.Models.Items;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class PipeSurfaceFloaterProcessor : PlayerItemProcessor
     {
@@ -94,11 +92,11 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 Item = new ItemModel.PipeSurfaceFloater()
                 {
-                    UniqueId    = uniqueId,
-                    ParentId    = parentId,
-                    PipeId      = pipeId,
-                    Position    = position,
-                    Rotation    = rotation,
+                    UniqueId = uniqueId,
+                    ParentId = parentId,
+                    PipeId = pipeId,
+                    Position = position,
+                    Rotation = rotation,
                     ProcessType = processType
                 }
             };

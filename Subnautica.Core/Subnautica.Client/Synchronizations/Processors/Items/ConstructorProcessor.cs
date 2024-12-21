@@ -13,7 +13,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class ConstructorProcessor : PlayerItemProcessor
@@ -25,7 +25,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 return false;
             }
-            
+
             if (component.IsEngageActive())
             {
                 var player = ZeroPlayer.GetPlayerById(playerId);
@@ -34,7 +34,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
                 {
                     if (player != null && player.IsMine)
                     {
-                        player.OnHandClickConstructor(component.UniqueId);  
+                        player.OnHandClickConstructor(component.UniqueId);
                     }
                     else
                     {
@@ -96,7 +96,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
         {
             ev.IsAllowed = false;
 
-            ConstructorProcessor.SendPacketToServer(ev.UniqueId, craftingTechType: ev.TechType, craftingPosition: ev.Position.ToZeroVector3(), craftingRotation: ev.Rotation.ToZeroQuaternion());    
+            ConstructorProcessor.SendPacketToServer(ev.UniqueId, craftingTechType: ev.TechType, craftingPosition: ev.Position.ToZeroVector3(), craftingRotation: ev.Rotation.ToZeroQuaternion());
         }
 
         public static void OnConstructorEngageToggle(ConstructorEngageToggleEventArgs ev)
@@ -129,10 +129,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 Item = new ItemModel.Constructor()
                 {
-                    UniqueId         = uniqueId,
-                    EngageToggle     = engageToggle,
-                    Forward          = forward,
-                    Position         = position,
+                    UniqueId = uniqueId,
+                    EngageToggle = engageToggle,
+                    Forward = forward,
+                    Position = position,
                     CraftingTechType = craftingTechType,
                     CraftingPosition = craftingPosition,
                     CraftingRotation = craftingRotation,

@@ -1,13 +1,11 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Entity.Components
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Core;
     using Subnautica.Network.Models.Storage.World.Childrens;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class EntityPosition
@@ -46,8 +44,9 @@
                 entity.Position = entity.GameObject.transform.position.ToZeroVector3();
                 entity.Rotation = entity.GameObject.transform.rotation.ToZeroQuaternion();
 
-                this.Positions.Add(new WorldDynamicEntityPosition() {
-                    Id       = entity.Id,
+                this.Positions.Add(new WorldDynamicEntityPosition()
+                {
+                    Id = entity.Id,
                     Position = entity.Position.Compress(),
                     Rotation = entity.Rotation.Compress(),
                 });

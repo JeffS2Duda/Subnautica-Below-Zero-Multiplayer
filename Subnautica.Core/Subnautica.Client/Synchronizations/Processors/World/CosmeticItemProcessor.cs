@@ -40,7 +40,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
 
                 var action = new ItemQueueAction(null, this.OnEntitySpawned);
                 action.RegisterProperty("BaseId", packet.BaseId);
-                action.RegisterProperty("Item"  , packet.CosmeticItem);
+                action.RegisterProperty("Item", packet.CosmeticItem);
 
                 Entity.SpawnToQueue(packet.TechType, packet.UniqueId, new ZeroTransform(packet.Position, packet.Rotation), action);
             }
@@ -77,7 +77,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             ServerModel.CosmeticItemArgs request = new ServerModel.CosmeticItemArgs()
             {
                 UniqueId = uniqueId,
-                BaseId   = baseId,
+                BaseId = baseId,
                 TechType = techType,
                 Position = position,
                 Rotation = rotation,

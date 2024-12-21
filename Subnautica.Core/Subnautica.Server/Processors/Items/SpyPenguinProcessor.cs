@@ -1,7 +1,6 @@
 namespace Subnautica.Server.Processors.Items
 {
     using Subnautica.API.Enums;
-    using Subnautica.API.Features;
     using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
@@ -10,7 +9,7 @@ namespace Subnautica.Server.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel        = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SpyPenguinProcessor : PlayerItemProcessor
@@ -25,7 +24,7 @@ namespace Subnautica.Server.Processors.Items
                 {
                     return false;
                 }
-                
+
                 if (Random.value < component.SpawnChance)
                 {
                     component.WorldPickupItem = WorldPickupItem.Create(StorageItem.Create(TechType.SnowStalkerFur));
@@ -101,7 +100,7 @@ namespace Subnautica.Server.Processors.Items
         {
             return new WorldEntityModel.SpyPenguin()
             {
-                Name      = component.Name,
+                Name = component.Name,
                 LiveMixin = new WorldEntityModel.Shared.LiveMixin(component.Health, 10f),
             };
         }

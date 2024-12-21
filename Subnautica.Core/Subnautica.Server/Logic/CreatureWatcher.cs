@@ -1,11 +1,6 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-
     using Core;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Core;
@@ -14,7 +9,8 @@ namespace Subnautica.Server.Logic
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Events.EventArgs;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class CreatureWatcher : BaseLogic
@@ -112,7 +108,7 @@ namespace Subnautica.Server.Logic
             {
                 return false;
             }
-            
+
             this.IsLoading = true;
             this.Creatures = new Dictionary<ushort, MultiplayerCreatureItem>();
             this.CreaturesByWorldStreamerIds = new Dictionary<string, ushort>();
@@ -334,7 +330,7 @@ namespace Subnautica.Server.Logic
         {
             if (techType == TechType.None)
             {
-                return this.Creatures.ToList();    
+                return this.Creatures.ToList();
             }
 
             return this.Creatures.Where(q => q.Value.TechType == techType);
@@ -573,7 +569,7 @@ namespace Subnautica.Server.Logic
                     if (requests.Positions.Count > 0)
                     {
                         player.SendPacket(requests);
-    
+
                         requests.Positions.Clear();
                     }
                 }
@@ -663,7 +659,7 @@ namespace Subnautica.Server.Logic
             }
         }
 
-        
+
 
 
 
@@ -701,10 +697,10 @@ namespace Subnautica.Server.Logic
             }
 
             byte ownershipId = 0;
-            
-            var visibility   = creature.Data.GetVisibilityDistance();
+
+            var visibility = creature.Data.GetVisibilityDistance();
             var lastDistance = 100000f;
-            var hostRange    = visibility * 0.75f;
+            var hostRange = visibility * 0.75f;
 
             foreach (var player in Server.Instance.GetPlayers())
             {
@@ -719,7 +715,7 @@ namespace Subnautica.Server.Logic
                         }
                         else if (distance < lastDistance)
                         {
-                            ownershipId  = player.PlayerId;
+                            ownershipId = player.PlayerId;
                             lastDistance = distance;
                         }
                     }
@@ -727,6 +723,6 @@ namespace Subnautica.Server.Logic
             }
 
             return ownershipId;
-        }        
+        }
     }
 }

@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::SnowStalkerSpyPenguinInteractions), nameof(global::SnowStalkerSpyPenguinInteractions.OnPenguinAction))]
     public class SpyPenguinSnowStalkerInteracting

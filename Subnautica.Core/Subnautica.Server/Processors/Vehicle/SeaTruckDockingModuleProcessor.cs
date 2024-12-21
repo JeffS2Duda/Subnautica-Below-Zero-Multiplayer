@@ -7,7 +7,7 @@ namespace Subnautica.Server.Processors.Vehicle
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Extensions;
 
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SeaTruckDockingModuleProcessor : NormalProcessor

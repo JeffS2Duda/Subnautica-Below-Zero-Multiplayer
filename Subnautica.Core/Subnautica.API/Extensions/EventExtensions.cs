@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.API.Extensions
 {
-    using System;
-
     using Subnautica.API.Features;
+    using System;
 
     public static class EventExtensions
     {

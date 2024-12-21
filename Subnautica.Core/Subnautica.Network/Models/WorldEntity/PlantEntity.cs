@@ -33,11 +33,11 @@ namespace Subnautica.Network.Models.WorldEntity
 
         public PlantEntity(TechType techType, byte activeFruitCount, byte maxFruit, float timeNextFruit, float spawnInterval)
         {
-            this.TechType         = techType;
+            this.TechType = techType;
             this.ActiveFruitCount = activeFruitCount;
-            this.MaxFruit         = maxFruit;
-            this.TimeNextFruit    = timeNextFruit;
-            this.SpawnInterval    = spawnInterval;
+            this.MaxFruit = maxFruit;
+            this.TimeNextFruit = timeNextFruit;
+            this.SpawnInterval = spawnInterval;
         }
 
         public bool SyncFruits(float currentTime, bool harvest = false)
@@ -55,7 +55,7 @@ namespace Subnautica.Network.Models.WorldEntity
 
             if (this.SpawnInterval == 0f)
             {
-                this.SpawnInterval    = -1;
+                this.SpawnInterval = -1;
                 this.ActiveFruitCount = 1;
                 return false;
             }

@@ -17,12 +17,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             {
                 return false;
             }
-            
+
             var player = ZeroPlayer.CreateOrGetPlayerByUniqueId(packet.UniqueId, packet.PlayerId);
             player.SetPlayerName(packet.PlayerName);
             player.SetSubRootId(packet.SubrootId);
             player.SetInteriorId(packet.InteriorId);
-            
+
             if (!player.IsCreatedModel)
             {
                 player.CreateModel(packet.Position.ToVector3(true), packet.Rotation.ToQuaternion(true));

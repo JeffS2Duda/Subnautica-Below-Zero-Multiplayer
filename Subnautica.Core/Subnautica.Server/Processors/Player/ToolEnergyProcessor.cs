@@ -1,8 +1,6 @@
 namespace Subnautica.Server.Processors.Player
 {
     using Server.Core;
-
-    using Subnautica.API.Features;
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
 

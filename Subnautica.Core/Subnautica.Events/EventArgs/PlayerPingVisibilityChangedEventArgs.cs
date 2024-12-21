@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public PlayerPingVisibilityChangedEventArgs(string uniqueId, bool isVisible)
         {
-            this.UniqueId  = uniqueId;
+            this.UniqueId = uniqueId;
             this.IsVisible = isVisible;
         }
 

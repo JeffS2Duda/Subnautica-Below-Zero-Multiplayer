@@ -2,15 +2,13 @@ namespace Subnautica.Events.EventArgs
 {
     using System;
 
-    using Subnautica.API.Features;
-
     public class SpyPenguinItemPickedUpEventArgs : EventArgs
     {
         public SpyPenguinItemPickedUpEventArgs(string uniqueId, string itemId, Pickupable item, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.ItemId    = itemId;
-            this.Item      = item;
+            this.UniqueId = uniqueId;
+            this.ItemId = itemId;
+            this.Item = item;
             this.IsAllowed = isAllowed;
         }
 

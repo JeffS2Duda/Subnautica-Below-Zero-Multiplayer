@@ -11,20 +11,20 @@ namespace Subnautica.Server.Processors.Metadata
     using Subnautica.Server.Core;
     using Subnautica.Server.Extensions;
 
-    using Metadata         = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class MoonpoolProcessor : MetadataProcessor
     {
         public override bool OnDataReceived(AuthorizationProfile profile, MetadataComponentArgs packet, ConstructionItem construction)
         {
-            var moonpool  = construction.EnsureComponent<Metadata.BaseMoonpool>();
+            var moonpool = construction.EnsureComponent<Metadata.BaseMoonpool>();
             var component = packet.Component.GetComponent<Metadata.BaseMoonpool>();
             if (component == null)
             {
                 return false;
             }
-            
+
             if (!construction.IsConstructed())
             {
                 return false;
@@ -152,13 +152,13 @@ namespace Subnautica.Server.Processors.Metadata
             return backModule.UniqueId;
         }
 
-        private ZeroColorCustomizer GetColorCustomizer(NetworkDynamicEntityComponent component) 
+        private ZeroColorCustomizer GetColorCustomizer(NetworkDynamicEntityComponent component)
         {
             if (component is WorldEntityModel.SeaTruck)
             {
                 return component.GetComponent<WorldEntityModel.SeaTruck>().ColorCustomizer;
             }
-            
+
             if (component is WorldEntityModel.Exosuit)
             {
                 return component.GetComponent<WorldEntityModel.Exosuit>().ColorCustomizer;
@@ -171,7 +171,7 @@ namespace Subnautica.Server.Processors.Metadata
         {
             var customPlayerId = Interact.GetCustomId(profile.UniqueId);
 
-            Server.Instance.Logices.Interact.AddBlock(customPlayerId  , moonpoolId      , true);
+            Server.Instance.Logices.Interact.AddBlock(customPlayerId, moonpoolId, true);
             Server.Instance.Logices.Interact.AddBlock(profile.UniqueId, vehicle.UniqueId, true);
 
             if (vehicle.TechType == TechType.Exosuit)

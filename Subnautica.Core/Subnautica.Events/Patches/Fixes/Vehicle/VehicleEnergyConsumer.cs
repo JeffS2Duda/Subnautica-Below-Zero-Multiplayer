@@ -1,15 +1,13 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Game
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch]
     public class VehicleEnergyConsumer
-    {  
-        [HarmonyPrefix]            
+    {
+        [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Hoverbike), nameof(global::Hoverbike.UpdateEnergy))]
         private static bool HoverbikeUpdateEnergy()
         {
@@ -22,22 +20,22 @@
         {
             return !Network.IsMultiplayerActive;
         }
-    
-        [HarmonyPrefix]        
+
+        [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Vehicle), nameof(global::Vehicle.ConsumeEngineEnergy))]
         private static bool VehicleConsumeEngineEnergy()
         {
             return !Network.IsMultiplayerActive;
         }
-    
-        [HarmonyPrefix]        
+
+        [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Hoverbike), nameof(global::Hoverbike.HealAndCharge))]
         private static bool HoverbikeHealAndCharge()
         {
             return !Network.IsMultiplayerActive;
         }
-    
-        [HarmonyPrefix]        
+
+        [HarmonyPrefix]
         [HarmonyPatch(typeof(global::BaseRechargePlatform), nameof(global::BaseRechargePlatform.Update))]
         private static bool BaseRechargePlatformUpdate()
         {

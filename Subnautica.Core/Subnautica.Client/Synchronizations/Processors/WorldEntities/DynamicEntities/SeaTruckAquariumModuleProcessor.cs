@@ -1,13 +1,10 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Network.Core.Components;
-
+    using System.Linq;
     using UnityEngine;
-
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SeaTruckAquariumModuleProcessor : WorldDynamicEntityProcessor

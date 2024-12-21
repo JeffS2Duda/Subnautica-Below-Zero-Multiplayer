@@ -1,15 +1,13 @@
 namespace Subnautica.Server.Logic
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Server.Abstracts;
-
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class EnergyMixinTransmission : BaseLogic
@@ -85,8 +83,8 @@ namespace Subnautica.Server.Logic
 
         private float GetWindBurnDownScalar()
         {
-            return (float) Tools.GetRandomInt(1, 6);
-        } 
+            return (float)Tools.GetRandomInt(1, 6);
+        }
 
         private void SendPacketToAllClient()
         {

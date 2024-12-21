@@ -1,7 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
@@ -10,10 +8,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-
+    using System.Linq;
     using UnityEngine;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class FridgeProcessor : MetadataProcessor
@@ -54,7 +51,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                 var action = new ItemQueueAction();
                 action.OnProcessCompleted = this.OnProcessCompleted;
                 action.RegisterProperty("UniqueId", uniqueId);
-                action.RegisterProperty("Fridge"  , component);
+                action.RegisterProperty("Fridge", component);
 
                 Entity.ProcessToQueue(action);
             }
@@ -86,7 +83,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                     {
                         if (fridge.WasPowered)
                         {
-                            eatable.decayPaused    = true;
+                            eatable.decayPaused = true;
                             eatable.timeDecayPause = fridge.CurrentTime;
                         }
                         else
@@ -104,7 +101,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             var fridge = item.Action.GetProperty<Metadata.Fridge>("CustomProperty");
             if (fridge.ItemComponent != null && fridge.ItemComponent.IsDecomposes)
             {
-              if (pickupable.TryGetComponent<global::Eatable>(out var eatable))
+                if (pickupable.TryGetComponent<global::Eatable>(out var eatable))
                 {
                     if (fridge.ItemComponent.IsPaused)
                     {
@@ -114,7 +111,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                     }
                     else
                     {
-                        eatable.decayPaused    = false;
+                        eatable.decayPaused = false;
                         eatable.timeDecayStart = fridge.ItemComponent.TimeDecayStart + (fridge.CurrentTime - fridge.ItemComponent.TimeDecayPause);
                     }
                 }
@@ -152,13 +149,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.Fridge()
                 {
-                    IsAdded         = isAdded,
+                    IsAdded = isAdded,
                     WorldPickupItem = pickupItem,
-                    IsDecomposes    = isDecomposes,
-                    TimeDecayStart  = timeDecayStart,
+                    IsDecomposes = isDecomposes,
+                    TimeDecayStart = timeDecayStart,
                 }
             };
 

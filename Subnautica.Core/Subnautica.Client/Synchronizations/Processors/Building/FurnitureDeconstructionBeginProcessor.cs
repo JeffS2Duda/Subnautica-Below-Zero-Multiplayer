@@ -1,16 +1,13 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Building
 {
-    using System.Collections;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class FurnitureDeconstructionBeginProcessor : NormalProcessor
@@ -54,7 +51,7 @@
                 return;
             }
 
-            if(!IsAllowedDeconstruction(ev.TechType, ev.UniqueId))
+            if (!IsAllowedDeconstruction(ev.TechType, ev.UniqueId))
             {
                 return;
             }

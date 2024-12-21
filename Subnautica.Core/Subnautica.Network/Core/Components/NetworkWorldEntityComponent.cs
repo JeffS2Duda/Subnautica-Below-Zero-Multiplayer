@@ -1,11 +1,8 @@
 namespace Subnautica.Network.Core.Components
 {
-    using System;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
-
+    using System;
     using WorldEntity = Subnautica.Network.Models.WorldEntity;
 
     [Union(0, typeof(WorldEntity.RestrictedEntity))]

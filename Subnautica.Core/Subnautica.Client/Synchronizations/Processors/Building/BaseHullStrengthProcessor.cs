@@ -1,8 +1,5 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Building
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -10,7 +7,8 @@
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Structures;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BaseHullStrengthProcessor : NormalProcessor
@@ -39,7 +37,7 @@
             {
                 ZeroLiveMixin.TakeDamage(liveMixin, packet.CurrentHealth, packet.DamageType);
             }
-             
+
             if (packet.LeakPoints != null)
             {
                 var leakable = liveMixin.GetComponentInParent<global::Leakable>();
@@ -102,10 +100,10 @@
         {
             ServerModel.BaseHullStrengthTakeDamagingArgs request = new ServerModel.BaseHullStrengthTakeDamagingArgs()
             {
-                UniqueId   = uniqueId,
-                Damage     = damage,
+                UniqueId = uniqueId,
+                Damage = damage,
                 DamageType = damageType,
-                MaxHealth  = maxHealth,
+                MaxHealth = maxHealth,
                 LeakPoints = leakPoints,
             };
 

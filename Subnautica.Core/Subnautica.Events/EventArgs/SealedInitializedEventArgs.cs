@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public SealedInitializedEventArgs(string uniqueId, Sealed sealedObject)
         {
-            this.UniqueId     = uniqueId;
+            this.UniqueId = uniqueId;
             this.SealedObject = sealedObject;
         }
 

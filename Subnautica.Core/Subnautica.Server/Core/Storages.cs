@@ -1,7 +1,7 @@
 namespace Subnautica.Server.Core
 {
     public class Storages
-    {        
+    {
         public Storage.Encyclopedia Encyclopedia { get; set; } = new Storage.Encyclopedia();
 
         public Storage.Construction Construction { get; set; } = new Storage.Construction();
@@ -35,11 +35,11 @@ namespace Subnautica.Server.Core
             this.Encyclopedia = null;
             this.Construction = null;
             this.PictureFrame = null;
-            this.Technology   = null;
-            this.Scanner      = null;
-            this.Player       = null;
-            this.World        = null;
-            this.Story        = null;
+            this.Technology = null;
+            this.Scanner = null;
+            this.Player = null;
+            this.World = null;
+            this.Story = null;
         }
     }
 }

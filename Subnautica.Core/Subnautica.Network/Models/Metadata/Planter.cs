@@ -1,10 +1,8 @@
 namespace Subnautica.Network.Models.Metadata
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class Planter : MetadataComponent

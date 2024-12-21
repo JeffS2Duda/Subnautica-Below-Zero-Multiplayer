@@ -1,12 +1,10 @@
 ﻿namespace Subnautica.Events.Patches.SerializeOptimizers
 {
     using HarmonyLib;
-
     using ProtoBuf;
-    
-    using Subnautica.Network.Models.Construction.Shared;
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
+    using Subnautica.Network.Models.Construction.Shared;
 
     [HarmonyPatch]
     public class Base
@@ -45,7 +43,7 @@
                         return true;
                     case 10:
 
-                        
+
                         var component = NetworkTools.Deserialize<BaseComponent>(ProtoReader.AppendBytes(null, reader));
                         if (component != null)
                         {

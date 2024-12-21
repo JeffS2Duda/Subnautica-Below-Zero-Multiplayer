@@ -1,9 +1,7 @@
 namespace Subnautica.Network.Core.Components
 {
-    using System;
-
     using MessagePack;
-
+    using System;
     using Metadata = Subnautica.Network.Models.Metadata;
 
     [Union(0, typeof(Metadata.Aquarium))]

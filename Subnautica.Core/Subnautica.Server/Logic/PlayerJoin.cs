@@ -1,15 +1,10 @@
-using Oculus.Platform;
-
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Features;
     using Subnautica.Network.Models.WorldStreamer;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ClientModel = Subnautica.Network.Models.Client;
 
     public class PlayerJoin : BaseLogic
@@ -57,8 +52,8 @@ namespace Subnautica.Server.Logic
             ClientModel.WorldLoadedArgs request = new ClientModel.WorldLoadedArgs()
             {
                 IsSpawnPointRequest = true,
-                IsSpawnPointExists  = isSpawnPointExists,
-                SpawnPoints         = this.GetSpawnPoints(isSpawnPointExists),
+                IsSpawnPointExists = isSpawnPointExists,
+                SpawnPoints = this.GetSpawnPoints(isSpawnPointExists),
             };
 
             player.SendPacket(request);

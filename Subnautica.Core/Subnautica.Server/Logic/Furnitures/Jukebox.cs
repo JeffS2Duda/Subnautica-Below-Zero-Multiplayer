@@ -1,18 +1,15 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
     using Subnautica.Server.Extensions;
-    using UnityEngine;
-
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class Jukebox : BaseLogic
@@ -37,14 +34,14 @@ namespace Subnautica.Server.Logic.Furnitures
         {
             { "event:/jukebox/jukebox_one"                  , 237714 },
             { "event:/jukebox/jukebox_survive"              , 198577 },
-            { "event:/jukebox/jukebox_diepeacefully"        , 180415 }, 
-            { "event:/jukebox/jukebox_divingintoodeep"      , 195813 }, 
-            { "event:/jukebox/jukebox_deepdive"             , 213846 }, 
-            { "event:/jukebox/jukebox_deepblue"             , 240902 }, 
-            { "event:/jukebox/jukebox_subnauticstimulus"    , 200468 }, 
-            { "event:/jukebox/jukebox_dontholdyourbreath"   , 255692 }, 
-            { "event:/jukebox/jukebox_takethedive"          , 300000 }, 
-            { "event:/jukebox/jukebox_riteofthedeep"        , 187071 }, 
+            { "event:/jukebox/jukebox_diepeacefully"        , 180415 },
+            { "event:/jukebox/jukebox_divingintoodeep"      , 195813 },
+            { "event:/jukebox/jukebox_deepdive"             , 213846 },
+            { "event:/jukebox/jukebox_deepblue"             , 240902 },
+            { "event:/jukebox/jukebox_subnauticstimulus"    , 200468 },
+            { "event:/jukebox/jukebox_dontholdyourbreath"   , 255692 },
+            { "event:/jukebox/jukebox_takethedive"          , 300000 },
+            { "event:/jukebox/jukebox_riteofthedeep"        , 187071 },
         };
 
         private Stopwatch StopwatchMusicTime { get; set; } = new Stopwatch();
@@ -199,7 +196,7 @@ namespace Subnautica.Server.Logic.Furnitures
             {
                 return entity.UniqueId;
             }
-            
+
             return null;
         }
 
@@ -207,32 +204,32 @@ namespace Subnautica.Server.Logic.Furnitures
         {
             this.CheckJukeboxChanged(uniqueId);
 
-            var type  = music.GetKey<JukeboxProcessType>();
+            var type = music.GetKey<JukeboxProcessType>();
             switch (type)
             {
                 case JukeboxProcessType.IsPrevious:
-                        this.CurrentMusic.IsPrevious = music.GetValue<bool>();
+                    this.CurrentMusic.IsPrevious = music.GetValue<bool>();
                     break;
                 case JukeboxProcessType.IsNext:
-                        this.CurrentMusic.IsNext = music.GetValue<bool>();
+                    this.CurrentMusic.IsNext = music.GetValue<bool>();
                     break;
                 case JukeboxProcessType.IsPaused:
-                        this.SetPaused(music.GetValue<bool>());
+                    this.SetPaused(music.GetValue<bool>());
                     break;
                 case JukeboxProcessType.IsStoped:
-                        this.SetStoped(music.GetValue<bool>());
+                    this.SetStoped(music.GetValue<bool>());
                     break;
                 case JukeboxProcessType.IsShuffled:
-                        this.CurrentMusic.IsShuffled = music.GetValue<bool>();
+                    this.CurrentMusic.IsShuffled = music.GetValue<bool>();
                     break;
                 case JukeboxProcessType.RepeatMode:
-                        this.CurrentMusic.RepeatMode = music.GetValue<global::Jukebox.Repeat>();
+                    this.CurrentMusic.RepeatMode = music.GetValue<global::Jukebox.Repeat>();
                     break;
                 case JukeboxProcessType.Position:
-                        this.SetPosition(music.GetValue<float>(), true);
+                    this.SetPosition(music.GetValue<float>(), true);
                     break;
                 case JukeboxProcessType.Volume:
-                        this.CurrentMusic.Volume = music.GetValue<float>();
+                    this.CurrentMusic.Volume = music.GetValue<float>();
                     break;
             }
 
@@ -251,10 +248,10 @@ namespace Subnautica.Server.Logic.Furnitures
         public void ChangeMusic(bool forward = true, bool isIgnoreRepeat = false)
         {
             this.CurrentMusic.CurrentPlayingTrack = this.GetNextMusic(this.CurrentMusic.RepeatMode, this.CurrentMusic.CurrentPlayingTrack, forward, isIgnoreRepeat, this.CurrentMusic.IsShuffled);
-            this.CurrentMusic.IsNext     = false;
+            this.CurrentMusic.IsNext = false;
             this.CurrentMusic.IsPrevious = false;
-            this.CurrentMusic.IsStoped   = false;
-            this.CurrentMusic.IsPaused   = false;
+            this.CurrentMusic.IsStoped = false;
+            this.CurrentMusic.IsPaused = false;
             this.SetPosition(0f);
 
             if (this.CurrentMusic.CurrentPlayingTrack.IsNull())
@@ -303,8 +300,8 @@ namespace Subnautica.Server.Logic.Furnitures
 
             ServerModel.MetadataComponentArgs request = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = this.CurrentJukeboxId,
-                TechType  = TechType.Jukebox,
+                UniqueId = this.CurrentJukeboxId,
+                TechType = TechType.Jukebox,
                 Component = this.GetCurrentMetadata(),
             };
 
@@ -323,15 +320,15 @@ namespace Subnautica.Server.Logic.Furnitures
             return new Network.Models.Metadata.Jukebox()
             {
                 CurrentPlayingTrack = this.CurrentMusic.CurrentPlayingTrack,
-                IsPaused            = this.CurrentMusic.IsPaused,
-                IsStoped            = this.CurrentMusic.IsStoped,
-                IsNext              = this.CurrentMusic.IsNext,
-                IsPrevious          = this.CurrentMusic.IsPrevious,
-                RepeatMode          = this.CurrentMusic.RepeatMode,
-                IsShuffled          = this.CurrentMusic.IsShuffled,
-                Position            = this.GetCurrentPosition() / this.GetMusicLength(),
-                Length              = this.GetOriginalMusicLength(),
-                Volume              = this.CurrentMusic.Volume,
+                IsPaused = this.CurrentMusic.IsPaused,
+                IsStoped = this.CurrentMusic.IsStoped,
+                IsNext = this.CurrentMusic.IsNext,
+                IsPrevious = this.CurrentMusic.IsPrevious,
+                RepeatMode = this.CurrentMusic.RepeatMode,
+                IsShuffled = this.CurrentMusic.IsShuffled,
+                Position = this.GetCurrentPosition() / this.GetMusicLength(),
+                Length = this.GetOriginalMusicLength(),
+                Volume = this.CurrentMusic.Volume,
             };
         }
 
@@ -346,9 +343,9 @@ namespace Subnautica.Server.Logic.Furnitures
 
         private void Reset()
         {
-            this.CurrentJukeboxId      = null;
-            this.CurrentMusic          = new Network.Models.Metadata.Jukebox();
-            this.CurrentMusic.Volume   = 1f;
+            this.CurrentJukeboxId = null;
+            this.CurrentMusic = new Network.Models.Metadata.Jukebox();
+            this.CurrentMusic.Volume = 1f;
             this.CurrentMusic.IsStoped = true;
             this.StopwatchMusicTime.Reset();
         }
@@ -386,7 +383,7 @@ namespace Subnautica.Server.Logic.Furnitures
             if (shuffle)
             {
                 int currentIndex = Core.Server.Instance.Storages.World.Storage.JukeboxDisks.FindIndex(q => q == currentTrack);
-                int randomIndex  = currentIndex;
+                int randomIndex = currentIndex;
 
                 do
                 {

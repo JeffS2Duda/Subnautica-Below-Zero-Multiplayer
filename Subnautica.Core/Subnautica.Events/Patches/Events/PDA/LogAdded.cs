@@ -10,7 +10,7 @@
     {
         private static void Postfix(PDALog.Entry entry)
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 try
                 {

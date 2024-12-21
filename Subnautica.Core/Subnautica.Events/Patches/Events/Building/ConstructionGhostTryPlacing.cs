@@ -21,13 +21,13 @@ namespace Subnautica.Events.Patches.Events.Building
             {
                 ConstructionGhostTryPlacingEventArgs args = new ConstructionGhostTryPlacingEventArgs(
                     Builder.ghostModel,
-                    Network.Identifier.GetIdentityId(Builder.ghostModel), 
-                    global::Player.main.GetCurrentSub() == null ? null : Network.Identifier.GetIdentityId(global::Player.main.GetCurrentSub().gameObject, false), 
-                    Builder.lastTechType, 
-                    Builder.lastRotation, 
-                    Builder.placePosition, 
-                    Builder.placeRotation, 
-                    Builder.GetAimTransform(), 
+                    Network.Identifier.GetIdentityId(Builder.ghostModel),
+                    global::Player.main.GetCurrentSub() == null ? null : Network.Identifier.GetIdentityId(global::Player.main.GetCurrentSub().gameObject, false),
+                    Builder.lastTechType,
+                    Builder.lastRotation,
+                    Builder.placePosition,
+                    Builder.placeRotation,
+                    Builder.GetAimTransform(),
                     Builder.canPlace,
                     Builder.ghostModel.GetComponentInParent<ConstructableBase>(),
                     Builder.prefab == null || Builder.canPlace == false

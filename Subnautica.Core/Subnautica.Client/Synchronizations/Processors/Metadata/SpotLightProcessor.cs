@@ -1,12 +1,10 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-
+    using System.Collections.Generic;
     using Metadata = Subnautica.Network.Models.Metadata;
 
     public class SpotLightProcessor : MetadataProcessor

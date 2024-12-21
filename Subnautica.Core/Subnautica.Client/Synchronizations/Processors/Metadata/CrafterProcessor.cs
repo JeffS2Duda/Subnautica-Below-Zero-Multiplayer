@@ -1,16 +1,14 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Linq;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
     using Subnautica.Client.MonoBehaviours.Entity;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-
+    using System.Linq;
     using UnityEngine;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class CrafterProcessor : MetadataProcessor
@@ -22,7 +20,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             {
                 return false;
             }
-          
+
             if (!isSilence && component.CrafterClone != null)
             {
                 Network.Session.SetConstructionComponent(uniqueId, component.CrafterClone);
@@ -30,7 +28,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
             var gameObject = Network.Identifier.GetGameObject(packet.UniqueId, true);
             if (gameObject == null)
-            {            
+            {
                 return false;
             }
 
@@ -47,7 +45,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             {
                 crafter.Open();
             }
-            
+
             if (component.CraftingTechType != TechType.None)
             {
                 if (component.CrafterClone != null)
@@ -162,12 +160,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId       = uniqueId,
+                UniqueId = uniqueId,
                 SecretTechType = TechType.Fabricator,
-                Component      = new Metadata.Crafter()
+                Component = new Metadata.Crafter()
                 {
-                    IsOpened         = isOpening,
-                    IsPickup         = isPickup,
+                    IsOpened = isOpening,
+                    IsPickup = isPickup,
                     CraftingDuration = duration,
                     CraftingTechType = techType,
                 },

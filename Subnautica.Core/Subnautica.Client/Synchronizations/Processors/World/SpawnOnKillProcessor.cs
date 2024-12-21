@@ -25,9 +25,9 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             {
                 return false;
             }
-            
+
             World.DestroyPickupItem(packet.WorldPickupItem);
-            
+
             Network.DynamicEntity.Spawn(packet.Entity, this.OnEntitySpawned);
             return true;
         }
@@ -44,7 +44,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             ServerModel.SpawnOnKillArgs request = new ServerModel.SpawnOnKillArgs()
             {
                 WorldPickupItem = WorldPickupItem.Create(StorageItem.Create(ev.UniqueId, ev.TechType)),
-                Entity          = new WorldDynamicEntity()
+                Entity = new WorldDynamicEntity()
                 {
                     Position = ev.Position.ToZeroVector3(),
                     Rotation = ev.Rotation.ToZeroQuaternion(),

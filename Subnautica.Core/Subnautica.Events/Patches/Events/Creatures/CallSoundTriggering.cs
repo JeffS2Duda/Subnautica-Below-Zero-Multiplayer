@@ -16,7 +16,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                CreatureCallSoundTriggeringEventArgs args = new CreatureCallSoundTriggeringEventArgs(__instance.GetComponentInParent<global::Creature>().gameObject.GetIdentityId(), __instance.callVariants > 1 ? (byte) UnityEngine.Random.Range(1, __instance.callVariants + 1) : (byte) 0, __instance.animation);
+                CreatureCallSoundTriggeringEventArgs args = new CreatureCallSoundTriggeringEventArgs(__instance.GetComponentInParent<global::Creature>().gameObject.GetIdentityId(), __instance.callVariants > 1 ? (byte)UnityEngine.Random.Range(1, __instance.callVariants + 1) : (byte)0, __instance.animation);
 
                 try
                 {

@@ -10,7 +10,7 @@
     {
         private static bool Prefix(uGUI_OptionsPanel __instance)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }

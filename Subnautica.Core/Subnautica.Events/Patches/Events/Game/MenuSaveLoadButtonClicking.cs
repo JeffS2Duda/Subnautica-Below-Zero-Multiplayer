@@ -7,7 +7,7 @@
 
     [HarmonyPatch(typeof(MainMenuLoadButton), nameof(MainMenuLoadButton.Load))]
     public class MenuSaveLoadButtonClicking
-    {        
+    {
         private static bool Prefix(MainMenuLoadButton __instance)
         {
             try
@@ -16,7 +16,7 @@
                 {
                     return false;
                 }
-                
+
                 MenuSaveLoadButtonClickingEventArgs args = new MenuSaveLoadButtonClickingEventArgs(__instance.sessionId);
 
                 Handlers.Game.OnMenuSaveLoadButtonClicking(args);

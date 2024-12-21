@@ -10,7 +10,7 @@
     using Subnautica.Network.Core.Components;
 
     using CreatureModel = Subnautica.Network.Models.Creatures;
-    using ServerModel   = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class LilyPaddlerProcessor : WorldCreatureProcessor
     {
@@ -24,8 +24,8 @@
 
             var action = new CreatureQueueAction();
             action.OnProcessCompleted = this.OnCreatureProcessCompleted;
-            action.RegisterProperty("RequesterId"  , requesterId);
-            action.RegisterProperty("TargetId"     , component.TargetId);
+            action.RegisterProperty("RequesterId", requesterId);
+            action.RegisterProperty("TargetId", component.TargetId);
             action.RegisterProperty("HypnotizeTime", component.LastHypnotizeTime);
 
             Network.Creatures.ProcessToQueue(creatureId, action);

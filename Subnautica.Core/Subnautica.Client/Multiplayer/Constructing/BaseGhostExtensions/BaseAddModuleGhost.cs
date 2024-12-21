@@ -30,14 +30,14 @@
 
             var faceCell = component.FaceStart.Cell.ToInt3();
             var normCell = baseGhost.targetBase.NormalizeCell(faceCell);
-            var face2    = new Base.Face(faceCell - baseGhost.targetBase.GetAnchor(), component.FaceStart.Direction);
+            var face2 = new Base.Face(faceCell - baseGhost.targetBase.GetAnchor(), component.FaceStart.Direction);
 
             if (!baseGhost.anchoredFace.HasValue || baseGhost.anchoredFace.Value != face2)
             {
                 baseGhost.anchoredFace = new Base.Face?(face2);
 
-                var targetCell  = baseGhost.targetBase.GetCell(normCell);
-                var cellSize    = Base.CellSize[(int) targetCell];
+                var targetCell = baseGhost.targetBase.GetCell(normCell);
+                var cellSize = Base.CellSize[(int)targetCell];
                 geometryChanged = baseGhost.UpdateSize(cellSize);
 
                 baseGhost.ghostBase.CopyFrom(baseGhost.targetBase, new Int3.Bounds(normCell, normCell + cellSize - 1), normCell * -1);

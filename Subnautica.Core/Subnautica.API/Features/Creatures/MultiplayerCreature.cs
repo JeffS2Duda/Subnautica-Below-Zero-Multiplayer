@@ -1,13 +1,10 @@
 ﻿namespace Subnautica.API.Features.Creatures
 {
-    using System;
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-
     using Subnautica.Network.Models.Creatures;
-
+    using System;
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class MultiplayerCreature
@@ -60,9 +57,9 @@
         public MultiplayerCreature(GameObject gameObject)
         {
             this.GameObject = gameObject;
-            this.Movement   = new MultiplayerCreatureMovement(this);
-            this.Rigidbody  = this.GameObject.GetComponent<Rigidbody>();
-            this.Creature   = this.GameObject.GetComponent<global::Creature>();
+            this.Movement = new MultiplayerCreatureMovement(this);
+            this.Rigidbody = this.GameObject.GetComponent<Rigidbody>();
+            this.Creature = this.GameObject.GetComponent<global::Creature>();
             this.Locomotion = this.GameObject.GetComponent<global::Locomotion>();
 
             this.ComponentsToCache();
@@ -160,7 +157,7 @@
                 this.GameObject.SetActive(false);
             }
 
-            this.IsActive     = false;
+            this.IsActive = false;
             this.CreatureItem = null;
         }
 
@@ -170,7 +167,7 @@
 
             if (this.Creature)
             {
-                this.Creature.leashPosition  = this.CreatureItem.LeashPosition.ToVector3();
+                this.Creature.leashPosition = this.CreatureItem.LeashPosition.ToVector3();
                 this.Creature.lastUpdateTime = -1f;
                 this.Creature.indexLastActionChecked = 0;
 
@@ -207,10 +204,10 @@
                     this.Creature.Hunger.Value = this.Creature.initialHunger.Evaluate(UnityEngine.Random.value);
                 }
 
-                this.Creature.Tired.Value      = 1f - DayNightUtils.Evaluate(1f, this.Creature.activity);
-                this.Creature.Scared.Value     = 0f;
+                this.Creature.Tired.Value = 1f - DayNightUtils.Evaluate(1f, this.Creature.activity);
+                this.Creature.Scared.Value = 0f;
                 this.Creature.Aggression.Value = 0f;
-                this.Creature.leashPosition    = this.CreatureItem.LeashPosition.ToVector3();
+                this.Creature.leashPosition = this.CreatureItem.LeashPosition.ToVector3();
 
                 if (this.Creature.GetAnimator())
                 {

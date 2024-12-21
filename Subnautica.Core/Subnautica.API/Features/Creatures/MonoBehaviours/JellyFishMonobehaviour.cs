@@ -34,7 +34,7 @@
         }
 
         public void UpdateEyeState()
-        {   
+        {
             var eyeState = this.Jellyfish.eyeState;
 
             if (this.Jellyfish.eyeState == EyeState.FollowPlayer && !this.NearestPlayer)
@@ -59,7 +59,7 @@
                 this.Jellyfish.eyeState = eyeState;
                 this.Jellyfish.timeEyeStateChanged = Time.time;
                 this.Jellyfish.GetAnimator().SetBool(animEyeFollowPlayer, this.Jellyfish.eyeState != EyeState.Idle);
-                
+
                 this.LastNearestPlayer = this.NearestPlayer;
 
                 if (this.MultiplayerCreature.CreatureItem.IsMine())
@@ -87,7 +87,7 @@
             }
             else if (this.Jellyfish.eyeState == EyeState.FollowPlayer && this.NearestPlayer)
             {
-                var to  = this.Jellyfish.eye.InverseTransformPoint(this.NearestPlayer.transform.position);
+                var to = this.Jellyfish.eye.InverseTransformPoint(this.NearestPlayer.transform.position);
                 var num = 1f - to.normalized.y;
 
                 this.Jellyfish.GetAnimator().SetFloat(Jellyfish.animEyeLookDepth, num, 1f, deltaTime);
@@ -113,7 +113,7 @@
         public GameObject GetNearestPlayer()
         {
             var currentDistance = 10000f;
-            var currentPlayer   = (GameObject) null;
+            var currentPlayer = (GameObject)null;
 
             foreach (var player in ZeroPlayer.GetPlayers())
             {
@@ -121,7 +121,7 @@
                 if (distance < this.MaxDistanceToTarget && distance < currentDistance)
                 {
                     currentDistance = distance;
-                    currentPlayer   = player.PlayerModel;
+                    currentPlayer = player.PlayerModel;
                 }
             }
 

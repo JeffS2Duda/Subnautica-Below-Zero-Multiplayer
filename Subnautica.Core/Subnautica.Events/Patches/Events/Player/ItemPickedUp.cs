@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.Pickup))]
     public static class ItemPickedUp

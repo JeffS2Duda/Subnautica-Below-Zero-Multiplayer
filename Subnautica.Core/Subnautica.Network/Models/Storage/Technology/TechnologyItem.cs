@@ -1,8 +1,7 @@
 namespace Subnautica.Network.Models.Storage.Technology
 {
-    using System.Collections.Generic;
-
     using MessagePack;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class TechnologyItem

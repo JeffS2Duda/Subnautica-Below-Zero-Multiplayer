@@ -1,12 +1,10 @@
 namespace Subnautica.Network.Models.Server
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.World.Childrens;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class BrinicleArgs : NetworkPacket
@@ -24,6 +22,6 @@ namespace Subnautica.Network.Models.Server
         public string UniqueId { get; set; }
 
         [Key(8)]
-        public float Damage { get; set; } 
+        public float Damage { get; set; }
     }
 }

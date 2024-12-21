@@ -1,18 +1,15 @@
 namespace Subnautica.Client.Synchronizations.Processors.Items
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Core.Components;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class ScannerProcessor : PlayerItemProcessor
@@ -102,7 +99,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
                 return false;
             }
 
-            this.PlayerTargetIds[playerId]   = targetId;
+            this.PlayerTargetIds[playerId] = targetId;
             this.PlayerTargetTimes[playerId] = Time.time;
 
             tool.scanBeam.SetActive(true);

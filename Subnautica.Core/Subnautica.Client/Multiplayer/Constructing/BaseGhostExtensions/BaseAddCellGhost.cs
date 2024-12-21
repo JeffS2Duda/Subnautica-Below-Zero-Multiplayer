@@ -9,7 +9,7 @@
     {
         public static bool UpdateMultiplayerPlacement(this global::BaseAddCellGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddCellGhostComponent component)
         {
-            positionFound   = false;
+            positionFound = false;
             geometryChanged = false;
 
             if (component == null)
@@ -46,7 +46,7 @@
                         }
 
                         baseGhost.RebuildGhostGeometry();
-                        
+
                         geometryChanged = true;
                     }
 
@@ -62,11 +62,11 @@
                 if (baseGhost.prevTargetBase != null)
                 {
                     baseGhost.SetupGhost();
-                    
+
                     geometryChanged = true;
                 }
 
-                baseGhost.targetBase   = null;
+                baseGhost.targetBase = null;
                 baseGhost.targetOffset = targetOffset;
             }
 
@@ -83,7 +83,7 @@
                 }
 
                 var cellType = baseGhost.GetMultiplayerCellType();
-                var cellSize = Base.CellSize[(uint) cellType];
+                var cellSize = Base.CellSize[(uint)cellType];
                 if (cellSize != baseGhost.ghostBase.GetSize())
                 {
                     baseGhost.ghostBase.ClearGeometry();

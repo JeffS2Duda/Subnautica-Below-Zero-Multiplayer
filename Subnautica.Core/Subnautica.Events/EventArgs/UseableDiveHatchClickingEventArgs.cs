@@ -6,12 +6,12 @@ namespace Subnautica.Events.EventArgs
     {
         public UseableDiveHatchClickingEventArgs(string uniqueId, bool isEnter, string playerViewAnimation, bool isMoonpoolExpansion, bool isAllowed = true)
         {
-            this.UniqueId            = uniqueId;
-            this.IsEnter             = isEnter;
-            this.IsBulkHead          = playerViewAnimation.Contains("surfacebasedoor_");
-            this.IsLifePod           = playerViewAnimation.Contains("droppod_");
+            this.UniqueId = uniqueId;
+            this.IsEnter = isEnter;
+            this.IsBulkHead = playerViewAnimation.Contains("surfacebasedoor_");
+            this.IsLifePod = playerViewAnimation.Contains("droppod_");
             this.IsMoonpoolExpansion = isMoonpoolExpansion;
-            this.IsAllowed           = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

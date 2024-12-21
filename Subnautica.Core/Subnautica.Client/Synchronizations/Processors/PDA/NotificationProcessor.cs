@@ -1,6 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.PDA
 {
-    using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
@@ -22,7 +21,7 @@ namespace Subnautica.Client.Synchronizations.Processors.PDA
 
         public static void OnPingColorChanged(PlayerPingColorChangedEventArgs ev)
         {
-            NotificationProcessor.SendPacketToServer(ev.UniqueId, colorIndex: (sbyte) ev.ColorIndex);
+            NotificationProcessor.SendPacketToServer(ev.UniqueId, colorIndex: (sbyte)ev.ColorIndex);
         }
 
         public static void OnNotificationToggle(NotificationToggleEventArgs ev)
@@ -37,12 +36,12 @@ namespace Subnautica.Client.Synchronizations.Processors.PDA
         {
             ServerModel.NotificationAddedArgs result = new ServerModel.NotificationAddedArgs()
             {
-                Key            = key,
-                Group          = group,
-                IsAdded        = isAdded,
+                Key = key,
+                Group = group,
+                IsAdded = isAdded,
                 IsNotification = isNotification,
-                IsVisible      = isVisible,
-                ColorIndex     = colorIndex,
+                IsVisible = isVisible,
+                ColorIndex = colorIndex,
             };
 
             NetworkClient.SendPacket(result);

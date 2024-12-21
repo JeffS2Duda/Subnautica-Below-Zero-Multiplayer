@@ -1,12 +1,10 @@
 namespace Subnautica.Server.Processors.Metadata
 {
-    using System.Linq;
-
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
-
+    using System.Linq;
     using Metadata = Subnautica.Network.Models.Metadata;
 
     public class FiltrationMachineProcessor : MetadataProcessor
@@ -28,7 +26,7 @@ namespace Subnautica.Server.Processors.Metadata
             {
                 return false;
             }
-        
+
             var constructionComponent = construction.EnsureComponent<Metadata.FiltrationMachine>();
 
             var item = constructionComponent.Items.Where(q => q.ItemId == component.RemovingItemId).FirstOrDefault();
@@ -42,7 +40,7 @@ namespace Subnautica.Server.Processors.Metadata
                     Server.Instance.Logices.FiltrationMachine.TryFilterWater(constructionComponent);
 
                     component.TimeRemainingWater = constructionComponent.TimeRemainingWater;
-                    component.TimeRemainingSalt  = constructionComponent.TimeRemainingSalt;
+                    component.TimeRemainingSalt = constructionComponent.TimeRemainingSalt;
 
                     profile.SendPacketToOtherClients(packet);
                 }

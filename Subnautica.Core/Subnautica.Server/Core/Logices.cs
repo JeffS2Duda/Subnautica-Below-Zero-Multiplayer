@@ -1,14 +1,12 @@
 namespace Subnautica.Server.Core
 {
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
+    using Subnautica.Server.Abstracts;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Timers;
-
-    using Subnautica.API.Extensions;
-    using Subnautica.API.Features;
-    using Subnautica.Server.Abstracts;
-
     using UnityEngine;
 
     public class Logices : MonoBehaviour
@@ -164,39 +162,39 @@ namespace Subnautica.Server.Core
             this.UnscaledFixedUpdateList.Clear();
 
             this.Timer.Dispose();
-            this.Timer                     = null;
-            this.Storage                   = null;
-            this.AutoSave                  = null;
-            this.World                     = null;
-            this.Interact                  = null;
-            this.CreatureWatcher           = null;
-            this.EnergyTransmission        = null;
-            this.PowerConsumer             = null;
-            this.BaseHullStrength          = null;
-            this.WorldStreamer             = null;
-            this.EntityWatcher             = null;
+            this.Timer = null;
+            this.Storage = null;
+            this.AutoSave = null;
+            this.World = null;
+            this.Interact = null;
+            this.CreatureWatcher = null;
+            this.EnergyTransmission = null;
+            this.PowerConsumer = null;
+            this.BaseHullStrength = null;
+            this.WorldStreamer = null;
+            this.EntityWatcher = null;
             this.VehicleEnergyTransmission = null;
-            this.EnergyMixinTransmission   = null;
-            this.SeaTruckAquarium          = null;
-            this.Bed                       = null;
-            this.Bench                     = null;
-            this.Jukebox                   = null;
-            this.BatteryCharger            = null;
-            this.CoffeeVendingMachine      = null;
-            this.Fridge                    = null;
-            this.FiltrationMachine         = null;
-            this.SpotLight                 = null;
-            this.TechLight                 = null;
-            this.Crafter                   = null;
-            this.Hoverpad                  = null;
-            this.Moonpool                  = null;
-            this.BaseMapRoom               = null;
-            this.StoryTrigger              = null;
-            this.PlayerJoin                = null;
-            this.Weather                   = null;
-            this.Timing                    = null;
-            this.ServerApi                 = null;
-            this.VoidLeviathan             = null;
+            this.EnergyMixinTransmission = null;
+            this.SeaTruckAquarium = null;
+            this.Bed = null;
+            this.Bench = null;
+            this.Jukebox = null;
+            this.BatteryCharger = null;
+            this.CoffeeVendingMachine = null;
+            this.Fridge = null;
+            this.FiltrationMachine = null;
+            this.SpotLight = null;
+            this.TechLight = null;
+            this.Crafter = null;
+            this.Hoverpad = null;
+            this.Moonpool = null;
+            this.BaseMapRoom = null;
+            this.StoryTrigger = null;
+            this.PlayerJoin = null;
+            this.Weather = null;
+            this.Timing = null;
+            this.ServerApi = null;
+            this.VoidLeviathan = null;
         }
 
         public Logic.Storage Storage { get; set; } = new Logic.Storage();

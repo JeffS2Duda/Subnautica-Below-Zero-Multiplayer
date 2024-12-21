@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public BedExitInUseModeEventArgs(string uniqueId, TechType techType, bool isSeaTruckModule)
         {
-            this.UniqueId         = uniqueId;
-            this.TechType         = techType;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
             this.IsSeaTruckModule = isSeaTruckModule;
         }
 

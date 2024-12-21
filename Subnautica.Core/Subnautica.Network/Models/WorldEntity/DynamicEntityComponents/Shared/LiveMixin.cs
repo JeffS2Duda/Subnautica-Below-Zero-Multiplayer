@@ -41,7 +41,7 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared
 
         public LiveMixin(float health, float maxHealth)
         {
-            this.Health    = health;
+            this.Health = health;
             this.MaxHealth = maxHealth;
         }
 

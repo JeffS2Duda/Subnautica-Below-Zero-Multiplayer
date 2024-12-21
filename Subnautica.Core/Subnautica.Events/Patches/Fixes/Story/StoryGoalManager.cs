@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Story
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch]
     public static class StoryGoalManager

@@ -1,11 +1,6 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
-    using System.ComponentModel;
-    using System.Linq;
-
-    using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
-    using Subnautica.Client.Extensions;
     using Subnautica.Network.Core.Components;
 
     using UnityEngine;

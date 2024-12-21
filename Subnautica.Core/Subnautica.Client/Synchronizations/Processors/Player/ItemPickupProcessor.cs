@@ -21,13 +21,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             {
                 return false;
             }
-            
+
             if (ZeroPlayer.IsPlayerMine(packet.GetPacketOwnerId()))
             {
                 var action = new ItemQueueAction();
                 action.OnProcessCompleted = this.OnProcessCompleted;
                 action.RegisterProperty("ItemId", packet.WorldPickupItem.Item.ItemId);
-                
+
                 Entity.ProcessToQueue(action);
             }
             else

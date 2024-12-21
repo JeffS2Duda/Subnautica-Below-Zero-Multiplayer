@@ -25,10 +25,10 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
         public MapRoomCamera(float charge, float capacity, bool isLightEnabled, float health, float maxHealth)
         {
             this.LiveMixin = new LiveMixin(health, maxHealth);
-            this.Battery   = new PowerCell();
-            this.Battery.Charge   = charge;
+            this.Battery = new PowerCell();
+            this.Battery.Charge = charge;
             this.Battery.Capacity = capacity;
-            this.IsLightEnabled   = isLightEnabled;
+            this.IsLightEnabled = isLightEnabled;
         }
     }
 }

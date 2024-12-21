@@ -1,13 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Features;
+    using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-    using Subnautica.Client.Abstracts.Processors;
-
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
-    using Metadata    = Subnautica.Network.Models.Metadata;
 
     public class SmallStoveProcessor : MetadataProcessor
     {
@@ -48,7 +47,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = ev.UniqueId,
+                UniqueId = ev.UniqueId,
                 Component = new Metadata.SmallStove(ev.SwitchStatus),
             };
 

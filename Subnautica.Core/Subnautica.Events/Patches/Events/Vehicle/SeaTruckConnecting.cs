@@ -37,7 +37,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
                 {
                     try
                     {
-                        SeaTruckConnectingEventArgs args = new SeaTruckConnectingEventArgs(Network.Identifier.GetIdentityId(__instance.connection.truckSegment.gameObject, false), null, Network.Identifier.GetIdentityId(__instance.truckSegment.gameObject, false),  false, false);
+                        SeaTruckConnectingEventArgs args = new SeaTruckConnectingEventArgs(Network.Identifier.GetIdentityId(__instance.connection.truckSegment.gameObject, false), null, Network.Identifier.GetIdentityId(__instance.truckSegment.gameObject, false), false, false);
 
                         Handlers.Vehicle.OnSeaTruckConnecting(args);
 
@@ -131,7 +131,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             {
                 return Network.Identifier.GetIdentityId(__instance.truckSegment.gameObject, false);
             }
-             
+
             return Network.Identifier.GetIdentityId(otherConnection.truckSegment.gameObject, false);
         }
 

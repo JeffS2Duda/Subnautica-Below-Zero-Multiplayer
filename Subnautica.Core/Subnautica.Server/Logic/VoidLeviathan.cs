@@ -1,15 +1,13 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Creatures.Datas;
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
 
     public class VoidLeviathan : BaseLogic
@@ -46,7 +44,7 @@ namespace Subnautica.Server.Logic
                 this.Timing.Restart();
 
                 if (this.IsLoaded())
-                { 
+                {
                     this.RemoveVoidLeviathans();
                     this.SpawnVoidLeviathans();
 
@@ -111,7 +109,7 @@ namespace Subnautica.Server.Logic
                             }
                         }
                     }
-                    else 
+                    else
                     {
                         this.PlayerTimes[player.PlayerId] = 0;
                     }

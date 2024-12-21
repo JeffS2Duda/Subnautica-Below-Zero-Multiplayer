@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.API.Features
 {
+    using Subnautica.API.Extensions;
     using System;
     using System.IO;
-
-    using Subnautica.API.Extensions;
 
     public class Paths
     {

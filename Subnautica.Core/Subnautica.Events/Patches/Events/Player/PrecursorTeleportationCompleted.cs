@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch(typeof(global::PrecursorTeleporterExitCinematicController), nameof(global::PrecursorTeleporterExitCinematicController.TeleportComplete))]
     public class PrecursorTeleportationCompleted

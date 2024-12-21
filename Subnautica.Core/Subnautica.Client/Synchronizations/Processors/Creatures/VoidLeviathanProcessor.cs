@@ -1,8 +1,5 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Creatures
 {
-    using System.Collections;
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Creatures.Datas;
@@ -10,7 +7,8 @@
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Structures;
-
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class VoidLeviathanProcessor : WorldCreatureProcessor

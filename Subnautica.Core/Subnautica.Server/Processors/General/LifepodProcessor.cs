@@ -1,13 +1,10 @@
 namespace Subnautica.Server.Processors.General
 {
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Metadata;
     using Subnautica.Server.Abstracts.Processors;
-
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class LifepodProcessor : NormalProcessor

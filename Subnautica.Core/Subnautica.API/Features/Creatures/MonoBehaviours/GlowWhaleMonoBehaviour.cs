@@ -1,5 +1,5 @@
 ﻿namespace Subnautica.API.Features.Creatures.MonoBehaviours
-{ 
+{
     public class GlowWhaleMonoBehaviour : BaseMultiplayerCreature
     {
         private global::GlowWhale GlowWhale { get; set; }

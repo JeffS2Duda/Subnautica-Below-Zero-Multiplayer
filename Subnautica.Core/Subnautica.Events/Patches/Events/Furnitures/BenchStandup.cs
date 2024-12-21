@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Bench), nameof(global::Bench.ExitSittingMode))]
     public static class BenchStandup
@@ -23,7 +21,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                 try
                 {
                     Bench.BenchSide side = Bench.BenchSide.Front;
-                    if(__instance.animator.transform.localEulerAngles == __instance.backAnimRotation)
+                    if (__instance.animator.transform.localEulerAngles == __instance.backAnimRotation)
                     {
                         side = Bench.BenchSide.Back;
                     }

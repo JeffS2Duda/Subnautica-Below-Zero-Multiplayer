@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
     using Subnautica.API.Features;
-
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::SpyPenguin), nameof(global::SpyPenguin.TryUse))]
     public static class SpyPenguinItemGrabing
@@ -54,7 +52,7 @@ namespace Subnautica.Events.Patches.Events.Items
                         }
 
                         return "arm_grab";
-                    case SpyPenguinTargetActionType.Punch:  return "arm_punch";
+                    case SpyPenguinTargetActionType.Punch: return "arm_punch";
                 }
             }
 

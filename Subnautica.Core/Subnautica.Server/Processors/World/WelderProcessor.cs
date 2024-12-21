@@ -1,14 +1,11 @@
 namespace Subnautica.Server.Processors.World
 {
-    using System.Collections.Generic;
-
     using Server.Core;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts.Processors;
-
+    using System.Collections.Generic;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class WelderProcessor : NormalProcessor
@@ -59,7 +56,7 @@ namespace Subnautica.Server.Processors.World
                             {
                                 this.SendBaseHullRepairPacket(construction.UniqueId, leaker.Points);
                             }
-                        }         
+                        }
                     }
                 }
             }
@@ -71,8 +68,8 @@ namespace Subnautica.Server.Processors.World
         {
             ServerModel.BaseHullStrengthTakeDamagingArgs request = new ServerModel.BaseHullStrengthTakeDamagingArgs()
             {
-                UniqueId      = uniqueId,
-                LeakPoints    = leakPoints,
+                UniqueId = uniqueId,
+                LeakPoints = leakPoints,
                 CurrentHealth = -1f,
             };
 

@@ -1,12 +1,10 @@
 namespace Subnautica.Network.Models.Metadata
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class Charger : MetadataComponent
@@ -50,9 +48,9 @@ namespace Subnautica.Network.Models.Metadata
         public ChargerSimple(uint constructionId, float[] items, bool isPowered, ZeroVector3 position)
         {
             this.ConstructionId = constructionId;
-            this.Batteries      = items;
-            this.IsPowered      = isPowered;
-            this.Position       = position;
+            this.Batteries = items;
+            this.IsPowered = isPowered;
+            this.Position = position;
         }
     }
 }

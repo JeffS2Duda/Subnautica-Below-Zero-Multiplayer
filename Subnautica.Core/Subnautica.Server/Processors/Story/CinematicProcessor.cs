@@ -1,16 +1,13 @@
 namespace Subnautica.Server.Processors.Story
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     using Server.Core;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
-
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class CinematicProcessor : NormalProcessor

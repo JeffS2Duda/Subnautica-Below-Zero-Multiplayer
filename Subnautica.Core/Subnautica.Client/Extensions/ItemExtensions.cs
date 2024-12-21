@@ -10,7 +10,7 @@
     public static class ItemExtensions
     {
         public static bool LocalPickup(this global::Pickupable pickupable)
-        {            
+        {
             using (EventBlocker.Create(ProcessType.ItemPickup))
             {
                 return global::Inventory.Get().Pickup(pickupable);
@@ -58,12 +58,12 @@
                 {
                     creatureEgg.progress = 0f;
                     creatureEgg.timeStartHatching = (float)waterParkAddTime;
- 
+
                     waterPark.AddItem(pickupable);
                 }
             }
 
-            SkyEnvironmentChanged.Send(pickupable.gameObject, (GameObject) null);
+            SkyEnvironmentChanged.Send(pickupable.gameObject, (GameObject)null);
 
             if (!ignoreTracker)
             {

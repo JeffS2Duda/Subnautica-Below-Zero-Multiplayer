@@ -9,7 +9,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
 
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class StorageProcessor : MetadataProcessor
@@ -25,7 +25,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             if (isSilence)
             {
                 this.InitializeStorage(techType, packet.UniqueId, packet.Component, storageContainer.container);
-                return true;          
+                return true;
             }
 
             var component = packet.Component.GetComponent<Metadata.StorageLocker>();
@@ -70,10 +70,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.StorageLocker()
                 {
-                    IsAdded         = isAdded,
+                    IsAdded = isAdded,
                     WorldPickupItem = pickupItem,
                 }
             };
@@ -94,11 +94,11 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                 MetadataProcessor.ExecuteProcessor(TechType.Sign, uniqueId, component.Sign, true);
             }
 
-            foreach(var item in component.Items)
+            foreach (var item in component.Items)
             {
                 Entity.SpawnToQueue(item.Item, item.ItemId, itemsContainer);
             }
-            
+
             return true;
         }
     }

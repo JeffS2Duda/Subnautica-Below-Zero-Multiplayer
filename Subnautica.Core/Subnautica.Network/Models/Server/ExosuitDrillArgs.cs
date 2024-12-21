@@ -1,17 +1,14 @@
 namespace Subnautica.Network.Models.Server
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
-
+    using System.Collections.Generic;
     using EntityModel = Subnautica.Network.Models.WorldEntity;
-    
+
     [MessagePackObject]
     public class ExosuitDrillArgs : NetworkPacket
     {

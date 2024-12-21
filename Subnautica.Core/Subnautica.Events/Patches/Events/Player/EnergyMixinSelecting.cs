@@ -1,13 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::EnergyMixin), nameof(global::EnergyMixin.Select))]
@@ -15,15 +12,15 @@ namespace Subnautica.Events.Patches.Events.Player
     {
         private static bool Prefix(global::EnergyMixin __instance, InventoryItem item)
         {
-            if (!Network.IsMultiplayerActive )
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }
 
             var batterySlotId = EnergyMixinSelecting.GetBatterySlotId(__instance);
-            var batteryType   = EnergyMixinSelecting.GetBatteryTechType(item);
-            var vehicleId     = EnergyMixinSelecting.GetVehicleUniqueId(__instance);
-            var vehicleType   = EnergyMixinSelecting.GetVehicleType(__instance);
+            var batteryType = EnergyMixinSelecting.GetBatteryTechType(item);
+            var vehicleId = EnergyMixinSelecting.GetVehicleUniqueId(__instance);
+            var vehicleType = EnergyMixinSelecting.GetVehicleType(__instance);
 
             if (batterySlotId.IsNull() || vehicleId.IsNull() || !vehicleType.IsVehicle())
             {

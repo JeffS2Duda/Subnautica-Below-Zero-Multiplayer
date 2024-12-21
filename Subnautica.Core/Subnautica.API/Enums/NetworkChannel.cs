@@ -1,7 +1,7 @@
 ﻿namespace Subnautica.API.Enums
 {
     public enum NetworkChannel : byte
-    {   
+    {
         Default,
 
         Construction,

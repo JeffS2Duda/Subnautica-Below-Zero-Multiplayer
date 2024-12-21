@@ -1,16 +1,13 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using Metadata = Subnautica.Network.Models.Metadata;
 
     public class BatteryCharger : BaseLogic
@@ -63,10 +60,10 @@ namespace Subnautica.Server.Logic.Furnitures
             Metadata.ChargerSimple chargerSimple = new Metadata.ChargerSimple()
             {
                 ConstructionId = construction.Id,
-                Position       = construction.PlacePosition,
-                Batteries      = new float[TechGroup.GetBatterySlotAmount(construction.TechType)],
-                IsPowered      = false,
-                IsCharging     = false,
+                Position = construction.PlacePosition,
+                Batteries = new float[TechGroup.GetBatterySlotAmount(construction.TechType)],
+                IsPowered = false,
+                IsCharging = false,
             };
 
             int totalBattery = 0;
@@ -101,16 +98,16 @@ namespace Subnautica.Server.Logic.Furnitures
                 {
                     chargerSimple.IsCharging = true;
 
-                    float averageEnergy = consumedPower / (float) totalBattery;
-    
-                    for(int i = 0; i < component.Items.Count; i++)
+                    float averageEnergy = consumedPower / (float)totalBattery;
+
+                    for (int i = 0; i < component.Items.Count; i++)
                     {
                         BatteryItem battery = component.Items.ElementAt(i);
                         if (battery.IsActive)
                         {
                             if (battery.Charge < battery.Capacity)
                             {
-                                float power    = averageEnergy;
+                                float power = averageEnergy;
                                 float maxPower = battery.Capacity - battery.Charge;
                                 if (power > maxPower)
                                 {

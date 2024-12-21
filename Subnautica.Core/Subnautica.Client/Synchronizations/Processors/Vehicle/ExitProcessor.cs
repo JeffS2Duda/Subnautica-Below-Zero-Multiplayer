@@ -35,7 +35,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             {
                 player.ExitVehicle();
             }
-            
+
             return true;
         }
 

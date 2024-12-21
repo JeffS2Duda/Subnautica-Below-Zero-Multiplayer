@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public HoverpadDockingEventArgs(string uniqueId, string itemId, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.ItemId    = itemId;
+            this.UniqueId = uniqueId;
+            this.ItemId = itemId;
             this.IsAllowed = isAllowed;
         }
 

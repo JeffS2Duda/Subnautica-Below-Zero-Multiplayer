@@ -1,11 +1,10 @@
 ﻿namespace Subnautica.Client.Core
 {
+    using Subnautica.API.Features;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-
-    using Subnautica.API.Features;
 
     public class NetworkServer
     {
@@ -42,15 +41,15 @@
 
         public static string CreateNewServer(GameModePresetId gameModeId)
         {
-            var serverId   = CreateServerId();
+            var serverId = CreateServerId();
             var serverPath = Paths.GetMultiplayerServerSavePath(serverId, "config.json");
 
             Directory.CreateDirectory(Path.GetDirectoryName(serverPath));
 
             HostServerItem serverItem = new HostServerItem()
             {
-                GameMode       = (int) gameModeId,
-                CreationDate   = Tools.GetUnixTime(),
+                GameMode = (int)gameModeId,
+                CreationDate = Tools.GetUnixTime(),
                 LastPlayedDate = Tools.GetUnixTime(),
             };
 

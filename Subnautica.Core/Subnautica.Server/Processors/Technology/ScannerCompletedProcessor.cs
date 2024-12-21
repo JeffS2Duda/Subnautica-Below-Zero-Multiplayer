@@ -1,7 +1,7 @@
 namespace Subnautica.Server.Processors.Technology
 {
     using Server.Core;
-    
+
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
 

@@ -1,14 +1,12 @@
 namespace Subnautica.Events.Patches.Fixes.Game
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
+    using Subnautica.Client.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection.Emit;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
-    using Subnautica.Client.Extensions;
 
     [HarmonyPatch]
     public static class ProtobufSerializer
@@ -30,7 +28,7 @@ namespace Subnautica.Events.Patches.Fixes.Game
                 codes.InsertRange(index, new CodeInstruction[] {
                     new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(ProtobufSerializer), nameof(ProtobufSerializer.GetSerializeGameObjectId), new Type[] { typeof(global::ProtobufSerializer), typeof(string) }))
                 });
-                
+
                 codes.InsertRange(index - 2, new CodeInstruction[] {
                     new CodeInstruction(OpCodes.Ldarg_0)
                 });
@@ -93,7 +91,7 @@ namespace Subnautica.Events.Patches.Fixes.Game
             {
                 Log.Error($"Transpiler, GetSerializeGameObjectParentId Exception: {ex}");
             }
-            
+
             return null;
         }
     }

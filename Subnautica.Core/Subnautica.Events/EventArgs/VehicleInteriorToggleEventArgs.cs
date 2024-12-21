@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public VehicleInteriorToggleEventArgs(string uniqueId, bool isEnter)
         {
-            this.UniqueId  = uniqueId;
-            this.IsEnter   = isEnter;
+            this.UniqueId = uniqueId;
+            this.IsEnter = isEnter;
         }
 
         public string UniqueId { get; private set; }

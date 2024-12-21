@@ -2,7 +2,7 @@
 {
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-    
+
     using System;
 
     using UnityEngine.SceneManagement;

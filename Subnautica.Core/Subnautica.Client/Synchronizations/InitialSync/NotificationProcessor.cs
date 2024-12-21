@@ -87,7 +87,7 @@
             var pingInstance = Network.Identifier.GetComponentByGameObject<global::PingInstance>(uniqueId, true);
             if (pingInstance)
             {
-                pingInstance.visible    = isVisible;
+                pingInstance.visible = isVisible;
                 pingInstance.colorIndex = colorIndex;
 
                 if (!pingInstance.initialized)

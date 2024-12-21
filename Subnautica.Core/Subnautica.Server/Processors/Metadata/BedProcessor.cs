@@ -1,14 +1,12 @@
 namespace Subnautica.Server.Processors.Metadata
 {
-    using System.Linq;
-
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
     using Subnautica.Server.Logic;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
 
     public class BedProcessor : MetadataProcessor
     {
@@ -94,7 +92,7 @@ namespace Subnautica.Server.Processors.Metadata
         }
 
         public byte GetMaxPlayerCount(TechType techType)
-        {   
+        {
             return 1;
         }
     }

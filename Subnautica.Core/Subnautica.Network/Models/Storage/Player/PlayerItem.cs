@@ -1,7 +1,5 @@
 namespace Subnautica.Network.Models.Storage.Player
 {
-    using System.Collections.Generic;
-
     using MessagePack;
 
     using Subnautica.Network.Structures;

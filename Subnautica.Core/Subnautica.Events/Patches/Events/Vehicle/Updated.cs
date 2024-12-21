@@ -1,13 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Vehicle
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::ArmsController), nameof(global::ArmsController.Update))]
@@ -23,7 +20,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
                 {
                     StopwatchItem.Restart();
 
-                    var parentTransform  = GetParentTransform();
+                    var parentTransform = GetParentTransform();
                     var largeWorldEntity = GetLargeWorldEntity(parentTransform);
                     if (parentTransform == null || largeWorldEntity == null)
                     {

@@ -1,17 +1,14 @@
 namespace Subnautica.API.Features
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.IO;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features.Helper;
     using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.IO;
     using UnityEngine;
-
     using UWE;
 
     public class Entity
@@ -34,7 +31,7 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsProcess = true,
-                Action    = action,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -45,9 +42,9 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = true,
-                TechType   = techType, 
-                Container  = container,
-                Action     = action,
+                TechType = techType,
+                Container = container,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -58,9 +55,9 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = true,
-                ItemId     = itemId,
-                TechType   = techType,
-                Action     = action,
+                ItemId = itemId,
+                TechType = techType,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -71,10 +68,10 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = true,
-                ItemId     = itemId,
-                TechType   = techType,
-                Container  = container,
-                Action     = action,
+                ItemId = itemId,
+                TechType = techType,
+                Container = container,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -85,10 +82,10 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = true,
-                ItemId     = itemId,
-                Item       = item,
-                Transform  = transform,
-                Action     = action,
+                ItemId = itemId,
+                Item = item,
+                Transform = transform,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -99,10 +96,10 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = true,
-                TechType   = techType,
-                ItemId     = itemId,
-                Transform  = transform,
-                Action     = action,
+                TechType = techType,
+                ItemId = itemId,
+                Transform = transform,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -113,10 +110,10 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = true,
-                ItemId     = itemId, 
-                Item       = item, 
-                Container  = container,
-                Action     = action,
+                ItemId = itemId,
+                Item = item,
+                Container = container,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -127,23 +124,23 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = true,
-                SlotId     = slotId, 
-                TechType   = techType, 
-                Equipment  = equipment,
-                Action     = action,
+                SlotId = slotId,
+                TechType = techType,
+                Equipment = equipment,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
         }
 
         public static void RemoveToQueue(Pickupable pickupable, ItemsContainer container, ItemQueueAction action = null)
-        {            
+        {
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = false,
-                Pickupable = pickupable, 
-                Container  = container,
-                Action     = action,
+                Pickupable = pickupable,
+                Container = container,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -154,11 +151,11 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = true,
-                ItemId     = itemId,
-                SlotId     = slotId,
-                TechType   = techType,
-                Equipment  = equipment,
-                Action     = action,
+                ItemId = itemId,
+                SlotId = slotId,
+                TechType = techType,
+                Equipment = equipment,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -169,9 +166,9 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = false,
-                SlotId     = slotId, 
-                Equipment  = equipment,
-                Action     = action,
+                SlotId = slotId,
+                Equipment = equipment,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -182,8 +179,8 @@ namespace Subnautica.API.Features
             Entity.Queue.Enqueue(new ItemQueueProcess()
             {
                 IsSpawning = false,
-                ItemId     = itemId, 
-                Action     = action,
+                ItemId = itemId,
+                Action = action,
             });
 
             Entity.ConsumeQueue();
@@ -222,9 +219,9 @@ namespace Subnautica.API.Features
                     }
                     else if (item.Action.OnProcessCompleted != null)
                     {
-                        item.Action.OnProcessCompleted(item);    
+                        item.Action.OnProcessCompleted(item);
                     }
-                    
+
                     continue;
                 }
 
@@ -311,7 +308,7 @@ namespace Subnautica.API.Features
                         {
                             pickupable.transform.position = item.Transform.Position.ToVector3();
                             pickupable.transform.rotation = item.Transform.Rotation.ToQuaternion();
-                            
+
                             if (item.Action != null && item.Action.OnEntitySpawned != null)
                             {
                                 item.Action.OnEntitySpawned(item, pickupable, itemGameObject);
@@ -358,7 +355,7 @@ namespace Subnautica.API.Features
 
             Entity.IsRunning = false;
         }
-        
+
         private static void AddItemToEquipment(ItemQueueProcess item, GameObject itemGameObject, Pickupable pickupable)
         {
             if (item.Equipment != null)
@@ -380,7 +377,7 @@ namespace Subnautica.API.Features
                     }
                 }
             }
-            else 
+            else
             {
                 World.DestroyGameObject(itemGameObject);
             }
@@ -422,7 +419,7 @@ namespace Subnautica.API.Features
                     item.Action.OnEntitySpawned(item, pickupable, itemGameObject);
                 }
             }
-            else 
+            else
             {
                 World.DestroyGameObject(itemGameObject);
             }
@@ -451,7 +448,7 @@ namespace Subnautica.API.Features
             {
                 item.Action.OnEntityRemoved(item);
             }
-            
+
             return true;
         }
 

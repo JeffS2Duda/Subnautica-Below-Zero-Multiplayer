@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.API.Features
 {
+    using Subnautica.API.Extensions;
     using System.Collections.Generic;
     using System.Linq;
-
-    using Subnautica.API.Extensions;
 
     public class Interact
     {

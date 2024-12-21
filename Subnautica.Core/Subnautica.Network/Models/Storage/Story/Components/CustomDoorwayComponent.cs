@@ -32,7 +32,7 @@ namespace Subnautica.Network.Models.Storage.Story.Components
             this.UniqueId = uniqueId;
             this.Position = position;
             this.Rotation = rotation;
-            this.Scale    = scale;
+            this.Scale = scale;
             this.IsActive = isActive;
         }
     }

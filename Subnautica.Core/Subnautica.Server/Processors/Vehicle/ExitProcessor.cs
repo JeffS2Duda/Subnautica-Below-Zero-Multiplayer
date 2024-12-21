@@ -49,7 +49,7 @@ namespace Subnautica.Server.Processors.Vehicle
             packet.Rotation = entity.Rotation;
 
             profile.SetVehicle(null);
-            profile.SetUsingRoomId(null);       
+            profile.SetUsingRoomId(null);
             profile.SendPacketToAllClient(packet);
 
             return true;

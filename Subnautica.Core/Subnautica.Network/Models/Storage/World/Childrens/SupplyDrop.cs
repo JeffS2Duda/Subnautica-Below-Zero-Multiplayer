@@ -37,7 +37,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
         public void SetConfiguration(float startedTime)
         {
             this.StartedTime = startedTime;
-            this.ZoneId      = (sbyte)Random.Range(0, 3);
+            this.ZoneId = (sbyte)Random.Range(0, 3);
         }
 
         public void SetKey(string key)
@@ -48,9 +48,9 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
         public void Initialize()
         {
             this.FabricatorUniqueId = API.Features.Network.Identifier.GenerateUniqueId();
-            this.StorageUniqueId    = API.Features.Network.Identifier.GenerateUniqueId();
-            this.UniqueId           = API.Features.Network.Identifier.GenerateUniqueId();
-            this.Rotation           = Quaternion.Euler(0.0f, Random.Range(0, 360), 0.0f).ToZeroQuaternion();
+            this.StorageUniqueId = API.Features.Network.Identifier.GenerateUniqueId();
+            this.UniqueId = API.Features.Network.Identifier.GenerateUniqueId();
+            this.Rotation = Quaternion.Euler(0.0f, Random.Range(0, 360), 0.0f).ToZeroQuaternion();
         }
 
         public bool IsCompleted(float currentTime)

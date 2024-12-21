@@ -1,21 +1,18 @@
 namespace Subnautica.Client.Modules
 {
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
+    using Subnautica.API.Features.Helper;
+    using Subnautica.Client.Core;
+    using Subnautica.Client.Modules.MultiplayerMainMenuModule;
+    using Subnautica.Events.EventArgs;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Text.RegularExpressions;
-
-    using Subnautica.API.Features;
-    using Subnautica.API.Extensions;
-    using Subnautica.API.Features.Helper;
-    using Subnautica.Client.Core;
-    using Subnautica.Client.Modules.MultiplayerMainMenuModule;
-    using Subnautica.Events.EventArgs;
-
     using UnityEngine;
-
     using UWE;
 
     public class MultiplayerMainMenu
@@ -51,12 +48,12 @@ namespace Subnautica.Client.Modules
             UserInterfaceElements.SinglePlayerButtonAddEvent(OnSinglePlayerButtonClick);
             UserInterfaceElements.CreateSidebarButton(ZeroLanguage.Get("GAME_MULTIPLAYER"), OnSidebarMultiplayerButtonClick);
 
-            var baseGroup         = UserInterfaceElements.CreateMultiplayerBaseContent(MULTIPLAYER_BASE_GROUP_NAME, ZeroLanguage.Get("GAME_MULTIPLAYER"), ZeroLanguage.Get("GAME_MULTIPLAYER_HOST_GAME"), ZeroLanguage.Get("GAME_MULTIPLAYER_JOIN_GAME"), OnHostGameButtonClick, OnJoinGameButtonClick);
-            var hostGameGroup     = UserInterfaceElements.CreateHostBaseContent(MULTIPLAYER_HOST_GROUP_NAME, ZeroLanguage.Get("GAME_MULTIPLAYER_HOST_GAME"), OnHostCreateServerButtonClick);
-            var joinGameGroup     = UserInterfaceElements.CreateJoinBaseContent(MULTIPLAYER_JOIN_GROUP_NAME, ZeroLanguage.Get("GAME_MULTIPLAYER_JOIN_GAME"), ZeroLanguage.Get("GAME_ADD_SERVER"), OnAddServerButtonClick);
-            var addServerGroup    = UserInterfaceElements.CreateAddServerGroup(MULTIPLAYER_JOIN_ADD_SERVER_GROUP_NAME, OnAddServerSaveButtonClick);
+            var baseGroup = UserInterfaceElements.CreateMultiplayerBaseContent(MULTIPLAYER_BASE_GROUP_NAME, ZeroLanguage.Get("GAME_MULTIPLAYER"), ZeroLanguage.Get("GAME_MULTIPLAYER_HOST_GAME"), ZeroLanguage.Get("GAME_MULTIPLAYER_JOIN_GAME"), OnHostGameButtonClick, OnJoinGameButtonClick);
+            var hostGameGroup = UserInterfaceElements.CreateHostBaseContent(MULTIPLAYER_HOST_GROUP_NAME, ZeroLanguage.Get("GAME_MULTIPLAYER_HOST_GAME"), OnHostCreateServerButtonClick);
+            var joinGameGroup = UserInterfaceElements.CreateJoinBaseContent(MULTIPLAYER_JOIN_GROUP_NAME, ZeroLanguage.Get("GAME_MULTIPLAYER_JOIN_GAME"), ZeroLanguage.Get("GAME_ADD_SERVER"), OnAddServerButtonClick);
+            var addServerGroup = UserInterfaceElements.CreateAddServerGroup(MULTIPLAYER_JOIN_ADD_SERVER_GROUP_NAME, OnAddServerSaveButtonClick);
             var createServerGroup = UserInterfaceElements.CreateServerHostGroup(MULTIPLAYER_HOST_CREATE_SERVER_GROUP_NAME, OnCreateServerHostClick);
-            
+
             MainMenuRightSide.main.groups.Add(baseGroup.GetComponent<MainMenuGroup>());
             MainMenuRightSide.main.groups.Add(hostGameGroup.GetComponent<MainMenuGroup>());
             MainMenuRightSide.main.groups.Add(joinGameGroup.GetComponent<MainMenuGroup>());
@@ -190,7 +187,7 @@ namespace Subnautica.Client.Modules
                     ErrorMessage.AddMessage(ZeroLanguage.Get("GAME_NOT_FOUND_SERVER"));
                     return false;
                 }
-     
+
                 if (NetworkServer.IsConnecting())
                 {
                     ErrorMessage.AddMessage(ZeroLanguage.Get("GAME_SERVER_ALREADY_CONNECTING"));
@@ -214,11 +211,12 @@ namespace Subnautica.Client.Modules
                 {
                     NetworkServer.StartServer(server.Id, Tools.GetLoggedId());
                     NetworkClient.Connect(response.ServerIp, response.ServerPort);
-                }, () => {
+                }, () =>
+                {
                     IsClicked = false;
                 }));
             }
-            
+
             return false;
         }
 
@@ -278,7 +276,7 @@ namespace Subnautica.Client.Modules
                 if (server != null)
                 {
                     lb.saveGameLengthText.text = Tools.GetSizeByTextFormat(Tools.GetFolderSize(Paths.GetMultiplayerServerSavePath(server.Id)));
-                    lb.saveGameTimeText.text   = Tools.GetDateByTextFormat(server.CreationDate);
+                    lb.saveGameTimeText.text = Tools.GetDateByTextFormat(server.CreationDate);
                 }
             }
             else
@@ -287,8 +285,8 @@ namespace Subnautica.Client.Modules
                 if (server != null)
                 {
                     lb.saveGameLengthText.text = String.Format("{0}:{1}", server.IpAddress, server.Port);
-                    lb.saveGameTimeText.text   = server.Name;
-                    lb.saveGameModeText.text   = "";
+                    lb.saveGameTimeText.text = server.Name;
+                    lb.saveGameModeText.text = "";
                 }
             }
         }
@@ -296,7 +294,7 @@ namespace Subnautica.Client.Modules
         public static void OnAddServerSaveButtonClick()
         {
             var serverName = UserInterfaceElements.GetInputText("GAME_SERVER_NAME").Trim();
-            var serverIp   = UserInterfaceElements.GetInputText("GAME_SERVER_IP").Trim();
+            var serverIp = UserInterfaceElements.GetInputText("GAME_SERVER_IP").Trim();
 
             if (string.IsNullOrEmpty(serverName))
             {
@@ -325,10 +323,10 @@ namespace Subnautica.Client.Modules
 
             serverList.Add(new LocalServerItem()
             {
-                Id        = Guid.NewGuid().ToString(),
+                Id = Guid.NewGuid().ToString(),
                 IpAddress = serverIp,
-                Port      = NetworkServer.DefaultPort,
-                Name      = serverName,
+                Port = NetworkServer.DefaultPort,
+                Name = serverName,
             });
 
             NetworkServer.SaveLocalServerList(serverList);
@@ -357,7 +355,8 @@ namespace Subnautica.Client.Modules
                     {
                         OnHostGameButtonClick();
                     }
-                }, () => {
+                }, () =>
+                {
                     IsClicked = false;
                 }));
             }
@@ -366,7 +365,7 @@ namespace Subnautica.Client.Modules
         public const string MULTIPLAYER_BASE_GROUP_NAME = "MultiplayerBase";
         public const string MULTIPLAYER_HOST_GROUP_NAME = "MultiplayerHostBase";
         public const string MULTIPLAYER_JOIN_GROUP_NAME = "MultiplayerJoinBase";
-        public const string MULTIPLAYER_JOIN_ADD_SERVER_GROUP_NAME    = "MultiplayerJoinAddServerBase";
+        public const string MULTIPLAYER_JOIN_ADD_SERVER_GROUP_NAME = "MultiplayerJoinAddServerBase";
         public const string MULTIPLAYER_HOST_CREATE_SERVER_GROUP_NAME = "MultiplayerHostCreateServerBase";
 
         public static Dictionary<string, SaveLoadManager.GameInfo> SinglePlayerGameSaves { get; set; }

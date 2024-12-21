@@ -8,7 +8,7 @@ namespace Subnautica.Events.EventArgs
         public AquariumDataChangedEventArgs(string uniqueId, List<TechType> fishes)
         {
             this.UniqueId = uniqueId;
-            this.Fishes   = fishes;
+            this.Fishes = fishes;
         }
 
         public string UniqueId { get; private set; }

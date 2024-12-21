@@ -14,8 +14,8 @@ namespace Subnautica.Network.Models.Server
         public override ProcessType Type { get; set; } = ProcessType.StaticEntityPickedUp;
 
         [Key(5)]
-        public string UniqueId { get; set; }        
-        
+        public string UniqueId { get; set; }
+
         [Key(6)]
         public StaticEntity Entity { get; set; }
 

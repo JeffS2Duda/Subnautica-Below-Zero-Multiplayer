@@ -8,7 +8,7 @@
     using Subnautica.Network.Models.Core;
 
     using Constructing = Subnautica.Client.Multiplayer.Constructing;
-    using ServerModel  = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class AmountChangedProcessor : NormalProcessor
     {
@@ -35,10 +35,10 @@
         {
             ServerModel.ConstructionAmountChangedArgs request = new ServerModel.ConstructionAmountChangedArgs()
             {
-                UniqueId    = ev.UniqueId,
-                TechType    = ev.TechType,
+                UniqueId = ev.UniqueId,
+                TechType = ev.TechType,
                 IsConstruct = ev.IsConstruct,
-                Amount      = ev.Amount,
+                Amount = ev.Amount,
             };
 
             NetworkClient.SendPacket(request);

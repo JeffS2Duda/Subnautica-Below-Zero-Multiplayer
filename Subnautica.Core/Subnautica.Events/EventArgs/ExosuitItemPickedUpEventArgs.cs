@@ -1,16 +1,14 @@
 namespace Subnautica.Events.EventArgs
 {
     using System;
-    
-    using Subnautica.API.Features;
 
     public class ExosuitItemPickedUpEventArgs : EventArgs
     {
         public ExosuitItemPickedUpEventArgs(string uniqueId, string itemId, Pickupable item, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.ItemId    = itemId;
-            this.Item      = item;
+            this.UniqueId = uniqueId;
+            this.ItemId = itemId;
+            this.Item = item;
             this.IsAllowed = isAllowed;
         }
 

@@ -128,13 +128,13 @@
                 return TechType.CrashPowder;
             }
 
-            return TechType.CrashEgg;   
+            return TechType.CrashEgg;
         }
 
         private bool IsHomeItemExists()
         {
             int num = UWE.Utils.OverlapSphereIntoSharedBuffer(this.CrashHome.transform.position, 1.5f);
-            
+
             for (int index = 0; index < num; ++index)
             {
                 var gameObject = UWE.Utils.sharedColliderBuffer[index].gameObject;

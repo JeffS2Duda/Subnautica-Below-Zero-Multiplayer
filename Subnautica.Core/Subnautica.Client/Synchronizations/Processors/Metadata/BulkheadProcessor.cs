@@ -6,9 +6,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Client.Extensions;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
-    using Metadata    = Subnautica.Network.Models.Metadata;
 
     public class BulkheadProcessor : MetadataProcessor
     {
@@ -61,7 +60,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             if (!ev.IsStaticWorldEntity)
             {
                 ev.IsAllowed = false;
-                
+
                 if (!Network.HandTarget.IsBlocked(ev.UniqueId))
                 {
                     BulkheadProcessor.SendPacketToServer(ev.UniqueId, ev.Side, true);
@@ -74,7 +73,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             if (!ev.IsStaticWorldEntity)
             {
                 ev.IsAllowed = false;
-                
+
                 if (!Network.HandTarget.IsBlocked(ev.UniqueId))
                 {
                     BulkheadProcessor.SendPacketToServer(ev.UniqueId, ev.Side, false);
@@ -86,7 +85,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.BulkheadDoor(isOpened, side)
             };
 

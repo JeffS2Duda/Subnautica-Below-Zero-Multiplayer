@@ -1,13 +1,10 @@
 namespace Subnautica.Server.Processors.General
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class ResourceDiscoverProcessor : NormalProcessor

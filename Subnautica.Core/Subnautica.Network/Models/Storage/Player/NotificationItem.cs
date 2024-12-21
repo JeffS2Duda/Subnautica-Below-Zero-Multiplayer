@@ -30,11 +30,11 @@ namespace Subnautica.Network.Models.Storage.Player
 
         public NotificationItem(NotificationManager.Group group, string key, bool isViewed, bool isPing, bool isVisible, sbyte colorIndex)
         {
-            this.Group      = group;
-            this.Key        = key;
-            this.IsViewed   = isViewed;
-            this.IsPing     = isPing;
-            this.IsVisible  = isVisible;
+            this.Group = group;
+            this.Key = key;
+            this.IsViewed = isViewed;
+            this.IsPing = isPing;
+            this.IsVisible = isVisible;
             this.ColorIndex = colorIndex;
         }
     }

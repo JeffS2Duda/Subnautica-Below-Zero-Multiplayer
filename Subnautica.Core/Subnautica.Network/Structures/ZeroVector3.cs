@@ -1,9 +1,7 @@
 namespace Subnautica.Network.Structures
 {
-    using System;
-
     using MessagePack;
-
+    using System;
     using UnityEngine;
 
     [MessagePackObject]

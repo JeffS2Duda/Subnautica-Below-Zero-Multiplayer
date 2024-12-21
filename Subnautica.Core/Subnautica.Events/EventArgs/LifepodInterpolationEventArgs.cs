@@ -8,8 +8,8 @@ namespace Subnautica.Events.EventArgs
     {
         public LifepodInterpolationEventArgs(GameObject dropObject, bool isAllowed = true)
         {
-            this.DropObject  = dropObject;
-            this.IsAllowed   = isAllowed;
+            this.DropObject = dropObject;
+            this.IsAllowed = isAllowed;
         }
 
         public GameObject DropObject { get; set; }

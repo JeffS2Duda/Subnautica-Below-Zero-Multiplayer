@@ -9,7 +9,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
 
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BenchProcessor : MetadataProcessor
@@ -76,14 +76,14 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
         public static void OnBenchStandup(BenchStandupEventArgs ev)
         {
-           BenchProcessor.SendPacketToServer(ev.UniqueId, ev.Side, false);
+            BenchProcessor.SendPacketToServer(ev.UniqueId, ev.Side, false);
         }
 
         public static void SendPacketToServer(string uniqueId, global::Bench.BenchSide side, bool isSitdown)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.Bench(side, isSitdown)
             };
 

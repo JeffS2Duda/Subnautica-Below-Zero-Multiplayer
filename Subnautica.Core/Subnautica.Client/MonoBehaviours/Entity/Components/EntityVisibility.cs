@@ -1,20 +1,10 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Entity.Components
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-    using Subnautica.API.Features.NetworkUtility;
-    using Subnautica.Client.Core;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
-
-    using UnityEngine;
-
-    using ServerModel = Subnautica.Network.Models.Server;
 
     public class EntityVisibility
     {
@@ -101,7 +91,7 @@
         private void ChangeEntityVisibility(WorldDynamicEntity entity, bool isActivated)
         {
             entity.UpdateGameObject();
-            
+
             if (entity.GameObject)
             {
                 entity.GameObject.SetActive(isActivated);

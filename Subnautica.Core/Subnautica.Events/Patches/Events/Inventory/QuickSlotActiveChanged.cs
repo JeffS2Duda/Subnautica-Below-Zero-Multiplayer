@@ -10,7 +10,7 @@ namespace Subnautica.Events.Patches.Events.Inventory
     {
         private static void Postfix(int slotID)
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 try
                 {

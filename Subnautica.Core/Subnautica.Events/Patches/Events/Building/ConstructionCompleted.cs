@@ -1,13 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Building
 {
     using HarmonyLib;
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using System;
-
     using UnityEngine;
-    using static RootMotion.FinalIK.RagdollUtility;
 
     [HarmonyPatch(typeof(Constructable), nameof(Constructable.Construct))]
     public static class FurnitureConstructingCompleted
@@ -21,7 +19,7 @@ namespace Subnautica.Events.Patches.Events.Building
                     if (__instance.constructedAmount >= 1f && !__instance.GetComponentInParent<ConstructableBase>())
                     {
                         string baseId = null;
-                        if(__instance.GetComponentInParent<Base>() != null)
+                        if (__instance.GetComponentInParent<Base>() != null)
                         {
                             baseId = Network.Identifier.GetIdentityId(__instance.GetComponentInParent<Base>().gameObject);
                         }
@@ -61,7 +59,7 @@ namespace Subnautica.Events.Patches.Events.Building
                         Log.Error("BaseGhost.Finish offset null");
                         return;
                     }
-           
+
                     GameObject placedPiece = null;
                     if (constructableBase.techType == TechType.BasePartition)
                     {
@@ -88,7 +86,7 @@ namespace Subnautica.Events.Patches.Events.Building
                     }
 
                     string constructableId = Network.Identifier.GetIdentityId(constructableBase.gameObject);
-                    string baseId          = Network.Identifier.GetIdentityId(__instance.TargetBase.gameObject);
+                    string baseId = Network.Identifier.GetIdentityId(__instance.TargetBase.gameObject);
 
                     Log.Error("BaseId: " + baseId + ", constructableId: " + constructableId);
 

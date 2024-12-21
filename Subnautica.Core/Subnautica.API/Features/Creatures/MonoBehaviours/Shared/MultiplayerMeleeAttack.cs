@@ -56,7 +56,7 @@
                     }
                 }
             }
-            
+
             this.MeleeAttack.gameObject.SendMessage("OnMeleeAttack", target, SendMessageOptions.DontRequireReceiver);
             return true;
         }

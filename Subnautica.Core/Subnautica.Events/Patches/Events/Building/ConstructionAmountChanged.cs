@@ -1,13 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Building
 {
-    using System;
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Collections;
     using UnityEngine;
 
     public static class ConstructingAmountChangedShared
@@ -30,7 +27,7 @@ namespace Subnautica.Events.Patches.Events.Building
 
             IsTriggered = false;
 
-            var constructedAmount = (float) Math.Round(__instance.constructedAmount, 4);
+            var constructedAmount = (float)Math.Round(__instance.constructedAmount, 4);
             if (constructedAmount > 0.99f && constructedAmount < 1f)
             {
                 constructedAmount = 0.99f;
@@ -54,7 +51,7 @@ namespace Subnautica.Events.Patches.Events.Building
                     Log.Error($"ConstructingAmountChangedShared.TriggerEventCallback: {e}\n{e.StackTrace}");
                 }
             }
-        }       
+        }
     }
 
     [HarmonyPatch(typeof(Constructable), nameof(Constructable.Construct))]

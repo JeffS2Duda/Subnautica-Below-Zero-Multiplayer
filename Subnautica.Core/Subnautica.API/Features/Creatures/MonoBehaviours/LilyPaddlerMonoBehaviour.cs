@@ -19,19 +19,19 @@
                 {
                     this.LilyPaddlerHypnotize.currentTarget = ZeroPlayer.CurrentPlayer.PlayerModel;
 
-                    var deltaTime   = Time.deltaTime;
-                    var difference  = this.LilyPaddlerHypnotize.currentTarget.transform.position - this.transform.position;
-                    var magnitude   = difference.magnitude;
-                    difference      = difference.normalized;
+                    var deltaTime = Time.deltaTime;
+                    var difference = this.LilyPaddlerHypnotize.currentTarget.transform.position - this.transform.position;
+                    var magnitude = difference.magnitude;
+                    difference = difference.normalized;
 
-                    var quaternion  = Quaternion.LookRotation(-difference);
+                    var quaternion = Quaternion.LookRotation(-difference);
                     var eulerAngles = quaternion.eulerAngles;
 
                     var num = Mathf.Clamp01(this.LilyPaddlerHypnotize.distanceHypnFactor.Evaluate(Mathf.InverseLerp(this.LilyPaddlerHypnotize.minPullDistance, this.LilyPaddlerHypnotize.maxDistance, magnitude)) * this.LilyPaddlerHypnotize.lookAngleHypnFactor.Evaluate(Mathf.InverseLerp(1f, 0.65f, Vector3.Dot(-difference, MainCameraControl.main.transform.forward))));
 
                     this.LilyPaddlerHypnotize.hypnotizedScalar += this.LilyPaddlerHypnotize.hypnotizingSpeed * this.LilyPaddlerHypnotize.hypnotizingSpeedMultiplier.Evaluate(num) * deltaTime;
                     Player.main.mesmerizedSpeedMultiplier = this.LilyPaddlerHypnotize.mesmerizedPlayerSpeedMultiplier.Evaluate(this.LilyPaddlerHypnotize.hypnotizedScalar);
-                    
+
                     var deltaLerp = Mathf.Lerp(this.LilyPaddlerHypnotize.lerpCameraMinSpeed, this.LilyPaddlerHypnotize.lerpCameraMaxSpeed, num) * deltaTime;
 
                     MainCameraControl.main.rotationX = Mathf.LerpAngle(MainCameraControl.main.rotationX, eulerAngles.y - ZeroPlayer.CurrentPlayer.PlayerModel.transform.localEulerAngles.y, deltaLerp);
@@ -76,9 +76,9 @@
             {
                 this.LilyPaddlerHypnotize.lastTarget.SetTarget(target.PlayerModel);
 
-                this.LilyPaddlerHypnotize.currentTarget    = this.LilyPaddlerHypnotize.lastTarget.target;
-                this.LilyPaddlerHypnotize.isActive         = true;
-                this.LilyPaddlerHypnotize.timeNextSwim     = Time.time;
+                this.LilyPaddlerHypnotize.currentTarget = this.LilyPaddlerHypnotize.lastTarget.target;
+                this.LilyPaddlerHypnotize.isActive = true;
+                this.LilyPaddlerHypnotize.timeNextSwim = Time.time;
                 this.LilyPaddlerHypnotize.hypnotizedScalar = 0.0f;
 
                 this.LilyPaddlerHypnotize.swimBehaviour.Idle();

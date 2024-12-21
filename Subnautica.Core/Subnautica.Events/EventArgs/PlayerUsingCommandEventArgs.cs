@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public PlayerUsingCommandEventArgs(string command, string fullCommand, bool isAllowed = true)
         {
-            this.Command     = command.Trim();
+            this.Command = command.Trim();
             this.FullCommand = fullCommand.Trim();
-            this.IsAllowed   = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string Command { get; set; }

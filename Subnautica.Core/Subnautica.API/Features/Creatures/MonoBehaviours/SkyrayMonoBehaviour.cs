@@ -2,8 +2,6 @@
 {
     using Subnautica.Network.Structures;
 
-    using UnityEngine;
-
     public class SkyrayMonoBehaviour : BaseMultiplayerCreature
     {
         private global::Skyray Skyray { get; set; }

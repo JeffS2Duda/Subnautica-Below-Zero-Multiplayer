@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
+    using Subnautica.API.Features;
 
     [HarmonyPatch(typeof(global::CreatureAggressionManager), nameof(global::CreatureAggressionManager.OnMeleeAttack))]
     public class CreatureAggressionManager

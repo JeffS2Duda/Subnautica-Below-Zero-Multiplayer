@@ -1,13 +1,9 @@
 namespace Subnautica.Network.Models.Core
 {
-    using System;
-
     using LiteNetLib;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
-
+    using System;
     using ClientModel = Subnautica.Network.Models.Client;
     using ServerModel = Subnautica.Network.Models.Server;
 
@@ -156,7 +152,7 @@ namespace Subnautica.Network.Models.Core
 
         public T GetPacket<T>()
         {
-            return (T) Convert.ChangeType(this, this.GetType());
+            return (T)Convert.ChangeType(this, this.GetType());
         }
     }
 }

@@ -1,11 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::BasePartitionDoor), nameof(global::BasePartitionDoor.GetState))]

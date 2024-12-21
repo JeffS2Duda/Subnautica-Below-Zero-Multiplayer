@@ -20,7 +20,7 @@
                 {
                     if (item.colliders)
                     {
-                        item.chunksPerSide    = 10;
+                        item.chunksPerSide = 10;
                         item.chunksVertically = 10;
                     }
 

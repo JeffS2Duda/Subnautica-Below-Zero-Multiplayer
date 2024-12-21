@@ -8,9 +8,9 @@ namespace Subnautica.Events.EventArgs
     {
         public BreakableResourceBreakingEventArgs(string uniqueId, TechType techType, Vector3 position, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.TechType  = techType;
-            this.Position  = position;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
+            this.Position = position;
             this.IsAllowed = isAllowed;
         }
 

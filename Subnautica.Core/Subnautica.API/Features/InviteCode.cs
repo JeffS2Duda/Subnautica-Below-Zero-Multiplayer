@@ -1,14 +1,11 @@
 ﻿namespace Subnautica.API.Features
 {
-    using System;
-    using System.Collections;
-    using System.Diagnostics;
-    using System.Threading;
-    using System.Threading.Tasks;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features.Helper;
-
+    using System;
+    using System.Collections;
+    using System.Threading;
+    using System.Threading.Tasks;
     using UnityEngine;
     using UnityEngine.Networking;
 
@@ -55,7 +52,7 @@
         public IEnumerator CheckAndConnect()
         {
             this.IsClientConnected = false;
-            this.CurrentPeerId     = string.Empty;
+            this.CurrentPeerId = string.Empty;
             this.ConnectionTiming.Restart();
 
             Task.Run(() =>
@@ -126,7 +123,7 @@
             this.IsHostConnected = false;
             this.HostConnectionTiming.Restart();
 
-            var hostCounter    = 0;
+            var hostCounter = 0;
             var connectCounter = 0;
 
             Task.Run(() =>
@@ -344,7 +341,7 @@
 
                     callback?.Invoke(true);
                 }
-                else 
+                else
                 {
                     if (request.responseCode != 200)
                     {
@@ -401,11 +398,11 @@
 
         public void Dispose()
         {
-            this.Code              = null;
-            this.CurrentPeerId     = null;
-            this.AccessToken       = null;
+            this.Code = null;
+            this.CurrentPeerId = null;
+            this.AccessToken = null;
             this.IsClientConnected = false;
-            this.IsHostConnected   = false;
+            this.IsHostConnected = false;
         }
     }
 }

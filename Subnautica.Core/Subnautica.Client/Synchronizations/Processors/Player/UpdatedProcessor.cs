@@ -39,15 +39,15 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
             if (player.IsCreatedModel)
             {
-                player.Position       = packet.CompressedPosition.ToVector3();
-                player.Rotation       = packet.CompressedRotation.ToQuaternion();
-                player.Equipments     = packet.Equipments;
+                player.Position = packet.CompressedPosition.ToVector3();
+                player.Rotation = packet.CompressedRotation.ToQuaternion();
+                player.Equipments = packet.Equipments;
                 player.IsPrecursorArm = packet.IsPrecursorArm;
-                player.EmoteIndex     = (float) packet.EmoteIndex;
-                player.VehicleId      = 0;
-                player.VehicleType    = TechType.None;
+                player.EmoteIndex = (float)packet.EmoteIndex;
+                player.VehicleId = 0;
+                player.VehicleType = TechType.None;
                 player.RightHandItemRotation = packet.CompressedRightHandItemRotation == -1 ? UpdatedProcessor.DefaultHandRotation : packet.CompressedRightHandItemRotation.ToQuaternion();
-                player.LeftHandItemRotation  = packet.CompressedLeftHandItemRotation  == -1 ? UpdatedProcessor.DefaultHandRotation : packet.CompressedLeftHandItemRotation.ToQuaternion();
+                player.LeftHandItemRotation = packet.CompressedLeftHandItemRotation == -1 ? UpdatedProcessor.DefaultHandRotation : packet.CompressedLeftHandItemRotation.ToQuaternion();
                 player.SetHandItem(packet.ItemInHand);
                 player.SetHandItemComponent(packet.HandItemComponent);
                 player.SetCameraPitch(packet.CompressedCameraPitch.ToFloat());
@@ -65,19 +65,19 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             {
                 ServerModel.PlayerUpdatedArgs request = new ServerModel.PlayerUpdatedArgs()
                 {
-                    CompressedPosition              = ev.Position.Compress(),
-                    CompressedLocalPosition         = Network.Session.IsInSeaTruck ? ev.LocalPosition.Compress() : 0,
-                    CompressedRotation              = ev.Rotation.Compress(),
-                    CompressedCameraPitch           = ev.CameraPitch.ToShort(),
-                    CompressedLeftHandItemRotation  = UpdatedProcessor.GetHandItemRotation(ev.TechTypeInHand, true),
+                    CompressedPosition = ev.Position.Compress(),
+                    CompressedLocalPosition = Network.Session.IsInSeaTruck ? ev.LocalPosition.Compress() : 0,
+                    CompressedRotation = ev.Rotation.Compress(),
+                    CompressedCameraPitch = ev.CameraPitch.ToShort(),
+                    CompressedLeftHandItemRotation = UpdatedProcessor.GetHandItemRotation(ev.TechTypeInHand, true),
                     CompressedRightHandItemRotation = UpdatedProcessor.GetHandItemRotation(ev.TechTypeInHand, false),
-                    CompressedCameraForward         = ev.CameraForward.CompressToInt(),
-                    ItemInHand  = ev.TechTypeInHand,
+                    CompressedCameraForward = ev.CameraForward.CompressToInt(),
+                    ItemInHand = ev.TechTypeInHand,
                     SurfaceType = ev.SurfaceType,
 
-                    Equipments        = ev.Equipments,
-                    EmoteIndex        = (byte) ev.EmoteIndex,
-                    IsPrecursorArm    = ev.IsPrecursorArm,
+                    Equipments = ev.Equipments,
+                    EmoteIndex = (byte)ev.EmoteIndex,
+                    IsPrecursorArm = ev.IsPrecursorArm,
                     HandItemComponent = UpdatedProcessor.GetItemComponent(ev.TechTypeInHand),
                 };
 
@@ -113,7 +113,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
                 return new ItemModel.FlashLight()
                 {
-                    IsActivated = tool.toggleLights.lightsActive 
+                    IsActivated = tool.toggleLights.lightsActive
                 };
             }
             else if (techType == TechType.Seaglide)
@@ -126,7 +126,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
                 return new ItemModel.Seaglide()
                 {
-                    IsActivated       = tool.activeState,
+                    IsActivated = tool.activeState,
                     IsLightsActivated = tool.toggleLights.lightsActive,
                 };
             }
@@ -140,9 +140,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
                 return new ItemModel.Flare()
                 {
-                    Intensity    = tool.light.intensity,
-                    Range        = tool.light.range,
-                    Energy       = tool.energyLeft < 3 ? 2f : tool.energyLeft,
+                    Intensity = tool.light.intensity,
+                    Range = tool.light.range,
+                    Energy = tool.energyLeft < 3 ? 2f : tool.energyLeft,
                 };
             }
             else if (techType == TechType.Welder)
@@ -182,9 +182,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                 return new ItemModel.MetalDetector()
                 {
                     TechTypeIndex = tool.targetTechTypeIndex == -1 || tool.targetTechTypeIndex > tool.detectableTechTypes.Count ? TechType.None : tool.detectableTechTypes[tool.targetTechTypeIndex],
-                    IsUsing       = tool.energyMixin.charge > 0.0,
-                    Wiggle        = tool.animator.GetFloat(MetalDetector.animWiggle),
-                    ScreenState   = tool.screenState,
+                    IsUsing = tool.energyMixin.charge > 0.0,
+                    Wiggle = tool.animator.GetFloat(MetalDetector.animWiggle),
+                    ScreenState = tool.screenState,
                 };
             }
             else if (techType == TechType.AirBladder)

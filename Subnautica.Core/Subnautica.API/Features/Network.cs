@@ -10,9 +10,9 @@
 
     public class Network
     {
-        public static bool IsHost 
-        { 
-            get 
+        public static bool IsHost
+        {
+            get
             {
                 return Server.Core.Server.Instance != null && Server.Core.Server.Instance.IsConnected;
             }
@@ -50,10 +50,10 @@
 
         public static void Dispose()
         {
-            try 
+            try
             {
                 World.SetLoaded(false);
-                
+
                 Network.IsMultiplayerActive = false;
                 Network.BaseFacePiece.Dispose();
                 Network.DynamicEntity.Dispose();

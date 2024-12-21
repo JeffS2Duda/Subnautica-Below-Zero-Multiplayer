@@ -1,12 +1,10 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Items
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection.Emit;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
 
     [HarmonyPatch]
     public static class Flare

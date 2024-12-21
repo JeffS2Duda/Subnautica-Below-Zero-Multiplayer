@@ -6,12 +6,12 @@ namespace Subnautica.Events.EventArgs
     {
         public SignDataChangedEventArgs(string uniqueId, TechType techType, string text, int scaleIndex, int colorIndex, bool[] elementsState, bool isBackgroundEnabled)
         {
-            this.UniqueId            = uniqueId;
-            this.TechType            = techType;
-            this.Text                = text;
-            this.ScaleIndex          = scaleIndex;
-            this.ColorIndex          = colorIndex;
-            this.ElementsState       = elementsState;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
+            this.Text = text;
+            this.ScaleIndex = scaleIndex;
+            this.ColorIndex = colorIndex;
+            this.ElementsState = elementsState;
             this.IsBackgroundEnabled = isBackgroundEnabled;
         }
 

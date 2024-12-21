@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public PowerSourceRemovingEventArgs(string uniqueId, IPowerInterface powerSource)
         {
-            this.UniqueId    = uniqueId;
+            this.UniqueId = uniqueId;
             this.PowerSource = powerSource;
         }
 

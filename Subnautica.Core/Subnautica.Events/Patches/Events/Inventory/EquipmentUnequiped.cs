@@ -30,7 +30,7 @@ namespace Subnautica.Events.Patches.Events.Inventory
 
                             Handlers.Vehicle.OnUpgradeConsoleModuleRemoved(args);
                         }
-                    }                    
+                    }
                     else if (slot.Contains("NuclearReactor"))
                     {
                         var reactor = __instance.tr.GetComponentInParent<BaseNuclearReactor>();

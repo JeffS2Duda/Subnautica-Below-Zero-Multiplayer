@@ -2,7 +2,6 @@
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
-    using Subnautica.Client.Core;
 
     public class EncyclopediaProcessor
     {

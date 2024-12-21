@@ -1,15 +1,11 @@
 namespace Subnautica.Network.Models.Storage.World
 {
-    using System;
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
-    using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Models.WorldStreamer;
-
+    using System;
+    using System.Collections.Generic;
     using WorldChildrens = Subnautica.Network.Models.Storage.World.Childrens;
 
     [MessagePackObject]

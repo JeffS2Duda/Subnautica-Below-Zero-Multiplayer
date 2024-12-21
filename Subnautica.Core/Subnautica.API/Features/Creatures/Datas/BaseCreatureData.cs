@@ -1,16 +1,11 @@
 ﻿namespace Subnautica.API.Features.Creatures.Datas
 {
-    using System.Collections;
-    using System.Collections.Generic;
-
     using Subnautica.API.Enums;
-    using Subnautica.API.Features.Creatures.MonoBehaviours;
     using Subnautica.API.Features.Creatures.MonoBehaviours.Shared;
     using Subnautica.API.Features.Creatures.Trackers;
-
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
-
-    using UWE;
 
     public abstract class BaseCreatureData
     {

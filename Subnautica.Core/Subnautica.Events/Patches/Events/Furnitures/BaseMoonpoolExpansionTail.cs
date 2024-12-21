@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch]
     public static class BaseMoonpoolExpansionTail

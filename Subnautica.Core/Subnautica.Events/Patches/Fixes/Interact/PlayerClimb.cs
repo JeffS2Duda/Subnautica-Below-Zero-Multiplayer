@@ -18,7 +18,7 @@ namespace Subnautica.Events.Patches.Fixes.Interact
             {
                 return false;
             }
-                
+
             var component = __instance.gameObject.GetComponentInParent<global::Constructor>();
             if (component)
             {

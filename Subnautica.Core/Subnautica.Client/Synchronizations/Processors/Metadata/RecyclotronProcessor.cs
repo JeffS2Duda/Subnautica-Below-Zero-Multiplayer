@@ -5,9 +5,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
-    using Metadata    = Subnautica.Network.Models.Metadata;
 
     public class RecyclotronProcessor : MetadataProcessor
     {
@@ -40,7 +39,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.Recyclotron()
                 {
                     IsRecycle = isRecycle,

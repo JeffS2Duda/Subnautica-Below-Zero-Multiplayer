@@ -8,13 +8,13 @@ namespace Subnautica.Events.EventArgs
     {
         public BeaconDeployingEventArgs(string uniqueId, Pickupable pickupable, Vector3 deployPosition, Quaternion deployRotation, bool isDeployedOnLand, string label, bool isAllowed = true)
         {
-            this.UniqueId         = uniqueId;
-            this.Pickupable       = pickupable;
-            this.DeployPosition   = deployPosition;
-            this.DeployRotation   = deployRotation;
+            this.UniqueId = uniqueId;
+            this.Pickupable = pickupable;
+            this.DeployPosition = deployPosition;
+            this.DeployRotation = deployRotation;
             this.IsDeployedOnLand = isDeployedOnLand;
-            this.Text             = label;
-            this.IsAllowed        = isAllowed;
+            this.Text = label;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

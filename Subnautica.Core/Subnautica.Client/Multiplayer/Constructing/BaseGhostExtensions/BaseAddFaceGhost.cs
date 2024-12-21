@@ -8,7 +8,7 @@
     {
         public static bool UpdateMultiplayerPlacement(this global::BaseAddFaceGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddFaceGhostComponent component)
         {
-            positionFound   = false;
+            positionFound = false;
             geometryChanged = false;
 
             if (updatePlacement == false || component == null || component.TargetBaseId.IsNull() || component.Face.Cell == null)
@@ -33,7 +33,7 @@
 
             baseGhost.targetOffset = normCell;
 
-            var cell     = baseGhost.targetBase.GetCell(normCell);
+            var cell = baseGhost.targetBase.GetCell(normCell);
             var cellSize = Base.CellSize[(int)cell];
 
             var sourceRange = Int3.Bounds.Union(new Int3.Bounds(faceCell, faceCell), new Int3.Bounds(normCell, normCell + cellSize - 1));
@@ -62,7 +62,7 @@
             var constructableBase = baseGhost.GetComponentInParent<ConstructableBase>();
             constructableBase.transform.position = baseGhost.targetBase.GridToWorld(normCell);
             constructableBase.transform.rotation = baseGhost.targetBase.transform.rotation;
-            
+
             positionFound = true;
             return true;
         }

@@ -1,26 +1,14 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using System.Collections;
-    using System.Collections.Generic;
-
-    using Oculus.Platform;
-
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-    using Subnautica.API.Features.Helper;
-    using Subnautica.API.Features.NetworkUtility;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Client.Extensions;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-    using Subnautica.Network.Models.Metadata;
-    using Subnautica.Network.Models.Storage.World.Childrens;
-    using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-    using Subnautica.Network.Structures;
-
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class PrecursorTeleporterProcessor : NormalProcessor
@@ -136,10 +124,10 @@ namespace Subnautica.Client.Synchronizations.Processors.World
         {
             ServerModel.PrecursorTeleporterArgs request = new ServerModel.PrecursorTeleporterArgs()
             {
-                UniqueId            = uniqueId,
-                TeleporterId        = teleporterId,
-                IsTerminal          = isTerminal,
-                IsTeleportStart     = isTeleportStart,
+                UniqueId = uniqueId,
+                TeleporterId = teleporterId,
+                IsTerminal = isTerminal,
+                IsTeleportStart = isTeleportStart,
                 IsTeleportCompleted = isTeleportCompleted,
             };
 

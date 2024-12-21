@@ -6,12 +6,12 @@ namespace Subnautica.Events.EventArgs
 
     public class PlayerItemDropingEventArgs : EventArgs
     {
-        public PlayerItemDropingEventArgs(string uniqueId, Pickupable item, Vector3 position, Quaternion rotation,  bool isAllowed = true)
+        public PlayerItemDropingEventArgs(string uniqueId, Pickupable item, Vector3 position, Quaternion rotation, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.Item      = item;
-            this.Position  = position;
-            this.Rotation  = rotation;
+            this.UniqueId = uniqueId;
+            this.Item = item;
+            this.Position = position;
+            this.Rotation = rotation;
             this.IsAllowed = isAllowed;
         }
 

@@ -1,8 +1,7 @@
-﻿using System;
-using Subnautica.API.Features;
+﻿using Subnautica.API.Features;
 using Subnautica.Server.Abstracts;
-using Subnautica.Server.Core;
 using Subnautica.Server.Events.EventArgs;
+using System;
 using UWE;
 
 namespace Subnautica.Server.Logic
@@ -37,7 +36,7 @@ namespace Subnautica.Server.Logic
         {
             if (isError)
             {
-                this.ErrorCount ++;
+                this.ErrorCount++;
             }
             else
             {

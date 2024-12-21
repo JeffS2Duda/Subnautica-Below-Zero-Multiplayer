@@ -1,14 +1,12 @@
 namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using MessagePack;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     [MessagePackObject]
     public class SeaTruckStorageModule : NetworkDynamicEntityComponent

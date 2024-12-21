@@ -8,7 +8,7 @@ namespace Subnautica.Events.EventArgs
     {
         public PlanterProgressCompletedEventArgs(Plantable plantable, GameObject grownPlant)
         {
-            this.Plantable  = plantable;
+            this.Plantable = plantable;
             this.GrownPlant = grownPlant;
         }
 

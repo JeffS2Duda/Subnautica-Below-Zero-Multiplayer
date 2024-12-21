@@ -24,7 +24,7 @@
         public static bool DownloadFile(string remoteUrl, string localPath)
         {
             remoteUrl = string.Format("{0}?t={1}", remoteUrl, Tools.GetRandomInt(1000000000, 2000000000));
-            
+
             Tools.CreateSubFolders(localPath);
 
             try
@@ -48,7 +48,7 @@
         public static void DownloadFileAsync(string remoteUrl, string localPath, Action<object, DownloadProgressChangedEventArgs, object> progressCallbackAction = null, Action<object, AsyncCompletedEventArgs, object> completedCallbackAction = null, object customData = null)
         {
             FileDownloader.isDownloading = true;
-            
+
             remoteUrl = string.Format("{0}?t={1}", remoteUrl, Tools.GetRandomInt(1000000000, 2000000000));
 
             try
@@ -61,7 +61,7 @@
                     client.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
 
                     client.DownloadProgressChanged += new DownloadProgressChangedEventHandler((sender, e) => FileDownloader.OnDownloadProgressChanged(sender, e, progressCallbackAction, customData));
-                    client.DownloadFileCompleted   += new AsyncCompletedEventHandler((sender, e) => FileDownloader.OnDownloadFileCompleted(sender, e, completedCallbackAction, customData));
+                    client.DownloadFileCompleted += new AsyncCompletedEventHandler((sender, e) => FileDownloader.OnDownloadFileCompleted(sender, e, completedCallbackAction, customData));
                     client.DownloadFileAsync(new Uri(remoteUrl), localPath);
                 }
             }
@@ -94,7 +94,7 @@
         public static void OnDownloadFileCompleted(object sender, AsyncCompletedEventArgs e, Action<object, AsyncCompletedEventArgs, object> callBackAction, object customData = null)
         {
             FileDownloader.isDownloading = false;
-            FileDownloader.isSuccess     = e.Error == null && !e.Cancelled;
+            FileDownloader.isSuccess = e.Error == null && !e.Cancelled;
 
             if (e.Error != null)
             {

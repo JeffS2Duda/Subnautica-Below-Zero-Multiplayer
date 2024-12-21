@@ -8,10 +8,10 @@ namespace Subnautica.Events.EventArgs
     {
         public StorySignalSpawningEventArgs(global::Story.UnlockSignalData.SignalType signalType, Vector3 targetPosition, string targetDescription, bool isAllowed = true)
         {
-            this.SignalType         = signalType;
-            this.TargetPosition     = targetPosition;
-            this.TargetDescription  = targetDescription;
-            this.IsAllowed          = isAllowed;
+            this.SignalType = signalType;
+            this.TargetPosition = targetPosition;
+            this.TargetDescription = targetDescription;
+            this.IsAllowed = isAllowed;
         }
 
         public global::Story.UnlockSignalData.SignalType SignalType { get; set; }

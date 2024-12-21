@@ -1,15 +1,14 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Features;
+    using System;
 
     public class JukeboxUsedEventArgs : EventArgs
     {
         public JukeboxUsedEventArgs(string uniqueId, CustomProperty data, bool isSeaTruckModule)
         {
-            this.UniqueId         = uniqueId;
-            this.Data             = data;
+            this.UniqueId = uniqueId;
+            this.Data = data;
             this.IsSeaTruckModule = isSeaTruckModule;
         }
 

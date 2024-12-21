@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.API.Extensions
 {
-    using Subnautica.Network.Models.Construction.Shared;
-    using Subnautica.Network.Models.Construction;
     using Subnautica.API.Features;
-
+    using Subnautica.Network.Models.Construction;
+    using Subnautica.Network.Models.Construction.Shared;
     using UnityEngine;
 
     public static class BaseGhostExtensions
@@ -82,7 +81,7 @@
                 TargetBaseId = baseGhost.targetBase.gameObject.GetIdentityId(),
                 Face = new BaseFaceComponent()
                 {
-                    Cell      = face.cell.ToZeroInt3(),
+                    Cell = face.cell.ToZeroInt3(),
                     Direction = face.direction
                 },
             };
@@ -96,19 +95,19 @@
             }
 
             var faceStart = Network.Temporary.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
-            var faceEnd   = Network.Temporary.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceEnd");
+            var faceEnd = Network.Temporary.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceEnd");
 
             return new BaseAddLadderGhostComponent()
             {
                 TargetBaseId = baseGhost.targetBase.gameObject.GetIdentityId(),
                 FaceStart = new BaseFaceComponent()
                 {
-                    Cell      = faceStart.cell.ToZeroInt3(),
+                    Cell = faceStart.cell.ToZeroInt3(),
                     Direction = faceStart.direction,
                 },
                 FaceEnd = new BaseFaceComponent()
                 {
-                    Cell      = faceEnd.cell.ToZeroInt3(),
+                    Cell = faceEnd.cell.ToZeroInt3(),
                     Direction = faceEnd.direction,
                 },
             };
@@ -126,9 +125,9 @@
             return new BaseAddBulkheadGhostComponent()
             {
                 TargetBaseId = baseGhost.targetBase.gameObject.GetIdentityId(),
-                FaceStart    = new BaseFaceComponent()
+                FaceStart = new BaseFaceComponent()
                 {
-                    Cell      = face.cell.ToZeroInt3(),
+                    Cell = face.cell.ToZeroInt3(),
                     Direction = face.direction
                 },
             };
@@ -141,15 +140,15 @@
                 return null;
             }
 
-            var faceCell  = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
+            var faceCell = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
             var direction = Network.Temporary.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
 
             return new BaseAddPartitionGhostComponent()
             {
                 TargetBaseId = baseGhost.targetBase.gameObject.GetIdentityId(),
-                FaceStart    = new BaseFaceComponent()
+                FaceStart = new BaseFaceComponent()
                 {
-                    Cell      = faceCell.ToZeroInt3(),
+                    Cell = faceCell.ToZeroInt3(),
                     Direction = direction
                 },
             };
@@ -162,15 +161,15 @@
                 return null;
             }
 
-            var faceCell  = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
+            var faceCell = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
             var direction = Network.Temporary.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
 
             return new BaseAddPartitionDoorGhostComponent()
             {
                 TargetBaseId = baseGhost.targetBase.gameObject.GetIdentityId(),
-                FaceStart    = new BaseFaceComponent()
+                FaceStart = new BaseFaceComponent()
                 {
-                    Cell      = faceCell.ToZeroInt3(),
+                    Cell = faceCell.ToZeroInt3(),
                     Direction = direction
                 },
             };
@@ -188,9 +187,9 @@
             return new BaseAddModuleGhostComponent()
             {
                 TargetBaseId = baseGhost.targetBase.gameObject.GetIdentityId(),
-                FaceStart    = new BaseFaceComponent()
+                FaceStart = new BaseFaceComponent()
                 {
-                    Cell      = face.cell.ToZeroInt3(),
+                    Cell = face.cell.ToZeroInt3(),
                     Direction = face.direction
                 },
             };
@@ -198,12 +197,12 @@
 
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddCellGhost baseGhost)
         {
-            var targetOffset  = Network.Temporary.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
+            var targetOffset = Network.Temporary.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
 
             return new BaseAddCellGhostComponent()
             {
-                TargetBaseId  = baseGhost.targetBase?.gameObject.GetIdentityId(),
-                TargetOffset  = targetOffset.ToZeroInt3(),
+                TargetBaseId = baseGhost.targetBase?.gameObject.GetIdentityId(),
+                TargetOffset = targetOffset.ToZeroInt3(),
                 AboveFaceType = baseGhost.ghostBase.GetFace(new global::Base.Face(Int3.zero, global::Base.Direction.Above)),
                 BelowFaceType = baseGhost.ghostBase.GetFace(new global::Base.Face(Int3.zero, global::Base.Direction.Below)),
             };
@@ -243,7 +242,7 @@
             return new BaseAddConnectorGhostComponent()
             {
                 TargetBaseId = baseGhost.targetBase.gameObject.GetIdentityId(),
-                FaceCell     = faceCell.ToZeroInt3(),
+                FaceCell = faceCell.ToZeroInt3(),
             };
         }
 
@@ -254,15 +253,15 @@
                 return null;
             }
 
-            var faceCell  = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
+            var faceCell = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
             var direction = Network.Temporary.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
 
             return new BaseAddWaterParkGhostComponent()
             {
                 TargetBaseId = baseGhost.targetBase.gameObject.GetIdentityId(),
-                FaceStart    = new BaseFaceComponent()
+                FaceStart = new BaseFaceComponent()
                 {
-                    Cell      = faceCell.ToZeroInt3(),
+                    Cell = faceCell.ToZeroInt3(),
                     Direction = direction
                 },
             };

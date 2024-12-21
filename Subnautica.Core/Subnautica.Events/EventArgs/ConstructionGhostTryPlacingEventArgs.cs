@@ -6,20 +6,20 @@ namespace Subnautica.Events.EventArgs
 
     public class ConstructionGhostTryPlacingEventArgs : EventArgs
     {
-        public ConstructionGhostTryPlacingEventArgs(GameObject ghostModel,string uniqueId, string subrootId, TechType techType, int lastRotation, Vector3 position, Quaternion rotation, Transform aimTranform, bool isCanPlace, bool isBasePiece, bool isError, bool isAllowed = true)
+        public ConstructionGhostTryPlacingEventArgs(GameObject ghostModel, string uniqueId, string subrootId, TechType techType, int lastRotation, Vector3 position, Quaternion rotation, Transform aimTranform, bool isCanPlace, bool isBasePiece, bool isError, bool isAllowed = true)
         {
-            this.GhostModel   = ghostModel;
-            this.UniqueId     = uniqueId;
-            this.SubrootId    = subrootId;
-            this.TechType     = techType;
+            this.GhostModel = ghostModel;
+            this.UniqueId = uniqueId;
+            this.SubrootId = subrootId;
+            this.TechType = techType;
             this.LastRotation = lastRotation;
-            this.Position     = position;
-            this.Rotation     = rotation;
+            this.Position = position;
+            this.Rotation = rotation;
             this.AimTransform = aimTranform;
-            this.IsCanPlace   = isCanPlace;
-            this.IsBasePiece  = isBasePiece;
-            this.IsError      = isError;
-            this.IsAllowed    = isAllowed;
+            this.IsCanPlace = isCanPlace;
+            this.IsBasePiece = isBasePiece;
+            this.IsError = isError;
+            this.IsAllowed = isAllowed;
         }
 
         public GameObject GhostModel { get; private set; }

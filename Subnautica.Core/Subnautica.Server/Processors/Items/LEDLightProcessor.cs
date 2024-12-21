@@ -7,11 +7,11 @@ namespace Subnautica.Server.Processors.Items
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
 
-    using ItemModel        = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class LEDLightProcessor : PlayerItemProcessor
-    {        
+    {
         public override bool OnDataReceived(AuthorizationProfile profile, PlayerItemActionArgs packet)
         {
             var component = packet.Item.GetComponent<ItemModel.LEDLight>();

@@ -1,10 +1,5 @@
 ﻿namespace Subnautica.API.Features
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features.PlayerUtility;
@@ -12,8 +7,10 @@
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Structures;
-    using Subnautica.Server.Storage;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
 
     public class ZeroPlayer
@@ -42,7 +39,7 @@
         public ZeroPlayer(string uniqueId, bool isLocalPlayer = false)
         {
             this.UniqueId = uniqueId;
-            this.IsMine   = isLocalPlayer;
+            this.IsMine = isLocalPlayer;
 
             if (isLocalPlayer)
             {
@@ -388,7 +385,7 @@
         {
             var direction = Vector3.Normalize(target.transform.position - this.PlayerModel.transform.position);
             var transform = this.IsMine ? MainCameraControl.main.transform : this.PlayerModel.transform;
-            var forward   = this.IsMine ? MainCameraControl.main.transform.forward : this.CameraForward;
+            var forward = this.IsMine ? MainCameraControl.main.transform.forward : this.CameraForward;
 
             if (Vector3.Dot(direction, forward) < 0.65)
             {
@@ -435,16 +432,16 @@
 
             this.PlayerModel = UnityEngine.Object.Instantiate<GameObject>(playerModel, this.Position, this.Rotation);
             this.PlayerModel.AddComponent<Rigidbody>().mass = global::Player.main.rigidBody.mass;
-            this.PlayerModel.AddComponent<TechTag>().type   = TechType.Player;
+            this.PlayerModel.AddComponent<TechTag>().type = TechType.Player;
             this.PlayerModel.layer = LayerID.Player;
-            this.PlayerModel.name  = this.NickName;
+            this.PlayerModel.name = this.NickName;
 
             Network.Identifier.SetIdentityId(this.PlayerModel, this.UniqueId);
 
             this.Animator = this.PlayerModel.GetComponent<Animator>();
 
             this.RightHandItemTransform = this.PlayerModel.gameObject.transform.Find(GameIndex.PLAYER_ATTACH_IN_RIGHT_HAND);
-            this.LeftHandItemTransform  = this.PlayerModel.gameObject.transform.Find(GameIndex.PLAYER_ATTACH_IN_LEFT_HAND);
+            this.LeftHandItemTransform = this.PlayerModel.gameObject.transform.Find(GameIndex.PLAYER_ATTACH_IN_LEFT_HAND);
             this.LeftHandItemTransform.gameObject.SetActive(false);
 
             Component[] components = this.PlayerModel.GetComponents(typeof(Component));
@@ -470,7 +467,7 @@
             this.CreateCapsuleCollider();
             this.CreatePingInstance();
             this.CreateEcoTarget();
-            
+
             this.IsCreatedModel = true;
             this.PlayerModel.SetActive(true);
 
@@ -593,7 +590,7 @@
         public void EnableFreeze(float time = -1f)
         {
             this.IsFrozen = true;
-            
+
             if (this.FrozenOverlay)
             {
                 this.FrozenOverlay.RemoveOverlay();
@@ -683,7 +680,7 @@
                 this.Animator.speed = 1f;
             }
         }
-        
+
         public void SetCurrentPlayer(ZeroPlayer player)
         {
             CurrentPlayer = player;
@@ -847,7 +844,7 @@
 
             return renderers.ToArray();
         }
-        
+
         private bool CreateObstacle()
         {
             this.PlayerModel.AddComponent<PlayerObstacle>();
@@ -863,21 +860,21 @@
             }
 
             var collider = this.PlayerModel.AddComponent<CapsuleCollider>();
-            collider.center        = Vector3.up;
-            collider.radius        = capsuleCollider.radius;
-            collider.direction     = capsuleCollider.direction;
+            collider.center = Vector3.up;
+            collider.radius = capsuleCollider.radius;
+            collider.direction = capsuleCollider.direction;
             collider.contactOffset = capsuleCollider.contactOffset;
-            collider.isTrigger     = true;
+            collider.isTrigger = true;
             return true;
         }
 
         private void CreatePingInstance()
         {
             this.PingInstance = this.PlayerModel.AddComponent<PingInstance>();
-            this.PingInstance.name    = ZeroPlayer.PlayerSignalName;
-            this.PingInstance.origin  = this.PlayerModel.transform;
+            this.PingInstance.name = ZeroPlayer.PlayerSignalName;
+            this.PingInstance.origin = this.PlayerModel.transform;
             this.PingInstance.minDist = 5f;
-            this.PingInstance.range   = 1f;
+            this.PingInstance.range = 1f;
             this.PingInstance.SetLabel(this.NickName);
             this.PingInstance.SetType(PingType.Signal);
         }
@@ -951,8 +948,8 @@
             }
         }
 
-        public global::Player Main 
-        { 
+        public global::Player Main
+        {
             get
             {
                 if (this.IsMine == false)
@@ -970,7 +967,7 @@
         }
 
         public FreecamController FreecamController
-        { 
+        {
             get
             {
                 if (this.IsMine == false)
@@ -1027,7 +1024,7 @@
 
         public Transform LeftHandItemTransform { get; set; } = null;
 
-        private VFXOverlayMaterial FrozenOverlay  { get; set; }
+        private VFXOverlayMaterial FrozenOverlay { get; set; }
 
         public byte PlayerId { get; set; }
 

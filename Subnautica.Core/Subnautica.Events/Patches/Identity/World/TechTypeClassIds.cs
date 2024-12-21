@@ -1,12 +1,9 @@
 namespace Subnautica.Events.Patches.Identity.World
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
     using System.Collections.Generic;
     using System.Linq;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
-
     using UWE;
 
     [HarmonyPatch]
@@ -41,7 +38,7 @@ namespace Subnautica.Events.Patches.Identity.World
             {
                 foreach (var prefab in PrefabDatabase.prefabFiles)
                 {
-                    var data = Overrides.Where(q => prefab.Value.Contains(q.Key)).FirstOrDefault(); 
+                    var data = Overrides.Where(q => prefab.Value.Contains(q.Key)).FirstOrDefault();
                     if (data.Key != null)
                     {
                         if (__instance.infos.TryGetValue(prefab.Key, out var info) && info.techType == TechType.None)
@@ -71,7 +68,7 @@ namespace Subnautica.Events.Patches.Identity.World
                 {
                     PrefabDatabase.prefabFiles[prefab.Key] = prefab.Value.Key;
 
-                    CraftData.entClassTechTable[prefab.Key]   = prefab.Value.Value;
+                    CraftData.entClassTechTable[prefab.Key] = prefab.Value.Value;
                     CraftData.techMapping[prefab.Value.Value] = prefab.Key;
                 }
             }

@@ -8,13 +8,13 @@ namespace Subnautica.Events.EventArgs
     {
         public OxygenPipePlacingEventArgs(string uniqueId, string parentId, string pipeId, Pickupable pickupable, Vector3 deployPosition, Quaternion deployRotation, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
-            this.ParentId       = parentId;   
-            this.PipeId         = pipeId;
-            this.Pickupable     = pickupable;
+            this.UniqueId = uniqueId;
+            this.ParentId = parentId;
+            this.PipeId = pipeId;
+            this.Pickupable = pickupable;
             this.DeployPosition = deployPosition;
             this.DeployRotation = deployRotation;
-            this.IsAllowed      = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

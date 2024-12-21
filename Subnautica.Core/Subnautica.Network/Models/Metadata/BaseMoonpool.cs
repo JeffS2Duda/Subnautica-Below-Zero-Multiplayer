@@ -1,8 +1,6 @@
 namespace Subnautica.Network.Models.Metadata
 {
     using MessagePack;
-
-    using Subnautica.API.Features;
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
@@ -55,10 +53,10 @@ namespace Subnautica.Network.Models.Metadata
             {
                 return false;
             }
-            
-            this.IsDocked  = true;
+
+            this.IsDocked = true;
             this.VehicleId = entity.UniqueId;
-            this.Vehicle   = entity;
+            this.Vehicle = entity;
             this.Vehicle.Position = endPosition;
             this.Vehicle.Rotation = endRotation;
             this.DockingStartTime = currentTime;
@@ -71,9 +69,9 @@ namespace Subnautica.Network.Models.Metadata
 
             if (this.IsDocked)
             {
-                this.IsDocked  = false;
+                this.IsDocked = false;
                 this.VehicleId = null;
-                this.Vehicle   = null;
+                this.Vehicle = null;
                 this.DockingStartTime = 0;
                 return true;
             }

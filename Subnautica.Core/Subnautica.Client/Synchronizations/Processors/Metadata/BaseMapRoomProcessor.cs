@@ -13,7 +13,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
     using UnityEngine;
 
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BaseMapRoomProcessor : MetadataProcessor
@@ -125,7 +125,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         private bool DockVehicle(string uniqueId, string vehicleId, bool isLeft, bool isMine = false)
         {
             var mapRoom = Network.Identifier.GetComponentByGameObject<global::BaseDeconstructable>(uniqueId)?.GetMapRoomFunctionality();
-            var camera  = Network.Identifier.GetComponentByGameObject<global::MapRoomCamera>(vehicleId);
+            var camera = Network.Identifier.GetComponentByGameObject<global::MapRoomCamera>(vehicleId);
             if (mapRoom == null || camera == null)
             {
                 return false;
@@ -208,7 +208,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                 if (ev.Pickupable.TryGetComponent<MapRoomCamera>(out var mapRoomCamera) && mapRoomCamera.dockingPoint)
                 {
                     ev.IsAllowed = false;
-                    
+
                     var uniqueId = mapRoomCamera.dockingPoint.GetComponentInParent<MapRoomFunctionality>()?.GetBaseDeconstructable().gameObject.GetIdentityId();
                     if (uniqueId.IsNotNull())
                     {
@@ -222,13 +222,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.BaseMapRoom()
                 {
-                    ProcessType  = processType,
-                    PickupItem   = pickupItem,
+                    ProcessType = processType,
+                    PickupItem = pickupItem,
                     ScanTechType = scanType,
-                    LeftDock     = dockingBay,  
+                    LeftDock = dockingBay,
                     IsNextCamera = isNextCamera,
                 }
             };

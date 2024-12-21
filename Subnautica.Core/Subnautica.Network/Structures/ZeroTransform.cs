@@ -20,7 +20,7 @@ namespace Subnautica.Network.Structures
 
         public ZeroTransform(ZeroVector3 forward, ZeroVector3 position, ZeroQuaternion rotation)
         {
-            this.Forward  = forward;
+            this.Forward = forward;
             this.Position = position;
             this.Rotation = rotation;
         }

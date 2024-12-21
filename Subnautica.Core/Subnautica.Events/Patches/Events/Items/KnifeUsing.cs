@@ -22,11 +22,11 @@ namespace Subnautica.Events.Patches.Events.Items
             try
             {
                 Vector3 normal;
-                var targetPosition   = new Vector3();
-                var surfaceType      = VFXSurfaceTypes.fallback;
+                var targetPosition = new Vector3();
+                var surfaceType = VFXSurfaceTypes.fallback;
                 var soundSurfaceType = VFXSurfaceTypes.none;
-                var orientation      = MainCameraControl.main.transform.eulerAngles + new Vector3(300f, 90f, 0.0f);
-                var targetObject     = KnifeUsing.GetTargetObject(__instance.attackDist, ref targetPosition, out normal);
+                var orientation = MainCameraControl.main.transform.eulerAngles + new Vector3(300f, 90f, 0.0f);
+                var targetObject = KnifeUsing.GetTargetObject(__instance.attackDist, ref targetPosition, out normal);
 
                 if (targetObject)
                 {
@@ -35,7 +35,7 @@ namespace Subnautica.Events.Patches.Events.Items
                     {
                         surfaceType = vfxSurface.surfaceType;
                     }
-                    
+
                     soundSurfaceType = Utils.GetObjectSurfaceType(targetObject);
                     if (soundSurfaceType == VFXSurfaceTypes.none)
                     {
@@ -44,7 +44,7 @@ namespace Subnautica.Events.Patches.Events.Items
                 }
 
                 KnifeUsingEventArgs args = new KnifeUsingEventArgs(__instance.vfxEventType, targetPosition, orientation, surfaceType, soundSurfaceType, global::Player.main.IsUnderwater());
-            
+
                 Handlers.Items.OnKnifeUsing(args);
             }
             catch (Exception e)

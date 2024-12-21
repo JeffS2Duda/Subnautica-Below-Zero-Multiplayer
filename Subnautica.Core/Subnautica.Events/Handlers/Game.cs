@@ -37,7 +37,7 @@ namespace Subnautica.Events.Handlers
         public static event SubnauticaPluginEventHandler<InGameMenuClosedEventArgs> InGameMenuClosed;
 
         public static void OnInGameMenuClosed(InGameMenuClosedEventArgs ev) => InGameMenuClosed.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler<InGameMenuClosingEventArgs> InGameMenuClosing;
 
         public static void OnInGameMenuClosing(InGameMenuClosingEventArgs ev) => InGameMenuClosing.CustomInvoke(ev);

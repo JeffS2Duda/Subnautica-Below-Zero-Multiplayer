@@ -1,13 +1,11 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
 {
-    using Subnautica.API.Features;
-    using Subnautica.API.Extensions;
-
     using HarmonyLib;
-
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
     using System.Collections.Generic;
-    using System.Reflection.Emit;
     using System.Linq;
+    using System.Reflection.Emit;
 
     [HarmonyPatch]
     public class LeviathanMeleeAttack
@@ -47,9 +45,9 @@
         [HarmonyPatch(typeof(global::LeviathanMeleeAttack), nameof(global::LeviathanMeleeAttack.ReleaseVehicle))]
         private static IEnumerable<CodeInstruction> ReleaseVehicle_Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
         {
-            var codes  = instructions.ToList();
-            
-            var index  = codes.FindIndex(q => q.opcode == OpCodes.Ldfld && q.operand.ToString().Contains("playerAnimator"));
+            var codes = instructions.ToList();
+
+            var index = codes.FindIndex(q => q.opcode == OpCodes.Ldfld && q.operand.ToString().Contains("playerAnimator"));
             if (index > -1)
             {
                 codes.RemoveRange(index - 1, 12);

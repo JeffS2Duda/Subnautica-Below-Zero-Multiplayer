@@ -1,8 +1,5 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System;
-    using System.Collections;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -10,11 +7,10 @@
     using Subnautica.Client.Synchronizations.Processors.Startup;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System;
+    using System.Collections;
     using UnityEngine;
-
     using UWE;
-
     using ClientModel = Subnautica.Network.Models.Client;
     using ServerModel = Subnautica.Network.Models.Server;
 
@@ -31,7 +27,7 @@
             {
                 CoroutineHost.StartCoroutine(LoadedWorldAsync(packet));
             }
-            
+
             return true;
         }
 
@@ -66,12 +62,12 @@
             ServerModel.WorldLoadedArgs request = new ServerModel.WorldLoadedArgs()
             {
                 IsSpawnPointRequest = true,
-                SpawnPointCount     = Network.WorldStreamer.GetClientSpawnPointCount(),
+                SpawnPointCount = Network.WorldStreamer.GetClientSpawnPointCount(),
             };
 
             NetworkClient.SendPacket(request);
         }
-        
+
 
         private static IEnumerator LoadedWorldSpawnPointAsync(ClientModel.WorldLoadedArgs packet)
         {

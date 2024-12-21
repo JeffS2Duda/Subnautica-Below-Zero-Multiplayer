@@ -8,7 +8,7 @@ namespace Subnautica.Events.EventArgs
         {
             this.UniqueId = uniqueId;
             this.IsExtend = isExtend;
-            this.Time     = (float) time;
+            this.Time = (float)time;
         }
 
         public string UniqueId { get; private set; }

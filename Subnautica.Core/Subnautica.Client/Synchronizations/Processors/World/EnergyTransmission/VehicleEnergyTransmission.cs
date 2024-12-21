@@ -24,10 +24,10 @@ namespace Subnautica.Client.Synchronizations.Processors.World.EnergyTransmission
 
                 this.ChargeVehicle(vehicle, CraftData.GetTechType(vehicle), powerCell.PowerCell1, powerCell.PowerCell2);
             }
-          
+
             return true;
         }
-        
+
         private void ChargeVehicle(GameObject vehicle, TechType vehicleType, float powerCell1, float powerCell2)
         {
             if (vehicleType == TechType.Hoverbike)

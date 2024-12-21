@@ -30,9 +30,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 
                 var action = new ItemQueueAction();
                 action.RegisterProperty("Component", packet);
-                action.RegisterProperty("IsMine"   , ZeroPlayer.IsPlayerMine(packet.GetPacketOwnerId()));
+                action.RegisterProperty("IsMine", ZeroPlayer.IsPlayerMine(packet.GetPacketOwnerId()));
                 action.OnProcessCompleted = this.OnProcessCompleted;
-                action.OnEntitySpawned    = this.OnEntityPickupSpawned;
+                action.OnEntitySpawned = this.OnEntityPickupSpawned;
 
                 Entity.ProcessToQueue(action);
             }
@@ -106,9 +106,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.ExosuitStorageArgs request = new ServerModel.ExosuitStorageArgs()
             {
-                UniqueId        = uniqueId,
-                IsPickup        = isPickup,
-                IsAdded         = isAdded,
+                UniqueId = uniqueId,
+                IsPickup = isPickup,
+                IsAdded = isAdded,
                 WorldPickupItem = pickupItem,
             };
 

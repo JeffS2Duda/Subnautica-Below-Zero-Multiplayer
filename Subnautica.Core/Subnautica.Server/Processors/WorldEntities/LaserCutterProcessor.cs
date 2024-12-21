@@ -50,7 +50,7 @@ namespace Subnautica.Server.Processors.WorldEntities
 
             if (Mathf.Approximately(entity.Amount, entity.MaxAmount))
             {
-                entity.Amount   = entity.MaxAmount;
+                entity.Amount = entity.MaxAmount;
                 entity.IsSealed = false;
             }
             else

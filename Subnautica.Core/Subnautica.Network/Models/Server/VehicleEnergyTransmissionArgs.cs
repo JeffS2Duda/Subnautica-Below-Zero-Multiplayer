@@ -1,11 +1,9 @@
 namespace Subnautica.Network.Models.Server
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class VehicleEnergyTransmissionArgs : NetworkPacket
@@ -39,7 +37,7 @@ namespace Subnautica.Network.Models.Server
 
         public VehicleEnergyTransmissionItem(string vehicleId, float powerCell1, float powerCell2)
         {
-            this.VehicleId  = vehicleId;
+            this.VehicleId = vehicleId;
             this.PowerCell1 = powerCell1;
             this.PowerCell2 = powerCell2;
         }

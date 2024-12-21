@@ -1,19 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-    using System.Collections;
-    using System.ComponentModel;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Collections;
     using UnityEngine;
-    using UnityEngine.AddressableAssets;
-    using UnityEngine.EventSystems;
-
-    using UWE;
 
     [HarmonyPatch(typeof(global::GrowingPlant), nameof(global::GrowingPlant.SpawnGrownModelAsync))]
     public static class PlanterProgressCompleted

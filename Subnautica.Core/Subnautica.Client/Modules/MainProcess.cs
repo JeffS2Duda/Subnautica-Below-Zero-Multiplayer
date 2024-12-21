@@ -1,11 +1,10 @@
 ﻿namespace Subnautica.Client.Modules
 {
-    using System;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Core;
     using Subnautica.Client.Multiplayer.Cinematics;
     using Subnautica.Events.EventArgs;
+    using System;
 
     public class MainProcess
     {

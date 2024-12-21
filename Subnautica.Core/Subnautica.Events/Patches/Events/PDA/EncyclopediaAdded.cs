@@ -12,7 +12,7 @@
     {
         public static void Postfix(CraftNode node, bool verbose)
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 try
                 {

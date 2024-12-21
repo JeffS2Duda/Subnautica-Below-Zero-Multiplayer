@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public CrafterOpeningEventArgs(string uniqueId, TechType fabricatorType, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
+            this.UniqueId = uniqueId;
             this.FabricatorType = fabricatorType;
-            this.IsAllowed      = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; private set; }

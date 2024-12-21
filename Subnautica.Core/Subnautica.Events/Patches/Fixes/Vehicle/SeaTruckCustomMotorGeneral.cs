@@ -1,14 +1,11 @@
 namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
-    using System;
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Collections;
     using UnityEngine;
 
     [HarmonyPatch]
@@ -39,7 +36,7 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
             }
 
             return true;
-        }      
+        }
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::SeaTruckSegment), nameof(global::SeaTruckSegment.CanAnimate))]
@@ -124,7 +121,7 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
         {
             if (Network.IsMultiplayerActive)
             {
-                if (__instance.IsOccupied() && __instance.inGetUpAnimation &&  !__instance.dockedHead.motor.IsBusyAnimating())
+                if (__instance.IsOccupied() && __instance.inGetUpAnimation && !__instance.dockedHead.motor.IsBusyAnimating())
                 {
                     ChangeSeaTruckMode(__instance.dockedHead, false);
                 }
@@ -283,7 +280,7 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
         {
             this.enabled = false;
 
-            this.Player     = global::Player.main;
+            this.Player = global::Player.main;
             this.MainCamera = global::MainCameraControl.main;
             this.Player.playerRespawnEvent.AddHandler(this.gameObject, new UWE.Event<global::Player>.HandleFunction(this.OnRespawn));
         }
@@ -394,7 +391,7 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
             }
 
             var moduleId = firstSegment.gameObject.GetIdentityId();
-            
+
             if (this.SeaTruckSegment && firstSegment != this.SeaTruckSegment && firstSegment.isMainCab && this.SeaTruckSegment.isMainCab)
             {
                 return false;
@@ -497,7 +494,7 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
         private void UpdateVehicleInterior(global::SeaTruckSegment firstSegment, bool callEvent = false)
         {
             this.LastFirstSegmentModuleId = firstSegment.gameObject.GetIdentityId();
-            
+
             this.Player.transform.SetParent(firstSegment.transform);
 
             if (callEvent)
@@ -511,7 +508,7 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
                 catch (Exception e)
                 {
                     Log.Error($"CustomMotor.UpdateSeaTruckModule: {e}\n{e.StackTrace}");
-                }               
+                }
             }
         }
 
@@ -535,7 +532,7 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
                 }
             }
         }
-        
+
         public bool SetActive(bool isActive, bool isForce = false, bool isKeepParent = false, bool isKeepPosition = false)
         {
             if (!isForce && this.IsActive == isActive)

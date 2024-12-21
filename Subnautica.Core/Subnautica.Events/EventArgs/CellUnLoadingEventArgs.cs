@@ -7,8 +7,8 @@ namespace Subnautica.Events.EventArgs
         public CellUnLoadingEventArgs(EntityCell entityCell, Int3 batchId, Int3 cellId)
         {
             this.EntityCell = entityCell;
-            this.BatchId    = batchId;
-            this.CellId     = cellId;
+            this.BatchId = batchId;
+            this.CellId = cellId;
         }
 
         public EntityCell EntityCell { get; private set; }

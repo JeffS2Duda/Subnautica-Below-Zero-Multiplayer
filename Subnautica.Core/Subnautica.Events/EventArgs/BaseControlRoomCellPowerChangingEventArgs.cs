@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public BaseControlRoomCellPowerChangingEventArgs(string uniqueId, Int3 cell, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.Cell      = cell;
+            this.UniqueId = uniqueId;
+            this.Cell = cell;
             this.IsAllowed = isAllowed;
         }
 

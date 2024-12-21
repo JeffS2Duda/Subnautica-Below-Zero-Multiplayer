@@ -4,7 +4,7 @@ namespace Subnautica.Server.Extensions
     using Subnautica.Server.Core;
 
     public static class NetworkExtensions
-    {        
+    {
         public static byte GetTargetOwnerId(this ZeroLastTarget lastTarget, byte ownerPlayerId)
         {
             if (lastTarget.IsCreature())

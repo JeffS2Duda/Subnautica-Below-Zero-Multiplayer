@@ -1,19 +1,15 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.General
 {
-    using System.Collections;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Client.Synchronizations.InitialSync;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections;
+    using System.Linq;
     using UnityEngine;
-
     using UWE;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class IntroProcessor : NormalProcessor
@@ -46,7 +42,7 @@
         {
             if (Network.Session.Current.IsFirstLogin && GameModeManager.GetOption<bool>(GameOption.Story))
             {
-                ev.IsAllowed     = false;
+                ev.IsAllowed = false;
                 ev.WaitingMethod = IntroProcessor.IntroCheckingAsync();
             }
             else
@@ -111,7 +107,7 @@
 
                 while (!GameInput.GetButtonDown(GameInput.Button.UICancel))
                 {
-                    gui.mainText.SetText(ZeroLanguage.Get("GAME_INTRO_PLAYERS_CONNECTED").Replace("{playerCount}", ZeroPlayer.GetAllPlayers().Count.ToString()) + "\n" + ZeroLanguage.Get("GAME_INTRO_SERVER_START_DESCRIPTION").Replace("{key}", "ESC") + "\n\n"+  ZeroLanguage.Get("GAME_INVITE_CODE") + "\n" + Network.InviteCode.GetInviteCode());
+                    gui.mainText.SetText(ZeroLanguage.Get("GAME_INTRO_PLAYERS_CONNECTED").Replace("{playerCount}", ZeroPlayer.GetAllPlayers().Count.ToString()) + "\n" + ZeroLanguage.Get("GAME_INTRO_SERVER_START_DESCRIPTION").Replace("{key}", "ESC") + "\n\n" + ZeroLanguage.Get("GAME_INVITE_CODE") + "\n" + Network.InviteCode.GetInviteCode());
                     yield return null;
                 }
 

@@ -1,16 +1,12 @@
 ﻿namespace Subnautica.Events.Patches.Identity.World
 {
-    using System;
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Collections;
     using UnityEngine;
-
     using UWE;
 
     [HarmonyPatch(typeof(global::VirtualPrefabIdentifier), nameof(global::VirtualPrefabIdentifier.SpawnPrefab))]

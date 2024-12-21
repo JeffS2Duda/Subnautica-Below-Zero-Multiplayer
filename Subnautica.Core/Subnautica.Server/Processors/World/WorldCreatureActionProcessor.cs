@@ -19,7 +19,7 @@ namespace Subnautica.Server.Processors.World
 
             if (Server.Instance.Logices.CreatureWatcher.TryGetCreature(packet.CreatureId, out var creature))
             {
-                packet.ProcessTime  = Server.Instance.Logices.World.GetServerTime();
+                packet.ProcessTime = Server.Instance.Logices.World.GetServerTime();
                 packet.CreatureType = creature.TechType;
                 return WorldCreatureProcessor.ExecuteProcessor(profile, packet, creature);
             }

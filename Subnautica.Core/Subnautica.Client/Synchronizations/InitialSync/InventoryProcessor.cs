@@ -1,14 +1,11 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
+    using Subnautica.API.Enums;
+    using Subnautica.API.Features;
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
-
-    using Subnautica.API.Enums;
-    using Subnautica.API.Features;
-
     using UnityEngine;
-
     using UWE;
 
     public class InventoryProcessor
@@ -73,7 +70,7 @@
                 yield return task;
 
                 var dictionary = new Dictionary<string, InventoryItem>();
-                var result     = task.GetResult();
+                var result = task.GetResult();
                 if (result != null)
                 {
                     foreach (var uniqueIdentifier in result.GetComponentsInChildren<UniqueIdentifier>(includeInactive: true))

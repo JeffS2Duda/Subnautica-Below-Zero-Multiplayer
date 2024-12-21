@@ -1,18 +1,14 @@
 namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
+    using HarmonyLib;
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection.Emit;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
-    using Subnautica.API.Extensions;
-
     using UnityEngine;
-
     using UWE;
 
     [HarmonyPatch]

@@ -8,9 +8,9 @@ namespace Subnautica.Events.EventArgs
     {
         public BaseMoonpoolExpansionUndockTailEventArgs(GameObject gameObject, bool withEjection, bool isAllowed = true)
         {
-            this.GameObject   = gameObject;
+            this.GameObject = gameObject;
             this.WithEjection = withEjection;
-            this.IsAllowed    = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public GameObject GameObject { get; set; }

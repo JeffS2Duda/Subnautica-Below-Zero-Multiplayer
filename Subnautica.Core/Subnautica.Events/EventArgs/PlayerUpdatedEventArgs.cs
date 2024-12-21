@@ -9,16 +9,16 @@ namespace Subnautica.Events.EventArgs
     {
         public PlayerUpdatedEventArgs(Vector3 position, Vector3 localPosition, Quaternion rotation, TechType techTypeInHand, List<TechType> equipments, float cameraPitch, Vector3 cameraForward, float emoteIndex, bool isPrecursorArm, VFXSurfaceTypes surfaceType)
         {
-            this.Position       = position;
-            this.LocalPosition  = localPosition;
-            this.Rotation       = rotation;
+            this.Position = position;
+            this.LocalPosition = localPosition;
+            this.Rotation = rotation;
             this.TechTypeInHand = techTypeInHand;
-            this.Equipments     = equipments;
-            this.CameraPitch    = cameraPitch;
-            this.CameraForward  = cameraForward;
-            this.EmoteIndex     = emoteIndex;
+            this.Equipments = equipments;
+            this.CameraPitch = cameraPitch;
+            this.CameraForward = cameraForward;
+            this.EmoteIndex = emoteIndex;
             this.IsPrecursorArm = isPrecursorArm;
-            this.SurfaceType    = surfaceType;
+            this.SurfaceType = surfaceType;
         }
 
         public Vector3 Position { get; private set; }

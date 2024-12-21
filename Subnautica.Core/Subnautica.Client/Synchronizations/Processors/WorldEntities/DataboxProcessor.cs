@@ -1,18 +1,15 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
-    using System.Collections;
-    
-    using Subnautica.API.Features;
-    using Subnautica.Events.EventArgs;
-    using Subnautica.Client.Core;
-    using Subnautica.Client.Abstracts.Processors;
-    using Subnautica.Network.Core.Components;
-
-    using ServerModel = Subnautica.Network.Models.Server;
-    using EntityModel = Subnautica.Network.Models.WorldEntity;
-
-    using UnityEngine;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
+    using Subnautica.Client.Abstracts.Processors;
+    using Subnautica.Client.Core;
+    using Subnautica.Events.EventArgs;
+    using Subnautica.Network.Core.Components;
+    using System.Collections;
+    using UnityEngine;
+    using EntityModel = Subnautica.Network.Models.WorldEntity;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class DataboxProcessor : WorldEntityProcessor
     {
@@ -48,7 +45,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
         {
             yield return new WaitForSecondsRealtime(0.25f);
 
-            if (databox != null) 
+            if (databox != null)
             {
                 this.PickupBlueprint(databox);
             }
@@ -72,7 +69,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
                 Entity = new EntityModel.Databox()
                 {
                     UniqueId = ev.UniqueId,
-                    IsUsed   = true,
+                    IsUsed = true,
                 }
             };
 

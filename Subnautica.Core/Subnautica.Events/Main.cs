@@ -6,7 +6,6 @@ namespace Subnautica.Events
     using Subnautica.API.Features;
 
     using System;
-    using System.Diagnostics;
 
     using UnityEngine.SceneManagement;
 
@@ -19,7 +18,7 @@ namespace Subnautica.Events
         public override void OnEnabled()
         {
             base.OnEnabled();
-            
+
             SceneManager.sceneLoaded += Patches.Events.Game.SceneLoaded.Run;
 
             try

@@ -1,19 +1,18 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
+    using System;
 
     public class EntitySpawningEventArgs : EventArgs
     {
         public EntitySpawningEventArgs(string uniqueId, string classId, TechType techType, EntitySpawnLevel level, bool isPersistent, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.ClassId   = classId;
-            this.TechType  = techType;
-            this.Level     = level;
+            this.UniqueId = uniqueId;
+            this.ClassId = classId;
+            this.TechType = techType;
+            this.Level = level;
             this.IsAllowed = isAllowed;
 
             if (uniqueId.IsWorldStreamer())

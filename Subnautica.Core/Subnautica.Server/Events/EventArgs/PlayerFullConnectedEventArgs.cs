@@ -1,8 +1,7 @@
 namespace Subnautica.Server.Events.EventArgs
 {
-    using System;
-
     using Subnautica.Server.Core;
+    using System;
 
     public class PlayerFullConnectedEventArgs : EventArgs
     {

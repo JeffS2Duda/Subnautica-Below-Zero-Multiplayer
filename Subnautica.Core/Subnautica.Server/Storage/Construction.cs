@@ -1,18 +1,16 @@
 namespace Subnautica.Server.Storage
 {
-    using System;
-    using System.IO;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts;
-
+    using System;
+    using System.IO;
+    using System.Linq;
     using ConstructionStorage = Network.Models.Storage.Construction;
-    using MetadataModel       = Subnautica.Network.Models.Metadata;
+    using MetadataModel = Subnautica.Network.Models.Metadata;
 
     public class Construction : BaseStorage
     {
@@ -58,7 +56,7 @@ namespace Subnautica.Server.Storage
                 }
                 Log.Info("---------------------------------------------------------------");
             }
-        }        
+        }
 
         public override void SaveToDisk()
         {
@@ -164,7 +162,7 @@ namespace Subnautica.Server.Storage
                 }
 
                 var constructionId = this.Storage.Constructions[uniqueId].Id;
-                var baseId         = this.Storage.Constructions[uniqueId].BaseId;
+                var baseId = this.Storage.Constructions[uniqueId].BaseId;
 
                 if (this.Storage.Constructions.Remove(uniqueId))
                 {
@@ -206,12 +204,12 @@ namespace Subnautica.Server.Storage
                         construction.BaseId = baseId;
                     }
 
-                    construction.CellPosition      = cellPosition;
-                    construction.IsFaceHasValue    = isFaceHasValue;
-                    construction.LocalPosition     = localPosition;
-                    construction.LocalRotation     = localRotation;
-                    construction.FaceDirection     = faceDirection;
-                    construction.FaceType          = faceType;
+                    construction.CellPosition = cellPosition;
+                    construction.IsFaceHasValue = isFaceHasValue;
+                    construction.LocalPosition = localPosition;
+                    construction.LocalRotation = localRotation;
+                    construction.FaceDirection = faceDirection;
+                    construction.FaceType = faceType;
                     construction.ConstructedAmount = 1f;
 
                     Core.Server.Instance.Logices.EnergyTransmission.OnConstructionComplete(construction);

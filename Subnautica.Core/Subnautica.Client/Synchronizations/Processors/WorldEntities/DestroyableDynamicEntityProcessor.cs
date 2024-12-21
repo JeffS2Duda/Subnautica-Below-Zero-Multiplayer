@@ -63,7 +63,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
             {
                 Entity = new EntityModel.DestroyableDynamicEntity()
                 {
-                    UniqueId        = uniqueId,
+                    UniqueId = uniqueId,
                     IsWorldStreamer = isWorldStreamer,
                 },
             };

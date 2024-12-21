@@ -19,10 +19,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                 return false;
             }
 
-            ZeroPlayer.CurrentPlayer.UniqueId         = packet.PlayerUniqueId;
-            ZeroPlayer.CurrentPlayer.NickName         = Tools.GetLoggedInName();
-            ZeroPlayer.CurrentPlayer.PlayerId         = packet.PlayerId;
-            ZeroPlayer.CurrentPlayer.CurrentServerId  = packet.ServerId;
+            ZeroPlayer.CurrentPlayer.UniqueId = packet.PlayerUniqueId;
+            ZeroPlayer.CurrentPlayer.NickName = Tools.GetLoggedInName();
+            ZeroPlayer.CurrentPlayer.PlayerId = packet.PlayerId;
+            ZeroPlayer.CurrentPlayer.CurrentServerId = packet.ServerId;
             ZeroPlayer.CurrentPlayer.CurrentSubRootId = packet.PlayerSubRootId;
 
             Network.IsMultiplayerActive = true;

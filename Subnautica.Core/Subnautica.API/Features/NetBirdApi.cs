@@ -1,14 +1,12 @@
 namespace Subnautica.API.Features
 {
+    using Subnautica.API.Extensions;
     using System;
-    using System.Threading;
+    using System.Diagnostics;
+    using System.IO;
     using System.Net.NetworkInformation;
     using System.Text;
-
-    using Subnautica.API.Extensions;
-
-    using System.IO;
-    using System.Diagnostics;
+    using System.Threading;
 
     public class NetBirdApi
     {
@@ -151,8 +149,8 @@ namespace Subnautica.API.Features
         public string GetPeerId()
         {
             return this.Manager.GetPeerId();
-        }       
-        
+        }
+
         public string GetPeerIp()
         {
             return this.Manager.GetPeerIp();
@@ -261,13 +259,13 @@ namespace Subnautica.API.Features
 
                 using (Process process = new Process())
                 {
-                    process.StartInfo.FileName               = isInstallion ? "cmd.exe" : Paths.GetNetbirdPath(this.FileName);
-                    process.StartInfo.Arguments              = isInstallion ? string.Format(@"/c Subnautica.NetBird.exe ""{0}""", command) : command;
-                    process.StartInfo.UseShellExecute        = false;
+                    process.StartInfo.FileName = isInstallion ? "cmd.exe" : Paths.GetNetbirdPath(this.FileName);
+                    process.StartInfo.Arguments = isInstallion ? string.Format(@"/c Subnautica.NetBird.exe ""{0}""", command) : command;
+                    process.StartInfo.UseShellExecute = false;
                     process.StartInfo.RedirectStandardOutput = true;
-                    process.StartInfo.RedirectStandardError  = true;
-                    process.StartInfo.WindowStyle            = System.Diagnostics.ProcessWindowStyle.Hidden;
-                    process.StartInfo.CreateNoWindow         = true;
+                    process.StartInfo.RedirectStandardError = true;
+                    process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                    process.StartInfo.CreateNoWindow = true;
 
                     if (isInstallion)
                     {
@@ -284,7 +282,8 @@ namespace Subnautica.API.Features
                     using (AutoResetEvent outputWaitHandle = new AutoResetEvent(false))
                     using (AutoResetEvent errorWaitHandle = new AutoResetEvent(false))
                     {
-                        process.OutputDataReceived += (sender, e) => {
+                        process.OutputDataReceived += (sender, e) =>
+                        {
                             if (e.Data == null)
                             {
                                 outputWaitHandle.Set();
@@ -313,12 +312,12 @@ namespace Subnautica.API.Features
                         if (process.WaitForExit(timeout) && outputWaitHandle.WaitOne(timeout) && errorWaitHandle.WaitOne(timeout))
                         {
                             this.LastOutput = output.ToString().Trim();
-                            this.LastError  = error.ToString().Trim();
+                            this.LastError = error.ToString().Trim();
                         }
                         else
                         {
                             this.LastOutput = output.ToString().Trim();
-                            this.LastError  = error.ToString().Trim();
+                            this.LastError = error.ToString().Trim();
 
                             if (this.LastError.IsNull())
                             {

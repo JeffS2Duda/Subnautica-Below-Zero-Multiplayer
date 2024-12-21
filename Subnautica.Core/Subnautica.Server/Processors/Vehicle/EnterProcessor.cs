@@ -1,19 +1,16 @@
 namespace Subnautica.Server.Processors.Vehicle
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Extensions;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using MetadataModel = Subnautica.Network.Models.Metadata;
-    using ServerModel   = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class EnterProcessor : NormalProcessor
     {
@@ -56,7 +53,7 @@ namespace Subnautica.Server.Processors.Vehicle
             {
                 return false;
             }
-            
+
             if (packet.TechType == TechType.MapRoomCamera)
             {
                 packet.Vehicle = entity;

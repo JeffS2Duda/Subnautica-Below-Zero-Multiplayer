@@ -1,18 +1,15 @@
 namespace Subnautica.Client.Synchronizations.Processors.Items
 {
-    using Subnautica.Events.EventArgs;
-    using Subnautica.Client.Core;
-    using Subnautica.API.Extensions;
-    using Subnautica.Client.Abstracts.Processors;
-    using Subnautica.Network.Core.Components;
-    using Subnautica.API.Features;
-
-    using ServerModel = Subnautica.Network.Models.Server;
-    using ItemModel   = Subnautica.Network.Models.Items;
-
-    using UnityEngine;
-
     using FMOD.Studio;
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
+    using Subnautica.Client.Abstracts.Processors;
+    using Subnautica.Client.Core;
+    using Subnautica.Events.EventArgs;
+    using Subnautica.Network.Core.Components;
+    using UnityEngine;
+    using ItemModel = Subnautica.Network.Models.Items;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class KnifeProcessor : PlayerItemProcessor
     {
@@ -66,10 +63,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             }
 
             EventInstance fmodEvent = Utils.GetFMODEvent(tool.hitSound, entity.TargetPosition.ToVector3());
-            fmodEvent.setParameterValueByIndex(tool.surfaceParamIndex, (float) entity.SoundSurfaceType);
+            fmodEvent.setParameterValueByIndex(tool.surfaceParamIndex, (float)entity.SoundSurfaceType);
             fmodEvent.start();
             fmodEvent.release();
-            return true;    
+            return true;
         }
 
         public static void OnKnifeUsing(KnifeUsingEventArgs ev)
@@ -78,12 +75,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 Item = new ItemModel.Knife()
                 {
-                    VFXEventType     = ev.VFXEventType,
-                    TargetPosition   = ev.TargetPosition.ToZeroVector3(),
-                    Orientation      = ev.Orientation.ToZeroVector3(),
-                    SurfaceType      = ev.SurfaceType,
+                    VFXEventType = ev.VFXEventType,
+                    TargetPosition = ev.TargetPosition.ToZeroVector3(),
+                    Orientation = ev.Orientation.ToZeroVector3(),
+                    SurfaceType = ev.SurfaceType,
                     SoundSurfaceType = ev.SoundSurfaceType,
-                    IsUnderwater     = ev.IsUnderwater,
+                    IsUnderwater = ev.IsUnderwater,
                 }
             };
 

@@ -1,13 +1,10 @@
 namespace Subnautica.Server.Processors.World
 {
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
-
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class WorldDynamicEntityPositionProcessor : NormalProcessor

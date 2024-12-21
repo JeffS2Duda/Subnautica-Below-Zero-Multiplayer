@@ -20,7 +20,7 @@ namespace Subnautica.Client.Synchronizations.Processors.PDA
             {
                 KnownTech.Analyze(packet.TechType, true, packet.Verbose);
             }
-      
+
             return true;
         }
 
@@ -29,7 +29,7 @@ namespace Subnautica.Client.Synchronizations.Processors.PDA
             ServerModel.TechAnalyzeAddedArgs result = new ServerModel.TechAnalyzeAddedArgs()
             {
                 TechType = ev.TechType,
-                Verbose  = ev.Verbose,
+                Verbose = ev.Verbose,
             };
 
             NetworkClient.SendPacket(result);

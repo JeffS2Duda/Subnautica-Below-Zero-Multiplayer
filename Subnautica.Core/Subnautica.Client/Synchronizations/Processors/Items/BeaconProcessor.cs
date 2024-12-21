@@ -5,7 +5,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
     using Subnautica.API.Features.Helper;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
-    using Subnautica.Client.Extensions;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Storage.World.Childrens;
@@ -13,7 +12,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BeaconProcessor : PlayerItemProcessor
@@ -31,7 +30,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
                 var action = new ItemQueueAction();
                 action.OnProcessCompleted = OnEntityProcessCompleted;
                 action.RegisterProperty("UniqueId", component.UniqueId);
-                action.RegisterProperty("Text"    , component.Text);
+                action.RegisterProperty("Text", component.Text);
 
                 Entity.ProcessToQueue(action);
             }
@@ -60,7 +59,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
         public void OnEntityProcessCompleted(ItemQueueProcess item)
         {
             var uniqueId = item.Action.GetProperty<string>("UniqueId");
-            var text     = item.Action.GetProperty<string>("Text");
+            var text = item.Action.GetProperty<string>("Text");
 
             var gameObject = Network.Identifier.GetComponentByGameObject<global::BeaconLabel>(uniqueId);
             if (gameObject)
@@ -90,12 +89,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 Item = new ItemModel.Beacon()
                 {
-                    UniqueId         = uniqueId,
-                    Position         = position,
-                    Rotation         = rotation,
-                    Text             = text,
+                    UniqueId = uniqueId,
+                    Position = position,
+                    Rotation = rotation,
+                    Text = text,
                     IsDeployedOnLand = isDeployedOnLand,
-                    IsTextChanged    = isTextChanged,
+                    IsTextChanged = isTextChanged,
                 }
             };
 

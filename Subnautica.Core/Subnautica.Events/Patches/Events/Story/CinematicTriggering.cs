@@ -3,7 +3,6 @@ namespace Subnautica.Events.Patches.Events.Story
     using global::Story;
 
     using HarmonyLib;
-    using HighlightingSystem;
 
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
@@ -24,7 +23,7 @@ namespace Subnautica.Events.Patches.Events.Story
             {
                 return true;
             }
-            
+
             if (__instance.triggerType != CinematicModeTriggerBase.TriggerType.HandTarget)
             {
                 return false;
@@ -101,7 +100,7 @@ namespace Subnautica.Events.Patches.Events.Story
             {
                 return false;
             }
-            
+
             var componentInHierarchy = UWE.Utils.GetComponentInHierarchy<global::Player>(collider.gameObject);
             if (componentInHierarchy == null)
             {

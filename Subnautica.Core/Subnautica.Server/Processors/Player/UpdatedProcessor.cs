@@ -26,7 +26,7 @@ namespace Subnautica.Server.Processors.Player
 
             if (packet.CompressedLocalPosition != 0)
             {
-                packet.CompressedPosition      = packet.CompressedLocalPosition;
+                packet.CompressedPosition = packet.CompressedLocalPosition;
                 packet.CompressedLocalPosition = 0;
             }
 

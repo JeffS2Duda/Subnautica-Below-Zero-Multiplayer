@@ -1,14 +1,11 @@
 ﻿namespace Subnautica.API.Extensions
 {
-    using System.Collections.Generic;
-    using System.IO;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
-
+    using System.Collections.Generic;
+    using System.IO;
     using UnityEngine;
-
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public static class GameExtensions
@@ -33,27 +30,27 @@
                     {
                         return GameModePresetId.Survival;
                     }
-                    
+
                     if (item.translationKey.Contains("Freedom"))
                     {
                         return GameModePresetId.Freedom;
                     }
-                    
+
                     if (item.translationKey.Contains("Hardcore"))
                     {
                         return GameModePresetId.Hardcore;
                     }
-                    
+
                     if (item.translationKey.Contains("Creative"))
                     {
                         return GameModePresetId.Creative;
                     }
-                    
+
                     if (item.translationKey.Contains("CustomGameMode"))
                     {
                         return GameModePresetId.Custom;
                     }
-                }   
+                }
             }
 
             return GameModePresetId.Custom;
@@ -87,10 +84,10 @@
         {
             return new WorldEntityModel.Hoverbike()
             {
-                Modules         = hoverBike.modules.ToUpgradeConsoleItems(new string[1] { global::Hoverbike.slot1ID }),
-                Charge          = hoverBike.energyMixin.battery == null ? (GameModeManager.GetOption<bool>(GameOption.TechnologyRequiresPower) ? 0.0f : 1.701412E+38f) : hoverBike.energyMixin.battery.charge,
-                LiveMixin       = hoverBike.liveMixin.ToZeroLiveMixin(),
-                IsLightActive   = hoverBike.toggleLights.lightsActive,
+                Modules = hoverBike.modules.ToUpgradeConsoleItems(new string[1] { global::Hoverbike.slot1ID }),
+                Charge = hoverBike.energyMixin.battery == null ? (GameModeManager.GetOption<bool>(GameOption.TechnologyRequiresPower) ? 0.0f : 1.701412E+38f) : hoverBike.energyMixin.battery.charge,
+                LiveMixin = hoverBike.liveMixin.ToZeroLiveMixin(),
+                IsLightActive = hoverBike.toggleLights.lightsActive,
                 ColorCustomizer = hoverBike.colorNameControl.ToZeroColorCustomer(),
             };
         }
@@ -99,8 +96,8 @@
         {
             return new WorldEntityModel.MapRoomCamera()
             {
-                Battery        = pickupable.GetComponent<global::EnergyMixin>().ToPowerCell(),
-                LiveMixin      = pickupable.GetComponent<global::LiveMixin>().ToZeroLiveMixin(),
+                Battery = pickupable.GetComponent<global::EnergyMixin>().ToPowerCell(),
+                LiveMixin = pickupable.GetComponent<global::LiveMixin>().ToZeroLiveMixin(),
                 IsLightEnabled = pickupable.GetComponent<global::MapRoomCamera>().lightsParent.activeInHierarchy,
             };
         }
@@ -109,11 +106,11 @@
         {
             return new ZeroColorCustomizer()
             {
-                Name         = colorNameControl.savedName,
-                BaseColor    = uGUI_ColorPicker.HSBToColor(colorNameControl.savedColors[0]).ToZeroColor(),
+                Name = colorNameControl.savedName,
+                BaseColor = uGUI_ColorPicker.HSBToColor(colorNameControl.savedColors[0]).ToZeroColor(),
                 StripeColor1 = uGUI_ColorPicker.HSBToColor(colorNameControl.savedColors[1]).ToZeroColor(),
                 StripeColor2 = uGUI_ColorPicker.HSBToColor(colorNameControl.savedColors[2]).ToZeroColor(),
-                NameColor    = uGUI_ColorPicker.HSBToColor(colorNameControl.savedColors[3]).ToZeroColor(),
+                NameColor = uGUI_ColorPicker.HSBToColor(colorNameControl.savedColors[3]).ToZeroColor(),
             };
         }
 
@@ -127,7 +124,7 @@
             return new WorldEntityModel.Shared.PowerCell()
             {
                 UniqueId = Network.Identifier.GenerateUniqueId(),
-                Charge   = energyMixin.charge,
+                Charge = energyMixin.charge,
                 Capacity = energyMixin.capacity,
             };
         }
@@ -284,7 +281,7 @@
                     if (repeatMode != jukebox.repeat)
                     {
                         jukebox.repeat = repeatMode;
-                        jukebox.imageRepeat.sprite = jukebox.spritesRepeat[(int) repeatMode];
+                        jukebox.imageRepeat.sprite = jukebox.spritesRepeat[(int)repeatMode];
                         global::Jukebox.repeat = repeatMode;
                     }
 
@@ -303,7 +300,7 @@
                         global::Jukebox.volume = volume;
                     }
 
-                    float difference = (position - jukebox._position) * (float) (global::Jukebox.length / 1000f);
+                    float difference = (position - jukebox._position) * (float)(global::Jukebox.length / 1000f);
                     if (difference == 0 || difference > 1.5f || difference < 1.5f)
                     {
                         jukebox._position = position / length;
@@ -382,7 +379,7 @@
             {
                 return null;
             }
-            
+
             if (gameObject.TryGetComponent<global::BaseDeconstructable>(out var baseDeconstructable) && baseDeconstructable.recipe == TechType.BaseMapRoom)
             {
                 return baseDeconstructable.GetMapRoomFunctionality()?.gameObject?.GetComponentInChildren<global::GhostCrafter>();

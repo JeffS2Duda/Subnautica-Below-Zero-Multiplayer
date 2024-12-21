@@ -1,14 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
+    using HarmonyLib;
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
+    using Subnautica.Events.EventArgs;
     using System;
     using System.Collections;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
-    using Subnautica.API.Extensions;
-    using Subnautica.Events.EventArgs;
-
     using UnityEngine;
 
     public static class SignDataChangedShared
@@ -46,8 +43,8 @@ namespace Subnautica.Events.Patches.Events.Furnitures
             {
                 try
                 {
-                    var uniqueId      = string.Empty;
-                    var techType      = TechType.None;
+                    var uniqueId = string.Empty;
+                    var techType = TechType.None;
 
                     var constructable = __instance.GetComponentInParent<Constructable>();
                     if (constructable)
@@ -61,7 +58,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                     else
                     {
                         if (__instance.GetComponentInParent<global::SeaTruckSegment>())
-                        { 
+                        {
                             uniqueId = Network.Identifier.GetIdentityId(__instance.gameObject, false);
                             if (uniqueId.IsNotNull())
                             {
@@ -140,7 +137,8 @@ namespace Subnautica.Events.Patches.Events.Furnitures
             if (Network.IsMultiplayerActive)
             {
                 __instance.inputField.onValueChanged.RemoveAllListeners();
-                __instance.inputField.onValueChanged.AddListener((string text) => {
+                __instance.inputField.onValueChanged.AddListener((string text) =>
+                {
                     SignDataChangedShared.TriggerEvent(__instance);
                 });
             }
@@ -166,7 +164,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                     if (constructable.constructed)
                     {
                         uniqueId = Network.Identifier.GetIdentityId(constructable.gameObject);
-                        techType = constructable.techType; 
+                        techType = constructable.techType;
                     }
                 }
                 else
@@ -200,7 +198,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                         Log.Error($"Furnitures.SignDataChangedOnDeselect: {e}\n{e.StackTrace}");
                     }
                 }
-            }  
+            }
         }
     }
 

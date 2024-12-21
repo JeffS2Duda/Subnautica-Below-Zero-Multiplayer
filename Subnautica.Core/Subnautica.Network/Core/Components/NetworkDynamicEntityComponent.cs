@@ -1,9 +1,7 @@
 namespace Subnautica.Network.Core.Components
 {
-    using System;
-
     using MessagePack;
-
+    using System;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     [Union(0, typeof(WorldEntityModel.SeaTruck))]
@@ -33,7 +31,7 @@ namespace Subnautica.Network.Core.Components
         {
             if (this is T)
             {
-                return (T) Convert.ChangeType(this, typeof(T));
+                return (T)Convert.ChangeType(this, typeof(T));
             }
 
             return default(T);

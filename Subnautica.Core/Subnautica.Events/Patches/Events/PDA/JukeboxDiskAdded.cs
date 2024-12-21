@@ -12,7 +12,7 @@
     {
         private static void Prefix(global::Jukebox __instance, Jukebox.UnlockableTrack track, bool notify = true)
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 if (global::Player.main.unlockedTracks == null || global::Player.main.unlockedTracks.Contains(track))
                 {

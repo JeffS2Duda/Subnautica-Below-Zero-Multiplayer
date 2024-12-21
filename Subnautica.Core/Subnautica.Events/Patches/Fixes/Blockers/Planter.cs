@@ -1,10 +1,8 @@
 namespace Subnautica.Events.Patches.Fixes.Blockers
 {
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System.Collections.Generic;
 
     [HarmonyPatch(typeof(global::Planter), nameof(global::Planter.ReplaceItem))]
     public static class Planter

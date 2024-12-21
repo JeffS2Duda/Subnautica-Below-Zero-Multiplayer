@@ -1,10 +1,9 @@
 ﻿namespace Subnautica.API.Features.Creatures
 {
+    using Subnautica.API.Features.Helper;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    
-    using Subnautica.API.Features.Helper;
 
     public class CreatureQueueItem
     {
@@ -23,7 +22,7 @@
 
     public class CreatureQueueAction
     {
-       private List<GenericProperty> Properties = new List<GenericProperty>();
+        private List<GenericProperty> Properties = new List<GenericProperty>();
 
         public Action<MultiplayerCreature, CreatureQueueItem> OnProcessCompleted { get; set; }
 
@@ -40,7 +39,7 @@
                 return default(T);
             }
 
-            return (T) property.GetValue<T>();
+            return (T)property.GetValue<T>();
         }
     }
 }

@@ -6,10 +6,10 @@ namespace Subnautica.Events.EventArgs
     {
         public BedEnterInUseModeEventArgs(string uniqueId, Bed.BedSide side, TechType techType, bool isSeaTruckModule, bool isAllowed = true)
         {
-            this.UniqueId         = uniqueId;
-            this.Side             = side;
-            this.TechType         = techType;
-            this.IsAllowed        = isAllowed;
+            this.UniqueId = uniqueId;
+            this.Side = side;
+            this.TechType = techType;
+            this.IsAllowed = isAllowed;
             this.IsSeaTruckModule = isSeaTruckModule;
         }
 

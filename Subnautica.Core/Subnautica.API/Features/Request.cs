@@ -14,7 +14,7 @@ namespace Subnautica.API.Features
             }
 
             HttpContent content = null;
-            if(payload != null)
+            if (payload != null)
             {
                 content = new FormUrlEncodedContent(payload);
             }
@@ -33,15 +33,15 @@ namespace Subnautica.API.Features
 
                 HttpRequestMessage request = new HttpRequestMessage
                 {
-                    Method     = type,
+                    Method = type,
                     RequestUri = new Uri(remoteUrl),
-                    Content    = content
+                    Content = content
                 };
 
                 httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x86arm) AppleWebKit/527.30 (KHTML, like Gecko) Chrome/100.0.0.0 Safair/535.29");
 
                 var result = httpClient.SendAsync(request).Result;
-                response   = result.Content.ReadAsStringAsync().Result;
+                response = result.Content.ReadAsStringAsync().Result;
             }
 
             return response.Trim();

@@ -1,7 +1,6 @@
 ﻿namespace Subnautica.Client.MonoBehaviours
 {
     using Subnautica.API.Features;
-    using Subnautica.Network.Structures;
 
     using UnityEngine;
 
@@ -16,7 +15,7 @@
         private StopwatchItem Timing = new StopwatchItem(BroadcastInterval.ConstructingGhostMoved);
 
         public void Update()
-        {   
+        {
             if (this.Builder != null && this.Builder.IsActive && this.Builder.IsGhostModelAnimation)
             {
                 if (this.Timing.IsFinished())
@@ -38,7 +37,7 @@
         }
 
         public void UpdatePosition()
-        {            
+        {
             Vector3 positionVelocity = Vector3.zero;
 
             this.Builder.GhostModel.transform.position = Vector3.SmoothDamp(this.Builder.GhostModel.transform.position, this.Builder.PlacePosition, ref positionVelocity, 0.05f);

@@ -49,7 +49,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             ServerModel.PlayerFreezeArgs request = new ServerModel.PlayerFreezeArgs()
             {
                 IsFreeze = isFreeze,
-                EndTime  = endTime
+                EndTime = endTime
             };
 
             NetworkClient.SendPacket(request);

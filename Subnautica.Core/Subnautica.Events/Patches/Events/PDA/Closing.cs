@@ -20,8 +20,8 @@ namespace Subnautica.Events.Patches.Events.PDA
             }
 
             if (!__instance.isInUse || __instance.ignorePDAInput)
-            { 
-                return; 
+            {
+                return;
             }
 
             try
@@ -38,13 +38,13 @@ namespace Subnautica.Events.Patches.Events.PDA
 
         private static TechType GetTechType(Transform transform)
         {
-            if(transform == null)
+            if (transform == null)
             {
                 return TechType.None;
             }
 
             var constructable = transform.gameObject.GetComponent<Constructable>();
-            if(constructable == null)
+            if (constructable == null)
             {
                 return TechType.None;
             }

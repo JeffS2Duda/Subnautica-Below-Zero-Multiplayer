@@ -1,14 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.Player
 {
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class AnimationChangedProcessor : NormalProcessor

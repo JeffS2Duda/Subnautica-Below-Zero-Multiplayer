@@ -1,7 +1,7 @@
 namespace Subnautica.Server.Processors.Technology
 {
     using Server.Core;
-    
+
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.Technology;
     using Subnautica.Server.Abstracts.Processors;
@@ -20,8 +20,8 @@ namespace Subnautica.Server.Processors.Technology
 
             TechnologyItem item = new TechnologyItem()
             {
-                TechType      = packet.TechType,
-                Unlocked      = 1,
+                TechType = packet.TechType,
+                Unlocked = 1,
                 TotalFragment = 1
             };
 

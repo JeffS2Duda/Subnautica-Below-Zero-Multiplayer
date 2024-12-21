@@ -4,8 +4,6 @@ namespace Subnautica.Events.Patches.Fixes.Furnitures
 
     using Subnautica.API.Features;
 
-    using UnityEngine;
-
     [HarmonyPatch]
     public static class FiltrationMachineTryFilter
     {

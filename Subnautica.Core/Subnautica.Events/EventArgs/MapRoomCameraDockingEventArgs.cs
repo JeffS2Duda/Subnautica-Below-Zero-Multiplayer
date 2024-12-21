@@ -8,11 +8,11 @@ namespace Subnautica.Events.EventArgs
     {
         public MapRoomCameraDockingEventArgs(string uniqueId, string vehicleId, Vector3 endPosition, Quaternion endRotation, bool isLeft, bool isAllowed = true)
         {
-            this.UniqueId    = uniqueId;
-            this.VehicleId   = vehicleId;
+            this.UniqueId = uniqueId;
+            this.VehicleId = vehicleId;
             this.EndPosition = endPosition;
             this.EndRotation = endRotation;
-            this.IsLeft      = isLeft;
+            this.IsLeft = isLeft;
         }
 
         public string UniqueId { get; set; }

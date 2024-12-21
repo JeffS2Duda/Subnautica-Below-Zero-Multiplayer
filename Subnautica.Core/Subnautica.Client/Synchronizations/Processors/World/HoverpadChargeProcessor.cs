@@ -1,9 +1,8 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using Subnautica.Network.Models.Core;
-    using Subnautica.Client.Abstracts;
     using Subnautica.API.Features;
-
+    using Subnautica.Client.Abstracts;
+    using Subnautica.Network.Models.Core;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class HoverpadChargeProcessor : NormalProcessor
@@ -26,8 +25,8 @@ namespace Subnautica.Client.Synchronizations.Processors.World
                         continue;
                     }
 
-                    var newHealth = (float) item.Value.Health;
-                    var newCharge = (float) item.Value.Charge;
+                    var newHealth = (float)item.Value.Health;
+                    var newCharge = (float)item.Value.Charge;
 
                     if (newHealth > hoverpad.dockedBike.liveMixin.health)
                     {
@@ -37,7 +36,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
                     if (newCharge > hoverpad.dockedBike.energyMixin.charge)
                     {
                         hoverpad.dockedBike.energyMixin.AddEnergy(newCharge - hoverpad.dockedBike.energyMixin.charge);
-                    }  
+                    }
                 }
             }
 

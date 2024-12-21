@@ -38,20 +38,20 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             else if (packet.IsSelectingPictureFrame)
             {
                 var action = new ItemQueueAction();
-                action.RegisterProperty("UniqueId" , packet.UniqueId);
+                action.RegisterProperty("UniqueId", packet.UniqueId);
                 action.RegisterProperty("ImageName", packet.PictureFrameName);
                 action.RegisterProperty("ImageData", packet.PictureFrameData);
                 action.OnProcessCompleted = this.OnPictureFrameSelected;
-                
+
                 Entity.ProcessToQueue(action);
             }
             else if (packet.SleepingSide != global::Bed.BedSide.None)
             {
                 var action = new ItemQueueAction();
-                action.RegisterProperty("UniqueId"    , packet.UniqueId);
-                action.RegisterProperty("PlayerId"    , packet.GetPacketOwnerId());
+                action.RegisterProperty("UniqueId", packet.UniqueId);
+                action.RegisterProperty("PlayerId", packet.GetPacketOwnerId());
                 action.RegisterProperty("SleepingSide", packet.SleepingSide);
-                action.RegisterProperty("IsSleeping"  , packet.IsSleeping);
+                action.RegisterProperty("IsSleeping", packet.IsSleeping);
                 action.OnProcessCompleted = this.OnBedSleepProcessCompleted;
 
                 Entity.ProcessToQueue(action);
@@ -62,10 +62,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 
         private void OnBedSleepProcessCompleted(ItemQueueProcess item)
         {
-            var uniqueId     = item.Action.GetProperty<string>("UniqueId");
-            var playerId     = item.Action.GetProperty<byte>("PlayerId");
+            var uniqueId = item.Action.GetProperty<string>("UniqueId");
+            var playerId = item.Action.GetProperty<byte>("PlayerId");
             var sleepingSide = item.Action.GetProperty<global::Bed.BedSide>("SleepingSide");
-            var isSleeping   = item.Action.GetProperty<bool>("IsSleeping");
+            var isSleeping = item.Action.GetProperty<bool>("IsSleeping");
 
             var player = ZeroPlayer.GetPlayerById(playerId);
             if (player == null)
@@ -157,13 +157,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.SeaTruckSleeperModuleArgs request = new ServerModel.SeaTruckSleeperModuleArgs()
             {
-                UniqueId                = uniqueId,
-                IsOpeningPictureFrame   = isOpeningPictureFrame,
+                UniqueId = uniqueId,
+                IsOpeningPictureFrame = isOpeningPictureFrame,
                 IsSelectingPictureFrame = isSelectingPictureFrame,
-                PictureFrameData        = pictureFrameData,
-                JukeboxData             = jukeboxData,
-                SleepingSide            = sleepingSide,
-                IsSleeping              = isSleeping,
+                PictureFrameData = pictureFrameData,
+                JukeboxData = jukeboxData,
+                SleepingSide = sleepingSide,
+                IsSleeping = isSleeping,
             };
 
             NetworkClient.SendPacket(request);

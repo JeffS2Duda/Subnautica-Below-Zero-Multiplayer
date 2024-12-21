@@ -1,15 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Network.Core.Components;
-
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SeaTruckStorageModuleProcessor : WorldDynamicEntityProcessor
@@ -57,7 +54,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
             foreach (var coloredLabel in gameObject.GetComponentsInChildren<global::ColoredLabel>())
             {
                 var indexId = this.GetStorageContainerIndex(coloredLabel.name);
-                var locker  = component.Lockers.ElementAt(this.ColoredLabelIndex.ElementAt(indexId));
+                var locker = component.Lockers.ElementAt(this.ColoredLabelIndex.ElementAt(indexId));
                 if (locker == null)
                 {
                     continue;

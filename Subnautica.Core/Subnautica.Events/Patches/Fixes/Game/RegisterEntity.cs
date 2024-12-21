@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Game
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch(typeof(CellManager), nameof(CellManager.RegisterEntity), new Type[] { typeof(LargeWorldEntity) })]
     public static class RegisterEntity

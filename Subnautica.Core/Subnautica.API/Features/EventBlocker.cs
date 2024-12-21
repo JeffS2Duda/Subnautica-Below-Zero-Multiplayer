@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.API.Features
 {
+    using Subnautica.API.Enums;
     using System;
     using System.Collections.Generic;
-    
-    using Subnautica.API.Enums;
 
     public class EventBlocker : IDisposable
     {

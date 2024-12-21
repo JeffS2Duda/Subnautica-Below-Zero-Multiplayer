@@ -8,10 +8,10 @@ namespace Subnautica.Events.EventArgs
     {
         public ConstructorCraftingEventArgs(string uniqueId, TechType techType, Vector3 position, Quaternion rotation, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.TechType  = techType;
-            this.Position  = position;
-            this.Rotation  = rotation;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
+            this.Position = position;
+            this.Rotation = rotation;
             this.IsAllowed = isAllowed;
         }
 

@@ -1,12 +1,10 @@
 namespace Subnautica.Server.Storage
 {
-    using System;
-    using System.IO;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
     using Subnautica.Server.Abstracts;
-
+    using System;
+    using System.IO;
     using PictureFrameStorage = Network.Models.Storage.PictureFrame;
 
     public class PictureFrame : BaseStorage
@@ -46,7 +44,7 @@ namespace Subnautica.Server.Storage
                 Log.Info("---------------------------------------------------------------");
                 foreach (var item in this.Storage.Images)
                 {
-                    Log.Info(string.Format("ImageName: {0}, Size: {1}kb", item.Value.ImageName, Math.Round((double) item.Value.ImageData.Length / 1024.0, 0)));
+                    Log.Info(string.Format("ImageName: {0}, Size: {1}kb", item.Value.ImageName, Math.Round((double)item.Value.ImageData.Length / 1024.0, 0)));
                 }
                 Log.Info("---------------------------------------------------------------");
             }
@@ -58,8 +56,8 @@ namespace Subnautica.Server.Storage
             {
                 this.WriteToDisk(this.Storage);
             }
-        }        
-        
+        }
+
         public Subnautica.Network.Models.Metadata.PictureFrame GetImage(string constructionUniqueId)
         {
             lock (this.ProcessLock)

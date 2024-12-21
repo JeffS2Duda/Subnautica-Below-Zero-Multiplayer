@@ -6,10 +6,10 @@ namespace Subnautica.Events.EventArgs
     {
         public StoryCallingEventArgs(string callGoalKey, string targetGoalKey, bool isAnswered, bool isAllowed = true)
         {
-            this.CallGoalKey   = callGoalKey;
+            this.CallGoalKey = callGoalKey;
             this.TargetGoalKey = targetGoalKey;
-            this.IsAnswered    = isAnswered;
-            this.IsAllowed     = isAllowed;
+            this.IsAnswered = isAnswered;
+            this.IsAllowed = isAllowed;
         }
 
         public string CallGoalKey { get; private set; }

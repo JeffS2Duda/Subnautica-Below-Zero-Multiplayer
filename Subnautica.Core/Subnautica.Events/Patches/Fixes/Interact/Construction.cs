@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Interact
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch]
     public class Construction

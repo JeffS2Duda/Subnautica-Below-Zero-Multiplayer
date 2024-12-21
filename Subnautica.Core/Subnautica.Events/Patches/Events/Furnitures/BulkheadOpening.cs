@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::BulkheadDoor), nameof(global::BulkheadDoor.OnHandClick))]
     public static class BulkheadOpening
@@ -73,7 +71,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
         }
 
         private static StoryCinematicType GetStoryCinematicType(global::BulkheadDoor __instance)
-        {            
+        {
             var fixedBase = __instance.GetComponentInParent<FixedBase>();
             if (fixedBase)
             {

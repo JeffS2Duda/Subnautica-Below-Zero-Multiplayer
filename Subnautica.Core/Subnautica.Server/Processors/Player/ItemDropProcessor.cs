@@ -4,11 +4,11 @@ namespace Subnautica.Server.Processors.Player
 
     using Subnautica.API.Extensions;
     using Subnautica.Network.Core.Components;
-    
+
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
 
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class ItemDropProcessor : NormalProcessor
@@ -32,7 +32,7 @@ namespace Subnautica.Server.Processors.Player
                 entity.SetOwnership(profile.UniqueId);
 
                 packet.Entity = entity;
-                
+
                 profile.SendPacketToAllClient(packet);
             }
 
@@ -43,10 +43,10 @@ namespace Subnautica.Server.Processors.Player
         {
             switch (techType)
             {
-                case TechType.SmallStorage : return new WorldEntityModel.SmallStorage();
+                case TechType.SmallStorage: return new WorldEntityModel.SmallStorage();
                 case TechType.QuantumLocker: return new WorldEntityModel.QuantumLocker();
-                case TechType.Beacon:        return new WorldEntityModel.Beacon();
-                case TechType.SpyPenguin:    return new WorldEntityModel.SpyPenguin();
+                case TechType.Beacon: return new WorldEntityModel.Beacon();
+                case TechType.SpyPenguin: return new WorldEntityModel.SpyPenguin();
             }
 
             return null;

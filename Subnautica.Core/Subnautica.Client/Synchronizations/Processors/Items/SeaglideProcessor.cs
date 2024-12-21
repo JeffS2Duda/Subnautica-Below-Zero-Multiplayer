@@ -43,7 +43,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 if (item.IsActivated != tool.animator.GetBool("moving"))
                 {
-                    SafeAnimator.SetBool(tool.animator, "moving", item.IsActivated); 
+                    SafeAnimator.SetBool(tool.animator, "moving", item.IsActivated);
                     tool.SetVFXActive(item.IsActivated);
                 }
 

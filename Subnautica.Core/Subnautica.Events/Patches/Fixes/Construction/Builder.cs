@@ -1,11 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Construction
 {
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
-
+    using System.Collections.Generic;
     using UnityEngine;
 
     [HarmonyPatch]

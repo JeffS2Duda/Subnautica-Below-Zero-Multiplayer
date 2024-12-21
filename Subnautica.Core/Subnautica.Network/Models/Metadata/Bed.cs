@@ -1,10 +1,8 @@
 namespace Subnautica.Network.Models.Metadata
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class Bed : MetadataComponent
@@ -55,24 +53,24 @@ namespace Subnautica.Network.Models.Metadata
         public BedSideItem(byte playerId, global::Bed.BedSide side)
         {
             this.PlayerId_v2 = playerId;
-            this.PlayerId    = null;
-            this.Side        = side;
+            this.PlayerId = null;
+            this.Side = side;
         }
 
         public void Sleep(byte playerId, global::Bed.BedSide side, float SleepTime)
         {
-            this.PlayerId    = null;
+            this.PlayerId = null;
             this.PlayerId_v2 = playerId;
-            this.Side        = side;
-            this.SleepTime   = SleepTime;
+            this.Side = side;
+            this.SleepTime = SleepTime;
         }
 
         public void Standup()
         {
-            this.PlayerId    = null;
+            this.PlayerId = null;
             this.PlayerId_v2 = 0;
-            this.Side        = global::Bed.BedSide.None;
-            this.SleepTime   = 0f;
+            this.Side = global::Bed.BedSide.None;
+            this.SleepTime = 0f;
         }
 
         public bool IsUsing()

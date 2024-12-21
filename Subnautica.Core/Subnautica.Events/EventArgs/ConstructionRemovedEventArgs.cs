@@ -8,7 +8,7 @@ namespace Subnautica.Events.EventArgs
         {
             this.TechType = techType;
             this.UniqueId = uniqueId;
-            this.Cell     = cell;
+            this.Cell = cell;
         }
 
         public TechType TechType { get; private set; }

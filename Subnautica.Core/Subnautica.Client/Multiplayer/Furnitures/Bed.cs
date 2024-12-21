@@ -1,11 +1,6 @@
 ﻿namespace Subnautica.Client.Multiplayer.Furnitures
 {
     using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Extensions;
-
-    using Metadata = Subnautica.Network.Models.Metadata;
 
     public class Bed
     {

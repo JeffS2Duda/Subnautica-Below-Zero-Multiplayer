@@ -7,11 +7,11 @@ namespace Subnautica.Events.EventArgs
         public SeaTruckConnectingEventArgs(string frontModuleId, string backModuleId, string firstModuleId, bool isConnect, bool isMoonpoolExpansion, bool isAllowed = true)
         {
             this.FrontModuleId = frontModuleId;
-            this.BackModuleId  = backModuleId;
+            this.BackModuleId = backModuleId;
             this.FirstModuleId = firstModuleId;
-            this.IsConnect     = isConnect;
+            this.IsConnect = isConnect;
             this.IsMoonpoolExpansion = isMoonpoolExpansion;
-            this.IsAllowed     = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string FrontModuleId { get; set; }

@@ -9,8 +9,8 @@ namespace Subnautica.Events.EventArgs
         public BaseMoonpoolExpansionDockTailEventArgs(GameObject gameObject, global::SeaTruckSegment newTail, bool isAllowed = true)
         {
             this.GameObject = gameObject;
-            this.NewTail    = newTail;
-            this.IsAllowed  = isAllowed;
+            this.NewTail = newTail;
+            this.IsAllowed = isAllowed;
         }
 
         public GameObject GameObject { get; set; }

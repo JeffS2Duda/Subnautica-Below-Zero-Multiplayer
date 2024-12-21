@@ -1,8 +1,5 @@
 ﻿namespace Subnautica.API.Features.Creatures.MonoBehaviours.Shared
 {
-    using Subnautica.API.Enums;
-    using Subnautica.API.Extensions;
-
     using UnityEngine;
 
     public class MultiplayerWaterParkCreature : BaseMultiplayerCreature

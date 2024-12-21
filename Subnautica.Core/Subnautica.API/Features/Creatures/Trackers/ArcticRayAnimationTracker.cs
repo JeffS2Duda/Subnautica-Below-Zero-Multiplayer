@@ -3,7 +3,7 @@
     using System.Collections.Generic;
 
     using UnityEngine;
-    
+
     public class ArcticRayAnimationTracker : BaseAnimationTracker
     {
         public override List<byte> AllowedCustomResults { get; set; } = new List<byte>()

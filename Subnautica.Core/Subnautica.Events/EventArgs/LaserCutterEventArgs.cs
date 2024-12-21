@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public LaserCutterEventArgs(string uniqueId, float amount, float maxAmount, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.Amount    = amount;
+            this.UniqueId = uniqueId;
+            this.Amount = amount;
             this.MaxAmount = maxAmount;
             this.IsAllowed = isAllowed;
         }

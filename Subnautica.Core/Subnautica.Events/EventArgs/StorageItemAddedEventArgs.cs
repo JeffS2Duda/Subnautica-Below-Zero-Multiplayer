@@ -7,10 +7,10 @@ namespace Subnautica.Events.EventArgs
         public StorageItemAddedEventArgs(string constructionId, TechType techType, string itemId, Pickupable item, InventoryItem inventoryItem)
         {
             this.ConstructionId = constructionId;
-            this.TechType       = techType;
-            this.ItemId         = itemId;
-            this.Item           = item;
-            this.InventoryItem  = inventoryItem;
+            this.TechType = techType;
+            this.ItemId = itemId;
+            this.Item = item;
+            this.InventoryItem = inventoryItem;
         }
 
         public string ConstructionId { get; set; }

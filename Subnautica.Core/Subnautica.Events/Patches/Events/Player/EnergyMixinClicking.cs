@@ -1,13 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::GenericHandTarget), nameof(global::GenericHandTarget.OnHandClick))]
@@ -21,8 +18,8 @@ namespace Subnautica.Events.Patches.Events.Player
             }
 
             var batterySlotId = GetBatterySlotId(__instance.gameObject);
-            var vehicleId     = GetVehicleUniqueId(__instance.gameObject);
-            var vehicleType   = GetVehicleType(__instance.gameObject);
+            var vehicleId = GetVehicleUniqueId(__instance.gameObject);
+            var vehicleType = GetVehicleType(__instance.gameObject);
             if (string.IsNullOrEmpty(batterySlotId) || string.IsNullOrEmpty(vehicleId) || !vehicleType.IsVehicle())
             {
                 return true;
@@ -43,7 +40,7 @@ namespace Subnautica.Events.Patches.Events.Player
 
             return true;
         }
-        
+
         private static string GetBatterySlotId(GameObject gameObject)
         {
             return Network.Identifier.GetIdentityId(gameObject, false);

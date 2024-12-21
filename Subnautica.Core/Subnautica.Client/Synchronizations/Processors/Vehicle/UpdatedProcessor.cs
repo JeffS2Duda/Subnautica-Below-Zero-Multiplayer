@@ -1,8 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -11,9 +8,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Server;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class UpdatedProcessor : NormalProcessor
@@ -51,9 +48,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             {
                 ServerModel.VehicleUpdatedArgs request = new ServerModel.VehicleUpdatedArgs()
                 {
-                    EntityId  = entity.Id,
-                    Position  = ev.Position.ToZeroVector3(),
-                    Rotation  = ev.Rotation.ToZeroQuaternion(),
+                    EntityId = entity.Id,
+                    Position = ev.Position.ToZeroVector3(),
+                    Rotation = ev.Rotation.ToZeroQuaternion(),
                     Component = GetVehicleComponent(ev.TechType, ev.Instance),
                 };
 

@@ -1,12 +1,10 @@
 namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
 {
-    using System;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
+    using System;
 
     [MessagePackObject]
     public class SeaTruckDockingModule : NetworkDynamicEntityComponent

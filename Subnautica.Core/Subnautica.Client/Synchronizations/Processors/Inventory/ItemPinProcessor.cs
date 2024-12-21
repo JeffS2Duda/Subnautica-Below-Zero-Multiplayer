@@ -1,15 +1,12 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Inventory
 {
+    using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
-    using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
-    
     using System.Collections;
-
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class ItemPinProcessor : NormalProcessor

@@ -14,8 +14,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel        = Subnautica.Network.Models.Items;
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ItemModel = Subnautica.Network.Models.Items;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class MapRoomCameraProcessor : PlayerItemProcessor
@@ -40,7 +40,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
         public void OnEntitySpawned(ItemQueueProcess item, global::Pickupable pickupable, GameObject gameObject)
         {
             var forward = item.Action.GetProperty<ZeroVector3>("CustomProperty");
-            var entity  = item.Action.GetProperty<WorldDynamicEntity>("Entity");
+            var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
             if (forward != null && pickupable.TryGetComponent<Rigidbody>(out var component) && !component.isKinematic)
             {
                 component.AddForce(forward.ToVector3(), ForceMode.VelocityChange);
@@ -65,12 +65,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 Item = new ItemModel.DroneCamera()
                 {
-                    UniqueId   = uniqueId,
+                    UniqueId = uniqueId,
                     PickupItem = pickupItem,
-                    Position   = position,
-                    Forward    = forward,
-                    Rotation   = rotation,
-                    Component  = component,
+                    Position = position,
+                    Forward = forward,
+                    Rotation = rotation,
+                    Component = component,
                 }
             };
 

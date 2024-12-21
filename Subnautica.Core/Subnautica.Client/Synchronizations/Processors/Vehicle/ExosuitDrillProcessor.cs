@@ -1,7 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
@@ -11,9 +9,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Structures;
-
+    using System.Collections.Generic;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class ExosuitDrillProcessor : NormalProcessor
@@ -51,7 +48,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
                 {
                     component.DrillableHealthSync(packet.InventoryItems.Count > 0 || packet.WorldItems.Count > 0);
                 }
-                
+
                 if (packet.DisableItem != null)
                 {
                     World.DestroyPickupItem(packet.DisableItem);
@@ -102,12 +99,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.ExosuitDrillArgs request = new ServerModel.ExosuitDrillArgs()
             {
-                UniqueId            = uniqueId,
-                SlotId              = slotId,
-                MaxHealth           = maxHealth,
-                DropTechType        = dropTechType,
-                DropPositions       = dropPositions,
-                IsMultipleDrill     = isMultipleDrill,
+                UniqueId = uniqueId,
+                SlotId = slotId,
+                MaxHealth = maxHealth,
+                DropTechType = dropTechType,
+                DropPositions = dropPositions,
+                IsMultipleDrill = isMultipleDrill,
                 IsStaticWorldEntity = isStaticWorldEntity,
             };
 

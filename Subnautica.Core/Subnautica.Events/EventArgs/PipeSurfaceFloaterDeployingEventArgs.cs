@@ -8,11 +8,11 @@ namespace Subnautica.Events.EventArgs
     {
         public PipeSurfaceFloaterDeployingEventArgs(string uniqueId, Pickupable pickupable, Vector3 deployPosition, Quaternion deployRotation, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
-            this.Pickupable     = pickupable;
+            this.UniqueId = uniqueId;
+            this.Pickupable = pickupable;
             this.DeployPosition = deployPosition;
             this.DeployRotation = deployRotation;
-            this.IsAllowed      = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

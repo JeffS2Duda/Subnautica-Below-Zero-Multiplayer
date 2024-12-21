@@ -1,20 +1,15 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Linq;
-    using Oculus.Platform;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Core;
     using Subnautica.Network.Models.WorldStreamer;
     using Subnautica.Network.Structures;
-
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Linq;
     using UnityEngine;
-
     using UWE;
-
     using static EntitySlot;
 
     public class WorldStreamer
@@ -78,7 +73,7 @@
                 foreach (var slot in spawnPoints)
                 {
                     this.SpawnPoints[slot.SlotId].NextRespawnTime = slot.NextRespawnTime;
-                    this.SpawnPoints[slot.SlotId].Health          = slot.Health;
+                    this.SpawnPoints[slot.SlotId].Health = slot.Health;
                 }
             }
             catch (System.Exception ex)
@@ -152,7 +147,8 @@
 
         public void CreateSpawnPointContainer()
         {
-            System.Threading.Tasks.Task.Run(() => {
+            System.Threading.Tasks.Task.Run(() =>
+            {
                 var spawnPoints = Paths.GetLauncherGameCorePath("SpawnPoints.bin");
                 if (File.Exists(spawnPoints))
                 {
@@ -211,11 +207,11 @@
         {
             if (slot.Density == -1f)
             {
-                var entity = WorldEntityDatabase.main.infos.FirstOrDefault(q => q.Value.techType == (TechType) slot.BiomeType);
+                var entity = WorldEntityDatabase.main.infos.FirstOrDefault(q => q.Value.techType == (TechType)slot.BiomeType);
 
                 return new EntitySlot.Filler()
                 {
-                    count   = 1,
+                    count = 1,
                     classId = entity.Value.classId
                 };
             }
@@ -263,10 +259,10 @@
 
                 SpawnerData.Add(new CSVEntitySpawner.Data()
                 {
-                    classId     = prefab.classId,
-                    count       = 1,
+                    classId = prefab.classId,
+                    count = 1,
                     probability = avgProbability,
-                    isFragment  = isFragment
+                    isFragment = isFragment
                 });
 
                 if (isFragment)
@@ -353,9 +349,9 @@
                         this.GeneratorFragmentData[info.techType] = 1;
                     }
                 }
- 
+
                 filler.classId = result.classId;
-                filler.count   = result.count;
+                filler.count = result.count;
             }
 
             return filler;
@@ -369,10 +365,10 @@
         public void Dispose()
         {
             this.SpawnPointContainer = null;
-            this.LootDistribution    = null;
+            this.LootDistribution = null;
             this.SpawnPoints.Clear();
             this.GeneratorFragmentData.Clear();
-            
+
             SpawnerData.Clear();
         }
     }

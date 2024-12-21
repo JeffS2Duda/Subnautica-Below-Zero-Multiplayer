@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
+    using Subnautica.API.Features;
 
     [HarmonyPatch]
     public class BirdBehaviour
@@ -20,7 +19,7 @@
         {
             return !Network.IsMultiplayerActive;
         }
-        
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::BirdBehaviour), nameof(global::BirdBehaviour.Update))]
         public static bool Update(global::BirdBehaviour __instance)

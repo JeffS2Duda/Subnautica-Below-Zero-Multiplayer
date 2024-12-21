@@ -1,9 +1,6 @@
 namespace Subnautica.Network.Models.Client
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Core;
@@ -13,9 +10,9 @@ namespace Subnautica.Network.Models.Client
     using Subnautica.Network.Models.Storage.Technology;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
-
-    using Metadata       = Subnautica.Network.Models.Metadata;
-    using StoryStorage   = Subnautica.Network.Models.Storage.Story;
+    using System.Collections.Generic;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using StoryStorage = Subnautica.Network.Models.Storage.Story;
     using WorldChildrens = Subnautica.Network.Models.Storage.World.Childrens;
 
     [MessagePackObject]
@@ -23,7 +20,7 @@ namespace Subnautica.Network.Models.Client
     {
         [Key(0)]
         public override ProcessType Type { get; set; } = ProcessType.JoiningServer;
-        
+
         [Key(1)]
         public override NetworkChannel ChannelType { get; set; } = NetworkChannel.Startup;
 
@@ -31,7 +28,7 @@ namespace Subnautica.Network.Models.Client
         public string PlayerUniqueId { get; set; }
 
         [Key(6)]
-        public string PlayerSubRootId { get; set; }       
+        public string PlayerSubRootId { get; set; }
 
         [Key(7)]
         public string ServerId { get; set; }
@@ -107,7 +104,7 @@ namespace Subnautica.Network.Models.Client
 
         [Key(31)]
         public GameModePresetId GameMode { get; set; }
-        
+
         [Key(32)]
         public List<PlayerItem> Players { get; set; }
 

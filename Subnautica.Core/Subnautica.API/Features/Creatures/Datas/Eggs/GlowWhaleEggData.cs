@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.API.Features.Creatures.Datas
 {
-    using System.Collections;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features.Creatures.MonoBehaviours.Shared;
-
+    using System.Collections;
     using UnityEngine;
 
     public class GlowWhaleEggData : BaseCreatureData

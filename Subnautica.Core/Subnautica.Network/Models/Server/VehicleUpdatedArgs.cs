@@ -1,17 +1,12 @@
-using Subnautica.Network.Models.Server;
-
 namespace Subnautica.Network.Models.Server
 {
-    using System;
-    using System.Collections.Generic;
-
     using LiteNetLib;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Structures;
+    using System;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class VehicleUpdatedArgs : NetworkPacket

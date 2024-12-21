@@ -1,8 +1,7 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Extensions;
+    using System;
 
     public class CreatureDisabledEventArgs : EventArgs
     {

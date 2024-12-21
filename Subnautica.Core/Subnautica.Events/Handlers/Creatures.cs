@@ -21,7 +21,7 @@ namespace Subnautica.Events.Handlers
         public static event SubnauticaPluginEventHandler<CreatureMeleeAttackingEventArgs> MeleeAttacking;
 
         public static void OnMeleeAttacking(CreatureMeleeAttackingEventArgs ev) => MeleeAttacking.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler<CreatureAttackLastTargetStoppedEventArgs> CreatureAttackLastTargetStopped;
 
         public static void OnCreatureAttackLastTargetStopped(CreatureAttackLastTargetStoppedEventArgs ev) => CreatureAttackLastTargetStopped.CustomInvoke(ev);

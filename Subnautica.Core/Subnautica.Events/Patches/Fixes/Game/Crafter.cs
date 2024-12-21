@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Game
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
+    using Subnautica.API.Features;
 
     [HarmonyPatch]
     public static class Crafter

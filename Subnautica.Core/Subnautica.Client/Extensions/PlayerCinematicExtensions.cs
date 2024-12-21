@@ -167,12 +167,12 @@
                 case global::Bed.BedSide.Right:
                     bed.cinematicController = bed.rightLieDownCinematicController;
                     bed.currentStandUpCinematicController = bed.rightStandUpCinematicController;
-                    bed.animator.transform.localPosition  = bed.rightAnimPosition;
+                    bed.animator.transform.localPosition = bed.rightAnimPosition;
                     break;
                 default:
                     bed.cinematicController = bed.leftLieDownCinematicController;
                     bed.currentStandUpCinematicController = bed.leftStandUpCinematicController;
-                    bed.animator.transform.localPosition  = bed.leftAnimPosition;
+                    bed.animator.transform.localPosition = bed.leftAnimPosition;
                     break;
             }
 
@@ -180,7 +180,7 @@
             bed.ResetAnimParams(global::Player.main.playerAnimator);
             bed.StartCinematicMode(global::Player.main);
             return true;
-        } 
+        }
 
         public static bool OnHandClickBench(this ZeroPlayer player, string uniqueId, global::Bench.BenchSide side)
         {
@@ -221,7 +221,7 @@
         public static bool OnHandClickRadioTowerInsertedItem(this ZeroPlayer player, string uniqueId)
         {
             player.ResetCinematicsByUniqueId(uniqueId);
-            
+
             var radioTower = Network.Identifier.GetComponentByGameObject<global::RadioTowerController>(uniqueId);
             if (radioTower == null)
             {
@@ -295,7 +295,7 @@
             }
 
             global::Inventory.main.ReturnHeld();
-            
+
             climb.StartCinematicMode(global::Player.main);
             return true;
         }
@@ -407,7 +407,7 @@
                 PlayerCinematicQueue.AddQueue(cinematic, cinematic.EngageStartCinematic, player.UniqueId, uniqueId);
             }
         }
-        
+
         public static void DisengageStartCinematicConstructor(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<ConstructorCinematic>();
@@ -416,7 +416,7 @@
                 PlayerCinematicQueue.AddQueue(cinematic, cinematic.DisengageStartCinematic, player.UniqueId, uniqueId);
             }
         }
-        
+
         public static void RadioTowerInsertedItemStartCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<RadioTowerCinematic>();
@@ -425,7 +425,7 @@
                 PlayerCinematicQueue.AddQueue(cinematic, cinematic.InsertedItemStartCinematic, player.UniqueId, uniqueId);
             }
         }
-        
+
         public static void ClimbStartCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<ClimbCinematic>();
@@ -452,7 +452,7 @@
                 PlayerCinematicQueue.AddQueue(cinematic, cinematic.ExitStartCinematic, player.UniqueId, uniqueId);
             }
         }
-        
+
         public static void SeaTruckStartPilotingCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<SeaTruckPilotingCinematic>();
@@ -461,7 +461,7 @@
                 PlayerCinematicQueue.AddQueue(cinematic, cinematic.StartPilotingCinematic, player.UniqueId, uniqueId);
             }
         }
-        
+
         public static void SeaTruckStopPilotingCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<SeaTruckPilotingCinematic>();
@@ -470,7 +470,7 @@
                 PlayerCinematicQueue.AddQueue(cinematic, cinematic.StopPilotingCinematic, player.UniqueId, uniqueId);
             }
         }
-        
+
         public static void SeaTruckTeleportationStartCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<SeaTruckTeleportationCinematic>();
@@ -479,7 +479,7 @@
                 PlayerCinematicQueue.AddQueue(cinematic, cinematic.SeaTruckTeleportationStartCinematic, player.UniqueId, uniqueId);
             }
         }
-        
+
         public static void SeaTruckStartDetachCinematic(this ZeroPlayer player, string uniqueId)
         {
             var cinematic = player.GetCinematic<SeaTruckDetachCinematic>();

@@ -1,11 +1,10 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Collections.Generic;
-    using System.IO;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Network.Models.Metadata;
+    using System.Collections.Generic;
+    using System.IO;
 
     public class ScreenshotProcessor
     {
@@ -27,7 +26,7 @@
         {
             ScreenshotManager.dirInfo?.Delete();
             ScreenshotManager.savePath = Paths.GetMultiplayerClientSavePath(ZeroPlayer.CurrentPlayer.CurrentServerId);
-            ScreenshotManager.dirInfo  = new global::Platform.IO.DirectoryInfo(ScreenshotManager.Combine(ScreenshotManager.savePath, "Screenshots"));
+            ScreenshotManager.dirInfo = new global::Platform.IO.DirectoryInfo(ScreenshotManager.Combine(ScreenshotManager.savePath, "Screenshots"));
 
             var screenshotFiles = ScreenshotManager.GetScreenshotFiles();
             if (screenshotFiles != null)
@@ -39,7 +38,7 @@
             }
         }
 
-         public static void OnPictureFrameInitialized(Dictionary<string, PictureFrame> pictureFrames, List<string> existImages)
+        public static void OnPictureFrameInitialized(Dictionary<string, PictureFrame> pictureFrames, List<string> existImages)
         {
             foreach (var pictureFrame in pictureFrames)
             {
@@ -58,6 +57,6 @@
                     File.Delete(item);
                 }
             }
-         }
+        }
     }
 }

@@ -27,7 +27,7 @@
 
             var action = new CreatureQueueAction();
             action.OnProcessCompleted = this.OnCreatureProcessCompleted;
-            action.RegisterProperty("Target"     , packet.Target);
+            action.RegisterProperty("Target", packet.Target);
             action.RegisterProperty("ProcessTime", packet.ProcessTime);
 
             Network.Creatures.ProcessToQueue(packet.CreatureId, action);
@@ -36,7 +36,7 @@
 
         private void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
-            var target      = item.Action.GetProperty<ZeroLastTarget>("Target");
+            var target = item.Action.GetProperty<ZeroLastTarget>("Target");
             var processTime = item.Action.GetProperty<double>("ProcessTime");
 
             if (creature.GameObject.TryGetComponent<MultiplayerLeviathanMeleeAttack>(out var meleeAttack))
@@ -77,7 +77,7 @@
         {
             ev.IsAllowed = false;
             ev.Instance.timeLastBite = Time.time;
-            
+
             if (Network.Creatures.IsMine(ev.UniqueId))
             {
                 LeviathanMeleeAttackProcessor.SendPacketToServer(ev.UniqueId.ToCreatureId(), ev.TargetId, ev.TargetType, ev.BiteDamage);
@@ -90,7 +90,7 @@
             {
                 CreatureId = creatureId,
                 BiteDamage = biteDamage,
-                Target     = new ZeroLastTarget(targetId, techType)
+                Target = new ZeroLastTarget(targetId, techType)
             };
 
             NetworkClient.SendPacket(request);

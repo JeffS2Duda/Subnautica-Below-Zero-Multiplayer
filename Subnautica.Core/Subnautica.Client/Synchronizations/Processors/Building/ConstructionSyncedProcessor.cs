@@ -1,19 +1,14 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Building
 {
+    using Subnautica.API.Enums;
+    using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-    using Subnautica.API.Enums;
-    using Subnautica.API.Features;
-    using Subnautica.Network.Core;
-
     using System.Collections;
     using System.Diagnostics;
-
     using UnityEngine;
-
-    using ServerModel  = Subnautica.Network.Models.Server;
     using Construction = Subnautica.Client.Multiplayer.Constructing;
 
     public class ConstructionSyncedProcessor : NormalProcessor

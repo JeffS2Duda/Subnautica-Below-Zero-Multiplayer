@@ -1,9 +1,7 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Collections;
-
     using Subnautica.API.Features;
-
+    using System.Collections;
     using UnityEngine;
 
     public class LifepodProcessor

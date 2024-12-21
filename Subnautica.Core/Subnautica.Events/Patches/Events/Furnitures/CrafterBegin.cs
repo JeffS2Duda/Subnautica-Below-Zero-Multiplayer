@@ -1,14 +1,11 @@
 ﻿namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using Subnautica.Events.Patches.Fixes.Interact;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch]
@@ -41,7 +38,7 @@
                 }
             }
 
-            var uniqueId  = GhostCrafter.GetUniqueId(__instance.gameObject);
+            var uniqueId = GhostCrafter.GetUniqueId(__instance.gameObject);
             var _techType = GhostCrafter.GetTechType(__instance.gameObject);
             if (uniqueId.IsNull())
             {

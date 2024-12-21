@@ -5,14 +5,12 @@ namespace Subnautica.Network.Models.Server
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
 
-    using System.Collections.Generic;
-
     [MessagePackObject]
     public class FurnitureDeconstructionBeginArgs : NetworkPacket
     {
         [Key(0)]
         public override ProcessType Type { get; set; } = ProcessType.FurnitureDeconstructionBegin;
-        
+
         [Key(1)]
         public override NetworkChannel ChannelType { get; set; } = NetworkChannel.Construction;
 

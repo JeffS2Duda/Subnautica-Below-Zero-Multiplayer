@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
-    using Subnautica.Client.Core;
+    using System.Linq;
 
     public class JukeboxDiskProcessor
     {

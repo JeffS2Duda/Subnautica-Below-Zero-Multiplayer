@@ -1,17 +1,14 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features.Helper;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class DynamicEntity
@@ -27,9 +24,9 @@
         public void Spawn(WorldDynamicEntity entity, Action<ItemQueueProcess, Pickupable, GameObject> onEntitySpawned, object customProperty = null, object customProperty2 = null, bool ignoreDynamicCheck = false)
         {
             var action = new ItemQueueAction();
-            action.RegisterProperty("OnEntitySpawned"   , onEntitySpawned);
-            action.RegisterProperty("CustomProperty"    , customProperty);
-            action.RegisterProperty("CustomProperty2"   , customProperty2);
+            action.RegisterProperty("OnEntitySpawned", onEntitySpawned);
+            action.RegisterProperty("CustomProperty", customProperty);
+            action.RegisterProperty("CustomProperty2", customProperty2);
             action.RegisterProperty("IgnoreDynamicCheck", ignoreDynamicCheck);
             action.RegisterProperty("Entity", entity);
             action.OnEntitySpawned = this.OnEntitySpawned;
@@ -85,7 +82,7 @@
         public void SetEntity(WorldDynamicEntity entity)
         {
             this.Entities[entity.UniqueId] = entity;
-        } 
+        }
 
         public void SetEntityUsingByPlayer(ushort entityId, bool status)
         {
@@ -97,7 +94,7 @@
                     entity.IsUsingByPlayer = status;
                 }
             }
-        } 
+        }
 
         public void RemoveEntity(string uniqueId)
         {
@@ -212,7 +209,7 @@
                         entity.Rigidbody.SetNonKinematic();
                     }
 
-                    entity.CacheKinematicStatus(); 
+                    entity.CacheKinematicStatus();
                     return true;
                 }
             }
@@ -246,7 +243,7 @@
             {
                 return ZeroKinematicState.Ignore;
             }
-            
+
             if (entity.TechType == TechType.Beacon)
             {
                 var beacon = entity.Component.GetComponent<WorldEntityModel.Beacon>();

@@ -8,11 +8,11 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Core.Components;
 
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class TeleportationToolProcessor : PlayerItemProcessor
-    {        
+    {
 
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
         {

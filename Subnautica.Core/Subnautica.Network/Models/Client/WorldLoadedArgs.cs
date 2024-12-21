@@ -1,13 +1,11 @@
 namespace Subnautica.Network.Models.Client
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.Player;
     using Subnautica.Network.Models.WorldStreamer;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class WorldLoadedArgs : NetworkPacket
@@ -24,8 +22,8 @@ namespace Subnautica.Network.Models.Client
         [Key(6)]
         public bool IsSpawnPointExists { get; set; }
 
-        [Key(7)] 
-        public Dictionary<string, Metadata.PictureFrame> Images { get; set; } = new Dictionary<string, Metadata.PictureFrame>(); 
+        [Key(7)]
+        public Dictionary<string, Metadata.PictureFrame> Images { get; set; } = new Dictionary<string, Metadata.PictureFrame>();
 
         [Key(8)]
         public List<string> ExistImages { get; set; } = new List<string>();

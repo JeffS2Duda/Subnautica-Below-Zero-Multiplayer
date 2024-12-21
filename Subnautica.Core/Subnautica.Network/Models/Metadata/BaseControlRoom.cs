@@ -58,8 +58,8 @@ namespace Subnautica.Network.Models.Metadata
 
         public BaseControlRoomMinimap(ZeroVector3 position, ZeroInt3 cell, bool isPowered = false)
         {
-            this.Position  = position;
-            this.Cell      = cell;
+            this.Position = position;
+            this.Cell = cell;
             this.IsPowered = isPowered;
         }
     }

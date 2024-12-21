@@ -1,9 +1,7 @@
 namespace Subnautica.Network.Core.Components
 {
-    using System;
-
     using MessagePack;
-
+    using System;
     using CreatureModel = Subnautica.Network.Models.Creatures;
 
     [Union(0, typeof(CreatureModel.GlowWhale))]

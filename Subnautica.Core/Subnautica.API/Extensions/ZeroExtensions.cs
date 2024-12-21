@@ -1,23 +1,21 @@
 ﻿namespace Subnautica.API.Extensions
 {
-    using System;
-    using System.IO;
-
     using Subnautica.API.Features;
     using Subnautica.API.Features.Compressors;
     using Subnautica.API.Features.NetworkUtility;
     using Subnautica.Network.Structures;
-    
+    using System;
+    using System.IO;
     using UnityEngine;
 
     public static class ZeroExtensions
     {
         public static ZeroInt3 GetCellId(this ZeroVector3 position)
         {
-            var cellX = (int) Math.Round(position.X / WorldStreamer.CellSize);
-            var cellY = (int) Math.Round(position.Y / WorldStreamer.CellSize);
-            var cellZ = (int) Math.Round(position.Z / WorldStreamer.CellSize);
-            
+            var cellX = (int)Math.Round(position.X / WorldStreamer.CellSize);
+            var cellY = (int)Math.Round(position.Y / WorldStreamer.CellSize);
+            var cellZ = (int)Math.Round(position.Z / WorldStreamer.CellSize);
+
             return new ZeroInt3(cellX, cellY, cellZ);
         }
 
@@ -28,7 +26,7 @@
 
         public static byte ToByte(this float value)
         {
-            return (byte) (value * 100f);
+            return (byte)(value * 100f);
         }
 
         public static short ToShort(this float value)
@@ -192,7 +190,7 @@
             {
                 return "/" + current.name;
             }
-                
+
             return current.parent.GetPath() + "/" + current.name;
         }
 

@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Player
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
-
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class PlayerHandItemManager : MonoBehaviour
@@ -28,7 +26,7 @@
         public void Awake()
         {
             this.DefaultMaskIndex = LayerMask.NameToLayer("default");
-            this.ViewMaskIndex    = LayerMask.NameToLayer("Viewmodel");
+            this.ViewMaskIndex = LayerMask.NameToLayer("Viewmodel");
 
             this.QueueAction = new ItemQueueAction();
             this.QueueAction.OnEntitySpawned = this.OnEntitySpawned;
@@ -130,7 +128,7 @@
             {
                 tool.mainCollider.enabled = false;
             }
-            
+
             UWE.Utils.SetIsKinematicAndUpdateInterpolation(tool.GetComponent<Rigidbody>(), true);
 
             pickupable.DisableColliders();
@@ -221,7 +219,7 @@
 
         private void SendEquipmentEvent(Pickupable pickupable, bool status)
         {
-           if (pickupable.gameObject.TryGetComponent(out FPModel fpModel))
+            if (pickupable.gameObject.TryGetComponent(out FPModel fpModel))
             {
                 fpModel.SetState(status);
             }

@@ -1,16 +1,11 @@
 namespace Subnautica.Server.Processors.Vehicle
 {
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
-
-    using ServerModel   = Subnautica.Network.Models.Server;
     using MetadataModel = Subnautica.Network.Models.Metadata;
-    using Subnautica.API.Features;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class SeaTruckConnectionProcessor : NormalProcessor
     {

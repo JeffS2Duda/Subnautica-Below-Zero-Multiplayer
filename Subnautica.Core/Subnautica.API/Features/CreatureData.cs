@@ -1,7 +1,6 @@
 ﻿namespace Subnautica.API.Features
 {
     using Subnautica.API.Features.Creatures.Datas;
-    using Subnautica.API.Features.NetworkUtility;
 
     using System.Collections.Generic;
 
@@ -39,7 +38,7 @@
             this.Register(new VoidLeviathanData());
             this.Register(new BruteSharkData());
             this.Register(new CryptosuchusData());
-            
+
             this.Register(new GlowWhaleEggData());
         }
 

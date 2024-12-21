@@ -8,7 +8,7 @@ namespace Subnautica.Events.EventArgs
     {
         public BaseControlRoomMinimapExitingEventArgs(string uniqueId, Vector3 mapPosition)
         {
-            this.UniqueId    = uniqueId;
+            this.UniqueId = uniqueId;
             this.MapPosition = mapPosition;
         }
 

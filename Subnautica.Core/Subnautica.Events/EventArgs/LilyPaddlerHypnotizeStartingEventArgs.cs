@@ -7,8 +7,8 @@ namespace Subnautica.Events.EventArgs
         public LilyPaddlerHypnotizeStartingEventArgs(string creatureId, byte targetId, bool isAllowed = true)
         {
             this.CreatureId = creatureId;
-            this.TargetId   = targetId;
-            this.IsAllowed  = isAllowed;
+            this.TargetId = targetId;
+            this.IsAllowed = isAllowed;
         }
 
         public string CreatureId { get; set; }

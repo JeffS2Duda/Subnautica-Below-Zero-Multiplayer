@@ -8,11 +8,11 @@ namespace Subnautica.Events.EventArgs
     {
         public SpawnOnKillingEventArgs(string uniqueId, TechType techType, Vector3 position, Quaternion rotation, Vector3 velocity, ForceMode forceMode, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.TechType  = techType;
-            this.Position  = position;
-            this.Rotation  = rotation;
-            this.Velocity  = velocity;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
+            this.Position = position;
+            this.Rotation = rotation;
+            this.Velocity = velocity;
             this.ForceMode = forceMode;
             this.IsAllowed = isAllowed;
         }

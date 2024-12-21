@@ -33,7 +33,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
                 StoryGoalManager.main.OnGoalComplete(callData.dialogue);
                 PDALog.Add(callData.dialogue, true);
 
-                uGUI_PopupNotification.main.current.id   = null;
+                uGUI_PopupNotification.main.current.id = null;
                 uGUI_PopupNotification.main.current.data = null;
                 uGUI_PopupNotification.main.Hide();
             }
@@ -54,9 +54,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
 
             ServerModel.StoryCallArgs result = new ServerModel.StoryCallArgs()
             {
-                GoalKey       = ev.CallGoalKey,
+                GoalKey = ev.CallGoalKey,
                 TargetGoalKey = ev.TargetGoalKey,
-                IsAnswered    = ev.IsAnswered,
+                IsAnswered = ev.IsAnswered,
             };
 
             NetworkClient.SendPacket(result);

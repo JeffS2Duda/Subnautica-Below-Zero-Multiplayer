@@ -1,12 +1,9 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Linq;
-
     using Subnautica.API.Enums;
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.MonoBehaviours.World;
-
+    using System.Linq;
     using UnityEngine;
 
     public class SeaTruckProcessor
@@ -20,7 +17,7 @@
                 foreach (var connection in Network.Session.Current.SeaTruckConnections.ToList())
                 {
                     var frontModule = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(connection.Key);
-                    var backModule  = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(connection.Value);
+                    var backModule = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(connection.Value);
                     if (frontModule && backModule)
                     {
                         using (EventBlocker.Create(ProcessType.SeaTruckConnection))

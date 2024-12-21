@@ -1,14 +1,11 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.WorldStreamer;
     using Subnautica.Server.Abstracts;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class WorldStreamer : BaseLogic
     {
@@ -58,7 +55,7 @@ namespace Subnautica.Server.Logic
         private void OnWorldGenerated()
         {
             this._IsGeneratedWorld = true;
-            
+
             this.SpawnPoints.Clear();
 
             var currentTime = Core.Server.Instance.Logices.World.GetServerTime();
@@ -80,7 +77,7 @@ namespace Subnautica.Server.Logic
                     if (!spawnPoint.TechType.IsDrillable())
                     {
                         spawnPoint.SetHealth(-1f);
-                    }  
+                    }
                 }
 
                 this.SpawnPoints.Add(spawnPoint.SlotId, spawnPoint);

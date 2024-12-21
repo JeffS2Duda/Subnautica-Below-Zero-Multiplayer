@@ -14,7 +14,7 @@ namespace Subnautica.Server.Logic
         {
             this.PictureFramesSync();
         }
-        
+
         public void PictureFramesSync()
         {
             string[] pictureFrames = new string[Core.Server.Instance.Storages.PictureFrame.Storage.Images.Count];
@@ -23,7 +23,7 @@ namespace Subnautica.Server.Logic
 
             foreach (var constructionId in pictureFrames)
             {
-                var isConstruction   = Core.Server.Instance.Storages.Construction.GetConstruction(constructionId);
+                var isConstruction = Core.Server.Instance.Storages.Construction.GetConstruction(constructionId);
                 var isSeaTruckModule = Core.Server.Instance.Storages.World.GetDynamicEntity(constructionId);
                 if (isConstruction == null && isSeaTruckModule == null)
                 {

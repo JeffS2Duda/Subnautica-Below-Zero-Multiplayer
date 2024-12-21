@@ -1,6 +1,5 @@
 namespace Subnautica.Server.Processors.Metadata
 {
-    using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;

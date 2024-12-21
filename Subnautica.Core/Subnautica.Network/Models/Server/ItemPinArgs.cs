@@ -4,7 +4,7 @@ namespace Subnautica.Network.Models.Server
 
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
-    
+
     using System.Collections.Generic;
 
     [MessagePackObject]

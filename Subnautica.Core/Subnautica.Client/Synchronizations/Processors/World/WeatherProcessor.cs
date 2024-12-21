@@ -4,9 +4,8 @@ namespace Subnautica.Client.Synchronizations.Processors.World
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
-    using ServerModel = Subnautica.Network.Models.Server;
     using ClientModel = Subnautica.Network.Models.Client;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class WeatherProcessor : NormalProcessor
     {
@@ -24,19 +23,19 @@ namespace Subnautica.Client.Synchronizations.Processors.World
                 return false;
             }
 
-            this.WeatherEvent.weatherSet.dangerLevel             = packet.DangerLevel;
-            this.WeatherEvent.parameters.windDir                 = packet.WindDir;
-            this.WeatherEvent.parameters.windSpeed               = packet.WindSpeed;
-            this.WeatherEvent.parameters.fogDensity              = packet.FogDensity;
-            this.WeatherEvent.parameters.fogHeight               = packet.FogHeight;
-            this.WeatherEvent.parameters.smokinessIntensity      = packet.SmokinessIntensity;
-            this.WeatherEvent.parameters.snowIntensity           = packet.SnowIntensity;
-            this.WeatherEvent.parameters.cloudCoverage           = packet.CloudCoverage;
-            this.WeatherEvent.parameters.rainIntensity           = packet.RainIntensity;
-            this.WeatherEvent.parameters.hailIntensity           = packet.HailIntensity;
-            this.WeatherEvent.parameters.meteorIntensity         = packet.MeteorIntensity;
-            this.WeatherEvent.parameters.lightningIntensity      = packet.LightningIntensity;
-            this.WeatherEvent.parameters.temperature             = packet.Temperature;
+            this.WeatherEvent.weatherSet.dangerLevel = packet.DangerLevel;
+            this.WeatherEvent.parameters.windDir = packet.WindDir;
+            this.WeatherEvent.parameters.windSpeed = packet.WindSpeed;
+            this.WeatherEvent.parameters.fogDensity = packet.FogDensity;
+            this.WeatherEvent.parameters.fogHeight = packet.FogHeight;
+            this.WeatherEvent.parameters.smokinessIntensity = packet.SmokinessIntensity;
+            this.WeatherEvent.parameters.snowIntensity = packet.SnowIntensity;
+            this.WeatherEvent.parameters.cloudCoverage = packet.CloudCoverage;
+            this.WeatherEvent.parameters.rainIntensity = packet.RainIntensity;
+            this.WeatherEvent.parameters.hailIntensity = packet.HailIntensity;
+            this.WeatherEvent.parameters.meteorIntensity = packet.MeteorIntensity;
+            this.WeatherEvent.parameters.lightningIntensity = packet.LightningIntensity;
+            this.WeatherEvent.parameters.temperature = packet.Temperature;
             this.WeatherEvent.parameters.auroraBorealisIntensity = packet.AuroraBorealisIntensity;
 
             WeatherManager.main.activeScriptedWeather = null;

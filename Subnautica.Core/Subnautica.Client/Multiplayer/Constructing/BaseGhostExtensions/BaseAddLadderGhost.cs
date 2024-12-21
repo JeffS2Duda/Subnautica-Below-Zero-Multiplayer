@@ -14,7 +14,7 @@
             if (updatePlacement == false || component == null || component.TargetBaseId.IsNull() || component.FaceStart.Cell == null)
             {
                 baseGhost.targetBase = null;
-                
+
                 geometryChanged = baseGhost.SetupInvalid();
                 return false;
             }
@@ -37,10 +37,10 @@
             }
 
             var faceStartCell = component.FaceStart.Cell.ToInt3();
-            var faceEndCell   = component.FaceEnd.Cell.ToInt3();
+            var faceEndCell = component.FaceEnd.Cell.ToInt3();
 
             var normCell = baseGhost.targetBase.NormalizeCell(faceStartCell);
-            var newCell  = baseGhost.targetBase.GetCell(normCell);
+            var newCell = baseGhost.targetBase.GetCell(normCell);
             var cellSize = Base.CellSize[(int)newCell];
 
             var sourceRange = Int3.Bounds.Union(new Int3.Bounds(faceStartCell, faceEndCell), new Int3.Bounds(normCell, normCell + cellSize - 1));

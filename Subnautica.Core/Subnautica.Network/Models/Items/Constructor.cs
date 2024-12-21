@@ -35,7 +35,7 @@ namespace Subnautica.Network.Models.Items
 
         [Key(11)]
         public ZeroQuaternion CraftingRotation { get; set; }
-        
+
         public bool IsEngageActive()
         {
             return this.EngageToggle != 0;

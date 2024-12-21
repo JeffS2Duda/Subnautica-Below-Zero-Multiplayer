@@ -1,8 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
@@ -11,11 +8,11 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Structures;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
-    using Metadata         = Subnautica.Network.Models.Metadata;
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class HoverpadProcessor : MetadataProcessor
@@ -96,7 +93,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             else if (component.IsUnDocking)
             {
                 Network.DynamicEntity.SetEntity(component.Entity);
-               
+
                 if (ZeroPlayer.IsPlayerMine(packet.GetPacketOwnerId()))
                 {
                     player.OnHandClicHoverpadUndock(packet.UniqueId);
@@ -121,7 +118,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                 hoverpad.terminalGUI.SetCustomizeable(hoverpad.dockedBike.colorNameControl);
             }
         }
-        
+
         public static void OnHoverpadHoverbikeSpawning(HoverpadHoverbikeSpawningEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -221,22 +218,22 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             this.HoverpadShowrooms.Clear();
         }
 
-        private static void SendPacketToServer(string uniqueId, string itemId = null, bool isCustomizerOpening = false, byte showroomTriggerType = 0, ZeroColorCustomizer colorCustomizer = null, ZeroVector3 hoverbikePosition = null, ZeroQuaternion hoverbikeRotation = null,  bool isSpawning = false, bool isDocking = false, bool isUnDocking = false)
+        private static void SendPacketToServer(string uniqueId, string itemId = null, bool isCustomizerOpening = false, byte showroomTriggerType = 0, ZeroColorCustomizer colorCustomizer = null, ZeroVector3 hoverbikePosition = null, ZeroQuaternion hoverbikeRotation = null, bool isSpawning = false, bool isDocking = false, bool isUnDocking = false)
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.Hoverpad()
                 {
-                    ItemId              = itemId,
-                    IsSpawning          = isSpawning,
-                    IsDocking           = isDocking,
-                    IsUnDocking         = isUnDocking,
+                    ItemId = itemId,
+                    IsSpawning = isSpawning,
+                    IsDocking = isDocking,
+                    IsUnDocking = isUnDocking,
                     IsCustomizerOpening = isCustomizerOpening,
                     ShowroomTriggerType = showroomTriggerType,
-                    ColorCustomizer     = colorCustomizer,
-                    HoverbikePosition   = hoverbikePosition,
-                    HoverbikeRotation   = hoverbikeRotation,
+                    ColorCustomizer = colorCustomizer,
+                    HoverbikePosition = hoverbikePosition,
+                    HoverbikeRotation = hoverbikeRotation,
                 },
             };
 

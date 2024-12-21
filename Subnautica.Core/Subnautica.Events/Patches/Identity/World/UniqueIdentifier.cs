@@ -20,7 +20,7 @@ namespace Subnautica.Events.Patches.Identity.World
             }
             else
             {
-                __result = guid;    
+                __result = guid;
             }
 
             return false;

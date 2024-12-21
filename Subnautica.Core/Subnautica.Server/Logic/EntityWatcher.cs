@@ -1,15 +1,12 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Core;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class EntityWatcher : BaseLogic
@@ -73,7 +70,7 @@ namespace Subnautica.Server.Logic
             {
                 ServerModel.WorldDynamicEntityOwnershipChangedArgs request = new ServerModel.WorldDynamicEntityOwnershipChangedArgs()
                 {
-                    Entities  = this.ChangedEntities,
+                    Entities = this.ChangedEntities,
                 };
 
                 Core.Server.SendPacketToAllClient(request);
@@ -84,9 +81,9 @@ namespace Subnautica.Server.Logic
 
         public string FindEntityOwnership(WorldDynamicEntity entity)
         {
-            var ownershipId  = string.Empty;
+            var ownershipId = string.Empty;
             var lastDistance = 99999f;
-            var serverRange  = Network.DynamicEntity.VisibilityDistance * 0.75f;
+            var serverRange = Network.DynamicEntity.VisibilityDistance * 0.75f;
 
             foreach (var player in Server.Instance.GetPlayers())
             {
@@ -102,7 +99,7 @@ namespace Subnautica.Server.Logic
                         }
                         else if (distance < lastDistance)
                         {
-                            ownershipId  = player.UniqueId;
+                            ownershipId = player.UniqueId;
                             lastDistance = distance;
                         }
                     }
@@ -155,8 +152,8 @@ namespace Subnautica.Server.Logic
             foreach (var entity in Server.Instance.Storages.World.Storage.DynamicEntities.Where(q => q.OwnershipId == playerId))
             {
                 entity.IsUsingByPlayer = false;
-                entity.OwnershipId     = this.FindEntityOwnership(entity);
-                
+                entity.OwnershipId = this.FindEntityOwnership(entity);
+
                 if (string.IsNullOrEmpty(entity.OwnershipId))
                 {
                     this.RemoveWatcherByEntity(entity);

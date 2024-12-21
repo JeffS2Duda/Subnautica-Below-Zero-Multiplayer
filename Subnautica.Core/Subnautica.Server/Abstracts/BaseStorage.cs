@@ -1,14 +1,12 @@
 namespace Subnautica.Server.Abstracts
 {
-    using System;
-    using System.IO;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
+    using System.IO;
 
     public abstract class BaseStorage
-    {   
+    {
         public object ProcessLock { get; set; } = new object();
 
         public string ServerId { get; set; }

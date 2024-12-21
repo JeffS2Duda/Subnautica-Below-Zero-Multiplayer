@@ -35,7 +35,7 @@
             target.y *= multi;
             target.z *= multi;
             target.w *= multi;
-            
+
             var result = new Vector4(
                 Mathf.SmoothDamp(rot.x, target.x, ref deriv.x, time),
                 Mathf.SmoothDamp(rot.y, target.y, ref deriv.y, time),

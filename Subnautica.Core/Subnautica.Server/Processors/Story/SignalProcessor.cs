@@ -14,7 +14,7 @@ namespace Subnautica.Server.Processors.Story
 
     using static global::Story.UnlockSignalData;
 
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SignalProcessor : NormalProcessor
@@ -47,21 +47,21 @@ namespace Subnautica.Server.Processors.Story
         {
             WorldDynamicEntity entity = new WorldDynamicEntity()
             {
-                Id              = Server.Instance.Logices.World.GetNextItemId(),
-                UniqueId        = Network.Identifier.GenerateUniqueId(),
-                Item            = null,
-                TechType        = TechType.Beacon,
-                Position        = signal.TargetPosition,
-                Rotation        = Quaternion.identity.ToZeroQuaternion(),
-                OwnershipId     = ownershipId,
-                IsGlobalEntity  = API.Features.TechGroup.IsGlobalEntity(TechType.Beacon),
-                IsDeployed      = true,
-                Component       = ItemDropProcessor.GetEntityComponent(TechType.Beacon),
+                Id = Server.Instance.Logices.World.GetNextItemId(),
+                UniqueId = Network.Identifier.GenerateUniqueId(),
+                Item = null,
+                TechType = TechType.Beacon,
+                Position = signal.TargetPosition,
+                Rotation = Quaternion.identity.ToZeroQuaternion(),
+                OwnershipId = ownershipId,
+                IsGlobalEntity = API.Features.TechGroup.IsGlobalEntity(TechType.Beacon),
+                IsDeployed = true,
+                Component = ItemDropProcessor.GetEntityComponent(TechType.Beacon),
             };
 
             var beacon = entity.Component.GetComponent<WorldEntityModel.Beacon>();
             beacon.IsDeployedOnLand = signal.SignalType == SignalType.LandBeacon;
-            beacon.Text             = global::Language.main.Get(signal.TargetDescription);
+            beacon.Text = global::Language.main.Get(signal.TargetDescription);
 
             if (Server.Instance.Storages.World.AddWorldDynamicEntity(entity))
             {

@@ -1,9 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
-
+    using Subnautica.API.Features;
     using UnityEngine;
 
     [HarmonyPatch]
@@ -41,7 +39,7 @@
             int num = UWE.Utils.RaycastIntoSharedBuffer(__instance.transform.position, direction, magnitude, -5, QueryTriggerInteraction.Ignore);
             for (int i = 0; i < num; i++)
             {
-                var collider   = UWE.Utils.sharedHitBuffer[i].collider;
+                var collider = UWE.Utils.sharedHitBuffer[i].collider;
                 var gameObject = ((collider.attachedRigidbody != null) ? collider.attachedRigidbody.gameObject : collider.gameObject);
                 var component2 = gameObject.GetComponent<global::ICreatureTargetProxy>();
                 if (component2 != null && !component2.Equals(null))

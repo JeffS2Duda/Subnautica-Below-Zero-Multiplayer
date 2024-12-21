@@ -1,16 +1,13 @@
 ﻿namespace Subnautica.Client.Multiplayer.Cinematics
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
     using Subnautica.Client.Extensions;
     using Subnautica.Client.MonoBehaviours.Player;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using UWE;
 
     public class PlayerCinematicQueue
@@ -151,7 +148,7 @@
     }
 
     public class PlayerCinematicQueueItem
-    {   
+    {
         public string UniqueId { get; private set; }
 
         public Action CinematicAction { get; private set; }
@@ -163,8 +160,8 @@
         public PlayerCinematicQueueItem(CinematicController cinematicController, Action cinematicAction, string uniqueId, GenericProperty property = null)
         {
             this.CinematicController = cinematicController;
-            this.CinematicAction     = cinematicAction;
-            this.UniqueId            = uniqueId;
+            this.CinematicAction = cinematicAction;
+            this.UniqueId = uniqueId;
 
             if (property != null)
             {

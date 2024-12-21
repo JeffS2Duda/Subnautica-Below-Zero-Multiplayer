@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public LifepodZoneSelectingEventArgs(string key, bool isAllowed = true)
         {
-            this.Key       = key;
+            this.Key = key;
             this.IsAllowed = isAllowed;
         }
 

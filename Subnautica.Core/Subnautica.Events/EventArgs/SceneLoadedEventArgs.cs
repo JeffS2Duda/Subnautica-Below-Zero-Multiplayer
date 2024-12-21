@@ -1,7 +1,7 @@
 namespace Subnautica.Events.EventArgs
 {
-    using UnityEngine.SceneManagement;
     using System;
+    using UnityEngine.SceneManagement;
 
     public class SceneLoadedEventArgs : EventArgs
     {

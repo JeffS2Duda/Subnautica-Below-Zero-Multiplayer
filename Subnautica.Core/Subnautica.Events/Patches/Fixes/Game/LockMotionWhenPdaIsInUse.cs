@@ -37,7 +37,7 @@
             if (!Network.IsMultiplayerActive || !World.IsLoaded)
             {
                 return true;
-                
+
             }
 
             if (global::Player.main.pda.isInUse)
@@ -48,7 +48,7 @@
             {
                 FPSInputModule.current.lockMovement = state;
             }
-            
+
             return false;
         }
     }

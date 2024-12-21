@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch(typeof(global::Planter), nameof(global::Planter.AddItem), new Type[] { typeof(InventoryItem) })]
     public class PlanterAddItem

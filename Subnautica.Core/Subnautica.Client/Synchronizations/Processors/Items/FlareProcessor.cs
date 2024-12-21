@@ -13,13 +13,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class FlareProcessor : PlayerItemProcessor
     {
         public override bool OnDataReceived(NetworkPlayerItemComponent packet, byte playerId)
-        {            
+        {
             var component = packet.GetComponent<ItemModel.Flare>();
             if (component == null)
             {
@@ -87,9 +87,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             var item = player.HandItemComponent.GetComponent<ItemModel.Flare>();
             if (item != null)
             {
-                tool.light.intensity   = item.Intensity;
-                tool.light.range       = item.Range;
-                tool.energyLeft        = item.Energy;
+                tool.light.intensity = item.Intensity;
+                tool.light.range = item.Range;
+                tool.energyLeft = item.Energy;
                 tool.flareActivateTime = -99f;
 
                 if (tool.energyLeft < 3.0f)
@@ -131,9 +131,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
                 {
                     UniqueId = uniqueId,
                     Position = position,
-                    Forward  = forward,
+                    Forward = forward,
                     Rotation = rotation,
-                    Energy   = energy,
+                    Energy = energy,
                 }
             };
 

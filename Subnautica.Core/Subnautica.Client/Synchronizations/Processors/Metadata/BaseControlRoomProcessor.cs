@@ -1,7 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
@@ -9,10 +7,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.Server;
-
+    using System.Collections.Generic;
     using UnityEngine;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BaseControlRoomProcessor : MetadataProcessor
@@ -74,11 +71,11 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
                     if (this.ControlRooms[packet.UniqueId].Minimap == null)
                     {
-                        this.ControlRooms[packet.UniqueId].Minimap = gameObject.minimapBase; 
+                        this.ControlRooms[packet.UniqueId].Minimap = gameObject.minimapBase;
                     }
 
                     this.ControlRooms[packet.UniqueId].Position = component.Minimap.Position.ToVector3();
-                    this.ControlRooms[packet.UniqueId].Time     = Time.time;
+                    this.ControlRooms[packet.UniqueId].Time = Time.time;
                 }
             }
 
@@ -169,19 +166,19 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.BaseControlRoom()
                 {
-                    Name                     = name,
-                    BaseColor                = baseColor.ToZeroColor(),
-                    StripeColor1             = stripeColor1.ToZeroColor(),
-                    StripeColor2             = stripeColor2.ToZeroColor(),
-                    NameColor                = nameColor.ToZeroColor(),
-                    Minimap                  = minimap,
+                    Name = name,
+                    BaseColor = baseColor.ToZeroColor(),
+                    StripeColor1 = stripeColor1.ToZeroColor(),
+                    StripeColor2 = stripeColor2.ToZeroColor(),
+                    NameColor = nameColor.ToZeroColor(),
+                    Minimap = minimap,
                     IsColorCustomizerOpening = isColorCustomizerOpening,
-                    IsColorCustomizerSave    = isColorCustomizerSave,
-                    IsNavigateOpening        = isNavigateOpening,
-                    IsNavigationExiting      = isNavigationExiting,
+                    IsColorCustomizerSave = isColorCustomizerSave,
+                    IsNavigateOpening = isNavigateOpening,
+                    IsNavigationExiting = isNavigationExiting,
                 }
             };
 

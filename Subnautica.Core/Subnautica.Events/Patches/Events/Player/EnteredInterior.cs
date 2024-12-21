@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Player), nameof(global::Player.EnterInterior))]
     public static class EnteredInterior

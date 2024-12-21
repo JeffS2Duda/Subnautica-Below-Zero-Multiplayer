@@ -53,7 +53,7 @@ namespace Subnautica.Server.Processors.WorldEntities
 
             return true;
         }
-        
+
         private float CalculateSpawnInterval(TechType techType)
         {
             switch (techType)

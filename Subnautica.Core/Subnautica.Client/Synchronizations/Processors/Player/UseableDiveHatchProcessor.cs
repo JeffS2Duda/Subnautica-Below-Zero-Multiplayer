@@ -53,15 +53,15 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                 {
                     ServerModel.UseableDiveHatchArgs request = new ServerModel.UseableDiveHatchArgs()
                     {
-                        UniqueId            = ev.UniqueId,
-                        IsBulkHead          = ev.IsBulkHead,
-                        IsLifePod           = ev.IsLifePod,
-                        IsEnter             = ev.IsEnter,
+                        UniqueId = ev.UniqueId,
+                        IsBulkHead = ev.IsBulkHead,
+                        IsLifePod = ev.IsLifePod,
+                        IsEnter = ev.IsEnter,
                         IsMoonpoolExpansion = ev.IsMoonpoolExpansion,
                     };
 
                     NetworkClient.SendPacket(request);
-                }               
+                }
             }
         }
     }

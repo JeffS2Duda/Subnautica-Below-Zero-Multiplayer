@@ -1,8 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -11,9 +8,9 @@ namespace Subnautica.Client.Synchronizations.Processors.World
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.World.Childrens;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BrinicleProcessor : NormalProcessor
@@ -25,7 +22,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.BrinicleArgs>();
-            
+
             if (packet.Brinicles.Count > 0)
             {
                 foreach (var brinicle in packet.Brinicles)
@@ -81,7 +78,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             {
                 WaitingForRegistry = waitingForRegistry,
                 UniqueId = uniqueId,
-                Damage   = damage,
+                Damage = damage,
             };
 
             NetworkClient.SendPacket(request);

@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public BenchSitdownEventArgs(string uniqueId, Bench.BenchSide side, TechType techType, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.Side      = side;
-            this.TechType  = techType;
+            this.UniqueId = uniqueId;
+            this.Side = side;
+            this.TechType = techType;
             this.IsAllowed = isAllowed;
         }
 

@@ -1,15 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.Player
 {
-    using Subnautica.API.Extensions;
-    using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
-    using Subnautica.Client.Extensions;
     using Subnautica.Network.Models.Core;
 
     using ServerModel = Subnautica.Network.Models.Server;
-    
+
     public class FirstInitialEquipmentProcessor : NormalProcessor
-    {        
+    {
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.PlayerInitialEquipmentArgs>();

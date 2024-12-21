@@ -16,7 +16,7 @@
         {
             this.MeleeAttack = this.Target.GetComponentInChildren<global::LeviathanMeleeAttack>();
 
-            if (this.Target.TryGetComponent<global::AttackLastTarget>(out var attackLastTarget)) 
+            if (this.Target.TryGetComponent<global::AttackLastTarget>(out var attackLastTarget))
             {
                 attackLastTarget.StopAttackSoundAndAnimation();
             }

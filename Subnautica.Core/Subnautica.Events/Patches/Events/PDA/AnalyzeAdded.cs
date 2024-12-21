@@ -4,7 +4,7 @@
 
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-    
+
     using System;
 
     [HarmonyPatch(typeof(KnownTech), nameof(KnownTech.NotifyAnalyze))]

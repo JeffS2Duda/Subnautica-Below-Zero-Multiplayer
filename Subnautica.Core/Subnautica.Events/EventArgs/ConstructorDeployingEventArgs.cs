@@ -8,11 +8,11 @@ namespace Subnautica.Events.EventArgs
     {
         public ConstructorDeployingEventArgs(string uniqueId, Pickupable pickupable, Vector3 forward, Vector3 deployPosition, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
-            this.Pickupable     = pickupable;
-            this.Forward        = forward;
+            this.UniqueId = uniqueId;
+            this.Pickupable = pickupable;
+            this.Forward = forward;
             this.DeployPosition = deployPosition;
-            this.IsAllowed      = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

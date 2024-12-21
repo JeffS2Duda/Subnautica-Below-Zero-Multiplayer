@@ -6,10 +6,10 @@ namespace Subnautica.Events.EventArgs
     {
         public DeconstructionBeginEventArgs(string uniqueId, global::BaseDeconstructable baseDeconstructable, TechType techType, bool isAllowed = true)
         {
-            this.UniqueId            = uniqueId;
+            this.UniqueId = uniqueId;
             this.BaseDeconstructable = baseDeconstructable;
-            this.TechType            = techType;
-            this.IsAllowed           = isAllowed;
+            this.TechType = techType;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; private set; }

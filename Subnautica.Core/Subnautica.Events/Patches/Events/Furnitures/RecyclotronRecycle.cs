@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Recyclotron), nameof(global::Recyclotron.RecycleAsync))]
     public static class RecyclotronRecycle
@@ -14,9 +12,9 @@ namespace Subnautica.Events.Patches.Events.Furnitures
         {
             if (Network.IsMultiplayerActive)
             {
-                if(__instance.IsPowered() && __instance.wasteList.Count == 1)
+                if (__instance.IsPowered() && __instance.wasteList.Count == 1)
                 {
-                    var wasteItem  = __instance.wasteList.GetLast<Recyclotron.Waste>().inventoryItem;
+                    var wasteItem = __instance.wasteList.GetLast<Recyclotron.Waste>().inventoryItem;
                     var gameObject = wasteItem.item.gameObject;
                     if (!__instance.IsUsedBattery(gameObject))
                     {

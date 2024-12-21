@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public CreatureCallSoundTriggeringEventArgs(string uniqueId, byte callId, string animation = null, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.CallId    = callId;
+            this.UniqueId = uniqueId;
+            this.CallId = callId;
             this.Animation = animation;
             this.IsAllowed = isAllowed;
         }

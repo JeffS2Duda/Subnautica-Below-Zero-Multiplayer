@@ -1,12 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Events.Story
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::OnTouch), nameof(global::OnTouch.OnTriggerEnter))]

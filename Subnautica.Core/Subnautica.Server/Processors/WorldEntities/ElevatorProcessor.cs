@@ -28,9 +28,9 @@ namespace Subnautica.Server.Processors.WorldEntities
 
             if (Server.Instance.Logices.World.GetServerTime() >= entity.StartTime + Interact.ElevatorCall)
             {
-                entity.IsUp      = component.IsUp;
+                entity.IsUp = component.IsUp;
                 entity.StartTime = Server.Instance.Logices.World.GetServerTime();
-                packet.Entity    = entity;
+                packet.Entity = entity;
 
                 if (Server.Instance.Storages.World.SetPersistentEntity(entity))
                 {

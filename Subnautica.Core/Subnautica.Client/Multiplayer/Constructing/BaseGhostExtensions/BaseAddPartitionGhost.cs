@@ -30,10 +30,10 @@
 
             geometryChanged = baseGhost.UpdateDirection(component.FaceStart.Direction);
 
-            var faceCell    = component.FaceStart.Cell.ToInt3();
-            var normCell    = baseGhost.targetBase.NormalizeCell(faceCell);
-            var targetCell  = baseGhost.targetBase.GetCell(normCell);
-            var cellSize    = Base.CellSize[(int)targetCell];
+            var faceCell = component.FaceStart.Cell.ToInt3();
+            var normCell = baseGhost.targetBase.NormalizeCell(faceCell);
+            var targetCell = baseGhost.targetBase.GetCell(normCell);
+            var cellSize = Base.CellSize[(int)targetCell];
             var sourceRange = Int3.Bounds.Union(new Int3.Bounds(faceCell, faceCell), new Int3.Bounds(normCell, normCell + cellSize - 1));
 
             geometryChanged |= baseGhost.UpdateSize(sourceRange.size);

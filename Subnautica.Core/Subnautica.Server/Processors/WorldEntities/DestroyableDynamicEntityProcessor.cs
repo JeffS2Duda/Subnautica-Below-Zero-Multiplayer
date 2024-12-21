@@ -1,7 +1,5 @@
 namespace Subnautica.Server.Processors.WorldEntities
 {
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.Server;

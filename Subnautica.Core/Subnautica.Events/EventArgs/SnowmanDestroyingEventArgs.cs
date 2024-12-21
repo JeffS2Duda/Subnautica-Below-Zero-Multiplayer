@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public SnowmanDestroyingEventArgs(string uniqueId, bool isStaticWorldEntity, bool isAllowed = true)
         {
-            this.UniqueId            = uniqueId;
+            this.UniqueId = uniqueId;
             this.IsStaticWorldEntity = isStaticWorldEntity;
-            this.IsAllowed           = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

@@ -22,10 +22,10 @@
         public void Start()
         {
             var skyApplier = this.Player.AddComponent<SkyApplier>();
-            skyApplier.anchorSky         = Skies.Auto;
+            skyApplier.anchorSky = Skies.Auto;
             skyApplier.emissiveFromPower = false;
-            skyApplier.dynamic           = true;
-            skyApplier.renderers         = this.Player.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+            skyApplier.dynamic = true;
+            skyApplier.renderers = this.Player.GetComponentsInChildren<SkinnedMeshRenderer>(true);
         }
 
         public void FixedUpdate()
@@ -44,7 +44,7 @@
             {
                 return false;
             }
-            
+
             if (this.CurrentSubRootId == this.Player.CurrentSubRootId)
             {
                 return false;
@@ -62,7 +62,7 @@
                 SkyEnvironmentChanged.Broadcast(this.Player.PlayerModel, null);
                 return false;
             }
-            
+
             SubRoot subRoot = Network.Identifier.GetComponentByGameObject<SubRoot>(this.CurrentSubRootId, true);
             if (subRoot == null)
             {
@@ -110,15 +110,15 @@
             }
 
             this.LastPower = power;
-            this.LastSky   = customSky;
-            
+            this.LastSky = customSky;
+
             foreach (SkyApplier skyApplier in this.GetComponentsInChildren<SkyApplier>(true))
             {
                 if (isSkyChanged)
                 {
                     skyApplier.SetCustomSky(customSky);
                 }
-                    
+
                 foreach (Renderer renderer in skyApplier.renderers)
                 {
                     if (renderer != null)

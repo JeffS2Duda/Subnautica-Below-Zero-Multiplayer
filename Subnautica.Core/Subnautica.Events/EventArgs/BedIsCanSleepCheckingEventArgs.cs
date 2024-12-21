@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public BedIsCanSleepCheckingEventArgs(string uniqueId, Bed.BedSide side, bool isSeaTruckModule, bool isAllowed = true)
         {
-            this.UniqueId         = uniqueId;
-            this.Side             = side;
-            this.IsAllowed        = isAllowed;
+            this.UniqueId = uniqueId;
+            this.Side = side;
+            this.IsAllowed = isAllowed;
             this.IsSeaTruckModule = isSeaTruckModule;
         }
 

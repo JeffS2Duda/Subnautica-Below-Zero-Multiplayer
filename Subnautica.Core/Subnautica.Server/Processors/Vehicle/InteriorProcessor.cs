@@ -20,7 +20,7 @@ namespace Subnautica.Server.Processors.Vehicle
             if (packet.IsEntered)
             {
                 profile.SetInterior(packet.VehicleId);
-                
+
             }
             else
             {

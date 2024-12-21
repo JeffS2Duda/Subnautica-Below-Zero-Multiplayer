@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public GrownPlantHarvestingEventArgs(string uniqueId, GrownPlant grownPlant, bool isAllowed = true)
         {
-            this.UniqueId   = uniqueId;
+            this.UniqueId = uniqueId;
             this.GrownPlant = grownPlant;
-            this.IsAllowed  = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; private set; }

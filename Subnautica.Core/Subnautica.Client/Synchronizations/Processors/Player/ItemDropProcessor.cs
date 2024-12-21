@@ -75,8 +75,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             ServerModel.ItemDropArgs request = new ServerModel.ItemDropArgs()
             {
                 WorldPickupItem = pickupItem,
-                Forward         = forward,
-                Entity          = new WorldDynamicEntity()
+                Forward = forward,
+                Entity = new WorldDynamicEntity()
                 {
                     UniqueId = uniqueId,
                     Position = position,

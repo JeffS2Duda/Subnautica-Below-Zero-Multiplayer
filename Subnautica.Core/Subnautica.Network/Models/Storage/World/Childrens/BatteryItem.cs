@@ -1,8 +1,7 @@
 namespace Subnautica.Network.Models.Storage.World.Childrens
 {
-    using System;
-
     using MessagePack;
+    using System;
 
     [MessagePackObject]
     public class BatteryItem
@@ -29,9 +28,9 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
 
         public BatteryItem(string slotId = null, TechType techType = TechType.None, float charge = 0f, float capacity = 100f)
         {
-            this.SlotId   = slotId;
+            this.SlotId = slotId;
             this.TechType = techType;
-            this.Charge   = charge;
+            this.Charge = charge;
             this.Capacity = capacity;
         }
 
@@ -59,7 +58,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
             {
                 this.IsActive = true;
                 this.TechType = techType;
-                this.Charge   = charge;
+                this.Charge = charge;
                 this.Capacity = this.GetCapacity();
             }
         }
@@ -85,7 +84,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
         {
             this.IsActive = false;
             this.TechType = TechType.None;
-            this.Charge   = 0f;
+            this.Charge = 0f;
             this.Capacity = 0f;
         }
     }

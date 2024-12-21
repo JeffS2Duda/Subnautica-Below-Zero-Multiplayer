@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Building
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(Builder), nameof(Builder.Update))]
     public class ConstructionGhostMoved

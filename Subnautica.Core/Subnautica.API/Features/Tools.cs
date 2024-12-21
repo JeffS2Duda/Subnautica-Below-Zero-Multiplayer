@@ -1,26 +1,18 @@
 ﻿namespace Subnautica.API.Features
 {
+    using Subnautica.API.Enums;
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features.Helper;
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Text;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Enums;
-    using Subnautica.API.Extensions;
-    using Subnautica.API.Features.Helper;
-
     using UnityEngine;
-    using UnityEngine.Events;
     using UnityEngine.Playables;
-
     using UWE;
-
     using SystemVersion = System.Version;
 
     public class Tools
@@ -149,7 +141,7 @@
 
         public static string GetLauncherAuthor(bool addAuthorString = false)
         {
-            if(!addAuthorString)
+            if (!addAuthorString)
             {
                 return Settings.AuthorName;
             }
@@ -176,7 +168,7 @@
                 }
             }
 
-            SystemVersion localVersion  = new SystemVersion(string.Join(".", versions1));
+            SystemVersion localVersion = new SystemVersion(string.Join(".", versions1));
             SystemVersion remoteVersion = new SystemVersion(string.Join(".", versions2));
 
             if (localVersion.CompareTo(remoteVersion) < 0)
@@ -211,7 +203,7 @@
             {
                 return String.Format("{0}{1}", launcherVersion, String.Join(".", LauncherVersionData));
             }
-            
+
             return String.Format("{0}{1}", launcherVersion, String.Join("", LauncherVersionData));
         }
 
@@ -259,12 +251,12 @@
 
         public static double CalculatePercent(long one, long two, int max = 100)
         {
-            return ((double) one / (double) two) * max;
+            return ((double)one / (double)two) * max;
         }
 
         public static double CalculateThousandToPercent(int thousand)
         {
-            return ((double) thousand / 10.0);
+            return ((double)thousand / 10.0);
         }
 
         public static ApiDataFormat GetApiData()
@@ -313,7 +305,7 @@
             {
                 return null;
             }
-            
+
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {
                 byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
@@ -323,9 +315,9 @@
 
                 for (int i = 0; i < hashBytes.Length; i++)
                 {
-                     sb.Append(hashBytes[i].ToString("X2"));
+                    sb.Append(hashBytes[i].ToString("X2"));
                 }
-                
+
                 return sb.ToString();
             }
         }
@@ -333,7 +325,7 @@
         public static string GetShortUniqueId()
         {
             var historicalDate = new DateTime(1970, 1, 1, 0, 0, 0);
-            var spanTillNow    = DateTime.UtcNow.Subtract(historicalDate);
+            var spanTillNow = DateTime.UtcNow.Subtract(historicalDate);
 
             string shortId = String.Format("{0:0}", spanTillNow.TotalMilliseconds);
 
@@ -342,29 +334,29 @@
 
         public static string GetSizeByTextFormat(long size)
         {
-            if(size < 1024)
+            if (size < 1024)
             {
                 return string.Format("{0} {1}", size, ZeroLanguage.Get("GAME_SIZE_B"));
             }
 
-            if(size < 1024 * 1024)
+            if (size < 1024 * 1024)
             {
-                return string.Format("{0} {1}", System.Math.Round((double) size / 1024, 2), ZeroLanguage.Get("GAME_SIZE_KB"));
+                return string.Format("{0} {1}", System.Math.Round((double)size / 1024, 2), ZeroLanguage.Get("GAME_SIZE_KB"));
             }
 
-            if(size < 1024 * 1024 * 1024)
+            if (size < 1024 * 1024 * 1024)
             {
-                return string.Format("{0} {1}", System.Math.Round((double) size / 1024 / 1024, 2), ZeroLanguage.Get("GAME_SIZE_MB"));
+                return string.Format("{0} {1}", System.Math.Round((double)size / 1024 / 1024, 2), ZeroLanguage.Get("GAME_SIZE_MB"));
             }
 
-            return string.Format("{0} {1}", System.Math.Round((double) size / 1024 / 1024 / 1024, 2), ZeroLanguage.Get("GAME_SIZE_GB"));
+            return string.Format("{0} {1}", System.Math.Round((double)size / 1024 / 1024 / 1024, 2), ZeroLanguage.Get("GAME_SIZE_GB"));
         }
 
         public static string GetDateByTextFormat(int unixTimeStamp)
         {
             DateTime dateTime = UnixTimeStampToDateTime(unixTimeStamp);
 
-            string hourText   = dateTime.Hour > 10 ? dateTime.Hour.ToString() : "0" + dateTime.Hour;
+            string hourText = dateTime.Hour > 10 ? dateTime.Hour.ToString() : "0" + dateTime.Hour;
             string minuteText = dateTime.Minute > 10 ? dateTime.Minute.ToString() : "0" + dateTime.Minute;
 
             return string.Format("{0} {1} {2} {3}:{4}", dateTime.Day, ZeroLanguage.Get("GAME_MONTH_" + dateTime.Month), dateTime.Year, hourText, minuteText);
@@ -373,7 +365,7 @@
         public static DateTime UnixTimeStampToDateTime(int unixTimeStamp)
         {
             var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            dateTime = dateTime.AddSeconds((double) unixTimeStamp).ToLocalTime();
+            dateTime = dateTime.AddSeconds((double)unixTimeStamp).ToLocalTime();
             return dateTime;
         }
 
@@ -424,7 +416,7 @@
 
         public static int GetUnixTime()
         {
-            return (int) DateTimeOffset.Now.ToUnixTimeSeconds();
+            return (int)DateTimeOffset.Now.ToUnixTimeSeconds();
         }
 
         public static string GetLanguage()

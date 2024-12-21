@@ -1,25 +1,23 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-
+    using System;
     using UnityEngine;
 
     public class ConstructionGhostMovedEventArgs : EventArgs
     {
         public ConstructionGhostMovedEventArgs(GameObject ghostModel, TechType techType, Transform aimTranform, bool isCanPlace, int lastRotation)
         {
-            this.GhostModel      = ghostModel;
-            this.UniqueId        = ghostModel.GetIdentityId(true);
-            this.TechType        = techType;
-            this.Position        = ghostModel.transform.position;
-            this.Rotation        = ghostModel.transform.rotation;
-            this.AimTransform    = aimTranform;
-            this.IsCanPlace      = isCanPlace;
+            this.GhostModel = ghostModel;
+            this.UniqueId = ghostModel.GetIdentityId(true);
+            this.TechType = techType;
+            this.Position = ghostModel.transform.position;
+            this.Rotation = ghostModel.transform.rotation;
+            this.AimTransform = aimTranform;
+            this.IsCanPlace = isCanPlace;
             this.UpdatePlacement = Network.Temporary.GetProperty<bool>(ghostModel.GetIdentityId(), "UpdatePlacementResult");
-            this.LastRotation    = lastRotation;
+            this.LastRotation = lastRotation;
         }
 
         public GameObject GhostModel { get; private set; }

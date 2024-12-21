@@ -17,14 +17,14 @@
     public class MeleeAttackProcessor : NormalProcessor
     {
         public override bool OnDataReceived(NetworkPacket networkPacket)
-        { 
+        {
             var packet = networkPacket.GetPacket<ServerModel.CreatureMeleeAttackArgs>();
             if (packet == null)
             {
                 return false;
             }
 
-           
+
             var action = new CreatureQueueAction();
             action.OnProcessCompleted = this.OnCreatureProcessCompleted;
             action.RegisterProperty("Target", packet.Target);
@@ -35,7 +35,7 @@
 
         private void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
-            var target      = item.Action.GetProperty<ZeroLastTarget>("Target");
+            var target = item.Action.GetProperty<ZeroLastTarget>("Target");
             var processTime = item.Action.GetProperty<double>("ProcessTime");
 
             if (creature.GameObject.TryGetComponent<MultiplayerMeleeAttack>(out var meleeAttack))
@@ -71,7 +71,7 @@
             {
                 CreatureId = creatureId,
                 BiteDamage = biteDamage,
-                Target     = new ZeroLastTarget(targetId, techType)
+                Target = new ZeroLastTarget(targetId, techType)
             };
 
             NetworkClient.SendPacket(request);

@@ -1,7 +1,6 @@
 ﻿namespace Subnautica.Client.Abstracts.Processors
 {
     using Subnautica.API.Features;
-    using Subnautica.API.Features.Helper;
     using Subnautica.Network.Core.Components;
 
     using UnityEngine;

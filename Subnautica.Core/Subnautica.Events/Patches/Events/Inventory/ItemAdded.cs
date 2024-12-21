@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Inventory
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.OnAddItem))]
     public class ItemAdded

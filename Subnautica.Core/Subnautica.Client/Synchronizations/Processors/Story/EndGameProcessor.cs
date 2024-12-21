@@ -1,14 +1,11 @@
 namespace Subnautica.Client.Synchronizations.Processors.Story
 {
-    using System.Collections.Generic;
-
     using global::Story;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class EndGameProcessor : NormalProcessor
@@ -36,7 +33,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
         {
             if (BelowZeroEndGame.isActive)
             {
-                Network.Session.SetEndGameWorldTime((double) Time.unscaledDeltaTime, true);
+                Network.Session.SetEndGameWorldTime((double)Time.unscaledDeltaTime, true);
             }
         }
 
@@ -96,7 +93,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
 
             this.AttachedArms.Add(player.UniqueId);
 
-            arm.transform.parent        = player.PlayerModel.transform;
+            arm.transform.parent = player.PlayerModel.transform;
             arm.transform.localPosition = Vector3.zero;
             arm.transform.localRotation = Quaternion.identity;
             return true;

@@ -16,7 +16,7 @@ namespace Subnautica.Server.Processors.Building
             if (packet == null)
             {
                 return this.SendEmptyPacketErrorLog(networkPacket);
-            }          
+            }
 
             var construction = Server.Instance.Storages.Construction.GetConstruction(packet.UniqueId);
             if (construction == null)

@@ -9,7 +9,7 @@
     using Subnautica.Network.Models.Core;
 
     using Constructing = Subnautica.Client.Multiplayer.Constructing;
-    using ServerModel  = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class CompletedProcessor : NormalProcessor
     {
@@ -43,15 +43,15 @@
         {
             ServerModel.ConstructionCompletedArgs request = new ServerModel.ConstructionCompletedArgs()
             {
-                UniqueId       = ev.UniqueId,
-                BaseId         = ev.BaseId,
-                TechType       = ev.TechType,
-                CellPosition   = ev.CellPosition.ToZeroVector3(),
+                UniqueId = ev.UniqueId,
+                BaseId = ev.BaseId,
+                TechType = ev.TechType,
+                CellPosition = ev.CellPosition.ToZeroVector3(),
                 IsFaceHasValue = ev.IsFaceHasValue,
-                LocalPosition  = ev.LocalPosition.ToZeroVector3(),
-                LocalRotation  = ev.LocalRotation.ToZeroQuaternion(),
-                FaceDirection  = ev.FaceDirection,
-                FaceType       = ev.FaceType,
+                LocalPosition = ev.LocalPosition.ToZeroVector3(),
+                LocalRotation = ev.LocalRotation.ToZeroQuaternion(),
+                FaceDirection = ev.FaceDirection,
+                FaceType = ev.FaceType,
             };
 
             NetworkClient.SendPacket(request);

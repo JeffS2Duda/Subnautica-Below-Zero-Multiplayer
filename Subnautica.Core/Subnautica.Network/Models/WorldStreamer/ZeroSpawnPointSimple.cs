@@ -3,8 +3,6 @@ namespace Subnautica.Network.Models.WorldStreamer
     using MessagePack;
 
     using Subnautica.API.Extensions;
-    using Subnautica.API.Features;
-    using Subnautica.Network.Structures;
 
     using UnityEngine;
 
@@ -31,11 +29,11 @@ namespace Subnautica.Network.Models.WorldStreamer
 
         [IgnoreMember]
         public bool IsDead
-        { 
-            get 
+        {
+            get
             {
                 return this.Health == 0;
-            } 
+            }
         }
 
         public ZeroSpawnPointSimple()
@@ -45,8 +43,8 @@ namespace Subnautica.Network.Models.WorldStreamer
 
         public ZeroSpawnPointSimple(int slotId, string classId, float nextRespawnTime)
         {
-            this.SlotId          = slotId;
-            this.ClassId         = classId;
+            this.SlotId = slotId;
+            this.ClassId = classId;
             this.NextRespawnTime = nextRespawnTime;
         }
 
@@ -107,9 +105,9 @@ namespace Subnautica.Network.Models.WorldStreamer
         {
             return new ZeroSpawnPoint()
             {
-                IsActive        = true,
-                SlotId          = this.SlotId,
-                ClassId         = this.ClassId,
+                IsActive = true,
+                SlotId = this.SlotId,
+                ClassId = this.ClassId,
                 NextRespawnTime = this.NextRespawnTime,
             };
         }

@@ -1,16 +1,13 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::uGUI_PlayerSleep), nameof(global::uGUI_PlayerSleep.Update))]
     public static class SleepScreenStartingCompleted
-    {   
+    {
         private static Color BlackColor { get; set; } = new Color(0.0f, 0.0f, 0.0f, 1f);
 
         private static bool Prefix(global::uGUI_PlayerSleep __instance)
@@ -19,9 +16,9 @@ namespace Subnautica.Events.Patches.Events.Player
             {
                 var color = __instance.blackOverlay.color;
 
-                __instance.blackOverlay.color   = Color.Lerp(color, BlackColor, Time.deltaTime * __instance.fadeInSpeed);
+                __instance.blackOverlay.color = Color.Lerp(color, BlackColor, Time.deltaTime * __instance.fadeInSpeed);
                 __instance.blackOverlay.enabled = true;
-                
+
                 if (color.a > 0.980000019073486)
                 {
                     __instance.blackOverlay.color = BlackColor;

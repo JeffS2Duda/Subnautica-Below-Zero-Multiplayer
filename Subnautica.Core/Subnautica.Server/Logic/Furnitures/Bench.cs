@@ -1,13 +1,10 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Enums;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using Metadata = Subnautica.Network.Models.Metadata;
 
     public class Bench : BaseLogic

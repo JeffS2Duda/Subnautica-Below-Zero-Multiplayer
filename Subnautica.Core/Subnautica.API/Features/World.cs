@@ -1,12 +1,10 @@
 ﻿namespace Subnautica.API.Features
 {
-    using System;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features.Helper;
     using Subnautica.Network.Models.WorldEntity;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-
+    using System;
     using UnityEngine;
 
     public class World
@@ -15,14 +13,14 @@
         {
             name = "complete",
             path = "event:/tools/builder/complete",
-            id   = "{b05ad9e7-17b0-4d61-b541-4bbf941cd7a5}",
+            id = "{b05ad9e7-17b0-4d61-b541-4bbf941cd7a5}",
         };
 
         public static FMODAsset DeconstructCompleteSound { get; set; } = new FMODAsset()
         {
             name = "deconstruct",
             path = "event:/bz/tools/build_tool/deconstruct",
-            id   = "{bf237309-159c-48f0-a628-9926aa2a4181}",
+            id = "{bf237309-159c-48f0-a628-9926aa2a4181}",
         };
 
         public static bool IsLoaded { get; set; } = false;
@@ -127,11 +125,11 @@
         {
             if (worldPickupItem.Item.Item == null)
             {
-                Entity.SpawnToQueue(worldPickupItem.Item.TechType, worldPickupItem.GetItemId(), container, item); 
+                Entity.SpawnToQueue(worldPickupItem.Item.TechType, worldPickupItem.GetItemId(), container, item);
             }
             else
             {
-                Entity.SpawnToQueue(worldPickupItem.Item.Item, worldPickupItem.GetItemId(), container, item); 
+                Entity.SpawnToQueue(worldPickupItem.Item.Item, worldPickupItem.GetItemId(), container, item);
             }
         }
 
@@ -139,11 +137,11 @@
         {
             if (worldPickupItem.Item.Item == null)
             {
-                Entity.SpawnToQueue(worldPickupItem.Item.TechType, worldPickupItem.GetItemId(), global::Inventory.Get().container, item); 
+                Entity.SpawnToQueue(worldPickupItem.Item.TechType, worldPickupItem.GetItemId(), global::Inventory.Get().container, item);
             }
             else
             {
-                Entity.SpawnToQueue(worldPickupItem.Item.Item, worldPickupItem.GetItemId(), global::Inventory.Get().container, item); 
+                Entity.SpawnToQueue(worldPickupItem.Item.Item, worldPickupItem.GetItemId(), global::Inventory.Get().container, item);
             }
         }
 

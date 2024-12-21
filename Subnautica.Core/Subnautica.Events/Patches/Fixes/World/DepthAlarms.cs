@@ -1,12 +1,10 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.World
 {
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Structures;
+    using System.Collections;
 
     [HarmonyPatch]
     public class DepthAlarms

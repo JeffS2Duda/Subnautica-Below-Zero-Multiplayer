@@ -9,7 +9,7 @@
     using Subnautica.Network.Core.Components;
 
     using CreatureModel = Subnautica.Network.Models.Creatures;
-    using ServerModel   = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class CrashFishProcessor : WorldCreatureProcessor
     {

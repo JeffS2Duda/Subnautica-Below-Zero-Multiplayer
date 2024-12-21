@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public TeleporterInitializedEventArgs(string uniqueId, string teleporterId, bool isExit)
         {
-            this.UniqueId     = uniqueId;
+            this.UniqueId = uniqueId;
             this.TeleporterId = teleporterId;
-            this.IsExit       = isExit;
+            this.IsExit = isExit;
         }
 
         public string UniqueId { get; set; }

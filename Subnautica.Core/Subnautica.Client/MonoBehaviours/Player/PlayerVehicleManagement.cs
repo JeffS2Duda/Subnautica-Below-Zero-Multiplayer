@@ -1,16 +1,11 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Player
 {
-    using System.Collections.Generic;
-
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Extensions;
     using Subnautica.Client.Multiplayer.Vehicles;
     using Subnautica.Network.Models.Server;
-    using Subnautica.Network.Structures;
-
+    using System.Collections.Generic;
     using UnityEngine;
-
     using VehicleModel = Subnautica.Client.Multiplayer.Vehicles;
 
     public class PlayerVehicleManagement : MonoBehaviour
@@ -113,8 +108,8 @@
 
             Network.DynamicEntity.SetEntityUsingByPlayer(vehicleId, true);
 
-            this.Vehicle     = Network.Identifier.GetGameObject(entity.UniqueId);
-            this.VehicleId   = vehicleId;
+            this.Vehicle = Network.Identifier.GetGameObject(entity.UniqueId);
+            this.VehicleId = vehicleId;
             this.VehicleType = vehicleType;
 
             if (isEnter)
@@ -159,13 +154,13 @@
 
             if (this.VehicleType != TechType.None && this.Vehicles.TryGetValue(this.VehicleType, out var vehicle))
             {
-                vehicle.OnExitVehicle();          
+                vehicle.OnExitVehicle();
             }
 
-            this.Vehicle         = null;
+            this.Vehicle = null;
             this.VehicleUniqueId = null;
-            this.VehicleId       = 0;
-            this.VehicleType     = TechType.None;
+            this.VehicleId = 0;
+            this.VehicleType = TechType.None;
         }
 
         public void OnDestroy()

@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Construction
 {
-    using System;
-
     using Subnautica.API.Features;
+    using System;
     using UnityEngine;
-
     using Constructing = Subnautica.Client.Multiplayer.Constructing;
 
     public class BuilderNormalAnimation : MonoBehaviour
@@ -35,7 +33,7 @@
         private void UpdateChangedAmount()
         {
             float differentAmount = this.GetDifferentAmount();
-            if (differentAmount >= 0 && this.GetConstructedAmount() + differentAmount >= this.TargetConstructedAmount) 
+            if (differentAmount >= 0 && this.GetConstructedAmount() + differentAmount >= this.TargetConstructedAmount)
             {
                 this.Builder.Constructable.constructedAmount = this.TargetConstructedAmount;
                 this.IsActive = false;
@@ -55,7 +53,7 @@
 
         private float GetDifferentAmount()
         {
-            float differentAmount  = (this.TargetConstructedAmount - this.GetConstructedAmount()) / (this.ConstructionLeftTime / Time.deltaTime);
+            float differentAmount = (this.TargetConstructedAmount - this.GetConstructedAmount()) / (this.ConstructionLeftTime / Time.deltaTime);
             this.ConstructionLeftTime -= Time.deltaTime;
 
             return differentAmount;
@@ -63,7 +61,7 @@
 
         private float GetConstructedAmount()
         {
-            return (float) Math.Round(this.Builder.Constructable.constructedAmount, 4);
+            return (float)Math.Round(this.Builder.Constructable.constructedAmount, 4);
         }
     }
 }

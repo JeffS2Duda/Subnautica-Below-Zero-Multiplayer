@@ -38,7 +38,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
             {
                 Entity = new EntityModel.OxygenPlant()
                 {
-                    UniqueId    = ev.UniqueId,
+                    UniqueId = ev.UniqueId,
                     StartedTime = ev.StartedTime,
                 }
             };

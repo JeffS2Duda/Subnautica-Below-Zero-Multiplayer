@@ -1,16 +1,13 @@
 namespace Subnautica.Server.Processors.Startup
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Server.Core;
-
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.Player;
     using Subnautica.Server.Abstracts.Processors;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ClientModel = Subnautica.Network.Models.Client;
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class WorlLoadedProcessor : NormalProcessor
@@ -26,9 +23,9 @@ namespace Subnautica.Server.Processors.Startup
             {
                 ClientModel.WorldLoadedArgs request = new ClientModel.WorldLoadedArgs()
                 {
-                    Images      = this.GetImages(packet.Images),
+                    Images = this.GetImages(packet.Images),
                     ExistImages = this.GetImageNames(),
-                    Players     = this.GetPlayers(profile),
+                    Players = this.GetPlayers(profile),
                 };
 
                 profile.OnFullConnected();
@@ -36,13 +33,13 @@ namespace Subnautica.Server.Processors.Startup
 
                 ClientModel.AnotherPlayerConnectedArgs otherRequest = new ClientModel.AnotherPlayerConnectedArgs()
                 {
-                    UniqueId   = profile.UniqueId,
-                    PlayerId   = profile.PlayerId,
-                    SubrootId  = profile.SubrootId,
+                    UniqueId = profile.UniqueId,
+                    PlayerId = profile.PlayerId,
+                    SubrootId = profile.SubrootId,
                     InteriorId = profile.InteriorId,
                     PlayerName = profile.PlayerName,
-                    Position   = profile.Position,
-                    Rotation   = profile.Rotation,
+                    Position = profile.Position,
+                    Rotation = profile.Rotation,
                 };
 
                 profile.SendPacketToOtherClients(otherRequest);
@@ -54,7 +51,7 @@ namespace Subnautica.Server.Processors.Startup
         private Dictionary<string, Metadata.PictureFrame> GetImages(List<string> existImages)
         {
             var pictureFrames = new Dictionary<string, Metadata.PictureFrame>();
-            var addedImages   = new List<string>();
+            var addedImages = new List<string>();
             foreach (var item in Server.Instance.Storages.PictureFrame.Storage.Images)
             {
                 if (existImages.Contains(item.Value.ImageName) || addedImages.Contains(item.Value.ImageName))
@@ -94,12 +91,12 @@ namespace Subnautica.Server.Processors.Startup
             {
                 result.Add(new PlayerItem()
                 {
-                    UniqueId   = player.Value.UniqueId,
-                    PlayerId   = player.Value.PlayerId,
+                    UniqueId = player.Value.UniqueId,
+                    PlayerId = player.Value.PlayerId,
                     PlayerName = player.Value.PlayerName,
-                    Position   = player.Value.Position,
-                    Rotation   = player.Value.Rotation,
-                    SubrootId  = player.Value.SubrootId,
+                    Position = player.Value.Position,
+                    Rotation = player.Value.Rotation,
+                    SubrootId = player.Value.SubrootId,
                     InteriorId = player.Value.InteriorId,
                 });
             }

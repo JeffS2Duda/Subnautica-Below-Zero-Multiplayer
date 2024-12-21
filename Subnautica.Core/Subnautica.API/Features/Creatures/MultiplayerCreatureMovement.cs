@@ -35,9 +35,9 @@
 
         public void SwimTo(Vector3 targetPosition, Quaternion targetRotation)
         {
-            this.IsDriving         = true;
-            this.TargetPosition    = targetPosition;
-            this.TargetRotation    = targetRotation;
+            this.IsDriving = true;
+            this.TargetPosition = targetPosition;
+            this.TargetRotation = targetRotation;
             this.InterpolationTime = (this.Creature.CreatureItem.Data.IsFastSyncActivated ? 0.1f : 0.2f) + 0.05f;
         }
 
@@ -98,7 +98,7 @@
 
         private void StopMovement(bool movePosition = true)
         {
-            this.Creature.Rigidbody.velocity        = Vector3.zero;
+            this.Creature.Rigidbody.velocity = Vector3.zero;
             this.Creature.Rigidbody.angularVelocity = Vector3.zero;
 
             if (movePosition)
@@ -106,11 +106,11 @@
                 this.Creature.Rigidbody.MovePosition(this.TargetPosition);
             }
 
-            this.IsDriving         = false;
+            this.IsDriving = false;
             this.InterpolationTime = 0f;
-            this.TargetPosition    = Vector3.zero;
+            this.TargetPosition = Vector3.zero;
         }
-        
+
         private float GetTargetDistance()
         {
             return ZeroVector3.Distance(this.TargetPosition, this.Creature.Rigidbody.transform.position);

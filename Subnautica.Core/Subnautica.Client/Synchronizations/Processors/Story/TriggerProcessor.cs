@@ -1,18 +1,15 @@
 namespace Subnautica.Client.Synchronizations.Processors.Story
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class TriggerProcessor : NormalProcessor
@@ -39,7 +36,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
                         {
                             UWE.CoroutineHost.StartCoroutine(this.OpenCustomDoorAsync(trigger.GoalKey));
                         }
-                        else 
+                        else
                         {
                             this.GoalsQueue.Add(packet);
                         }
@@ -116,10 +113,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
                 {
                     ServerModel.StoryTriggerArgs result = new ServerModel.StoryTriggerArgs()
                     {
-                        GoalKey          = ev.StoryKey,
-                        GoalType         = ev.GoalType,
-                        CinematicType    = ev.CinematicType,
-                        IsPlayMuted      = ev.IsPlayMuted,
+                        GoalKey = ev.StoryKey,
+                        GoalType = ev.GoalType,
+                        CinematicType = ev.CinematicType,
+                        IsPlayMuted = ev.IsPlayMuted,
                         IsStoryGoalMuted = ev.IsStoryGoalMuted,
                     };
 

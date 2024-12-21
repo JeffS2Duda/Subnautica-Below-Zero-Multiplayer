@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Player
 {
     using HarmonyLib;
-
-    using UnityEngine;
-
     using Subnautica.API.Features;
+    using UnityEngine;
 
     [HarmonyPatch(typeof(global::OnDisplayHeldTool), nameof(global::OnDisplayHeldTool.OnStateEnter))]
     public static class PlayerEmotes

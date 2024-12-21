@@ -1,15 +1,12 @@
 ﻿namespace Subnautica.API.Extensions
 {
     using Subnautica.API.Features;
-    using Subnautica.Network.Models.Creatures;
-    using Subnautica.API.Features.Creatures.Datas;
     using Subnautica.API.Features.Creatures;
-
+    using Subnautica.API.Features.Creatures.Datas;
+    using Subnautica.Network.Models.Creatures;
     using System;
-
-    using UnityEngine;
     using System.Collections;
-    using System.ComponentModel;
+    using UnityEngine;
 
     public static class CreatureExtensions
     {
@@ -22,7 +19,7 @@
         {
             return string.Format("MultiplayerCreature_" + creatureId);
         }
-        
+
         public static ushort ToCreatureId(this string uniqueId)
         {
             return Convert.ToUInt16(uniqueId.Replace("MultiplayerCreature_", ""));

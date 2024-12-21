@@ -35,7 +35,7 @@
         public override void OnRegisterMonoBehaviours(MultiplayerCreature creature)
         {
             base.OnRegisterMonoBehaviours(creature);
-            
+
             creature.GameObject.EnsureComponent<CrashFishMonobehaviour>().SetMultiplayerCreature(creature);
         }
 

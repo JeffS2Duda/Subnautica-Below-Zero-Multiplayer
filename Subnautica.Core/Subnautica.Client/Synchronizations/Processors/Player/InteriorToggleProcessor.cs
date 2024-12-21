@@ -49,7 +49,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             ServerModel.InteriorToggleArgs request = new ServerModel.InteriorToggleArgs()
             {
                 InteriorId = interiorId,
-                IsEntered  = isEntered,
+                IsEntered = isEntered,
             };
 
             NetworkClient.SendPacket(request);

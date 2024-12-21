@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Events.Creatures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::Creature), nameof(global::Creature.OnDisable))]
     public class Disabled

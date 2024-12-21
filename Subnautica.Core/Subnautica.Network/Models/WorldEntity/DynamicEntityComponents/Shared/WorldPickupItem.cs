@@ -47,10 +47,10 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared
         {
             return new StorageItem()
             {
-                ItemId   = this.GetItemId(),
-                Item     = this.Item.Item,
+                ItemId = this.GetItemId(),
+                Item = this.Item.Item,
                 TechType = this.Item.TechType,
-                Size     = this.Item.Size,
+                Size = this.Item.Size,
             };
         }
 
@@ -67,7 +67,7 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared
         public static WorldPickupItem Create(StorageItem storageItem, PickupSourceType sourceType = PickupSourceType.Automatic)
         {
             var pickupItem = new WorldPickupItem();
-            pickupItem.Item   = storageItem;
+            pickupItem.Item = storageItem;
             pickupItem.Source = sourceType == PickupSourceType.Automatic ? GetPickupSourceType(pickupItem.Item.ItemId) : sourceType;
 
             return pickupItem;

@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Collections;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Storage.Story.Components;
-    
+    using System.Collections;
     using UWE;
 
     public class CustomDoorways
@@ -38,8 +36,8 @@
                 {
                     Network.Identifier.SetIdentityId(gameObject, door.UniqueId);
 
-                    gameObject.transform.position   = door.Position.ToVector3();
-                    gameObject.transform.rotation   = door.Rotation.ToQuaternion();
+                    gameObject.transform.position = door.Position.ToVector3();
+                    gameObject.transform.rotation = door.Rotation.ToQuaternion();
                     gameObject.transform.localScale = door.Scale.ToVector3();
 
                     yield return CoroutineUtils.waitForNextFrame;

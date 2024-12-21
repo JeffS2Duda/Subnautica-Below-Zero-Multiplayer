@@ -61,7 +61,7 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared
 
                 this.Charge = Mathf.Max(0f, oldCharge - energyAmount);
 
-                usedEnergyAmount = oldCharge - this.Charge; 
+                usedEnergyAmount = oldCharge - this.Charge;
                 return true;
             }
 

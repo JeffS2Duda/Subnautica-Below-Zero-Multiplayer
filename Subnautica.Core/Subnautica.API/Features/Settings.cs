@@ -1,11 +1,10 @@
 ﻿namespace Subnautica.API.Features
 {
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features.Helper;
     using System.Collections.Generic;
     using System.Text;
 
-    using Subnautica.API.Extensions;
-    using Subnautica.API.Features.Helper;
-    
     public class Settings
     {
         public const string LauncherApiUrl = "https://repo.subnauticamultiplayer.com/beta/";
@@ -38,8 +37,8 @@
 
         public static ApiCreditsDataFormat CreditsApi { get; set; }
 
-        public static ModConfigFormat ModConfig 
-        { 
+        public static ModConfigFormat ModConfig
+        {
             get
             {
                 if (modConfig == null)

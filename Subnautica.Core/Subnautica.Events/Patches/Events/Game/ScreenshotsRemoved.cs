@@ -1,18 +1,16 @@
 namespace Subnautica.Events.Patches.Events.Game
 {
-    using System;
-
     using HarmonyLib;
-    
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::ScreenshotManager), nameof(global::ScreenshotManager.RemoveScreenshot))]
     public static class ScreenshotsRemoved
     {
         private static void Postfix(string filename)
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 try
                 {

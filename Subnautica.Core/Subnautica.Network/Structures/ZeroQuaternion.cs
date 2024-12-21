@@ -1,8 +1,7 @@
 namespace Subnautica.Network.Structures
 {
-    using System;
-
     using MessagePack;
+    using System;
 
     [MessagePackObject]
     public class ZeroQuaternion : IEquatable<ZeroQuaternion>

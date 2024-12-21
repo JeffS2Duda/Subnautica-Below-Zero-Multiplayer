@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public CrushDamagingEventArgs(string uniqueId, TechType techType, float maxHealth, float damage, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.TechType  = techType;
-            this.Damage    = damage;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
+            this.Damage = damage;
             this.MaxHealth = maxHealth;
             this.IsAllowed = isAllowed;
         }

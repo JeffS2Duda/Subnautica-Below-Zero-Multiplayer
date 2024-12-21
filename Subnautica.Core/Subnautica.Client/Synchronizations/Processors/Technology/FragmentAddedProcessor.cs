@@ -10,7 +10,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Technology
 
     using UnityEngine;
 
-    using ServerModel  = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class FragmentAddedProcessor : NormalProcessor
     {
@@ -42,10 +42,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Technology
         {
             ServerModel.TechnologyFragmentAddedArgs result = new ServerModel.TechnologyFragmentAddedArgs()
             {
-                UniqueId      = ev.UniqueId,
-                TechType      = ev.TechType,
+                UniqueId = ev.UniqueId,
+                TechType = ev.TechType,
                 TotalFragment = ev.TotalFragment,
-                Unlocked      = ev.Unlocked,
+                Unlocked = ev.Unlocked,
             };
 
             NetworkClient.SendPacket(result);

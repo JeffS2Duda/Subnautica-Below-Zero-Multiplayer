@@ -38,7 +38,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
                 using (EventBlocker.Create(TechType.Thumper))
                 {
                     tool.transform.position = component.Position.ToVector3();
-                    tool.placementPos       = tool.transform.position;
+                    tool.placementPos = tool.transform.position;
                     tool.Deploy(true);
                 }
             }
@@ -49,7 +49,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
                     using (EventBlocker.Create(TechType.Thumper))
                     {
                         tool.transform.position = component.Position.ToVector3();
-                        tool.placementPos       = tool.transform.position;
+                        tool.placementPos = tool.transform.position;
                         tool.Deploy(true);
                     }
                 });

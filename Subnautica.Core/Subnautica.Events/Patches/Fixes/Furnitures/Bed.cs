@@ -1,10 +1,5 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection.Emit;
-    using System.Runtime.CompilerServices;
-
     using HarmonyLib;
 
     using Subnautica.API.Features;
@@ -39,7 +34,7 @@
             {
                 PlayerTimeLastSleep = player.timeLastSleep;
             }
-        }     
+        }
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(global::Bed), nameof(global::Bed.ExitInUseMode))]
@@ -49,7 +44,7 @@
             {
                 player.timeLastSleep = PlayerTimeLastSleep;
             }
-        } 
+        }
 
         private static float PlayerTimeLastSleep { get; set; } = -1f;
     }

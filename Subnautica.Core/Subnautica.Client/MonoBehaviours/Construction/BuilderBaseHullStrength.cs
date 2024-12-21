@@ -25,7 +25,7 @@
         {
             if (size > this.TargetLevelCount)
             {
-                for (ushort i = (ushort) this.TargetWaterLevels.Count; i <= size; i++)
+                for (ushort i = (ushort)this.TargetWaterLevels.Count; i <= size; i++)
                 {
                     this.TargetWaterLevels[i] = new CellWaterLevelItem();
                 }
@@ -118,8 +118,8 @@
         }
 
         public bool IsInitialized
-        { 
-            get 
+        {
+            get
             {
                 return this.CurrentValue != -1f;
             }
@@ -153,9 +153,9 @@
 
         public void Reset()
         {
-            this.Index            = 0;
-            this.CurrentValue     = -1f;
-            this.TargetValue      = 0f;
+            this.Index = 0;
+            this.CurrentValue = -1f;
+            this.TargetValue = 0f;
             this.InterpolateValue = 0f;
         }
     }

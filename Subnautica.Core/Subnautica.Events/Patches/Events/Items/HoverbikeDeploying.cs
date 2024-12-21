@@ -1,12 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::HoverbikePlayerTool), nameof(global::HoverbikePlayerTool.OnToolUseAnim))]
@@ -18,7 +15,7 @@ namespace Subnautica.Events.Patches.Events.Items
             {
                 try
                 {
-                    HoverbikeDeployingEventArgs args = new HoverbikeDeployingEventArgs(Network.Identifier.GetIdentityId(__instance.hoverbike.gameObject), __instance.hoverbike, ZeroGame.FindDropPosition(__instance.transform.position + (MainCamera.camera.transform.forward * 0.7f) + (Vector3.down * 0.3f) + (Vector3.up * 0.6f) ), MainCamera.camera.transform.forward);
+                    HoverbikeDeployingEventArgs args = new HoverbikeDeployingEventArgs(Network.Identifier.GetIdentityId(__instance.hoverbike.gameObject), __instance.hoverbike, ZeroGame.FindDropPosition(__instance.transform.position + (MainCamera.camera.transform.forward * 0.7f) + (Vector3.down * 0.3f) + (Vector3.up * 0.6f)), MainCamera.camera.transform.forward);
 
                     Handlers.Items.OnHoverbikeDeploying(args);
 

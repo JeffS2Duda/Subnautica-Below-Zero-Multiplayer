@@ -18,7 +18,7 @@
             {
                 return true;
             }
-            
+
             if (string.IsNullOrEmpty(__instance.key) || !__instance.playMuted || (!GameModeManager.GetOption<bool>(GameOption.Story) && !__instance.playInCreative))
             {
                 return true;

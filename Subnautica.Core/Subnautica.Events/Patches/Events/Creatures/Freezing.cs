@@ -1,14 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Creatures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch]

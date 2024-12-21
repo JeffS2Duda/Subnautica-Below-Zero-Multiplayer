@@ -13,14 +13,14 @@ namespace Subnautica.Events.Patches.Events.Storage
     {
         private static bool Prefix(global::StorageContainer __instance)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }
 
             if (!__instance.enabled || __instance.disableUseability)
             {
-               return false;
+                return false;
             }
 
             var techType = TechType.None;

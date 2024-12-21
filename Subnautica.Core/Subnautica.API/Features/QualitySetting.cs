@@ -4,7 +4,7 @@
 
     public class QualitySetting
     {
-        private static int OldFrameRate  = 0;
+        private static int OldFrameRate = 0;
 
         private static bool OldVsync = false;
 
@@ -13,7 +13,7 @@
             if (OldFrameRate != 501)
             {
                 OldFrameRate = GraphicsUtil.GetFrameRate();
-                OldVsync     = GraphicsUtil.GetVSyncEnabled();
+                OldVsync = GraphicsUtil.GetVSyncEnabled();
             }
 
             Application.targetFrameRate = 501;
@@ -33,7 +33,7 @@
                 UnityEngine.QualitySettings.vSyncCount = OldVsync ? 1 : 0;
 
                 OldFrameRate = 0;
-                OldVsync     = false;
+                OldVsync = false;
             }
         }
     }

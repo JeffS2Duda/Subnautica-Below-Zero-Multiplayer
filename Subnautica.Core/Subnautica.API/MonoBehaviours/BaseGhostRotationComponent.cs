@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.API.MonoBehaviours
 {
-    using UnityEngine;
-
     using Subnautica.API.Features;
+    using UnityEngine;
 
     public class BaseGhostRotationComponent : MonoBehaviour
     {

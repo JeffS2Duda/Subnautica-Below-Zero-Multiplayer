@@ -24,27 +24,27 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             }
 
             var action = new ItemQueueAction();
-            action.RegisterProperty("UniqueId" , packet.UniqueId);
+            action.RegisterProperty("UniqueId", packet.UniqueId);
             action.RegisterProperty("VehicleId", packet.VehicleId);
-            action.RegisterProperty("PlayerId" , packet.GetPacketOwnerId());
-            action.RegisterProperty("Vehicle"  , packet.Vehicle);
+            action.RegisterProperty("PlayerId", packet.GetPacketOwnerId());
+            action.RegisterProperty("Vehicle", packet.Vehicle);
             action.RegisterProperty("IsDocking", packet.IsDocking);
-            action.RegisterProperty("IsEnterUndock" , packet.IsEnterUndock);
+            action.RegisterProperty("IsEnterUndock", packet.IsEnterUndock);
             action.RegisterProperty("UndockPosition", packet.UndockPosition);
             action.OnProcessCompleted = this.OnDockProcessCompleted;
-            
+
             Entity.ProcessToQueue(action);
             return true;
         }
 
         private void OnDockProcessCompleted(ItemQueueProcess item)
         {
-            var uniqueId  = item.Action.GetProperty<string>("UniqueId");
+            var uniqueId = item.Action.GetProperty<string>("UniqueId");
             var vehicleId = item.Action.GetProperty<string>("VehicleId");
-            var playerId  = item.Action.GetProperty<byte>("PlayerId");
-            var vehicle   = item.Action.GetProperty<WorldDynamicEntity>("Vehicle");
+            var playerId = item.Action.GetProperty<byte>("PlayerId");
+            var vehicle = item.Action.GetProperty<WorldDynamicEntity>("Vehicle");
             var isDocking = item.Action.GetProperty<bool>("IsDocking");
-            var isEnterUndock  = item.Action.GetProperty<bool>("IsEnterUndock");
+            var isEnterUndock = item.Action.GetProperty<bool>("IsEnterUndock");
             var undockPosition = item.Action.GetProperty<ZeroVector3>("UndockPosition");
             if (isDocking)
             {
@@ -113,10 +113,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.SeaTruckDockingModuleArgs request = new ServerModel.SeaTruckDockingModuleArgs()
             {
-                UniqueId       = uniqueId,
-                VehicleId      = vehicleId,
-                IsDocking      = isDocking,
-                IsEnterUndock  = isEnterUndock,
+                UniqueId = uniqueId,
+                VehicleId = vehicleId,
+                IsDocking = isDocking,
+                IsEnterUndock = isEnterUndock,
                 UndockPosition = undockPosition,
                 UndockRotation = undockRotation,
             };

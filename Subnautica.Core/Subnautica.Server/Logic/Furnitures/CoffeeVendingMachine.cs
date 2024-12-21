@@ -1,15 +1,12 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class CoffeeVendingMachine : BaseLogic
@@ -64,13 +61,13 @@ namespace Subnautica.Server.Logic.Furnitures
         {
             ServerModel.MetadataComponentArgs request = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
-                TechType  = TechType.CoffeeVendingMachine,
+                UniqueId = uniqueId,
+                TechType = TechType.CoffeeVendingMachine,
                 Component = new Metadata.CoffeeVendingMachine()
                 {
                     IsAdding = true,
-                    IsFull   = true,
-                    ItemId   = itemId,
+                    IsFull = true,
+                    ItemId = itemId,
                 },
             };
 

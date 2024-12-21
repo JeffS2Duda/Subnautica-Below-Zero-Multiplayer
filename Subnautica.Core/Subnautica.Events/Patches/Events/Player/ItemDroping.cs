@@ -71,7 +71,7 @@ namespace Subnautica.Events.Patches.Events.Player
             {
                 Log.Error($"ItemDroping.QuickSlots_Drop: {e}\n{e.StackTrace}");
             }
-            
+
             return false;
         }
 

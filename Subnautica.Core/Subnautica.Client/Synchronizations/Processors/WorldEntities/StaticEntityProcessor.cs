@@ -90,7 +90,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
         {
             ServerModel.StaticEntityPickedUpArgs request = new ServerModel.StaticEntityPickedUpArgs()
             {
-                UniqueId        = uniqueId,
+                UniqueId = uniqueId,
                 WorldPickupItem = worldPickupItem
             };
 

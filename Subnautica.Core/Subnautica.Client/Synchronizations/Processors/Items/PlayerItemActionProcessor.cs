@@ -1,9 +1,8 @@
 namespace Subnautica.Client.Synchronizations.Processors.Items
 {
-    using Subnautica.Network.Models.Core;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Abstracts.Processors;
-
+    using Subnautica.Network.Models.Core;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class PlayerItemActionProcessor : NormalProcessor

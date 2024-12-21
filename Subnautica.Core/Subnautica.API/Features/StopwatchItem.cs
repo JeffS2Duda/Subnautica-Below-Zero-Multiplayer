@@ -10,7 +10,7 @@
 
         public StopwatchItem(float delayTime = -1f, object customData = null, bool autoStart = true)
         {
-            this.DelayTime  = delayTime;
+            this.DelayTime = delayTime;
             this.CustomData = customData;
 
             if (autoStart)
@@ -35,8 +35,8 @@
             {
                 return default;
             }
-            
-            return (T) this.CustomData;
+
+            return (T)this.CustomData;
         }
     }
 }

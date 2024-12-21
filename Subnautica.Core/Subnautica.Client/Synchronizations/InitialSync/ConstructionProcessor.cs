@@ -1,17 +1,14 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.MonoBehaviours;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Network.Models.Storage.Construction;
-    using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using UWE;
 
     public class ConstructionProcessor
@@ -98,7 +95,7 @@
                         if (UniqueIdentifier.TryGetIdentifier(construction.UniqueId, out var uid))
                         {
                             var constructableBase = uid.GetComponentInParent<ConstructableBase>();
-                            var constructable     = uid.GetComponentInParent<Constructable>();
+                            var constructable = uid.GetComponentInParent<Constructable>();
                             if (constructable && constructable.model == null)
                             {
                                 Log.Error(string.Format("[InitialInCompleteConstructions], Destroyed Piece: {0}, UniqueId: {1}, BaseId: {2}", construction.TechType, construction.UniqueId, construction.BaseId));

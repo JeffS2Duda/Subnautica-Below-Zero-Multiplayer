@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.API.MonoBehaviours
 {
-    using System.Collections;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.WorldStreamer;
-
+    using System.Collections;
     using UnityEngine;
 
     public class SpawnPointComponent : MonoBehaviour
@@ -139,7 +137,7 @@
                 {
                     continue;
                 }
-                
+
                 if (gameObject.GetComponentInParent<Base>())
                 {
                     return false;

@@ -12,8 +12,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel        = Subnautica.Network.Models.Items;
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ItemModel = Subnautica.Network.Models.Items;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class HoverbikeProcessor : PlayerItemProcessor
@@ -37,11 +37,11 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
         public void OnEntitySpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
-            var entity  = item.Action.GetProperty<WorldDynamicEntity>("Entity");
+            var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
             if (entity != null)
             {
                 WorldDynamicEntityProcessor.ExecuteItemSpawnProcessor(entity.TechType, entity.Component, true, pickupable, gameObject);
-               
+
                 if (gameObject.TryGetComponent<global::HoverbikePlayerTool>(out var tool))
                 {
                     var forward = item.Action.GetProperty<ZeroVector3>("CustomProperty");
@@ -78,9 +78,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 Item = new ItemModel.Hoverbike()
                 {
-                    UniqueId  = uniqueId,
-                    Position  = deployPosition,
-                    Forward   = forward,
+                    UniqueId = uniqueId,
+                    Position = deployPosition,
+                    Forward = forward,
                     Component = component,
                 }
             };

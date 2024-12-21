@@ -1,17 +1,14 @@
 namespace Subnautica.Server.Processors.Player
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     using Server.Core;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
-
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     using ClientModel = Subnautica.Network.Models.Client;
     using ServerModel = Subnautica.Network.Models.Server;
 
@@ -47,11 +44,11 @@ namespace Subnautica.Server.Processors.Player
             }
 
             packet.UserName = packet.UserName.Trim();
-            packet.UserId   = packet.UserId.Trim();
+            packet.UserId = packet.UserId.Trim();
 
             if (Server.Instance.Players.Any(q => q.Value.PlayerName.Contains(packet.UserName)))
             {
-                Log.Info("ALREADY_USERNAME_EXISTS " +  Tools.Base64Encode(Tools.Base64Encode(packet.UserName)));
+                Log.Info("ALREADY_USERNAME_EXISTS " + Tools.Base64Encode(Tools.Base64Encode(packet.UserName)));
                 Server.DisconnectToClient(profile);
                 return false;
             }
@@ -96,53 +93,53 @@ namespace Subnautica.Server.Processors.Player
         {
             ClientModel.JoiningServerArgs request = new ClientModel.JoiningServerArgs()
             {
-                PlayerId                = profile.PlayerId,
-                PlayerUniqueId          = profile.UniqueId,
-                PlayerSubRootId         = profile.SubrootId,
-                PlayerInteriorId        = profile.InteriorId,
-                PlayerRespawnPointId    = profile.RespawnPointId,
-                PlayerPosition          = profile.Position,
-                PlayerRotation          = profile.Rotation,
-                PlayerHealth            = profile.Health,
-                PlayerFood              = profile.Food,
-                PlayerWater             = profile.Water,
-                PlayerInventoryItems    = profile.InventoryItems,
-                PlayerEquipments        = profile.Equipments,
-                PlayerEquipmentSlots    = profile.EquipmentSlots,
-                PlayerQuickSlots        = profile.QuickSlots,
-                PlayerActiveSlot        = profile.ActiveSlot,
-                PlayerItemPins          = profile.ItemPins,
-                PlayerNotifications     = profile.PdaNotifications,
-                PlayerUsedTools         = profile.UsedTools,
-                PlayerSpecialGoals      = profile.SpecialGoals,
-                PlayerTimeLastSleep     = Server.Instance.Storages.World.Storage.TimeLastSleep,
+                PlayerId = profile.PlayerId,
+                PlayerUniqueId = profile.UniqueId,
+                PlayerSubRootId = profile.SubrootId,
+                PlayerInteriorId = profile.InteriorId,
+                PlayerRespawnPointId = profile.RespawnPointId,
+                PlayerPosition = profile.Position,
+                PlayerRotation = profile.Rotation,
+                PlayerHealth = profile.Health,
+                PlayerFood = profile.Food,
+                PlayerWater = profile.Water,
+                PlayerInventoryItems = profile.InventoryItems,
+                PlayerEquipments = profile.Equipments,
+                PlayerEquipmentSlots = profile.EquipmentSlots,
+                PlayerQuickSlots = profile.QuickSlots,
+                PlayerActiveSlot = profile.ActiveSlot,
+                PlayerItemPins = profile.ItemPins,
+                PlayerNotifications = profile.PdaNotifications,
+                PlayerUsedTools = profile.UsedTools,
+                PlayerSpecialGoals = profile.SpecialGoals,
+                PlayerTimeLastSleep = Server.Instance.Storages.World.Storage.TimeLastSleep,
                 IsInitialEquipmentAdded = profile.IsInitialEquipmentAdded,
 
-                Technologies         = Server.Instance.Storages.Technology.Storage.Technologies,
-                ScannedTechnologies  = Server.Instance.Storages.Scanner.Storage.Technologies,
+                Technologies = Server.Instance.Storages.Technology.Storage.Technologies,
+                ScannedTechnologies = Server.Instance.Storages.Scanner.Storage.Technologies,
                 AnalizedTechnologies = Server.Instance.Storages.Technology.Storage.AnalizedTechnologies,
-                Encyclopedias        = Server.Instance.Storages.Encyclopedia.Storage.Encyclopedias,
+                Encyclopedias = Server.Instance.Storages.Encyclopedia.Storage.Encyclopedias,
 
-                ServerId             = Server.Instance.ServerId,
-                ServerTime           = Server.Instance.Logices.World.GetServerTime(),
-                Constructions        = new HashSet<ConstructionItem>(Server.Instance.Storages.Construction.Storage.Constructions.Values),
-                ConstructionRoot     = Server.Instance.Storages.World.Storage.Constructions,
-                JukeboxDisks         = Server.Instance.Storages.World.Storage.JukeboxDisks,
-                PersistentEntities   = Server.Instance.Storages.World.Storage.PersistentEntities,
-                DynamicEntities      = Server.Instance.Storages.World.Storage.DynamicEntities,
-                IsFirstLogin         = Server.Instance.Storages.World.Storage.IsFirstLogin,
-                SupplyDrops          = Server.Instance.Storages.World.Storage.SupplyDrops,
-                InteractList         = Server.Instance.Logices.Interact.List,
-                Bases                = Server.Instance.Storages.World.Storage.Bases,
-                QuantumLocker        = Server.Instance.Storages.World.Storage.QuantumLocker,
-                GameMode             = Server.Instance.GameMode,
-                MaxPlayerCount       = Server.Instance.MaxPlayer,
-                SeaTruckConnections  = Server.Instance.Storages.World.Storage.SeaTruckConnections,
+                ServerId = Server.Instance.ServerId,
+                ServerTime = Server.Instance.Logices.World.GetServerTime(),
+                Constructions = new HashSet<ConstructionItem>(Server.Instance.Storages.Construction.Storage.Constructions.Values),
+                ConstructionRoot = Server.Instance.Storages.World.Storage.Constructions,
+                JukeboxDisks = Server.Instance.Storages.World.Storage.JukeboxDisks,
+                PersistentEntities = Server.Instance.Storages.World.Storage.PersistentEntities,
+                DynamicEntities = Server.Instance.Storages.World.Storage.DynamicEntities,
+                IsFirstLogin = Server.Instance.Storages.World.Storage.IsFirstLogin,
+                SupplyDrops = Server.Instance.Storages.World.Storage.SupplyDrops,
+                InteractList = Server.Instance.Logices.Interact.List,
+                Bases = Server.Instance.Storages.World.Storage.Bases,
+                QuantumLocker = Server.Instance.Storages.World.Storage.QuantumLocker,
+                GameMode = Server.Instance.GameMode,
+                MaxPlayerCount = Server.Instance.MaxPlayer,
+                SeaTruckConnections = Server.Instance.Storages.World.Storage.SeaTruckConnections,
                 ActivatedTeleporters = Server.Instance.Storages.World.Storage.ActivatedPrecursorTeleporters,
-                Story                = Server.Instance.Storages.Story.Storage,
-                Brinicles            = Server.Instance.Storages.World.Storage.Brinicles,
-                CosmeticItems        = Server.Instance.Storages.World.Storage.CosmeticItems,
-                DiscoveredTechTypes  = Server.Instance.Storages.World.Storage.DiscoveredTechTypes,
+                Story = Server.Instance.Storages.Story.Storage,
+                Brinicles = Server.Instance.Storages.World.Storage.Brinicles,
+                CosmeticItems = Server.Instance.Storages.World.Storage.CosmeticItems,
+                DiscoveredTechTypes = Server.Instance.Storages.World.Storage.DiscoveredTechTypes,
             };
 
             profile.SendPacket(request);

@@ -22,7 +22,7 @@ namespace Subnautica.Network.Models.Storage.Story.Components
             }
 
             this.IsExtended = true;
-            this.Time       = serverTime + animationTime;
+            this.Time = serverTime + animationTime;
 
             this.IsFirstExtension = true;
             return true;
@@ -36,7 +36,7 @@ namespace Subnautica.Network.Models.Storage.Story.Components
             }
 
             this.IsExtended = false;
-            this.Time       = serverTime + animationTime;
+            this.Time = serverTime + animationTime;
             return true;
         }
     }

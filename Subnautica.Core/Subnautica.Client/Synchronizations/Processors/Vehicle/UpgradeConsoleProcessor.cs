@@ -1,11 +1,10 @@
 namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
+    using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-    using Subnautica.API.Features;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class UpgradeConsoleProcessor : NormalProcessor
@@ -56,13 +55,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             if (!Interact.IsBlocked(ev.UniqueId))
             {
                 UpgradeConsoleProcessor.SendPacketToServer(ev.UniqueId, isOpening: true);
-            } 
+            }
         }
 
 
         public static void OnUpgradeConsoleModuleAdded(UpgradeConsoleModuleAddedEventArgs ev)
         {
-            UpgradeConsoleProcessor.SendPacketToServer(ev.UniqueId, itemId: ev.ItemId, slotId: ev.SlotId, moduleType: ev.ModuleType, isAdding: true); 
+            UpgradeConsoleProcessor.SendPacketToServer(ev.UniqueId, itemId: ev.ItemId, slotId: ev.SlotId, moduleType: ev.ModuleType, isAdding: true);
         }
 
         public static void OnUpgradeConsoleModuleRemoved(UpgradeConsoleModuleRemovedEventArgs ev)
@@ -74,12 +73,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.VehicleUpgradeConsoleArgs request = new ServerModel.VehicleUpgradeConsoleArgs()
             {
-                UniqueId   = uniqueId,
-                ItemId     = itemId,
-                SlotId     = slotId,
+                UniqueId = uniqueId,
+                ItemId = itemId,
+                SlotId = slotId,
                 ModuleType = moduleType,
-                IsOpening  = isOpening,
-                IsAdding   = isAdding
+                IsOpening = isOpening,
+                IsAdding = isAdding
             };
 
             NetworkClient.SendPacket(request);

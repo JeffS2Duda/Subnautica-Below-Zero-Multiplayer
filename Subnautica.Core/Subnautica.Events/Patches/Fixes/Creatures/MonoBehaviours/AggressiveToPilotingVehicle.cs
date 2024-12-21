@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
+    using Subnautica.API.Features;
 
     [HarmonyPatch(typeof(global::AggressiveToPilotingVehicle), nameof(global::AggressiveToPilotingVehicle.UpdateAggression))]
     public class AggressiveToPilotingVehicle

@@ -1,10 +1,6 @@
 ﻿namespace Subnautica.Client.Multiplayer.Vehicles
 {
-    using FMOD.Studio;
-    using FMODUnity;
-
     using Subnautica.API.Extensions;
-    using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
 
     using UnityEngine;
@@ -54,7 +50,7 @@
                 this.Management.Player.Animator.SetBool("in_exosuit", true);
 
                 this.ResetAnimations();
-           }
+            }
         }
 
         public override void OnExitVehicle()
@@ -79,7 +75,7 @@
 
             this.ExoSuit.mainAnimator.SetBool("sit", false);
             this.ExoSuit.mainAnimator.SetBool("onGround", this.VehicleComponent.IsOnGround);
-            this.ExoSuit.mainAnimator.SetFloat("move_speed"  , this.SmoothedVelocity.magnitude);
+            this.ExoSuit.mainAnimator.SetFloat("move_speed", this.SmoothedVelocity.magnitude);
             this.ExoSuit.mainAnimator.SetFloat("move_speed_x", this.SmoothedVelocity.x);
             this.ExoSuit.mainAnimator.SetFloat("move_speed_y", this.SmoothedVelocity.y);
             this.ExoSuit.mainAnimator.SetFloat("move_speed_z", this.SmoothedVelocity.z);
@@ -235,10 +231,10 @@
 
             if (component.IsFlying || component.IsAttached || !component.IsStopped)
             {
-                grapplingArm.hook.transform.parent   = null;
+                grapplingArm.hook.transform.parent = null;
                 grapplingArm.hook.transform.position = Vector3.Lerp(grapplingArm.hook.transform.position, component.HookPosition.ToVector3(), 0.1f);
                 grapplingArm.hook.transform.rotation = Quaternion.Lerp(grapplingArm.hook.transform.rotation, component.HookRotation.ToQuaternion(), 0.1f);
-                grapplingArm.hook.rb.isKinematic     = true;
+                grapplingArm.hook.rb.isKinematic = true;
 
                 if (component.IsFlying)
                 {
@@ -275,7 +271,7 @@
 
             this.ArmProcess(this.ExoSuit.leftArm, this.ExoSuit.leftArmType, this.VehicleComponent.LeftArm, true);
             this.ArmProcess(this.ExoSuit.rightArm, this.ExoSuit.rightArmType, this.VehicleComponent.RightArm, true);
-      }
+        }
 
         private Vector3 GetArmLerpFormula(float angleX, Vector3 cameraPosition)
         {

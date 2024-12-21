@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public PlayerPingColorChangedEventArgs(string uniqueId, int colorIndex)
         {
-            this.UniqueId   = uniqueId;
+            this.UniqueId = uniqueId;
             this.ColorIndex = colorIndex;
         }
 

@@ -1,23 +1,18 @@
 ﻿namespace Subnautica.API.Features
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Story;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features.Helper;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using UWE;
-
-    using Metadata         = Subnautica.Network.Models.Metadata;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class Vehicle
@@ -37,11 +32,11 @@
 
             var action = new ItemQueueAction();
             action.OnProcessCompletedAsync = VehicleCraftCompletedAsync;
-            action.RegisterProperty("Entity"        , entity);
-            action.RegisterProperty("FinishTime"    , finishTime);
-            action.RegisterProperty("IsNotify"      , notify);
-            action.RegisterProperty("OnCompleted"   , onCompleted);
-            action.RegisterProperty("Constructor"   , constructorInput);
+            action.RegisterProperty("Entity", entity);
+            action.RegisterProperty("FinishTime", finishTime);
+            action.RegisterProperty("IsNotify", notify);
+            action.RegisterProperty("OnCompleted", onCompleted);
+            action.RegisterProperty("Constructor", constructorInput);
             action.RegisterProperty("CustomProperty", customProperty);
 
             Entity.ProcessToQueue(action);
@@ -49,9 +44,9 @@
 
         private static IEnumerator VehicleCraftCompletedAsync(ItemQueueProcess item)
         {
-            var entity      = item.Action.GetProperty<WorldDynamicEntity>("Entity");
-            var finishTime  = item.Action.GetProperty<float>("FinishTime");
-            var isNotify    = item.Action.GetProperty<bool>("IsNotify");
+            var entity = item.Action.GetProperty<WorldDynamicEntity>("Entity");
+            var finishTime = item.Action.GetProperty<float>("FinishTime");
+            var isNotify = item.Action.GetProperty<bool>("IsNotify");
             var constructor = item.Action.GetProperty<ConstructorInput>("Constructor");
             var onCompleted = item.Action.GetProperty<Action<WorldDynamicEntity, ItemQueueAction, GameObject>>("OnCompleted");
             if (entity != null)
@@ -129,7 +124,7 @@
             {
                 hoverpadConstructor.hoverpadTerminal.StartBuild(finishedTime);
                 hoverpadConstructor.isConstructing = true;
-                
+
                 global::Utils.PlayFMODAsset(hoverpadConstructor.startConstructSound, hoverpadConstructor.soundSource);
 
                 hoverpadConstructor.Invoke("StartLoopingSound", 1.8f);
@@ -144,7 +139,7 @@
                 Network.Identifier.SetIdentityId(target, uniqueId);
 
                 if (leftTime > 2f)
-                {                
+                {
                     target.transform.position = hoverpadConstructor.hoverpad.bikeSpawnPoint.position;
                     target.transform.rotation = hoverpadConstructor.hoverpad.bikeSpawnPoint.rotation;
 
@@ -229,7 +224,8 @@
 
                 Vehicle.ApplyModules(component.Modules, hoverBike.upgradeInput.equipment, TechType.Hoverbike);
                 Vehicle.ApplyColorCustomizer(component.ColorCustomizer, hoverBike.colorNameControl);
-                Vehicle.ApplyEnergyMixin(hoverBike.energyMixin, component.Charge, () => {
+                Vehicle.ApplyEnergyMixin(hoverBike.energyMixin, component.Charge, () =>
+                {
                     Vehicle.ApplyLights(hoverBike.toggleLights, component.IsLightActive);
                 });
             }
@@ -287,8 +283,8 @@
                 {
                     var action = new ItemQueueAction();
                     action.OnEntitySpawned = OnPowerCellSpawned;
-                    action.RegisterProperty("UniqueId"  , uniqueId);
-                    action.RegisterProperty("PowerCell" , powerCell);
+                    action.RegisterProperty("UniqueId", uniqueId);
+                    action.RegisterProperty("PowerCell", powerCell);
 
                     Entity.SpawnToQueue(powerCell.TechType, Network.Identifier.GenerateUniqueId(), new ZeroTransform(Vector3.down.ToZeroVector3(), Quaternion.identity.ToZeroQuaternion()), action);
                 }
@@ -330,7 +326,7 @@
                 {
                     Network.Identifier.SetIdentityId(batterySlot.gameObject, firstPowerCellId);
                 }
-                else if ( (techType == TechType.Exosuit && batterySlot.name.Contains("BatterySlot2")) || (techType == TechType.SeaTruck && batterySlot.name.Contains("BatterySlotRight")))
+                else if ((techType == TechType.Exosuit && batterySlot.name.Contains("BatterySlot2")) || (techType == TechType.SeaTruck && batterySlot.name.Contains("BatterySlotRight")))
                 {
                     Network.Identifier.SetIdentityId(batterySlot.gameObject, secondPowerCellId);
                 }
@@ -342,7 +338,7 @@
                 {
                     Network.Identifier.SetIdentityId(batterySlot.gameObject, ZeroGame.GetVehicleBatteryLabelUniqueId(firstPowerCellId));
                 }
-                else if ( (techType == TechType.Exosuit && batterySlot.name.Contains("BatteryRight")) || (techType == TechType.SeaTruck && batterySlot.name.Contains("BatteryInputRight")))
+                else if ((techType == TechType.Exosuit && batterySlot.name.Contains("BatteryRight")) || (techType == TechType.SeaTruck && batterySlot.name.Contains("BatteryInputRight")))
                 {
                     Network.Identifier.SetIdentityId(batterySlot.gameObject, ZeroGame.GetVehicleBatteryLabelUniqueId(secondPowerCellId));
                 }
@@ -352,7 +348,7 @@
         private static void OnPowerCellSpawned(ItemQueueProcess item, Pickupable pickupable, GameObject gameObject)
         {
             var powerCell = item.Action.GetProperty<PowerCell>("PowerCell");
-            var vehicle   = Network.Identifier.GetGameObject(item.Action.GetProperty<string>("UniqueId"));
+            var vehicle = Network.Identifier.GetGameObject(item.Action.GetProperty<string>("UniqueId"));
 
             EnergyMixin energyMixin = null;
             if (vehicle)

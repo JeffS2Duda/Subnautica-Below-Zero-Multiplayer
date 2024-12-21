@@ -8,10 +8,10 @@ namespace Subnautica.Events.EventArgs
     {
         public HoverpadUnDockingEventArgs(string uniqueId, string itemId, Vector3 position, Quaternion rotation, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.ItemId    = itemId;
-            this.Position  = position;
-            this.Rotation  = rotation;
+            this.UniqueId = uniqueId;
+            this.ItemId = itemId;
+            this.Position = position;
+            this.Rotation = rotation;
             this.IsAllowed = isAllowed;
         }
 

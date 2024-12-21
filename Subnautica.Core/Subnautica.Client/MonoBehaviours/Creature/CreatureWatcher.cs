@@ -1,17 +1,13 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Creature
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Creatures;
     using Subnautica.Client.Core;
-
     using Subnautica.Network.Models.Server;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class CreatureWatcher : MonoBehaviour
@@ -40,7 +36,7 @@
                                 this.AddPositionToQueue(creature.Id, creature.GetCreatureObject());
                                 continue;
                             }
-                            
+
                             if (this.IsNormalTrigger)
                             {
                                 this.AddPositionToQueue(creature.Id, creature.GetCreatureObject());
@@ -71,8 +67,8 @@
                     this.Positions.Add(new WorldCreaturePosition()
                     {
                         CreatureId = creatureId,
-                        Position   = creature.GameObject.transform.position.Compress(),
-                        Rotation   = creature.GameObject.transform.rotation.Compress(),
+                        Position = creature.GameObject.transform.position.Compress(),
+                        Rotation = creature.GameObject.transform.rotation.Compress(),
                     });
                 }
                 else

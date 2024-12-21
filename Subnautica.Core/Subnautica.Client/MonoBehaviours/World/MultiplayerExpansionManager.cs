@@ -1,17 +1,14 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.World
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Modules;
     using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
-
     using UWE;
 
     public class MultiplayerExpansionManager
@@ -26,8 +23,8 @@
         {
             if (dockingBay)
             {
-                this.Player           = global::Player.main;
-                this.DockingBay       = dockingBay;
+                this.Player = global::Player.main;
+                this.DockingBay = dockingBay;
                 this.ExpansionManager = dockingBay.VehicleDockingBay.expansionManager;
             }
         }
@@ -96,14 +93,14 @@
 
             using (EventBlocker.Create(ProcessType.SeaTruckConnection))
             {
-                this.ExpansionManager.tail.frontConnection.Disconnect(); 
+                this.ExpansionManager.tail.frontConnection.Disconnect();
             }
 
             this.ExpansionManager.armsAnimator.SetBool(AnimatorHashID.plunger_override_retract, false);
             this.ExpansionManager.tail.motor.OnPilotModeChanged += new Action<SeaTruckSegment, bool>(this.ExpansionManager.OnPilotingChanged);
             this.ExpansionManager.tail.OnEnteredSeatruck.AddHandler(this.ExpansionManager, new Event<SeaTruckSegment>.HandleFunction(this.ExpansionManager.OnEnteredTail));
             this.ExpansionManager.defaultTailEnteringStandalone = this.ExpansionManager.tail.allowEnteringStandalone;
-            this.ExpansionManager.tail.allowEnteringStandalone  = true;
+            this.ExpansionManager.tail.allowEnteringStandalone = true;
 
             using (EventBlocker.Create(ProcessType.SeaTruckConnection))
             {
@@ -289,7 +286,7 @@
             if (this.ExpansionManager.tail)
             {
                 this.ExpansionManager.tail.SetPlayer(null);
-                this.ExpansionManager.tail.PropagatePlayer();  
+                this.ExpansionManager.tail.PropagatePlayer();
             }
             else
             {
@@ -383,7 +380,7 @@
                 if (firstSegment == this.ExpansionManager.tail.GetFirstSegment() || firstSegment == this.ExpansionManager.dockedHead.GetFirstSegment())
                 {
                     this.Player.groundMotor.OnTeleport();
-                }                
+                }
             }
         }
 
@@ -412,7 +409,7 @@
                 }
 
                 if (seaTruckSegment)
-                { 
+                {
                     if (undockTail)
                     {
                         if (seaTruckSegment == undockTail)
@@ -468,7 +465,7 @@
         {
             return this.ExpansionManager.tail;
         }
-        
+
         public bool IsPlayerInMoonpoolExpansion()
         {
             if (!this.IsActive())
@@ -476,13 +473,13 @@
                 return false;
             }
 
-            var tailPosition     = this.ExpansionManager.tailDockingPosition.transform.position;
-            var tailForward      = this.ExpansionManager.tailDockingPosition.transform.forward;
+            var tailPosition = this.ExpansionManager.tailDockingPosition.transform.position;
+            var tailForward = this.ExpansionManager.tailDockingPosition.transform.forward;
             var seaTruckPosition = this.ExpansionManager.seatruckDockingPosition.transform.position;
 
-            var sphereRadius       = 0.5f;
-            var localScaleBig      = new Vector3(7f, 7f, 7f);
-            var localScaleSmall    = new Vector3(5f, 5f, 5f);
+            var sphereRadius = 0.5f;
+            var localScaleBig = new Vector3(7f, 7f, 7f);
+            var localScaleSmall = new Vector3(5f, 5f, 5f);
             var tailCenterPosition = new Vector3(tailPosition.x, tailPosition.y, tailPosition.z);
 
             var positions = new List<KeyValuePair<Vector3, Vector3>>();

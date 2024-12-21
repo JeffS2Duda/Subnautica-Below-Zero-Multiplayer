@@ -1,10 +1,9 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
-    using System.Linq;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Client;
     using Subnautica.Network.Models.Storage.World.Childrens;
+    using System.Linq;
 
     public class Session
     {
@@ -92,7 +91,7 @@
 
         public void Dispose()
         {
-            this.Current      = null;
+            this.Current = null;
             this.IsInSeaTruck = false;
         }
     }

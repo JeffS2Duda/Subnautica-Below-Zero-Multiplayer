@@ -1,14 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Core.Components;
-
+    using System.Linq;
     using EntityModel = Subnautica.Network.Models.WorldEntity;
     using ServerModel = Subnautica.Network.Models.Server;
 
@@ -80,9 +78,9 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
                     if (fruitPlant)
                     {
                         fruitPlant.inactiveFruits.Clear();
-                        fruitPlant.fruitSpawnEnabled  = true;
+                        fruitPlant.fruitSpawnEnabled = true;
                         fruitPlant.fruitSpawnInterval = plant.SpawnInterval;
-                        fruitPlant.timeNextFruit      = plant.TimeNextFruit;
+                        fruitPlant.timeNextFruit = plant.TimeNextFruit;
 
                         for (int i = 0; i < plant.MaxFruit; i++)
                         {

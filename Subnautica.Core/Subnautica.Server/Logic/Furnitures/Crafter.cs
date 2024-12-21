@@ -1,15 +1,13 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Extensions;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class Crafter : BaseLogic
@@ -86,7 +84,7 @@ namespace Subnautica.Server.Logic.Furnitures
             this.Queue.Enqueue(packet);
         }
 
-        public WorldDynamicEntity GetSeaTruckEntity(string uniqueId) 
+        public WorldDynamicEntity GetSeaTruckEntity(string uniqueId)
         {
             foreach (var module in Core.Server.Instance.Storages.World.Storage.DynamicEntities.Where(q => q.TechType == TechType.SeaTruckFabricatorModule))
             {

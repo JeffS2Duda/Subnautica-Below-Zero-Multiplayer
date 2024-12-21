@@ -41,21 +41,21 @@ namespace Subnautica.Network.Models.Metadata
         public static StorageItem Create(Pickupable pickupable, bool resetItem = false)
         {
             return new StorageItem()
-            { 
-                ItemId    = pickupable.gameObject.GetIdentityId(), 
-                Item      = resetItem ? null : Serializer.SerializeGameObject(pickupable),
-                TechType  = pickupable.GetTechType(),
-                Size      = GetItemSize(pickupable.GetTechType()),
+            {
+                ItemId = pickupable.gameObject.GetIdentityId(),
+                Item = resetItem ? null : Serializer.SerializeGameObject(pickupable),
+                TechType = pickupable.GetTechType(),
+                Size = GetItemSize(pickupable.GetTechType()),
             };
         }
 
         public static StorageItem Create(string itemId, TechType techType)
         {
             return new StorageItem()
-            { 
-                ItemId   = itemId, 
+            {
+                ItemId = itemId,
                 TechType = techType,
-                Size     = GetItemSize(techType),
+                Size = GetItemSize(techType),
             };
         }
 

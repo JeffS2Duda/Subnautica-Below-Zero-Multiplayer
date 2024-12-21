@@ -43,20 +43,20 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
             if (sealedObject != null)
             {
                 ev.SealedObject.openedAmount = sealedObject.Amount;
-                ev.SealedObject._sealed      = sealedObject.IsSealed;
+                ev.SealedObject._sealed = sealedObject.IsSealed;
             }
         }
 
         public static void OnLaserCutterUsing(LaserCutterEventArgs ev)
         {
             ev.IsAllowed = false;
-            
+
             ServerModel.WorldEntityActionArgs result = new ServerModel.WorldEntityActionArgs()
             {
                 Entity = new EntityModel.SealedObject()
                 {
-                    UniqueId  = ev.UniqueId,
-                    Amount    = ev.Amount,
+                    UniqueId = ev.UniqueId,
+                    Amount = ev.Amount,
                     MaxAmount = ev.MaxAmount,
                 }
             };

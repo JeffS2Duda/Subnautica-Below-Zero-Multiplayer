@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Game
 {
-    using System;
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
+    using System.Collections;
 
     [HarmonyPatch(typeof(global::LargeWorldStreamer), nameof(global::LargeWorldStreamer.LoadGlobalRootAsync))]
     public static class WorldLoading

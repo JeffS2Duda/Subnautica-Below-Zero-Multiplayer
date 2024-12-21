@@ -1,17 +1,15 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-
+    using System.Collections.Generic;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
-    using Metadata    = Subnautica.Network.Models.Metadata;
 
     public class NuclearReactorProcessor : MetadataProcessor
     {
@@ -34,13 +32,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
             {
                 return false;
             }
-            
+
             if (component.Items != null && component.Items.Count > 0)
             {
                 for (int i = 0; i < 4; i++)
                 {
                     var itemType = component.Items.ElementAt(i);
-                    var slotId   = global::BaseNuclearReactor.slotIDs[i];
+                    var slotId = global::BaseNuclearReactor.slotIDs[i];
 
                     if (itemType == TechType.None)
                     {
@@ -103,11 +101,11 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.NuclearReactor()
                 {
                     IsRemoving = isRemoving,
-                    Items      = items,
+                    Items = items,
                 },
             };
 

@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Structures;
+    using System.Collections.Generic;
 
     public class CellManager
     {
@@ -34,13 +33,13 @@
 
         public bool IsLoaded(ZeroVector3 position)
         {
-            var block     = LargeWorldStreamer.main.GetBlock(position.ToVector3());
-            var batchId   = block / LargeWorldStreamer.main.blocksPerBatch;
-            var int3      = block % LargeWorldStreamer.main.blocksPerBatch;
+            var block = LargeWorldStreamer.main.GetBlock(position.ToVector3());
+            var batchId = block / LargeWorldStreamer.main.blocksPerBatch;
+            var int3 = block % LargeWorldStreamer.main.blocksPerBatch;
             var cellLevel = 0;
 
             var cellSize = BatchCells.GetCellSize(cellLevel, LargeWorldStreamer.main.blocksPerBatch);
-            var cellId   = int3 / cellSize;
+            var cellId = int3 / cellSize;
 
             return IsLoaded(batchId, cellId);
         }

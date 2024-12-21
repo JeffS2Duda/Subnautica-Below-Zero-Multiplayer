@@ -2,14 +2,11 @@ namespace Subnautica.Events.EventArgs
 {
     using System;
 
-    using Subnautica.API.Enums;
-    using Subnautica.API.Features;
-
     public class EntitySlotSpawningEventArgs : EventArgs
     {
         public EntitySlotSpawningEventArgs(int slotId, bool isAllowed = true)
         {
-            this.SlotId    = slotId;
+            this.SlotId = slotId;
             this.IsAllowed = isAllowed;
         }
 

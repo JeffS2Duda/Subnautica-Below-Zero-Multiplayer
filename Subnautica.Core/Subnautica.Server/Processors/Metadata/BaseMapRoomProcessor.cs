@@ -1,8 +1,5 @@
 namespace Subnautica.Server.Processors.Metadata
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Metadata;
@@ -11,9 +8,10 @@ namespace Subnautica.Server.Processors.Metadata
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using MetadataModel = Subnautica.Network.Models.Metadata;
-    using ServerModel   = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class BaseMapRoomProcessor : MetadataProcessor
     {
@@ -193,7 +191,7 @@ namespace Subnautica.Server.Processors.Metadata
         private string GetNextVehicleId(string currentVehicleId, bool isNext)
         {
             var vehicleId = string.Empty;
-            var cameras   = new List<WorldDynamicEntity>();
+            var cameras = new List<WorldDynamicEntity>();
 
             foreach (var item in Server.Instance.Storages.World.Storage.DynamicEntities.Where(q => q.TechType == TechType.MapRoomCamera))
             {

@@ -2,30 +2,28 @@
 {
     using Subnautica.Client.Modules;
     using Subnautica.Events.EventArgs;
-
-    using Initial         = Subnautica.Client.Synchronizations.InitialSync;
-    using Encyclopedia    = Subnautica.Client.Synchronizations.Processors.Encyclopedia;
-    using Inventory       = Subnautica.Client.Synchronizations.Processors.Inventory;
-    using Player          = Subnautica.Client.Synchronizations.Processors.Player;
-    using Technology      = Subnautica.Client.Synchronizations.Processors.Technology;
-    using Building        = Subnautica.Client.Synchronizations.Processors.Building;
-    using PDA             = Subnautica.Client.Synchronizations.Processors.PDA;
-    using World           = Subnautica.Client.Synchronizations.Processors.World;
-    using Metadata        = Subnautica.Client.Synchronizations.Processors.Metadata;
-    using General         = Subnautica.Client.Synchronizations.Processors.General;
-    using Items           = Subnautica.Client.Synchronizations.Processors.Items;
-    using Vehicle         = Subnautica.Client.Synchronizations.Processors.Vehicle;
-    using Creatures       = Subnautica.Client.Synchronizations.Processors.Creatures;
-    using WorldEntities   = Subnautica.Client.Synchronizations.Processors.WorldEntities;
-    using Story           = Subnautica.Client.Synchronizations.Processors.Story;
-    using DynamicEntities = Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities;
+    using Building = Subnautica.Client.Synchronizations.Processors.Building;
+    using Creatures = Subnautica.Client.Synchronizations.Processors.Creatures;
+    using Encyclopedia = Subnautica.Client.Synchronizations.Processors.Encyclopedia;
+    using General = Subnautica.Client.Synchronizations.Processors.General;
+    using Initial = Subnautica.Client.Synchronizations.InitialSync;
+    using Inventory = Subnautica.Client.Synchronizations.Processors.Inventory;
+    using Items = Subnautica.Client.Synchronizations.Processors.Items;
+    using Metadata = Subnautica.Client.Synchronizations.Processors.Metadata;
+    using PDA = Subnautica.Client.Synchronizations.Processors.PDA;
+    using Player = Subnautica.Client.Synchronizations.Processors.Player;
+    using Story = Subnautica.Client.Synchronizations.Processors.Story;
+    using Technology = Subnautica.Client.Synchronizations.Processors.Technology;
+    using Vehicle = Subnautica.Client.Synchronizations.Processors.Vehicle;
+    using World = Subnautica.Client.Synchronizations.Processors.World;
+    using WorldEntities = Subnautica.Client.Synchronizations.Processors.WorldEntities;
 
     public class Router
     {
         public void OnPluginEnabled()
         {
             InviteCodeModule.OnPluginEnabled();
-            MainProcess.OnPluginEnabled();;
+            MainProcess.OnPluginEnabled(); ;
         }
 
         public void OnInGameMenuOpened(InGameMenuOpenedEventArgs ev)
@@ -223,7 +221,7 @@
         {
             PDA.LogAddedProcessor.OnPDALogAdded(ev);
         }
-        
+
         public void OnNotificationToggle(NotificationToggleEventArgs ev)
         {
             PDA.NotificationProcessor.OnNotificationToggle(ev);
@@ -927,22 +925,22 @@
         {
             Items.BeaconProcessor.OnBeaconDeploying(ev);
         }
-        
+
         public void OnBeaconLabelChanged(BeaconLabelChangedEventArgs ev)
         {
             Items.BeaconProcessor.OnBeaconLabelChanged(ev);
         }
-        
+
         public void OnSpyPenguinDeploying(SpyPenguinDeployingEventArgs ev)
         {
             Items.SpyPenguinProcessor.OnSpyPenguinDeploying(ev);
         }
-        
+
         public void OnSpyPenguinItemPickedUp(SpyPenguinItemPickedUpEventArgs ev)
         {
             Items.SpyPenguinProcessor.OnSpyPenguinItemPickedUp(ev);
         }
-        
+
         public void OnSpyPenguinSnowStalkerInteracting(SpyPenguinSnowStalkerInteractingEventArgs ev)
         {
             Items.SpyPenguinProcessor.OnSpyPenguinSnowStalkerInteracting(ev);
@@ -957,12 +955,12 @@
         {
             Items.FlareProcessor.OnFlareDeploying(ev);
         }
-        
+
         public void OnThumperDeploying(ThumperDeployingEventArgs ev)
         {
             Items.ThumperProcessor.OnThumperDeploying(ev);
         }
-        
+
         public void OnTeleportationToolUsed(TeleportationToolUsedEventArgs ev)
         {
             Items.TeleportationToolProcessor.OnTeleportationToolUsed(ev);
@@ -971,85 +969,85 @@
         {
             Vehicle.LightProcessor.OnVehicleLightChanged(ev);
         }
-        
+
         public void OnVehicleInteriorToggle(VehicleInteriorToggleEventArgs ev)
         {
             Vehicle.InteriorProcessor.OnVehicleInteriorToggle(ev);
         }
-        
+
         public void OnSeaTruckConnecting(SeaTruckConnectingEventArgs ev)
         {
             Vehicle.SeaTruckConnectionProcessor.OnSeaTruckConnecting(ev);
         }
-        
+
         public void OnSeaTruckDetaching(SeaTruckDetachingEventArgs ev)
         {
             Vehicle.SeaTruckConnectionProcessor.OnSeaTruckDetaching(ev);
         }
-        
+
         public void OnExosuitItemPickedUp(ExosuitItemPickedUpEventArgs ev)
         {
             Vehicle.ExosuitStorageProcessor.OnExosuitItemPickedUp(ev);
         }
-        
+
         public void OnExosuitDrilling(ExosuitDrillingEventArgs ev)
         {
             Vehicle.ExosuitDrillProcessor.OnExosuitDrilling(ev);
         }
-        
+
         public void OnVehicleDocking(VehicleDockingEventArgs ev)
         {
             Metadata.MoonpoolProcessor.OnVehicleDocking(ev);
             Vehicle.SeaTruckDockingModuleProcessor.OnVehicleDocking(ev);
         }
-        
+
         public void OnVehicleUndocking(VehicleUndockingEventArgs ev)
         {
             Metadata.MoonpoolProcessor.OnVehicleUndocking(ev);
             Vehicle.SeaTruckDockingModuleProcessor.OnVehicleUndocking(ev);
         }
-        
+
         public void OnSeaTruckPictureFrameOpening(SeaTruckPictureFrameOpeningEventArgs ev)
         {
             Vehicle.SeaTruckSleeperModuleProcessor.OnSeaTruckPictureFrameOpening(ev);
         }
-        
+
         public void OnSeaTruckPictureFrameImageSelecting(SeaTruckPictureFrameImageSelectingEventArgs ev)
         {
             Vehicle.SeaTruckSleeperModuleProcessor.OnSeaTruckPictureFrameImageSelecting(ev);
         }
-        
+
         public void OnMapRoomCameraDocking(MapRoomCameraDockingEventArgs ev)
         {
             Metadata.BaseMapRoomProcessor.OnMapRoomCameraDocking(ev);
         }
-        
+
         public void OnSeaTruckModuleInitialized(SeaTruckModuleInitializedEventArgs ev)
         {
             Vehicle.SeaTruckSleeperModuleProcessor.OnSeaTruckModuleInitialized(ev);
             Vehicle.SeaTruckDockingModuleProcessor.OnSeaTruckModuleInitialized(ev);
         }
-        
+
         public void OnBreakableResourceBreaking(BreakableResourceBreakingEventArgs ev)
         {
             World.EntitySlotSpawnProcessor.OnBreakableResourceBreaking(ev);
         }
-        
+
         public void OnBridgeFluidClicking(BridgeFluidClickingEventArgs ev)
         {
             Story.BridgeProcessor.OnBridgeFluidClicking(ev);
         }
-        
+
         public void OnBridgeTerminalClicking(BridgeTerminalClickingEventArgs ev)
         {
             Story.BridgeProcessor.OnBridgeTerminalClicking(ev);
         }
-        
+
         public void OnBridgeInitialized(BridgeInitializedEventArgs ev)
         {
             Story.BridgeProcessor.OnBridgeInitialized(ev);
         }
-        
+
         public void OnRadioTowerTOMUsing(RadioTowerTOMUsingEventArgs ev)
         {
             Story.RadioTowerProcessor.OnRadioTowerTOMUsing(ev);
@@ -1059,42 +1057,42 @@
         {
             Story.TriggerProcessor.OnStoryGoalTriggering(ev);
         }
-        
+
         public void OnStorySignalSpawning(StorySignalSpawningEventArgs ev)
         {
             Story.SignalProcessor.OnStorySignalSpawning(ev);
         }
-        
+
         public void OnCinematicTriggering(CinematicTriggeringEventArgs ev)
         {
             Story.CinematicProcessor.OnCinematicTriggering(ev);
         }
-        
+
         public void OnStoryCalling(StoryCallingEventArgs ev)
         {
             Story.CallProcessor.OnStoryCalling(ev);
         }
-        
+
         public void OnStoryHandClicking(StoryHandClickingEventArgs ev)
         {
             Story.InteractProcessor.OnStoryHandClicking(ev);
         }
-        
+
         public void OnStoryCinematicStarted(StoryCinematicStartedEventArgs ev)
         {
             Story.PlayerVisibilityProcessor.OnStoryCinematicStarted(ev);
         }
-        
+
         public void OnStoryCinematicCompleted(StoryCinematicCompletedEventArgs ev)
         {
             Story.PlayerVisibilityProcessor.OnStoryCinematicCompleted(ev);
         }
-        
+
         public void OnMobileExtractorMachineInitialized()
         {
             Story.FrozenCreatureProcessor.OnMobileExtractorMachineInitialized();
         }
-        
+
         public void OnMobileExtractorMachineSampleAdding(MobileExtractorMachineSampleAddingEventArgs ev)
         {
             Story.FrozenCreatureProcessor.OnMobileExtractorMachineSampleAdding(ev);
@@ -1114,7 +1112,7 @@
         {
             WorldEntities.LaserCutterProcessor.OnLaserCutterUsing(ev);
         }
-        
+
         public void OnSealedInitialized(SealedInitializedEventArgs ev)
         {
             WorldEntities.LaserCutterProcessor.OnSealedInitialized(ev);

@@ -1,11 +1,9 @@
 namespace Subnautica.Network.Models.Metadata
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Structures;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class FiltrationMachine : MetadataComponent
@@ -82,9 +80,9 @@ namespace Subnautica.Network.Models.Metadata
 
         public FiltrationMachineTimeItem(uint constructionIndex, float timeRemainingWater, float timeRemainingSalt, ZeroVector3 position)
         {
-            this.ConstructionIndex  = constructionIndex;
+            this.ConstructionIndex = constructionIndex;
             this.TimeRemainingWater = timeRemainingWater;
-            this.TimeRemainingSalt  = timeRemainingSalt;
+            this.TimeRemainingSalt = timeRemainingSalt;
             this.Position = position;
         }
     }

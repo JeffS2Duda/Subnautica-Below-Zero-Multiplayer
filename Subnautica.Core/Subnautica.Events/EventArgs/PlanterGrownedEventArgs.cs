@@ -2,8 +2,6 @@ namespace Subnautica.Events.EventArgs
 {
     using System;
 
-    using UnityEngine;
-
     public class PlanterGrownedEventArgs : EventArgs
     {
         public PlanterGrownedEventArgs(FruitPlant fruitPlant)

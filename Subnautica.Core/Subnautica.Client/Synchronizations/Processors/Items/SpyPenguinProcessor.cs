@@ -14,7 +14,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class SpyPenguinProcessor : PlayerItemProcessor
@@ -42,9 +42,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
                 var action = new ItemQueueAction();
                 action.RegisterProperty("Component", component);
-                action.RegisterProperty("IsMine"   , ZeroPlayer.IsPlayerMine(playerId));
+                action.RegisterProperty("IsMine", ZeroPlayer.IsPlayerMine(playerId));
                 action.OnProcessCompleted = this.OnProcessCompleted;
-                action.OnEntitySpawned    = this.OnEntityPickupSpawned;
+                action.OnEntitySpawned = this.OnEntityPickupSpawned;
 
                 Entity.ProcessToQueue(action);
             }
@@ -84,7 +84,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
                 pickupable.ShowPickupNotify();
 
                 var component = item.Action.GetProperty<ItemModel.SpyPenguin>("Component");
-                var penguin   = Network.Identifier.GetComponentByGameObject<global::SpyPenguin>(component.UniqueId);
+                var penguin = Network.Identifier.GetComponentByGameObject<global::SpyPenguin>(component.UniqueId);
                 if (penguin)
                 {
                     penguin.PlayVO(penguin.sfx_pickupSuccess);
@@ -125,7 +125,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
                 SpyPenguinProcessor.SendPacketToServer(ev.UniqueId, pickupItem: WorldPickupItem.Create(ev.Item, PickupSourceType.StorageContainer));
             }
         }
-        
+
         public static void OnSpyPenguinSnowStalkerInteracting(SpyPenguinSnowStalkerInteractingEventArgs ev)
         {
             ev.IsAllowed = false;
@@ -153,17 +153,17 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 Item = new ItemModel.SpyPenguin()
                 {
-                    UniqueId        = uniqueId,
-                    Position        = position,
-                    Rotation        = rotation,
-                    Name            = name,
-                    Health          = health,
+                    UniqueId = uniqueId,
+                    Position = position,
+                    Rotation = rotation,
+                    Name = name,
+                    Health = health,
                     WorldPickupItem = pickupItem,
-                    SpawnChance     = spawnChance,
-                    IsPickup        = isPickup,
-                    IsStalkerFur    = isStalkerFur,
-                    IsDeploy        = isDeploy,
-                    IsAdded         = isAdded,
+                    SpawnChance = spawnChance,
+                    IsPickup = isPickup,
+                    IsStalkerFur = isStalkerFur,
+                    IsDeploy = isDeploy,
+                    IsAdded = isAdded,
                 }
             };
 

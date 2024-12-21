@@ -24,7 +24,7 @@
 
             var action = new CreatureQueueAction();
             action.OnProcessCompleted = this.OnCreatureProcessCompleted;
-            action.RegisterProperty("Target"   , packet.Target);
+            action.RegisterProperty("Target", packet.Target);
             action.RegisterProperty("IsStopped", packet.IsStopped);
 
             Network.Creatures.ProcessToQueue(packet.CreatureId, action);
@@ -66,8 +66,8 @@
             ServerModel.CreatureAttackLastTargetArgs request = new ServerModel.CreatureAttackLastTargetArgs()
             {
                 CreatureId = creatureId,
-                IsStopped  = isStopped,
-                Target     = new ZeroLastTarget(targetId, techType)
+                IsStopped = isStopped,
+                Target = new ZeroLastTarget(targetId, techType)
             };
 
             NetworkClient.SendPacket(request);

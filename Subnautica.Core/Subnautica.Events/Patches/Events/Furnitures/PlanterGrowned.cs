@@ -1,19 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-    using System.Collections;
-    using System.ComponentModel;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
-    using UnityEngine;
-    using UnityEngine.AddressableAssets;
-    using UnityEngine.EventSystems;
-
-    using UWE;
+    using System;
 
     [HarmonyPatch(typeof(global::FruitPlant), nameof(global::FruitPlant.OnGrown))]
     public static class PlanterGrowned

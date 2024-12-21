@@ -1,17 +1,14 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Building
 {
+    using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-    using Subnautica.API.Enums;
-    using Subnautica.API.Features;
-    
     using UnityEngine;
-
-    using ServerModel  = Subnautica.Network.Models.Server;
     using Constructing = Subnautica.Client.Multiplayer.Constructing;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class GhostMovedProcessor : NormalProcessor
     {
@@ -50,7 +47,7 @@
                 builder.SetLastRotation(packet.LastRotation);
                 builder.SetUpdatedTime(Time.time);
             }
-    
+
             return true;
         }
 
@@ -58,14 +55,14 @@
         {
             ServerModel.ConstructionGhostMovingArgs request = new ServerModel.ConstructionGhostMovingArgs()
             {
-                UniqueId        = ev.UniqueId,
-                TechType        = ev.TechType,
-                Position        = ev.Position.ToZeroVector3(),
-                Rotation        = ev.Rotation.ToZeroQuaternion(),
-                AimTransform    = ev.AimTransform.ToZeroTransform(),
-                IsCanPlace      = ev.IsCanPlace,
+                UniqueId = ev.UniqueId,
+                TechType = ev.TechType,
+                Position = ev.Position.ToZeroVector3(),
+                Rotation = ev.Rotation.ToZeroQuaternion(),
+                AimTransform = ev.AimTransform.ToZeroTransform(),
+                IsCanPlace = ev.IsCanPlace,
                 UpdatePlacement = ev.UpdatePlacement,
-                LastRotation    = ev.LastRotation,
+                LastRotation = ev.LastRotation,
                 BaseGhostComponent = ev.UpdatePlacement ? ev.GhostModel.GetBaseGhostComponent() : null,
             };
 

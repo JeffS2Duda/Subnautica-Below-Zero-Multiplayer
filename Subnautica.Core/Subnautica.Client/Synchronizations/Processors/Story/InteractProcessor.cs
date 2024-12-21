@@ -49,8 +49,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
 
             ServerModel.StoryInteractArgs result = new ServerModel.StoryInteractArgs()
             {
-                UniqueId      = ev.UniqueId,
-                GoalKey       = ev.GoalKey,
+                UniqueId = ev.UniqueId,
+                GoalKey = ev.GoalKey,
                 CinematicType = ev.CinematicType,
             };
 

@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Events.Game
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::SupplyDropManager), nameof(global::SupplyDropManager.CheckForDrops))]
     public static class LifepodZoneCheck

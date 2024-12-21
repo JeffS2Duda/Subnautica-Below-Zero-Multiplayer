@@ -1,14 +1,12 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch(typeof(global::uGUI_PlayerSleep), nameof(global::uGUI_PlayerSleep.BeginFadeOut))]
     public static class SleepScreenStopingStarted
-    {   
+    {
         private static bool Prefix(global::uGUI_PlayerSleep __instance)
         {
             if (Network.IsMultiplayerActive)

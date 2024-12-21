@@ -24,9 +24,9 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             var action = new ItemQueueAction();
             action.OnProcessCompleted = this.OnProcessCompleted;
             action.RegisterProperty("NewHealth", packet.Health);
-            action.RegisterProperty("TechType" , packet.TechType);
-            action.RegisterProperty("UniqueId" , packet.UniqueId);
-            action.RegisterProperty("IsMine"   , ZeroPlayer.IsPlayerMine(packet.GetPacketOwnerId()));
+            action.RegisterProperty("TechType", packet.TechType);
+            action.RegisterProperty("UniqueId", packet.UniqueId);
+            action.RegisterProperty("IsMine", ZeroPlayer.IsPlayerMine(packet.GetPacketOwnerId()));
 
             Entity.ProcessToQueue(action);
             return true;
@@ -82,7 +82,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             {
                 UniqueId = ev.UniqueId,
                 TechType = ev.TechType,
-                Health   = ev.Health,
+                Health = ev.Health,
             };
 
             NetworkClient.SendPacket(result);

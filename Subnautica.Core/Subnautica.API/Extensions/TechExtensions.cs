@@ -51,7 +51,7 @@
 
             return entry.destroyAfterScan;
         }
-        
+
         public static bool IsFragment(this TechType techType)
         {
             return techType == TechType.Fragment || global::PDAScanner.IsFragment(techType);
@@ -105,7 +105,7 @@
 
             return false;
         }
-                
+
         public static string GetTechName(this TechType techType)
         {
             return techType.AsString();
@@ -383,21 +383,21 @@
         {
             switch (techType)
             {
-                case TechType.ShockerEggUndiscovered:           return TechType.ShockerEgg;
-                case TechType.ArcticRayEggUndiscovered:         return TechType.ArcticRayEgg;
-                case TechType.BruteSharkEggUndiscovered:        return TechType.BruteSharkEgg;
-                case TechType.LilyPaddlerEggUndiscovered:       return TechType.LilyPaddlerEgg;
-                case TechType.PinnacaridEggUndiscovered:        return TechType.PinnacaridEgg;
-                case TechType.SquidSharkEggUndiscovered:        return TechType.SquidSharkEgg;
-                case TechType.TitanHolefishEggUndiscovered:     return TechType.TitanHolefishEgg;
-                case TechType.TrivalveBlueEggUndiscovered:      return TechType.TrivalveBlueEgg;
-                case TechType.TrivalveYellowEggUndiscovered:    return TechType.TrivalveYellowEgg;
-                case TechType.BrinewingEggUndiscovered:         return TechType.BrinewingEgg;
-                case TechType.CryptosuchusEggUndiscovered:      return TechType.CryptosuchusEgg;
-                case TechType.GlowWhaleEggUndiscovered:         return TechType.GlowWhaleEgg;
-                case TechType.JellyfishEggUndiscovered:         return TechType.JellyfishEgg;
-                case TechType.PenguinEggUndiscovered:           return TechType.PenguinEgg;
-                case TechType.RockPuncherEggUndiscovered:       return TechType.RockPuncherEgg;
+                case TechType.ShockerEggUndiscovered: return TechType.ShockerEgg;
+                case TechType.ArcticRayEggUndiscovered: return TechType.ArcticRayEgg;
+                case TechType.BruteSharkEggUndiscovered: return TechType.BruteSharkEgg;
+                case TechType.LilyPaddlerEggUndiscovered: return TechType.LilyPaddlerEgg;
+                case TechType.PinnacaridEggUndiscovered: return TechType.PinnacaridEgg;
+                case TechType.SquidSharkEggUndiscovered: return TechType.SquidSharkEgg;
+                case TechType.TitanHolefishEggUndiscovered: return TechType.TitanHolefishEgg;
+                case TechType.TrivalveBlueEggUndiscovered: return TechType.TrivalveBlueEgg;
+                case TechType.TrivalveYellowEggUndiscovered: return TechType.TrivalveYellowEgg;
+                case TechType.BrinewingEggUndiscovered: return TechType.BrinewingEgg;
+                case TechType.CryptosuchusEggUndiscovered: return TechType.CryptosuchusEgg;
+                case TechType.GlowWhaleEggUndiscovered: return TechType.GlowWhaleEgg;
+                case TechType.JellyfishEggUndiscovered: return TechType.JellyfishEgg;
+                case TechType.PenguinEggUndiscovered: return TechType.PenguinEgg;
+                case TechType.RockPuncherEggUndiscovered: return TechType.RockPuncherEgg;
 
                 case TechType.PrecursorLostRiverLabEgg:
                 case TechType.SeaMonkeyEgg:

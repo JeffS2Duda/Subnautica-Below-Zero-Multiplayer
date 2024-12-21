@@ -1,15 +1,12 @@
 namespace Subnautica.API.Features.NetworkUtility
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using global::Story;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
     using UnityEngine.EventSystems;
 
@@ -22,7 +19,7 @@ namespace Subnautica.API.Features.NetworkUtility
             new StoryTriggerItem("UnlockCrystalCastleCache", GoalType.Story, new ZeroVector3(499.8f, -832.8f, -701.5f) , 150f, true, true),
             new StoryTriggerItem("UnlockDeepPadsCache"     , GoalType.Story, new ZeroVector3(546.7f, -621.1f, -1095.0f), 100f, true, true),
             new StoryTriggerItem("ShieldBaseDoorUnlocked"  , GoalType.Story, new ZeroVector3(-53.5f, 29.2f, 561.1f)    ,  80f, true, true),
-            
+
             new StoryTriggerItem("StartApproachingCube", GoalType.Story, subTarget: new StoryTriggerItem("Log_Cine_MeetAl_P3_MainChamber", GoalType.PDA)),
 
             new StoryTriggerItem(StoryCinematicType.StoryPrecursorComputerTerminal.ToString(), new ZeroVector3(-666.3f, -191.4f, -339.3f),  100f, false),
@@ -126,7 +123,7 @@ namespace Subnautica.API.Features.NetworkUtility
         public void GoalExecute(string key, GoalType goalType, bool isStoryGoalMuted = false)
         {
             var isGoalComplete = StoryGoalManager.main.OnGoalComplete(key);
-            var isGoalMuted    = StoryGoalManager.main.IsStoryGoalMuted(key) || isStoryGoalMuted;
+            var isGoalMuted = StoryGoalManager.main.IsStoryGoalMuted(key) || isStoryGoalMuted;
             switch (goalType)
             {
                 case GoalType.PDA:
@@ -227,7 +224,7 @@ namespace Subnautica.API.Features.NetworkUtility
                         player = global::Player.main
                     });
                 }
-                
+
                 cinematic.cinematicController.informGameObject = cinematic.gameObject;
             }
             catch (Exception ex)
@@ -249,7 +246,7 @@ namespace Subnautica.API.Features.NetworkUtility
         public string Precondition { get; set; }
 
         public string GoalKey { get; set; }
-        
+
         public global::Story.GoalType GoalType { get; set; }
 
         public ZeroVector3 Position { get; set; }
@@ -276,12 +273,12 @@ namespace Subnautica.API.Features.NetworkUtility
 
         public StoryTriggerItem(string goalKey, global::Story.GoalType goalType, ZeroVector3 position = null, float triggerRange = 0f, bool isDoorway = false, bool isTrigger = false, StoryTriggerItem subTarget = null)
         {
-            this.GoalKey         = goalKey;
-            this.GoalType        = goalType;
-            this.Position        = position;
-            this.IsDoorway       = isDoorway;
-            this.TriggerRange    = triggerRange;
-            this.IsTrigger       = isTrigger;
+            this.GoalKey = goalKey;
+            this.GoalType = goalType;
+            this.Position = position;
+            this.IsDoorway = isDoorway;
+            this.TriggerRange = triggerRange;
+            this.IsTrigger = isTrigger;
             this.IsTriggerActive = true;
 
             if (subTarget != null)
@@ -292,34 +289,34 @@ namespace Subnautica.API.Features.NetworkUtility
 
         public StoryTriggerItem(string goalKey, ZeroVector3 position = null, float triggerRange = 0f, bool isDoorway = false, bool isInBase = false, string precondition = null, bool isCustomDoor = false, bool isTrigger = false, bool isTriggerActive = true)
         {
-            this.GoalKey         = goalKey;
-            this.Position        = position;
-            this.IsDoorway       = isDoorway;
-            this.TriggerRange    = triggerRange;
-            this.IsTrigger       = isTrigger;
+            this.GoalKey = goalKey;
+            this.Position = position;
+            this.IsDoorway = isDoorway;
+            this.TriggerRange = triggerRange;
+            this.IsTrigger = isTrigger;
             this.IsTriggerActive = isTriggerActive;
-            this.IsActive        = true;
-            this.IsInBase        = isInBase;
-            this.Precondition    = precondition;
-            this.IsCustomDoor    = isCustomDoor;
+            this.IsActive = true;
+            this.IsInBase = isInBase;
+            this.Precondition = precondition;
+            this.IsCustomDoor = isCustomDoor;
         }
 
         public StoryTriggerItem Clone()
         {
             return new StoryTriggerItem()
             {
-                Precondition    = this.Precondition,
-                GoalKey         = this.GoalKey,
-                GoalType        = this.GoalType,
-                Position        = this.Position,
-                IsDoorway       = this.IsDoorway,
-                TriggerRange    = this.TriggerRange,
-                IsTrigger       = this.IsTrigger,
+                Precondition = this.Precondition,
+                GoalKey = this.GoalKey,
+                GoalType = this.GoalType,
+                Position = this.Position,
+                IsDoorway = this.IsDoorway,
+                TriggerRange = this.TriggerRange,
+                IsTrigger = this.IsTrigger,
                 IsTriggerActive = this.IsTriggerActive,
-                IsInBase        = this.IsInBase,
-                IsActive        = this.IsActive,
-                IsCustomDoor    = this.IsCustomDoor,
-                SubTriggers     = this.SubTriggers.ToList(),
+                IsInBase = this.IsInBase,
+                IsActive = this.IsActive,
+                IsCustomDoor = this.IsCustomDoor,
+                SubTriggers = this.SubTriggers.ToList(),
             };
         }
     }

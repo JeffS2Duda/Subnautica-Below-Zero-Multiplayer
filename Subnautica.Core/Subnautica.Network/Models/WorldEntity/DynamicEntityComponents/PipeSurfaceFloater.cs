@@ -1,13 +1,11 @@
 namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
+    using System.Collections.Generic;
+    using System.Linq;
 
     [MessagePackObject]
     public class PipeSurfaceFloater : NetworkDynamicEntityComponent
@@ -22,7 +20,8 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
                 return false;
             }
 
-            return this.Childrens.Add(new OxygenPipeItem() {
+            return this.Childrens.Add(new OxygenPipeItem()
+            {
                 UniqueId = pipeId,
                 ParentId = parentId,
                 Position = position,

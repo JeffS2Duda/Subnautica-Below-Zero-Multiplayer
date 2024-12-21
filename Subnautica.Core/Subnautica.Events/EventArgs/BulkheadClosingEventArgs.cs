@@ -1,16 +1,15 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Features;
+    using System;
 
     public class BulkheadClosingEventArgs : EventArgs
     {
         public BulkheadClosingEventArgs(string uniqueId, bool side, bool isAllowed = true)
         {
-            this.UniqueId            = uniqueId;
-            this.Side                = side;
-            this.IsAllowed           = isAllowed;
+            this.UniqueId = uniqueId;
+            this.Side = side;
+            this.IsAllowed = isAllowed;
             this.IsStaticWorldEntity = Network.StaticEntity.IsStaticEntity(uniqueId);
         }
 

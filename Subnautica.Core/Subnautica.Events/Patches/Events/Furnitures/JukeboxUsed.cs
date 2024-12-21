@@ -1,15 +1,12 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Collections;
     using UnityEngine;
     using UnityEngine.EventSystems;
 
@@ -65,7 +62,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
 
             IsVolumeTriggered = false;
 
-            FastTrigger(__instance, new CustomProperty((byte) JukeboxProcessType.Volume, Math.Round(Jukebox.volume, 4).ToInvariantCultureString()));
+            FastTrigger(__instance, new CustomProperty((byte)JukeboxProcessType.Volume, Math.Round(Jukebox.volume, 4).ToInvariantCultureString()));
         }
 
         private static string GetUniqueId(global::JukeboxInstance __instance)
@@ -98,7 +95,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                 return false;
             }
 
-            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte) JukeboxProcessType.IsPrevious, true.ToString()));
+            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte)JukeboxProcessType.IsPrevious, true.ToString()));
         }
 
         [HarmonyPrefix]
@@ -110,7 +107,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                 return false;
             }
 
-            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte) JukeboxProcessType.IsNext, true.ToString()));
+            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte)JukeboxProcessType.IsNext, true.ToString()));
         }
 
         [HarmonyPrefix]
@@ -150,19 +147,19 @@ namespace Subnautica.Events.Patches.Events.Furnitures
 
                 if (GameModeManager.GetOption<bool>(GameOption.TechnologyRequiresPower) && __instance._powerRelay != null && __instance._powerRelay.GetPower() <= 1f)
                 {
-                    return false;    
+                    return false;
                 }
             }
 
             bool isPaused = __instance.imagePlayPause.sprite == __instance.spritePlay ? false : true;
-            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte) JukeboxProcessType.IsPaused, isPaused.ToString()));
+            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte)JukeboxProcessType.IsPaused, isPaused.ToString()));
         }
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::JukeboxInstance), nameof(global::JukeboxInstance.OnButtonStop))]
         private static bool OnButtonStop(global::JukeboxInstance __instance)
         {
-            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte) JukeboxProcessType.IsStoped, true.ToString()));
+            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte)JukeboxProcessType.IsStoped, true.ToString()));
         }
 
         [HarmonyPrefix]
@@ -170,12 +167,12 @@ namespace Subnautica.Events.Patches.Events.Furnitures
         private static bool OnPositionUp(global::JukeboxInstance __instance, PointerEventData eventData)
         {
             float value;
-            if (!__instance.isControlling || !MaterialExtensions.GetBarValue(__instance.imagePosition.rectTransform, (BaseEventData) eventData, __instance._materialPosition, true, out value))
+            if (!__instance.isControlling || !MaterialExtensions.GetBarValue(__instance.imagePosition.rectTransform, (BaseEventData)eventData, __instance._materialPosition, true, out value))
             {
                 return false;
             }
 
-            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte) JukeboxProcessType.Position, value.ToInvariantCultureString()));
+            return JukeboxShared.FastTrigger(__instance, new CustomProperty((byte)JukeboxProcessType.Position, value.ToInvariantCultureString()));
         }
 
         [HarmonyPrefix]

@@ -1,27 +1,25 @@
 ﻿namespace Subnautica.Client.Abstracts
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Enums;
-    using Subnautica.Client.Synchronizations.Processors;
     using Subnautica.Client.Abstracts.Processors;
-
-    using Initial            = Subnautica.Client.Synchronizations.InitialSync;
-    using Building           = Subnautica.Client.Synchronizations.Processors.Building;
-    using Encyclopedia       = Subnautica.Client.Synchronizations.Processors.Encyclopedia;
-    using PDA                = Subnautica.Client.Synchronizations.Processors.PDA;
-    using Player             = Subnautica.Client.Synchronizations.Processors.Player;
-    using Technology         = Subnautica.Client.Synchronizations.Processors.Technology;
-    using World              = Subnautica.Client.Synchronizations.Processors.World;
-    using Metadata           = Subnautica.Client.Synchronizations.Processors.Metadata;
-    using General            = Subnautica.Client.Synchronizations.Processors.General;
-    using Items              = Subnautica.Client.Synchronizations.Processors.Items;
-    using WorldEntities      = Subnautica.Client.Synchronizations.Processors.WorldEntities;
-    using DynamicEntities    = Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities;
-    using Vehicle            = Subnautica.Client.Synchronizations.Processors.Vehicle;
-    using Story              = Subnautica.Client.Synchronizations.Processors.Story;
-    using Creatures          = Subnautica.Client.Synchronizations.Processors.Creatures;
+    using Subnautica.Client.Synchronizations.Processors;
+    using System.Collections.Generic;
+    using Building = Subnautica.Client.Synchronizations.Processors.Building;
+    using Creatures = Subnautica.Client.Synchronizations.Processors.Creatures;
+    using DynamicEntities = Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities;
+    using Encyclopedia = Subnautica.Client.Synchronizations.Processors.Encyclopedia;
     using EnergyTransmission = Subnautica.Client.Synchronizations.Processors.World.EnergyTransmission;
+    using General = Subnautica.Client.Synchronizations.Processors.General;
+    using Initial = Subnautica.Client.Synchronizations.InitialSync;
+    using Items = Subnautica.Client.Synchronizations.Processors.Items;
+    using Metadata = Subnautica.Client.Synchronizations.Processors.Metadata;
+    using PDA = Subnautica.Client.Synchronizations.Processors.PDA;
+    using Player = Subnautica.Client.Synchronizations.Processors.Player;
+    using Story = Subnautica.Client.Synchronizations.Processors.Story;
+    using Technology = Subnautica.Client.Synchronizations.Processors.Technology;
+    using Vehicle = Subnautica.Client.Synchronizations.Processors.Vehicle;
+    using World = Subnautica.Client.Synchronizations.Processors.World;
+    using WorldEntities = Subnautica.Client.Synchronizations.Processors.WorldEntities;
 
     public class ProcessorShared
     {
@@ -99,7 +97,7 @@
             { ProcessType.CreatureCallSound                  , new Creatures.CallSoundProcessor()},
             { ProcessType.CreatureAttackLastTarget           , new Creatures.AttackLastTargetProcessor()},
             { ProcessType.CreatureLeviathanMeleeAttack       , new Creatures.LeviathanMeleeAttackProcessor()},
-            { ProcessType.CreatureMeleeAttack                , new Creatures.MeleeAttackProcessor()},        
+            { ProcessType.CreatureMeleeAttack                , new Creatures.MeleeAttackProcessor()},
             { ProcessType.WorldEntityAction                  , new WorldEntities.WorldEntityActionProcessor()},
             { ProcessType.VehicleEnergyTransmission          , new EnergyTransmission.VehicleEnergyTransmission()},
             { ProcessType.PlayerItemAction                   , new Items.PlayerItemActionProcessor()},
@@ -158,7 +156,7 @@
             { TechType.BaseNuclearReactor    , new Metadata.NuclearReactorProcessor() },
             { TechType.Trashcans             , new Metadata.TrashcansProcessor() },
             { TechType.LabTrashcan           , new Metadata.LabTrashcanProcessor() },
-            { TechType.BatteryCharger        , new Metadata.ChargerProcessor() },  
+            { TechType.BatteryCharger        , new Metadata.ChargerProcessor() },
             { TechType.PowerCellCharger      , new Metadata.ChargerProcessor() },
             { TechType.Locker                , new Metadata.StorageProcessor() },
             { TechType.SmallLocker           , new Metadata.StorageProcessor() },
@@ -190,7 +188,7 @@
             { TechType.BaseMoonpool          , new Metadata.MoonpoolProcessor() },
             { TechType.BaseMoonpoolExpansion , new Metadata.MoonpoolProcessor() },
             { TechType.BaseMapRoom           , new Metadata.BaseMapRoomProcessor() },
-            { TechType.BaseWaterPark         , new Metadata.BaseWaterParkProcessor() },            
+            { TechType.BaseWaterPark         , new Metadata.BaseWaterParkProcessor() },
         };
 
         public static Dictionary<TechType, WorldCreatureProcessor> WorldCreatureProcessors { get; set; } = new Dictionary<TechType, WorldCreatureProcessor>()

@@ -1,12 +1,10 @@
 namespace Subnautica.Network.Models.Storage.Construction
 {
-    using System;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
-    using Subnautica.Network.Structures;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
+    using Subnautica.Network.Structures;
+    using System;
 
 
     [MessagePackObject]
@@ -72,18 +70,18 @@ namespace Subnautica.Network.Models.Storage.Construction
         {
             return new ConstructionItem()
             {
-                IsStatic          = true,
-                UniqueId          = uniqueId,
-                TechType          = techType,
+                IsStatic = true,
+                UniqueId = uniqueId,
+                TechType = techType,
                 ConstructedAmount = 1f,
             };
         }
 
         public T EnsureComponent<T>()
         {
-            if(this.Component == null)
+            if (this.Component == null)
             {
-                this.Component = (MetadataComponent) Activator.CreateInstance(typeof(T));
+                this.Component = (MetadataComponent)Activator.CreateInstance(typeof(T));
             }
 
             return this.Component.GetComponent<T>();

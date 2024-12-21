@@ -24,8 +24,8 @@
     }
 
     public static class PlayerAnimationTypeExtensions
-    {   
-        public static List<string> Animations { get; set; }= new List<string>()
+    {
+        public static List<string> Animations { get; set; } = new List<string>()
         {
             "none",
             "thermos_empty",
@@ -47,7 +47,7 @@
 
         public static string ToEnumString(this PlayerAnimationType type)
         {
-            var typeId = (byte) type;
+            var typeId = (byte)type;
 
             return Animations.ElementAt(typeId);
         }
@@ -60,7 +60,7 @@
                 return PlayerAnimationType.None;
             }
 
-            return (PlayerAnimationType) typeId;
+            return (PlayerAnimationType)typeId;
         }
     }
 }

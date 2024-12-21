@@ -7,9 +7,9 @@ namespace Subnautica.Events.EventArgs
         public CellLoadingEventArgs(EntityCell entityCell, Int3 batchId, Int3 cellId, int level)
         {
             this.EntityCell = entityCell;
-            this.BatchId    = batchId;
-            this.CellId     = cellId;
-            this.Level      = level;
+            this.BatchId = batchId;
+            this.CellId = cellId;
+            this.Level = level;
         }
 
         public EntityCell EntityCell { get; private set; }

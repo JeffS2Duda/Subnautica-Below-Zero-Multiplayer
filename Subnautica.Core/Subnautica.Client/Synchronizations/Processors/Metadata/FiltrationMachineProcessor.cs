@@ -1,15 +1,13 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
-    using Metadata    = Subnautica.Network.Models.Metadata;
 
     public class FiltrationMachineProcessor : MetadataProcessor
     {
@@ -60,7 +58,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         private void MachineTimeSync(global::FiltrationMachine machine, Metadata.FiltrationMachine component)
         {
             machine.timeRemainingWater = component.TimeRemainingWater;
-            machine.timeRemainingSalt  = component.TimeRemainingSalt;
+            machine.timeRemainingSalt = component.TimeRemainingSalt;
         }
 
         public static void OnStorageItemAdding(StorageItemAddingEventArgs ev)
@@ -83,7 +81,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.FiltrationMachine()
                 {
                     RemovingItemId = removingItemId,

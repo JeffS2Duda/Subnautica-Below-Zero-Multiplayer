@@ -20,7 +20,7 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
 
         public Flare(float energy, float activateTime)
         {
-            this.Energy       = energy;
+            this.Energy = energy;
             this.ActivateTime = activateTime;
         }
     }

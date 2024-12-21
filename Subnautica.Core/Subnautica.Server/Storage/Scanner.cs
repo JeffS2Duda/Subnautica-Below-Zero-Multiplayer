@@ -1,12 +1,10 @@
 namespace Subnautica.Server.Storage
 {
-    using System;
-    using System.IO;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
     using Subnautica.Server.Abstracts;
-
+    using System;
+    using System.IO;
     using ScannerStorage = Network.Models.Storage.Scanner;
 
     public class Scanner : BaseStorage

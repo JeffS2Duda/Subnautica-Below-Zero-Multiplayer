@@ -1,13 +1,12 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
+    using Subnautica.API.Features.Helper;
     using System.Collections.Generic;
     using System.Linq;
 
-    using Subnautica.API.Features.Helper;
-
     public class Temporary
     {
-       private Dictionary<string, List<GenericProperty>> Properties = new Dictionary<string, List<GenericProperty>>();
+        private Dictionary<string, List<GenericProperty>> Properties = new Dictionary<string, List<GenericProperty>>();
 
         public void SetProperty(string mainId, string key, object value)
         {
@@ -20,10 +19,10 @@
                 }
                 else
                 {
-                    data.SetValue(value); 
+                    data.SetValue(value);
                 }
             }
-            else 
+            else
             {
                 this.Properties[mainId] = new List<GenericProperty>()
                 {
@@ -41,8 +40,8 @@
                 {
                     return default(T);
                 }
-                
-                return (T) property.Value;
+
+                return (T)property.Value;
             }
 
             return default(T);

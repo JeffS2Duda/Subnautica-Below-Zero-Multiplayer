@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
-    using System.Collections.Generic;
-
     using Subnautica.Network.Core.Components;
+    using System.Collections.Generic;
 
     public class StaticEntity
     {

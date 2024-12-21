@@ -50,7 +50,7 @@
             {
                 return true;
             }
-            
+
             var bridge = __instance.GetComponentInParent<GlacialBasinBridgeController>();
             if (bridge == null)
             {

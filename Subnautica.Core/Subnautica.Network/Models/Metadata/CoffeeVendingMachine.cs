@@ -1,11 +1,9 @@
 namespace Subnautica.Network.Models.Metadata
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class CoffeeVendingMachine : MetadataComponent
@@ -23,8 +21,8 @@ namespace Subnautica.Network.Models.Metadata
         public string ItemId { get; set; }
 
         [Key(4)]
-        public List<CoffeeThermos> Thermoses { get; set; } = new List<CoffeeThermos> ()
-        { 
+        public List<CoffeeThermos> Thermoses { get; set; } = new List<CoffeeThermos>()
+        {
             new CoffeeThermos(),
             new CoffeeThermos(),
         };
@@ -50,9 +48,9 @@ namespace Subnautica.Network.Models.Metadata
 
         public void Initialize(string itemId, float currentTime)
         {
-            this.IsActive  = true;
-            this.IsFull    = false;
-            this.ItemId    = itemId;
+            this.IsActive = true;
+            this.IsFull = false;
+            this.ItemId = itemId;
             this.AddedTime = currentTime;
         }
 
@@ -63,9 +61,9 @@ namespace Subnautica.Network.Models.Metadata
 
         public void Clear()
         {
-            this.IsActive  = false;
-            this.IsFull    = false;
-            this.ItemId    = null;
+            this.IsActive = false;
+            this.IsFull = false;
+            this.ItemId = null;
             this.AddedTime = 0.0f;
         }
     }

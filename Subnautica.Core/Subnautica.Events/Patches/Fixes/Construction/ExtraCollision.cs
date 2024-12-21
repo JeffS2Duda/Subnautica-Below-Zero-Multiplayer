@@ -1,13 +1,10 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Construction
 {
     using HarmonyLib;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
-
+    using Subnautica.API.Features;
     using System;
     using System.Collections.Generic;
-
     using UnityEngine;
 
     [HarmonyPatch]
@@ -27,7 +24,7 @@
             int num = UWE.Utils.OverlapBoxIntoSharedBuffer(position, extents, rotation, layerMask, trigger);
             for (int index = 0; index < num; ++index)
             {
-                var collider   = UWE.Utils.sharedColliderBuffer[index];
+                var collider = UWE.Utils.sharedColliderBuffer[index];
                 var gameObject = collider.gameObject;
 
                 if (!collider.isTrigger || gameObject.layer == LayerID.Useable || gameObject.layer == LayerID.Player || gameObject.CompareTag(global::Builder.denyBuildingTag) || CraftData.GetTechType(gameObject).IsCreature())
@@ -61,7 +58,7 @@
                 __result = !CraftData.GetTechType(go).IsSynchronizedCreature();
             }
         }
-    
+
         [HarmonyPostfix]
         [HarmonyPatch(typeof(global::Builder), nameof(global::Builder.FindObstacle))]
         private static void FindObstacle(ref GameObject __result, GameObject go)

@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Vehicle
 {
     using HarmonyLib;
-
-    using Subnautica.Network.Structures;
     using Subnautica.API.Features;
-
+    using Subnautica.Network.Structures;
     using UnityEngine;
 
     [HarmonyPatch]

@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.API.Features.Creatures.MonoBehaviours.Shared
 {
-    using System.Collections;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Structures;
-
+    using System.Collections;
     using UnityEngine;
     using UWE;
 
@@ -16,7 +14,7 @@
 
         public void Awake()
         {
-            this.LeviathanMeleeAttack   = this.GetComponent<global::LeviathanMeleeAttack>();
+            this.LeviathanMeleeAttack = this.GetComponent<global::LeviathanMeleeAttack>();
             this.MultiplayerMeleeAttack = this.GetComponent<MultiplayerMeleeAttack>();
         }
 
@@ -47,7 +45,7 @@
                     if (lastTarget.IsDead)
                     {
                         this.LeviathanMeleeAttack.cinematicActive = true;
-                        this.LeviathanMeleeAttack.timeLastBite    = Time.time;
+                        this.LeviathanMeleeAttack.timeLastBite = Time.time;
 
                         if (this.LeviathanMeleeAttack.timelineManager)
                         {
@@ -117,9 +115,9 @@
                 this.LeviathanMeleeAttack.ReleaseVehicle(true);
             }
 
-            this.LeviathanMeleeAttack.heldSeatruck           = null;
-            this.LeviathanMeleeAttack.heldExosuit            = null;
-            this.LeviathanMeleeAttack.timeVehicleGrabbed     = Time.time;
+            this.LeviathanMeleeAttack.heldSeatruck = null;
+            this.LeviathanMeleeAttack.heldExosuit = null;
+            this.LeviathanMeleeAttack.timeVehicleGrabbed = Time.time;
             this.LeviathanMeleeAttack.vehicleInitialPosition = target.transform.position;
             this.LeviathanMeleeAttack.vehicleInitialRotation = target.transform.rotation;
             this.LeviathanMeleeAttack.creature.Aggression.FullOff();
@@ -129,8 +127,8 @@
             {
                 if (target.TryGetComponent<global::Exosuit>(out var exosuit))
                 {
-                    this.LeviathanMeleeAttack.heldExosuit          = exosuit;
-                    this.LeviathanMeleeAttack.defaultCullingMode   = this.LeviathanMeleeAttack.animator.cullingMode;
+                    this.LeviathanMeleeAttack.heldExosuit = exosuit;
+                    this.LeviathanMeleeAttack.defaultCullingMode = this.LeviathanMeleeAttack.animator.cullingMode;
                     this.LeviathanMeleeAttack.animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
                     this.LeviathanMeleeAttack.animator.SetBool("exosuit_attack", true);
                     this.LeviathanMeleeAttack.exosuitAttackStartSfx.Play();
@@ -141,8 +139,8 @@
             {
                 if (target.TryGetComponent<global::SeaTruckSegment>(out var seaTruckSegment))
                 {
-                    this.LeviathanMeleeAttack.heldSeatruck         = seaTruckSegment;
-                    this.LeviathanMeleeAttack.defaultCullingMode   = this.LeviathanMeleeAttack.animator.cullingMode;
+                    this.LeviathanMeleeAttack.heldSeatruck = seaTruckSegment;
+                    this.LeviathanMeleeAttack.defaultCullingMode = this.LeviathanMeleeAttack.animator.cullingMode;
                     this.LeviathanMeleeAttack.animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
                     this.LeviathanMeleeAttack.animator.SetBool("seatruck_attack", true);
                     this.LeviathanMeleeAttack.heldSeatruck.animator.SetBool(this.LeviathanMeleeAttack.seatruckStartAttackAnimation, true);

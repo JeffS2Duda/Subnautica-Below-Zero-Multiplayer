@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public EnergyMixinClosedEventArgs(string uniqueId, string batterySlotId, TechType techType)
         {
-            this.UniqueId      = uniqueId;
+            this.UniqueId = uniqueId;
             this.BatterySlotId = batterySlotId;
-            this.TechType      = techType;
+            this.TechType = techType;
         }
 
         public string UniqueId { get; set; }

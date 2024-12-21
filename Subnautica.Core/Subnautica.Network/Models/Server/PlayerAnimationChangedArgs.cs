@@ -1,14 +1,9 @@
 namespace Subnautica.Network.Models.Server
 {
-    using System.Collections.Generic;
-
-    using LiteNetLib;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
-    using Subnautica.Network.Structures;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class PlayerAnimationChangedArgs : NetworkPacket

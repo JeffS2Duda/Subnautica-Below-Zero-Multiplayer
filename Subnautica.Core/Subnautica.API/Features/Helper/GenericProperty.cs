@@ -8,7 +8,7 @@
 
         public GenericProperty(string key, object value)
         {
-            this.Key   = key;
+            this.Key = key;
             this.Value = value;
         }
 
@@ -29,7 +29,7 @@
                 return default(T);
             }
 
-            return (T) this.Value;
+            return (T)this.Value;
         }
     }
 }

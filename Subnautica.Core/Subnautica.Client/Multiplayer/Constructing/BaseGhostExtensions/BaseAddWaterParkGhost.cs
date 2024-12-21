@@ -2,20 +2,19 @@
 {
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-    using Subnautica.API.MonoBehaviours;
     using Subnautica.Network.Models.Construction;
 
     public static class BaseAddWaterParkGhost
     {
         public static bool UpdateMultiplayerPlacement(this global::BaseAddWaterPark baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddWaterParkGhostComponent component)
         {
-            positionFound   = false;
+            positionFound = false;
             geometryChanged = false;
 
             if (component == null || component.TargetBaseId.IsNull() || component.FaceStart == null)
             {
                 baseGhost.targetBase = null;
-                
+
                 geometryChanged = baseGhost.SetupInvalid();
                 return false;
             }
@@ -26,7 +25,7 @@
                 geometryChanged = baseGhost.SetupInvalid();
                 return false;
             }
-            
+
             baseGhost.targetBase.SetPlacementGhost(baseGhost);
 
             var faceCell = component.FaceStart.Cell.ToInt3();
@@ -35,11 +34,11 @@
             baseGhost.targetOffset = normCell;
 
             var targetCellType = baseGhost.targetBase.GetCell(normCell);
-            var targetSize     = Base.CellSize[(int) targetCellType];
-            var targetFace     = new Base.Face(faceCell - baseGhost.targetBase.GetAnchor(), component.FaceStart.Direction);
+            var targetSize = Base.CellSize[(int)targetCellType];
+            var targetFace = new Base.Face(faceCell - baseGhost.targetBase.GetAnchor(), component.FaceStart.Direction);
 
             if (!baseGhost.anchoredFace.HasValue || baseGhost.anchoredFace.Value != targetFace)
-            {   
+            {
                 baseGhost.anchoredFace = new Base.Face?(targetFace);
 
                 geometryChanged = baseGhost.UpdateSize(targetSize);
@@ -60,7 +59,7 @@
                             baseGhost.ghostBase.SetFaceType(newFace, Base.FaceType.WaterPark);
                             baseGhost.ghostBase.SetFaceMask(newFace, true);
 
-                            newFace.direction = Base.OppositeDirections[(int) newFace.direction];
+                            newFace.direction = Base.OppositeDirections[(int)newFace.direction];
                         }
 
                         foreach (var horizontalDirection in Base.HorizontalDirections)
@@ -76,7 +75,7 @@
                     case Base.CellType.LargeRoomRotated:
 
                         var newFace2 = new Base.Face();
-                        int index1   = targetCellType == Base.CellType.LargeRoom ? 0 : 2;
+                        int index1 = targetCellType == Base.CellType.LargeRoom ? 0 : 2;
 
                         for (int index2 = 0; index2 < 2; ++index2)
                         {
@@ -96,7 +95,7 @@
                                 {
                                     continue;
                                 }
-                                
+
                                 newFace2.direction = horizontalDirection;
 
                                 baseGhost.ghostBase.SetFaceMask(newFace2, true);
@@ -110,7 +109,7 @@
                                 baseGhost.ghostBase.SetFaceType(newFace2, Base.FaceType.WaterPark);
                                 baseGhost.ghostBase.SetFaceMask(newFace2, true);
 
-                                newFace2.direction = Base.OppositeDirections[(int) newFace2.direction];
+                                newFace2.direction = Base.OppositeDirections[(int)newFace2.direction];
                             }
                         }
 

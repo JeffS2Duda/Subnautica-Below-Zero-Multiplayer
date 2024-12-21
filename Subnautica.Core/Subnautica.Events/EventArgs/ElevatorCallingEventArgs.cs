@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public ElevatorCallingEventArgs(string uniqueId, bool isUp, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.IsUp      = isUp;
+            this.UniqueId = uniqueId;
+            this.IsUp = isUp;
             this.IsAllowed = isAllowed;
         }
 

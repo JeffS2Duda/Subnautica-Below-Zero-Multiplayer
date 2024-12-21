@@ -8,13 +8,13 @@ namespace Subnautica.Events.EventArgs
     {
         public SubNameInputDeselectedEventArgs(string uniqueId, TechType techType, string name, Color baseColor, Color stripeColor1, Color stripeColor2, Color nameColor)
         {
-            this.UniqueId     = uniqueId;
-            this.TechType     = techType;
-            this.Name         = name;
-            this.BaseColor    = baseColor;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
+            this.Name = name;
+            this.BaseColor = baseColor;
             this.StripeColor1 = stripeColor1;
             this.StripeColor2 = stripeColor2;
-            this.NameColor    = nameColor;
+            this.NameColor = nameColor;
         }
 
         public string UniqueId { get; set; }

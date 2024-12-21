@@ -1,13 +1,11 @@
 namespace Subnautica.Client.Synchronizations.Processors.Player
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections.Generic;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class ConsoleCommandProcessor : NormalProcessor

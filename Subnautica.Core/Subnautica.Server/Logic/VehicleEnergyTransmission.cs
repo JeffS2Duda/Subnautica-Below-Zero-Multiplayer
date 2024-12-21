@@ -1,8 +1,5 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
@@ -10,10 +7,10 @@ namespace Subnautica.Server.Logic
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class VehicleEnergyTransmission : BaseLogic
@@ -123,7 +120,7 @@ namespace Subnautica.Server.Logic
                 {
                     var component = vehicle.Component.GetComponent<WorldEntityModel.Exosuit>();
 
-                    this.ConsumeEnergy(component.PowerCells, this.ExosuitPowerConsumptionPerSecond);                
+                    this.ConsumeEnergy(component.PowerCells, this.ExosuitPowerConsumptionPerSecond);
                 }
             }
             else if (vehicle.TechType == TechType.SeaTruck)
@@ -132,7 +129,7 @@ namespace Subnautica.Server.Logic
                 {
                     var component = vehicle.Component.GetComponent<WorldEntityModel.SeaTruck>();
                     var powerRating = component.Modules.Any(q => q.ModuleType == TechType.SeaTruckUpgradeEnergyEfficiency) ? 0.8f : 1f;
-                    
+
                     this.ConsumeEnergy(component.PowerCells, (this.SeaTruckPowerConsumptionPerSecond * powerRating) * (component.IsLightActive ? 1.20f : 1f));
                 }
             }
@@ -186,7 +183,7 @@ namespace Subnautica.Server.Logic
             for (int i = 0; i < powerCells.Count; i++)
             {
                 var capacity = powerCells.ElementAt(i).Capacity;
-                var charge   = powerCells.ElementAt(i).Charge;
+                var charge = powerCells.ElementAt(i).Charge;
                 if (charge > 0f && energyAmount > 0f)
                 {
                     powerCells[i].Charge = Mathf.Min(capacity, charge + energyAmount);

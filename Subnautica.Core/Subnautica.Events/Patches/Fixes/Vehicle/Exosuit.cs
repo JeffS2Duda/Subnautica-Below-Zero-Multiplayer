@@ -31,7 +31,7 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
 
             return true;
         }
-        
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Exosuit), nameof(global::Exosuit.FixedUpdate))]
         private static bool ExosuitFixedUpdate(global::Exosuit __instance)

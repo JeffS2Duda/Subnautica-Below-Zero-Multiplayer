@@ -1,9 +1,8 @@
 namespace Subnautica.Events.Patches.Fixes.Creatures
 {
     using HarmonyLib;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
 
     [HarmonyPatch]
     public class CreatureFrozenMixin

@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
-
-using Subnautica.API.Extensions;
-
-using UnityEngine;
+﻿using Subnautica.API.Extensions;
+using System;
 
 namespace Subnautica.API.Features.Netbird
 {
@@ -51,7 +40,7 @@ namespace Subnautica.API.Features.Netbird
 
         public Netbird(string textContent, string errorContent)
         {
-            this.TextContent  = textContent.Trim();
+            this.TextContent = textContent.Trim();
             this.ErrorContent = errorContent.Trim();
 
             try
@@ -67,9 +56,9 @@ namespace Subnautica.API.Features.Netbird
         private bool Initialize()
         {
             this.isWaitingInstallation = this.ErrorContent.Contains("service install");
-            this.isWaitingLogin        = this.TextContent.Contains("Daemon status: NeedsLogin");
-            this.isValidJson           = this.CheckValidJson(this.TextContent);
-            this.isHasError            = this.ErrorContent.IsNotNull();
+            this.isWaitingLogin = this.TextContent.Contains("Daemon status: NeedsLogin");
+            this.isValidJson = this.CheckValidJson(this.TextContent);
+            this.isHasError = this.ErrorContent.IsNotNull();
 
             if (this.TextContent.IsNull())
             {

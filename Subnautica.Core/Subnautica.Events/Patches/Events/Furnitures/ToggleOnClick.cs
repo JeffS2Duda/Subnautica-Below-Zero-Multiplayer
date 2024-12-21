@@ -1,8 +1,6 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
     using HarmonyLib;
-
-    using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
 
@@ -10,7 +8,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
     {
         public static bool TriggerEvent(global::ToggleOnClick __instance, bool isSwitchOn)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }

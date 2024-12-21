@@ -1,13 +1,11 @@
 namespace Subnautica.Server.Storage
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
     using Subnautica.Server.Abstracts;
-
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
     using EncyclopediaStorage = Network.Models.Storage.Encyclopedia;
 
     public class Encyclopedia : BaseStorage
@@ -52,7 +50,7 @@ namespace Subnautica.Server.Storage
                 Log.Info("---------------------------------------------------------------");
             }
         }
-        
+
         public override void SaveToDisk()
         {
             lock (this.ProcessLock)

@@ -1,12 +1,9 @@
 ﻿namespace Subnautica.API.MonoBehaviours
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.MonoBehaviours.Components;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
 
     public class BasePieceComponent : MonoBehaviour
@@ -49,7 +46,7 @@
             {
                 return null;
             }
-            
+
             if (different.Count > 1)
             {
                 Log.Error(string.Format("GetAddedPiece Three - lastBasePieces: {0}, BasePieces: {1}, Different: {2}", lastBasePieces.Count, this.BasePieces.Count, different.Count));
@@ -75,16 +72,16 @@
                     {
                         BasePieceData basePieceData = new BasePieceData()
                         {
-                            Position      = deconstructable.transform.position,
+                            Position = deconstructable.transform.position,
                             LocalPosition = deconstructable.transform.localPosition,
                             LocalRotation = deconstructable.transform.localRotation,
-                            TechType      = deconstructable.recipe,
+                            TechType = deconstructable.recipe,
                         };
 
                         if (deconstructable.face != null && deconstructable.face.HasValue)
                         {
                             basePieceData.FaceDirection = deconstructable.face.Value.direction;
-                            basePieceData.FaceType      = deconstructable.faceType;
+                            basePieceData.FaceType = deconstructable.faceType;
                         }
 
                         if (isTransformStorage)
@@ -120,16 +117,16 @@
 
                 BasePieceData basePieceData = new BasePieceData()
                 {
-                    Position      = child.position,
+                    Position = child.position,
                     LocalPosition = child.transform.localPosition,
                     LocalRotation = child.transform.localRotation,
-                    TechType      = baseDeconstructable.recipe,
+                    TechType = baseDeconstructable.recipe,
                 };
 
                 if (baseDeconstructable.face != null && baseDeconstructable.face.HasValue)
                 {
                     basePieceData.FaceDirection = baseDeconstructable.face.Value.direction;
-                    basePieceData.FaceType      = baseDeconstructable.faceType;
+                    basePieceData.FaceType = baseDeconstructable.faceType;
                 }
 
                 if (isTransformStorage)

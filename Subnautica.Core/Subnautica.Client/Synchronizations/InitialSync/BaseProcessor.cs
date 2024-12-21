@@ -1,16 +1,14 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.MonoBehaviours.Construction;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Structures;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using UWE;
 
     public class BaseProcessor

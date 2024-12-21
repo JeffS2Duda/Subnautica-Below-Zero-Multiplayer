@@ -1,7 +1,5 @@
 ﻿namespace Subnautica.API.Features.Creatures.Datas
 {
-    using Subnautica.API.Features.Creatures.MonoBehaviours;
-
     public class VentGardenSmallData : BaseCreatureData
     {
         public override TechType CreatureType { get; set; } = TechType.SmallVentGarden;

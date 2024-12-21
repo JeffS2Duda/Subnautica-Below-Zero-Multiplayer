@@ -1,7 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
-    using System;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.Client.Abstracts.Processors;
@@ -11,8 +9,8 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
 
     using UnityEngine;
 
-    using Metadata         = Subnautica.Network.Models.Metadata;
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class SeaTruckSleeperModuleProcessor : WorldDynamicEntityProcessor
@@ -45,11 +43,11 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
             return new ServerModel.MetadataComponentArgs()
             {
                 PacketOwnerId = playerId,
-                TechType      = TechType.Bed1,
-                UniqueId      = uniqueId,
-                Component     = new Metadata.Bed()
+                TechType = TechType.Bed1,
+                UniqueId = uniqueId,
+                Component = new Metadata.Bed()
                 {
-                    IsSleeping  = true,
+                    IsSleeping = true,
                     CurrentSide = bedSide,
                 }
             };

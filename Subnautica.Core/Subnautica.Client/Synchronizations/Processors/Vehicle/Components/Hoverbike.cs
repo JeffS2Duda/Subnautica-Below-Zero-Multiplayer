@@ -8,7 +8,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
         public static HoverbikeUpdateComponent GetComponent(HoverbikeUpdateComponent component, global::Hoverbike hoverbike)
         {
             component.IsBoosting = hoverbike.boostFxControl.IsPlaying(0);
-            component.IsJumping  = hoverbike.jumpFxControl.IsPlaying(0);
+            component.IsJumping = hoverbike.jumpFxControl.IsPlaying(0);
             return component;
         }
     }

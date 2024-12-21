@@ -7,7 +7,7 @@ namespace Subnautica.Events.EventArgs
         public TechnologyAddedEventArgs(TechType type, bool verbose)
         {
             this.TechType = type;
-            this.Verbose  = verbose;
+            this.Verbose = verbose;
         }
 
         public TechType TechType { get; private set; }

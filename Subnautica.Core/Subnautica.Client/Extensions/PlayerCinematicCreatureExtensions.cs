@@ -1,9 +1,6 @@
 ﻿namespace Subnautica.Client.Extensions
 {
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-    using Subnautica.API.Features.Helper;
-    using Subnautica.Client.Modules;
     using Subnautica.Client.Multiplayer.Cinematics;
     using Subnautica.Client.Multiplayer.Cinematics.CreatureCinematics;
     using UnityEngine;
@@ -30,8 +27,8 @@
             mainPlayer.playerAnimator.SetBool(glowWhaleRide.playerRideAnimation, true);
             mainPlayer.playerAnimator.SetBool(GlowWhaleRide.animCinematicWithPitch, true);
 
-            MainCameraControl.main.cinematicMode           = true;
-            MainCameraControl.main.lookAroundMode          = true;
+            MainCameraControl.main.cinematicMode = true;
+            MainCameraControl.main.lookAroundMode = true;
             MainCameraControl.main.viewModel.localRotation = Quaternion.identity;
 
             glowWhaleRide.animator.SetBool(glowWhaleRide.rideAnimation, value: true);
@@ -40,10 +37,10 @@
             glowWhaleRide.director.SetBinding("Player", mainPlayer.playerAnimator, typeof(Animator));
             glowWhaleRide.director.Play();
             glowWhaleRide.attachSfx.Play();
-            
+
             SNCameraRoot.main.SetNearClip(glowWhaleRide.nearClip);
-            
-            glowWhaleRide.ridden        = true;
+
+            glowWhaleRide.ridden = true;
             glowWhaleRide.timeRideStart = Time.time;
 
             BehaviourUpdateUtils.RegisterForUpdate(glowWhaleRide);

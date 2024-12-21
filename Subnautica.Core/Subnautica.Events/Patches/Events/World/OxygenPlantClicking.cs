@@ -1,12 +1,9 @@
 namespace Subnautica.Events.Patches.Events.World
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::OxygenPlant), nameof(global::OxygenPlant.OnHandClick))]
@@ -30,7 +27,7 @@ namespace Subnautica.Events.Patches.Events.World
                 return false;
             }
 
-            float startedTime = GetStartedTime((float) __instance.duration, ((__instance.GetProgress() * __instance.capacity) - seconds) / __instance.capacity);
+            float startedTime = GetStartedTime((float)__instance.duration, ((__instance.GetProgress() * __instance.capacity) - seconds) / __instance.capacity);
 
             try
             {

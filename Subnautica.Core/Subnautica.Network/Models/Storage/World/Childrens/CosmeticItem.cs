@@ -28,9 +28,9 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
         public CosmeticItem(StorageItem storageItem, string baseId, ZeroVector3 position, ZeroQuaternion rotation)
         {
             this.StorageItem = storageItem;
-            this.BaseId      = baseId;
-            this.Position    = position;
-            this.Rotation    = rotation;
+            this.BaseId = baseId;
+            this.Position = position;
+            this.Rotation = rotation;
         }
     }
 }

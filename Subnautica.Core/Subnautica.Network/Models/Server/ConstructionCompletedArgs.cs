@@ -11,7 +11,7 @@ namespace Subnautica.Network.Models.Server
     {
         [Key(0)]
         public override ProcessType Type { get; set; } = ProcessType.ConstructingCompleted;
-        
+
         [Key(1)]
         public override NetworkChannel ChannelType { get; set; } = NetworkChannel.Construction;
 

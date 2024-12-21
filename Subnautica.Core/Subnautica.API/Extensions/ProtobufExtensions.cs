@@ -2,8 +2,6 @@
 {
     using System;
 
-    using Subnautica.API.Features;
-
     public static class ProtobufExtensions
     {
         private static Type CellMode = typeof(ProtobufClass_CellMode);

@@ -1,14 +1,10 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.General
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Core;
-    using Subnautica.Client.Modules;
-
+    using System;
+    using System.Collections;
     using UnityEngine;
 
     public class ConnectionSignals : MonoBehaviour

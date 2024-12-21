@@ -1,9 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures.MonoBehaviours
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
-
+    using Subnautica.API.Features;
     using UnityEngine;
 
     [HarmonyPatch]
@@ -38,7 +36,7 @@
                 AnimateByVelocity.SetRootRigidbody(__instance.gameObject, false);
             }
         }
-        
+
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::VentGardenSmall), nameof(global::VentGardenSmall.OnEnable))]
         public static void OnEnable(global::VentGardenSmall __instance)
@@ -76,7 +74,7 @@
             __instance.animator.logWarnings = true;
             __instance.animator.SetFloat(AnimatorHashID.speed, 0.0f);
             __instance.animator.SetFloat(AnimatorHashID.pitch, 0.0f);
-            __instance.animator.SetFloat(AnimatorHashID.tilt , 0.0f);
+            __instance.animator.SetFloat(AnimatorHashID.tilt, 0.0f);
             __instance.previousPosition = __instance.rootGameObject.transform.position;
             return false;
         }

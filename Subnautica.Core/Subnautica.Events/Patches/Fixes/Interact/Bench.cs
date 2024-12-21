@@ -9,7 +9,7 @@ namespace Subnautica.Events.Patches.Fixes.Interact
     {
         private static bool Prefix(global::Bench __instance, GUIHand hand)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }

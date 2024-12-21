@@ -12,11 +12,11 @@
 
     public class PlayerAnimation : MonoBehaviour
     {
-        public void Awake() 
+        public void Awake()
         {
-            this.Animator  = this.gameObject.GetComponent<Animator>();
+            this.Animator = this.gameObject.GetComponent<Animator>();
             this.RigidBody = this.gameObject.GetComponent<Rigidbody>();
-            this.RigidBody.mass      = global::Player.main.rigidBody.mass;
+            this.RigidBody.mass = global::Player.main.rigidBody.mass;
             this.RigidBody.useGravity = false;
             this.RigidBody.SetInterpolation(RigidbodyInterpolation.None);
             this.RigidBody.SetKinematic();
@@ -29,7 +29,7 @@
                 }
                 else
                 {
-                    this.LeftArmBone  = component.solver.bones[0];
+                    this.LeftArmBone = component.solver.bones[0];
                 }
             }
         }
@@ -43,16 +43,16 @@
                 this.InterpolateCameraViewPitch();
 
                 SafeAnimator.SetBool(this.Animator, "cinematics_enabled", !VRGameOptions.GetVrAnimationMode());
-                SafeAnimator.SetBool(this.Animator, "holding_tool"      , this.Player.TechTypeInHand != TechType.None && this.Player.TechTypeInHand != TechType.PDA);
-                SafeAnimator.SetBool(this.Animator, "holding_loot"      , this.Player.TechTypeInHand == TechType.PDA);
-                SafeAnimator.SetBool(this.Animator, "holding_welder"    , this.Player.TechTypeInHand == TechType.Welder);
-                SafeAnimator.SetBool(this.Animator, "in_hovercraft"     , this.Player.VehicleType == TechType.Hoverbike);
-                SafeAnimator.SetBool(this.Animator, "in_exosuit"        , this.Player.VehicleType == TechType.Exosuit);
-                SafeAnimator.SetBool(this.Animator, "piloting_seatruck" , this.Player.VehicleType == TechType.SeaTruck);
-                SafeAnimator.SetBool(this.Animator, "on_surface"        , this.Player.IsOnSurface);
-                SafeAnimator.SetBool(this.Animator, "is_underwater"     , this.Player.IsUnderwater);
-                SafeAnimator.SetBool(this.Animator, "is_floating"       , this.Player.IsPrecursorArm);
-                SafeAnimator.SetFloat(this.Animator, "view_pitch"       , this.CurrentCameraPitch);
+                SafeAnimator.SetBool(this.Animator, "holding_tool", this.Player.TechTypeInHand != TechType.None && this.Player.TechTypeInHand != TechType.PDA);
+                SafeAnimator.SetBool(this.Animator, "holding_loot", this.Player.TechTypeInHand == TechType.PDA);
+                SafeAnimator.SetBool(this.Animator, "holding_welder", this.Player.TechTypeInHand == TechType.Welder);
+                SafeAnimator.SetBool(this.Animator, "in_hovercraft", this.Player.VehicleType == TechType.Hoverbike);
+                SafeAnimator.SetBool(this.Animator, "in_exosuit", this.Player.VehicleType == TechType.Exosuit);
+                SafeAnimator.SetBool(this.Animator, "piloting_seatruck", this.Player.VehicleType == TechType.SeaTruck);
+                SafeAnimator.SetBool(this.Animator, "on_surface", this.Player.IsOnSurface);
+                SafeAnimator.SetBool(this.Animator, "is_underwater", this.Player.IsUnderwater);
+                SafeAnimator.SetBool(this.Animator, "is_floating", this.Player.IsPrecursorArm);
+                SafeAnimator.SetFloat(this.Animator, "view_pitch", this.CurrentCameraPitch);
 
                 if (this.Player.IsMovementActive && !this.Player.IsCinematicModeActive)
                 {
@@ -82,12 +82,12 @@
                 {
                     if (this.CurrentLeftArmRotation == Quaternion.identity)
                     {
-                        this.CurrentLeftArmRotation  = this.LeftArmBone.transform.localRotation;
+                        this.CurrentLeftArmRotation = this.LeftArmBone.transform.localRotation;
                         this.CurrentRightArmRotation = this.RightArmBone.transform.localRotation;
                     }
 
                     this.RightArmBone.transform.localRotation = this.CurrentRightArmRotation = BroadcastInterval.QuaternionSmoothDamp(this.CurrentRightArmRotation, this.Player.RightHandItemRotation, ref this.RightHandItemVelocity, 0.1f);
-                    this.LeftArmBone.transform.localRotation  = this.CurrentLeftArmRotation  = BroadcastInterval.QuaternionSmoothDamp(this.CurrentLeftArmRotation, this.Player.LeftHandItemRotation , ref this.LeftHandItemVelocity , 0.1f);
+                    this.LeftArmBone.transform.localRotation = this.CurrentLeftArmRotation = BroadcastInterval.QuaternionSmoothDamp(this.CurrentLeftArmRotation, this.Player.LeftHandItemRotation, ref this.LeftHandItemVelocity, 0.1f);
                 }
                 else
                 {
@@ -162,8 +162,8 @@
 
                 if (this.Player.IsInSeaTruck)
                 {
-                    this.transform.parent    = null;
-                    this.Player.Position     = this.transform.position;
+                    this.transform.parent = null;
+                    this.Player.Position = this.transform.position;
                     this.Player.IsInSeaTruck = false;
                 }
 
@@ -173,8 +173,8 @@
             var seaTruckSegment = Network.Identifier.GetComponentByGameObject<global::SeaTruckSegment>(this.Player.CurrentInteriorId, true);
             if (seaTruckSegment != null)
             {
-                this.LastInteriorId      = this.Player.CurrentInteriorId;
-                this.transform.parent    = seaTruckSegment.transform;
+                this.LastInteriorId = this.Player.CurrentInteriorId;
+                this.transform.parent = seaTruckSegment.transform;
                 this.Player.IsInSeaTruck = true;
 
                 if (isKeepPosition)
@@ -280,7 +280,7 @@
 
                 this.Animator.SetFloat("FP_Emotes", 0.0f);
             }
-            else 
+            else
             {
                 if (this.Player.IsCinematicModeActive || this.Player.VehicleType != TechType.None || this.Player.TechTypeInHand != TechType.None)
                 {

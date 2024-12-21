@@ -1,9 +1,8 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Player
 {
     using HarmonyLib;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
 
     [HarmonyPatch]
     public static class PlayerAnimationEventManager

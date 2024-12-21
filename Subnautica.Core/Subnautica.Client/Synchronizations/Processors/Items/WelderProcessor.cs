@@ -5,7 +5,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
     using Subnautica.Client.Extensions;
     using Subnautica.Network.Core.Components;
 
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
 
     public class WelderProcessor : PlayerItemProcessor
     {

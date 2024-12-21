@@ -1,16 +1,13 @@
 namespace Subnautica.Server.Processors.Vehicle
 {
-    using System;
-    using System.Collections.Generic;
-
     using Server.Core;
-
     using Subnautica.API.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Server.Abstracts.Processors;
-
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using System;
+    using System.Collections.Generic;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class UpgradeConsoleProcessor : NormalProcessor
@@ -46,7 +43,7 @@ namespace Subnautica.Server.Processors.Vehicle
                 }
 
                 var isSendPacket = false;
-                var slotId       = this.GetSlotNumber(packet.SlotId);
+                var slotId = this.GetSlotNumber(packet.SlotId);
 
                 switch (entity.TechType)
                 {
@@ -100,27 +97,27 @@ namespace Subnautica.Server.Processors.Vehicle
 
             return true;
         }
-        
+
         private bool AddModule(List<UpgradeConsoleItem> modules, int slotId, TechType moduleType, string itemId)
         {
             if (modules[slotId].ModuleType == TechType.None)
             {
                 modules[slotId].ModuleType = moduleType;
-                modules[slotId].ItemId     = itemId;
-                
+                modules[slotId].ItemId = itemId;
+
                 return true;
             }
 
             return false;
         }
-        
+
         private bool RemoveModule(List<UpgradeConsoleItem> modules, int slotId)
         {
             if (modules[slotId].ModuleType != TechType.None)
             {
                 modules[slotId].ModuleType = TechType.None;
-                modules[slotId].ItemId     = null;
-                
+                modules[slotId].ItemId = null;
+
                 return true;
             }
 

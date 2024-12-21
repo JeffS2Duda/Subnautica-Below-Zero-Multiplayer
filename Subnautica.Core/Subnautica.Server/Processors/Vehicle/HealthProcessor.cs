@@ -10,8 +10,8 @@ namespace Subnautica.Server.Processors.Vehicle
 
     using System.Linq;
 
-    using MetadataModel    = Subnautica.Network.Models.Metadata;
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using MetadataModel = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class HealthProcessor : NormalProcessor
@@ -36,7 +36,7 @@ namespace Subnautica.Server.Processors.Vehicle
                 if (liveMixin.TakeDamage(liveMixin.CalculateDamage(packet.Damage, packet.DamageType)))
                 {
                     Log.Info("VEHICLE Dead: " + liveMixin.IsDead + ", Type: " + entity.TechType + ", NewHealth: " + liveMixin.Health + ", CalculateDamage: " + liveMixin.CalculateDamage(packet.Damage, packet.DamageType) + ", Damage: " + packet.Damage + ", DamageType: " + packet.DamageType);
-                    
+
                     packet.NewHealth = liveMixin.Health;
 
                     profile.SendPacketToAllClient(packet);
@@ -91,7 +91,7 @@ namespace Subnautica.Server.Processors.Vehicle
             foreach (var player in Server.Instance.GetPlayers())
             {
                 player.RemoveNotification(entity.UniqueId);
-                
+
                 if (player.VehicleId == entity.UniqueId)
                 {
                     player.SetVehicle(null);

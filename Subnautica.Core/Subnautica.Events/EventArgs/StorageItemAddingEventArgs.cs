@@ -6,10 +6,10 @@ namespace Subnautica.Events.EventArgs
     {
         public StorageItemAddingEventArgs(string uniqueId, TechType techType, string itemId, Pickupable item, bool IsAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.TechType  = techType;
-            this.ItemId    = itemId;
-            this.Item      = item;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
+            this.ItemId = itemId;
+            this.Item = item;
             this.IsAllowed = IsAllowed;
         }
 

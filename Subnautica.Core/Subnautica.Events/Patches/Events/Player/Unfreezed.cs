@@ -1,10 +1,8 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System;
 
     [HarmonyPatch(typeof(global::PlayerFrozenMixin), nameof(global::PlayerFrozenMixin.Unfreeze))]
     public class Unfreezed

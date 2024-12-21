@@ -1,10 +1,8 @@
 namespace Subnautica.Events.Patches.Fixes.Items
 {
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
+    using System.Collections.Generic;
 
     [HarmonyPatch]
     public static class Beacon

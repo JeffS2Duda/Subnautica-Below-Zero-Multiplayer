@@ -1,17 +1,13 @@
 ﻿namespace Subnautica.API.Features.Helper
 {
+    using Subnautica.API.Extensions;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
-    using System.Net;
-    using System.Threading.Tasks;
-
-    using Subnautica.API.Extensions;
 
     public class ApiDataFormat
     {
         public bool IsStatus { get; set; }
-        
+
         public bool IsPreRelease { get; set; }
 
         public string Version { get; set; }
@@ -50,11 +46,11 @@
         {
             return new ApiDataDownloadItem()
             {
-                TempName      = tempname,
-                LocalPath     = string.Format("{0}{1}{2}", localPath, localPath.IsNull() ? "" : Paths.DS.ToString(), tempname.IsNotNull() ? tempname : Path.GetFileName(remoteUrl)),
-                RemoteUrl     = remoteUrl,
-                FileSize      = fileSize,
-                CheckVersion  = checkVersion,
+                TempName = tempname,
+                LocalPath = string.Format("{0}{1}{2}", localPath, localPath.IsNull() ? "" : Paths.DS.ToString(), tempname.IsNotNull() ? tempname : Path.GetFileName(remoteUrl)),
+                RemoteUrl = remoteUrl,
+                FileSize = fileSize,
+                CheckVersion = checkVersion,
                 CustomVersion = customVersion,
             };
         }

@@ -1,13 +1,11 @@
 namespace Subnautica.Server.Storage
 {
-    using System;
-    using System.IO;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
     using Subnautica.Network.Models.Storage.Technology;
     using Subnautica.Server.Abstracts;
-
+    using System;
+    using System.IO;
     using TechnologyStorage = Network.Models.Storage.Technology;
 
     public class Technology : BaseStorage
@@ -26,7 +24,7 @@ namespace Subnautica.Server.Storage
         {
             if (File.Exists(this.FilePath))
             {
-                lock(this.ProcessLock)
+                lock (this.ProcessLock)
                 {
                     try
                     {
@@ -95,8 +93,8 @@ namespace Subnautica.Server.Storage
 
                 return new TechnologyItem()
                 {
-                    TechType      = techType,
-                    Unlocked      = 0,
+                    TechType = techType,
+                    Unlocked = 0,
                     TotalFragment = totalFragment,
                 };
             }

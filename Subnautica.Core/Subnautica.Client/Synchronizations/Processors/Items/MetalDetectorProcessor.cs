@@ -54,12 +54,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
                 {
                     tool.screenBlip.SetAlpha(0f);
                     tool.screenTechTypeText.text = global::Language.main.Get(item.TechTypeIndex.AsString());
-                    tool.screenTooltipText.text  = ResourceTrackerDatabase.GetTooltip(item.TechTypeIndex);
+                    tool.screenTooltipText.text = ResourceTrackerDatabase.GetTooltip(item.TechTypeIndex);
 
                     var sprite = SpriteManager.Get(item.TechTypeIndex, null);
                     if (sprite != null)
                     {
-                        tool.screenTechImage.sprite  = sprite;
+                        tool.screenTechImage.sprite = sprite;
                         tool.screenTechImage.enabled = true;
                     }
                     else

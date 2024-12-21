@@ -9,7 +9,7 @@ namespace Subnautica.Events.Patches.Identity.Building
     {
         private static void Prefix()
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 if (Builder.prefab == null || !Builder.canPlace)
                 {

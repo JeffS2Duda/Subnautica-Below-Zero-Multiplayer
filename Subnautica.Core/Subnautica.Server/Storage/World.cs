@@ -1,9 +1,5 @@
 namespace Subnautica.Server.Storage
 {
-    using System;
-    using System.IO;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
@@ -14,12 +10,13 @@ namespace Subnautica.Server.Storage
     using Subnautica.Network.Structures;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Extensions;
-    using Subnautica.Server.Logic.Furnitures;
-
-    using Metadata         = Subnautica.Network.Models.Metadata;
+    using System;
+    using System.IO;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using WorldChildrens = Subnautica.Network.Models.Storage.World.Childrens;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
-    using WorldStorage     = Subnautica.Network.Models.Storage.World;
-    using WorldChildrens   = Subnautica.Network.Models.Storage.World.Childrens;
+    using WorldStorage = Subnautica.Network.Models.Storage.World;
 
     public class World : BaseStorage
     {
@@ -164,7 +161,7 @@ namespace Subnautica.Server.Storage
 
                     this.Storage.Bases.Add(baseComponent);
                 }
-                
+
                 return true;
             }
         }

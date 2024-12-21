@@ -9,16 +9,16 @@ namespace Subnautica.Events.Patches.Events.Inventory
     {
         private static void Postfix(global::QuickSlots __instance, int slotID, InventoryItem item)
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 if (slotID < 0 || slotID >= __instance.slotCount || item == null || !item.isBindable)
                 {
                     return;
                 }
-                    
+
                 try
                 {
-                   Handlers.Inventory.OnQuickSlotBinded();
+                    Handlers.Inventory.OnQuickSlotBinded();
                 }
                 catch (Exception e)
                 {

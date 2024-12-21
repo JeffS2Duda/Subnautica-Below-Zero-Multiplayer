@@ -1,12 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::Beacon), nameof(global::Beacon.Throw))]
@@ -45,7 +42,7 @@ namespace Subnautica.Events.Patches.Events.Items
                 groundPosition += Vector3.up * 1.1f;
                 return groundPosition;
             }
-            
+
             return ZeroGame.FindDropPosition(__instance.transform.position);
         }
     }

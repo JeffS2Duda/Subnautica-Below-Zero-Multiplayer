@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public SpyPenguinSnowStalkerInteractingEventArgs(string uniqueId, float spawnChance, bool isAllowed = true)
         {
-            this.UniqueId    = uniqueId;
+            this.UniqueId = uniqueId;
             this.SpawnChance = spawnChance;
-            this.IsAllowed   = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

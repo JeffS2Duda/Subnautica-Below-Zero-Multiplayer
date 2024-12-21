@@ -1,15 +1,11 @@
 namespace Subnautica.Events.Patches.Events.World
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
-
     using UWE;
 
     [HarmonyPatch]
@@ -59,9 +55,9 @@ namespace Subnautica.Events.Patches.Events.World
                             localRotation *= Quaternion.Euler(new Vector3(-90f, 0.0f, 0.0f));
                         }
 
-                        var gameObject    = UWE.Utils.InstantiateDeactivated(__instance.virtualEntityPrefab, __instance.transform, localPosition, localRotation, info.localScale);
+                        var gameObject = UWE.Utils.InstantiateDeactivated(__instance.virtualEntityPrefab, __instance.transform, localPosition, localRotation, info.localScale);
                         var virtualPrefab = gameObject.GetComponent<VirtualPrefabIdentifier>();
-                        virtualPrefab.Id      = args.SlotId.ToWorldStreamerId();
+                        virtualPrefab.Id = args.SlotId.ToWorldStreamerId();
                         virtualPrefab.ClassId = args.ClassId;
 
                         var component = gameObject.GetComponent<LargeWorldEntity>();
@@ -134,7 +130,7 @@ namespace Subnautica.Events.Patches.Events.World
             gameObject.transform.localScale = info.localScale;
 
             var virtualPrefab = gameObject.GetComponent<VirtualPrefabIdentifier>();
-            virtualPrefab.Id      = args.SlotId.ToWorldStreamerId();
+            virtualPrefab.Id = args.SlotId.ToWorldStreamerId();
             virtualPrefab.ClassId = args.ClassId;
 
             var component = gameObject.GetComponent<LargeWorldEntity>();
@@ -158,17 +154,17 @@ namespace Subnautica.Events.Patches.Events.World
 
         public static void ShowDebugSlot(Vector3 localPosition, Quaternion localRotation, Transform parentTransform, bool isCreatureSlot, string classId, bool isFound = true)
         {
-            var primitive      = GameObject.CreatePrimitive(isCreatureSlot ? PrimitiveType.Sphere : PrimitiveType.Cube);
+            var primitive = GameObject.CreatePrimitive(isCreatureSlot ? PrimitiveType.Sphere : PrimitiveType.Cube);
             primitive.SetActive(false);
             primitive.name = string.Format("{0} ghost (density {1}, id {2})", System.Guid.NewGuid().ToString(), 1, classId);
-            primitive.transform.parent        = parentTransform;
+            primitive.transform.parent = parentTransform;
             primitive.transform.localPosition = localPosition;
             primitive.transform.localRotation = localRotation;
-            primitive.transform.localScale    = isCreatureSlot ? new Vector3(0.5f, 0.5f, 0.5f) : new Vector3(0.2f, 2f, 0.2f);
+            primitive.transform.localScale = isCreatureSlot ? new Vector3(0.5f, 0.5f, 0.5f) : new Vector3(0.2f, 2f, 0.2f);
             primitive.transform.SetParent(null, true);
 
             UnityEngine.Object.Destroy(primitive.GetComponent<Collider>());
-            
+
             primitive.GetComponent<Renderer>().sharedMaterial = EntitySlot.GetGhostMaterial(isFound);
             primitive.SetActive(true);
         }

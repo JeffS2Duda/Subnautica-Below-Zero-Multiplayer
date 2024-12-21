@@ -1,18 +1,17 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
+    using System;
 
     public class BulkheadOpeningEventArgs : EventArgs
     {
         public BulkheadOpeningEventArgs(string uniqueId, bool side, StoryCinematicType storyCinematicType, bool isAllowed = true)
         {
-            this.UniqueId            = uniqueId;
-            this.Side                = side;
-            this.IsAllowed           = isAllowed;
-            this.StoryCinematicType  = storyCinematicType;
+            this.UniqueId = uniqueId;
+            this.Side = side;
+            this.IsAllowed = isAllowed;
+            this.StoryCinematicType = storyCinematicType;
             this.IsStaticWorldEntity = Network.StaticEntity.IsStaticEntity(uniqueId);
         }
 

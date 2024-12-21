@@ -1,12 +1,10 @@
 namespace Subnautica.Server.Processors.Vehicle
 {
     using Server.Core;
-
     using Subnautica.Network.Models.Core;
     using Subnautica.Server.Abstracts.Processors;
-
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
-    using ServerModel      = Subnautica.Network.Models.Server;
 
     public class LightProcessor : NormalProcessor
     {
@@ -23,7 +21,7 @@ namespace Subnautica.Server.Processors.Vehicle
             {
                 return false;
             }
-            
+
             packet.TechType = entity.TechType;
 
             switch (entity.TechType)

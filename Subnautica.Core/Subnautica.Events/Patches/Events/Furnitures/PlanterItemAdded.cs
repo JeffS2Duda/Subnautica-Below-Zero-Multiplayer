@@ -22,7 +22,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
             {
                 return;
             }
-            
+
             try
             {
                 PlanterItemAddedEventArgs args = new PlanterItemAddedEventArgs(__instance.constructable.gameObject.GetIdentityId(), plantable.gameObject.GetIdentityId(), plantable, slotID);

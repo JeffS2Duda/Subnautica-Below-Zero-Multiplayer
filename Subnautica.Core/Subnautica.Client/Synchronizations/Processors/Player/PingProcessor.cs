@@ -1,15 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.Player
 {
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Client.Modules;
     using Subnautica.Client.Synchronizations.InitialSync;
-    using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
     using System.Diagnostics;
-    using static VFXParticlesPool;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class PingProcessor : NormalProcessor

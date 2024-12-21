@@ -25,7 +25,7 @@ namespace Subnautica.Server.Processors.PDA
             {
                 profile.SetNotificationVisible(packet.Key, packet.IsVisible);
             }
-            else 
+            else
             {
                 profile.SetNotificationColorIndex(packet.Key, packet.ColorIndex);
             }

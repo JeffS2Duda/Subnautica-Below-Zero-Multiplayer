@@ -1,10 +1,9 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.World
 {
-    using UnityEngine;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Storage.World.Childrens;
+    using UnityEngine;
 
     public class MultiplayerBrinicle : MonoBehaviour
     {
@@ -72,17 +71,17 @@
 
         private void SetState(bool isActive, Brinicle brinicle = null)
         {
-            this.IsActive       = isActive;
+            this.IsActive = isActive;
             this.Brinicle.state = isActive ? global::Brinicle.State.Enabled : global::Brinicle.State.Disabled;
             this.Brinicle.model.gameObject.SetActive(isActive);
-            
+
             if (isActive)
             {
                 this.Brinicle.fxController?.Play(0);
-                this.Brinicle.liveMixin.health           = brinicle.LiveMixin.Health;
+                this.Brinicle.liveMixin.health = brinicle.LiveMixin.Health;
                 this.Brinicle.transform.localEulerAngles = brinicle.EularAngles.ToVector3();
-                this.Brinicle.model.localScale           = brinicle.FullScale.ToVector3();
-                this.Brinicle.fullScale                  = brinicle.FullScale.ToVector3();
+                this.Brinicle.model.localScale = brinicle.FullScale.ToVector3();
+                this.Brinicle.fullScale = brinicle.FullScale.ToVector3();
             }
             else
             {

@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-    
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using Subnautica.Events.Patches.Fixes.Interact;
+    using System;
 
     [HarmonyPatch(typeof(global::GhostCrafter), nameof(global::GhostCrafter.OnHandClick))]
     public static class FabricatorOpening

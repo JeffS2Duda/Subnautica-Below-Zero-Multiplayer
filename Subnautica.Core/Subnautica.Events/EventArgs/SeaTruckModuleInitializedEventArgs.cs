@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public SeaTruckModuleInitializedEventArgs(global::SeaTruckSegment module, TechType techType)
         {
-            this.Module   = module;
+            this.Module = module;
             this.TechType = techType;
         }
 

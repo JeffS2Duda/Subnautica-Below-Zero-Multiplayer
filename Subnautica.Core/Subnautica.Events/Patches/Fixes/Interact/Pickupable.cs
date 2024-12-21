@@ -1,7 +1,5 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Interact
 {
-    using System;
-
     using HarmonyLib;
 
     using Subnautica.API.Features;
@@ -22,7 +20,7 @@
             {
                 return false;
             }
-            
+
             if (Interact.IsBlocked(Network.Identifier.GetIdentityId(__instance.gameObject)))
             {
                 Interact.ShowUseDenyMessage();

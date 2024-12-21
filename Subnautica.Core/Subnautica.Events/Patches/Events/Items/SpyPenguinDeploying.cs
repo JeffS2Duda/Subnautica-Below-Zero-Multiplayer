@@ -1,13 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::SpyPenguinPlayerTool), nameof(global::SpyPenguinPlayerTool.OnToolUseAnim))]

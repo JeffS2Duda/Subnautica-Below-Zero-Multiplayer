@@ -1,14 +1,13 @@
 namespace Subnautica.Server.Storage
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Core;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
 
     public class Player : BaseStorage
     {
@@ -41,7 +40,7 @@ namespace Subnautica.Server.Storage
                 var profile = new AuthorizationProfile
                 {
                     PlayerName = playerName,
-                    UniqueId   = playerUniqueId,
+                    UniqueId = playerUniqueId,
                 };
 
                 profile.SaveToDisk();

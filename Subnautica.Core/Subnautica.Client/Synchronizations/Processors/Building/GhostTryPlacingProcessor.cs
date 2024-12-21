@@ -1,15 +1,14 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Building
 {
+    using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-    using Subnautica.API.Enums;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
-    using ServerModel  = Subnautica.Network.Models.Server;
     using Constructing = Subnautica.Client.Multiplayer.Constructing;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class GhostTryPlacingProcessor : NormalProcessor
     {
@@ -28,7 +27,7 @@
             else
             {
                 Log.Info("GhostTryPlacingProcessor: " + packet.UniqueId);
-                
+
                 var buildingProgress = Constructing.Builder.GetBuildingProgressType(packet.UniqueId);
                 if (buildingProgress == BuildingProgressType.None)
                 {
@@ -78,19 +77,19 @@
         public static void OnConstructingGhostTryPlacing(ConstructionGhostTryPlacingEventArgs ev)
         {
             ev.IsAllowed = false;
-            
+
             ServerModel.ConstructionGhostTryPlacingArgs request = new ServerModel.ConstructionGhostTryPlacingArgs()
             {
-                UniqueId     = ev.UniqueId,
-                SubrootId    = ev.SubrootId,
-                TechType     = ev.TechType,
+                UniqueId = ev.UniqueId,
+                SubrootId = ev.SubrootId,
+                TechType = ev.TechType,
                 LastRotation = ev.LastRotation,
-                Position     = ev.Position.ToZeroVector3(),
-                Rotation     = ev.Rotation.ToZeroQuaternion(),
+                Position = ev.Position.ToZeroVector3(),
+                Rotation = ev.Rotation.ToZeroQuaternion(),
                 AimTransform = ev.AimTransform.ToZeroTransform(),
-                IsCanPlace   = ev.IsCanPlace,
-                IsBasePiece  = ev.IsBasePiece,
-                IsError      = ev.IsError,
+                IsCanPlace = ev.IsCanPlace,
+                IsBasePiece = ev.IsBasePiece,
+                IsError = ev.IsError,
                 BaseGhostComponent = ev.GhostModel.GetBaseGhostComponent(),
             };
 

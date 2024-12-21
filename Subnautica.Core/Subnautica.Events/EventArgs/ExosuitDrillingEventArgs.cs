@@ -1,22 +1,21 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-    using System.Collections.Generic;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Structures;
+    using System;
+    using System.Collections.Generic;
 
     public class ExosuitDrillingEventArgs : EventArgs
     {
         public ExosuitDrillingEventArgs(string uniqueId, string slotId, float maxHealth, TechType dropTechType, List<ZeroVector3> dropPositions, bool isMultipleDrill, bool isAllowed = true)
         {
-            this.UniqueId            = uniqueId;
-            this.SlotId              = slotId;
-            this.MaxHealth           = maxHealth;
-            this.DropTechType        = dropTechType;
-            this.DropPositions       = dropPositions;
-            this.IsMultipleDrill     = isMultipleDrill;
-            this.IsAllowed           = isAllowed;
+            this.UniqueId = uniqueId;
+            this.SlotId = slotId;
+            this.MaxHealth = maxHealth;
+            this.DropTechType = dropTechType;
+            this.DropPositions = dropPositions;
+            this.IsMultipleDrill = isMultipleDrill;
+            this.IsAllowed = isAllowed;
             this.IsStaticWorldEntity = Network.StaticEntity.IsStaticEntity(slotId);
         }
 

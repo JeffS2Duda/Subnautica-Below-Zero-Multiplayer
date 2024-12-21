@@ -1,14 +1,11 @@
 namespace Subnautica.Client.Synchronizations.Processors.Story
 {
-    using System.Collections;
-
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class ShieldBaseProcessor : NormalProcessor

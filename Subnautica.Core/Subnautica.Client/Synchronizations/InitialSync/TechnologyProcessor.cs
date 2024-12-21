@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Linq;
-    using Oculus.Platform;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
+    using System.Linq;
 
     public class TechnologyProcessor
     {

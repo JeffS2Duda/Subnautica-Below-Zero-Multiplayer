@@ -66,7 +66,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
                     }
                 }
             }
-            
+
             if (Network.Session.Current.Story.FrozenCreature.IsInjected)
             {
                 if (DayNightCycle.main.timePassedAsFloat >= MobileExtractorMachine.main.director.duration + Network.Session.Current.Story.FrozenCreature.InjectTime)

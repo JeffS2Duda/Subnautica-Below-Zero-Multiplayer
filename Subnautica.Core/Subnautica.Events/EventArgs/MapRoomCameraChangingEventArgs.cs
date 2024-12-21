@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public MapRoomCameraChangingEventArgs(string uniqueId, bool isNext, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.IsNext    = isNext;
+            this.UniqueId = uniqueId;
+            this.IsNext = isNext;
             this.IsAllowed = isAllowed;
         }
 

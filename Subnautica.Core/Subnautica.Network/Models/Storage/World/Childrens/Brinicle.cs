@@ -1,12 +1,10 @@
 namespace Subnautica.Network.Models.Storage.World.Childrens
 {
     using MessagePack;
-
-    using UnityEngine;
-
+    using Subnautica.API.Features;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
-    using Subnautica.API.Features;
+    using UnityEngine;
 
     [MessagePackObject]
     public class Brinicle
@@ -39,9 +37,9 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
         {
             return new Brinicle()
             {
-                UniqueId    = uniqueId,
-                LiveMixin   = new LiveMixin(100f, 100f),
-                FullScale   = ZeroVector3.Lerp(minFullScale, maxFullScale, Random.value),
+                UniqueId = uniqueId,
+                LiveMixin = new LiveMixin(100f, 100f),
+                FullScale = ZeroVector3.Lerp(minFullScale, maxFullScale, Random.value),
                 EularAngles = new ZeroVector3(0.0f, Random.Range(0.0f, 360f), 0.0f)
             };
         }
@@ -49,7 +47,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
         public void UpdateRandomState(double currentTime)
         {
             this.StartedTime = currentTime;
-            this.LifeTime    = Tools.GetRandomInt(60, 140);
+            this.LifeTime = Tools.GetRandomInt(60, 140);
         }
 
         public void Kill(double currentTime)
@@ -59,7 +57,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
 
         public float GetScaleAmount(double currentTime)
         {
-            return Mathf.Clamp01((float) (((currentTime - this.StartedTime) % ((double) this.LifeTime * 2)) / 5));
+            return Mathf.Clamp01((float)(((currentTime - this.StartedTime) % ((double)this.LifeTime * 2)) / 5));
         }
 
         public bool IsActive(double currentTime)
@@ -70,7 +68,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
             }
 
             var differentTime = currentTime - this.StartedTime;
-            if (Mathf.FloorToInt((float) (differentTime / this.LifeTime)) % 2 == 0)
+            if (Mathf.FloorToInt((float)(differentTime / this.LifeTime)) % 2 == 0)
             {
                 return true;
             }

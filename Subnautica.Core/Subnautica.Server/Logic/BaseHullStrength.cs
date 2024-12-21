@@ -1,15 +1,13 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Server.Abstracts;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class BaseHullStrength : BaseLogic
     {
@@ -92,7 +90,7 @@ namespace Subnautica.Server.Logic
                     BaseCellWaterLevelArgs packet = new BaseCellWaterLevelArgs()
                     {
                         UniqueId = requests.Key,
-                        Levels   = item
+                        Levels = item
                     };
 
                     foreach (var player in Core.Server.Instance.GetPlayers())

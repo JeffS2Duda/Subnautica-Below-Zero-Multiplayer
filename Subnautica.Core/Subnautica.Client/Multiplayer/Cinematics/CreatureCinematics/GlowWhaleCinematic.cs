@@ -1,9 +1,8 @@
 namespace Subnautica.Client.Multiplayer.Cinematics.CreatureCinematics
 {
-    using Subnautica.Client.MonoBehaviours.Player;
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
-
+    using Subnautica.API.Features;
+    using Subnautica.Client.MonoBehaviours.Player;
     using UnityEngine;
 
     public class GlowWhaleCinematic : CinematicController
@@ -15,7 +14,7 @@ namespace Subnautica.Client.Multiplayer.Cinematics.CreatureCinematics
         public override void OnResetAnimations(PlayerCinematicQueueItem item)
         {
             this.GlowWhaleRide = this.Target.GetComponentInChildren<global::GlowWhaleRide>();
-            this.Cinematic     = this.Target.GetComponentInChildren<PlayerCinematicController>();
+            this.Cinematic = this.Target.GetComponentInChildren<PlayerCinematicController>();
         }
 
         public void StartRideCinematic()

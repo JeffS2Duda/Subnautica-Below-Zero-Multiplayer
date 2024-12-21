@@ -10,12 +10,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
     {
         public static ExosuitUpdateComponent GetComponent(ExosuitUpdateComponent component, global::Exosuit exosuit)
         {
-            component.IsOnGround     = exosuit.mainAnimator.GetBool("onGround");
+            component.IsOnGround = exosuit.mainAnimator.GetBool("onGround");
             component.CameraPosition = MainCamera.camera.transform.position.ToZeroVector3();
-            component.AngleX         = MainCamera.camera.transform.eulerAngles.x;
-            component.LeftArm        = GetArmComponent(exosuit.leftArm, exosuit.leftArmType, true);
-            component.RightArm       = GetArmComponent(exosuit.rightArm, exosuit.rightArmType, false);
-            component.IsPlayingJumpSound  = exosuit.jumpJetsSound.IsPlaying();
+            component.AngleX = MainCamera.camera.transform.eulerAngles.x;
+            component.LeftArm = GetArmComponent(exosuit.leftArm, exosuit.leftArmType, true);
+            component.RightArm = GetArmComponent(exosuit.rightArm, exosuit.rightArmType, false);
+            component.IsPlayingJumpSound = exosuit.jumpJetsSound.IsPlaying();
             component.IsPlayingBoostSound = exosuit.boostSound.IsPlaying();
             return component;
         }
@@ -36,10 +36,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
                     {
                         HookPosition = module.hook.transform.position.ToZeroVector3(),
                         HookRotation = module.hook.transform.rotation.ToZeroQuaternion(),
-                        IsAttached   = module.hook.attached,
-                        IsFlying     = module.hook.flying,
-                        IsUsing      = module.animator.GetBool("use_tool"),
-                        IsStopped    = module.hook.transform.localPosition == Vector3.zero,
+                        IsAttached = module.hook.attached,
+                        IsFlying = module.hook.flying,
+                        IsUsing = module.animator.GetBool("use_tool"),
+                        IsStopped = module.hook.transform.localPosition == Vector3.zero,
                     };
                 }
             }
@@ -52,9 +52,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
 
                     return new ExosuitClawArmComponent()
                     {
-                        IsBash   = module.cooldownTime == module.cooldownPunch,
+                        IsBash = module.cooldownTime == module.cooldownPunch,
                         IsPickup = module.cooldownTime == module.cooldownPickup,
-                        IsUsing  = cooldown > 0.0f && cooldown <= 0.5f,
+                        IsUsing = cooldown > 0.0f && cooldown <= 0.5f,
                     };
                 }
             }
@@ -65,7 +65,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
                 {
                     return new ExosuitDrillArmComponent()
                     {
-                        IsDrilling  = module.drilling,
+                        IsDrilling = module.drilling,
                         IsFxPlaying = module.fxControl.IsPlaying(0, true),
                     };
                 }

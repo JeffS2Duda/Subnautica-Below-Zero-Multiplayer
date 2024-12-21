@@ -8,12 +8,12 @@ namespace Subnautica.Events.EventArgs
     {
         public CreatureAttackLastTargetStartingEventArgs(global::Creature creature, string uniqueId, GameObject target, float minAttackDuration, float maxAttackDuration, bool isAllowed = true)
         {
-            this.UniqueId   = uniqueId;
-            this.Creature   = creature;
-            this.Target     = target;
+            this.UniqueId = uniqueId;
+            this.Creature = creature;
+            this.Target = target;
             this.MinAttackDuration = minAttackDuration;
             this.MaxAttackDuration = maxAttackDuration;
-            this.IsAllowed  = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

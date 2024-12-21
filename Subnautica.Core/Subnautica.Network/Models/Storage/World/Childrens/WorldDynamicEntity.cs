@@ -1,15 +1,12 @@
 ﻿namespace Subnautica.Network.Models.Storage.World.Childrens
 {
     using MessagePack;
-
-    using Subnautica.API.Extensions;
     using Subnautica.API.Enums;
+    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Structures;
-
     using UnityEngine;
-
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     [MessagePackObject]
@@ -220,13 +217,13 @@
             {
                 if (this.Position != this.LastPosition)
                 {
-                    this.LastPosition    = this.Position;
+                    this.LastPosition = this.Position;
                     this.CurrentPosition = this.Position.ToVector3();
                 }
 
                 if (this.Rotation != this.LastRotation)
                 {
-                    this.LastRotation    = this.Rotation;
+                    this.LastRotation = this.Rotation;
                     this.CurrentRotation = this.Rotation.ToQuaternion();
                 }
 

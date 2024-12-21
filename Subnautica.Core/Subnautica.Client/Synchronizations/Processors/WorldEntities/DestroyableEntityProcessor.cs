@@ -1,14 +1,13 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
 {
-    using Subnautica.API.Features;
-    using Subnautica.Events.EventArgs;
-    using Subnautica.Client.Core;
-    using Subnautica.Network.Core.Components;
-    using Subnautica.Client.Abstracts.Processors;
-
-    using ServerModel = Subnautica.Network.Models.Server;
-    using EntityModel = Subnautica.Network.Models.WorldEntity;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
+    using Subnautica.Client.Abstracts.Processors;
+    using Subnautica.Client.Core;
+    using Subnautica.Events.EventArgs;
+    using Subnautica.Network.Core.Components;
+    using EntityModel = Subnautica.Network.Models.WorldEntity;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class DestroyableEntityProcessor : WorldEntityProcessor
     {
@@ -49,7 +48,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
                     Entity = new EntityModel.DestroyableEntity()
                     {
                         UniqueId = ev.UniqueId,
-                        Health   = ev.NewHealth,
+                        Health = ev.NewHealth,
                     },
                 };
 

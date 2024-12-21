@@ -9,7 +9,7 @@ namespace Subnautica.Events.Patches.Fixes.Interact
     {
         private static bool Prefix(global::BaseBioReactorGeometry __instance)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }

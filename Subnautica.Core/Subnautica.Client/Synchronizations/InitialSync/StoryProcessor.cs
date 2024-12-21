@@ -41,8 +41,8 @@
             }
 
             uGUI_PopupNotification.main.IncomingCall(Network.Session.Current.Story.IncomingCallGoalKey);
-        }        
-        
+        }
+
         private static void ProcessCompletedGoal(ZeroStoryGoal goal)
         {
             if (goal.IsPlayMuted)

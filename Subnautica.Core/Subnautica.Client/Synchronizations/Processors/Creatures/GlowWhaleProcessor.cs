@@ -11,7 +11,7 @@
     using Subnautica.Network.Core.Components;
 
     using CreatureModel = Subnautica.Network.Models.Creatures;
-    using ServerModel   = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class GlowWhaleProcessor : WorldCreatureProcessor
     {
@@ -25,12 +25,12 @@
 
             var action = new CreatureQueueAction();
             action.OnProcessCompleted = this.OnCreatureProcessCompleted;
-            action.RegisterProperty("RequesterId"   , requesterId);
-            action.RegisterProperty("ProcessTime"   , processTime);
-            action.RegisterProperty("IsRideStart"   , component.IsRideStart);
-            action.RegisterProperty("IsRideEnd"     , component.IsRideEnd);
-            action.RegisterProperty("IsEyeInteract" , component.IsEyeInteract);
-            action.RegisterProperty("SFXType"       , component.SFXType);
+            action.RegisterProperty("RequesterId", requesterId);
+            action.RegisterProperty("ProcessTime", processTime);
+            action.RegisterProperty("IsRideStart", component.IsRideStart);
+            action.RegisterProperty("IsRideEnd", component.IsRideEnd);
+            action.RegisterProperty("IsEyeInteract", component.IsEyeInteract);
+            action.RegisterProperty("SFXType", component.SFXType);
 
             Network.Creatures.ProcessToQueue(creatureId, action);
             return true;
@@ -38,11 +38,11 @@
 
         private void OnCreatureProcessCompleted(MultiplayerCreature creature, CreatureQueueItem item)
         {
-            var isRideStart   = item.Action.GetProperty<bool>("IsRideStart");
-            var isRideEnd     = item.Action.GetProperty<bool>("IsRideEnd");
+            var isRideStart = item.Action.GetProperty<bool>("IsRideStart");
+            var isRideEnd = item.Action.GetProperty<bool>("IsRideEnd");
             var isEyeInteract = item.Action.GetProperty<bool>("IsEyeInteract");
-            var processTime   = item.Action.GetProperty<double>("ProcessTime");
-            var sfxType       = item.Action.GetProperty<GlowWhaleSFXType>("SFXType");
+            var processTime = item.Action.GetProperty<double>("ProcessTime");
+            var sfxType = item.Action.GetProperty<GlowWhaleSFXType>("SFXType");
 
             if (sfxType != GlowWhaleSFXType.None)
             {
@@ -129,7 +129,7 @@
 
         public static void OnGlowWhaleRideStoped(GlowWhaleRideStopedEventArgs ev)
         {
-           GlowWhaleProcessor.SendPacketToServer(ev.UniqueId.ToCreatureId(), isRideEnd: true);
+            GlowWhaleProcessor.SendPacketToServer(ev.UniqueId.ToCreatureId(), isRideEnd: true);
         }
 
         public static void OnGlowWhaleSFXTriggered(GlowWhaleSFXTriggeredEventArgs ev)
@@ -145,7 +145,7 @@
             ServerModel.CreatureProcessArgs request = new ServerModel.CreatureProcessArgs()
             {
                 CreatureId = creatureId,
-                Component  = new CreatureModel.GlowWhale(isRideStart, isRideEnd, isEyeInteract, sfxType)
+                Component = new CreatureModel.GlowWhale(isRideStart, isRideEnd, isEyeInteract, sfxType)
             };
 
             NetworkClient.SendPacket(request);

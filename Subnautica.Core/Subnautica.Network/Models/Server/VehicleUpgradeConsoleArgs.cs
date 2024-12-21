@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 namespace Subnautica.Network.Models.Server
 {
     using MessagePack;

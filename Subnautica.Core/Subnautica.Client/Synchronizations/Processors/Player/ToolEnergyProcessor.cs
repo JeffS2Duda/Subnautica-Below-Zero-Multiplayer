@@ -23,7 +23,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                 ServerModel.PlayerToolEnergyArgs request = new ServerModel.PlayerToolEnergyArgs()
                 {
                     UniqueId = ev.UniqueId,
-                    Item     = StorageItem.Create(ev.Item)
+                    Item = StorageItem.Create(ev.Item)
                 };
 
                 NetworkClient.SendPacket(request);

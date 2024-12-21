@@ -1,17 +1,7 @@
 ﻿namespace Subnautica.Client.Modules
 {
-    using Subnautica.API.Enums;
-    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
-    using TMPro;
-
-    using UnityEngine.UI;
 
     public static class ClientServerConnection
     {

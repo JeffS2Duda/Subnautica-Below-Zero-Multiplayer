@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Startup
 {
-    using System.Collections;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.MonoBehaviours.General;
-
+    using System.Collections;
     using UWE;
 
     public class PacketsSyncProcessor
@@ -43,10 +41,10 @@
 
                         Log.Info(string.Format("{0}, {1} Packet Cleared.", processor.Value.Packets.Count, processor.Key));
                         processor.Value.ClearPackets();
-                    break;
+                        break;
                     case NetworkChannel.Construction:
                         processor.Value.SetAsyncEnabled(true);
-                    break;
+                        break;
                 }
 
                 if (processor.Key == NetworkChannel.Startup || processor.Key == NetworkChannel.StartupWorldLoaded)

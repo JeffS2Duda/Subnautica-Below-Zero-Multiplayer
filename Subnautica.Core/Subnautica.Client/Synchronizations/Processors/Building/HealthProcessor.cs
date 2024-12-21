@@ -8,7 +8,7 @@
     using Subnautica.Network.Models.Core;
 
     using Constructing = Subnautica.Client.Multiplayer.Constructing;
-    using ServerModel  = Subnautica.Network.Models.Server;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class HealthProcessor : NormalProcessor
     {
@@ -57,9 +57,9 @@
         {
             ServerModel.ConstructionHealthArgs request = new ServerModel.ConstructionHealthArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 MaxHealth = maxHealth,
-                Damage    = damage,
+                Damage = damage,
             };
 
             NetworkClient.SendPacket(request);

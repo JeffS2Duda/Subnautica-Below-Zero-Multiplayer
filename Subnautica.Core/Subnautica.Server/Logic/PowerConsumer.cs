@@ -1,14 +1,12 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
 
     public class PowerConsumer : BaseLogic
@@ -144,7 +142,7 @@ namespace Subnautica.Server.Logic
         private bool ModifyPowerFromInbound(string powerRelayId, float amount, out float modified)
         {
             modified = 0.0f;
-            
+
             var isConsumed = false;
 
             if (this.PowerRelays.TryGetValue(powerRelayId, out var powerSources))
@@ -156,7 +154,7 @@ namespace Subnautica.Server.Logic
                         isConsumed = this.ModifyPowerFromInbound(powerSourceId, amount, out float modifiedPower);
 
                         modified += modifiedPower;
-                        amount   -= modifiedPower;
+                        amount -= modifiedPower;
 
                         if (isConsumed)
                         {
@@ -168,7 +166,7 @@ namespace Subnautica.Server.Logic
                         isConsumed = this.InnerModifyPower(powerSourceId, amount, out float modifiedPower);
 
                         modified += modifiedPower;
-                        amount   -= modifiedPower;
+                        amount -= modifiedPower;
 
                         if (isConsumed)
                         {

@@ -14,7 +14,7 @@ namespace Subnautica.Network.Models.Server
 
         [Key(5)]
         public string UniqueId { get; set; }
-        
+
         [Key(6)]
         public bool IsAdded { get; set; }
 

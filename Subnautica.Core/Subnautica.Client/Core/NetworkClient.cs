@@ -1,22 +1,15 @@
 ﻿namespace Subnautica.Client.Core
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Net.NetworkInformation;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-
     using LiteNetLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.MonoBehaviours.General;
     using Subnautica.Network.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Server;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class NetworkClient
@@ -42,27 +35,27 @@
                 return;
             }
 
-            NetworkClient.IpAddress  = ipAddress;
+            NetworkClient.IpAddress = ipAddress;
             NetworkClient.PortNumber = port;
 
             try
             {
                 NetworkClient.IsConnectingToServer = true;
-                NetworkClient.IsConnectedToServer  = false;
-                NetworkClient.IsSafeDisconnecting  = false;
+                NetworkClient.IsConnectedToServer = false;
+                NetworkClient.IsSafeDisconnecting = false;
                 NetworkClient.ClearSignals();
 
                 if (Client == null)
                 {
                     Client = new NetManager(new ClientListener())
                     {
-                        UpdateTime            = 1,
-                        AutoRecycle           = true,
-                        UnsyncedReceiveEvent  = true,
+                        UpdateTime = 1,
+                        AutoRecycle = true,
+                        UnsyncedReceiveEvent = true,
                         UnsyncedDeliveryEvent = true,
-                        UnsyncedEvents        = true,
-                        ChannelsCount         = Network.GetChannelCount(),
-                        IPv6Enabled           = false,
+                        UnsyncedEvents = true,
+                        ChannelsCount = Network.GetChannelCount(),
+                        IPv6Enabled = false,
                     };
                 }
 
@@ -99,8 +92,8 @@
         {
             yield return new WaitForSecondsRealtime(0.1f);
 
-            int maxWait  = officialServerConnect ? 50 : 10;
-            int maxRetry = officialServerConnect ? 3  : 1;
+            int maxWait = officialServerConnect ? 50 : 10;
+            int maxRetry = officialServerConnect ? 3 : 1;
 
             for (int j = 0; j < maxRetry; j++)
             {
@@ -151,7 +144,7 @@
                 ZeroGame.StopLoadingScreen();
             }
         }
-        
+
         public static bool IsConnected()
         {
             if (NetworkClient.Client == null || NetworkClient.IsConnectingToServer)
@@ -172,8 +165,8 @@
             NetworkServer.AbortServer(isEndGame);
 
             IsConnectingToServer = false;
-            IsConnectedToServer  = false;
-            
+            IsConnectedToServer = false;
+
             if (Client == null)
             {
                 return false;
@@ -205,7 +198,7 @@
                 JoiningServerArgs packet = new JoiningServerArgs()
                 {
                     UserName = username,
-                    UserId   = userId
+                    UserId = userId
                 };
 
                 NetworkClient.SendPacket(packet);

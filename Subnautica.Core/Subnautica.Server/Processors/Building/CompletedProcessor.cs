@@ -30,7 +30,7 @@ namespace Subnautica.Server.Processors.Building
                 {
                     packet.BaseId = construction.BaseId;
                 }
-                
+
                 packet.Id = construction.Id;
 
                 profile.SendPacketToAllClient(packet);

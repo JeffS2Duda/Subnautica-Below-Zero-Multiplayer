@@ -1,12 +1,10 @@
 ﻿namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-    using System.Collections.Generic;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
+    using System.Collections.Generic;
 
     [HarmonyPatch]
     public static class BaseMapRoomResourceDiscovering
@@ -69,7 +67,7 @@
                 catch (Exception e)
                 {
                     Log.Error($"BaseMapRoomResourceDiscovering.UpdateAvailableTechTypes: {e}\n{e.StackTrace}");
-                }  
+                }
             }
 
             return false;

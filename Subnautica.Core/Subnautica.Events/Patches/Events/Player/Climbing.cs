@@ -1,12 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Items
 {
-    using System;
-    using System.Collections.Generic;
-
     using HarmonyLib;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
+    using System.Collections.Generic;
 
     [HarmonyPatch(typeof(global::CinematicModeTriggerBase), nameof(global::CinematicModeTriggerBase.OnHandClick))]
     public class Climbing
@@ -31,7 +30,7 @@ namespace Subnautica.Events.Patches.Events.Items
 
                 try
                 {
-                    PlayerClimbingEventArgs args = new PlayerClimbingEventArgs(uniqueId, __instance.cinematicController?.director == null ? 0f : (float) __instance.cinematicController.director.duration);
+                    PlayerClimbingEventArgs args = new PlayerClimbingEventArgs(uniqueId, __instance.cinematicController?.director == null ? 0f : (float)__instance.cinematicController.director.duration);
 
                     Handlers.Player.OnClimbing(args);
 

@@ -1,9 +1,8 @@
 namespace Subnautica.Events.EventArgs
 {
+    using Subnautica.API.Enums;
     using System;
     using System.Collections.Generic;
-
-    using Subnautica.API.Enums;
 
     public class PlayerAnimationChangedEventArgs : EventArgs
     {

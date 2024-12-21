@@ -16,7 +16,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
             {
                 return false;
             }
-            
+
             var component = packet.GetComponent<WorldEntityModel.Flare>();
             if (component == null)
             {
@@ -29,14 +29,14 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
             {
                 flare.SetFlareActiveState(true);
 
-                flare.flareActivateTime   = component.ActivateTime;
-                flare.energyLeft          = component.Energy;
+                flare.flareActivateTime = component.ActivateTime;
+                flare.energyLeft = component.Energy;
                 flare.capRenderer.enabled = true;
 
                 if (flare.fxControl && !flare.fxIsPlaying)
                 {
                     flare.fxControl.Play(1);
-                    flare.fxIsPlaying   = true;
+                    flare.fxIsPlaying = true;
                     flare.light.enabled = true;
                 }
             }

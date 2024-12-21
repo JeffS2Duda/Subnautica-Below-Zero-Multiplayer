@@ -20,7 +20,7 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
 
         public WaterParkCreature(double addedTime, string waterParkId)
         {
-            this.AddedTime   = addedTime;
+            this.AddedTime = addedTime;
             this.WaterParkId = waterParkId;
         }
 

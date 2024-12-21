@@ -1,17 +1,13 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Inventory
 {
+    using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
-    using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
-
     using System.Collections;
-
     using UnityEngine;
-    
     using UWE;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
 
@@ -42,7 +38,7 @@
 
             ServerModel.InventoryEquipmentArgs result = new ServerModel.InventoryEquipmentArgs()
             {
-                Equipments     = GetEquipments(),
+                Equipments = GetEquipments(),
                 EquipmentSlots = global::Inventory.main.equipment.SaveEquipment()
             };
 

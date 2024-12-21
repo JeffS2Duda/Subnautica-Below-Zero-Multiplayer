@@ -7,7 +7,7 @@ namespace Subnautica.Server.Processors.Items
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
 
-    using ItemModel        = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class BeaconProcessor : PlayerItemProcessor
@@ -42,7 +42,7 @@ namespace Subnautica.Server.Processors.Items
                     component.Entity = entity;
 
                     profile.SendPacketToAllClient(packet);
-                } 
+                }
             }
 
             return true;

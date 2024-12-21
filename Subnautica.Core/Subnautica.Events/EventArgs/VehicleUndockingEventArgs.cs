@@ -8,13 +8,13 @@ namespace Subnautica.Events.EventArgs
     {
         public VehicleUndockingEventArgs(string uniqueId, string vehicleId, TechType MoonpoolType, Vector3 undockPosition, Quaternion undockRotation, bool isLeft, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
-            this.VehicleId      = vehicleId;
-            this.MoonpoolType   = MoonpoolType;
+            this.UniqueId = uniqueId;
+            this.VehicleId = vehicleId;
+            this.MoonpoolType = MoonpoolType;
             this.UndockPosition = undockPosition;
             this.UndockRotation = undockRotation;
-            this.IsLeft         = isLeft;
-            this.IsAllowed      = isAllowed;
+            this.IsLeft = isLeft;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

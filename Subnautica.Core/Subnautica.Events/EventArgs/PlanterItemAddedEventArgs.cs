@@ -6,10 +6,10 @@ namespace Subnautica.Events.EventArgs
     {
         public PlanterItemAddedEventArgs(string uniqueId, string itemId, Plantable plantable, int slotId)
         {
-            this.UniqueId  = uniqueId;
-            this.ItemId    = itemId;
+            this.UniqueId = uniqueId;
+            this.ItemId = itemId;
             this.Plantable = plantable;
-            this.SlotId    = slotId;
+            this.SlotId = slotId;
         }
 
         public string UniqueId { get; set; }

@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Identity.World
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::BulkheadDoor), nameof(global::BulkheadDoor.OnEnable))]
     public static class BulkheadDoorx

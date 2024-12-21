@@ -1,11 +1,10 @@
 ﻿namespace Subnautica.API.Features
 {
+    using Subnautica.API.Enums;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
-
-    using Subnautica.API.Enums;
 
     public static class Log
     {
@@ -13,7 +12,7 @@
 
         private static System.Timers.Timer Timer { get; set; } = null;
 
-        private static bool IsTimerInitialized { get; set;} = false;
+        private static bool IsTimerInitialized { get; set; } = false;
 
         public static bool IsWritingToDisk { get; set; } = false;
 
@@ -36,7 +35,7 @@
         {
             Log.Send($"[{Assembly.GetCallingAssembly().GetName().Name}] {message}", LogLevel.Info);
         }
-        
+
         public static void Warn(string message)
         {
             Log.Send($"[{Assembly.GetCallingAssembly().GetName().Name}] {message}", LogLevel.Warn);

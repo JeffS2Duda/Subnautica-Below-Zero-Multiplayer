@@ -1,15 +1,13 @@
 namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using MessagePack;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     [MessagePackObject]
     public class Exosuit : NetworkDynamicEntityComponent
@@ -23,7 +21,7 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
             new UpgradeConsoleItem(),
             new UpgradeConsoleItem(),
             new UpgradeConsoleItem()
-        };       
+        };
 
         [Key(1)]
         public List<PowerCell> PowerCells { get; set; } = new List<PowerCell>()

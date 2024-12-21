@@ -1,7 +1,5 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Diagnostics;
-
     using Core;
 
     using Subnautica.API.Features;

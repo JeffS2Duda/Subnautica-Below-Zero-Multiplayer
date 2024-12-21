@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.World
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
+    using Subnautica.API.Features;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::PrecursorTeleporterCollider), nameof(global::PrecursorTeleporterCollider.OnTriggerEnter))]

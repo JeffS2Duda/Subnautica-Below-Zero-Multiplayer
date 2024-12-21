@@ -69,28 +69,28 @@ namespace Subnautica.Events.Handlers
         public static event SubnauticaPluginEventHandler<PlayerExitedInteriorEventArgs> ExitedInterior;
 
         public static void OnExitedInterior(PlayerExitedInteriorEventArgs ev) => ExitedInterior.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler<PlayerClimbingEventArgs> Climbing;
 
         public static void OnClimbing(PlayerClimbingEventArgs ev) => Climbing.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler<PlayerDeadEventArgs> Dead;
 
         public static void OnDead(PlayerDeadEventArgs ev) => Dead.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler Spawned;
 
         public static void OnSpawned() => Spawned.CustomInvoke();
-        
+
         public static event SubnauticaPluginEventHandler<EnergyMixinClickingEventArgs> EnergyMixinClicking;
 
         public static void OnEnergyMixinClicking(EnergyMixinClickingEventArgs ev) => EnergyMixinClicking.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler<EnergyMixinSelectingEventArgs> EnergyMixinSelecting;
 
         public static void OnEnergyMixinSelecting(EnergyMixinSelectingEventArgs ev) => EnergyMixinSelecting.CustomInvoke(ev);
 
-        
+
         public static event SubnauticaPluginEventHandler<EnergyMixinClosedEventArgs> EnergyMixinClosed;
 
         public static void OnEnergyMixinClosed(EnergyMixinClosedEventArgs ev) => EnergyMixinClosed.CustomInvoke(ev);
@@ -106,31 +106,31 @@ namespace Subnautica.Events.Handlers
         public static event SubnauticaPluginEventHandler<PlayerPingColorChangedEventArgs> PingColorChanged;
 
         public static void OnPingColorChanged(PlayerPingColorChangedEventArgs ev) => PingColorChanged.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler PrecursorTeleporterUsed;
 
         public static void OnPrecursorTeleporterUsed() => PrecursorTeleporterUsed.CustomInvoke();
-        
+
         public static event SubnauticaPluginEventHandler PrecursorTeleportationCompleted;
 
         public static void OnPrecursorTeleportationCompleted() => PrecursorTeleportationCompleted.CustomInvoke();
-        
+
         public static event SubnauticaPluginEventHandler<ToolBatteryEnergyChangedEventArgs> ToolBatteryEnergyChanged;
 
         public static void OnToolBatteryEnergyChanged(ToolBatteryEnergyChangedEventArgs ev) => ToolBatteryEnergyChanged.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler<PlayerUsingCommandEventArgs> PlayerUsingCommand;
 
         public static void OnPlayerUsingCommand(PlayerUsingCommandEventArgs ev) => PlayerUsingCommand.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler<PlayerRespawnPointChangedEventArgs> RespawnPointChanged;
 
         public static void OnRespawnPointChanged(PlayerRespawnPointChangedEventArgs ev) => RespawnPointChanged.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler<PlayerFreezedEventArgs> Freezed;
 
         public static void OnFreezed(PlayerFreezedEventArgs ev) => Freezed.CustomInvoke(ev);
-        
+
         public static event SubnauticaPluginEventHandler Unfreezed;
 
         public static void OnUnfreezed() => Unfreezed.CustomInvoke();

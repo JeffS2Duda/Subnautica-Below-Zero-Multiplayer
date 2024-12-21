@@ -1,11 +1,9 @@
 namespace Subnautica.Network.Models.Server
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.API.Enums;
     using Subnautica.Network.Models.Core;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class WorldCreatureOwnershipChangedArgs : NetworkPacket
@@ -42,11 +40,11 @@ namespace Subnautica.Network.Models.Server
 
         public WorldCreatureOwnershipItem(byte ownerId, ushort id, long position, long rotation, TechType techType)
         {
-            this.OwnerId   = ownerId;
-            this.Id        = id;
-            this.Position  = position;
-            this.Rotation  = rotation;
-            this.TechType  = techType;
+            this.OwnerId = ownerId;
+            this.Id = id;
+            this.Position = position;
+            this.Rotation = rotation;
+            this.TechType = techType;
         }
 
         public bool IsExistsOwnership()

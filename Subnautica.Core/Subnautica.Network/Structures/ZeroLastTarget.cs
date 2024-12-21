@@ -27,7 +27,7 @@ namespace Subnautica.Network.Structures
         public ZeroLastTarget(string targetId, TechType type)
         {
             this.TargetId = targetId;
-            this.Type     = type;
+            this.Type = type;
         }
 
         public void Kill()

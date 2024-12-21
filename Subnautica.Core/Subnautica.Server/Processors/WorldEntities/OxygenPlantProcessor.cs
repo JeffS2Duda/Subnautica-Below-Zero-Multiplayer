@@ -20,7 +20,7 @@ namespace Subnautica.Server.Processors.WorldEntities
             {
                 profile.SendPacketToOtherClients(packet);
             }
-            
+
             return true;
         }
     }

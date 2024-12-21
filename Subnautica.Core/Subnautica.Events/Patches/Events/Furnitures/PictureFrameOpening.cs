@@ -1,13 +1,11 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using Subnautica.Events.Patches.Fixes.Interact;
+    using System;
 
     [HarmonyPatch(typeof(global::PictureFrame), nameof(global::PictureFrame.OnHandClick))]
     public static class PictureFrameOpening

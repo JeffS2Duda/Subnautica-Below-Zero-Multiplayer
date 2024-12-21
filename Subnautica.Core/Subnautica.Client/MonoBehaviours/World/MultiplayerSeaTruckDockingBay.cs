@@ -1,10 +1,9 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.World
 {
-    using UnityEngine;
-
+    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Structures;
-    using Subnautica.API.Extensions;
+    using UnityEngine;
 
     public class MultiplayerSeaTruckDockingBay : MonoBehaviour
     {
@@ -14,7 +13,7 @@
 
         public void Awake()
         {
-            this.DockingBay    = this.GetComponentInChildren<SeaTruckDockingBay>();
+            this.DockingBay = this.GetComponentInChildren<SeaTruckDockingBay>();
             this.DockedVehicle = null;
         }
 
@@ -81,7 +80,7 @@
                 {
                     this.DockingBay.dockedObject.rb.AddForce(this.DockingBay.dockingPosition.forward * this.DockingBay.undockingForce, ForceMode.VelocityChange);
                 }
-                    
+
                 this.DockingBay.dockedObject = null;
                 this.DockingBay.timeUndocked = Time.time;
                 this.DockingBay.truckSegment.SetWeight(0.5f);

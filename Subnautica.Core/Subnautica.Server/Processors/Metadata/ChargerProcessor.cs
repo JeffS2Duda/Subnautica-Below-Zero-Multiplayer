@@ -1,15 +1,13 @@
 namespace Subnautica.Server.Processors.Metadata
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using Metadata = Subnautica.Network.Models.Metadata;
 
     public class ChargerProcessor : MetadataProcessor
@@ -49,7 +47,7 @@ namespace Subnautica.Server.Processors.Metadata
                     }
                 }
 
-                foreach(var _battery in component.Items)
+                foreach (var _battery in component.Items)
                 {
                     var battery = constructionComponent.Items.Where(q => q.SlotId == _battery.SlotId).FirstOrDefault();
                     if (battery != null)

@@ -1,14 +1,10 @@
 ﻿namespace Subnautica.Client.Modules
 {
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Threading.Tasks;
     using TMPro;
-
     using UnityEngine;
     using UnityEngine.UI;
 
@@ -47,7 +43,8 @@
                             NetBirdApi.Instance.Connect();
                         }
                     }
-                }).ContinueWith((t) => {
+                }).ContinueWith((t) =>
+                {
                     if (t.IsFaulted)
                     {
                         Log.Error($"ConnectToNetwork Ex: {t.Exception}");
@@ -126,7 +123,8 @@
             if (inviceCodeButtonShow.TryGetComponent<Button>(out var showBtn))
             {
                 showBtn.onClick = new Button.ButtonClickedEvent();
-                showBtn.onClick.AddListener(() => {
+                showBtn.onClick.AddListener(() =>
+                {
                     inviceCodeButtonText.GetComponentInChildren<TextMeshProUGUI>().text = Network.InviteCode.GetInviteCode();
                 });
             }

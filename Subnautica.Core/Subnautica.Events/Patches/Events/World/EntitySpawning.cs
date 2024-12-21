@@ -1,18 +1,14 @@
 namespace Subnautica.Events.Patches.Events.World
 {
-    using System;
-    using System.Collections;
-    using System.IO;
-
     using HarmonyLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Extensions;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Collections;
+    using System.IO;
     using UnityEngine;
-
     using UWE;
 
     [HarmonyPatch(typeof(global::ProtobufSerializer), nameof(global::ProtobufSerializer.DeserializeObjectsAsync), new Type[] { typeof(Stream), typeof(UniqueIdentifier), typeof(bool), typeof(bool), typeof(Transform), typeof(bool), typeof(int), typeof(IOut<GameObject>) })]
@@ -42,8 +38,8 @@ namespace Subnautica.Events.Patches.Events.World
                     __instance.Deserialize<ProtobufSerializer.GameObjectData>(stream, gameObjectData, verbose > 0);
 
                     WorldEntityInfo info = null;
-                    var isAllowed        = true;
-                    var isExistEntity    = !string.IsNullOrEmpty(gameObjectData.ClassId) && WorldEntityDatabase.TryGetInfo(gameObjectData.ClassId, out info);
+                    var isAllowed = true;
+                    var isExistEntity = !string.IsNullOrEmpty(gameObjectData.ClassId) && WorldEntityDatabase.TryGetInfo(gameObjectData.ClassId, out info);
                     if (isExistEntity)
                     {
                         EntitySpawningEventArgs args = new EntitySpawningEventArgs(gameObjectData.Id, gameObjectData.ClassId, info.techType, EntitySpawnLevel.Protobuf, true);
@@ -130,7 +126,7 @@ namespace Subnautica.Events.Patches.Events.World
             {
                 return false;
             }
-            
+
             try
             {
                 EntitySpawningEventArgs beforeArgs = new EntitySpawningEventArgs(Network.GetWorldEntityId(__instance.transform.position), __instance.prefabClassId, info.techType, EntitySpawnLevel.PrefabPlaceholder, true);
@@ -146,11 +142,11 @@ namespace Subnautica.Events.Patches.Events.World
                 virtualEntityPrefab.SetActive(false);
 
                 var gameObject = UWE.Utils.InstantiateDeactivated(virtualEntityPrefab, __instance.transform.parent, __instance.transform.localPosition, __instance.transform.localRotation, __instance.transform.localScale);
-                var component  = gameObject.GetComponent<VirtualPrefabIdentifier>();
+                var component = gameObject.GetComponent<VirtualPrefabIdentifier>();
 
-                component.ClassId      = __instance.prefabClassId;
+                component.ClassId = __instance.prefabClassId;
                 component.highPriority = __instance.highPriority;
-                component.Id           = beforeArgs.UniqueId;
+                component.Id = beforeArgs.UniqueId;
 
                 LargeWorldEntity worldEntity = gameObject.GetComponent<LargeWorldEntity>();
                 worldEntity.cellLevel = info.cellLevel;

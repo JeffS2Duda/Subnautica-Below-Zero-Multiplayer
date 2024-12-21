@@ -1,8 +1,7 @@
 namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
 {
-    using System.Collections.Generic;
-
     using Subnautica.Network.Models.Server;
+    using System.Collections.Generic;
 
     public class SpyPenguin
     {
@@ -10,7 +9,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle.Components
         {
             component.IsSelfieMode = spyPenguin.selfieMode;
             component.SelfieNumber = global::Player.main.playerAnimator.GetBool("selfies") ? global::Player.main.playerAnimator.GetFloat("selfie_number") : -1;
-            component.Animations   = animations;
+            component.Animations = animations;
             return component;
         }
     }

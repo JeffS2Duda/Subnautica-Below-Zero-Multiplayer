@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::SubRoot), nameof(global::SubRoot.OnPlayerExited))]
     public static class ExitedSubroot

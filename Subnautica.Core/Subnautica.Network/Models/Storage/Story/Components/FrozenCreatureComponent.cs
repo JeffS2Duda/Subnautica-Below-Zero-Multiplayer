@@ -20,7 +20,7 @@ namespace Subnautica.Network.Models.Storage.Story.Components
             {
                 return false;
             }
-            
+
             this.IsSampleAdded = true;
             return true;
         }

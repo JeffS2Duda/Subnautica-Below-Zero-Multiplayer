@@ -1,7 +1,5 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Creatures
 {
-    using Discord;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
@@ -14,7 +12,7 @@
     public class HealthProcessor : NormalProcessor
     {
         public override bool OnDataReceived(NetworkPacket networkPacket)
-        { 
+        {
             var packet = networkPacket.GetPacket<ServerModel.CreatureHealthArgs>();
             if (packet == null)
             {
@@ -26,7 +24,7 @@
             {
                 ZeroLiveMixin.SendDamageInfoNotify(creatureLiveMixin, packet.Damage, packet.DamageType);
             }
-            
+
             return true;
         }
 
@@ -39,12 +37,12 @@
                 if (ev.Damage > 0f && ev.TechType.IsCanBeAttacked())
                 {
                     Log.Info("Damage: " + ev.Damage + ", Type: " + ev.DamageType + ", ID: " + ev.UniqueId);
-                    
+
                     ServerModel.CreatureHealthArgs request = new ServerModel.CreatureHealthArgs()
                     {
                         CreatureId = ev.UniqueId.ToCreatureId(),
                         DamageType = ev.DamageType,
-                        Damage     = ev.Damage,
+                        Damage = ev.Damage,
                     };
 
                     NetworkClient.SendPacket(request);

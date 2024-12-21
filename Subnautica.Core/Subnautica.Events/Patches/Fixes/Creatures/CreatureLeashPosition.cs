@@ -1,10 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Creatures
 {
+    using HarmonyLib;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection.Emit;
-
-    using HarmonyLib;
 
     [HarmonyPatch]
     public static class CreatureLeashPosition

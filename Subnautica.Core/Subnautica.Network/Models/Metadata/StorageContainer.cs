@@ -1,12 +1,10 @@
 ﻿namespace Subnautica.Network.Models.Metadata
 {
+    using MessagePack;
+    using Subnautica.Network.Core.Components;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
-    using MessagePack;
-
-    using Subnautica.Network.Core.Components;
 
     [MessagePackObject]
     public class StorageContainer : MetadataComponent
@@ -129,8 +127,8 @@
             for (int index1 = 0; index1 < gr.Count; ++index1)
             {
                 var itemGroup = gr[index1];
-                var width     = itemGroup.width;
-                var height    = itemGroup.height;
+                var width = itemGroup.width;
+                var height = itemGroup.height;
 
                 List<InventoryItem> items = itemGroup.items;
                 for (int index2 = 0; index2 < items.Count; ++index2)

@@ -46,7 +46,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
             }
 
             elevator.elevatorPosition = isUp ? 0.0f : 1f;
-            elevator.elevatorState    = isUp ? Rocket.RocketElevatorStates.Up : Rocket.RocketElevatorStates.Down;
+            elevator.elevatorState = isUp ? Rocket.RocketElevatorStates.Up : Rocket.RocketElevatorStates.Down;
 
             var diffTime = Mathf.Abs(DayNightCycle.main.timePassedAsFloat - startTime);
             if (diffTime < 1f)
@@ -89,7 +89,7 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities
                 Entity = new EntityModel.Elevator()
                 {
                     UniqueId = ev.UniqueId,
-                    IsUp     = ev.IsUp,
+                    IsUp = ev.IsUp,
                 },
             };
 

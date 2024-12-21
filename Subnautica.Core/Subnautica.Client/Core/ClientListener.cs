@@ -1,16 +1,14 @@
 ﻿namespace Subnautica.Client.Core
 {
-    using System;
-    using System.Net;
-    using System.Net.Sockets;
-
     using LiteNetLib;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.MonoBehaviours.General;
     using Subnautica.Network.Extensions;
     using Subnautica.Network.Models.Client;
+    using System;
+    using System.Net;
+    using System.Net.Sockets;
 
     public class ClientListener : INetEventListener
     {
@@ -106,7 +104,7 @@
             }
             catch (Exception)
             {
-            
+
             }
 
             return ConnectionSignal.Unknown;

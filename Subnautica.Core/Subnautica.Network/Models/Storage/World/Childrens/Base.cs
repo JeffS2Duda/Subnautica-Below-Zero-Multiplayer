@@ -1,11 +1,9 @@
 namespace Subnautica.Network.Models.Storage.World.Childrens
 {
+    using MessagePack;
+    using Subnautica.Network.Structures;
     using System.Collections.Generic;
     using System.Linq;
-
-    using MessagePack;
-
-    using Subnautica.Network.Structures;
 
     [MessagePackObject]
     public class Base
@@ -24,7 +22,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
 
         [Key(4)]
         public ZeroColor NameColor { get; set; }
-        
+
         [Key(5)]
         public string Name { get; set; }
 
@@ -42,11 +40,11 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
 
         public void SetColorCustomizer(string name, ZeroColor baseColor, ZeroColor stripeColor1, ZeroColor stripeColor2, ZeroColor nameColor)
         {
-            this.Name         = name;
-            this.BaseColor    = baseColor;
+            this.Name = name;
+            this.BaseColor = baseColor;
             this.StripeColor1 = stripeColor1;
             this.StripeColor2 = stripeColor2;
-            this.NameColor    = nameColor;
+            this.NameColor = nameColor;
         }
 
         public void SetCellWaterLevel(ushort index, float waterLevel)
@@ -118,13 +116,13 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
                     }
                 }
                 else
-                {                    
+                {
                     while (numLeakPoints < 0)
                     {
                         numLeakPoints++;
 
                         var lastDistance = 999999f;
-                        var lastIndex    = -1;
+                        var lastIndex = -1;
 
                         for (int i = 0; i < leaker.Points.Count; i++)
                         {
@@ -132,7 +130,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
                             if (distance < lastDistance)
                             {
                                 lastDistance = distance;
-                                lastIndex    = i;
+                                lastIndex = i;
                             }
                         }
 
@@ -164,7 +162,7 @@ namespace Subnautica.Network.Models.Storage.World.Childrens
         {
             if (this.MaxLeakCount == 0)
             {
-                this.MaxLeakCount = (byte) maxLeakCount;
+                this.MaxLeakCount = (byte)maxLeakCount;
             }
         }
 

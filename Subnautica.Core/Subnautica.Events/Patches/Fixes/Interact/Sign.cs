@@ -9,7 +9,7 @@ namespace Subnautica.Events.Patches.Fixes.Interact
     {
         private static bool Prefix(global::Sign __instance)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }
@@ -40,7 +40,7 @@ namespace Subnautica.Events.Patches.Fixes.Interact
     {
         private static bool Prefix(global::ColoredLabel __instance)
         {
-            if(!Network.IsMultiplayerActive)
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }

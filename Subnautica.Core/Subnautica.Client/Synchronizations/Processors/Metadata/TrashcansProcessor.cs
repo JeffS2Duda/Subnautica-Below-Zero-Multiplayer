@@ -1,7 +1,7 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using Subnautica.Network.Models.Server;
     using Subnautica.Client.Abstracts.Processors;
+    using Subnautica.Network.Models.Server;
 
     public class TrashcansProcessor : MetadataProcessor
     {

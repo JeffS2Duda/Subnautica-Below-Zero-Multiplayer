@@ -44,9 +44,9 @@
         {
             var bedSide = this.GetProperty<global::Bed.BedSide>("Side");
 
-            this.Bed.cinematicController               = this.GetLieDownCinematicController(bedSide);
+            this.Bed.cinematicController = this.GetLieDownCinematicController(bedSide);
             this.Bed.currentStandUpCinematicController = this.GetStandupCinematicController(bedSide);
-            this.Bed.animator.transform.localPosition  = this.GetAnimationPosition(bedSide);
+            this.Bed.animator.transform.localPosition = this.GetAnimationPosition(bedSide);
             this.Bed.ResetAnimParams(this.PlayerAnimator);
 
             this.SetCinematic(this.Bed.cinematicController);
@@ -64,9 +64,9 @@
         {
             var bedSide = this.GetProperty<global::Bed.BedSide>("Side");
 
-            this.Bed.cinematicController               = this.GetLieDownCinematicController(bedSide);
+            this.Bed.cinematicController = this.GetLieDownCinematicController(bedSide);
             this.Bed.currentStandUpCinematicController = this.GetStandupCinematicController(bedSide);
-            this.Bed.animator.transform.localPosition  = this.GetAnimationPosition(bedSide);
+            this.Bed.animator.transform.localPosition = this.GetAnimationPosition(bedSide);
             this.Bed.ResetAnimParams(this.PlayerAnimator);
 
             if (this.IsSleeperModule)

@@ -1,15 +1,11 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Core;
-
     using Subnautica.API.Features;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class Weather : BaseLogic
@@ -126,23 +122,23 @@ namespace Subnautica.Server.Logic
         {
             return new ServerModel.WeatherChangedArgs()
             {
-                DangerLevel             = item.CurrentEvent.GetDangerLevel(),
-                StartTime               = item.CurrentEvent.startTime,
-                Duration                = item.CurrentEvent.duration,
-                WindDir                 = item.CurrentEvent.parameters.windDir,
-                WindSpeed               = item.CurrentEvent.parameters.windSpeed,
-                FogDensity              = item.CurrentEvent.parameters.fogDensity,
-                FogHeight               = item.CurrentEvent.parameters.fogHeight,
-                SmokinessIntensity      = item.CurrentEvent.parameters.smokinessIntensity,
-                SnowIntensity           = item.CurrentEvent.parameters.snowIntensity,
-                CloudCoverage           = item.CurrentEvent.parameters.cloudCoverage,
-                RainIntensity           = item.CurrentEvent.parameters.rainIntensity,
-                HailIntensity           = item.CurrentEvent.parameters.hailIntensity,
-                MeteorIntensity         = item.CurrentEvent.parameters.meteorIntensity,
-                LightningIntensity      = item.CurrentEvent.parameters.lightningIntensity,
-                Temperature             = item.CurrentEvent.parameters.temperature,
+                DangerLevel = item.CurrentEvent.GetDangerLevel(),
+                StartTime = item.CurrentEvent.startTime,
+                Duration = item.CurrentEvent.duration,
+                WindDir = item.CurrentEvent.parameters.windDir,
+                WindSpeed = item.CurrentEvent.parameters.windSpeed,
+                FogDensity = item.CurrentEvent.parameters.fogDensity,
+                FogHeight = item.CurrentEvent.parameters.fogHeight,
+                SmokinessIntensity = item.CurrentEvent.parameters.smokinessIntensity,
+                SnowIntensity = item.CurrentEvent.parameters.snowIntensity,
+                CloudCoverage = item.CurrentEvent.parameters.cloudCoverage,
+                RainIntensity = item.CurrentEvent.parameters.rainIntensity,
+                HailIntensity = item.CurrentEvent.parameters.hailIntensity,
+                MeteorIntensity = item.CurrentEvent.parameters.meteorIntensity,
+                LightningIntensity = item.CurrentEvent.parameters.lightningIntensity,
+                Temperature = item.CurrentEvent.parameters.temperature,
                 AuroraBorealisIntensity = item.CurrentEvent.parameters.auroraBorealisIntensity,
-                IsProfile               = item.IsProfile,
+                IsProfile = item.IsProfile,
             };
         }
 
@@ -157,7 +153,7 @@ namespace Subnautica.Server.Logic
             var timeSeconds = 1200f - weather.Timeline.GetCurrentDuration();
             if (timeSeconds > 0f)
             {
-                weather.Timeline.Populate(weather.Profile, weather.CurrentEvent == null || weather.CurrentEvent.weatherSet == null ? WeatherDangerLevel.None : weather.CurrentEvent.weatherSet.dangerLevel, timeSeconds);               
+                weather.Timeline.Populate(weather.Profile, weather.CurrentEvent == null || weather.CurrentEvent.weatherSet == null ? WeatherDangerLevel.None : weather.CurrentEvent.weatherSet.dangerLevel, timeSeconds);
             }
 
             return true;
@@ -169,7 +165,7 @@ namespace Subnautica.Server.Logic
         }
     }
 
-    public class WeatherItem 
+    public class WeatherItem
     {
         public string ProfileId { get; set; }
 
@@ -184,18 +180,18 @@ namespace Subnautica.Server.Logic
         public WeatherItem(WeatherProfile profile)
         {
             this.ProfileId = profile.name;
-            this.Profile   = profile;
-            this.Timeline  = new WeatherTimeline();
+            this.Profile = profile;
+            this.Timeline = new WeatherTimeline();
             this.IsProfile = true;
         }
 
         public WeatherItem(WeatherEventData eventData)
         {
-            this.ProfileId    = eventData.weatherId;
-            this.Profile      = null;
-            this.Timeline     = null;
+            this.ProfileId = eventData.weatherId;
+            this.Profile = null;
+            this.Timeline = null;
             this.CurrentEvent = new WeatherEvent(eventData, null, Time.time, float.MaxValue);
-            this.IsProfile    = false;
+            this.IsProfile = false;
         }
     }
 }

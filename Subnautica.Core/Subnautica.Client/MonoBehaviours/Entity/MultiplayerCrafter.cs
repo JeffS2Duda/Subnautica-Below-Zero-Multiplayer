@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Entity
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class MultiplayerCrafter : MonoBehaviour

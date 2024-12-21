@@ -1,12 +1,10 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::uGUI_ItemSelector), nameof(global::uGUI_ItemSelector.ResetSelector))]
     public class EnergyMixinClosed
@@ -19,8 +17,8 @@ namespace Subnautica.Events.Patches.Events.Player
                 if (energyMixin)
                 {
                     var batterySlotId = EnergyMixinSelecting.GetBatterySlotId(energyMixin);
-                    var vehicleId     = EnergyMixinSelecting.GetVehicleUniqueId(energyMixin);
-                    var vehicleType   = EnergyMixinSelecting.GetVehicleType(energyMixin);
+                    var vehicleId = EnergyMixinSelecting.GetVehicleUniqueId(energyMixin);
+                    var vehicleType = EnergyMixinSelecting.GetVehicleType(energyMixin);
 
                     if (string.IsNullOrEmpty(batterySlotId) || string.IsNullOrEmpty(vehicleId) || !vehicleType.IsVehicle())
                     {

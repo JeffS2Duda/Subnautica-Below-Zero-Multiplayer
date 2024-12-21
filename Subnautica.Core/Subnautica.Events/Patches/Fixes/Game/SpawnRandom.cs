@@ -1,11 +1,9 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Game
 {
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.API.MonoBehaviours;
+    using System.Collections;
 
     [HarmonyPatch(typeof(global::SpawnRandom), nameof(global::SpawnRandom.Start))]
     public static class SpawnRandom

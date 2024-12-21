@@ -41,7 +41,7 @@ namespace Subnautica.Server.Processors.Metadata
 
             return true;
         }
-        
+
         public string GetNewImageName()
         {
             return string.Format("{0}.jpg", Tools.GetShortUniqueId());

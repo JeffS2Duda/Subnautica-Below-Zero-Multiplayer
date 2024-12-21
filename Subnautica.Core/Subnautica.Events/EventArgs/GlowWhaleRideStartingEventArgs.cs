@@ -2,13 +2,11 @@ namespace Subnautica.Events.EventArgs
 {
     using System;
 
-    using UnityEngine;
-
     public class GlowWhaleRideStartingEventArgs : EventArgs
     {
         public GlowWhaleRideStartingEventArgs(string uniqueId, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
+            this.UniqueId = uniqueId;
             this.IsAllowed = isAllowed;
         }
 

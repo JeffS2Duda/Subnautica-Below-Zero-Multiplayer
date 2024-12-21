@@ -1,14 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.Story
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class CinematicProcessor : NormalProcessor
@@ -40,7 +38,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
                         }
 
                         this.CinematicQueue.Remove(packet);
-                        
+
                         Network.Story.StartCinematicMode(packet.UniqueId);
                     }
                 }
@@ -57,9 +55,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
 
             ServerModel.StoryCinematicTriggerArgs result = new ServerModel.StoryCinematicTriggerArgs()
             {
-                UniqueId      = ev.UniqueId,
+                UniqueId = ev.UniqueId,
                 CinematicType = ev.StoryCinematicType,
-                IsTypeClick   = ev.IsClicked,
+                IsTypeClick = ev.IsClicked,
             };
 
             NetworkClient.SendPacket(result);

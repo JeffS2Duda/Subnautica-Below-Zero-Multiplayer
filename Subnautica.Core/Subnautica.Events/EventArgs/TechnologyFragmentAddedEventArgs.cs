@@ -6,9 +6,9 @@ namespace Subnautica.Events.EventArgs
     {
         public TechnologyFragmentAddedEventArgs(string uniqueId, TechType type, int unlocked, int totalFragment)
         {
-            this.UniqueId      = uniqueId;
-            this.TechType      = type;
-            this.Unlocked      = unlocked;
+            this.UniqueId = uniqueId;
+            this.TechType = type;
+            this.Unlocked = unlocked;
             this.TotalFragment = totalFragment;
         }
 

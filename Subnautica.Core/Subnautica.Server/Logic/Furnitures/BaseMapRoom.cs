@@ -1,8 +1,5 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Server;
@@ -10,10 +7,10 @@ namespace Subnautica.Server.Logic.Furnitures
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Models.WorldStreamer;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
-    using MetadataModel    = Subnautica.Network.Models.Metadata;
+    using MetadataModel = Subnautica.Network.Models.Metadata;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class BaseMapRoom : BaseLogic
@@ -240,7 +237,7 @@ namespace Subnautica.Server.Logic.Furnitures
             BaseMapRoomTransmissionArgs packet = new BaseMapRoomTransmissionArgs()
             {
                 UniqueId = uniqueId,
-                Items    = new List<BaseMapRoomTransmissionItem>()
+                Items = new List<BaseMapRoomTransmissionItem>()
             };
 
             foreach (var itemId in resourceNodes)
@@ -306,7 +303,7 @@ namespace Subnautica.Server.Logic.Furnitures
             }
 
             var serverTime = Server.Core.Server.Instance.Logices.World.GetServerTime();
-            var isRemoved  = false; 
+            var isRemoved = false;
 
             foreach (var uniqueId in mapRoom.ResourceNodes.ToList())
             {

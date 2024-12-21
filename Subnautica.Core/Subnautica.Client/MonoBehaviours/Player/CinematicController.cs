@@ -1,29 +1,26 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.Player
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
     using Subnautica.Client.Extensions;
     using Subnautica.Client.Multiplayer.Cinematics;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
     using UnityEngine;
     using UnityEngine.Playables;
     using UnityEngine.Timeline;
-
     using UWE;
 
     public class CinematicController : MonoBehaviour
     {
         public void Initialize(ZeroPlayer player)
         {
-            this.ZeroPlayer     = player;
-            this.Player         = player.PlayerModel;
+            this.ZeroPlayer = player;
+            this.Player = player.PlayerModel;
             this.PlayerAnimator = player.Animator;
         }
 
@@ -86,7 +83,7 @@
         public void SetState(global::PlayerCinematicController.State state)
         {
             this.TimeStateChanged = Time.time;
-            this.State            = state;
+            this.State = state;
         }
 
         public bool SetAnimState(bool state)
@@ -165,30 +162,30 @@
 
         public void SetCinematic(global::PlayerCinematicController cinematic, bool isHasExitTime = false, bool isFastInterpolation = true, bool isSkipEndAnimation = false, bool isSkipFirstAnimation = true)
         {
-            this.CinematicEndModeAction         = null;
-            this.IsCinematicEndPosition         = true;
-            this.IsHasExitTime                  = isHasExitTime;
-            this.ReceiversAnimParam             = cinematic.receiversAnimParam;
-            this.AnimParamReceivers             = cinematic.animParamReceivers;
-            this.PlayerViewAnimationName        = cinematic.playerViewAnimationName;
+            this.CinematicEndModeAction = null;
+            this.IsCinematicEndPosition = true;
+            this.IsHasExitTime = isHasExitTime;
+            this.ReceiversAnimParam = cinematic.receiversAnimParam;
+            this.AnimParamReceivers = cinematic.animParamReceivers;
+            this.PlayerViewAnimationName = cinematic.playerViewAnimationName;
             this.PlayerViewInterpolateAnimParam = cinematic.playerViewInterpolateAnimParam;
-            this.InterpolateAnimParam           = cinematic.interpolateAnimParam;
-            this.InterpolationTime              = isFastInterpolation ? 0.0f : cinematic.interpolationTime;
-            this.IsSkipFirstAnimation           = isSkipFirstAnimation;
-            this.IsSkipEndAnimation             = isSkipEndAnimation;
-            this.InterpolationTimeOut           = cinematic.interpolationTimeOut;
-            this.InterpolationDelayTime         = cinematic.interpolationDelayTime;
-            this.InterpolateDuringAnimation     = cinematic.interpolateDuringAnimation;
-            this.EnforceCinematicModeEnd        = true;
-            this.AnimParam                      = cinematic.animParam;
+            this.InterpolateAnimParam = cinematic.interpolateAnimParam;
+            this.InterpolationTime = isFastInterpolation ? 0.0f : cinematic.interpolationTime;
+            this.IsSkipFirstAnimation = isSkipFirstAnimation;
+            this.IsSkipEndAnimation = isSkipEndAnimation;
+            this.InterpolationTimeOut = cinematic.interpolationTimeOut;
+            this.InterpolationDelayTime = cinematic.interpolationDelayTime;
+            this.InterpolateDuringAnimation = cinematic.interpolateDuringAnimation;
+            this.EnforceCinematicModeEnd = true;
+            this.AnimParam = cinematic.animParam;
 
-            this.Animator           = cinematic.animator;
-            this.AnimatedTransform  = cinematic.animatedTransform;
-            this.EndTransform       = cinematic.endTransform;
-            this.Director           = cinematic.director;
+            this.Animator = cinematic.animator;
+            this.AnimatedTransform = cinematic.animatedTransform;
+            this.EndTransform = cinematic.endTransform;
+            this.Director = cinematic.director;
             this.DirectorLabelTrack = cinematic.labelTrack;
-            this.DirectorLabel      = cinematic.label;
-            this.LayerId            = this.GetLayerId();
+            this.DirectorLabel = cinematic.label;
+            this.LayerId = this.GetLayerId();
 
             this.DirectorInitialize();
         }
@@ -346,7 +343,7 @@
                     if (!this.EnforceCinematicModeEnd || this.Animator.IsInTransition(0))
                     {
                         break;
-                    }                    
+                    }
 
                     if (this.LayerId == -1)
                     {
@@ -380,7 +377,7 @@
                     break;
             }
         }
-        
+
         public bool OnPlayerCinematicModeEnd()
         {
             if (!this.IsCinematicModeActive)
@@ -501,7 +498,7 @@
 
         private int GetLayerId()
         {
-            if (this.Animator.layerCount <= 0 )
+            if (this.Animator.layerCount <= 0)
             {
                 return -1;
             }
@@ -561,7 +558,7 @@
         public string UniqueId { get; set; }
 
         public bool IsCinematicModeActive { get; set; } = false;
-        
+
         public GameObject Target { get; set; }
 
         public int LayerId { get; set; }

@@ -3,7 +3,7 @@
     using HarmonyLib;
 
     using Subnautica.API.Features;
- 
+
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::FlyAwayWhenScared), nameof(global::FlyAwayWhenScared.OnFearTriggerEnter))]
@@ -17,7 +17,7 @@
             }
 
             var isTriggered = false;
-            var gameObject  = collider.attachedRigidbody ? collider.attachedRigidbody.gameObject : collider.gameObject;
+            var gameObject = collider.attachedRigidbody ? collider.attachedRigidbody.gameObject : collider.gameObject;
 
             if (gameObject == global::Player.main.gameObject)
             {

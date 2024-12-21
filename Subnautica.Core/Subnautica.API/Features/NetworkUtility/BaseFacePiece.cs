@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
+    using Subnautica.API.MonoBehaviours.Components;
     using System.Collections.Generic;
     using System.Linq;
-
-    using Subnautica.API.MonoBehaviours.Components;
-
     using UnityEngine;
 
     public class BaseFacePiece
@@ -25,12 +23,12 @@
         {
             BasePieceData basePieceData = new BasePieceData()
             {
-                Position      = position,
+                Position = position,
                 LocalPosition = localPosition,
                 LocalRotation = localRotation,
                 FaceDirection = faceDirection,
-                FaceType      = faceType,
-                TechType      = techType
+                FaceType = faceType,
+                TechType = techType
             };
 
             this.BaseFacePieces[basePieceData] = uniqueId;

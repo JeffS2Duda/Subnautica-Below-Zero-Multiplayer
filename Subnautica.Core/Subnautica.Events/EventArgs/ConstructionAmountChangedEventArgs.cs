@@ -5,10 +5,10 @@ namespace Subnautica.Events.EventArgs
     {
         public ConstructionAmountChangedEventArgs(TechType techType, float constructedAmount, bool isConstruct, string uniqueId)
         {
-            this.TechType    = techType;
-            this.UniqueId    = uniqueId;
+            this.TechType = techType;
+            this.UniqueId = uniqueId;
             this.IsConstruct = isConstruct;
-            this.Amount      = constructedAmount;
+            this.Amount = constructedAmount;
         }
 
         public TechType TechType { get; private set; }

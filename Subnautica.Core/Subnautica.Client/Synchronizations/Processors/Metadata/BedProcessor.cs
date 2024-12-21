@@ -1,8 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
-    using System;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts.Processors;
@@ -12,8 +9,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
     using Subnautica.Client.MonoBehaviours.General;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BedProcessor : MetadataProcessor
@@ -31,7 +28,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
                 var bedSide = component.Sides.Where(q => q.IsUsing()).FirstOrDefault();
                 if (bedSide != null)
                 {
-                    component.IsSleeping  = true;
+                    component.IsSleeping = true;
                     component.CurrentSide = bedSide;
 
                     packet.SetPacketOwnerId(bedSide.PlayerId_v2);
@@ -41,7 +38,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
 
                 return true;
             }
-            else 
+            else
             {
                 var player = ZeroPlayer.GetPlayerById(packet.GetPacketOwnerId());
                 if (player == null)
@@ -118,10 +115,10 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
+                UniqueId = uniqueId,
                 Component = new Metadata.Bed()
                 {
-                    IsSleeping  = isSleeping,
+                    IsSleeping = isSleeping,
                     CurrentSide = new Metadata.BedSideItem(0, side),
                 }
             };

@@ -1,10 +1,8 @@
 ﻿namespace Subnautica.API.Features
 {
-    using System;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features.Helper;
-
+    using System;
     using UnityEngine;
 
     public class ZeroLiveMixin
@@ -35,10 +33,10 @@
         {
             liveMixin.damageInfo.Clear();
             liveMixin.damageInfo.originalDamage = damage;
-            liveMixin.damageInfo.damage         = damage;
-            liveMixin.damageInfo.position       = liveMixin.transform.position;
-            liveMixin.damageInfo.type           = type;
-            liveMixin.damageInfo.dealer         = null;
+            liveMixin.damageInfo.damage = damage;
+            liveMixin.damageInfo.position = liveMixin.transform.position;
+            liveMixin.damageInfo.type = type;
+            liveMixin.damageInfo.dealer = null;
             liveMixin.NotifyAllAttachedDamageReceivers(liveMixin.damageInfo);
         }
 
@@ -167,7 +165,7 @@
                     {
                         var action = new ItemQueueAction();
                         action.RegisterProperty("UniqueId", uniqueId);
-                        action.RegisterProperty("Action"  , killAction);
+                        action.RegisterProperty("Action", killAction);
                         action.OnProcessCompleted = OnKillProcessCompleted;
 
                         Entity.ProcessToQueue(action);
@@ -181,7 +179,7 @@
         private static void OnKillProcessCompleted(ItemQueueProcess item)
         {
             var uniqueId = item.Action.GetProperty<string>("UniqueId");
-            var action   = item.Action.GetProperty<Action<string, GameObject>>("Action");
+            var action = item.Action.GetProperty<Action<string, GameObject>>("Action");
             if (uniqueId.IsNotNull())
             {
                 var gameObject = Network.Identifier.GetGameObject(uniqueId);

@@ -7,9 +7,9 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
     using Subnautica.Network.Models.Core;
 
     using ServerModel = Subnautica.Network.Models.Server;
-    
+
     public class DisconnectedProcessor : NormalProcessor
-    {        
+    {
         public override bool OnDataReceived(NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.PlayerDisconnectedArgs>();

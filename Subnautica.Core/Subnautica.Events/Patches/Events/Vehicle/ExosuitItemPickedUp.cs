@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Vehicle
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::ExosuitClawArm), nameof(global::ExosuitClawArm.OnPickup))]
     public class ExosuitItemPickedUp
@@ -18,7 +16,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             }
 
             var exosuit = __instance.GetComponentInParent<Exosuit>();
-            var pickup  = exosuit?.GetActiveTarget()?.GetComponent<Pickupable>();
+            var pickup = exosuit?.GetActiveTarget()?.GetComponent<Pickupable>();
             if (pickup == null)
             {
                 return false;

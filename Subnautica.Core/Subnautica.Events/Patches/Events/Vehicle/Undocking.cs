@@ -5,7 +5,6 @@ namespace Subnautica.Events.Patches.Events.Vehicle
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-    using Subnautica.Events.Patches.Fixes.Interact;
 
     using System;
 

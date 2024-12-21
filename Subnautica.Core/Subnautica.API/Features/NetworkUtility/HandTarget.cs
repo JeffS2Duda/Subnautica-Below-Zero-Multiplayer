@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.API.Features.NetworkUtility
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Extensions;
+    using System.Collections.Generic;
 
     public class HandTarget
     {
@@ -59,7 +58,7 @@
         {
             return this.Targets.TryGetValue(uniqueId, out var target) && Network.Session.GetWorldTime() < target;
         }
- 
+
         public void AddTemporaryBlock(string uniqueId)
         {
             this.Targets[uniqueId] = (float)(Network.Session.GetWorldTime() + this.Delay);

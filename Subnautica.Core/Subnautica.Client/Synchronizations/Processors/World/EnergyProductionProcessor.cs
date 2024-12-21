@@ -1,11 +1,9 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using System.Collections.Generic;
-
-    using Subnautica.Network.Models.Core;
-    using Subnautica.Client.Abstracts;
     using Subnautica.API.Features;
-
+    using Subnautica.Client.Abstracts;
+    using Subnautica.Network.Models.Core;
+    using System.Collections.Generic;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class EnergyProductionProcessor : NormalProcessor
@@ -31,7 +29,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
                 if (Multiplayer.Constructing.Builder.TryGetBuildingValue(construction.Key, out string uniqueId))
                 {
                     var constructable = Network.Identifier.GetComponentByGameObject<Constructable>(uniqueId);
-                    if (constructable != null) 
+                    if (constructable != null)
                     {
                         this.PowerSources[construction.Key] = constructable.GetComponent<PowerSource>();
                         this.AddEnergyToPowerSource(this.PowerSources[construction.Key], construction.Value);
@@ -64,7 +62,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
                     }
                 }
             }
-          
+
             return true;
         }
 

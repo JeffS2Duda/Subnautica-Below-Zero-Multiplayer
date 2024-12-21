@@ -1,16 +1,12 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
-    using System;
-    using System.Diagnostics;
-    using System.IO;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using Subnautica.Events.Patches.Fixes.Interact;
-
+    using System;
+    using System.IO;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::PictureFrame), nameof(global::PictureFrame.SelectImage))]
@@ -27,7 +23,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
             {
                 return true;
             }
-            
+
             if (string.Equals(__instance.fileName, image, StringComparison.Ordinal))
             {
                 return false;
@@ -148,7 +144,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                 for (var x = 0; x < w2; x++)
                 {
                     int xFloor = (int)Mathf.Floor(x * ratioX);
-                    var xLerp  = x * ratioX - xFloor;
+                    var xLerp = x * ratioX - xFloor;
                     newColors[yw + x] = ColorLerpUnclamped(ColorLerpUnclamped(texColors[y1 + xFloor], texColors[y1 + xFloor + 1], xLerp), ColorLerpUnclamped(texColors[y2 + xFloor], texColors[y2 + xFloor + 1], xLerp), y * ratioY - yFloor);
                 }
             }

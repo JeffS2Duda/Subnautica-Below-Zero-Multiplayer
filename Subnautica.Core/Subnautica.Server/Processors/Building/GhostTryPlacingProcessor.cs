@@ -1,7 +1,7 @@
 namespace Subnautica.Server.Processors.Building
 {
     using Server.Core;
-    
+
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
@@ -26,12 +26,12 @@ namespace Subnautica.Server.Processors.Building
             {
                 ConstructionItem item = new ConstructionItem()
                 {
-                    Id            = Server.Instance.Logices.World.GetNextConstructionId(),
-                    UniqueId      = packet.UniqueId,
-                    TechType      = packet.TechType,
-                    LastRotation  = packet.LastRotation,
+                    Id = Server.Instance.Logices.World.GetNextConstructionId(),
+                    UniqueId = packet.UniqueId,
+                    TechType = packet.TechType,
+                    LastRotation = packet.LastRotation,
                     PlacePosition = packet.Position,
-                    IsBasePiece   = packet.IsBasePiece
+                    IsBasePiece = packet.IsBasePiece
                 };
 
                 API.Features.Log.Info("TRYPLACE -> " + packet.UniqueId + ", TechType: " + packet.TechType);

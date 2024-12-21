@@ -9,7 +9,7 @@ namespace Subnautica.Events.EventArgs
         public BaseMoonpoolExpansionUndockingTimelineCompletingEventArgs(GameObject gameObject, bool isAllowed = true)
         {
             this.GameObject = gameObject;
-            this.IsAllowed  = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public GameObject GameObject { get; set; }

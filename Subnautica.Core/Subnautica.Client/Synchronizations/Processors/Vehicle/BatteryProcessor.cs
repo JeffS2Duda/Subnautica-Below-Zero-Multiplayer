@@ -1,7 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.Vehicle
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
     using Subnautica.Client.Abstracts;
@@ -9,7 +7,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
-
+    using System.Collections.Generic;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BatteryProcessor : NormalProcessor
@@ -37,8 +35,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             {
                 if (packet.IsAdding)
                 {
-                    Vehicle.ApplyPowerCells(packet.UniqueId, new List<PowerCell>() { 
-                        new PowerCell() 
+                    Vehicle.ApplyPowerCells(packet.UniqueId, new List<PowerCell>() {
+                        new PowerCell()
                         {
                             UniqueId = packet.BatterySlotId,
                             TechType = packet.BatteryType,
@@ -79,7 +77,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
                                 storedItem = energyMixin.batterySlot.storedItem;
 
                                 energyMixin.batterySlot.RemoveItem();
-                                
+
                                 break;
                             }
                         }
@@ -111,7 +109,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             if (ev.TechType == TechType.Exosuit || ev.TechType == TechType.SeaTruck)
             {
                 ev.IsAllowed = false;
-                
+
                 if (!Interact.IsBlocked(ev.BatterySlotId))
                 {
                     BatteryProcessor.SendPacketToServer(ev.UniqueId, batterySlotId: ev.BatterySlotId, isOpening: true);
@@ -134,12 +132,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.VehicleBatteryArgs request = new ServerModel.VehicleBatteryArgs()
             {
-                UniqueId      = uniqueId,
+                UniqueId = uniqueId,
                 BatterySlotId = batterySlotId,
-                BatteryType   = batteryType,
-                IsOpening     = isOpening,
-                IsAdding      = isAdding,
-                Charge        = charge,
+                BatteryType = batteryType,
+                IsOpening = isOpening,
+                IsAdding = isAdding,
+                Charge = charge,
             };
 
             NetworkClient.SendPacket(request);

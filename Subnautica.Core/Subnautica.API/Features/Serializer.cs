@@ -1,12 +1,9 @@
 ﻿namespace Subnautica.API.Features
 {
+    using Subnautica.Client.Extensions;
     using System.Collections.Generic;
     using System.IO;
-
-    using Subnautica.Client.Extensions;
-
     using UnityEngine;
-
     using UWE;
 
     public class Serializer
@@ -123,7 +120,7 @@
             Serializer.LastInteractTime = DayNightCycle.main.timePassedAsFloat;
 
             var uidsProxy = ProtobufSerializer.uniqueIdentifiersPool.GetListProxy<UniqueIdentifier>();
-            var uids      = uidsProxy.Value;
+            var uids = uidsProxy.Value;
 
             gameObject.GetComponentsInChildren<UniqueIdentifier>(true, uids);
 

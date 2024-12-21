@@ -1,7 +1,6 @@
 namespace Subnautica.Server.Processors.Creatures
 {
     using Subnautica.API.Enums.Creatures;
-    using Subnautica.Events.Handlers;
     using Subnautica.Network.Models.Creatures;
     using Subnautica.Network.Models.Server;
     using Subnautica.Server.Abstracts.Processors;

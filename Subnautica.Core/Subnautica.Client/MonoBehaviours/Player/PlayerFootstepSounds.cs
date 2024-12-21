@@ -28,18 +28,18 @@
         public void Awake()
         {
             this.PlayerAnimation = this.gameObject.GetComponent<PlayerAnimation>();
-            this.PlayerVehicle   = this.gameObject.GetComponent<PlayerVehicleManagement>();
+            this.PlayerVehicle = this.gameObject.GetComponent<PlayerVehicleManagement>();
 
-            this.FootstepSounds_Player  = this.gameObject.AddComponent<global::FootstepSounds>();                
+            this.FootstepSounds_Player = this.gameObject.AddComponent<global::FootstepSounds>();
             this.FootstepSounds_Exosuit = this.gameObject.AddComponent<global::FootstepSounds>();
 
             this.FootstepSounds_Player.CancelInvoke("TriggerSounds");
             this.FootstepSounds_Exosuit.CancelInvoke("TriggerSounds");
 
-            this.FootstepSounds_Player.enabled  = false;
+            this.FootstepSounds_Player.enabled = false;
             this.FootstepSounds_Exosuit.enabled = false;
 
-            this.FootstepSounds_Player.soundsEnabled  = false;
+            this.FootstepSounds_Player.soundsEnabled = false;
             this.FootstepSounds_Exosuit.soundsEnabled = false;
 
             this.RefreshPlayerSettings();
@@ -56,7 +56,7 @@
                 this.CurrentFootstepSounds = this.GetFootstepSounds();
 
                 var magnitude = this.CurrentVelocity;
-                var timeDiff  = Time.time - this.CurrentFootstepSounds.timeLastFootStep;
+                var timeDiff = Time.time - this.CurrentFootstepSounds.timeLastFootStep;
 
                 if (this.CurrentFootstepSounds.clampedSpeed > 0f)
                 {
@@ -69,7 +69,7 @@
                     this.OnStep();
 
                     this.CurrentFootstepSounds.timeLastFootStep = Time.time;
-                    this.CurrentFootstepSounds.triggeredLeft    = !this.CurrentFootstepSounds.triggeredLeft;
+                    this.CurrentFootstepSounds.triggeredLeft = !this.CurrentFootstepSounds.triggeredLeft;
                 }
             }
         }
@@ -135,7 +135,7 @@
         private void OnStepParameters(FMOD.Studio.EventInstance eventInstance)
         {
             eventInstance.setParameterValueByIndex(this.CurrentFootstepSounds.speedParamIndex, this.CurrentVelocity);
-            eventInstance.setParameterValueByIndex(this.CurrentFootstepSounds.surfaceParamIndex, this.Player.VehicleType == TechType.Exosuit ? (float) VFXSurfaceTypes.metal : (float) this.Player.CurrentSurfaceType);
+            eventInstance.setParameterValueByIndex(this.CurrentFootstepSounds.surfaceParamIndex, this.Player.VehicleType == TechType.Exosuit ? (float)VFXSurfaceTypes.metal : (float)this.Player.CurrentSurfaceType);
             eventInstance.setParameterValueByIndex(this.CurrentFootstepSounds.inWaterParamIndex, this.IsUnderwater ? 1f : 0f);
             eventInstance.setParameterValue("wormlair", this.CurrentFootstepSounds.iceWormAmbience);
         }
@@ -177,12 +177,12 @@
 
         private FootstepSounds CopyFootstepSettings(FootstepSounds fromFootstepSounds, FootstepSounds toFootstepSounds)
         {
-            toFootstepSounds.footStepSound     = fromFootstepSounds.footStepSound;
-            toFootstepSounds.speedParamIndex   = fromFootstepSounds.speedParamIndex;
+            toFootstepSounds.footStepSound = fromFootstepSounds.footStepSound;
+            toFootstepSounds.speedParamIndex = fromFootstepSounds.speedParamIndex;
             toFootstepSounds.surfaceParamIndex = fromFootstepSounds.surfaceParamIndex;
             toFootstepSounds.inWaterParamIndex = fromFootstepSounds.inWaterParamIndex;
 
-            toFootstepSounds.clampedSpeed         = fromFootstepSounds.clampedSpeed;
+            toFootstepSounds.clampedSpeed = fromFootstepSounds.clampedSpeed;
             toFootstepSounds.footStepFrequencyMod = fromFootstepSounds.footStepFrequencyMod;
 
             toFootstepSounds.soundsEnabled = true;
@@ -191,7 +191,7 @@
 
         private void UpdatePlayerDatas()
         {
-            this.IsUnderwater    = false;
+            this.IsUnderwater = false;
             this.CurrentVelocity = 0f;
 
             if (this.Player.VehicleType == TechType.Exosuit)

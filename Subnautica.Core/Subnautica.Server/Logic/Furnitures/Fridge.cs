@@ -1,15 +1,12 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
-
-    using Metadata    = Subnautica.Network.Models.Metadata;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class Fridge : BaseLogic
@@ -56,7 +53,7 @@ namespace Subnautica.Server.Logic.Furnitures
                             item.UnpauseDecay(serverTime);
                         }
                     }
-                    
+
                     component.WasPowered = wasPowered;
 
                     this.SendPacketToAllClient(construction.Value.UniqueId, serverTime, wasPowered);
@@ -68,12 +65,12 @@ namespace Subnautica.Server.Logic.Furnitures
         {
             ServerModel.MetadataComponentArgs request = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
-                TechType  = TechType.Fridge,
+                UniqueId = uniqueId,
+                TechType = TechType.Fridge,
                 Component = new Metadata.Fridge()
                 {
-                    WasPowered          = wasPowered,
-                    CurrentTime         = serverTime,
+                    WasPowered = wasPowered,
+                    CurrentTime = serverTime,
                     IsPowerStateChanged = true
                 },
             };
@@ -89,7 +86,7 @@ namespace Subnautica.Server.Logic.Furnitures
                 return false;
             }
 
-            return fridge.powerConsumer.IsPowered();   
+            return fridge.powerConsumer.IsPowered();
         }
 
         private List<KeyValuePair<string, ConstructionItem>> GetFridges()

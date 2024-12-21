@@ -1,13 +1,11 @@
 ﻿namespace Subnautica.Events.Patches.Events.Building
 {
+    using HarmonyLib;
+    using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
+    using Subnautica.Events.EventArgs;
     using System;
     using System.Collections;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
-    using Subnautica.API.Extensions;
-    using Subnautica.Events.EventArgs;
 
     [HarmonyPatch(typeof(Constructable), nameof(Constructable.ProgressDeconstruction))]
     public static class ConstructionRemoved

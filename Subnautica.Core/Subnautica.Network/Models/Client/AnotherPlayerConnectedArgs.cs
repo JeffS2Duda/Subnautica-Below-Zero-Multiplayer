@@ -1,7 +1,5 @@
 namespace Subnautica.Network.Models.Client
 {
-    using System.Collections.Generic;
-
     using MessagePack;
 
     using Subnautica.API.Enums;

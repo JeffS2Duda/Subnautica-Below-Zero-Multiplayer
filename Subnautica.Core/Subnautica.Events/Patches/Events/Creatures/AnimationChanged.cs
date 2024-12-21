@@ -17,7 +17,7 @@ namespace Subnautica.Events.Patches.Events.Creatures
     {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Creature), nameof(global::Creature.OnEnable))]
-        public static void OnEnable(global::Creature __instance) 
+        public static void OnEnable(global::Creature __instance)
         {
             if (Network.IsMultiplayerActive)
             {
@@ -52,8 +52,8 @@ namespace Subnautica.Events.Patches.Events.Creatures
 
         public void OnEnable()
         {
-            this.Creature  = this.GetComponent<global::Creature>();
-            this.Data      = CraftData.GetTechType(this.gameObject).GetCreatureData();
+            this.Creature = this.GetComponent<global::Creature>();
+            this.Data = CraftData.GetTechType(this.gameObject).GetCreatureData();
 
             if (this.Data?.HasAnimationTrackers() == true)
             {

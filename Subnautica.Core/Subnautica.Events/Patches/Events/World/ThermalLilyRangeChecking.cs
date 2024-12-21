@@ -77,7 +77,7 @@ namespace Subnautica.Events.Patches.Events.Storage
                 __instance.animator.SetFloat(ThermalLily.animHorizontalAngle, num1 / 1.570796f, 1f, deltaTime);
                 __instance.animator.SetFloat(ThermalLily.animVerticalAngle, num2 / 1.570796f, 1f, deltaTime);
 
-                bool flag = (double) Vector3.Angle(__instance.headLight.transform.forward, __instance.lastForward) > 0.600000023841858;
+                bool flag = (double)Vector3.Angle(__instance.headLight.transform.forward, __instance.lastForward) > 0.600000023841858;
                 if (flag && !__instance.sfx_Move.playing)
                 {
                     __instance.sfx_Move.Play();
@@ -86,7 +86,7 @@ namespace Subnautica.Events.Patches.Events.Storage
                 {
                     __instance.sfx_Move.Stop();
                 }
-                    
+
                 __instance.lastForward = __instance.headLight.transform.forward;
 
                 return false;

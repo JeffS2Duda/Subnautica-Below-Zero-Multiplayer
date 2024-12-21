@@ -12,7 +12,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
 
     using UnityEngine;
 
-    using ItemModel   = Subnautica.Network.Models.Items;
+    using ItemModel = Subnautica.Network.Models.Items;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class DeployableStorageProcessor : PlayerItemProcessor
@@ -34,7 +34,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
                         var coloredLabel = Network.Identifier.GetComponentByGameObject<global::ColoredLabel>(packet.UniqueId);
                         if (coloredLabel)
                         {
-                            coloredLabel.signInput.text       = component.SignText;
+                            coloredLabel.signInput.text = component.SignText;
                             coloredLabel.signInput.colorIndex = component.SignColorIndex;
                         }
                     }
@@ -118,13 +118,13 @@ namespace Subnautica.Client.Synchronizations.Processors.Items
             {
                 Item = new ItemModel.DeployableStorage()
                 {
-                    UniqueId        = uniqueId,
-                    TechType        = techType,
-                    IsSignProcess   = isSignProcess,
-                    IsSignSelect    = isSignSelect,
-                    IsAdded         = isAdded,
-                    SignText        = signText,
-                    SignColorIndex  = signColorIndex,
+                    UniqueId = uniqueId,
+                    TechType = techType,
+                    IsSignProcess = isSignProcess,
+                    IsSignSelect = isSignSelect,
+                    IsAdded = isAdded,
+                    SignText = signText,
+                    SignColorIndex = signColorIndex,
                     WorldPickupItem = pickupItem,
                 }
             };

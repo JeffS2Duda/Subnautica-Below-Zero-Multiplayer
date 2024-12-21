@@ -1,8 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEntities
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.API.Features.Helper;
@@ -12,9 +9,9 @@ namespace Subnautica.Client.Synchronizations.Processors.WorldEntities.DynamicEnt
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class PipeSurfaceFloaterProcessor : WorldDynamicEntityProcessor

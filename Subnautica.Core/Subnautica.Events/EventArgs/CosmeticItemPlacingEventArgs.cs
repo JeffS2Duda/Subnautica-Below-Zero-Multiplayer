@@ -9,7 +9,7 @@ namespace Subnautica.Events.EventArgs
         public CosmeticItemPlacingEventArgs(string uniqueId, string baseId, TechType techType, Vector3 position, Quaternion rotation, bool isAllowed = true)
         {
             this.UniqueId = uniqueId;
-            this.BaseId   = baseId;
+            this.BaseId = baseId;
             this.TechType = techType;
             this.Position = position;
             this.Rotation = rotation;

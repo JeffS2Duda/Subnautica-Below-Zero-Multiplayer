@@ -16,7 +16,7 @@
             {
                 this.SeaTruckMotor.animator.Rebind();
             }
-            else 
+            else
             {
                 this.PrepareStopPiloting();
             }
@@ -63,7 +63,7 @@
             {
                 return false;
             }
-            
+
             if (this.SeaTruckMotor && this.SeaTruckMotor.seatruckanimation)
             {
                 this.SeaTruckMotor.seatruckanimation.GetController(SeaTruckAnimation.Animation.BeginPilot).animator.Rebind();

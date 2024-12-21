@@ -29,7 +29,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
                         var signInput = Network.Identifier.GetComponentByGameObject<global::uGUI_SignInput>(ZeroGame.GetSeaTruckColoredLabelUniqueId(packet.UniqueId));
                         if (signInput)
                         {
-                            signInput.text       = packet.SignText;
+                            signInput.text = packet.SignText;
                             signInput.colorIndex = packet.SignColorIndex;
                         }
                     }
@@ -97,12 +97,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
         {
             ServerModel.SeaTruckStorageModuleArgs request = new ServerModel.SeaTruckStorageModuleArgs()
             {
-                UniqueId        = uniqueId,
-                IsSignProcess   = isSignProcess,
-                IsSignSelect    = isSignSelect,
-                IsAdded         = isAdded,
-                SignText        = signText,
-                SignColorIndex  = signColorIndex,
+                UniqueId = uniqueId,
+                IsSignProcess = isSignProcess,
+                IsSignSelect = isSignSelect,
+                IsAdded = isAdded,
+                SignText = signText,
+                SignColorIndex = signColorIndex,
                 WorldPickupItem = pickupItem,
 
             };

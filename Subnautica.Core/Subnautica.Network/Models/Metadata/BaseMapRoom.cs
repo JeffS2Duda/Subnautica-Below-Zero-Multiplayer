@@ -1,13 +1,11 @@
 namespace Subnautica.Network.Models.Metadata
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class BaseMapRoom : MetadataComponent
@@ -79,7 +77,7 @@ namespace Subnautica.Network.Models.Metadata
                 return false;
             }
 
-            this.IsChanged    = true;
+            this.IsChanged = true;
             this.ScanTechType = techType;
             this.ResetNodes();
             return true;
@@ -92,7 +90,7 @@ namespace Subnautica.Network.Models.Metadata
                 return false;
             }
 
-            this.IsChanged    = true;
+            this.IsChanged = true;
             this.ScanTechType = TechType.None;
             this.ResetNodes();
             return true;
@@ -114,7 +112,7 @@ namespace Subnautica.Network.Models.Metadata
             {
                 return this.LeftDock.Undock(currentTime, out vehicle);
             }
-            
+
             if (this.RightDock.VehicleId == vehicleId)
             {
                 return this.RightDock.Undock(currentTime, out vehicle);
@@ -153,12 +151,12 @@ namespace Subnautica.Network.Models.Metadata
 
         public VehicleDockingBayItem(bool isDocked, float starTime, string vehicleId, ZeroVector3 position, ZeroQuaternion rotation, WorldDynamicEntity vehicle)
         {
-            this.IsDocked     = isDocked;
+            this.IsDocked = isDocked;
             this.LastDockTime = starTime;
-            this.VehicleId    = vehicleId;
-            this.Position     = position;
-            this.Rotation     = rotation;
-            this.Vehicle      = vehicle;
+            this.VehicleId = vehicleId;
+            this.Position = position;
+            this.Rotation = rotation;
+            this.Vehicle = vehicle;
         }
 
         public void SetLastDockTime(float dockTime)
@@ -177,13 +175,13 @@ namespace Subnautica.Network.Models.Metadata
             {
                 return false;
             }
-            
-            this.IsDocked  = true;
+
+            this.IsDocked = true;
             this.VehicleId = vehicle.UniqueId;
-            this.Vehicle   = vehicle;
+            this.Vehicle = vehicle;
             this.Vehicle.Position = endPosition;
             this.Vehicle.Rotation = endRotation;
-            this.LastDockTime     = currentTime;
+            this.LastDockTime = currentTime;
             return true;
         }
 
@@ -193,9 +191,9 @@ namespace Subnautica.Network.Models.Metadata
 
             if (this.IsDocked)
             {
-                this.IsDocked  = false;
+                this.IsDocked = false;
                 this.VehicleId = null;
-                this.Vehicle   = null;
+                this.Vehicle = null;
                 this.SetLastDockTime(currentTime);
                 return true;
             }

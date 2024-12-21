@@ -6,7 +6,7 @@ namespace Subnautica.Events.EventArgs
     {
         public SpyPenguinItemGrabingEventArgs(string uniqueId, string animationName)
         {
-            this.UniqueId      = uniqueId;
+            this.UniqueId = uniqueId;
             this.AnimationName = animationName;
         }
 

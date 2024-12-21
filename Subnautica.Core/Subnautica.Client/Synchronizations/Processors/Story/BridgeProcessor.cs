@@ -1,9 +1,6 @@
 namespace Subnautica.Client.Synchronizations.Processors.Story
 {
-    using System;
-
     using global::Story;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -11,7 +8,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
+    using System;
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class BridgeProcessor : NormalProcessor
@@ -40,7 +37,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
             }
             else if (packet.IsClickedExtend || packet.IsClickedRetract)
             {
-                Network.Session.Current.Story.Bridge.Time       = packet.Time;
+                Network.Session.Current.Story.Bridge.Time = packet.Time;
                 Network.Session.Current.Story.Bridge.IsExtended = packet.IsClickedExtend;
 
                 if (packet.IsFirstExtension)
@@ -88,14 +85,14 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
                 }
             }
 
-            var animationTime = (float) bridge.retractBridgeTimeline.duration + 0.1f;
+            var animationTime = (float)bridge.retractBridgeTimeline.duration + 0.1f;
 
             if (isExtend)
             {
-                animationTime = (float) bridge.extendBridgeTimeline.duration + 0.1f;
+                animationTime = (float)bridge.extendBridgeTimeline.duration + 0.1f;
             }
 
-            var animatonDiff  = (endTime - DayNightCycle.main.timePassedAsFloat);
+            var animatonDiff = (endTime - DayNightCycle.main.timePassedAsFloat);
             if (animatonDiff <= 1f)
             {
                 if (isExtend)
@@ -156,12 +153,12 @@ namespace Subnautica.Client.Synchronizations.Processors.Story
         {
             ServerModel.StoryBridgeArgs result = new ServerModel.StoryBridgeArgs()
             {
-                UniqueId         = uniqued,
-                StoryKey         = storyKey,
-                IsClickedFluid   = isClickedFluid,
-                IsClickedExtend  = isClickedExtend,
+                UniqueId = uniqued,
+                StoryKey = storyKey,
+                IsClickedFluid = isClickedFluid,
+                IsClickedExtend = isClickedExtend,
                 IsClickedRetract = isClickedRetract,
-                Time             = time,
+                Time = time,
             };
 
             NetworkClient.SendPacket(result);

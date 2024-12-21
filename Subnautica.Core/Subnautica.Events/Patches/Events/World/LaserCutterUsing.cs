@@ -12,7 +12,7 @@
     {
         private static bool Prefix(global::Sealed __instance, float amount)
         {
-            if (!Network.IsMultiplayerActive) 
+            if (!Network.IsMultiplayerActive)
             {
                 return true;
             }

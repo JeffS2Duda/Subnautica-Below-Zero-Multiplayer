@@ -1,15 +1,14 @@
 ﻿namespace Subnautica.Client.Synchronizations.Processors.Building
 {
     using Subnautica.API.Enums;
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
+    using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
-
-    using ServerModel  = Subnautica.Network.Models.Server;
     using Constructing = Subnautica.Client.Multiplayer.Constructing;
+    using ServerModel = Subnautica.Network.Models.Server;
 
     public class RemovedProcessor : NormalProcessor
     {
@@ -45,7 +44,7 @@
             {
                 UniqueId = ev.UniqueId,
                 TechType = ev.TechType,
-                Cell     = ev.Cell?.ToZeroInt3()
+                Cell = ev.Cell?.ToZeroInt3()
             };
 
             NetworkClient.SendPacket(request);

@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.World
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch]
     public static class WeatherProfileChanged

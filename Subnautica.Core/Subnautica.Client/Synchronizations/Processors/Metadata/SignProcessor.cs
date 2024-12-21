@@ -1,13 +1,12 @@
 namespace Subnautica.Client.Synchronizations.Processors.Metadata
 {
     using Subnautica.API.Features;
+    using Subnautica.Client.Abstracts.Processors;
     using Subnautica.Client.Core;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Server;
-    using Subnautica.Client.Abstracts.Processors;
-
+    using Metadata = Subnautica.Network.Models.Metadata;
     using ServerModel = Subnautica.Network.Models.Server;
-    using Metadata    = Subnautica.Network.Models.Metadata;
 
     public class SignProcessor : MetadataProcessor
     {
@@ -76,17 +75,17 @@ namespace Subnautica.Client.Synchronizations.Processors.Metadata
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId       = uniqueId,
+                UniqueId = uniqueId,
                 SecretTechType = TechType.Sign,
-                Component      = new Metadata.Sign()
+                Component = new Metadata.Sign()
                 {
-                    Text                = text,
-                    ScaleIndex          = scaleIndex,
-                    ColorIndex          = colorIndex,
-                    ElementsState       = elementsState,
+                    Text = text,
+                    ScaleIndex = scaleIndex,
+                    ColorIndex = colorIndex,
+                    ElementsState = elementsState,
                     IsBackgroundEnabled = isBackgroundEnabled,
-                    IsOpening           = isOpening,
-                    IsSave              = isSave,
+                    IsOpening = isOpening,
+                    IsSave = isSave,
                 },
             };
 

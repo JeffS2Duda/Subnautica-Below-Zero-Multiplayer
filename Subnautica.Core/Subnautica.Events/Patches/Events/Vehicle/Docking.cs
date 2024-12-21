@@ -94,7 +94,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             {
                 return false;
             }
-            
+
             try
             {
                 VehicleDockingEventArgs args = new VehicleDockingEventArgs(uniqueId, lwe.gameObject, techType, GetBackModulePosition(__instance, dockable), GetEndPosition(__instance, dockable), GetEndRotation(__instance, dockable));
@@ -107,7 +107,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             {
                 Log.Error($"Docking.Prefix: {e}\n{e.StackTrace}");
             }
-            
+
             return true;
         }
 

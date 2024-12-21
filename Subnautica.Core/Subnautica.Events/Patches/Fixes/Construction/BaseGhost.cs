@@ -1,12 +1,11 @@
 namespace Subnautica.Events.Patches.Fixes.Construction
 {
+    using HarmonyLib;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection.Emit;
 
-    using HarmonyLib;
-    
     [HarmonyPatch]
     public static class BaseGhostLastRotation
     {
@@ -153,7 +152,7 @@ namespace Subnautica.Events.Patches.Fixes.Construction
         public static IEnumerable<CodeInstruction> TranspileClampRotation(IEnumerable<CodeInstruction> instructions)
         {
             var codes = instructions.ToList();
-            var index = codes.FindIndex(q => q.opcode == OpCodes.Call && q.operand.ToString().Contains("ClampRotation")); 
+            var index = codes.FindIndex(q => q.opcode == OpCodes.Call && q.operand.ToString().Contains("ClampRotation"));
 
             if (index > -1)
             {
@@ -175,7 +174,7 @@ namespace Subnautica.Events.Patches.Fixes.Construction
         public static IEnumerable<CodeInstruction> TranspileUpdateRotation(IEnumerable<CodeInstruction> instructions, bool isPlacement = false)
         {
             var codes = instructions.ToList();
-            var index  = codes.FindIndex(q => q.opcode == OpCodes.Call && q.operand.ToString().Contains("UpdateRotation"));
+            var index = codes.FindIndex(q => q.opcode == OpCodes.Call && q.operand.ToString().Contains("UpdateRotation"));
 
             if (index < 0)
             {
@@ -224,7 +223,7 @@ namespace Subnautica.Events.Patches.Fixes.Construction
                     new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Subnautica.API.MonoBehaviours.BaseGhostRotationComponent), nameof(Subnautica.API.MonoBehaviours.BaseGhostRotationComponent.UpdateRotation), new Type[] { typeof(BaseGhost), typeof(int) }))
                 });
             }
-            else 
+            else
             {
                 codes.RemoveRange(index - 1, 2);
                 codes.InsertRange(index - 1, new CodeInstruction[] {

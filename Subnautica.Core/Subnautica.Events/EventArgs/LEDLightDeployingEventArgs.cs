@@ -8,9 +8,9 @@ namespace Subnautica.Events.EventArgs
     {
         public LEDLightDeployingEventArgs(string uniqueId, Vector3 position, Quaternion rotation, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.Position  = position;
-            this.Rotation  = rotation;
+            this.UniqueId = uniqueId;
+            this.Position = position;
+            this.Rotation = rotation;
             this.IsAllowed = isAllowed;
         }
 

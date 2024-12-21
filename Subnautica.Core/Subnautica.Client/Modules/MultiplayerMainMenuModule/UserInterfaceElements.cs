@@ -1,13 +1,10 @@
 ﻿namespace Subnautica.Client.Modules.MultiplayerMainMenuModule
 {
-    using TMPro;
-
-    using UnityEngine.Events;
-    using UnityEngine;
-
-    using Subnautica.API.Features;
     using Subnautica.API.Extensions;
-
+    using Subnautica.API.Features;
+    using TMPro;
+    using UnityEngine;
+    using UnityEngine.Events;
     using UnityEngine.UI;
 
     public class UserInterfaceElements
@@ -47,7 +44,7 @@
             header.GetComponent<TranslationLiveUpdate>().translationKey = headerText;
 
             GameObject.Destroy(groupContent.GetComponent<MainMenuLoadPanel>());
-            
+
             DestroyGameObject(groupContent, GameIndex.MAIN_MENU_BUTTON_IN_GROUP);
 
             CreateButtonInGroup(groupContent, 11f, 46f, hostGameText, hostGameBtnListener);
@@ -108,7 +105,7 @@
 
             GameObject btnGameObject = GameObject.Instantiate(SmallButtonPrefab, groupContent.transform);
             btnGameObject.name = string.Format("CustomBtn_{0}", System.Guid.NewGuid().ToString());
-            btnGameObject.transform.position   = new Vector3(inviteCodePosition.x + 0.495f, inviteCodePosition.y - 0.17f, inviteCodePosition.z);
+            btnGameObject.transform.position = new Vector3(inviteCodePosition.x + 0.495f, inviteCodePosition.y - 0.17f, inviteCodePosition.z);
             btnGameObject.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
             Button button = btnGameObject.transform.Find("ButtonBack").GetComponent<Button>();
@@ -141,9 +138,9 @@
             currentPosition.y -= 0.05f;
 
             Vector3 serverNamePosition = currentPosition;
-            Vector3 serverIpPosition   = currentPosition;
+            Vector3 serverIpPosition = currentPosition;
 
-            serverIpPosition.y   -= 0.12f;
+            serverIpPosition.y -= 0.12f;
 
             AddInputField(groupContent, serverNamePosition, ZeroLanguage.Get("GAME_SERVER_NAME"), ZeroLanguage.Get("GAME_SERVER_NAME_PLACEHOLDER"), "GAME_SERVER_NAME");
             AddInputField(groupContent, serverIpPosition, ZeroLanguage.Get("GAME_SERVER_IP"), ZeroLanguage.Get("GAME_SERVER_IP_PLACEHOLDER"), "GAME_SERVER_IP");
@@ -297,7 +294,7 @@
                 return _NewGamePrefab;
             }
         }
-                
+
         public static GameObject GroupButtonPrefab
         {
             get
@@ -350,7 +347,7 @@
             get
             {
                 GameObject gameObject = GameObject.Find(MultiplayerMainMenu.MULTIPLAYER_HOST_GROUP_NAME);
-                if(gameObject == null)
+                if (gameObject == null)
                 {
                     return false;
                 }

@@ -59,10 +59,10 @@ namespace Subnautica.Network.Models.Construction.Shared
 
         public void SetComponent(global::Base baseComponent)
         {
-            this.FaceLength  = this.GetArrayLength(baseComponent.faces);
-            this.CellLength  = this.GetArrayLength(baseComponent.cells);
-            this.LinkLength  = this.GetArrayLength(baseComponent.links);
-            this.MaskLength  = this.GetArrayLength(baseComponent.masks);
+            this.FaceLength = this.GetArrayLength(baseComponent.faces);
+            this.CellLength = this.GetArrayLength(baseComponent.cells);
+            this.LinkLength = this.GetArrayLength(baseComponent.links);
+            this.MaskLength = this.GetArrayLength(baseComponent.masks);
             this.GlassLength = this.GetArrayLength(baseComponent.isGlass);
             this.PowerLength = this.GetArrayLength(baseComponent.unpowered);
 
@@ -120,15 +120,15 @@ namespace Subnautica.Network.Models.Construction.Shared
                 }
             }
 
-            this.GridShape  = baseComponent.baseShape.ToInt3().ToZeroInt3();
-            this.Anchor     = baseComponent.anchor.ToZeroInt3();
+            this.GridShape = baseComponent.baseShape.ToInt3().ToZeroInt3();
+            this.Anchor = baseComponent.anchor.ToZeroInt3();
             this.CellOffset = baseComponent.cellOffset.ToZeroInt3();
         }
 
         public void ImportToBase(global::Base baseComponent)
         {
-            baseComponent.baseShape  = new Grid3Shape(this.GridShape.ToInt3());
-            baseComponent.anchor     = this.Anchor.ToInt3();
+            baseComponent.baseShape = new Grid3Shape(this.GridShape.ToInt3());
+            baseComponent.anchor = this.Anchor.ToInt3();
             baseComponent.cellOffset = this.CellOffset.ToInt3();
 
             if (this.FaceLength != -1)

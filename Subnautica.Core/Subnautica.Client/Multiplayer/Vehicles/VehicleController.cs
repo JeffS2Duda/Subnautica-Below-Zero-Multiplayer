@@ -93,7 +93,7 @@
 
             if (transform)
             {
-                this.Management.Player.PlayerModel.transform.parent        = transform;
+                this.Management.Player.PlayerModel.transform.parent = transform;
                 this.Management.Player.PlayerModel.transform.localPosition = Vector3.zero;
                 this.Management.Player.PlayerModel.transform.localRotation = Quaternion.identity;
             }

@@ -1,8 +1,5 @@
 namespace Subnautica.Server.Logic
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -10,12 +7,12 @@ namespace Subnautica.Server.Logic
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Server.Abstracts;
-
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldChildrens = Subnautica.Network.Models.Storage.World.Childrens;
-    using Metadata       = Subnautica.Network.Models.Metadata;
-    using ServerModel    = Subnautica.Network.Models.Server;
 
     public class EnergyTransmission : BaseLogic
     {
@@ -96,11 +93,11 @@ namespace Subnautica.Server.Logic
                 return false;
             }
 
-            float requested  = 0.8333333f * elapsedTime;
+            float requested = 0.8333333f * elapsedTime;
             float leftEnergy = powerSource.MaxPower - powerSource.Power;
             if (leftEnergy < requested)
             {
-                requested = leftEnergy; 
+                requested = leftEnergy;
             }
 
             powerSource.ModifyPower(this.CalculateBioReactorProducePower(requested, bioReactor, powerSource, construction));
@@ -114,7 +111,7 @@ namespace Subnautica.Server.Logic
                 return false;
             }
 
-            float requested  = 4.166667f * elapsedTime;
+            float requested = 4.166667f * elapsedTime;
             float leftEnergy = powerSource.MaxPower - powerSource.Power;
             if (leftEnergy < requested)
             {
@@ -209,7 +206,7 @@ namespace Subnautica.Server.Logic
                 requested -= powerSource.ConsumedEnergy;
                 powerSource.SetConsumedEnergy(0.0f);
             }
-    
+
             return requested;
         }
 
@@ -219,8 +216,8 @@ namespace Subnautica.Server.Logic
             {
                 ServerModel.MetadataComponentArgs request = new ServerModel.MetadataComponentArgs()
                 {
-                    UniqueId  = uniqueId,
-                    TechType  = TechType.BaseBioReactor,
+                    UniqueId = uniqueId,
+                    TechType = TechType.BaseBioReactor,
                     Component = new Metadata.BioReactor()
                     {
                         IsAdded = false,
@@ -236,12 +233,12 @@ namespace Subnautica.Server.Logic
         {
             ServerModel.MetadataComponentArgs result = new ServerModel.MetadataComponentArgs()
             {
-                UniqueId  = uniqueId,
-                TechType  = TechType.BaseNuclearReactor,
+                UniqueId = uniqueId,
+                TechType = TechType.BaseNuclearReactor,
                 Component = new Metadata.NuclearReactor()
                 {
                     IsRemoving = true,
-                    Items      = items,
+                    Items = items,
                 },
             };
 
@@ -263,7 +260,7 @@ namespace Subnautica.Server.Logic
             var powerSource = new WorldChildrens.PowerSource()
             {
                 ConstructionId = construction.Id,
-                MaxPower       = this.GetMaxPower(construction.TechType),
+                MaxPower = this.GetMaxPower(construction.TechType),
             };
 
             Core.Server.Instance.Storages.World.Storage.PowerSources.Add(powerSource);

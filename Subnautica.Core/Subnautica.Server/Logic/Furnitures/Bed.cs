@@ -1,17 +1,13 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Subnautica.API.Enums;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Metadata;
-    using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
-
-    using Metadata         = Subnautica.Network.Models.Metadata;
-    using ServerModel      = Subnautica.Network.Models.Server;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Metadata = Subnautica.Network.Models.Metadata;
+    using ServerModel = Subnautica.Network.Models.Server;
     using WorldEntityModel = Subnautica.Network.Models.WorldEntity.DynamicEntityComponents;
 
     public class Bed : BaseLogic
@@ -67,13 +63,13 @@ namespace Subnautica.Server.Logic.Furnitures
         {
             ServerModel.SleepTimeSkipArgs request = new ServerModel.SleepTimeSkipArgs()
             {
-                TimeLastSleep   = Server.Instance.Storages.World.Storage.TimeLastSleep,
+                TimeLastSleep = Server.Instance.Storages.World.Storage.TimeLastSleep,
                 SkipModeEndTime = Server.Instance.Storages.World.Storage.SkipModeEndTime,
-                TimeAmount      = this.SleepGameTimeDuration,
-                SkipDuration    = this.SleepRealTimeDuration,
+                TimeAmount = this.SleepGameTimeDuration,
+                SkipDuration = this.SleepRealTimeDuration,
             };
 
-            Core.Server.SendPacketToAllClient(request); 
+            Core.Server.SendPacketToAllClient(request);
         }
 
         public bool IsTimeLastSleepAvailable()
@@ -88,9 +84,9 @@ namespace Subnautica.Server.Logic.Furnitures
                 return false;
             }
 
-            Server.Instance.Storages.World.Storage.SkipTimeMode    = true;
+            Server.Instance.Storages.World.Storage.SkipTimeMode = true;
             Server.Instance.Storages.World.Storage.SkipModeEndTime = Server.Instance.Logices.World.GetServerTime() + timeAmount;
-            Server.Instance.Storages.World.Storage.WorldSpeed      = timeAmount / skipDuration;
+            Server.Instance.Storages.World.Storage.WorldSpeed = timeAmount / skipDuration;
             return true;
         }
 

@@ -1,12 +1,8 @@
 namespace Subnautica.Client.Synchronizations.Processors.Player
 {
-    using System.Diagnostics;
-
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
-    using Subnautica.Client.Modules;
-    using Subnautica.Client.Synchronizations.InitialSync;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;
 
@@ -26,8 +22,8 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                 ServerModel.PlayerStatsArgs request = new ServerModel.PlayerStatsArgs()
                 {
                     Health = ev.Health,
-                    Food   = ev.Food,
-                    Water  = ev.Water,
+                    Food = ev.Food,
+                    Water = ev.Water,
                 };
 
                 NetworkClient.SendPacket(request);

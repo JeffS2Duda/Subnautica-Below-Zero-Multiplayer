@@ -28,7 +28,7 @@
                     }
                 }
             }
-            else 
+            else
             {
                 this.AttackLastTarget.StartAttackSoundAndAnimation();
             }

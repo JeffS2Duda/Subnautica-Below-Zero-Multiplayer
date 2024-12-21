@@ -1,12 +1,9 @@
 namespace Subnautica.Events.Patches.Events.World
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::LiveMixin), nameof(global::LiveMixin.Kill))]
@@ -23,18 +20,18 @@ namespace Subnautica.Events.Patches.Events.World
             {
                 __instance.health = 1f;
 
-               try
-               {
+                try
+                {
                     SpawnOnKillingEventArgs args = new SpawnOnKillingEventArgs(Network.Identifier.GetIdentityId(gameObject.gameObject), CraftData.GetTechType(gameObject.prefabToSpawn), gameObject.transform.position, gameObject.transform.rotation, GetVelocity(gameObject), ForceMode.Impulse);
 
                     Handlers.World.OnSpawnOnKilling(args);
 
                     return args.IsAllowed;
-               }
-               catch (Exception e)
-               {
+                }
+                catch (Exception e)
+                {
                     Log.Error($"SpawnOnKill.Prefix: {e}\n{e.StackTrace}");
-               }             
+                }
             }
 
             return true;

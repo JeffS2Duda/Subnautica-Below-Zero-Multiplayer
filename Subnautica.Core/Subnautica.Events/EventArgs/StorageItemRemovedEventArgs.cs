@@ -7,9 +7,9 @@ namespace Subnautica.Events.EventArgs
         public StorageItemRemovedEventArgs(string constructionId, TechType techType, string itemId, Pickupable item)
         {
             this.ConstructionId = constructionId;
-            this.TechType       = techType;
-            this.ItemId         = itemId;
-            this.Item           = item;
+            this.TechType = techType;
+            this.ItemId = itemId;
+            this.Item = item;
         }
 
         public string ConstructionId { get; set; }

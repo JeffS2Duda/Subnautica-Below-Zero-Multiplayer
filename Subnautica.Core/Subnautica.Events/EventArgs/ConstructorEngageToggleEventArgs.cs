@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public ConstructorEngageToggleEventArgs(string uniqueId, bool isEngage, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.IsEngage  = isEngage;
+            this.UniqueId = uniqueId;
+            this.IsEngage = isEngage;
             this.IsAllowed = isAllowed;
         }
 

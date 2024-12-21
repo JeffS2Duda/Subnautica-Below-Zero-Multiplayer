@@ -1,22 +1,20 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-
+    using System;
     using UnityEngine;
 
     public class EntitySpawnedEventArgs : EventArgs
     {
         public EntitySpawnedEventArgs(string uniqueId, GameObject gameObject, string classId, TechType techType, EntitySpawnLevel level, bool isPersistent)
         {
-            this.UniqueId   = uniqueId;
+            this.UniqueId = uniqueId;
             this.GameObject = gameObject;
-            this.ClassId    = classId;
-            this.TechType   = techType;
-            this.Level      = level;
+            this.ClassId = classId;
+            this.TechType = techType;
+            this.Level = level;
 
             if (uniqueId.IsWorldStreamer())
             {
@@ -25,7 +23,7 @@ namespace Subnautica.Events.EventArgs
             else if (isPersistent && !techType.IsCreature())
             {
                 this.SlotType = SlotType.Static;
-                
+
                 Network.StaticEntity.AddStaticEntitySlot(this.UniqueId);
             }
         }

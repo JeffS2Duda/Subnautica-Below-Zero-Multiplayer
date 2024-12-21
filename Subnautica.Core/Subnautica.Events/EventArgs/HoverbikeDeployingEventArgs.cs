@@ -8,11 +8,11 @@ namespace Subnautica.Events.EventArgs
     {
         public HoverbikeDeployingEventArgs(string uniqueId, Hoverbike hoverbike, Vector3 deployPosition, Vector3 forward, bool isAllowed = true)
         {
-            this.UniqueId       = uniqueId;
-            this.Hoverbike      = hoverbike;
+            this.UniqueId = uniqueId;
+            this.Hoverbike = hoverbike;
             this.DeployPosition = deployPosition;
-            this.Forward        = forward;
-            this.IsAllowed      = isAllowed;
+            this.Forward = forward;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

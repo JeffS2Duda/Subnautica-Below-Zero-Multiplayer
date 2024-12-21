@@ -1,19 +1,17 @@
 ﻿namespace Subnautica.API.Features.Compressors
 {
-    using System;
-
     using Subnautica.Network.Structures;
-
+    using System;
     using UnityEngine;
-    
+
     public class UnityCompressor_Int
     {
         public enum Metadata
         {
             None = 0x0000000,
-            X    = 0x0000001,
-            Y    = 0x0000002,
-            Z    = 0x0000004
+            X = 0x0000001,
+            Y = 0x0000002,
+            Z = 0x0000004
         }
 
         private static int BigNumber = 1000000;
@@ -21,7 +19,7 @@
         public static int Compress(float x, float y, float z)
         {
             var qData = Metadata.None;
-            
+
             if (x < 0)
             {
                 qData |= Metadata.X;
@@ -41,7 +39,7 @@
             var yData = (int)(Math.Abs(y) * 10) * 100;
             var zData = (int)(Math.Abs(z) * 10) * 100 * 100;
 
-            return (1000000 * (int) qData) + (xData + yData + zData);
+            return (1000000 * (int)qData) + (xData + yData + zData);
         }
 
         public static Vector3 Decompress(int longNumber)

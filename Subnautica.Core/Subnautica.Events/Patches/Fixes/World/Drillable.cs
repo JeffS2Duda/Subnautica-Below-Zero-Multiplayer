@@ -42,7 +42,7 @@
             {
                 __instance.secondaryTooltip = global::Language.main.GetFormat<string, string>("DrillResourceTooltipFormat", global::Language.main.Get(dominantResourceType), global::Language.main.Get(TooltipFactory.techTypeTooltipStrings.Get(dominantResourceType)));
             }
-                
+
             __instance.modelRootOffset = __instance.modelRoot.transform.position - __instance.transform.position;
             return false;
         }

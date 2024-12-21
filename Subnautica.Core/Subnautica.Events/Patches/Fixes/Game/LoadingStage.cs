@@ -1,7 +1,5 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.Game
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
 
     using System.Collections.Generic;

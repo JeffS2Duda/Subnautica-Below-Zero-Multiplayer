@@ -1,13 +1,10 @@
 ﻿namespace Subnautica.Events.Patches.Events.Game
 {
-    using System;
-    using System.Collections;
-
     using HarmonyLib;
-    using Steamworks;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
+    using System.Collections;
 
     [HarmonyPatch(typeof(global::IntroVignette), nameof(global::IntroVignette.Start))]
     public static class IntroChecking
@@ -38,7 +35,7 @@
                 else
                 {
                     IntroVignette.main = __instance;
-            
+
                     if (args.WaitingMethod != null)
                     {
                         yield return args.WaitingMethod;

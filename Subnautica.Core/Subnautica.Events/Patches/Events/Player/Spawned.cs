@@ -1,11 +1,9 @@
 namespace Subnautica.Events.Patches.Events.Player
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
     using System;
     using System.Collections;
-
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
 
     [HarmonyPatch(typeof(global::Player), nameof(global::Player.ResetPlayerOnDeath))]
     public class Spawned

@@ -6,8 +6,8 @@ namespace Subnautica.Events.EventArgs
     {
         public FurnitureDeconstructionBeginEventArgs(string uniqueId, TechType techType, bool isAllowed = true)
         {
-            this.UniqueId  = uniqueId;
-            this.TechType  = techType;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
             this.IsAllowed = isAllowed;
         }
 

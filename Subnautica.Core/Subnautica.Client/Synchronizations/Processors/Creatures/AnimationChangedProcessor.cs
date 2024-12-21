@@ -44,7 +44,7 @@
                 if (creature.Creature)
                 {
                     var tracker = creature.CreatureItem.Data.GetAnimationTrackerById(animation.Key);
-                    if (tracker != null) 
+                    if (tracker != null)
                     {
                         tracker.OnTrackerExecuting(creature.Creature, animation.Value);
                     }

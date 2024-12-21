@@ -8,18 +8,18 @@
     {
         private static bool isCached = false;
 
-        private static Vector2 DefaultPanelSizeDelta       = new Vector2();
+        private static Vector2 DefaultPanelSizeDelta = new Vector2();
         private static Vector2 DefaultDescriptionAnchorMin = new Vector2();
         private static Vector2 DefaultDescriptionAnchorMax = new Vector2();
         private static Vector2 DefaultDescriptionOffsetMin = new Vector2();
         private static Vector2 DefaultDescriptionOffsetMax = new Vector2();
         private static Vector2 DefaultDescriptionSizeDelta = new Vector2();
-        private static Vector2 DefaultOkButtonOffsetMin    = new Vector2();
-        private static Vector2 DefaultOkButtonOffsetMax    = new Vector2();
-        private static Vector2 DefaultYesButtonOffsetMin   = new Vector2();
-        private static Vector2 DefaultYesButtonOffsetMax   = new Vector2();
-        private static Vector2 DefaultNoButtonOffsetMin    = new Vector2();
-        private static Vector2 DefaultNoButtonOffsetMax    = new Vector2();
+        private static Vector2 DefaultOkButtonOffsetMin = new Vector2();
+        private static Vector2 DefaultOkButtonOffsetMax = new Vector2();
+        private static Vector2 DefaultYesButtonOffsetMin = new Vector2();
+        private static Vector2 DefaultYesButtonOffsetMax = new Vector2();
+        private static Vector2 DefaultNoButtonOffsetMin = new Vector2();
+        private static Vector2 DefaultNoButtonOffsetMax = new Vector2();
 
         public static void Show(string title, string content, ZeroModalSize size = ZeroModalSize.Default)
         {
@@ -195,7 +195,7 @@
 
         public ZeroModalSizeItem(float width, float height)
         {
-            this.Width  = width;
+            this.Width = width;
             this.Height = height;
         }
 

@@ -1,12 +1,10 @@
 namespace Subnautica.Server.Processors.Metadata
 {
-    using System.Linq;
-
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
-
+    using System.Linq;
     using Metadata = Subnautica.Network.Models.Metadata;
 
     public class FridgeProcessor : MetadataProcessor
@@ -17,7 +15,7 @@ namespace Subnautica.Server.Processors.Metadata
             {
                 return false;
             }
-            
+
             var component = packet.Component.GetComponent<Metadata.Fridge>();
             if (component == null)
             {
@@ -69,13 +67,13 @@ namespace Subnautica.Server.Processors.Metadata
                     return null;
                 }
 
-                var itemComponent = new Metadata.FridgeItemComponent() 
-                { 
-                    ItemId         = itemId, 
-                    IsDecomposes   = isDecomposes, 
-                    TimeDecayStart = timeDecayStart, 
+                var itemComponent = new Metadata.FridgeItemComponent()
+                {
+                    ItemId = itemId,
+                    IsDecomposes = isDecomposes,
+                    TimeDecayStart = timeDecayStart,
                     TimeDecayPause = Server.Instance.Logices.World.GetServerTime(),
-                    IsPaused       = Server.Instance.Logices.Fridge.IsPowered(constructionUniqueId)
+                    IsPaused = Server.Instance.Logices.Fridge.IsPowered(constructionUniqueId)
                 };
 
                 fridge.Components.RemoveAll(q => q.ItemId == itemId);
@@ -100,7 +98,7 @@ namespace Subnautica.Server.Processors.Metadata
         {
             if (fridge.StorageContainer == null)
             {
-                fridge.StorageContainer = Metadata.StorageContainer.Create(5, 7);   
+                fridge.StorageContainer = Metadata.StorageContainer.Create(5, 7);
             }
 
             return fridge.StorageContainer;

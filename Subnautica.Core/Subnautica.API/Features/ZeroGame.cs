@@ -2,10 +2,7 @@
 {
     using System;
     using System.Collections;
-    using System.Collections.Generic;
     using System.IO;
-
-    using Subnautica.API.Extensions;
 
     using TMPro;
 
@@ -162,7 +159,7 @@
 
             if (toggle != null)
             {
-                ZeroGame.ToggleClickSwitchOff(toggle);    
+                ZeroGame.ToggleClickSwitchOff(toggle);
             }
         }
 
@@ -173,9 +170,9 @@
                 return false;
             }
 
-            toggle.activeState   = false;
+            toggle.activeState = false;
             toggle.timeLastClick = Time.time;
-            toggle.CancelInvoke(nameof (global::ToggleOnClick.SwitchOff));
+            toggle.CancelInvoke(nameof(global::ToggleOnClick.SwitchOff));
 
             if (!isSilence)
             {
@@ -253,8 +250,8 @@
         public static void LogicCraft(global::GhostCrafter ghostCrafter, TechType techType, float startingTime, float duration)
         {
             ghostCrafter.logic.timeCraftingBegin = startingTime;
-            ghostCrafter.logic.timeCraftingEnd   = ghostCrafter.logic.timeCraftingBegin + duration + 0.1f;
-            ghostCrafter.logic.craftingTechType  = techType;
+            ghostCrafter.logic.timeCraftingEnd = ghostCrafter.logic.timeCraftingBegin + duration + 0.1f;
+            ghostCrafter.logic.craftingTechType = techType;
             ghostCrafter.logic.linkedIndex = -1;
             ghostCrafter.logic.numCrafted = TechData.GetCraftAmount(techType);
             ghostCrafter.logic.NotifyChanged(ghostCrafter.logic.craftingTechType);

@@ -1,8 +1,7 @@
 namespace Subnautica.Network.Models.Construction.Shared
 {
-    using System;
-
     using MessagePack;
+    using System;
 
     [Union(0, typeof(BaseAddFaceGhostComponent))]
     [Union(1, typeof(BaseAddLadderGhostComponent))]

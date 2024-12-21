@@ -44,9 +44,9 @@ namespace Subnautica.Network.Models.Metadata
                 return false;
             }
 
-            this.CraftingTechType  = techType;
+            this.CraftingTechType = techType;
             this.CraftingStartTime = startTime;
-            this.CraftingDuration  = duration;
+            this.CraftingDuration = duration;
             return true;
         }
 
@@ -57,9 +57,9 @@ namespace Subnautica.Network.Models.Metadata
                 return false;
             }
 
-            this.CraftingTechType  = TechType.None;
+            this.CraftingTechType = TechType.None;
             this.CraftingStartTime = 0f;
-            this.CraftingDuration  = 0f;
+            this.CraftingDuration = 0f;
             return true;
         }
     }

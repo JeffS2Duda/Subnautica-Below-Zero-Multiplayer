@@ -7,7 +7,6 @@ namespace Subnautica.Events.Patches.Events.Vehicle
     using Subnautica.Events.EventArgs;
 
     using System;
-    using System.Collections.Generic;
 
     using UnityEngine;
 
@@ -47,7 +46,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             {
                 Log.Error($"MapRoomCameraDocking.Prefix: {e}\n{e.StackTrace}");
             }
-            
+
             return true;
         }
 

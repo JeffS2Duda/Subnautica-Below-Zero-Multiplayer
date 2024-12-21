@@ -97,7 +97,7 @@ namespace Subnautica.Events.Patches.Events.Vehicle
             for (int i = 0; i < 3; i++)
             {
                 float max = 1f;
-                
+
                 var position = centerPosition;
 
                 position.x += UnityEngine.Random.Range(-max, max);

@@ -1,10 +1,9 @@
 ﻿namespace Subnautica.Client.Synchronizations.InitialSync
 {
-    using System.Collections;
-    using System.Collections.Generic;
-
     using Subnautica.API.Features;
     using Subnautica.Network.Models.WorldStreamer;
+    using System.Collections;
+    using System.Collections.Generic;
 
     public class SpawnPointProcessor
     {

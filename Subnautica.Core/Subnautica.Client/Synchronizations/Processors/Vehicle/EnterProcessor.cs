@@ -125,7 +125,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
             else if (packet.TechType == TechType.MapRoomCamera)
             {
                 var mapRoom = Network.Identifier.GetComponentByGameObject<global::BaseDeconstructable>(packet.CustomId)?.GetMapRoomFunctionality();
-                var camera  = Network.Identifier.GetComponentByGameObject<global::MapRoomCamera>(packet.UniqueId);
+                var camera = Network.Identifier.GetComponentByGameObject<global::MapRoomCamera>(packet.UniqueId);
                 if (mapRoom == null || camera == null)
                 {
                     return false;

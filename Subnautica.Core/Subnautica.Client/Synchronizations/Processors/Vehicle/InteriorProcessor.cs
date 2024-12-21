@@ -4,7 +4,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Vehicle
     using Subnautica.API.Features;
     using Subnautica.Client.Abstracts;
     using Subnautica.Client.Core;
-    using Subnautica.Client.MonoBehaviours;
     using Subnautica.Client.MonoBehaviours.Player;
     using Subnautica.Events.EventArgs;
     using Subnautica.Network.Models.Core;

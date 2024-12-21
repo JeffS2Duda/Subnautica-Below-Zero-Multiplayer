@@ -1,13 +1,11 @@
 namespace Subnautica.Network.Models.Items
 {
-    using System.Collections.Generic;
-
     using MessagePack;
-
     using Subnautica.Network.Core.Components;
     using Subnautica.Network.Models.Storage.World.Childrens;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
+    using System.Collections.Generic;
 
     [MessagePackObject]
     public class SpyPenguin : NetworkPlayerItemComponent

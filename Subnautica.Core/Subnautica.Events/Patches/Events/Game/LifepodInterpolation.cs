@@ -1,15 +1,11 @@
 ﻿namespace Subnautica.Events.Patches.Events.Game
 {
-    using System;
-    using System.Collections;
-
     using HarmonyLib;
-
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
-
+    using System;
+    using System.Collections;
     using UnityEngine;
-
     using UWE;
 
     [HarmonyPatch(typeof(global::SupplyDropManager), nameof(global::SupplyDropManager.PerformDropInterpolated))]
@@ -21,10 +17,10 @@
             {
                 yield return values;
             }
-            else 
+            else
             {
                 LifepodInterpolationEventArgs args = new LifepodInterpolationEventArgs(dropObject);
-                
+
                 try
                 {
                     Handlers.Game.OnLifepodInterpolation(args);
@@ -38,12 +34,12 @@
                 {
                     yield return values;
                 }
-                else 
+                else
                 {
                     if (args.IsCompleted)
                     {
                         var lifepodDrop = dropObject.GetComponent<LifepodDrop>();
-                        var dropZone    = dropObject.GetComponent<LifepodDrop>().GetDropZone();
+                        var dropZone = dropObject.GetComponent<LifepodDrop>().GetDropZone();
 
                         dropObject.transform.position = dropZone.destination;
                         dropObject.transform.rotation = args.Rotation;
@@ -54,12 +50,12 @@
                     else
                     {
                         var dropTransform = dropObject.transform;
-                        var supplyDrop    = dropObject.GetComponent<LifepodDrop>();
-                        var rigidBody     = dropObject.GetComponent<Rigidbody>();
-                        var component     = dropObject.GetComponent<WorldForces>();
-                        var dropZone      = supplyDrop.GetDropZone();
-                        var sourceData    = supplyDrop.GetDropData();
-                        var dropPath      = new SupplyDropPath();
+                        var supplyDrop = dropObject.GetComponent<LifepodDrop>();
+                        var rigidBody = dropObject.GetComponent<Rigidbody>();
+                        var component = dropObject.GetComponent<WorldForces>();
+                        var dropZone = supplyDrop.GetDropZone();
+                        var sourceData = supplyDrop.GetDropData();
+                        var dropPath = new SupplyDropPath();
 
                         dropTransform.rotation = args.Rotation;
 
@@ -73,8 +69,8 @@
                         UWE.Utils.SetIsKinematicAndUpdateInterpolation(rigidBody, true);
                         component.handleWind = false;
 
-                        var prevPos  = dropTransform.position;
-                        var pos      = dropTransform.position;
+                        var prevPos = dropTransform.position;
+                        var pos = dropTransform.position;
                         var leftTime = DayNightCycle.main.timePassedAsFloat - args.StartedTime;
 
                         while (leftTime < 0)

@@ -9,7 +9,7 @@
     {
         private static void Postfix()
         {
-            if(Network.IsMultiplayerActive)
+            if (Network.IsMultiplayerActive)
             {
                 try
                 {

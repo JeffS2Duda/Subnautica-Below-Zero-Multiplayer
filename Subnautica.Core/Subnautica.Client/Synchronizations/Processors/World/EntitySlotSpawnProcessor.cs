@@ -1,7 +1,5 @@
 namespace Subnautica.Client.Synchronizations.Processors.World
 {
-    using System;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -15,9 +13,8 @@ namespace Subnautica.Client.Synchronizations.Processors.World
     using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using Subnautica.Network.Structures;
-
+    using System;
     using UnityEngine;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class EntitySlotSpawnProcessor : NormalProcessor
@@ -36,7 +33,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             {
                 Network.DynamicEntity.Spawn(packet.Entity, this.OnBreakableEntitySpawned, Convert.ToInt32(packet.WorldPickupItem.Item.ItemId), ZeroPlayer.IsPlayerMine(packet.GetPacketOwnerId()));
             }
-            else 
+            else
             {
                 if (ZeroPlayer.IsPlayerMine(packet.GetPacketOwnerId()))
                 {
@@ -96,7 +93,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
             if (slot != null)
             {
                 ev.IsAllowed = true;
-                ev.ClassId   = slot.ClassId;
+                ev.ClassId = slot.ClassId;
 
                 if (slot.TechType.IsCreature() && slot.TechType.IsSynchronizedCreature())
                 {
@@ -107,7 +104,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
 
         public static void OnEntitySpawning(EntitySpawningEventArgs ev)
         {
-            if (ev.TechType.IsCreature() &&  ev.TechType.IsSynchronizedCreature())
+            if (ev.TechType.IsCreature() && ev.TechType.IsSynchronizedCreature())
             {
                 ev.IsAllowed = false;
             }
@@ -127,13 +124,13 @@ namespace Subnautica.Client.Synchronizations.Processors.World
                     Network.Identifier.SetIdentityId(ev.GameObject, ev.UniqueId);
                 }
             }
-            
+
             if (ev.SlotType == SlotType.WorldStreamer)
             {
                 if (ev.UniqueId.IsWorldStreamer())
                 {
                     var slotId = ev.UniqueId.WorldStreamerToSlotId();
-                    var slot   = Network.WorldStreamer.GetSlotById(slotId);
+                    var slot = Network.WorldStreamer.GetSlotById(slotId);
                     if (slot != null)
                     {
                         if (!ev.TechType.IsCreature())
@@ -181,8 +178,8 @@ namespace Subnautica.Client.Synchronizations.Processors.World
                 ServerModel.EntitySlotProcessArgs request = new ServerModel.EntitySlotProcessArgs()
                 {
                     WorldPickupItem = worldPickupItem,
-                    IsBreakable     = isBreakable,
-                    Position        = position,
+                    IsBreakable = isBreakable,
+                    Position = position,
                 };
 
                 NetworkClient.SendPacket(request);

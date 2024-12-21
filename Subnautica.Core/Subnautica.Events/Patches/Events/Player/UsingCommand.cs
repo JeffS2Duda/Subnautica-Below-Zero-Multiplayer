@@ -1,12 +1,10 @@
 ﻿namespace Subnautica.Events.Patches.Events.Player
 {
-    using System;
-
     using HarmonyLib;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
+    using System;
 
     [HarmonyPatch(typeof(global::DevConsole), nameof(global::DevConsole.Submit))]
     public static class UsingCommand

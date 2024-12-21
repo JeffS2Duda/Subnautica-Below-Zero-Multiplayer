@@ -1,17 +1,16 @@
 namespace Subnautica.Events.EventArgs
 {
-    using System;
-
     using Subnautica.API.Features;
+    using System;
 
     public class PlayerItemPickedUpEventArgs : EventArgs
     {
         public PlayerItemPickedUpEventArgs(string uniqueId, TechType techType, Pickupable pickupable, bool isAllowed = true)
         {
-            this.UniqueId   = uniqueId;
-            this.TechType   = techType;
+            this.UniqueId = uniqueId;
+            this.TechType = techType;
             this.Pickupable = pickupable;
-            this.IsAllowed  = isAllowed;
+            this.IsAllowed = isAllowed;
             this.IsStaticWorldEntity = Network.StaticEntity.IsStaticEntity(uniqueId);
         }
 

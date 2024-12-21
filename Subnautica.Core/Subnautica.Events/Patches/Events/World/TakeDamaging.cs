@@ -16,8 +16,8 @@ namespace Subnautica.Events.Patches.Events.World
         {
             if (Network.IsMultiplayerActive && !__instance.invincible && __instance.health > 0.0f)
             {
-                var techType     = TakeDamaging.GetTechType(__instance.gameObject);
-                var damageTaken  = GameModeManager.GetDamageTakenModifier(techType, __instance.GetComponent<BaseCell>() != null);
+                var techType = TakeDamaging.GetTechType(__instance.gameObject);
+                var damageTaken = GameModeManager.GetDamageTakenModifier(techType, __instance.GetComponent<BaseCell>() != null);
 
                 if (damageTaken != 0.0f)
                 {

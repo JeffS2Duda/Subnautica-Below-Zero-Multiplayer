@@ -1,8 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Fixes.World
 {
-    using Subnautica.API.Features;
-
     using HarmonyLib;
+    using Subnautica.API.Features;
 
     [HarmonyPatch(typeof(global::PrecursorTeleporterActivationTerminal), nameof(global::PrecursorTeleporterActivationTerminal.Start))]
     public class PrecursorTeleporterActivationTerminal

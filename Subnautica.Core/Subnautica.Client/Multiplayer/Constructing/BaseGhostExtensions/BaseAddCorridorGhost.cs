@@ -9,7 +9,7 @@
     {
         public static bool UpdateMultiplayerPlacement(this global::BaseAddCorridorGhost baseGhost, bool updatePlacement, out bool positionFound, out bool geometryChanged, BaseAddCorridorGhostComponent component)
         {
-            positionFound   = false;
+            positionFound = false;
             geometryChanged = false;
 
             if (component == null)
@@ -34,7 +34,7 @@
                     {
                         baseGhost.targetOffset = targetOffset;
                         baseGhost.RebuildGhostGeometry();
-                        
+
                         geometryChanged = true;
                     }
 
@@ -47,7 +47,7 @@
             }
             else
             {
-                baseGhost.targetBase   = null;
+                baseGhost.targetBase = null;
                 baseGhost.targetOffset = targetOffset;
             }
 
@@ -72,7 +72,7 @@
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    if (global::BaseAddCorridorGhost.Shapes[(int) baseGhost.corridor, i])
+                    if (global::BaseAddCorridorGhost.Shapes[(int)baseGhost.corridor, i])
                     {
                         num |= 1 << (int)Base.HorizontalDirections[(i + component.LastRotation) % 4];
                     }

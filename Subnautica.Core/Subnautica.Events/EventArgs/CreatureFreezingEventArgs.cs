@@ -6,10 +6,10 @@ namespace Subnautica.Events.EventArgs
     {
         public CreatureFreezingEventArgs(string uniqueId, float lifeTime, string brinicleId = null, bool isAllowed = true)
         {
-            this.UniqueId   = uniqueId;
-            this.LifeTime   = lifeTime;
+            this.UniqueId = uniqueId;
+            this.LifeTime = lifeTime;
             this.BrinicleId = brinicleId;
-            this.IsAllowed  = isAllowed;
+            this.IsAllowed = isAllowed;
         }
 
         public string UniqueId { get; set; }

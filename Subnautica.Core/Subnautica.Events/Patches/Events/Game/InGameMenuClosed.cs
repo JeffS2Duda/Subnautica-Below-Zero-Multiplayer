@@ -1,7 +1,7 @@
 ﻿namespace Subnautica.Events.Patches.Events.Game
 {
     using HarmonyLib;
-    
+
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
 

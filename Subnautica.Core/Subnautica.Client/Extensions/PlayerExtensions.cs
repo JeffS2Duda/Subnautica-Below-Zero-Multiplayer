@@ -14,12 +14,12 @@
         {
             if (player?.PlayerModel != null)
             {
-                player.EnsureComponent<PlayerLighting>().Player          = player;
-                player.EnsureComponent<PlayerAnimation>().Player         = player;
-                player.EnsureComponent<PlayerEquipment>().Player         = player;
-                player.EnsureComponent<PlayerHandItemManager>().Player   = player;
+                player.EnsureComponent<PlayerLighting>().Player = player;
+                player.EnsureComponent<PlayerAnimation>().Player = player;
+                player.EnsureComponent<PlayerEquipment>().Player = player;
+                player.EnsureComponent<PlayerHandItemManager>().Player = player;
                 player.EnsureComponent<PlayerVehicleManagement>().Player = player;
-                player.EnsureComponent<PlayerFootstepSounds>().Player    = player;
+                player.EnsureComponent<PlayerFootstepSounds>().Player = player;
 
                 var playerEquipment = player.GetComponent<PlayerEquipment>();
                 playerEquipment.ResetEquipments();
@@ -95,15 +95,15 @@
                 return false;
             }
 
-            player.VehicleId        = entity.Id;
-            player.VehicleType      = entity.TechType;
-            player.VehiclePosition  = position.ToVector3();
-            player.VehicleRotation  = rotation.ToQuaternion();
+            player.VehicleId = entity.Id;
+            player.VehicleType = entity.TechType;
+            player.VehiclePosition = position.ToVector3();
+            player.VehicleRotation = rotation.ToQuaternion();
             player.VehicleComponent = component;
 
             if (player.VehicleComponent != null)
             {
-                player.VehicleComponent.IsNew = true;    
+                player.VehicleComponent.IsNew = true;
             }
 
             if (entity.TechType != TechType.SpyPenguin && entity.TechType != TechType.MapRoomCamera)
@@ -129,7 +129,7 @@
 
         public static void ClearVehicle(this ZeroPlayer player)
         {
-            player.VehicleId   = 0;
+            player.VehicleId = 0;
             player.VehicleType = TechType.None;
         }
 
@@ -153,7 +153,7 @@
             cinematic = player.EnsureComponent<T>();
             cinematic.Initialize(player);
             return cinematic;
-        }     
+        }
 
         public static CinematicController[] GetCinematics(this ZeroPlayer player)
         {
@@ -161,7 +161,7 @@
             {
                 return new CinematicController[0];
             }
-            
+
             return player.PlayerModel.GetComponents<CinematicController>();
         }
     }

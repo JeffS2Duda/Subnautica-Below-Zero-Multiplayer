@@ -21,7 +21,7 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents
         public Beacon(bool isDeployedOnLand, string text)
         {
             this.IsDeployedOnLand = isDeployedOnLand;
-            this.Text             = text;
+            this.Text = text;
         }
 
         public void SetText(string text)

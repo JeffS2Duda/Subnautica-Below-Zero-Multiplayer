@@ -54,13 +54,13 @@ namespace Subnautica.Network.Models.WorldStreamer
         {
             return new ZeroSpawnPoint()
             {
-                IsActive        = this.IsActive, 
-                SlotId          = this.SlotId, 
-                BiomeType       = this.BiomeType, 
-                Density         = this.Density, 
-                SlotType        = this.SlotType,
-                LeashPosition   = this.LeashPosition,
-                LeashRotation   = this.LeashRotation,
+                IsActive = this.IsActive,
+                SlotId = this.SlotId,
+                BiomeType = this.BiomeType,
+                Density = this.Density,
+                SlotType = this.SlotType,
+                LeashPosition = this.LeashPosition,
+                LeashRotation = this.LeashRotation,
             };
         }
 
@@ -68,7 +68,7 @@ namespace Subnautica.Network.Models.WorldStreamer
         {
             this.IsActive = isActive;
             this.TechType = techType;
-            this.ClassId  = classId;
+            this.ClassId = classId;
         }
 
         public void SetHealth(float health)

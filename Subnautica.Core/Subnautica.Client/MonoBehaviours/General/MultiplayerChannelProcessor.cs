@@ -1,9 +1,5 @@
 ﻿namespace Subnautica.Client.MonoBehaviours.General
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
@@ -11,9 +7,10 @@
     using Subnautica.Client.MonoBehaviours.Creature;
     using Subnautica.Client.MonoBehaviours.Entity;
     using Subnautica.Network.Models.Core;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
-
     using UWE;
 
     public class MultiplayerChannelProcessor : MonoBehaviour

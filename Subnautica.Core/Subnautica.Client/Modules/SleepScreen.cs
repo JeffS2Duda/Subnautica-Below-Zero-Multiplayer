@@ -1,21 +1,16 @@
 ﻿namespace Subnautica.Client.Modules
 {
-    using System.Collections;
-
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
-    using Subnautica.Client.Extensions;
-
+    using System.Collections;
     using TMPro;
-
     using UnityEngine;
-
     using UWE;
 
     public class SleepScreen
-    {   
-        public static SleepScreen Instance 
-        { 
+    {
+        public static SleepScreen Instance
+        {
             get
             {
                 if (_Instance == null)
@@ -36,11 +31,11 @@
 
             this.HandReticleParent = HandReticle.main.transform.parent;
 
-            this.SleepingUserCountObject    = GameObject.Instantiate<GameObject>(ErrorMessage.main.prefabMessage);
-            this.SleepingTimeObject         = GameObject.Instantiate<GameObject>(ErrorMessage.main.prefabMessage);
+            this.SleepingUserCountObject = GameObject.Instantiate<GameObject>(ErrorMessage.main.prefabMessage);
+            this.SleepingTimeObject = GameObject.Instantiate<GameObject>(ErrorMessage.main.prefabMessage);
 
             this.SleepingUserCountComponent = SleepingUserCountObject.GetComponent<TextMeshProUGUI>();
-            this.SleepingTimeComponent      = SleepingTimeObject.GetComponent<TextMeshProUGUI>();
+            this.SleepingTimeComponent = SleepingTimeObject.GetComponent<TextMeshProUGUI>();
 
             this.SleepingUserCountComponent.rectTransform.SetParent(ErrorMessage.main.messageCanvas, false);
             this.SleepingTimeComponent.rectTransform.SetParent(ErrorMessage.main.messageCanvas, false);
@@ -52,7 +47,7 @@
             this.SleepingTimeComponent.fontSize = 26f;
 
             this.SleepingUserCountComponent.text = string.Empty;
-            this.SleepingTimeComponent.text      = string.Empty;
+            this.SleepingTimeComponent.text = string.Empty;
             return true;
         }
 
@@ -128,8 +123,8 @@
         {
             if (this.SleepingTimeComponent)
             {
-                var dayScalar  = DayNightCycle.main.GetDayScalar();
-                var hourTime   = dayScalar * 24f;
+                var dayScalar = DayNightCycle.main.GetDayScalar();
+                var hourTime = dayScalar * 24f;
                 var minuteTime = (float)((double)hourTime % 1.0 * 60.0);
 
                 string hourText, minuteText;
@@ -248,7 +243,7 @@
 
         private Transform HandReticleParent { get; set; }
 
-        private global::Bed.BedSide BedSide { get; set;}
+        private global::Bed.BedSide BedSide { get; set; }
 
         private static SleepScreen _Instance;
 

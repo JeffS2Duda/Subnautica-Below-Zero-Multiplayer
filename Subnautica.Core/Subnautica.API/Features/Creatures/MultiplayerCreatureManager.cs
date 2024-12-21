@@ -1,19 +1,15 @@
 ﻿namespace Subnautica.API.Features.Creatures
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Network.Models.Creatures;
-
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
-
     using UWE;
-
     using ServerModel = Subnautica.Network.Models.Server;
 
     public class MultiplayerCreatureManager
@@ -140,8 +136,8 @@
             this.Queue.Enqueue(new CreatureQueueItem()
             {
                 CreatureId = creatureId,
-                IsProcess  = true,
-                Action     = action,
+                IsProcess = true,
+                Action = action,
             });
 
             this.ConsumeQueue();
@@ -160,7 +156,7 @@
             this.Queue.Enqueue(new CreatureQueueItem()
             {
                 CreatureId = creatureId,
-                IsSpawn    = true,
+                IsSpawn = true,
             });
 
             this.ConsumeQueue();
@@ -179,7 +175,7 @@
             this.Queue.Enqueue(new CreatureQueueItem()
             {
                 CreatureId = creatureId,
-                IsDeath    = true,
+                IsDeath = true,
             });
 
             this.ConsumeQueue();
@@ -209,7 +205,7 @@
         {
             this.Queue.Enqueue(new CreatureQueueItem()
             {
-                CreatureId  = creatureId,
+                CreatureId = creatureId,
                 IsChangeOWS = true,
             });
 
@@ -326,7 +322,7 @@
                         }
 
                         creature.Disable();
-                    }                   
+                    }
                     else
                     {
                         try
@@ -368,7 +364,7 @@
 
             return null;
         }
-        
+
         private MultiplayerCreature AddCreatureToPool(TechType techType, GameObject gameObject)
         {
             if (!this.CreaturePools.ContainsKey(techType))

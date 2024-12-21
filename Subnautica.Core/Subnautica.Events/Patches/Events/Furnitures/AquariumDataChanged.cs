@@ -1,14 +1,12 @@
 namespace Subnautica.Events.Patches.Events.Furnitures
 {
+    using HarmonyLib;
+    using Subnautica.API.Features;
+    using Subnautica.Events.EventArgs;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using HarmonyLib;
-
-    using Subnautica.API.Features;
-    using Subnautica.Events.EventArgs;
-
     using UnityEngine;
 
     public static class AquariumDataChangedShared

@@ -1,32 +1,30 @@
 namespace Subnautica.Server.Abstracts
 {
-    using System.Collections.Generic;
-
     using Subnautica.API.Enums;
-    using Subnautica.Server.Processors;
     using Subnautica.Server.Abstracts.Processors;
-
-    using Building      = Subnautica.Server.Processors.Building;
-    using Encyclopedia  = Subnautica.Server.Processors.Encyclopedia;
-    using Inventory     = Subnautica.Server.Processors.Inventory;
-    using PDA           = Subnautica.Server.Processors.PDA;
-    using Player        = Subnautica.Server.Processors.Player;
-    using Startup       = Subnautica.Server.Processors.Startup;
-    using Technology    = Subnautica.Server.Processors.Technology;
-    using Metadata      = Subnautica.Server.Processors.Metadata;
-    using General       = Subnautica.Server.Processors.General;
+    using Subnautica.Server.Processors;
+    using System.Collections.Generic;
+    using Building = Subnautica.Server.Processors.Building;
+    using Creatures = Subnautica.Server.Processors.Creatures;
+    using Encyclopedia = Subnautica.Server.Processors.Encyclopedia;
+    using General = Subnautica.Server.Processors.General;
+    using Inventory = Subnautica.Server.Processors.Inventory;
+    using Items = Subnautica.Server.Processors.Items;
+    using Metadata = Subnautica.Server.Processors.Metadata;
+    using PDA = Subnautica.Server.Processors.PDA;
+    using Player = Subnautica.Server.Processors.Player;
+    using Startup = Subnautica.Server.Processors.Startup;
+    using Story = Subnautica.Server.Processors.Story;
+    using Technology = Subnautica.Server.Processors.Technology;
+    using Vehicle = Subnautica.Server.Processors.Vehicle;
+    using World = Subnautica.Server.Processors.World;
     using WorldEntities = Subnautica.Server.Processors.WorldEntities;
-    using Items         = Subnautica.Server.Processors.Items;
-    using Vehicle       = Subnautica.Server.Processors.Vehicle;
-    using Creatures     = Subnautica.Server.Processors.Creatures;
-    using Story         = Subnautica.Server.Processors.Story;
-    using World         = Subnautica.Server.Processors.World;
 
     public class ProcessorShared
     {
 
         public static Dictionary<ProcessType, NormalProcessor> Processors { get; set; } = new Dictionary<ProcessType, NormalProcessor>()
-        {            
+        {
             { ProcessType.None                          , new NoneProcessor() },
             { ProcessType.JoiningServer                 , new Player.JoiningProcessor() },
             { ProcessType.PlayerUpdated                 , new Player.UpdatedProcessor() },
@@ -80,8 +78,8 @@ namespace Subnautica.Server.Abstracts
             { ProcessType.WorldCreaturePosition         , new World.WorldCreaturePositionProcessor()},
             { ProcessType.EntitySlotProcess             , new World.EntitySlotSpawnProcessor()},
             { ProcessType.SpawnOnKill                   , new World.SpawnOnKillProcessor()},
-            { ProcessType.WeatherChanged                , new World.WeatherProcessor()},        
-            { ProcessType.PrecursorTeleporter           , new World.PrecursorTeleporterProcessor()},        
+            { ProcessType.WeatherChanged                , new World.WeatherProcessor()},
+            { ProcessType.PrecursorTeleporter           , new World.PrecursorTeleporterProcessor()},
             { ProcessType.WelderRepair                  , new World.WelderProcessor()},
             { ProcessType.Brinicle                      , new World.BrinicleProcessor()},
             { ProcessType.CosmeticItem                  , new World.CosmeticItemProcessor()},
@@ -93,7 +91,7 @@ namespace Subnautica.Server.Abstracts
             { ProcessType.VehicleUpdated                , new Vehicle.UpdatedProcessor()},
             { ProcessType.VehicleBattery                , new Vehicle.BatteryProcessor()},
             { ProcessType.ExosuitStorage                , new Vehicle.ExosuitStorageProcessor()},
-            { ProcessType.ExosuitDrill                  , new Vehicle.ExosuitDrillProcessor()},        
+            { ProcessType.ExosuitDrill                  , new Vehicle.ExosuitDrillProcessor()},
             { ProcessType.VehicleLight                  , new Vehicle.LightProcessor()},
             { ProcessType.VehicleInterior               , new Vehicle.InteriorProcessor()},
             { ProcessType.VehicleHealth                 , new Vehicle.HealthProcessor()},
@@ -103,11 +101,11 @@ namespace Subnautica.Server.Abstracts
             { ProcessType.SeaTruckFabricatorModule      , new Vehicle.SeaTruckFabricatorModuleProcessor()},
             { ProcessType.SeaTruckSleeperModule         , new Vehicle.SeaTruckSleeperModuleProcessor()},
             { ProcessType.SeaTruckDockingModule         , new Vehicle.SeaTruckDockingModuleProcessor()},
-            { ProcessType.ExosuitJump                   , new Vehicle.ExosuitJumpProcessor()},            
+            { ProcessType.ExosuitJump                   , new Vehicle.ExosuitJumpProcessor()},
             { ProcessType.CreatureHealth                , new Creatures.HealthProcessor()},
-            { ProcessType.CreatureAnimation             , new Creatures.AnimationChangedProcessor()},  
-            { ProcessType.CreatureFreeze                , new Creatures.FreezeProcessor()},   
-            { ProcessType.CreatureCallSound             , new Creatures.CallSoundProcessor()},    
+            { ProcessType.CreatureAnimation             , new Creatures.AnimationChangedProcessor()},
+            { ProcessType.CreatureFreeze                , new Creatures.FreezeProcessor()},
+            { ProcessType.CreatureCallSound             , new Creatures.CallSoundProcessor()},
             { ProcessType.CreatureAttackLastTarget      , new Creatures.AttackLastTargetProcessor()},
             { ProcessType.CreatureLeviathanMeleeAttack  , new Creatures.LeviathanMeleeAttackProcessor()},
             { ProcessType.CreatureMeleeAttack           , new Creatures.MeleeAttackProcessor()},
