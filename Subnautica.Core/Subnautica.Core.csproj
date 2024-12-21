@@ -89,10 +89,6 @@
 		<Reference Include="UnityEngine.UnityWebRequestModule">
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="System.Memory">
-			<Private>false</Private>
-			<HintPath>..\app\dependencies\System.Memory.dll</HintPath>
-		</Reference>
     </ItemGroup>
 
 	<Import Project="ReferencePaths.props.user" />
