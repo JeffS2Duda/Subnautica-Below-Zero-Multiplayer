@@ -33,8 +33,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
             ZeroGame.RunInBackgroundChange(true);
             ErrorMessage.AddMessage(ZeroLanguage.Get("GAME_SERVER_PLAYER_CONNECTED"));
 
-            Discord.UpdateRichPresence(ZeroLanguage.Get("DISCORD_JOINING_SERVER"), ZeroLanguage.GetServerPlayerCount(), true);
-
             CoroutineHost.StartCoroutine(uGUI_MainMenu.main.StartNewGame(packet.GameMode));
             return true;
         }

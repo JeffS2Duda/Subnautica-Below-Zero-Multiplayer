@@ -35,7 +35,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
             ZeroPlayer.Destroy(packet.UniqueId);
 
-            Discord.UpdateRichPresence(null, ZeroLanguage.GetServerPlayerCount());
             return true;
         }
     }

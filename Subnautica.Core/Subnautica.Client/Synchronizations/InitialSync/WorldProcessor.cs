@@ -113,8 +113,6 @@
 
             QualitySetting.DisableFastMode();
 
-            Discord.UpdateRichPresence(null, ZeroLanguage.GetServerPlayerCount());
-
             WaitingScreen.RemoveScreen(ProcessType.WorldLoaded);
         }
 

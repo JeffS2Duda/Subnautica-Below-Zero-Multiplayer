@@ -38,10 +38,6 @@
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="CustomMarshalers" />
-		<Reference Include="DiscordRPC">
-			<Private>false</Private>
-			<HintPath>..\app\dependencies\DiscordRPC.dll</HintPath>
-		</Reference>
 		<Reference Include="FMODUnity">
 			<Private>false</Private>
 		</Reference>

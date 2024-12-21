@@ -29,7 +29,6 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                 player.InitBehaviours();
             }
 
-            Discord.UpdateRichPresence(null, ZeroLanguage.GetServerPlayerCount());
             return true;
         }
     }

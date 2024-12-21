@@ -25,8 +25,7 @@
         public void OnPluginEnabled()
         {
             InviteCodeModule.OnPluginEnabled();
-            MainProcess.OnPluginEnabled();
-            DiscordRichPresence.OnPluginEnabled();
+            MainProcess.OnPluginEnabled();;
         }
 
         public void OnInGameMenuOpened(InGameMenuOpenedEventArgs ev)
@@ -48,7 +47,6 @@
         public void OnSceneLoaded(SceneLoadedEventArgs ev)
         {
             InviteCodeModule.OnSceneLoaded(ev);
-            DiscordRichPresence.OnSceneLoaded(ev);
             MainProcess.OnSceneLoaded(ev);
             MultiplayerMainMenu.OnSceneLoaded(ev);
         }
