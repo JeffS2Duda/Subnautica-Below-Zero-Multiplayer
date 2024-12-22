@@ -21,7 +21,7 @@
 
                 if (_AppData == null)
                 {
-                    _AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    _AppData = Path.Combine(Directory.GetCurrentDirectory(), "Multiplayer");
                 }
 
                 return _AppData;
@@ -41,55 +41,9 @@
             _CustomAppData = customAppDataPath;
         }
 
-        public static string GetLauncherApiFileUrl()
-        {
-            return string.Format("{0}{1}", Settings.LauncherApiUrl, Settings.LauncherApiFile);
-        }
-
-        public static string GetLauncherLanguageUrl(string language)
-        {
-            return string.Format("{0}languages/{1}.json", Settings.GithubApiUrl, language);
-        }
-
-        public static string GetCreditsPageUrl()
-        {
-            return Settings.CreditsApiUrl;
-        }
-
-        public static string GetLauncherRemoteUrl(string version)
-        {
-            return string.Format("{0}Launchers/{1}.exe", Settings.LauncherApiUrl, version);
-        }
-
-        public static string GetLauncherRootPath()
-        {
-            return string.Format("{0}{1}{2}{3}", AppData, DS, Settings.RootFolder, DS);
-        }
-
         public static string GetLauncherSubnauticaPath()
         {
-            return string.Format("{0}{1}{2}", GetLauncherRootPath(), Settings.LauncherGameFolder, DS);
-        }
-
-        public static string GetLauncherApplicationPath(string subPath = null, bool addDS = true)
-        {
-            var applicationPath = GetLauncherSubnauticaPath();
-            if (Settings.ApplicationFolder.Length <= 0)
-            {
-                return applicationPath;
-            }
-
-            if (subPath == null)
-            {
-                return string.Format("{0}{1}{2}", applicationPath, Settings.ApplicationFolder, DS);
-            }
-
-            if (addDS)
-            {
-                return string.Format("{0}{1}{2}{3}{4}", applicationPath, Settings.ApplicationFolder, DS, subPath, DS);
-            }
-
-            return string.Format("{0}{1}{2}{3}", applicationPath, Settings.ApplicationFolder, DS, subPath);
+            return string.Format("{0}{1}", AppData, DS);
         }
 
         public static string GetLauncherGamePath(string subPath = null, bool addDS = true)
@@ -131,11 +85,6 @@
             }
 
             return String.Format("{0}{1}{2}{3}", GetLauncherGamePath("Core"), foldername, DS, filename);
-        }
-
-        public static string GetNetbirdPath(string filename = null)
-        {
-            return GetLauncherGameCorePath("NetBird", filename);
         }
 
         public static string GetGameDependenciesPath(string filename = null)
@@ -249,56 +198,6 @@
         public static string GetGameServersPath()
         {
             return GetLauncherGamePath("servers.json", false);
-        }
-
-        public static string GetLauncherLogPath()
-        {
-            return string.Format("{0}", GetLauncherApplicationPath("Logs"));
-        }
-
-        public static string GetLauncherLanguagePath()
-        {
-            return string.Format("{0}", GetLauncherApplicationPath("Languages"));
-        }
-
-        public static string GetLauncherLanguageFile(string language)
-        {
-            return string.Format("{0}{1}.json", GetLauncherApplicationPath("Languages"), language);
-        }
-
-        public static string GetSliderImagePath(string image = "")
-        {
-            return string.Format("{0}{1}", GetLauncherApplicationPath(Settings.ApplicationImageFolder), image);
-        }
-
-        public static string GetLauncherApiFilePath()
-        {
-            return string.Format("{0}{1}", GetLauncherApplicationPath(), Settings.LauncherApiFile);
-        }
-
-        public static string GetLauncherCreditsApiFilePath()
-        {
-            return string.Format("{0}{1}", GetLauncherApplicationPath(), Settings.LauncherCreditsApiFile);
-        }
-
-        public static string GetLauncherTempPath()
-        {
-            return string.Format("{0}", GetLauncherApplicationPath(Settings.ApplicationTempFolder));
-        }
-
-        public static string GetLauncherTempFile()
-        {
-            return string.Format("{0}Temp.exe", GetLauncherApplicationPath(Settings.ApplicationTempFolder));
-        }
-
-        public static string GetLauncherNewVersionFile()
-        {
-            return string.Format("{0}NewVersion.exe", GetLauncherApplicationPath(Settings.ApplicationTempFolder));
-        }
-
-        public static string GetNowLauncherFile()
-        {
-            return System.Reflection.Assembly.GetEntryAssembly().Location;
         }
     }
 }

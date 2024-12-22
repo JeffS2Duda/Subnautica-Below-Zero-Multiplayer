@@ -35,72 +35,12 @@
 
         public static VersionType CheckCreditsPage()
         {
-            string content = null;
-
-            try
-            {
-                content = Request.GetContent(Paths.GetCreditsPageUrl());
-                if (String.IsNullOrEmpty(content))
-                {
-                    return VersionType.EmptyContent;
-                }
-
-                var response = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiCreditsDataFormat>(content);
-                if (response == null)
-                {
-                    return VersionType.EmptyContent;
-                }
-
-                File.WriteAllText(Paths.GetLauncherCreditsApiFilePath(), content);
-
-                Settings.CreditsApi = response;
-
-                return VersionType.None;
-            }
-            catch (Exception e)
-            {
-                Log.Error($"CheckCreditsPage Exception: {e} {e.StackTrace}");
-                return VersionType.ExceptionError;
-            }
+            return VersionType.EmptyContent;
         }
 
         public static VersionType CheckLauncherVersion(bool save = false)
         {
-            string content = null;
-
-            try
-            {
-                content = Request.GetContent(Paths.GetLauncherApiFileUrl());
-                if (String.IsNullOrEmpty(content))
-                {
-                    return VersionType.EmptyContent;
-                }
-
-                var response = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiDataFormat>(content);
-                if (!response.IsStatus)
-                {
-                    return VersionType.SerializeError;
-                }
-
-                if (save)
-                {
-                    File.WriteAllText(Paths.GetLauncherApiFilePath(), content);
-                    Settings.Api = Tools.GetApiData();
-                }
-
-                if (Tools.CheckVersion(Tools.GetLauncherVersion(false, true), response.Version))
-                {
-                    return VersionType.NewVersionFound;
-                }
-
-                return VersionType.NewVersionNotFound;
-            }
-            catch (Exception e)
-            {
-                Log.Error("CTX: " + content);
-                Log.Error($"CheckLauncherVersion Exception: {e} {e.StackTrace}");
-                return VersionType.ExceptionError;
-            }
+            return VersionType.NewVersionNotFound;
         }
 
         public static string GetLoggedInName()
@@ -257,16 +197,6 @@
         public static double CalculateThousandToPercent(int thousand)
         {
             return ((double)thousand / 10.0);
-        }
-
-        public static ApiDataFormat GetApiData()
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ApiDataFormat>(File.ReadAllText(Paths.GetLauncherApiFilePath()));
-        }
-
-        public static ApiCreditsDataFormat GetCreditsApiData()
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ApiCreditsDataFormat>(File.ReadAllText(Paths.GetLauncherCreditsApiFilePath()));
         }
 
         public static void OpenFolder(string folderPath)

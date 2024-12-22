@@ -19,41 +19,17 @@ public class Loader
 	private static bool IsRunningFileWatcher { get; set; }
 	public static void Run()
 	{
-		Loader.LoadDependencies();
-		Loader.LoadPlugins();
-		Loader.LoadDevTools();
-		Loader.LoadFileWatcher();
+        LoadCore();
+        LoadPlugins();
+		LoadDevTools();
+		LoadFileWatcher();
 	}
-
-
-	private static void LoadDependencies()
-	{
-        try
-        {
-            string dependenciesPath = Paths.GetGameDependenciesPath();
-            string[] files = Directory.GetFiles(dependenciesPath, "*.dll");
-            Log.Info(string.Format("Loading dependencies: {0}, Total: {1}", dependenciesPath, files.Count()));
-            foreach (string str in files)
-            {
-                string dependency = str;
-                if (!Loader.SkippedDependencies.Any(dependency.Contains))
-                {
-                    Assembly assembly = Loader.LoadAssembly(dependency);
-                    if (!(assembly == null))
-                        Log.Info(string.Format("Loaded dependency: v{0}, Name: {1}", assembly.GetName().Version.ToString(3), assembly.GetName().Name));
-                }
-            }
-            Log.Info("All dependencies are loaded!");
-        }
-        catch (Exception ex)
-        {
-            Log.Error(string.Format("There was a problem installing dependencies: {0}", ex));
-        }
-    }
 
 	public static void LoadPlugins()
 	{
         string gamePluginsPath = Paths.GetGamePluginsPath();
+        if (!Directory.Exists(gamePluginsPath))
+            Directory.CreateDirectory(gamePluginsPath);
         string[] files = Directory.GetFiles(gamePluginsPath, "*.dll");
         Log.Info(string.Format("Loading plugins: {0}, Total: {1}", gamePluginsPath, files.Count()));
         Dictionary<SubnauticaPluginPriority, List<SubnauticaPlugin>> source = new Dictionary<SubnauticaPluginPriority, List<SubnauticaPlugin>>();
@@ -65,13 +41,13 @@ public class Loader
                 Assembly assembly = Loader.LoadAssembly(filePath);
                 if (!(assembly == null))
                 {
-                    SubnauticaPlugin plugin = Loader.GetPlugin(assembly);
-                    if (plugin != null)
+                    var plugins = GetPlugins(assembly);
+                    foreach (var plugin in plugins)
                     {
                         if (!source.ContainsKey(plugin.Priority))
                             source.Add(plugin.Priority, new List<SubnauticaPlugin>());
                         source[plugin.Priority].Add(plugin);
-                        Log.Info(string.Format("Loaded plugin: v{0}, Name: {1}", assembly.GetName().Version.ToString(3), assembly.GetName().Name));
+                        Log.Info(string.Format("Loaded plugin: v{0}, Name: {1} Path: {2}", assembly.GetName().Version.ToString(3), assembly.GetName().Name, assembly.Location));
                     }
                 }
             }
@@ -150,64 +126,127 @@ public class Loader
 
 	private static IEnumerator LoadDevToolsAsync(string filePath)
 	{
-            yield return new WaitForSeconds(0.1f);
-            Loader.FileWatcher.EnableRaisingEvents = false;
-            string[] strArray = Directory.GetFiles(Paths.GetGamePluginsPath(), "*.dll");
-            for (int index = 0; index < strArray.Length; ++index)
+        yield return new WaitForSeconds(0.1f);
+        Loader.FileWatcher.EnableRaisingEvents = false;
+        string[] strArray = Directory.GetFiles(Paths.GetGamePluginsPath(), "*.dll");
+        for (int index = 0; index < strArray.Length; ++index)
+        {
+            string item = strArray[index];
+            if (item.Contains("Subnautica.DevTools"))
             {
-                string item = strArray[index];
-                if (item.Contains("Subnautica.DevTools"))
-                {
-                    if (item != filePath)
-                        File.Delete(item);
-                    item = null;
-                }
+                if (item != filePath)
+                    File.Delete(item);
+                item = null;
             }
-            strArray = null;
-            Log.Info("Reloading Dev Tools: " + filePath);
-            try
-            {
-                Loader.LoadDevTools();
-            }
-            catch (Exception ex)
-            {
-                Log.Error(string.Format("ReloadPlugins err: {0}", ex));
-            }
-            Log.Info("Reloaded Dev Tools...");
-            Loader.IsRunningFileWatcher = false;
-            Loader.FileWatcher.EnableRaisingEvents = true;
+        }
+        strArray = null;
+        Log.Info("Reloading Dev Tools: " + filePath);
+        try
+        {
+            Loader.LoadDevTools();
+        }
+        catch (Exception ex)
+        {
+            Log.Error(string.Format("ReloadPlugins err: {0}", ex));
+        }
+        Log.Info("Reloaded Dev Tools...");
+        Loader.IsRunningFileWatcher = false;
+        Loader.FileWatcher.EnableRaisingEvents = true;
+    }
+
+    public static void LoadCore()
+    {
+        var core = AppDomain.CurrentDomain.GetAssemblies().Where(x => x.FullName.Contains("Subnautica.Core")).FirstOrDefault();
+
+        if (core == null)
+        {
+            Log.Error("Subnautica.Core Loading context is null!");
         }
 
-        public static SubnauticaPlugin GetPlugin(Assembly assembly)
+        List<SubnauticaPlugin> plugins = [];
+        try
+        {
+            foreach (Type type in core.GetTypes())
+            {
+                if (type.IsPublic && type.BaseType.Name.Contains("SubnauticaPlugin"))
+                    plugins.Add((SubnauticaPlugin)Activator.CreateInstance(type));
+            }
+        }
+        catch (ReflectionTypeLoadException ex)
+        {
+            foreach (var item in ex.LoaderExceptions)
+            {
+                if (item is TargetInvocationException targetInvocationException)
+                {
+                    Log.Error(targetInvocationException);
+                }
+                Log.Error(item.Message);
+            }
+            throw;
+        }
+
+        foreach (var subnauticaPlugin in plugins.OrderBy(q => q.Priority))
         {
             try
             {
-                foreach (Type type in assembly.GetTypes())
-                {
-                    if (type.IsPublic && type.BaseType.Name.Contains("SubnauticaPlugin"))
-                        return (SubnauticaPlugin)Activator.CreateInstance(type);
-                }
+                subnauticaPlugin.OnEnabled();
             }
             catch (Exception ex)
             {
-                Log.Error(string.Format("There was a problem loading the plugin: {0}, Exception: {1}", (object)assembly.GetName().Name, (object)ex));
+                Log.Error(string.Format("An error occurred while activating the plugin: {0}, Exception: {1}", (object)subnauticaPlugin.Name, (object)ex));
             }
-            return null;
         }
+    }
 
-        public static Assembly LoadAssembly(string assemblyPath)
-	    {
-		    try
-		    {
-			    return Assembly.Load(File.ReadAllBytes(assemblyPath));
-		    }
-		    catch (Exception ex)
-		    {
-			    Log.Error(string.Format("There was a problem loading the assembly: {0}, Exception: {1}", assemblyPath, ex));
-		    }
-		    return null;
-	    }
 
-	    private static List<string> SkippedDependencies = new List<string> { "DiscordRPCNativeNamedPipe", "Subnautica.Core" };
-	    private static List<string> SkippedPlugins = new List<string> { "Subnautica.DevTools" };
+    public static SubnauticaPlugin GetPlugin(Assembly assembly)
+    {
+        try
+        {
+            foreach (Type type in assembly.GetTypes())
+            {
+                if (type.IsPublic && type.BaseType.Name.Contains("SubnauticaPlugin"))
+                    return (SubnauticaPlugin)Activator.CreateInstance(type);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Error(string.Format("There was a problem loading the plugin: {0}, Exception: {1}", (object)assembly.GetName().Name, (object)ex));
+        }
+        return null;
+    }
+
+    public static List<SubnauticaPlugin> GetPlugins(Assembly assembly)
+    {
+        try
+        {
+            List<SubnauticaPlugin> plugins = [];
+            foreach (Type type in assembly.GetTypes())
+            {
+                if (type.IsPublic && type.BaseType.Name.Contains("SubnauticaPlugin"))
+                    plugins.Add((SubnauticaPlugin)Activator.CreateInstance(type));
+            }
+            return plugins;
+        }
+        catch (Exception ex)
+        {
+            Log.Error(string.Format("There was a problem loading the plugin: {0}, Exception: {1}", (object)assembly.GetName().Name, (object)ex));
+        }
+        return [];
+    }
+
+    public static Assembly LoadAssembly(string assemblyPath)
+	{
+		try
+		{
+			return Assembly.Load(File.ReadAllBytes(assemblyPath));
+		}
+		catch (Exception ex)
+		{
+			Log.Error(string.Format("There was a problem loading the assembly: {0}, Exception: {1}", assemblyPath, ex));
+		}
+		return null;
+	}
+
+	private static List<string> SkippedPlugins = new List<string> { "Subnautica.DevTools" };
 }

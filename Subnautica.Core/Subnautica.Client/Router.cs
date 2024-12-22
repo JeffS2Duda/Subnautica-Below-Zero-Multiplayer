@@ -23,7 +23,7 @@
         public void OnPluginEnabled()
         {
             InviteCodeModule.OnPluginEnabled();
-            MainProcess.OnPluginEnabled(); ;
+            MainProcess.OnPluginEnabled();
         }
 
         public void OnInGameMenuOpened(InGameMenuOpenedEventArgs ev)

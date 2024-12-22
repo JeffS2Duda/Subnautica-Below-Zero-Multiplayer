@@ -8,6 +8,11 @@
     {
         public ModConfigFormatItem ConnectionTimeout { get; set; } = new ModConfigFormatItem(120, "Connection timeout period. (Type: Number/Second, Default: 120, Min: 60, Max: 300)");
 
+        public ModConfigFormatItem LobbyURL { get; set; } = new("http://192.168.3.50/", "URL/IP to other users to connect to a lobby.");
+        public ModConfigFormatItem MyIp { get; set; } = new("192.168.3.50", "Ip address to share to users.");
+        public ModConfigFormatItem HostOnPort { get; set; } = new(7777, "Port to host the game on.");
+        public ModConfigFormatItem MaxPlayer { get; set; } = new(8, "How many player should max join.");
+
         public void Initialize()
         {
             var filePath = Paths.GetLauncherGameCorePath("Config.json");

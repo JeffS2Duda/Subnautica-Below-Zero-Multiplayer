@@ -136,7 +136,7 @@ namespace Subnautica.Network.Models.Client
         public byte PlayerId { get; set; }
 
         [Key(42)]
-        public byte MaxPlayerCount { get; set; }
+        public int MaxPlayerCount { get; set; }
 
         [Key(43)]
         public Dictionary<string, string> SeaTruckConnections { get; set; }

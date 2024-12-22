@@ -97,11 +97,6 @@
 
         public static string GetErrorFilePath()
         {
-            if (Settings.IsAppLog)
-            {
-                return String.Format("{0}{1}.log", Paths.GetLauncherLogPath(), DateTime.Now.ToString("yyyy-MM-dd"));
-            }
-
             return String.Format("{0}{1}.log", Paths.GetGameLogsPath(), DateTime.Now.ToString("yyyy-MM-dd"));
         }
     }

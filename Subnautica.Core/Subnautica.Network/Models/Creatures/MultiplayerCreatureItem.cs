@@ -159,7 +159,7 @@ namespace Subnautica.Network.Models.Creatures
 
         public bool IsFrozen()
         {
-            return this.GetActionType() is CreatureFreezeArgs;
+            return GetActionType() is ProcessType.CreatureFreeze;
         }
 
         public bool IsNotMine(byte ownershipId = 0)

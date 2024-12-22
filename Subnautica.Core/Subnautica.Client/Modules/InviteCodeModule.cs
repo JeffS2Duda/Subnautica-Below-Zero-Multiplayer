@@ -14,7 +14,7 @@
         {
             Application.wantsToQuit += InviteCodeModule.OnWantsToQuit;
 
-            ConnectToNetwork();
+            //ConnectToNetwork();
         }
 
         public static void OnSceneLoaded(SceneLoadedEventArgs ev)

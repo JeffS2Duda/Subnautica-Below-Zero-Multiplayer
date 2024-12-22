@@ -23,7 +23,7 @@ namespace Subnautica.Server.Core
 
         public int Port { get; set; }
 
-        public byte MaxPlayer { get; set; }
+        public int MaxPlayer { get; set; }
 
         public bool IsConnecting { get; set; }
 
@@ -53,7 +53,7 @@ namespace Subnautica.Server.Core
 
         public Logices Logices { get; set; }
 
-        public Server(string serverId, GameModePresetId gameModeId, int port, byte maxPlayer, string ownerId, string version)
+        public Server(string serverId, GameModePresetId gameModeId, int port, int maxPlayer, string ownerId, string version)
         {
             Instance = this;
 

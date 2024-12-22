@@ -200,11 +200,10 @@ namespace Subnautica.Events.Patches.Fixes.Vehicle
             {
                 codes.RemoveRange(index, 18);
                 codes.InsertRange(index, new CodeInstruction[] {
-                     new CodeInstruction(OpCodes.Ldarg_0),
-                     new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(VehicleKill), nameof(VehicleKill.SeaTruckSegment_OnKill_Destruction), new Type[] { typeof(global::SeaTruckSegment) }))
+                    new CodeInstruction(OpCodes.Ldarg_0),
+                    new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(VehicleKill), nameof(VehicleKill.SeaTruckSegment_OnKill_Destruction), new Type[] { typeof(global::SeaTruckSegment) }))
                  });
             }
-
             return codes.AsEnumerable();
         }
 

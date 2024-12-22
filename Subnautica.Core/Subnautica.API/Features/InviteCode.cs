@@ -21,7 +21,7 @@
 
         private string CurrentPeerId { get; set; } = null;
 
-        private string ApiUrl { get; set; } = "https://repo.subnauticamultiplayer.com/api/";
+        public string ApiUrl { get; set; } = (string)Settings.ModConfig.LobbyURL.Value;
 
         private StopwatchItem ConnectionTiming { get; set; } = new StopwatchItem(20000f);
 

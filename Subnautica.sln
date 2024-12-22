@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subnautica.Loader", "Subnau
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subnautica.NetworkDebugger", "Subnautica.NetworkDebugger\Subnautica.NetworkDebugger.csproj", "{F6A99362-FDF0-41A3-928B-1AAC5337787E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobbyServer", "LobbyServer\LobbyServer.csproj", "{0E0E834C-3C88-43D9-8981-5C8DA9FDFBBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F6A99362-FDF0-41A3-928B-1AAC5337787E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6A99362-FDF0-41A3-928B-1AAC5337787E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6A99362-FDF0-41A3-928B-1AAC5337787E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E0E834C-3C88-43D9-8981-5C8DA9FDFBBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E0E834C-3C88-43D9-8981-5C8DA9FDFBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E0E834C-3C88-43D9-8981-5C8DA9FDFBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E0E834C-3C88-43D9-8981-5C8DA9FDFBBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
