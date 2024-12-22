@@ -10,8 +10,6 @@
 
         public const string AuthorName = "BOT Benson";
 
-        public const string RootFolder = "bz_multiplayer";
-
         public const string ApplicationFolder = "App";
 
         public const string GameFolder = "Game";
@@ -38,7 +36,7 @@
 
         public static string GetWatermarkText()
         {
-            return string.Format("<size=18>Beta {0}/size>", Tools.GetLauncherVersion(true));
+            return string.Format("<size=18>Beta {0}</size>", Tools.GetLauncherVersion(true));
         }
     }
 }

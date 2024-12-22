@@ -13,7 +13,7 @@ internal class JoinServer
     [HTTP("GET", "/joinserver?{args}")]
     public static bool OnJoin(HttpRequest request, ServerStruct serverStruct)
     {
-        var joinCode = serverStruct.Parameters["joincode"];
+        var joinCode = serverStruct.Parameters["joinCode"];
         //var peerId = serverStruct.Parameters["peerid"];
 
         var server = UserManager.GetServerToJoin(joinCode);

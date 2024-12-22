@@ -36,7 +36,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
         private static bool IsDeveloperModeOn()
         {
-            return Tools.GetLoggedInName().Contains("BOT Benson") || Tools.GetLoggedInName().Contains("ismail0234");
+            return true;
         }
 
         private static List<string> AllowedCommands { get; set; } = new List<string>()

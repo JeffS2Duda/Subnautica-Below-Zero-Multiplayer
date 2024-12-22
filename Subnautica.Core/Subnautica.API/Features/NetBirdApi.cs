@@ -76,13 +76,15 @@ namespace Subnautica.API.Features
 
         public bool Connect()
         {
-            Log.Info("Connecting to server!");
+            Log.Info("Connecting to Lobby Server!");
             Log.Info($"Connecting to: {LobbyURL}");
             string id = Tools.GetLoggedId();
             Log.Info($"Logging with ID: {id}");
+            Log.Info($"Logging with IP: {(string)Settings.ModConfig.MyIp.Value}");
+            Log.Info($"Logging with Port: {Settings.ModConfig.HostOnPort.GetInt()}");
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new(LobbyURL);
-            var post = httpClient.PostAsync("connect", new StringContent(id + " | " + (string)Settings.ModConfig.MyIp.Value + " | " + (int)Settings.ModConfig.HostOnPort.Value)).Result;
+            var post = httpClient.PostAsync("connect", new StringContent(id + " | " + (string)Settings.ModConfig.MyIp.Value + " | " + Settings.ModConfig.HostOnPort.GetInt())).Result;
             Id = post.Content.ReadAsStringAsync().Result;
             return this.IsReady();
         }
@@ -141,6 +143,7 @@ namespace Subnautica.API.Features
 
         public bool IsHostConnected(string hostIp)
         {
+            Log.Info($"IsHostConnected: {hostIp}");
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(LobbyURL);
             var post = httpClient.GetAsync($"/checkhost?hostIp={hostIp}").Result;

@@ -12,6 +12,7 @@
         public ModConfigFormatItem MyIp { get; set; } = new("192.168.3.50", "Ip address to share to users.");
         public ModConfigFormatItem HostOnPort { get; set; } = new(7777, "Port to host the game on.");
         public ModConfigFormatItem MaxPlayer { get; set; } = new(8, "How many player should max join.");
+        public ModConfigFormatItem DefaultJoinPort { get; set; } = new(7777, "Port to host the game on.");
 
         public void Initialize()
         {
@@ -28,6 +29,11 @@
                 {
                     this.ConnectionTimeout.SetValue(config.ConnectionTimeout.GetInt());
                 }
+                LobbyURL.SetValue(config.LobbyURL.Value);
+                MyIp.SetValue(config.MyIp.Value);
+                HostOnPort.SetValue(config.HostOnPort.Value);
+                MaxPlayer.SetValue(config.MaxPlayer.Value);
+                DefaultJoinPort.SetValue(config.DefaultJoinPort.Value);
             }
             catch (Exception ex)
             {

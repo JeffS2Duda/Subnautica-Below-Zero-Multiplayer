@@ -102,7 +102,7 @@ namespace Subnautica.Client.Modules
                 return;
             }
 
-            if (serverInviteCode.Length == 6)
+            if (!serverInviteCode.Contains("."))
             {
                 UserInterfaceElements.ClearInputText("GAME_INVITE_CODE");
 
@@ -110,11 +110,19 @@ namespace Subnautica.Client.Modules
                 {
                     NetworkClient.Connect(response.ServerIp, response.ServerPort);
                 }));
+                return;
             }
-            else
+            Log.Info("DefaultJoinPort parsing start");
+            int port = Settings.ModConfig.DefaultJoinPort.GetInt();
+            string ip = serverInviteCode;
+            if (serverInviteCode.Contains(":"))
             {
-                NetworkClient.Connect(serverInviteCode, 666, false);
+                var splitted = serverInviteCode.Split(':');
+                ip = splitted[0];
+                port = int.Parse(splitted[1]);
             }
+
+            NetworkClient.Connect(ip, port, false);
         }
 
         public static void OnHostCreateServerButtonClick()

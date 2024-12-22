@@ -34,7 +34,7 @@
             {
                 return;
             }
-
+            Log.Info($"Connecting on {ipAddress} {port} ");
             NetworkClient.IpAddress = ipAddress;
             NetworkClient.PortNumber = port;
 
