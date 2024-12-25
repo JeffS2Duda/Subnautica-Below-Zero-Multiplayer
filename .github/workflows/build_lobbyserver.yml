@@ -1,0 +1,33 @@
+name: Build LobbyServer
+
+on:
+  push:
+    paths-ignore:
+      - '**/*.md'
+  pull_request:
+    paths-ignore:
+      - '**/*.md'
+  workflow_dispatch:
+    # allows manual trigger
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Publish
+      run: dotnet publish LobbyServer/LobbyServer.csproj /p:PublishProfile="RegularPublish"
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: LobbyServer
+        path: LobbyServer/bin/Publish
+        if-no-files-found: error

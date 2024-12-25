@@ -13,6 +13,13 @@ internal class CreateServer
     [HTTP("GET", "/createserver?{args}")]
     public static bool OnCreate(HttpRequest request, ServerStruct serverStruct)
     {
+        if (!serverStruct.Parameters.ContainsKey("peerId"))
+        {
+            Console.WriteLine("CreateServer with no peerId!");
+            serverStruct.Response.MakeErrorResponse();
+            serverStruct.SendResponse();
+            return true;
+        }
         var peerId = serverStruct.Parameters["peerId"];
         var server = UserManager.Host(peerId);
         Console.WriteLine(server.Ip + " " + server.Port + " " + server.AccessToken + " " + server.Code + " ");

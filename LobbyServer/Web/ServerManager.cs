@@ -13,16 +13,17 @@ internal class ServerManager
 
     public static void Init(string[] args)
     {
-#if false
-        DebugPrinter.PrintToConsole = true;
-        DebugPrinter.EnableLogs = true;
-#endif
         string ip = "0.0.0.0";
         int port = 80;
         if (args.Length > 0)
             ip = args[0];
         if (args.Length > 1)
             port = int.Parse(args[1]);
+        if (args.Length > 2 && args[2].Contains("debug"))
+        {
+            DebugPrinter.PrintToConsole = true;
+            DebugPrinter.EnableLogs = true;
+        }
 
         Server = new(ip, port);
         Server.OverrideAttributes(Assembly.GetExecutingAssembly());

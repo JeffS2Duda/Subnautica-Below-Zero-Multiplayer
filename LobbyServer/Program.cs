@@ -9,6 +9,7 @@ internal class Program
         Console.WriteLine("Starting lobby Server!");
         try
         {
+            Console.WriteLine("Pressing enter will result on quit!");
             ServerManager.Init(args);
             Console.ReadLine();
             ServerManager.Shutdown();
