@@ -512,26 +512,6 @@
             return null;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public void ResetEmotes()
         {
             this.EmoteIndex = 0.0f;
@@ -1095,6 +1075,8 @@
         public Vector3 CameraForward { get; set; }
 
         public bool IsPrecursorArm { get; set; }
+
+        public bool IsInWaterPark { get; set; }
 
         public bool IsVehicleDocking { get; set; }
 

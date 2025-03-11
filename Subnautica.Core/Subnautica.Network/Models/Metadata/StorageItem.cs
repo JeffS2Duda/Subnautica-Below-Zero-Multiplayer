@@ -44,7 +44,7 @@ namespace Subnautica.Network.Models.Metadata
             {
                 ItemId = pickupable.gameObject.GetIdentityId(),
                 Item = resetItem ? null : Serializer.SerializeGameObject(pickupable),
-                TechType = pickupable.GetTechType(),
+                TechType = StorageItem.GetTechType(pickupable.GetTechType()),
                 Size = GetItemSize(pickupable.GetTechType()),
             };
         }
@@ -54,9 +54,24 @@ namespace Subnautica.Network.Models.Metadata
             return new StorageItem()
             {
                 ItemId = itemId,
-                TechType = techType,
+                TechType = StorageItem.GetTechType(techType),
                 Size = GetItemSize(techType),
             };
+        }
+
+        private static TechType GetTechType(TechType techType)
+        {
+            bool flag = techType.IsCreatureEgg();
+            TechType techType2;
+            if (flag)
+            {
+                techType2 = techType.ToCreatureEgg();
+            }
+            else
+            {
+                techType2 = techType;
+            }
+            return techType2;
         }
 
         public static StorageItem Create(TechType techType)

@@ -39,9 +39,9 @@
             creature.GameObject.EnsureComponent<CrashFishMonobehaviour>().SetMultiplayerCreature(creature);
         }
 
-        public override bool OnKill(GameObject gameObject)
+        public override bool OnKill(MultiplayerCreature oldCreature, MultiplayerCreature creature)
         {
-            if (gameObject.TryGetComponent<global::Crash>(out var crash))
+            if (creature.GameObject.TryGetComponent<global::Crash>(out var crash))
             {
                 SafeAnimator.SetBool(crash.GetAnimator(), "explode", true);
 
@@ -53,7 +53,7 @@
                 DamageSystem.RadiusDamage(crash.maxDamage, crash.transform.position, crash.detonateRadius, DamageType.Explosive, crash.gameObject);
             }
 
-            gameObject.GetComponent<LiveMixin>().Kill();
+            creature.GameObject.GetComponent<LiveMixin>().Kill();
             return false;
         }
     }

@@ -23,14 +23,14 @@
 
             if (Network.Session.Current.PlayerUsedTools?.Count > 0)
             {
-                global::Player.main.usedTools.AddRange(Network.Session.Current.PlayerUsedTools);
+                ZeroPlayer.CurrentPlayer.Main.usedTools.AddRange(Network.Session.Current.PlayerUsedTools);
             }
 
-            global::Player.main.oxygenMgr.Restore();
-            global::Player.main.timeLastSleep = Network.Session.Current.PlayerTimeLastSleep;
-            global::Player.main.liveMixin.health = Network.Session.Current.PlayerHealth;
-            global::Player.main.GetComponent<Survival>().food = Network.Session.Current.PlayerFood;
-            global::Player.main.GetComponent<Survival>().water = Network.Session.Current.PlayerWater;
+            ZeroPlayer.CurrentPlayer.Main.oxygenMgr.Restore();
+            ZeroPlayer.CurrentPlayer.Main.timeLastSleep = Network.Session.Current.PlayerTimeLastSleep;
+            ZeroPlayer.CurrentPlayer.Main.liveMixin.health = Network.Session.Current.PlayerHealth;
+            ZeroPlayer.CurrentPlayer.Main.GetComponent<Survival>().food = Network.Session.Current.PlayerFood;
+            ZeroPlayer.CurrentPlayer.Main.GetComponent<Survival>().water = Network.Session.Current.PlayerWater;
 
             if (Network.Session.Current.InteractList != null)
             {
@@ -54,12 +54,12 @@
         {
             if (Network.Session.Current.PlayerPosition != null)
             {
-                global::Player.main.transform.position = Network.Session.Current.PlayerPosition.ToVector3();
-                global::Player.main.lastPosition = Network.Session.Current.PlayerPosition.ToVector3();
-                global::Player.main.transform.rotation = Network.Session.Current.PlayerRotation.ToQuaternion();
+                ZeroPlayer.CurrentPlayer.Main.transform.position = Network.Session.Current.PlayerPosition.ToVector3();
+                ZeroPlayer.CurrentPlayer.Main.lastPosition = Network.Session.Current.PlayerPosition.ToVector3();
+                ZeroPlayer.CurrentPlayer.Main.transform.rotation = Network.Session.Current.PlayerRotation.ToQuaternion();
             }
 
-            if (Vector3.zero == global::Player.main.transform.position)
+            if (Vector3.zero == ZeroPlayer.CurrentPlayer.Main.transform.position)
             {
                 var gameData = Player.main.GetGameData(SaveLoadManager.main.storyVersion);
                 if (Network.Session.Current.GameMode == GameModePresetId.Creative)
@@ -83,8 +83,8 @@
                     var subroot = Network.Identifier.GetComponentByGameObject<SubRoot>(Network.Session.Current.PlayerSubRootId, true);
                     if (subroot != null)
                     {
-                        global::Player.main.SetCurrentSub(subroot);
-                        global::Player.main.playerController.SetEnabled(true);
+                        ZeroPlayer.CurrentPlayer.Main.SetCurrentSub(subroot);
+                        ZeroPlayer.CurrentPlayer.Main.playerController.SetEnabled(true);
                     }
                 }
             }
@@ -102,13 +102,13 @@
                         var respawnPoint = interior.GetRespawnPoint();
                         if (respawnPoint)
                         {
-                            global::Player.main.SetPosition(respawnPoint.GetSpawnPosition());
+                            ZeroPlayer.CurrentPlayer.Main.SetPosition(respawnPoint.GetSpawnPosition());
 
                             if (interior.GetGameObject().TryGetComponent<global::SeaTruckSegment>(out var seaTruckSegment))
                             {
                                 if (seaTruckSegment == seaTruckSegment.GetFirstSegment())
                                 {
-                                    seaTruckSegment.Enter(global::Player.main);
+                                    seaTruckSegment.Enter(ZeroPlayer.CurrentPlayer.Main);
                                 }
                                 else
                                 {
@@ -117,23 +117,41 @@
                             }
                             else
                             {
-                                global::Player.main.EnterInterior(interior);
+                                ZeroPlayer.CurrentPlayer.Main.EnterInterior(interior);
                             }
                         }
                         else
                         {
-                            global::Player.main.EnterInterior(interior);
+                            ZeroPlayer.CurrentPlayer.Main.EnterInterior(interior);
                         }
                     }
                 }
 
                 if (newSeaTruckSegment)
                 {
-                    newSeaTruckSegment.GetFirstSegment().Enter(global::Player.main);
+                    newSeaTruckSegment.GetFirstSegment().Enter(ZeroPlayer.CurrentPlayer.Main);
                 }
             }
-
-            PlayerProcessor.FixMoonpoolExpansionPlayerPosition(global::Player.main, Network.Session.Current.PlayerSubRootId);
+            if (ZeroPlayer.CurrentPlayer.Main.currentSub)
+            {
+                foreach (WaterPark componentsInChild in ZeroPlayer.CurrentPlayer.Main.currentSub.GetComponentsInChildren<WaterPark>(true))
+                {
+                    if (componentsInChild is LargeRoomWaterPark largeRoomWaterPark)
+                    {
+                        if (largeRoomWaterPark.IsPointInside(ZeroPlayer.CurrentPlayer.Main.transform.position))
+                        {
+                            ZeroPlayer.CurrentPlayer.Main.currentWaterPark = componentsInChild;
+                            break;
+                        }
+                    }
+                    else if (componentsInChild.IsPointInside(ZeroPlayer.CurrentPlayer.Main.transform.position))
+                    {
+                        ZeroPlayer.CurrentPlayer.Main.currentWaterPark = componentsInChild;
+                        break;
+                    }
+                }
+            }
+            PlayerProcessor.FixMoonpoolExpansionPlayerPosition(ZeroPlayer.CurrentPlayer.Main, Network.Session.Current.PlayerSubRootId);
         }
 
         public static void OnPlayerRespawnPointInitialized()
@@ -142,13 +160,13 @@
             {
                 foreach (var supplyDrop in Network.Session.Current.SupplyDrops.Where(q => q.ZoneId != -1))
                 {
-                    global::Player.main.fallbackRespawnInteriorUID = supplyDrop.UniqueId;
+                    ZeroPlayer.CurrentPlayer.Main.fallbackRespawnInteriorUID = supplyDrop.UniqueId;
                 }
             }
 
             if (Network.Session.Current.PlayerRespawnPointId.IsNotNull() && Network.Identifier.GetGameObject(Network.Session.Current.PlayerRespawnPointId, true) != null)
             {
-                global::Player.main.currentRespawnInteriorUID = Network.Session.Current.PlayerRespawnPointId;
+                ZeroPlayer.CurrentPlayer.Main.currentRespawnInteriorUID = Network.Session.Current.PlayerRespawnPointId;
             }
         }
 

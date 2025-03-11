@@ -11,7 +11,7 @@ namespace Subnautica.Events.Patches.Events.World
     using UnityEngine;
     using UWE;
 
-    [HarmonyPatch(typeof(global::ProtobufSerializer), nameof(global::ProtobufSerializer.DeserializeObjectsAsync), new Type[] { typeof(Stream), typeof(UniqueIdentifier), typeof(bool), typeof(bool), typeof(Transform), typeof(bool), typeof(int), typeof(IOut<GameObject>) })]
+    [HarmonyPatch(typeof(global::ProtobufSerializer), nameof(global::ProtobufSerializer.DeserializeObjectsAsync), [typeof(Stream), typeof(UniqueIdentifier), typeof(bool), typeof(bool), typeof(Transform), typeof(bool), typeof(int), typeof(IOut<GameObject>)])]
     public static class EntitySpawningProtobuf
     {
         private static IEnumerator Postfix(IEnumerator values, global::ProtobufSerializer __instance, Stream stream, UniqueIdentifier rootUid, bool forceInactiveRoot, bool forceParent, Transform parent, bool allowSpawnRestrictions, int verbose, IOut<GameObject> result)

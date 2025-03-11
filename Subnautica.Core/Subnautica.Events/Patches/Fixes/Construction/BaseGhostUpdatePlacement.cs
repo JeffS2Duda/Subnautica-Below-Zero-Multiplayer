@@ -14,7 +14,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -24,7 +24,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -34,7 +34,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -44,7 +44,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -54,7 +54,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -64,7 +64,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -74,7 +74,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -84,8 +84,8 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "TargetOffset", __instance.targetOffset);
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "TargetOffset", __instance.targetOffset);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -95,8 +95,8 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "TargetOffset", __instance.targetOffset);
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "TargetOffset", __instance.targetOffset);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -106,8 +106,8 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "TargetOffset", __instance.targetOffset);
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "TargetOffset", __instance.targetOffset);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
 
@@ -117,7 +117,7 @@
         {
             if (Network.IsMultiplayerActive)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "UpdatePlacementResult", __result);
             }
         }
     }

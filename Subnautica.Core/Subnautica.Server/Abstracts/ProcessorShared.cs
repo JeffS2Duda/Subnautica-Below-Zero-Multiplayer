@@ -1,5 +1,6 @@
 namespace Subnautica.Server.Abstracts
 {
+    using System.Linq;
     using Subnautica.API.Enums;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Processors;
@@ -217,5 +218,16 @@ namespace Subnautica.Server.Abstracts
             { TechType.MapRoomCamera      , new Items.MapRoomCameraProcessor() },
             { TechType.PipeSurfaceFloater , new Items.PipeSurfaceFloaterProcessor() },
         };
+
+        public static List<BaseProcessor> GetAllProcessors()
+        {
+            List<BaseProcessor> list = new List<BaseProcessor>();
+            list.Concat(Processors.Values.ToList());
+            list.Concat(MetadataProcessors.Values.ToList());
+            list.Concat(WorldCreatureProcessors.Values.ToList());
+            list.Concat(WorldEntityProcessors.Values.ToList());
+            list.Concat(PlayerItemProcessors.Values.ToList());
+            return list;
+        }
     }
 }

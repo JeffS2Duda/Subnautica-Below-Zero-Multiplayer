@@ -33,6 +33,7 @@ namespace Subnautica.Server.Processors.WorldEntities
             }
             else
             {
+                Server.Instance.Logices.BaseWaterPark.OnDestroyableDynamicEntityDestroyed(component.UniqueId);
                 if (Server.Instance.Storages.World.RemoveDynamicEntity(component.UniqueId))
                 {
                     profile.SendPacketToAllClient(packet);

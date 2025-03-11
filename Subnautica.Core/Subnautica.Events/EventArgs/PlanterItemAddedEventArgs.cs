@@ -4,12 +4,13 @@ namespace Subnautica.Events.EventArgs
 
     public class PlanterItemAddedEventArgs : EventArgs
     {
-        public PlanterItemAddedEventArgs(string uniqueId, string itemId, Plantable plantable, int slotId)
+        public PlanterItemAddedEventArgs(string uniqueId, string itemId, Plantable plantable, int slotId, bool isLeft)
         {
             this.UniqueId = uniqueId;
             this.ItemId = itemId;
             this.Plantable = plantable;
             this.SlotId = slotId;
+            this.IsLeft = isLeft;
         }
 
         public string UniqueId { get; set; }
@@ -19,5 +20,7 @@ namespace Subnautica.Events.EventArgs
         public Plantable Plantable { get; set; }
 
         public int SlotId { get; set; }
+
+        public bool IsLeft { get; set; }
     }
 }

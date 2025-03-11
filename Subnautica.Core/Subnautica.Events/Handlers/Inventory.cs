@@ -33,5 +33,10 @@ namespace Subnautica.Events.Handlers
         public static event SubnauticaPluginEventHandler<QuickSlotActiveChangedEventArgs> QuickSlotActiveChanged;
 
         public static void OnQuickSlotActiveChanged(QuickSlotActiveChangedEventArgs ev) => QuickSlotActiveChanged.CustomInvoke(ev);
+
+        public static event SubnauticaPluginEventHandler<InventoryLoseItemsEventArgs> InventoryLoseItems;
+
+        public static void OnInventoryLoseItems(InventoryLoseItemsEventArgs ev) => InventoryLoseItems.CustomInvoke(ev);
+
     }
 }

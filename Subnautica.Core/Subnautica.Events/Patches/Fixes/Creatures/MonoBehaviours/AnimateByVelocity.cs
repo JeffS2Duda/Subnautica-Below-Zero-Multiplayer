@@ -2,6 +2,7 @@
 {
     using HarmonyLib;
     using Subnautica.API.Features;
+    using Subnautica.API.Features.Creatures.MonoBehaviours.Shared;
     using UnityEngine;
 
     [HarmonyPatch]
@@ -9,7 +10,7 @@
     {
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Creature), nameof(global::Creature.OnEnable))]
-        public static void OnEnable(global::Creature __instance)
+        public static void Creature_OnEnable(global::Creature __instance)
         {
             if (Network.IsMultiplayerActive)
             {
@@ -19,7 +20,7 @@
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Creature), nameof(global::Creature.OnDisable))]
-        public static void OnDisable(global::Creature __instance)
+        public static void Creature_OnDisable(global::Creature __instance)
         {
             if (Network.IsMultiplayerActive)
             {
@@ -29,7 +30,7 @@
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::Creature), nameof(global::Creature.OnDestroy))]
-        public static void OnDestroy(global::Creature __instance)
+        public static void Creature_OnDestroy(global::Creature __instance)
         {
             if (Network.IsMultiplayerActive)
             {
@@ -39,7 +40,7 @@
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::VentGardenSmall), nameof(global::VentGardenSmall.OnEnable))]
-        public static void OnEnable(global::VentGardenSmall __instance)
+        public static void VentGardenSmall_OnEnable(global::VentGardenSmall __instance)
         {
             if (Network.IsMultiplayerActive)
             {
@@ -49,11 +50,21 @@
 
         [HarmonyPrefix]
         [HarmonyPatch(typeof(global::VentGardenSmall), nameof(global::VentGardenSmall.OnDisable))]
-        public static void OnDisable(global::VentGardenSmall __instance)
+        public static void VentGardenSmall_OnDisable(global::VentGardenSmall __instance)
         {
             if (Network.IsMultiplayerActive)
             {
                 AnimateByVelocity.SetRootRigidbody(__instance.gameObject, false);
+            }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(MultiplayerWaterParkCreature), "OnAddToWP")]
+        private static void MultiplayerWaterParkCreature_OnAddToWP(MultiplayerWaterParkCreature __instance)
+        {
+            if (Network.IsMultiplayerActive)
+            {
+                AnimateByVelocity.SetRootRigidbody(__instance.gameObject, __instance.MultiplayerCreature.CreatureItem.IsMine(0));
             }
         }
 

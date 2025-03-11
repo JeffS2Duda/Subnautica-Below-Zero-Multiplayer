@@ -40,7 +40,7 @@
 
         public static CellManager CellManager { get; private set; } = new CellManager();
 
-        public static Temporary Temporary { get; private set; } = new Temporary();
+        public static DataStorage DataStorage { get; private set; } = new();
 
         public static EntityDatabase EntityDatabase { get; private set; } = new EntityDatabase();
 
@@ -65,7 +65,7 @@
                 Network.Storage.Dispose();
                 Network.HandTarget.Dispose();
                 Network.CellManager.Dispose();
-                Network.Temporary.Dispose();
+                Network.DataStorage.Dispose();
                 Network.EntityDatabase.Dispose();
                 Network.Creatures.Dispose();
                 Network.InviteCode.Dispose();

@@ -14,7 +14,7 @@
         {
             if (Network.IsMultiplayerActive && __result)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceStart", srcStart);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceStart", srcStart);
             }
         }
 
@@ -24,8 +24,8 @@
         {
             if (Network.IsMultiplayerActive && __result)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceStart", faceStart);
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceEnd", faceEnd);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceStart", faceStart);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceEnd", faceEnd);
             }
         }
 
@@ -35,7 +35,7 @@
         {
             if (Network.IsMultiplayerActive && __result)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceStart", fromCell);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceStart", fromCell);
             }
         }
 
@@ -45,8 +45,8 @@
         {
             if (Network.IsMultiplayerActive && __result)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceCell", cell);
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "Direction", partitionDirection);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceCell", cell);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "Direction", partitionDirection);
             }
         }
 
@@ -56,8 +56,8 @@
         {
             if (Network.IsMultiplayerActive && __result)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceCell", cell);
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "Direction", doorFaceDirection);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceCell", cell);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "Direction", doorFaceDirection);
             }
         }
 
@@ -67,7 +67,7 @@
         {
             if (Network.IsMultiplayerActive && __result)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceStart", face);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceStart", face);
             }
         }
 
@@ -77,7 +77,7 @@
         {
             if (Network.IsMultiplayerActive && __result)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceCell", cell);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceCell", cell);
             }
         }
 
@@ -87,8 +87,8 @@
         {
             if (Network.IsMultiplayerActive && __result)
             {
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "FaceCell", cell);
-                Network.Temporary.SetProperty(__instance.gameObject.GetIdentityId(), "Direction", Base.Direction.Below);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "FaceCell", cell);
+                Network.DataStorage.SetProperty(__instance.gameObject.GetIdentityId(), "Direction", Base.Direction.Below);
             }
         }
     }

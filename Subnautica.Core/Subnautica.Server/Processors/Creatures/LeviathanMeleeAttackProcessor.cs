@@ -15,6 +15,11 @@ namespace Subnautica.Server.Processors.Creatures
     {
         private Dictionary<string, double> VehicleLastAttackTimes = new Dictionary<string, double>();
 
+        public override void OnStart()
+        {
+            this.VehicleLastAttackTimes.Clear();
+        }
+
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.CreatureLeviathanMeleeAttackArgs>();

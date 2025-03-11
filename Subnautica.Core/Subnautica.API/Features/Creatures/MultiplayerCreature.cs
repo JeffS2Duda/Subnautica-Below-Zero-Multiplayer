@@ -50,6 +50,8 @@
             typeof(global::LeviathanMeleeAttack),
             typeof(global::CreatureFollowPlayer),
             typeof(global::CreatureAggressionManager),
+            typeof(WaterParkCreature),
+            typeof(RangedAttackLastTarget)
         };
 
         private HashSet<MonoBehaviour> Components = new HashSet<MonoBehaviour>();
@@ -99,6 +101,7 @@
                 this.ToggleComponents(this.CreatureItem.IsMine());
                 this.ToggleInterpolate(this.CreatureItem.IsMine());
                 this.StartFirstAction(this.CreatureItem.IsMine());
+                this.GameObject.SendMessage("OnSpawned");
             }
         }
 
@@ -253,9 +256,10 @@
 
                 creature.GameObject.transform.position = this.GameObject.transform.position;
                 creature.GameObject.transform.rotation = this.GameObject.transform.rotation;
+                creature.GameObject.transform.localScale = this.GameObject.transform.localScale;
                 creature.GameObject.SetActive(true);
 
-                if (this.CreatureItem.Data.OnKill(creature.GameObject))
+                if (this.CreatureItem.Data.OnKill(this, creature))
                 {
                     ZeroLiveMixin.TakeDamage(liveMixin, 0f);
 

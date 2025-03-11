@@ -35,6 +35,8 @@ namespace Subnautica.Server.Logic
 
         private Dictionary<ushort, StopwatchItem> StayAtLeashQueue { get; set; } = new Dictionary<ushort, StopwatchItem>();
 
+        private Queue<ushort> UnregisterQueue { get; set; } = new Queue<ushort>();
+
         private ushort LastCreatureId { get; set; } = 1;
 
         private bool IsLoading { get; set; } = false;
@@ -84,6 +86,7 @@ namespace Subnautica.Server.Logic
                 this.UpdateClosestCreatures();
                 this.UpdateCreatureOwnerships();
                 this.SendOwnershipPacketToAllClient();
+                this.UnRegisterCreatures();
             }
         }
 
@@ -422,6 +425,14 @@ namespace Subnautica.Server.Logic
             return true;
         }
 
+        private void UnRegisterCreatures()
+        {
+            while (this.UnregisterQueue.Count > 0)
+            {
+                this.UnRegisterCreature(this.UnregisterQueue.Dequeue());
+            }
+        }
+        
         private void SendOwnershipPacketToAllClient()
         {
             foreach (var item in this.PlayerOwnershipRequests)
@@ -466,6 +477,10 @@ namespace Subnautica.Server.Logic
                     if (creature.Data.IsRespawnable)
                     {
                         this.RespawnQueue[creature.Id] = new StopwatchItem(creature.Data.GetRespawnDuration() * 1000f);
+                    }
+                    else
+                    {
+                        this.UnregisterQueue.Enqueue(creature.Id);
                     }
                 }
                 else if (creature.IsBusy())

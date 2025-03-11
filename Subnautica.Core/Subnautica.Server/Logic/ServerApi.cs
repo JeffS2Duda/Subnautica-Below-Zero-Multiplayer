@@ -46,7 +46,6 @@ namespace Subnautica.Server.Logic
             if (flag)
             {
                 this.IsCompleted = true;
-                Log.Info("IsCompletedTrue");
                 Core.Server.Instance.Dispose(false);
                 ZeroGame.QuitToMainMenu();
             }

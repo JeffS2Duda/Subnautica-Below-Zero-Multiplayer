@@ -237,6 +237,7 @@ namespace Subnautica.Server.Core
 
         public Logic.Furnitures.FiltrationMachine FiltrationMachine { get; set; } = new Logic.Furnitures.FiltrationMachine();
 
+        public Logic.Furnitures.BaseWaterPark BaseWaterPark { get; set; } = new();
 
         public Logic.Furnitures.SpotLight SpotLight { get; set; } = new Logic.Furnitures.SpotLight();
 

@@ -3,6 +3,7 @@
     using HarmonyLib;
 
     using Subnautica.API.Features;
+    using UnityEngine;
 
     [HarmonyPatch]
     public class Pickupable
@@ -49,7 +50,17 @@
                 Interact.ShowUseDenyMessage();
                 return false;
             }
-
+            if (__instance.pickupCinematic && __instance.pickupCinematic.enabled)
+            {
+                __instance.quickSlot = Inventory.main.quickSlots.activeSlot;
+                if (!Inventory.main.ReturnHeld())
+                    return false;
+                __instance.pickupCinematic.StartCinematicMode(global::Player.main);
+            }
+            else if (!Inventory.Get().Pickup(__instance))
+                ErrorMessage.AddWarning(Language.main.Get("InventoryFull"));
+            else
+                global::Player.main.PlayGrab();
             return true;
         }
     }

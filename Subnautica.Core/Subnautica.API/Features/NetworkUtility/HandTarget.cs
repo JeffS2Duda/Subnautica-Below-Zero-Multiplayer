@@ -5,9 +5,9 @@
 
     public class HandTarget
     {
-        public Dictionary<string, float> Targets = new Dictionary<string, float>();
+        public Dictionary<string, double> Targets = [];
 
-        private float Delay { get; set; } = 0.5f;
+        private double Delay { get; set; } = 0.5f;
 
         public bool IsBlocked(string uniqueId)
         {

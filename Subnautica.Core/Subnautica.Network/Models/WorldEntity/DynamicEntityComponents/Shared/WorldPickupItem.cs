@@ -33,6 +33,11 @@ namespace Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared
             this.CustomUniqueId = Network.Identifier.GenerateUniqueId();
         }
 
+        public void SetCustomId(string customId)
+        {
+            this.CustomUniqueId = customId;
+        }
+
         public string GetItemId()
         {
             if (this.CustomUniqueId.IsNull())

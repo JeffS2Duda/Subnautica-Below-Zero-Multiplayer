@@ -1,4 +1,4 @@
-﻿namespace Subnautica.API.Features.Creatures.Datas
+﻿namespace Subnautica.API.Features.Creatures.Datas.Eggs
 {
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
@@ -33,8 +33,7 @@
         public override void OnRegisterMonoBehaviours(MultiplayerCreature creature)
         {
             base.OnRegisterMonoBehaviours(creature);
-
-            creature.GameObject.EnsureComponent<MultiplayerWaterParkCreature>().SetMultiplayerCreature(creature);
+            Radical.EnsureComponent<MultiplayerWaterParkCreature>(creature.GameObject).SetMultiplayerCreature(creature);
         }
     }
 }

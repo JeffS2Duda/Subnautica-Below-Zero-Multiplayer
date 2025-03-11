@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net472</TargetFramework>
+	  <PlatformTarget>x64</PlatformTarget>
+	  <OutputType>Library</OutputType>
+
+	  <AssemblyName>Subnautica.Nexus</AssemblyName>
+	  <RootNamespace>Subnautica.Nexus</RootNamespace>
+	  <Platforms>AnyCPU</Platforms>
+	  <IsPackable>false</IsPackable>
+	  <DebugType>none</DebugType>
+	  <LangVersion>12</LangVersion>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Subnautica.Core\Subnautica.Core.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp_public">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Assembly-CSharp-firstpass-publicized">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.AssetBundleModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.InputLegacyModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.JSONSerializeModule">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+	
+	<Import Project="ReferencePaths.props.user" />
+	<PropertyGroup>
+		<AssemblySearchPaths>$(AssemblySearchPaths);$(ReferencePath);$(ManagedPath);</AssemblySearchPaths>
+	</PropertyGroup>
+</Project>

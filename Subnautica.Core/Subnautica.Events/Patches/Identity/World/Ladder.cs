@@ -1,10 +1,10 @@
 namespace Subnautica.Events.Patches.Identity.World
 {
     using HarmonyLib;
-
+    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.Patches.Events.Items;
-
+    using System.Collections;
     using UnityEngine;
 
     [HarmonyPatch(typeof(global::CinematicModeTriggerBase), nameof(global::CinematicModeTriggerBase.OnEnable))]
@@ -14,8 +14,15 @@ namespace Subnautica.Events.Patches.Identity.World
         {
             if (Network.IsMultiplayerActive && __instance.TryGetComponent<global::CinematicModeTrigger>(out var cinematic) && Climbing.ClimbTexts.Contains(cinematic.handText))
             {
-                Network.Identifier.SetIdentityId(__instance.gameObject, GetLadderUniqueId(cinematic));
+                __instance.StartCoroutine(Ladder.AutoAssignUniqueId(__instance, Ladder.GetLadderUniqueId(cinematic)));
             }
+        }
+
+        private static IEnumerator AutoAssignUniqueId(global::CinematicModeTriggerBase __instance, string uniqueId)
+        {
+            yield return new WaitForSecondsRealtime(0.25f);
+            if (__instance)
+                ((Component)__instance).gameObject.SetIdentityId(uniqueId);
         }
 
         public static string GetLadderUniqueId(global::CinematicModeTrigger cinematic)

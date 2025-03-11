@@ -6,6 +6,10 @@ namespace Subnautica.Server.Abstracts
 
     public abstract class BaseProcessor
     {
+        public virtual void OnStart()
+        {
+        }
+
         public bool SendEmptyPacketErrorLog(NetworkPacket networkPacket)
         {
             Log.Error(string.Format("Packet Is Null, Type: {0}, Channel Type: {1}", networkPacket.Type, networkPacket.ChannelType));

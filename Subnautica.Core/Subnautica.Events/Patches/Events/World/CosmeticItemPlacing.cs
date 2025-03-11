@@ -14,7 +14,7 @@ namespace Subnautica.Events.Patches.Events.Items
             if (Network.IsMultiplayerActive && __instance.validPosition && __instance.ghostModel && __instance.TryGetComponent<Pickupable>(out var pickupable))
             {
                 var techType = pickupable.GetTechType();
-                if (techType.IsPoster() || techType.IsPictureFrame() || techType == TechType.FredShavingKit)
+                if (techType.IsCosmeticItem())
                 {
                     try
                     {

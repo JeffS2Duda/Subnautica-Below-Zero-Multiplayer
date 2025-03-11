@@ -20,5 +20,10 @@ namespace Subnautica.Server.Abstracts.Processors
                 return false;
             }
         }
+
+        public bool RedirectProcessor(AuthorizationProfile profile, MetadataComponentArgs networkPacket, ConstructionItem construction, TechType processType = TechType.None)
+        {
+            return ExecuteProcessor(profile, networkPacket, construction, processType);
+        }
     }
 }

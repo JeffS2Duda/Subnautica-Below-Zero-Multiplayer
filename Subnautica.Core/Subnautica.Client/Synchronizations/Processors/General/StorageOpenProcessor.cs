@@ -48,66 +48,81 @@
         public bool OpenStorage(string uniqueId, TechType techType, bool isMine = false)
         {
             using (EventBlocker.Create(TechType.BaseBioReactor))
-            using (EventBlocker.Create(TechType.BaseNuclearReactor))
             {
-                if (techType == TechType.BaseBioReactor)
+                using (EventBlocker.Create(TechType.BaseNuclearReactor))
                 {
-                    if (isMine)
+                    using (EventBlocker.Create(TechType.BaseWaterPark))
                     {
-                        Network.Identifier.GetComponentByGameObject<global::BaseBioReactorGeometry>(uniqueId, true)?.OnUse(null);
-                    }
-                }
-                else if (techType == TechType.BaseNuclearReactor)
-                {
-                    if (isMine)
-                    {
-                        Network.Identifier.GetComponentByGameObject<global::BaseNuclearReactorGeometry>(uniqueId, true)?.OnUse(null);
-                    }
-                }
-                else if (techType == TechType.BaseMapRoom)
-                {
-                    if (isMine)
-                    {
-                        var baseDeconstructable = Network.Identifier.GetComponentByGameObject<global::BaseDeconstructable>(uniqueId);
-                        if (baseDeconstructable)
+                        switch (techType)
                         {
-                            var maproom = baseDeconstructable.GetMapRoomFunctionality();
-                            if (maproom)
-                            {
-                                maproom.storageContainer.Open(maproom.transform);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    var gameObject = Network.Identifier.GetComponentByGameObject<global::StorageContainer>(uniqueId, true);
-                    if (gameObject)
-                    {
-                        if (isMine)
-                        {
-                            gameObject.Open(gameObject.transform);
-                        }
-                        else
-                        {
-                            switch (techType)
-                            {
-                                case TechType.SmallStorage:
-                                case TechType.Recyclotron:
-                                case TechType.EscapePod:
-                                case TechType.QuantumLocker:
-                                case TechType.Exosuit:
-
-                                    gameObject.open = true;
-
-                                    this.OpenedStorages.Add(uniqueId);
+                            case TechType.BaseWaterPark:
+                                if (isMine)
+                                {
+                                    BaseDeconstructable componentByGameObject = Subnautica.API.Features.Network.Identifier.GetComponentByGameObject<BaseDeconstructable>(uniqueId);
+                                    WaterPark baseWaterPark = componentByGameObject != null ? componentByGameObject.GetBaseWaterPark() : null;
+                                    if (baseWaterPark)
+                                    {
+                                        IHandTarget componentInChildren = (IHandTarget)baseWaterPark.GetComponentInChildren<LargeRoomWaterParkPlanter>();
+                                        if (componentInChildren != null)
+                                            componentInChildren.OnHandClick((GUIHand)null);
+                                        else
+                                            baseWaterPark.planter.storageContainer.Open(baseWaterPark.transform);
+                                    }
                                     break;
-                            }
+                                }
+                                break;
+                            case TechType.BaseMapRoom:
+                                if (isMine)
+                                {
+                                    BaseDeconstructable componentByGameObject = Subnautica.API.Features.Network.Identifier.GetComponentByGameObject<BaseDeconstructable>(uniqueId);
+                                    MapRoomFunctionality roomFunctionality = componentByGameObject != null ? componentByGameObject.GetMapRoomFunctionality() : null;
+                                    if (roomFunctionality)
+                                        roomFunctionality.storageContainer.Open(roomFunctionality.transform);
+                                    break;
+                                }
+                                break;
+                            case TechType.BaseBioReactor:
+                                if (isMine)
+                                {
+                                    Network.Identifier.GetComponentByGameObject<BaseBioReactorGeometry>(uniqueId, true)?.OnUse(null);
+                                    break;
+                                }
+                                break;
+                            case TechType.BaseNuclearReactor:
+                                if (isMine)
+                                {
+                                    Network.Identifier.GetComponentByGameObject<BaseNuclearReactorGeometry>(uniqueId, true)?.OnUse(null);
+                                    break;
+                                }
+                                break;
+                            default:
+                                StorageContainer componentByGameObject1 = Network.Identifier.GetComponentByGameObject<StorageContainer>(uniqueId, true);
+                                if (componentByGameObject1)
+                                {
+                                    if (isMine)
+                                    {
+                                        componentByGameObject1.Open(componentByGameObject1.transform);
+                                    }
+                                    else
+                                    {
+                                        switch (techType)
+                                        {
+                                            case TechType.EscapePod:
+                                            case TechType.SmallStorage:
+                                            case TechType.QuantumLocker:
+                                            case TechType.Recyclotron:
+                                            case TechType.Exosuit:
+                                                componentByGameObject1.open = true;
+                                                this.OpenedStorages.Add(uniqueId);
+                                                break;
+                                        }
+                                    }
+                                }
+                                break;
                         }
                     }
                 }
             }
-
             return true;
         }
 

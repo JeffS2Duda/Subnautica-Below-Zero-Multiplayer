@@ -7,6 +7,7 @@ namespace Subnautica.Events.Patches.Events.Furnitures
     using Subnautica.Events.EventArgs;
 
     using System;
+    using System.Collections.Generic;
 
     [HarmonyPatch(typeof(global::Planter), nameof(global::Planter.AddItem), new Type[] { typeof(Plantable), typeof(int) })]
     public static class PlanterItemAdded
@@ -25,9 +26,10 @@ namespace Subnautica.Events.Patches.Events.Furnitures
 
             try
             {
-                PlanterItemAddedEventArgs args = new PlanterItemAddedEventArgs(__instance.constructable.gameObject.GetIdentityId(), plantable.gameObject.GetIdentityId(), plantable, slotID);
-
-                Handlers.Furnitures.OnPlanterItemAdded(args);
+                KeyValuePair<string, KeyValuePair<TechType, bool>> detail = __instance.GetDetail();
+                if (detail.Key.IsNull() || EventBlocker.IsEventBlocked(detail.Value.Key))
+                    return;
+                Handlers.Furnitures.OnPlanterItemAdded(new PlanterItemAddedEventArgs(detail.Key, plantable.gameObject.GetIdentityId(), plantable, slotID, detail.Value.Value));
             }
             catch (Exception e)
             {

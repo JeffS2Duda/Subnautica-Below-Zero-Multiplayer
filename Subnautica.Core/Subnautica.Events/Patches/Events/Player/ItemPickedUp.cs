@@ -24,7 +24,7 @@ namespace Subnautica.Events.Patches.Events.Player
                         return true;
                     }
 
-                    __result = true;
+                    __result = args.Result;
                     return false;
                 }
                 catch (Exception e)

@@ -32,6 +32,7 @@ namespace Subnautica.Events.Patches.Events.Player
                             MainCameraControl.main.transform.forward,
                             __instance.animator.GetFloat("FP_Emotes"),
                             global::Player.main.precursorArmsAttached,
+                            global::Player.main.currentWaterPark,
                             global::Player.main.footStepSounds.currentSurfaceType
                         );
 

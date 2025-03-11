@@ -26,7 +26,7 @@
                 return false;
             }
 
-            return basePieceData.Position == this.Position && basePieceData.LocalPosition == this.LocalPosition && basePieceData.LocalRotation == this.LocalRotation && basePieceData.FaceDirection == this.FaceDirection && basePieceData.FaceType == this.FaceType && basePieceData.TechType == this.TechType;
+            return basePieceData.Position == this.Position && basePieceData.LocalPosition == this.LocalPosition && basePieceData.LocalRotation == this.LocalRotation && basePieceData.FaceDirection == this.FaceDirection && basePieceData.FaceType == this.FaceType && basePieceData.TechType == this.TechType && basePieceData.LocalRotation == this.LocalRotation;
         }
 
         public override int GetHashCode()

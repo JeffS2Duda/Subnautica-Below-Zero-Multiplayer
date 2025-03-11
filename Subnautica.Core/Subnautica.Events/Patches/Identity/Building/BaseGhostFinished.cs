@@ -166,5 +166,48 @@
                 }
             }
         }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(BaseDeconstructable), "MakeFaceDeconstructable")]
+        private static bool BaseDeconstructable_MakeFaceDeconstructable_Prefix(BaseDeconstructable __instance, ref BaseDeconstructable __result, Transform geometry, Int3.Bounds bounds, Base.Face face, Base.FaceType faceType, TechType recipe)
+        {
+            if (!Network.IsMultiplayerActive)
+            {
+                return true;
+            }
+            else
+            {
+                try
+                {
+                    BaseDeconstructable baseDeconstructable = Radical.EnsureComponent<BaseDeconstructable>(geometry.gameObject);
+                    baseDeconstructable.Init(bounds, face, faceType, recipe);
+                    __result = baseDeconstructable;
+                    BasePieceData basePieceData = new BasePieceData
+                    {
+                        Position = baseDeconstructable.transform.position,
+                        LocalPosition = geometry.transform.localPosition,
+                        LocalRotation = geometry.transform.localRotation,
+                        FaceDirection = face.direction,
+                        FaceType = faceType,
+                        TechType = recipe
+                    };
+                    string text = Network.BaseFacePiece.Get(basePieceData);
+                    if (text.IsNull())
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        baseDeconstructable.gameObject.SetIdentityId(text);
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(string.Format("BaseGhostFinished_Deconstructable.Exception: {0}", ex));
+                    return true;
+                }
+            }
+        }
     }
 }

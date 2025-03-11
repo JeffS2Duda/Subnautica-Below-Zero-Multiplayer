@@ -6,6 +6,7 @@ namespace Subnautica.Server.Processors.Player
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -16,76 +17,56 @@ namespace Subnautica.Server.Processors.Player
     {
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
-            var packet = networkPacket.GetPacket<ServerModel.JoiningServerArgs>();
+            Subnautica.Network.Models.Server.JoiningServerArgs packet = networkPacket.GetPacket<Subnautica.Network.Models.Server.JoiningServerArgs>();
             if (packet == null)
-            {
                 return this.SendEmptyPacketErrorLog(networkPacket);
-            }
-
             if (packet.UserName.IsNull())
             {
-                Log.Info("EMPTY_NAME_ERROR");
-                Server.DisconnectToClient(profile);
+                Subnautica.Server.Core.Server.DisconnectToClient(profile);
                 return false;
             }
-
             if (!this.IsActive(packet.UserName))
             {
-                Log.Info("NETWORK_IS_DOWN");
-                Server.DisconnectToClient(profile);
+                Subnautica.Server.Core.Server.DisconnectToClient(profile);
                 return false;
             }
-
             if (packet.UserId.IsNull())
             {
-                Log.Info("EMPTY_USER_ERROR");
-                Server.DisconnectToClient(profile);
+                Subnautica.Server.Core.Server.DisconnectToClient(profile);
                 return false;
             }
-
             packet.UserName = packet.UserName.Trim();
             packet.UserId = packet.UserId.Trim();
-
-            if (Server.Instance.Players.Any(q => q.Value.PlayerName.Contains(packet.UserName)))
+            if (Subnautica.Server.Core.Server.Instance.Players.Any<KeyValuePair<string, AuthorizationProfile>>((Func<KeyValuePair<string, AuthorizationProfile>, bool>)(q => q.Value.PlayerName.Contains(packet.UserName))))
             {
-                Log.Info("ALREADY_USERNAME_EXISTS " + Tools.Base64Encode(Tools.Base64Encode(packet.UserName)));
-                Server.DisconnectToClient(profile);
+                Subnautica.Server.Core.Server.DisconnectToClient(profile);
                 return false;
             }
-
-            if (Server.Instance.Players.ContainsKey(profile.IpPortAddress))
+            if (Subnautica.Server.Core.Server.Instance.Players.Any<KeyValuePair<string, AuthorizationProfile>>((Func<KeyValuePair<string, AuthorizationProfile>, bool>)(q => q.Value.UniqueId.Contains(Tools.CreateMD5(packet.UserId)))))
             {
-                Log.Info("ALREADY_CONNECTED_ERROR");
-                Server.DisconnectToClient(profile);
+                Subnautica.Server.Core.Server.DisconnectToClient(profile);
                 return false;
             }
-
-            var player = profile.Initialize(packet.UserName, packet.UserId);
-            if (player == null)
+            if (Subnautica.Server.Core.Server.Instance.Players.ContainsKey(profile.IpPortAddress))
+            {
+                Subnautica.Server.Core.Server.DisconnectToClient(profile);
+                return false;
+            }
+            AuthorizationProfile profile1 = profile.Initialize(packet.UserName, packet.UserId);
+            if (profile1 == null)
             {
                 Log.Info("PLAYER_INITIALIZE_ERROR");
-                Server.DisconnectToClient(profile);
+                Subnautica.Server.Core.Server.DisconnectToClient(profile);
                 return false;
             }
-
-            if (Server.Instance.OwnerId == player.UniqueId)
-            {
-                player.IsHost = true;
-            }
-
-            Server.Instance.Players.Add(player.IpPortAddress, player);
-
+            if (Subnautica.Server.Core.Server.Instance.OwnerId == profile1.UniqueId)
+                profile1.IsHost = true;
+            Subnautica.Server.Core.Server.Instance.Players.Add(profile1.IpPortAddress, profile1);
             Log.Info(ZeroLanguage.Get("GAME_PLAYER_CONNECTED").Replace("{playername}", packet.UserName));
-
             if (packet.IsReconnect)
-            {
-                this.SendReconnectPacket(player);
-            }
+                this.SendReconnectPacket(profile1);
             else
-            {
-                this.SendFirstConnectionPacket(player);
-            }
-
+                this.SendFirstConnectionPacket(profile1);
             return true;
         }
 

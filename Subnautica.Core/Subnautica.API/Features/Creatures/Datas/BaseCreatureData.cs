@@ -55,7 +55,7 @@
             return null;
         }
 
-        public virtual bool OnKill(GameObject gameObject)
+        public virtual bool OnKill(MultiplayerCreature oldCreature, MultiplayerCreature creature)
         {
             return true;
         }

@@ -1,5 +1,6 @@
 namespace Subnautica.Events.Handlers
 {
+    using Subnautica.API.Extensions;
     using Subnautica.Events.EventArgs;
 
     using static Subnautica.API.Extensions.EventExtensions;
@@ -209,5 +210,9 @@ namespace Subnautica.Events.Handlers
         public static event SubnauticaPluginEventHandler<BaseMoonpoolExpansionUndockTailEventArgs> BaseMoonpoolExpansionUndockTail;
 
         public static void OnBaseMoonpoolExpansionUndockTail(BaseMoonpoolExpansionUndockTailEventArgs ev) => BaseMoonpoolExpansionUndockTail.CustomInvoke(ev);
+
+        public static event SubnauticaPluginEventHandler<PlanterStorageResetingEventArgs> PlanterStorageReseting;
+
+        public static void OnPlanterStorageReseting(PlanterStorageResetingEventArgs ev) => PlanterStorageReseting.CustomInvoke(ev);
     }
 }

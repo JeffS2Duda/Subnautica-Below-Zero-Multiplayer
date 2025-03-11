@@ -55,7 +55,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
         public static void OnPlayerItemPickedUp(PlayerItemPickedUpEventArgs ev)
         {
-            if (!ev.IsStaticWorldEntity && Network.DynamicEntity.HasEntity(ev.UniqueId))
+            if (!ev.IsStaticWorldEntity && ev.WaterParkId.IsNull()  && Network.DynamicEntity.HasEntity(ev.UniqueId))
             {
                 ev.IsAllowed = false;
 

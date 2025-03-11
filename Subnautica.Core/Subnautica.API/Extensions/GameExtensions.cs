@@ -92,6 +92,15 @@
             };
         }
 
+        public static WorldEntityModel.WaterParkCreature ToWaterParkCreatureComponent(this Pickupable pickupable)
+        {
+            global::WaterParkCreature waterParkCreature;
+            return new WorldEntityModel.WaterParkCreature
+            {
+                AddedTime = (pickupable.TryGetComponent<global::WaterParkCreature>(out waterParkCreature) ? (Network.Session.GetWorldTime() - (double)(waterParkCreature.data.growingPeriod * waterParkCreature.age)) : 0.0)
+            };
+        }
+
         public static WorldEntityModel.MapRoomCamera ToMapRoomCameraComponent(this global::Pickupable pickupable)
         {
             return new WorldEntityModel.MapRoomCamera()
@@ -453,6 +462,63 @@
         public static void EnableMovement(this global::Player player)
         {
             FPSInputModule.current.lockMovement = false;
+        }
+
+        public static KeyValuePair<string, KeyValuePair<TechType, bool>> GetDetail(this Planter basePlanter)
+        {
+            bool flag = basePlanter.constructable;
+            KeyValuePair<string, KeyValuePair<TechType, bool>> keyValuePair;
+            if (flag)
+            {
+                keyValuePair = new KeyValuePair<string, KeyValuePair<TechType, bool>>(basePlanter.constructable.gameObject.GetIdentityId(false), new KeyValuePair<TechType, bool>(basePlanter.constructable.techType, true));
+            }
+            else
+            {
+                WaterPark componentInParent = basePlanter.GetComponentInParent<WaterPark>();
+                LargeRoomWaterPark largeRoomWaterPark = componentInParent as LargeRoomWaterPark;
+                bool flag2 = largeRoomWaterPark != null;
+                if (flag2)
+                {
+                    LargeRoomWaterParkPlanter componentInParent2 = basePlanter.GetComponentInParent<LargeRoomWaterParkPlanter>();
+                    bool flag3 = componentInParent2;
+                    if (flag3)
+                    {
+                        BaseDeconstructable baseDeconstructable = componentInParent.GetBaseDeconstructable();
+                        string text;
+                        if (baseDeconstructable == null)
+                        {
+                            text = null;
+                        }
+                        else
+                        {
+                            GameObject gameObject = baseDeconstructable.gameObject;
+                            text = ((gameObject != null) ? gameObject.GetIdentityId(false) : null);
+                        }
+                        return new KeyValuePair<string, KeyValuePair<TechType, bool>>(text, new KeyValuePair<TechType, bool>(TechType.BaseWaterPark, componentInParent2.leftPlanter == basePlanter));
+                    }
+                }
+                else
+                {
+                    bool flag4 = componentInParent;
+                    if (flag4)
+                    {
+                        BaseDeconstructable baseDeconstructable2 = componentInParent.GetBaseDeconstructable();
+                        string text2;
+                        if (baseDeconstructable2 == null)
+                        {
+                            text2 = null;
+                        }
+                        else
+                        {
+                            GameObject gameObject2 = baseDeconstructable2.gameObject;
+                            text2 = ((gameObject2 != null) ? gameObject2.GetIdentityId(false) : null);
+                        }
+                        return new KeyValuePair<string, KeyValuePair<TechType, bool>>(text2, new KeyValuePair<TechType, bool>(TechType.BaseWaterPark, true));
+                    }
+                }
+                keyValuePair = default(KeyValuePair<string, KeyValuePair<TechType, bool>>);
+            }
+            return keyValuePair;
         }
     }
 }

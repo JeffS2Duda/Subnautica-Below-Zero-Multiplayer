@@ -50,7 +50,7 @@
                 SafeAnimator.SetBool(this.Animator, "in_exosuit", this.Player.VehicleType == TechType.Exosuit);
                 SafeAnimator.SetBool(this.Animator, "piloting_seatruck", this.Player.VehicleType == TechType.SeaTruck);
                 SafeAnimator.SetBool(this.Animator, "on_surface", this.Player.IsOnSurface);
-                SafeAnimator.SetBool(this.Animator, "is_underwater", this.Player.IsUnderwater);
+                SafeAnimator.SetBool(this.Animator, "is_underwater", this.Player.IsUnderwater || this.Player.IsInWaterPark);
                 SafeAnimator.SetBool(this.Animator, "is_floating", this.Player.IsPrecursorArm);
                 SafeAnimator.SetFloat(this.Animator, "view_pitch", this.CurrentCameraPitch);
 
@@ -117,7 +117,7 @@
             {
                 var relativeVelocity = this.RigidBody.transform.InverseTransformDirection(this.SmoothedPositionVelocity - this.RigidBody.GetPointVelocity(this.RigidBody.position));
 
-                this.SmoothedVelocity = Vector3.Slerp(this.SmoothedVelocity, relativeVelocity, (this.Player.IsUnderwater ? 1f : 4f) * Time.deltaTime);
+                this.SmoothedVelocity = Vector3.Slerp(this.SmoothedVelocity, relativeVelocity, ((this.Player.IsUnderwater || this.Player.IsInWaterPark) ? 1f : 4f) * Time.deltaTime);
             }
 
             this.Animator.SetFloat(AnimatorHashID.move_speed, this.SmoothedVelocity.magnitude);

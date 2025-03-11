@@ -112,7 +112,7 @@ namespace Subnautica.Client.Synchronizations.Processors.World
 
         public static void OnEntitySpawned(EntitySpawnedEventArgs ev)
         {
-            if (ev.SlotType == SlotType.None && ev.TechType.IsCreature() && !ev.UniqueId.IsWorldStreamer())
+            if (ev.SlotType == SlotType.None && ev.TechType.IsCreature(true) && !ev.UniqueId.IsWorldStreamer())
             {
                 ev.SlotType = SlotType.WorldStreamer;
 

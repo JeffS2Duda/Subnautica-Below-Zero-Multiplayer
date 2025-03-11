@@ -21,6 +21,9 @@ namespace Subnautica.Network.Models.Metadata
 
         [Key(4)]
         public List<PlanterItem> Items { get; set; } = new List<PlanterItem>();
+
+        [Key(5)]
+        public bool IsLeft { get; set; }
     }
 
     [MessagePackObject]

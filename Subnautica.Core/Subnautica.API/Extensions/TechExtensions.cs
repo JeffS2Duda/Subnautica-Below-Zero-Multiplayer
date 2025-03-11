@@ -111,6 +111,12 @@
             return techType.AsString();
         }
 
+        public static bool IsCosmeticItem(this TechType techType)
+        {
+            bool flag = techType.IsPoster() || techType.IsPictureFrame();
+            return flag || techType - TechType.LabContainer <= 2 || techType == TechType.FredShavingKit || techType == TechType.SamNecklace;
+        }
+
         public static bool IsPoster(this TechType techType)
         {
             switch (techType)
@@ -340,10 +346,11 @@
                 case TechType.ShockerEgg:
                 case TechType.ShockerEggUndiscovered:
                 case TechType.GenericEgg:
-                case TechType.CutefishEggUndiscovered:
-                case TechType.SeaMonkeyEgg:
                 case TechType.CrashEgg:
                 case TechType.CrashEggUndiscovered:
+                case TechType.CutefishEgg:
+                case TechType.CutefishEggUndiscovered:
+                case TechType.SeaMonkeyEgg:
                 case TechType.ArcticRayEgg:
                 case TechType.ArcticRayEggUndiscovered:
                 case TechType.BruteSharkEgg:
@@ -383,27 +390,12 @@
         {
             switch (techType)
             {
-                case TechType.ShockerEggUndiscovered: return TechType.ShockerEgg;
-                case TechType.ArcticRayEggUndiscovered: return TechType.ArcticRayEgg;
-                case TechType.BruteSharkEggUndiscovered: return TechType.BruteSharkEgg;
-                case TechType.LilyPaddlerEggUndiscovered: return TechType.LilyPaddlerEgg;
-                case TechType.PinnacaridEggUndiscovered: return TechType.PinnacaridEgg;
-                case TechType.SquidSharkEggUndiscovered: return TechType.SquidSharkEgg;
-                case TechType.TitanHolefishEggUndiscovered: return TechType.TitanHolefishEgg;
-                case TechType.TrivalveBlueEggUndiscovered: return TechType.TrivalveBlueEgg;
-                case TechType.TrivalveYellowEggUndiscovered: return TechType.TrivalveYellowEgg;
-                case TechType.BrinewingEggUndiscovered: return TechType.BrinewingEgg;
-                case TechType.CryptosuchusEggUndiscovered: return TechType.CryptosuchusEgg;
-                case TechType.GlowWhaleEggUndiscovered: return TechType.GlowWhaleEgg;
-                case TechType.JellyfishEggUndiscovered: return TechType.JellyfishEgg;
-                case TechType.PenguinEggUndiscovered: return TechType.PenguinEgg;
-                case TechType.RockPuncherEggUndiscovered: return TechType.RockPuncherEgg;
-
-                case TechType.PrecursorLostRiverLabEgg:
-                case TechType.SeaMonkeyEgg:
-                case TechType.GenericEgg:
                 case TechType.LavaZoneEgg:
                 case TechType.ShockerEgg:
+                case TechType.GenericEgg:
+                case TechType.CrashEgg:
+                case TechType.CutefishEgg:
+                case TechType.SeaMonkeyEgg:
                 case TechType.ArcticRayEgg:
                 case TechType.BruteSharkEgg:
                 case TechType.LilyPaddlerEgg:
@@ -418,10 +410,59 @@
                 case TechType.JellyfishEgg:
                 case TechType.PenguinEgg:
                 case TechType.RockPuncherEgg:
+                case TechType.PrecursorLostRiverLabEgg:
                     return techType;
+                case TechType.ShockerEggUndiscovered:
+                    return TechType.ShockerEgg;
+                case TechType.CrashEggUndiscovered:
+                    return TechType.CrashEgg;
+                case TechType.ArcticRayEggUndiscovered:
+                    return TechType.ArcticRayEgg;
+                case TechType.BruteSharkEggUndiscovered:
+                    return TechType.BruteSharkEgg;
+                case TechType.LilyPaddlerEggUndiscovered:
+                    return TechType.LilyPaddlerEgg;
+                case TechType.PinnacaridEggUndiscovered:
+                    return TechType.PinnacaridEgg;
+                case TechType.SquidSharkEggUndiscovered:
+                    return TechType.SquidSharkEgg;
+                case TechType.TitanHolefishEggUndiscovered:
+                    return TechType.TitanHolefishEgg;
+                case TechType.TrivalveBlueEggUndiscovered:
+                    return TechType.TrivalveBlueEgg;
+                case TechType.TrivalveYellowEggUndiscovered:
+                    return TechType.TrivalveYellowEgg;
+                case TechType.BrinewingEggUndiscovered:
+                    return TechType.BrinewingEgg;
+                case TechType.CryptosuchusEggUndiscovered:
+                    return TechType.CryptosuchusEgg;
+                case TechType.GlowWhaleEggUndiscovered:
+                    return TechType.GlowWhaleEgg;
+                case TechType.JellyfishEggUndiscovered:
+                    return TechType.JellyfishEgg;
+                case TechType.PenguinEggUndiscovered:
+                    return TechType.PenguinEgg;
+                case TechType.RockPuncherEggUndiscovered:
+                    return TechType.RockPuncherEgg;
+                case TechType.Crash:
+                    return TechType.CrashEgg;
+                case TechType.GlowWhale:
+                    return TechType.GlowWhaleEgg;
+                case TechType.LilyPaddler:
+                    return TechType.LilyPaddlerEgg;
+                case TechType.ArcticRay:
+                    return TechType.ArcticRayEgg;
+                case TechType.TitanHolefish:
+                    return TechType.TitanHolefishEgg;
+                case TechType.BruteShark:
+                    return TechType.BruteSharkEgg;
+                case TechType.Jellyfish:
+                    return TechType.JellyfishEgg;
+                case TechType.Cryptosuchus:
+                    return TechType.CryptosuchusEgg;
+                default:
+                    return TechType.None;
             }
-
-            return TechType.None;
         }
 
         public static bool IsCreature(this TechType techType, bool ignoreSchool = false)

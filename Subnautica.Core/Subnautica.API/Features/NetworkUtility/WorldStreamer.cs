@@ -28,15 +28,15 @@
 
         private Dictionary<TechType, int> FragmentsMax = new Dictionary<TechType, int>()
         {
-            { TechType.LaserCutterFragment  , 15 },
-            { TechType.ThermalPlantFragment , 15 },
-            { TechType.ExosuitTorpedoArmFragment, 10 },
-            { TechType.ExosuitPropulsionArmFragment, 10 },
-            { TechType.SeaglideFragment, 22 },
-            { TechType.SeaTruckFragment, 10 },
-            { TechType.ConstructorFragment, 22 },
-            { TechType.SeaTruckAquariumModuleFragment, 10 },
-            { TechType.GravSphereFragment, 10 },
+            { TechType.LaserCutterFragment  , 25 },
+            { TechType.ThermalPlantFragment , 25 },
+            { TechType.ExosuitTorpedoArmFragment, 17 },
+            { TechType.ExosuitPropulsionArmFragment, 17 },
+            { TechType.SeaglideFragment, 35 },
+            { TechType.SeaTruckFragment, 15 },
+            { TechType.ConstructorFragment, 35 },
+            { TechType.SeaTruckAquariumModuleFragment, 15 },
+            { TechType.GravSphereFragment, 17 },
         };
 
 
@@ -334,7 +334,7 @@
 
                         if (fragmentMaxCount <= 0)
                         {
-                            fragmentMaxCount = 5;
+                            fragmentMaxCount = 11;
                         }
 
                         if (totalFragment > fragmentMaxCount)

@@ -2,6 +2,7 @@
 {
     using HarmonyLib;
     using Subnautica.API.Enums;
+    using Subnautica.API.Extensions;
     using Subnautica.API.Features;
     using Subnautica.Events.EventArgs;
     using System;
@@ -29,9 +30,8 @@
                     var result = task.GetResult();
                     if (result != null)
                     {
-                        Network.Identifier.SetIdentityId(result, __instance.Id);
-
                         result.transform.localScale = __instance.transform.localScale;
+                        result.gameObject.SetIdentityId(__instance.Id);
                         result.SetActive(true);
 
                         try

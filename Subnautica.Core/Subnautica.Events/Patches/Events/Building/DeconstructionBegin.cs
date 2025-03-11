@@ -29,6 +29,12 @@ namespace Subnautica.Events.Patches.Events.Building
                 return false;
             }
 
+            if (DeconstructionBegin.IsPlayerInWaterPark(__instance))
+            {
+                ErrorMessage.AddMessage(Language.main.Get("PlayerObstacle"));
+                return false;
+            }
+
             try
             {
                 DeconstructionBeginEventArgs args = new DeconstructionBeginEventArgs(uniqueId, __instance, __instance.recipe);
@@ -42,6 +48,38 @@ namespace Subnautica.Events.Patches.Events.Building
                 Log.Error($"DeconstructionBegin.Prefix: {e}\n{e.StackTrace}");
                 return true;
             }
+        }
+
+        private static bool IsPlayerInWaterPark(BaseDeconstructable baseDeconstructable)
+        {
+            bool flag = baseDeconstructable.recipe != TechType.BaseWaterPark;
+            bool flag2;
+            if (flag)
+            {
+                flag2 = false;
+            }
+            else
+            {
+                WaterPark baseWaterPark = baseDeconstructable.GetBaseWaterPark();
+                bool flag3 = baseWaterPark == null;
+                if (flag3)
+                {
+                    flag2 = false;
+                }
+                else
+                {
+                    foreach (ZeroPlayer zeroPlayer in ZeroPlayer.GetPlayers())
+                    {
+                        bool flag4 = baseWaterPark.IsPointInside(zeroPlayer.PlayerModel.transform.position);
+                        if (flag4)
+                        {
+                            return true;
+                        }
+                    }
+                    flag2 = false;
+                }
+            }
+            return flag2;
         }
 
         private static string GetUniqueId(global::BaseDeconstructable baseDeconstructable)

@@ -14,6 +14,10 @@ namespace Subnautica.Server.Processors.Story
     {
         private Dictionary<StoryCinematicType, double> CinematicTimes = new Dictionary<StoryCinematicType, double>();
 
+        public override void OnStart()
+        {
+            this.CinematicTimes.Clear();
+        }
         public override bool OnExecute(AuthorizationProfile profile, NetworkPacket networkPacket)
         {
             var packet = networkPacket.GetPacket<ServerModel.StoryCinematicTriggerArgs>();

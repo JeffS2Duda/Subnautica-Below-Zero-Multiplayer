@@ -1,7 +1,7 @@
 ﻿namespace Subnautica.API.Features
 {
     using Subnautica.API.Features.Creatures.Datas;
-
+    using Subnautica.API.Features.Creatures.Datas.Eggs;
     using System.Collections.Generic;
 
     public class CreatureData
@@ -40,6 +40,13 @@
             this.Register(new CryptosuchusData());
 
             this.Register(new GlowWhaleEggData());
+            this.Register(new ArcticRayEggData());
+            this.Register(new TitanHolefishEggData());
+            this.Register(new BruteSharkEggData());
+            this.Register(new CryptosuchusEggData());
+            this.Register(new JellyfishEggData());
+            this.Register(new LilyPaddlerEggData());
+            this.Register(new CrashEggData());
         }
 
         public bool IsExists(TechType type)

@@ -1,9 +1,12 @@
 namespace Subnautica.Server.Processors.Metadata
 {
+    using Subnautica.Network.Models.Core;
+    using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
     using Subnautica.Server.Core;
+    using System;
     using System.Linq;
     using Metadata = Subnautica.Network.Models.Metadata;
 
@@ -17,101 +20,71 @@ namespace Subnautica.Server.Processors.Metadata
             }
 
             var component = packet.Component.GetComponent<Metadata.Planter>();
-            if (component == null)
+            if (component == null || component.CurrentItem == null)
             {
                 return false;
             }
 
-            if (component.IsOpening)
+            Subnautica.Network.Models.Metadata.Planter planter = this.GetPlanter(component, construction);
+            if (planter == null)
+                return false;
+            if (packet.TechType == TechType.BaseWaterPark)
+                packet.TechType = TechType.FarmingTray;
+            if (component.IsAdding)
             {
-                Server.Instance.Logices.Interact.AddBlock(profile.UniqueId, construction.UniqueId, true);
-
-                profile.SendPacket(packet);
+                if (planter.Items.Any<PlanterItem>((Func<PlanterItem, bool>)(q => (int)q.SlotId == (int)component.CurrentItem.SlotId || q.ItemId == component.CurrentItem.ItemId)))
+                    return false;
+                component.CurrentItem.TimeStartGrowth = Subnautica.Server.Core.Server.Instance.Logices.World.GetServerTime();
+                component.CurrentItem.TimeNextFruit = component.CurrentItem.TimeStartGrowth + (float)component.CurrentItem.Duration;
+                planter.Items.Add(component.CurrentItem);
+                profile.SendPacketToAllClient((NetworkPacket)packet);
             }
-            else if (component.CurrentItem != null)
+            else if (component.IsHarvesting)
             {
-                var constructionComponent = construction.EnsureComponent<Metadata.Planter>();
-
-                if (component.IsAdding)
+                PlanterItem planterItem = planter.Items.FirstOrDefault<PlanterItem>((Func<PlanterItem, bool>)(q => q.ItemId == component.CurrentItem.ItemId));
+                if (planterItem == null)
+                    return false;
+                component.CurrentItem.Health = planterItem.Health;
+                if ((double)component.CurrentItem.FruitSpawnInterval == -1.0)
                 {
-                    if (constructionComponent.Items.Where(q => q.SlotId == component.CurrentItem.SlotId || q.ItemId == component.CurrentItem.ItemId).Any())
-                    {
-                        return false;
-                    }
-
-                    component.CurrentItem.TimeStartGrowth = Server.Instance.Logices.World.GetServerTime();
-                    component.CurrentItem.TimeNextFruit = component.CurrentItem.TimeStartGrowth + component.CurrentItem.Duration;
-
-                    constructionComponent.Items.Add(component.CurrentItem);
-
-                    if (Server.Instance.Storages.Construction.UpdateMetadata(packet.UniqueId, constructionComponent))
-                    {
-                        profile.SendPacketToAllClient(packet);
-                    }
+                    planter.Items.Remove(planterItem);
+                    profile.SendPacketToAllClient((NetworkPacket)packet);
                 }
-                else if (component.IsHarvesting)
+                else
                 {
-                    var item = constructionComponent.Items.Where(q => q.ItemId == component.CurrentItem.ItemId).FirstOrDefault();
-                    if (item == null)
+                    planterItem.MaxSpawnableFruit = component.CurrentItem.MaxSpawnableFruit;
+                    planterItem.FruitSpawnInterval = component.CurrentItem.FruitSpawnInterval;
+                    planterItem.SyncFruits(Subnautica.Server.Core.Server.Instance.Logices.World.GetServerTime());
+                    if (planterItem.ActiveFruitCount > (byte)0)
                     {
-                        return false;
-                    }
-
-                    component.CurrentItem.Health = item.Health;
-
-                    if (component.CurrentItem.FruitSpawnInterval == -1)
-                    {
-                        constructionComponent.Items.Remove(item);
-
-                        if (Server.Instance.Storages.Construction.UpdateMetadata(packet.UniqueId, constructionComponent))
-                        {
-                            profile.SendPacketToAllClient(packet);
-                        }
-                    }
-                    else
-                    {
-                        item.MaxSpawnableFruit = component.CurrentItem.MaxSpawnableFruit;
-                        item.FruitSpawnInterval = component.CurrentItem.FruitSpawnInterval;
-                        item.SyncFruits(Server.Instance.Logices.World.GetServerTime());
-
-                        if (item.ActiveFruitCount > 0)
-                        {
-                            item.ActiveFruitCount--;
-
-                            if (Server.Instance.Storages.Construction.UpdateMetadata(packet.UniqueId, constructionComponent))
-                            {
-                                component.CurrentItem = item;
-
-                                profile.SendPacketToAllClient(packet);
-                            }
-                        }
-                    }
-                }
-                else if (component.CurrentItem.Health != -1f)
-                {
-                    var item = constructionComponent.Items.Where(q => q.ItemId == component.CurrentItem.ItemId).FirstOrDefault();
-                    if (item == null)
-                    {
-                        return false;
-                    }
-
-                    item.Health = component.CurrentItem.Health;
-
-                    component.CurrentItem.SlotId = item.SlotId;
-
-                    if (item.Health <= 0f)
-                    {
-                        constructionComponent.Items.Remove(item);
-                    }
-
-                    if (Server.Instance.Storages.Construction.UpdateMetadata(packet.UniqueId, constructionComponent))
-                    {
-                        profile.SendPacketToOtherClients(packet);
+                        --planterItem.ActiveFruitCount;
+                        component.CurrentItem = planterItem;
+                        profile.SendPacketToAllClient((NetworkPacket)packet);
                     }
                 }
             }
-
+            else if ((double)component.CurrentItem.Health != -1.0)
+            {
+                PlanterItem planterItem = planter.Items.FirstOrDefault<PlanterItem>((Func<PlanterItem, bool>)(q => q.ItemId == component.CurrentItem.ItemId));
+                if (planterItem == null)
+                    return false;
+                planterItem.Health = component.CurrentItem.Health;
+                component.CurrentItem.SlotId = planterItem.SlotId;
+                if ((double)planterItem.Health <= 0.0)
+                    planter.Items.Remove(planterItem);
+                profile.SendPacketToOtherClients((NetworkPacket)packet);
+            }
             return true;
+        }
+
+        private Subnautica.Network.Models.Metadata.Planter GetPlanter(
+          Subnautica.Network.Models.Metadata.Planter component,
+          ConstructionItem construction)
+        {
+            if (construction.TechType != TechType.BaseWaterPark)
+                return construction.EnsureComponent<Subnautica.Network.Models.Metadata.Planter>();
+            BaseWaterPark baseWaterPark = construction.EnsureComponent<BaseWaterPark>();
+            return component.IsLeft ? baseWaterPark.LeftPlanter : baseWaterPark.RightPlanter;
         }
     }
 }

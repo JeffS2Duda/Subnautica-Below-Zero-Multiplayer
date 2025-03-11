@@ -36,7 +36,7 @@ namespace Subnautica.Server.Logic
         {
             if (checkTargetContainer)
             {
-                if (targetContainer == null || !targetContainer.HasRoomFor(pickupItem.Item) || targetContainer.IsItemExists(pickupItem.GetItemId()))
+                if (targetContainer == null || !targetContainer.IsCanBeAdded(pickupItem))
                 {
                     return false;
                 }

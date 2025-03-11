@@ -3,6 +3,7 @@ namespace Subnautica.Server.Processors.Creatures
     using Server.Core;
 
     using Subnautica.Network.Models.Core;
+    using Subnautica.Network.Models.Creatures;
     using Subnautica.Server.Abstracts.Processors;
 
     using ServerModel = Subnautica.Network.Models.Server;
@@ -34,6 +35,7 @@ namespace Subnautica.Server.Processors.Creatures
                     }
                     else
                     {
+                        Server.Instance.Logices.BaseWaterPark.OnCreatureDead(creature);
                         Server.Instance.Logices.CreatureWatcher.OnCreatureDead(creature);
                         Server.Instance.Logices.CreatureWatcher.ImmediatelyTrigger();
                     }

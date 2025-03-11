@@ -43,6 +43,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                 player.Rotation = packet.CompressedRotation.ToQuaternion();
                 player.Equipments = packet.Equipments;
                 player.IsPrecursorArm = packet.IsPrecursorArm;
+                player.IsInWaterPark = packet.IsInWaterPark;
                 player.EmoteIndex = (float)packet.EmoteIndex;
                 player.VehicleId = 0;
                 player.VehicleType = TechType.None;
@@ -78,6 +79,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
                     Equipments = ev.Equipments,
                     EmoteIndex = (byte)ev.EmoteIndex,
                     IsPrecursorArm = ev.IsPrecursorArm,
+                    IsInWaterPark = ev.IsInWaterPark,
                     HandItemComponent = UpdatedProcessor.GetItemComponent(ev.TechTypeInHand),
                 };
 

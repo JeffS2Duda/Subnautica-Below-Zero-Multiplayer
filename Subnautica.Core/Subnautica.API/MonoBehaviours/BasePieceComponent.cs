@@ -37,16 +37,16 @@
                 Log.Error(string.Format("GetAddedPiece First - lastBasePieces: 0"));
                 return null;
             }
-
-
-
-
             var different = lastBasePieces.Except(this.BasePieces).ToList();
             if (different.Count <= 0)
             {
                 return null;
             }
-
+            foreach (BasePieceData addedPiece in lastBasePieces)
+            {
+                if (addedPiece.TechType == TechType.BaseWaterPark && addedPiece.FaceDirection == Base.Direction.Below)
+                    return addedPiece;
+            }
             if (different.Count > 1)
             {
                 Log.Error(string.Format("GetAddedPiece Three - lastBasePieces: {0}, BasePieces: {1}, Different: {2}", lastBasePieces.Count, this.BasePieces.Count, different.Count));

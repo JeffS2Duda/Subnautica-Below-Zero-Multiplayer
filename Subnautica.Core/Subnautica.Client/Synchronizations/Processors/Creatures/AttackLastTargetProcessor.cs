@@ -48,14 +48,17 @@
 
         public static void OnCreatureAttackLastTargetStarting(CreatureAttackLastTargetStartingEventArgs ev)
         {
-            ev.IsAllowed = false;
+            if (ev.Creature.gameObject.GetTechType() != TechType.GlowWhale)
+            {
+                ev.IsAllowed = false;
 
-            AttackLastTargetProcessor.SendPacketToServer(ev.UniqueId.ToCreatureId(), ev.Target.GetIdentityId(), ev.Target.GetTechType());
+                AttackLastTargetProcessor.SendPacketToServer(ev.UniqueId.ToCreatureId(), ev.Target.GetIdentityId(), ev.Target.GetTechType());
+            }
         }
 
         public static void OnCreatureAttackLastTargetStopped(CreatureAttackLastTargetStoppedEventArgs ev)
         {
-            if (ev.IsAttackAnimationActive)
+            if (ev.IsAttackAnimationActive && ev.Creature.gameObject.GetTechType() != TechType.GlowWhale)
             {
                 AttackLastTargetProcessor.SendPacketToServer(ev.UniqueId.ToCreatureId(), isStopped: true);
             }

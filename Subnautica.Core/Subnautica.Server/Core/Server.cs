@@ -4,10 +4,13 @@ namespace Subnautica.Server.Core
     using Subnautica.API.Enums;
     using Subnautica.API.Extensions;
     using Subnautica.API.Features;
+    using Subnautica.Events.Handlers;
     using Subnautica.Network.Core;
     using Subnautica.Network.Extensions;
     using Subnautica.Network.Models.Core;
     using Subnautica.Network.Structures;
+    using Subnautica.Server.Abstracts;
+    using Subnautica.Server.Events;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -75,6 +78,7 @@ namespace Subnautica.Server.Core
             this.Storages = new Storages();
             this.Storages.Start(this.ServerId);
 
+            this.StartProcessors();
             this.RegisterEvents();
         }
 
@@ -263,6 +267,13 @@ namespace Subnautica.Server.Core
             return this.Players.Any(q => q.Value.PlayerId == playerId);
         }
 
+        private void StartProcessors()
+        {
+            foreach (BaseProcessor baseProcessor in ProcessorShared.GetAllProcessors())
+            {
+                baseProcessor.OnStart();
+            }
+        }
         private void RegisterEvents()
         {
             if (!this.IsRegisteredEvents)
@@ -275,7 +286,11 @@ namespace Subnautica.Server.Core
 
                 EventHandlers.Building.BaseHullStrengthCrushing += this.Logices.BaseHullStrength.OnCrushing;
 
+                Furnitures.PlanterStorageReseting += this.Logices.BaseWaterPark.OnPlanterStorageReseting;
+
                 ServerHandlers.PlayerFullConnected += this.Logices.CreatureWatcher.OnPlayerFullConnected;
+                ServerHandlers.PlayerFullConnected += this.Logices.BaseWaterPark.OnPlayerFullConnected;
+
                 ServerHandlers.PlayerDisconnected += this.Logices.ServerApi.OnPlayerDisconnected;
 
                 MainGameController.OnGameStarted.AddHandler(new Action(this.Logices.PowerConsumer.OnGameStart));
@@ -294,7 +309,11 @@ namespace Subnautica.Server.Core
 
                 EventHandlers.Building.BaseHullStrengthCrushing -= this.Logices.BaseHullStrength.OnCrushing;
 
+                Furnitures.PlanterStorageReseting -= this.Logices.BaseWaterPark.OnPlanterStorageReseting;
+
                 ServerHandlers.PlayerDisconnected -= this.Logices.ServerApi.OnPlayerDisconnected;
+
+                ServerHandlers.PlayerFullConnected -= this.Logices.BaseWaterPark.OnPlayerFullConnected;
                 ServerHandlers.PlayerFullConnected -= this.Logices.CreatureWatcher.OnPlayerFullConnected;
 
                 MainGameController.OnGameStarted.RemoveHandler(new Action(this.Logices.PowerConsumer.OnGameStart));

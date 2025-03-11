@@ -5,6 +5,8 @@
     using Subnautica.Client.Multiplayer.Cinematics;
     using Subnautica.Events.EventArgs;
     using System;
+    using System.Globalization;
+    using System.Threading;
 
     public class MainProcess
     {
@@ -23,6 +25,7 @@
             if (ev.Scene.name == "XMenu")
             {
                 ClearAllCache();
+                CultureInfoEnabled();
             }
         }
 
@@ -42,6 +45,13 @@
             {
                 Log.Error($"ClearAllCache Exception: {e}");
             }
+        }
+
+        private static void CultureInfoEnabled()
+        {
+            CultureInfo cultureInfo = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            Thread.CurrentThread.CurrentUICulture = cultureInfo;
         }
     }
 }

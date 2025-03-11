@@ -1,5 +1,6 @@
 namespace Subnautica.Server.Processors.Metadata
 {
+    using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.Server;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts.Processors;
@@ -33,8 +34,6 @@ namespace Subnautica.Server.Processors.Metadata
             {
                 return false;
             }
-
-            component.CurrentTime = Server.Instance.Logices.World.GetServerTime();
 
             if (component.IsAdded)
             {
@@ -83,13 +82,11 @@ namespace Subnautica.Server.Processors.Metadata
             else
             {
                 var itemComponent = fridge.Components.FirstOrDefault(q => q.ItemId == itemId);
-                fridge.Components.RemoveAll(q => q.ItemId == itemId);
-
                 if (itemComponent != null)
                 {
-                    itemComponent.IsPaused = false;
+                    itemComponent.UnpauseDecay(Server.Instance.Logices.World.GetServerTime());
                 }
-
+                fridge.Components.RemoveAll((FridgeItemComponent q) => q.ItemId == itemId);
                 return itemComponent;
             }
         }

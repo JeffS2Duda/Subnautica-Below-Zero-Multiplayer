@@ -51,11 +51,15 @@ namespace Subnautica.Network.Models.Server
         public bool IsPrecursorArm { get; set; }
 
         [Key(15)]
-        public byte EmoteIndex { get; set; }
+        public bool IsInWaterPark { get; set; }
+
         [Key(16)]
-        public List<TechType> Equipments { get; set; }
+        public byte EmoteIndex { get; set; }
 
         [Key(17)]
+        public List<TechType> Equipments { get; set; }
+
+        [Key(18)]
         public NetworkPlayerItemComponent HandItemComponent { get; set; }
     }
 }

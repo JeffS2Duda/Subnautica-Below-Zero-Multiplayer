@@ -235,7 +235,14 @@
             { TechType.SeaTruckSleeperModule        , new DynamicEntities.SeaTruckSleeperModuleProcessor() },
             { TechType.SeaTruckDockingModule        , new DynamicEntities.SeaTruckDockingModuleProcessor() },
 
-            { TechType.GlowWhaleEgg, new DynamicEntities.BaseWaterParkProcessor() },
+            { TechType.GlowWhaleEgg                 , new DynamicEntities.BaseWaterParkProcessor() },
+            { TechType.CryptosuchusEgg              , new DynamicEntities.BaseWaterParkProcessor() },
+            { TechType.ArcticRayEgg                 , new DynamicEntities.BaseWaterParkProcessor() },
+            { TechType.TitanHolefishEgg             , new DynamicEntities.BaseWaterParkProcessor() },
+            { TechType.BruteSharkEgg                , new DynamicEntities.BaseWaterParkProcessor() },
+            { TechType.JellyfishEgg                 , new DynamicEntities.BaseWaterParkProcessor() },
+            { TechType.LilyPaddlerEgg               , new DynamicEntities.BaseWaterParkProcessor() },
+            { TechType.CrashEgg               , new DynamicEntities.BaseWaterParkProcessor() },
         };
 
         public static Dictionary<TechType, PlayerItemProcessor> PlayerItemProcessors { get; set; } = new Dictionary<TechType, PlayerItemProcessor>()

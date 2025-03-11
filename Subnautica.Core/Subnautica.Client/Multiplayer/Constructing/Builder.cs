@@ -414,7 +414,7 @@
             return true;
         }
 
-        private static bool DeconstructBasePiece(string uniqueId)
+        public static bool DeconstructBasePiece(string uniqueId)
         {
             if (!UniqueIdentifier.TryGetIdentifier(uniqueId, out var uid))
             {
@@ -467,6 +467,18 @@
 
                 if (componentInParent.IsEmpty())
                 {
+                    foreach (var constructable1 in componentInParent.GetComponentsInChildren<Constructable>())
+                    {
+                        if (constructable1.gameObject.GetTechType().IsFurniture())
+                        {
+                            if (Network.IsHost)
+                            {
+                                constructable1.constructedAmount = 0f;
+                                CoroutineUtils.PumpCoroutine(constructable1.ProgressDeconstruction());
+                            }
+                            constructable1.gameObject.Destroy();
+                        }
+                    }
                     componentInParent.OnPreDestroy();
                     UnityEngine.Object.Destroy(componentInParent.gameObject);
                     baseGhost.ClearTargetBase();

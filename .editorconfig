@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# CS0612: Type or member is obsolete
+dotnet_diagnostic.CS0612.severity = none
+
+# CS0618: Type or member is obsolete
+dotnet_diagnostic.CS0618.severity = none
+
+# MsgPack015: MessagePackObjectAttribute.AllowPrivate should be set
+dotnet_diagnostic.MsgPack015.severity = none

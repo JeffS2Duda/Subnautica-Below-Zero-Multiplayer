@@ -17,7 +17,7 @@ namespace Subnautica.Server.Processors.Inventory
                 return this.SendEmptyPacketErrorLog(networkPacket);
             }
 
-            if (packet.IsAdded)
+            if (packet.IsAdded && packet.Item != null)
             {
                 profile.AddInventoryItem(packet.Item);
             }

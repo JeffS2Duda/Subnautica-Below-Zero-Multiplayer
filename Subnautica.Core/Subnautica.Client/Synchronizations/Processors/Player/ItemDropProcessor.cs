@@ -54,7 +54,7 @@ namespace Subnautica.Client.Synchronizations.Processors.Player
 
         public static void OnPlayerItemDroping(PlayerItemDropingEventArgs ev)
         {
-            if (ev.Item.GetTechType() != TechType.SnowBall && !ev.Item.GetTechType().IsCreature())
+            if (ev.Item.GetTechType() != TechType.SnowBall && ev.WaterParkId.IsNull() && !ev.Item.GetTechType().IsCreature())
             {
                 if (ev.Item.GetTechType().IsCreatureEgg() && ZeroPlayer.CurrentPlayer.GetCurrentWaterParkUniqueId().IsNotNull())
                 {

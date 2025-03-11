@@ -2,6 +2,7 @@
 {
     using MessagePack;
     using Subnautica.Network.Core.Components;
+    using Subnautica.Network.Models.WorldEntity.DynamicEntityComponents.Shared;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -71,6 +72,12 @@
             var storageContainer = new StorageContainer();
             storageContainer.Resize(width, heigth);
             return storageContainer;
+        }
+
+        public bool IsCanBeAdded(WorldPickupItem pickupItem)
+        {
+            bool flag = this.IsItemExists(pickupItem.GetItemId()) || !this.HasRoomFor(pickupItem.Item);
+            return !flag;
         }
 
         public bool HasRoomFor(StorageItem storageItem)

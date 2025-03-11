@@ -125,12 +125,12 @@ namespace Subnautica.Server.Logic
             return this.StaticFabricators.Contains(uniqueId);
         }
 
-        public WorldDynamicEntity CreateDynamicEntity(string uniqueId, TechType techType, ZeroVector3 position, ZeroQuaternion rotation, string ownershipId = null, bool isDeployed = true)
+        public WorldDynamicEntity CreateDynamicEntity(string uniqueId, TechType techType, ZeroVector3 position, ZeroQuaternion rotation, string ownershipId = null, bool isDeployed = true, bool addInWorld = true)
         {
-            return CreateDynamicEntity(uniqueId, null, techType, position, rotation, ownershipId, isDeployed);
+            return CreateDynamicEntity(uniqueId, null, techType, position, rotation, ownershipId, isDeployed, addInWorld);
         }
 
-        public WorldDynamicEntity CreateDynamicEntity(string uniqueId, byte[] item, TechType techType, ZeroVector3 position, ZeroQuaternion rotation, string ownershipId = null, bool isDeployed = true)
+        public WorldDynamicEntity CreateDynamicEntity(string uniqueId, byte[] item, TechType techType, ZeroVector3 position, ZeroQuaternion rotation, string ownershipId = null, bool isDeployed = true, bool addInWorld = true)
         {
             if (Server.Instance.Storages.World.GetDynamicEntity(uniqueId) != null)
             {
@@ -152,12 +152,7 @@ namespace Subnautica.Server.Logic
                 AddedTime = Server.Instance.Logices.World.GetServerTime(),
             };
 
-            if (Server.Instance.Storages.World.AddWorldDynamicEntity(entity))
-            {
-                return entity;
-            }
-
-            return null;
+            return addInWorld && !Server.Instance.Storages.World.AddWorldDynamicEntity(entity) ? null : entity;
         }
     }
 }

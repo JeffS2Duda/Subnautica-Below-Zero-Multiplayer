@@ -656,6 +656,7 @@
             Player.ItemPickupProcessor.OnPlayerItemPickedUp(ev);
             Items.PipeSurfaceFloaterProcessor.OnPlayerItemPickedUp(ev);
             Metadata.BaseMapRoomProcessor.OnPlayerItemPickedUp(ev);
+            Metadata.BaseWaterParkProcessor.OnPlayerItemPickedUp(ev);
         }
 
         public void OnScannerUsing(ScannerUsingEventArgs ev)

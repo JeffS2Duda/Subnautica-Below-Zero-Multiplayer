@@ -16,7 +16,7 @@ namespace Subnautica.Events.EventArgs
             this.Rotation = ghostModel.transform.rotation;
             this.AimTransform = aimTranform;
             this.IsCanPlace = isCanPlace;
-            this.UpdatePlacement = Network.Temporary.GetProperty<bool>(ghostModel.GetIdentityId(), "UpdatePlacementResult");
+            this.UpdatePlacement = Network.DataStorage.GetProperty<bool>(ghostModel.GetIdentityId(), "UpdatePlacementResult");
             this.LastRotation = lastRotation;
         }
 

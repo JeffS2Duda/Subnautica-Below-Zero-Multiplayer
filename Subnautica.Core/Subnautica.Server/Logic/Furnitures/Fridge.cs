@@ -1,6 +1,7 @@
 namespace Subnautica.Server.Logic.Furnitures
 {
     using Subnautica.API.Features;
+    using Subnautica.Network.Models.Metadata;
     using Subnautica.Network.Models.Storage.Construction;
     using Subnautica.Server.Abstracts;
     using Subnautica.Server.Core;
@@ -11,7 +12,7 @@ namespace Subnautica.Server.Logic.Furnitures
 
     public class Fridge : BaseLogic
     {
-        public StopwatchItem Timing { get; set; } = new StopwatchItem(1000f);
+        public StopwatchItem Timing { get; set; } = new StopwatchItem(2000f);
 
         public override void OnUpdate(float deltaTime)
         {
@@ -56,12 +57,12 @@ namespace Subnautica.Server.Logic.Furnitures
 
                     component.WasPowered = wasPowered;
 
-                    this.SendPacketToAllClient(construction.Value.UniqueId, serverTime, wasPowered);
+                    this.SendPacketToAllClient(construction.Value.UniqueId, component.Components.ToList(), wasPowered);
                 }
             }
         }
 
-        private void SendPacketToAllClient(string uniqueId, float serverTime, bool wasPowered)
+        private void SendPacketToAllClient(string uniqueId, List<FridgeItemComponent> components, bool wasPowered)
         {
             ServerModel.MetadataComponentArgs request = new ServerModel.MetadataComponentArgs()
             {
@@ -70,7 +71,7 @@ namespace Subnautica.Server.Logic.Furnitures
                 Component = new Metadata.Fridge()
                 {
                     WasPowered = wasPowered,
-                    CurrentTime = serverTime,
+                    Components = components,
                     IsPowerStateChanged = true
                 },
             };

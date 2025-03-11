@@ -33,7 +33,8 @@
         {
             if (string.IsNullOrEmpty(this.Id))
             {
-                this.Id = "";
+                this.Id = UniqueIdentifier.EnsureGuid(null);
+                base.Register();
             }
         }
     }

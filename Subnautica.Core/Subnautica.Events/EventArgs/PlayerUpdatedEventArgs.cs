@@ -7,7 +7,7 @@ namespace Subnautica.Events.EventArgs
 
     public class PlayerUpdatedEventArgs : EventArgs
     {
-        public PlayerUpdatedEventArgs(Vector3 position, Vector3 localPosition, Quaternion rotation, TechType techTypeInHand, List<TechType> equipments, float cameraPitch, Vector3 cameraForward, float emoteIndex, bool isPrecursorArm, VFXSurfaceTypes surfaceType)
+        public PlayerUpdatedEventArgs(Vector3 position, Vector3 localPosition, Quaternion rotation, TechType techTypeInHand, List<TechType> equipments, float cameraPitch, Vector3 cameraForward, float emoteIndex, bool isPrecursorArm, bool isInWaterPark, VFXSurfaceTypes surfaceType)
         {
             this.Position = position;
             this.LocalPosition = localPosition;
@@ -18,6 +18,7 @@ namespace Subnautica.Events.EventArgs
             this.CameraForward = cameraForward;
             this.EmoteIndex = emoteIndex;
             this.IsPrecursorArm = isPrecursorArm;
+            this.IsInWaterPark = isInWaterPark;
             this.SurfaceType = surfaceType;
         }
 
@@ -38,6 +39,8 @@ namespace Subnautica.Events.EventArgs
         public float EmoteIndex { get; private set; }
 
         public bool IsPrecursorArm { get; private set; }
+
+        public bool IsInWaterPark { get; private set; }
 
         public VFXSurfaceTypes SurfaceType { get; private set; }
     }

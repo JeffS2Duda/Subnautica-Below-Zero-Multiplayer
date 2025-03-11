@@ -134,6 +134,7 @@ namespace Subnautica.Server.Processors.Metadata
                 {
                     UniqueId = oldVehicle.UniqueId,
                     TechType = oldVehicle.TechType,
+                    PacketOwnerId = profile.PlayerId
                 };
 
                 ServerModel.VehicleEnterArgs enterRequest = new ServerModel.VehicleEnterArgs()
@@ -141,6 +142,7 @@ namespace Subnautica.Server.Processors.Metadata
                     CustomId = mapRoom.UniqueId,
                     UniqueId = newVehicle.UniqueId,
                     TechType = newVehicle.TechType,
+                    PacketOwnerId = profile.PlayerId
                 };
 
                 NormalProcessor.ExecuteProcessor(profile, exitRequest);

@@ -63,6 +63,11 @@ namespace Subnautica.Events.Patches.Events.Furnitures
                 }
 
                 behaviour.enabled = false;
+                BehaviourUpdateUtils.RegisterForUpdate(behaviour);
+                behaviour = null;
+                task = null;
+                result = null;
+                grownPlant = null;
             }
             else
             {

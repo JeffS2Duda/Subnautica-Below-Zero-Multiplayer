@@ -74,7 +74,7 @@
                 return null;
             }
 
-            var face = Network.Temporary.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
+            var face = Network.DataStorage.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
 
             return new BaseAddFaceGhostComponent()
             {
@@ -94,8 +94,8 @@
                 return null;
             }
 
-            var faceStart = Network.Temporary.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
-            var faceEnd = Network.Temporary.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceEnd");
+            var faceStart = Network.DataStorage.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
+            var faceEnd = Network.DataStorage.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceEnd");
 
             return new BaseAddLadderGhostComponent()
             {
@@ -120,7 +120,7 @@
                 return null;
             }
 
-            var face = Network.Temporary.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
+            var face = Network.DataStorage.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
 
             return new BaseAddBulkheadGhostComponent()
             {
@@ -140,8 +140,8 @@
                 return null;
             }
 
-            var faceCell = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
-            var direction = Network.Temporary.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
+            var faceCell = Network.DataStorage.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
+            var direction = Network.DataStorage.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
 
             return new BaseAddPartitionGhostComponent()
             {
@@ -161,8 +161,8 @@
                 return null;
             }
 
-            var faceCell = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
-            var direction = Network.Temporary.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
+            var faceCell = Network.DataStorage.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
+            var direction = Network.DataStorage.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
 
             return new BaseAddPartitionDoorGhostComponent()
             {
@@ -182,7 +182,7 @@
                 return null;
             }
 
-            var face = Network.Temporary.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
+            var face = Network.DataStorage.GetProperty<global::Base.Face>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceStart");
 
             return new BaseAddModuleGhostComponent()
             {
@@ -197,7 +197,7 @@
 
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddCellGhost baseGhost)
         {
-            var targetOffset = Network.Temporary.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
+            var targetOffset = Network.DataStorage.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
 
             return new BaseAddCellGhostComponent()
             {
@@ -210,7 +210,7 @@
 
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddCorridorGhost baseGhost)
         {
-            var targetOffset = Network.Temporary.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
+            var targetOffset = Network.DataStorage.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
 
             return new BaseAddCorridorGhostComponent()
             {
@@ -221,7 +221,7 @@
 
         public static BaseGhostComponent GetGhostComponent(this global::BaseAddMapRoomGhost baseGhost)
         {
-            var targetOffset = Network.Temporary.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
+            var targetOffset = Network.DataStorage.GetProperty<Int3>(baseGhost.gameObject.GetIdentityId(), "TargetOffset");
 
             return new BaseAddMapRoomGhostComponent()
             {
@@ -237,7 +237,7 @@
                 return null;
             }
 
-            var faceCell = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "Cell");
+            var faceCell = Network.DataStorage.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "Cell");
 
             return new BaseAddConnectorGhostComponent()
             {
@@ -253,8 +253,8 @@
                 return null;
             }
 
-            var faceCell = Network.Temporary.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
-            var direction = Network.Temporary.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
+            var faceCell = Network.DataStorage.GetProperty<Int3>(baseGhost.targetBase.gameObject.GetIdentityId(), "FaceCell");
+            var direction = Network.DataStorage.GetProperty<global::Base.Direction>(baseGhost.targetBase.gameObject.GetIdentityId(), "Direction");
 
             return new BaseAddWaterParkGhostComponent()
             {

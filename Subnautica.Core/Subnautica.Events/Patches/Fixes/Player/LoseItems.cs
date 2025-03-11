@@ -2,6 +2,7 @@
 {
     using HarmonyLib;
     using Subnautica.API.Features;
+    using Subnautica.Events.EventArgs;
     using System.Collections.Generic;
 
     [HarmonyPatch(typeof(global::Inventory), nameof(global::Inventory.LoseItems))]
@@ -43,6 +44,15 @@
                     }
                 }
             }
+
+            InventoryLoseItemsEventArgs args = new InventoryLoseItemsEventArgs(inventoryItemList, true);
+            Handlers.Inventory.OnInventoryLoseItems(args);
+            if (args.ShouldLose == false)
+            {
+                __result = false;
+                return false;
+            }
+            inventoryItemList = args.Items;
 
             for (int index = 0; index < inventoryItemList.Count; ++index)
             {
